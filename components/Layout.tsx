@@ -3,12 +3,12 @@ import Link from 'next/link'
 import Head from 'next/head'
 
 type Props = {
-  title?: string
+  title: string
 }
 
 const Layout: React.FunctionComponent<Props> = ({
   children,
-  title = 'This is the default title',
+  title,
 }) => (
   <div>
     <Head>
