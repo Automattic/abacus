@@ -1,6 +1,14 @@
 {
-  "name": "with-typescript",
-  "version": "1.0.0",
+  "name": "abacus",
+  "author": "Automattic Inc.",
+  "description": "Automattic's Experimentation Platform UI",
+  "version": "0.0.1",
+  "license": "GPL-2.0-or-later",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Automattic/abacus.git"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -18,6 +26,5 @@
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
     "typescript": "3.7.3"
-  },
-  "license": "ISC"
+  }
 }

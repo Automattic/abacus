@@ -30,7 +30,7 @@ const Layout: React.FunctionComponent<Props> = ({
     {children}
     <footer>
       <hr />
-      <span>The Abacus footer</span>
+      <span>The Abacus footer, brought to you by Automattic</span>
     </footer>
   </div>
 )
