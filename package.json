@@ -1,8 +1,8 @@
 {
   "name": "abacus",
+  "version": "0.0.1",
   "author": "Automattic Inc.",
   "description": "Automattic's Experimentation Platform UI",
-  "version": "0.0.1",
   "license": "GPL-2.0-or-later",
   "private": true,
   "repository": {
@@ -10,21 +10,21 @@
     "url": "https://github.com/Automattic/abacus.git"
   },
   "scripts": {
-    "dev": "next",
     "build": "next build",
+    "dev": "next",
     "start": "next start",
     "type-check": "tsc"
   },
   "dependencies": {
-    "isomorphic-unfetch": "3.0.0",
-    "next": "^9.3.4",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^9.3.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@types/node": "^12.12.21",
-    "@types/react": "^16.9.16",
-    "@types/react-dom": "^16.9.4",
-    "typescript": "3.7.3"
+    "@types/node": "^13.13.1",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "typescript": "^3.8.3"
   }
 }
