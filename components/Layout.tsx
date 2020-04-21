@@ -1,9 +1,9 @@
-import * as React from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
+import React from 'react'
 
 type Props = {
-  title: string
+  title: string;
 }
 
 const Layout: React.FunctionComponent<Props> = ({

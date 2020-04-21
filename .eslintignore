@@ -1,0 +1,7 @@
+.github/
+.vscode/
+build/
+dist/
+coverage/
+node_modules/
+out/
