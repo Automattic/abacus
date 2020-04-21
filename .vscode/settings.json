@@ -1,5 +1,10 @@
 {
-  "cSpell.words": ["automattic's", "camelcase", "esnext", "precommit", "stroustrup", "unfetch"],
+  "cSpell.words": [
+    "camelcase",
+    "esnext",
+    "stroustrup",
+    "unfetch"
+  ],
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
@@ -16,5 +21,10 @@
   "[typescriptreact]": {
     "editor.formatOnSave": false
   },
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
 }
