@@ -1,10 +1,24 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
+  // The following based on
+  // https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/TYPED_LINTING.md.
+  //
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: ['./tsconfig.json'],
+  },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    // Note: `recommended-requiring-type-checking` have type-aware rules. This comes
+    // with a performance penalty. For small projects, this is usually negligible.
+    // It is recommended to separate the linting into two stagings once the type-aware
+    // checking becomes a productivity issue. See second half of the "Recommended
+    // Configs" section at
+    // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#recommended-configs.
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:react/recommended',
   ],
   plugins: [
