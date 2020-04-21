@@ -7,6 +7,7 @@ const IndexPage = () => (
     <img src="/img/logo.png" width="100" />
     <h1>Experiments</h1>
     <p>Table of experiments to go here.</p>
+    <p>Some change to test pre-commit hooks are running.</p>
   </Layout>
 )
 
