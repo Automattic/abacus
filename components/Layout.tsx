@@ -3,13 +3,10 @@ import Head from 'next/head'
 import React from 'react'
 
 type Props = {
-  title: string;
+  title: string
 }
 
-const Layout: React.FunctionComponent<Props> = ({
-  children,
-  title,
-}) => (
+const Layout: React.FunctionComponent<Props> = ({ children, title }) => (
   <div>
     <Head>
       <title>{title} | Abacus</title>
