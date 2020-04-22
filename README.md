@@ -14,6 +14,14 @@ All the scripts for this project are initiated via npm scripts. Please see the `
 
 ### Linting
 
+**lint**
+
+Runs all the linters.
+
+```sh
+npm run lint
+```
+
 **lint:css**
 
 Runs a linter on all the styling code.
