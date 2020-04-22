@@ -1,5 +1,6 @@
 // Most of this file is based on
 // https://dev.to/robertcoopercode/using-eslint-and-prettier-in-a-typescript-project-53jb.
+
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
@@ -40,6 +41,8 @@ module.exports = {
     // `eslint-plugin-prettier` is that code can automatically be fixed using ESLint's
     // `--fix` option.
     'plugin:prettier/recommended',
+
+    'plugin:react/recommended',
   ],
   plugins: [
     '@typescript-eslint',
