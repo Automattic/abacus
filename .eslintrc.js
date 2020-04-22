@@ -55,16 +55,18 @@ module.exports = {
       objects: 'always-multiline',
     }],
     'no-multiple-empty-lines': ['error', { max: 2, maxBOF: 1, maxEOF: 1 }],
-    'padded-blocks': ['off'],
+
+    // Disabling the base rule as it can report incorrect errors.
+    'no-unused-vars': 'off',
+
+    'padded-blocks': 'off',
 
     // Off because we are using TypeScript which expects us to declare the props.
     'react/prop-types': 'off',
 
     '@typescript-eslint/explicit-function-return-type': 'off',
 
-    // The standard `no-unused-vars` rule is handling unused variables.
-    // Off because it incorrectly detects whether a variable is unused.
-    // '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
   },
   settings: {
     react: {
