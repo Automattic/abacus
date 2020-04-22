@@ -23,11 +23,26 @@
     "@typescript-eslint/parser": "^2.29.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.7",
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0",
     "typescript": "^3.8.3"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{css,scss}": [
+        "stylelint",
+        "git add --force"
+      ]
+    }
   },
   "scripts": {
     "build": "next build",
+    "precommit": "lint-staged",
     "dev": "next",
+    "lint:css": "stylelint **/*.{css,scss}",
+    "lint:css:fix": "stylelint **/*.{css,scss} --fix",
     "lint:js": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start": "next start",
     "type-check": "tsc"
