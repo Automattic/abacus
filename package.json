@@ -30,12 +30,7 @@
     "typescript": "^3.8.3"
   },
   "lint-staged": {
-    "linters": {
-      "*.{css,scss}": [
-        "stylelint",
-        "git add --force"
-      ]
-    }
+    "*.{css,scss}": "stylelint"
   },
   "scripts": {
     "build": "next build",
