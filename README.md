@@ -21,3 +21,11 @@ Runs a linter on all the JavaScript and TypeScript code including those with JSX
 ```sh
 npm run lint:js
 ```
+
+**lint:js:fix**
+
+Runs a linter on all the JavaScript and TypeScript code and fixes any found issues that are fixable.
+
+```sh
+npm run lint:js:fix
+```
