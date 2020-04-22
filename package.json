@@ -37,6 +37,7 @@
     "build": "next build",
     "precommit": "lint-staged",
     "dev": "next",
+    "format": "prettier --write .",
     "lint:js": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start": "next start",
     "type-check": "tsc"
