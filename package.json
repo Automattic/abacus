@@ -31,12 +31,9 @@
     "typescript": "^3.8.3"
   },
   "lint-staged": {
-    "linters": {
       "*.{js,jsx,ts,tsx}": [
-        "eslint --ext .js,.jsx,.ts,.tsx",
-        "git add --force"
+        "eslint --fix"
       ]
-    }
   },
   "scripts": {
     "build": "next build",
