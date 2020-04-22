@@ -32,7 +32,7 @@ npm run lint:css
 
 **lint:css:fix**
 
-Runs a linter on all the styling code and fixes and found issues that are fixable.
+Runs a linter on all the styling code and fixes issues that are fixable.
 
 ```sh
 npm run lint:css:fix
