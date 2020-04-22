@@ -50,3 +50,7 @@ typings/
 
 # Next.js build output
 .next
+
+# IDEs
+.idea/
+.vscode/
