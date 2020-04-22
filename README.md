@@ -14,6 +14,30 @@ All the scripts for this project are initiated via npm scripts. Please see the `
 
 ### Linting
 
+**lint**
+
+Runs all the linters.
+
+```sh
+npm run lint
+```
+
+**lint:css**
+
+Runs a linter on all the styling code.
+
+```sh
+npm run lint:css
+```
+
+**lint:css:fix**
+
+Runs a linter on all the styling code and fixes issues that are fixable.
+
+```sh
+npm run lint:css:fix
+```
+
 **lint:js**
 
 Runs a linter on all the JavaScript and TypeScript code including those with JSX.

@@ -28,15 +28,21 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.1.7",
     "prettier": "^2.0.5",
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0",
     "typescript": "^3.8.3"
   },
   "lint-staged": {
+    "*.{css,scss}": "stylelint --fix",
     "*.{js,jsx,ts,tsx}": "eslint --fix"
   },
   "scripts": {
     "build": "next build",
     "precommit": "lint-staged",
     "dev": "next",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:css": "stylelint **/*.{css,scss}",
+    "lint:css:fix": "stylelint **/*.{css,scss} --fix",
     "format": "prettier --write .",
     "lint:js": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:js:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
