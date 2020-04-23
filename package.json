@@ -33,6 +33,7 @@
     "typescript": "^3.8.3"
   },
   "lint-staged": {
+    "*.*": "prettier --write",
     "*.{css,scss}": "stylelint --fix",
     "*.{js,jsx,ts,tsx}": "eslint --fix"
   },
