@@ -10,16 +10,16 @@ const Layout: React.FunctionComponent<Props> = ({ children, title }) => (
   <div>
     <Head>
       <title>{title} | Abacus</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <meta charSet='utf-8' />
+      <meta name='viewport' content='initial-scale=1.0, width=device-width' />
     </Head>
     <header>
       <nav>
-        <Link href="/">
+        <Link href='/'>
           <a>Experiments</a>
         </Link>{' '}
         |{' '}
-        <Link href="/metrics">
+        <Link href='/metrics'>
           <a>Metrics</a>
         </Link>
       </nav>
