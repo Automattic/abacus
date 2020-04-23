@@ -46,7 +46,6 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint'],
   rules: {
-    'brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
     camelcase: ['error', { allow: ['_unused$'] }],
     'comma-dangle': [
       'error',
