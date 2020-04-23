@@ -53,3 +53,7 @@ Runs a linter on all the JavaScript and TypeScript code and fixes any found issu
 ```sh
 npm run lint:js:fix
 ```
+
+### Pre-Commit Hooks
+
+Pre-commit hooks have been put in place via `husky` which will run the `precommit` NPM script. This script runs `lint-staged` but could be used to run different or more commands. The `lint-staged` command will run commands on only the staged files of the commit according to the configuration. The `lint-staged` configuration is in `package.json`.
