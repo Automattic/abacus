@@ -1,7 +1,7 @@
 .github/
 .vscode/
 build/
-dist/
 coverage/
+dist/
 node_modules/
 out/
