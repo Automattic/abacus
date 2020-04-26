@@ -12,6 +12,16 @@ Run `npm install` to install dependencies, then run one of the following command
 
 All the scripts for this project are initiated via npm scripts. Please see the `"scripts"` section in `package.json`.
 
+### Bundle Analysis
+
+The Next.js build creates two bundles of files. One for the client and one for the server.
+
+Running the following will build, analyze, and open two browser windows with a report on the client and server bundles.
+
+```sh
+npm run analyze
+```
+
 ### Linting
 
 **lint**
