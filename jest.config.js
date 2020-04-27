@@ -1,4 +1,13 @@
 module.exports = {
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
+    },
+  },
+
   globals: {
     // Must specify a custom tsconfig for tests because we need the TypeScript
     // transform to transform JSX into js rather than leaving it as JSX which the
