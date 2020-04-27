@@ -1,0 +1,25 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@1.1.6
+
+jobs:
+  build-and-verify:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - run:
+                name: Linting
+                command: npm run lint
+            - run:
+                name: Unit Testing
+                command: npm run test:unit -- --coverage
+
+workflows:
+  build-and-verify:
+    jobs:
+      - build-and-verify
