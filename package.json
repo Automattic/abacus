@@ -49,7 +49,7 @@
     "build": "next build",
     "precommit": "lint-staged",
     "dev": "next",
-    "lint": "npm run lint:js && npm run lint:css",
+    "lint": "npm run lint:ts && npm run lint:css",
     "lint:css": "stylelint **/*.{css,scss}",
     "lint:css:fix": "stylelint **/*.{css,scss} --fix",
     "format": "prettier --write .",
