@@ -50,6 +50,7 @@
     "precommit": "lint-staged",
     "dev": "next",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "npm run lint:ts && npm run lint:css",
     "lint:css": "stylelint **/*.{css,scss}",
     "lint:css:fix": "stylelint **/*.{css,scss} --fix",
