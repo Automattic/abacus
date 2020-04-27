@@ -1,5 +1,7 @@
 # Abacus: Automattic's Experimentation Platform UI
 
+[![CircleCI](https://circleci.com/gh/Automattic/abacus.svg?style=svg)](https://circleci.com/gh/Automattic/abacus)
+
 ## Getting started
 
 Run `npm install` to install dependencies, then run one of the following commands:
