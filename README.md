@@ -24,6 +24,10 @@ Running the following will build, analyze, and open two browser windows with a r
 npm run analyze
 ```
 
+### Component Building
+
+See the Storybook section below.
+
 ### Linting
 
 **lint**
@@ -69,6 +73,22 @@ npm run lint:js:fix
 ### Pre-Commit Hooks
 
 Pre-commit hooks have been put in place via `husky` which will run the `precommit` NPM script. This script runs `lint-staged` but could be used to run different or more commands. The `lint-staged` command will run commands on only the staged files of the commit according to the configuration. The `lint-staged` configuration is in `package.json`.
+
+### Storybook
+
+Storybook allows you to render components in isolation.
+
+This is useful when building components. It allows you to create "stories" for the various states that the component can be in.
+
+Storybook can be used for other purposes too. You could run e2e tests on it to ensure components are functioning as expected. It could be used to render a style guide too.
+
+To run Storybook:
+
+```sh
+npm run storybook
+```
+
+This will open a browser window of the Storybook webapp.
 
 ### Testing
 
