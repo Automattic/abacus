@@ -11,10 +11,10 @@ jobs:
       tag: '10.18.1'
     steps:
       - checkout
-      - puppeteer/install
       - node/with-cache:
           steps:
             - run: npm install
+            - puppeteer/install
             - run:
                 name: Format Checking
                 command: npm run format:check
