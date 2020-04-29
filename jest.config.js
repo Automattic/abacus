@@ -19,6 +19,7 @@ module.exports = {
   preset: 'ts-jest',
   // Adds special extended assertions to Jest, thus simplifying the tests.
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  testPathIgnorePatterns: ['/e2e/', '/node_modules/'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
