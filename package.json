@@ -78,6 +78,7 @@
     "storybook": "start-storybook",
     "@comment test:e2e": "Runs the e2e tests. It will spawn Chromium to run the tests.",
     "test:e2e": "jest --config=jest.e2e.config.js --runInBand",
+    "test:e2e:smoke": "jest --config=jest.e2e.config.js --runInBand e2e/smoke.test.tsx",
     "test:unit": "jest",
     "type-check": "tsc"
   }

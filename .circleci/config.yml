@@ -37,8 +37,8 @@ jobs:
                 name: Unit Testing
                 command: npm run test:unit -- --coverage
             - run:
-                name: End-to-End Testing
-                command: npm run test:e2e
+                name: End-to-End Smoke Tests
+                command: npm run test:e2e:smoke
 
 workflows:
   build-and-verify:
