@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@2.0.3
+  node: circleci/node@1.1.6
   puppeteer: threetreeslight/puppeteer@0.1.2
 
 jobs:
@@ -11,20 +11,22 @@ jobs:
       tag: '10.18.1'
     steps:
       - checkout
-      - node/install-packages
-      - puppeteer/install
-      - run:
-          name: Format Checking
-          command: npm run format:check
-      - run:
-          name: Linting
-          command: npm run lint
-      - run:
-          name: Unit Testing
-          command: npm run test:unit -- --coverage
-      - run:
-          name: End-to-End Testing
-          command: npm run test:e2e
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - puppeteer/install
+            - run:
+                name: Format Checking
+                command: npm run format:check
+            - run:
+                name: Linting
+                command: npm run lint
+            - run:
+                name: Unit Testing
+                command: npm run test:unit -- --coverage
+            - run:
+                name: End-to-End Testing
+                command: npm run test:e2e
 
 workflows:
   build-and-verify:
