@@ -35,10 +35,10 @@ jobs:
                 command: npm run lint
             - run:
                 name: Unit Testing
-                command: npm run test:unit -- --coverage
+                command: npm run test:unit -- --ci --coverage
             - run:
                 name: End-to-End Smoke Tests
-                command: npm run test:e2e:smoke
+                command: npm run test:e2e:smoke -- --ci
 
 workflows:
   build-and-verify:
