@@ -17,7 +17,7 @@ jobs:
                 command: npm install
             - run:
                 name: Install Headless Chrome Dependencies
-                command: sudo apt-get install -yq chromium-browser
+                command: sudo apt-get install -yq chromium
             - run:
                 name: Format Checking
                 command: npm run format:check
