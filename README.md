@@ -114,3 +114,11 @@ npm run test:e2e
 # Run just the E2E smoke tests (intended to be used in development for quick iterations)
 npm run test:e2e:smoke
 ```
+
+### Verification
+
+Format checks, linting, and testing are all forms of verification. As a convenience, we have the `verify` NPM script that will run all the checks.
+
+```sh
+npm run verify
+```
