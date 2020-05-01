@@ -1,16 +1,10 @@
-import qs from 'querystring'
-
 /**
  * Resolves the OAuth client ID based on the host.
  *
  * @param host
  */
-const resolveClientId = (host: string) => {
-  let clientId = 68797
-  if (host === 'experiments.a8c.com') {
-    clientId = 68795
-  }
-  return clientId
+const getAuthClientId = (host: string) => {
+  return host === 'experiments.a8c.com' ? 68795 : 68797
 }
 
 /**
@@ -58,27 +52,4 @@ const saveExperimentsApiAuth = (experimentsApiAuth: ExperimentsApiAuthInfo | nul
     : localStorage.setItem('experiments_api_auth', JSON.stringify(experimentsApiAuth))
 }
 
-/**
- * Replaces the current document with the Abacus auth page.
- */
-const replaceWithAuthPage = () => {
-  window.location.replace(`${window.location.origin}/auth`)
-}
-
-/**
- * Replaces the current document with the WP.com OAuth authorize page.
- */
-const replaceWithOAuth = () => {
-  const authPath = 'https://public-api.wordpress.com/oauth2/authorize'
-  const authQuery = {
-    client_id: resolveClientId(window.location.host),
-    redirect_uri: `${window.location.origin}/auth`,
-    response_type: 'token',
-    scope: 'global',
-  }
-
-  const authUrl = `${authPath}?${qs.stringify(authQuery)}`
-  window.location.replace(authUrl)
-}
-
-export { acceptMessagesFrom, getExperimentsApiAuth, replaceWithAuthPage, replaceWithOAuth, saveExperimentsApiAuth }
+export { acceptMessagesFrom, getExperimentsApiAuth, getAuthClientId, saveExperimentsApiAuth }
