@@ -9,16 +9,18 @@ const debug = debugFactory('abacus:pages/auth.tsx')
 
 /**
  * The authorization page.
+ *
+ * Note: This relies upon the fact that `pages/_app.tsx` will redirect the user to
+ * the OAuth authorize page.
  */
 const AuthPage = function AuthPage() {
   debug('AuthPage#render')
   const [error, setError] = useState<null | string>(null)
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // If we have the hash with the authorization info, then extract the info and
-      // post it to the opener window.
+      // If we have the hash with the authorization info, then extract the info, save
+      // it for later, and go to the "home" page.
       //
-      // The hash should be empty when this page is initially open.
       // The hash should look something like the following upon success:
       // #access_token=...&expires_in=#######&scope=global&site_id=0&token_type=bearer
       // The hash should look something like the following upon failure:
@@ -47,9 +49,14 @@ const AuthPage = function AuthPage() {
 
   return (
     <>
+      {/*
+      Note: This error message will only be shown briefly as the user is automatically
+      redirected to the OAuth authorize page.
+      */}
       {error ? (
         <>
           <div>{error}</div>
+          <div>Redirecting...</div>
           <div>TODO: Replace with nicer UI once auth foundation is in place.</div>
         </>
       ) : (

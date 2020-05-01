@@ -52,4 +52,4 @@ const saveExperimentsApiAuth = (experimentsApiAuth: ExperimentsApiAuthInfo | nul
     : localStorage.setItem('experiments_api_auth', JSON.stringify(experimentsApiAuth))
 }
 
-export { acceptMessagesFrom, getExperimentsApiAuth, getAuthClientId, saveExperimentsApiAuth }
+export { acceptMessagesFrom, getAuthClientId, getExperimentsApiAuth, saveExperimentsApiAuth }

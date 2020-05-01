@@ -1,46 +1,6 @@
-/* eslint-disable @typescript-eslint/unbound-method */
-import {
-  acceptMessagesFrom,
-  getExperimentsApiAuth,
-  replaceWithAuthPage,
-  replaceWithOAuth,
-  saveExperimentsApiAuth,
-} from './auth'
-
-function createMockLocation(overrides?: object) {
-  return {
-    ancestorOrigins: { contains: jest.fn(), item: jest.fn(), length: 0, [Symbol.iterator]: jest.fn() },
-    assign: jest.fn(),
-    hash: '',
-    href: 'http://localhost',
-    host: 'http://localhost',
-    hostname: 'localhost',
-    origin: 'http://localhost',
-    pathname: '',
-    port: '3000',
-    protocol: 'http',
-    reload: jest.fn(),
-    replace: jest.fn(),
-    search: '',
-    ...overrides,
-  }
-}
+import { acceptMessagesFrom, getAuthClientId, getExperimentsApiAuth, saveExperimentsApiAuth } from './auth'
 
 describe('utils/auth.ts module', () => {
-  const { location } = window
-
-  beforeAll(() => {
-    delete window.location
-  })
-
-  afterAll(() => {
-    window.location = location
-  })
-
-  beforeEach(() => {
-    window.location = createMockLocation()
-  })
-
   afterEach(() => {
     window.localStorage.clear()
   })
@@ -64,6 +24,17 @@ describe('utils/auth.ts module', () => {
       expect(acceptMessagesFrom('http://experiments.a8c.com')).toBe(false)
       expect(acceptMessagesFrom('https://google.com/')).toBe(false)
       expect(acceptMessagesFrom('http://localhost.com')).toBe(false)
+    })
+  })
+
+  describe('getAuthClientId', () => {
+    it('should return 68795 for host experiments.a8c.com but 68797 for all other host', () => {
+      expect(getAuthClientId('experiments.a8c.com')).toBe(68795)
+      expect(getAuthClientId('http://a8c-abacus-local:3000')).toBe(68797)
+      expect(getAuthClientId('https://a8c-abacus-local:3000')).toBe(68797)
+      expect(getAuthClientId('http://localhost')).toBe(68797)
+      expect(getAuthClientId('http://localhost:3000')).toBe(68797)
+      expect(getAuthClientId('https://localhost')).toBe(68797)
     })
   })
 
@@ -110,36 +81,6 @@ describe('utils/auth.ts module', () => {
       saveExperimentsApiAuth(null)
 
       expect(localStorage.getItem('experiments_api_auth')).toBe(null)
-    })
-  })
-
-  describe('replaceWithAuthPage', () => {
-    it('should return void when called and call window.location.replace with expected URL', () => {
-      expect(replaceWithAuthPage()).toBeUndefined()
-      expect(window.location.replace).toHaveBeenCalledWith('http://localhost/auth')
-    })
-  })
-
-  describe('replaceWithOAuth', () => {
-    it('should return void when called and call window.location.replace with expected URL', () => {
-      expect(replaceWithOAuth()).toBeUndefined()
-      expect(window.location.replace).toHaveBeenCalledWith(
-        'https://public-api.wordpress.com/oauth2/authorize?client_id=68797&redirect_uri=http%3A%2F%2Flocalhost%2Fauth&response_type=token&scope=global',
-      )
-
-      window.location = createMockLocation({
-        href: 'https://experiments.a8c.com',
-        host: 'experiments.a8c.com',
-        hostname: 'experiments.a8c.com',
-        origin: 'https://experiments.a8c.com',
-        port: '80',
-        protocol: 'https',
-      })
-
-      expect(replaceWithOAuth()).toBeUndefined()
-      expect(window.location.replace).toHaveBeenCalledWith(
-        'https://public-api.wordpress.com/oauth2/authorize?client_id=68795&redirect_uri=https%3A%2F%2Fexperiments.a8c.com%2Fauth&response_type=token&scope=global',
-      )
     })
   })
 })

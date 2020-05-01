@@ -1,9 +1,9 @@
 import debugFactory from 'debug'
 import { AppProps } from 'next/app'
+import qs from 'querystring'
 import React from 'react'
 
-import { getExperimentsApiAuth, getAuthClientId } from '../utils/auth'
-import qs from "querystring";
+import { getAuthClientId, getExperimentsApiAuth } from '../utils/auth'
 
 const debug = debugFactory('abacus:pages/_app.tsx')
 
