@@ -57,6 +57,11 @@
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.*": "prettier --write",
     "*.{css,scss}": "stylelint --fix",
@@ -65,7 +70,6 @@
   "scripts": {
     "analyze": "cross-env ANALYZE=true next build",
     "build": "next build",
-    "precommit": "lint-staged",
     "dev": "next",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
