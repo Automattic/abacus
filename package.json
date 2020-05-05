@@ -92,6 +92,7 @@
     "test:e2e": "jest --config=jest.e2e.config.js --runInBand",
     "test:e2e:smoke": "jest --config=jest.e2e.config.js --runInBand e2e/smoke.test.tsx",
     "test:unit": "jest",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "verify": "npm run format:check && npm run lint && npm run test:unit -- --coverage && npm run test:e2e"
   }
 }

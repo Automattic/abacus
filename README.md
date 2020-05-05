@@ -137,3 +137,11 @@ See https://developers.google.com/web/tools/puppeteer/debugging for more debuggi
 Besides the automated unit tests and E2E tests, there is sometimes a need for manual intervention due to factors not acceptable in during automation, e.g., waiting for an access token to naturally expire to ensure the user is re-prompted to authenticate and authorize.
 
 Once a user is authenticated and they authorize Abacus to have access, we save the authorization info in local storage under the key `abacus_auth_info`. To simulate using Abacus on a new browser or the access token expiring, you can remove this item from local storage using the Chrome devtools > Application tab.
+
+### Verification
+
+Format checks, linting, and testing are all forms of verification. As a convenience, we have the `verify` NPM script that will run all the checks.
+
+```sh
+npm run verify
+```
