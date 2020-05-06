@@ -86,6 +86,10 @@ module.exports = {
         trailingUnderscore: 'allow',
       },
       {
+        selector: 'enumMember',
+        format: ['StrictPascalCase'],
+      },
+      {
         selector: 'function',
         format: ['strictCamelCase', 'StrictPascalCase'],
       },
