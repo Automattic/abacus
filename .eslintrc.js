@@ -96,6 +96,7 @@ module.exports = {
       {
         selector: 'parameter',
         format: ['strictCamelCase'],
+        leadingUnderscore: 'allow', // For indicating unused parameter to TypeScript.
       },
       {
         selector: 'property',
