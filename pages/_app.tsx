@@ -3,6 +3,11 @@ import { AppProps } from 'next/app'
 import qs from 'querystring'
 import React from 'react'
 
+import RenderErrorBoundary from '@/components/RenderErrorBoundary'
+import RenderErrorView from '@/components/RenderErrorView'
+
+import { onRenderError } from '@/event-handlers/index'
+
 import { getAuthClientId, getExperimentsAuthInfo, saveExperimentsAuthInfo } from '@/utils/auth'
 
 const debug = debugFactory('abacus:pages/_app.tsx')
@@ -40,9 +45,19 @@ const App = React.memo(function App(props: AppProps) {
   }
 
   return (
-    <div className='app'>
-      <Route {...routeProps} />
-    </div>
+    <RenderErrorBoundary onError={onRenderError}>
+      {({ renderError }) => (
+        <>
+          {renderError ? (
+            <RenderErrorView renderError={renderError} />
+          ) : (
+            <div className='app'>
+              <Route {...routeProps} />
+            </div>
+          )}
+        </>
+      )}
+    </RenderErrorBoundary>
   )
 })
 
