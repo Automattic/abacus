@@ -6,9 +6,8 @@ import UnauthorizedError from './UnauthorizedError'
 const DEVELOPMENT_API_URL_ROOT = 'https://virtserver.swaggerhub.com/yanir/experiments/0.1.0'
 const PRODUCTION_API_URL_ROOT = 'https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0'
 
-function resolveApiUrlRoot(host: string) {
-  const url = host === 'experiments.a8c.com' ? PRODUCTION_API_URL_ROOT : DEVELOPMENT_API_URL_ROOT
-  return url
+function resolveApiUrlRoot() {
+  return window.location.host === 'experiments.a8c.com' ? PRODUCTION_API_URL_ROOT : DEVELOPMENT_API_URL_ROOT
 }
 
 /**
@@ -19,28 +18,21 @@ function resolveApiUrlRoot(host: string) {
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<Experiment[]> {
-  const apiUrlRoot = resolveApiUrlRoot(window.location.host)
+  const apiUrlRoot = resolveApiUrlRoot()
 
-  const headers: HeadersInit = new Headers()
-  const experimentsApiAuthInfo = getExperimentsAuthInfo()
-  if (experimentsApiAuthInfo) {
-    if (!experimentsApiAuthInfo.accessToken) {
-      throw new UnauthorizedError()
-    }
-    headers.append('Authorization', `Bearer ${experimentsApiAuthInfo.accessToken}`)
+  const accessToken = getExperimentsAuthInfo()?.accessToken
+  if (!accessToken) {
+    throw new UnauthorizedError()
   }
 
   const fetchUrl = `${apiUrlRoot}/experiments`
   return fetch(fetchUrl, {
     method: 'GET',
-    headers,
+    headers:
+      apiUrlRoot === PRODUCTION_API_URL_ROOT ? new Headers({ Authorization: `Bearer ${accessToken}` }) : undefined,
   })
     .then((response) => response.json())
-    .then((result) => {
-      const { experiments } = result
-
-      return experiments
-    })
+    .then((result) => result.experiments)
 }
 
 const ExperimentsApi = {
