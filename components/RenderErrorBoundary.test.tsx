@@ -1,7 +1,8 @@
 import { fireEvent, render } from '@testing-library/react'
 import React from 'react'
 
-import BadComponent from './BadComponent'
+import BadComponent from '@/helpers/BadComponent'
+
 import RenderErrorBoundary from './RenderErrorBoundary'
 
 test('renders error boundary with declared render prop when render prop does not error', () => {
@@ -47,16 +48,22 @@ test('RenderErrorBoundary called without `onClear` or `onError` passes render pr
     const info = expect.any(Object)
     const clear = expect.any(Function)
 
-    expect(mockRenderProp).toHaveBeenCalledTimes(2)
+    // At this point, after rendering, the render prop will have been called with
+    // no renderError. Then when the BadComponent is rendered, the error boundary
+    // catches the issue and the render prop is called with the renderError and
+    // the error notification code is displayed.
     expect(mockRenderProp).toHaveBeenNthCalledWith(1, { renderError: null })
     expect(mockRenderProp).toHaveBeenNthCalledWith(2, { renderError: { clear, error, info } })
+    expect(mockRenderProp).toHaveBeenCalledTimes(2)
     expect(container).toHaveTextContent('Oh no! Not again!')
 
     fireEvent.click(getByText('Clear'))
 
-    expect(mockRenderProp).toHaveBeenCalledTimes(4)
+    // After the user clears the error, an attempt to render BadComponent is made
+    // but it will fail again because nothing has changed.
     expect(mockRenderProp).toHaveBeenNthCalledWith(3, { renderError: null })
     expect(mockRenderProp).toHaveBeenNthCalledWith(4, { renderError: { clear, error, info } })
+    expect(mockRenderProp).toHaveBeenCalledTimes(4)
   } finally {
     ;(console.error as jest.Mock).mockRestore()
   }
@@ -101,21 +108,29 @@ test('RenderErrorBoundary called with `onClear` or `onError` passes render prop 
     expect(onError).toHaveBeenCalledTimes(1)
     expect(onError).toHaveBeenNthCalledWith(1, { clear, error, info })
 
-    expect(mockRenderProp).toHaveBeenCalledTimes(2)
+    // At this point, after rendering, the render prop will have been called with
+    // no renderError. Then when the BadComponent is rendered, the error boundary
+    // catches the issue and the render prop is called with the renderError and
+    // the error notification code is displayed.
     expect(mockRenderProp).toHaveBeenNthCalledWith(1, { renderError: null })
     expect(mockRenderProp).toHaveBeenNthCalledWith(2, { renderError: { clear, error, info } })
+    expect(mockRenderProp).toHaveBeenCalledTimes(2)
     expect(container).toHaveTextContent('Oh no! Not again!')
 
     fireEvent.click(getByText('Clear'))
 
+    // After the user clicks the Clear button, the onClear callback should have
+    // been called.
     expect(onClear).toHaveBeenCalledTimes(1)
 
     expect(onError).toHaveBeenCalledTimes(2)
     expect(onError).toHaveBeenNthCalledWith(2, { clear, error, info })
 
-    expect(mockRenderProp).toHaveBeenCalledTimes(4)
+    // After the user clears the error, an attempt to render BadComponent is made
+    // but it will fail again because nothing has changed.
     expect(mockRenderProp).toHaveBeenNthCalledWith(3, { renderError: null })
     expect(mockRenderProp).toHaveBeenNthCalledWith(4, { renderError: { clear, error, info } })
+    expect(mockRenderProp).toHaveBeenCalledTimes(4)
   } finally {
     ;(console.error as jest.Mock).mockRestore()
   }

@@ -28,8 +28,8 @@ const Layout = ({ children, title }: Props) => (
             <nav>
               <Link href='/'>
                 <a>Experiments</a>
-              </Link>{' '}
-              |{' '}
+              </Link>
+              <span>|</span>
               <Link href='/metrics'>
                 <a>Metrics</a>
               </Link>
