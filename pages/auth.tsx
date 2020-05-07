@@ -37,7 +37,7 @@ const AuthPage = function AuthPage() {
           }
           saveExperimentsAuthInfo(experimentsAuthInfo)
 
-          window.location.assign(window.location.origin)
+          window.location.replace(window.location.origin)
         } else if (authInfo.error === 'access_denied') {
           setError('Please log into WordPress.com and authorize Abacus - Testing to have access.')
 
