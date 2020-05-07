@@ -1,3 +1,6 @@
+/**
+ * An error that is thrown when the user is determined to be unauthorized.
+ */
 class UnauthorizedError extends Error {
   constructor() {
     super()
