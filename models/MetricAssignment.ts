@@ -1,5 +1,3 @@
-import { Metric } from './index'
-
 /**
  * An assignment of a metric to an experiment.
  */
@@ -18,8 +16,6 @@ export interface MetricAssignment {
    * ID of the metric assigned to the experiment.
    */
   metricId: number
-
-  metric: Metric
 
   /**
    * `true` if this metric is the primary metric for `experiment_id`. An experiment
