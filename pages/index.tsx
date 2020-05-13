@@ -1,8 +1,10 @@
 import debugFactory from 'debug'
 import React, { useEffect, useState } from 'react'
+import Container from 'semantic-ui-react/dist/commonjs/elements/Container'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 
+import ExperimentsTable from '@/components/ExperimentsTable'
 import Layout from '@/components/Layout'
 
 import { Experiment } from '@/models/index'
@@ -19,22 +21,13 @@ const IndexPage = function IndexPage() {
 
   return (
     <Layout title='Experiments'>
-      <img src='/img/logo.png' width='100' />
-      <h1>Experiments</h1>
-      <p>Table of experiments to go here.</p>
-      <p>Some change to test pre-commit hooks are running.</p>
-      {experiments && (
-        <>
-          {experiments.length === 0 ? (
-            <p>No experiments yet.</p>
-          ) : (
-            <>
-              <p>{experiments.length}</p>
-              <p>TODO: Display experiments.</p>
-            </>
-          )}
-        </>
-      )}
+      <Container>
+        <img src='/img/logo.png' width='100' />
+        <h1>Experiments</h1>
+        {experiments && (
+          <>{experiments.length === 0 ? <p>No experiments yet.</p> : <ExperimentsTable experiments={experiments} />}</>
+        )}
+      </Container>
     </Layout>
   )
 }

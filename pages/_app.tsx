@@ -1,3 +1,5 @@
+import '@/styles/main.scss'
+
 import debugFactory from 'debug'
 import { AppProps } from 'next/app'
 import qs from 'querystring'

@@ -20,21 +20,25 @@ test('renders layout with declared title and children', () => {
   // new links, are being tested.
   expect(headerElmt).toMatchInlineSnapshot(`
     <header>
-      <nav>
-        <a
-          href="/"
-        >
-          Experiments
-        </a>
-        <span>
-          |
-        </span>
-        <a
-          href="/metrics"
-        >
-          Metrics
-        </a>
-      </nav>
+      <div
+        class="ui container"
+      >
+        <nav>
+          <a
+            href="/"
+          >
+            Experiments
+          </a>
+          <span>
+            |
+          </span>
+          <a
+            href="/metrics"
+          >
+            Metrics
+          </a>
+        </nav>
+      </div>
     </header>
   `)
 
@@ -43,9 +47,13 @@ test('renders layout with declared title and children', () => {
   expect(footerElmt).toMatchInlineSnapshot(`
     <footer>
       <hr />
-      <span>
-        The Abacus footer, brought to you by Automattic
-      </span>
+      <div
+        class="ui container"
+      >
+        <span>
+          The Abacus footer, brought to you by Automattic
+        </span>
+      </div>
     </footer>
   `)
 })
