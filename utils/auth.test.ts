@@ -1,3 +1,5 @@
+import addToDate from 'date-fns/add'
+
 import { getAuthClientId, getExperimentsAuthInfo, saveExperimentsAuthInfo } from './auth'
 
 describe('utils/auth.ts module', () => {
@@ -20,7 +22,7 @@ describe('utils/auth.ts module', () => {
     it('should initially return `null` but can later retrieve value set with `saveExperimentsAuthInfo`', () => {
       expect(getExperimentsAuthInfo()).toBe(null)
 
-      const expiresAt = Date.now() + 24 * 60 * 60 * 1000
+      const expiresAt = addToDate(new Date(), { hours: 24 }).getTime()
       saveExperimentsAuthInfo({
         accessToken: 'abunchofcharactersthatlookrandom',
         expiresAt,
@@ -41,7 +43,7 @@ describe('utils/auth.ts module', () => {
     it('called with null should remove localStorage item', () => {
       expect(localStorage.getItem('experiments_auth_info')).toBe(null)
 
-      const expiresAt = Date.now() + 24 * 60 * 60 * 1000
+      const expiresAt = addToDate(new Date(), { hours: 24 }).getTime()
       saveExperimentsAuthInfo({
         accessToken: 'abunchofcharactersthatlookrandom',
         expiresAt,

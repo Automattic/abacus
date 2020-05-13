@@ -1,5 +1,6 @@
 import '@/styles/main.scss'
 
+import addToDate from 'date-fns/add'
 import React from 'react'
 
 import { Experiment } from '@/models/Experiment'
@@ -14,7 +15,7 @@ const experiments: Experiment[] = []
 
 export const withNoExperiments = () => <ExperimentsTable experiments={experiments} />
 
-const endDatetime = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000)
+const endDatetime = addToDate(new Date(), { days: 14 })
 const startDatetime = new Date()
 
 const EXPERIMENT_TEMPLATE = {

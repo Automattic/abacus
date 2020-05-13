@@ -1,4 +1,5 @@
 import { fireEvent, getAllByText, getByText, render } from '@testing-library/react'
+import addToDate from 'date-fns/add'
 import React from 'react'
 
 import { Experiment } from '@/models/Experiment'
@@ -26,7 +27,7 @@ test('with one page of experiments, renders a table', () => {
       experimentId: 1,
       name: 'First',
       description: 'The first ever experiment.',
-      endDatetime: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
+      endDatetime: addToDate(new Date(), { days: 14 }),
       existingUsersAllowed: true,
       metricAssignments: [],
       ownerLogin: 'Owner',
@@ -52,7 +53,7 @@ test('with one page of experiments, renders a table', () => {
 test('with more than one page of experiments, renders a table with a pagination control', () => {
   const COUNT = 40 // Some value greater than "per page"
   const startDatetime = new Date()
-  const endDatetime = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000)
+  const endDatetime = addToDate(new Date(), { days: 14 })
   const experiments: Experiment[] = Array.from(Array(COUNT).keys()).map((num) => ({
     experimentId: num + 1,
     name: `Name${num + 1}`,
