@@ -10,7 +10,7 @@ import ExperimentsTable, { PER_PAGE_DEFAULT } from './ExperimentsTable'
 
 test('with no experiments, renders an empty table', () => {
   const experiments: Experiment[] = []
-  const { getByText } = render(<ExperimentsTable experiments={experiments} />)
+  const { container, getByText } = render(<ExperimentsTable experiments={experiments} />)
 
   expect(getByText('ID')).toBeInTheDocument()
   expect(getByText('Name')).toBeInTheDocument()
@@ -19,6 +19,10 @@ test('with no experiments, renders an empty table', () => {
   expect(getByText('Status')).toBeInTheDocument()
   expect(getByText('Platform')).toBeInTheDocument()
   expect(getByText('Owner')).toBeInTheDocument()
+
+  const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
+  expect(tBodyElmt).not.toBeNull()
+  expect(tBodyElmt.childElementCount).toBe(0)
 })
 
 test('with one page of experiments, renders a table', () => {
