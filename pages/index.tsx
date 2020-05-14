@@ -7,16 +7,16 @@ import ExperimentsApi from '@/api/ExperimentsApi'
 import ExperimentsTable from '@/components/ExperimentsTable'
 import Layout from '@/components/Layout'
 
-import { Experiment } from '@/models/index'
+import { ExperimentBare } from '@/models/index'
 
 const debug = debugFactory('abacus:pages/index.tsx')
 
 const IndexPage = function IndexPage() {
   debug('IndexPage#render')
-  const [experiments, setExperiments] = useState<Experiment[] | null>(null)
+  const [experiments, setExperiments] = useState<ExperimentBare[] | null>(null)
 
   useEffect(() => {
-    ExperimentsApi.findAll().then((es) => setExperiments(es))
+    ExperimentsApi.findAll().then((experiments) => setExperiments(experiments))
   }, [])
 
   return (

@@ -1,5 +1,6 @@
 export * from './Event'
-export * from './Experiment'
+export * from './ExperimentBare'
+export * from './ExperimentFull'
 export * from './Metric'
 export * from './MetricAssignment'
 export * from './MetricRevenueParams'

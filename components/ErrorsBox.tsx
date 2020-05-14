@@ -4,6 +4,9 @@ interface Props {
   errors: Error[]
 }
 
+/**
+ * Renders an array of error messages.
+ */
 const ErrorsBox = (props: Props) => {
   return (
     <div className='errors-box'>

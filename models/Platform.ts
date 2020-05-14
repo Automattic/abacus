@@ -6,7 +6,21 @@
  * - `wpcom`: The experiment is being run on the back-end, like APIs which are
  *   usually written in PHP. Email and landing pages experiments are likely run here.
  */
-export enum Platform {
+enum Platform {
   Calypso = 'calypso',
   Wpcom = 'wpcom',
 }
+
+function toPlatform(input: string) {
+  let platform = Platform.Calypso
+
+  if (input === 'calypso') {
+    platform = Platform.Calypso
+  } else if (input === 'wpcom') {
+    platform = Platform.Wpcom
+  }
+
+  return platform
+}
+
+export { Platform, toPlatform }

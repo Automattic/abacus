@@ -6,20 +6,23 @@ import React, { MouseEvent, useState } from 'react'
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu'
 import Table from 'semantic-ui-react/dist/commonjs/collections/Table'
 
-import { Experiment } from '@/models/index'
+import { ExperimentBare } from '@/models/index'
 
 const debug = debugFactory('abacus:components/ExperimentsTable.tsx')
 
 const PER_PAGE_DEFAULT = 25
 
 interface Props {
-  experiments: Experiment[]
+  experiments: ExperimentBare[]
   // The zero-based page of data to display. Defaults to 0.
   initialPage?: number
   // The number of rows/items to display per page. Defaults to PER_PAGE_DEFAULT.
   perPage?: number
 }
 
+/**
+ * Renders a table of "bare" experiment information.
+ */
 const ExperimentsTable = (props: Props) => {
   debug('ExperimentsTable#render')
   const { experiments, initialPage = 0, perPage = PER_PAGE_DEFAULT } = props
@@ -51,24 +54,24 @@ const ExperimentsTable = (props: Props) => {
         <Table.Row>
           <Table.HeaderCell>ID</Table.HeaderCell>
           <Table.HeaderCell>Name</Table.HeaderCell>
-          <Table.HeaderCell>Started</Table.HeaderCell>
-          <Table.HeaderCell>Ends</Table.HeaderCell>
+          <Table.HeaderCell>Start</Table.HeaderCell>
+          <Table.HeaderCell>End</Table.HeaderCell>
           <Table.HeaderCell>Status</Table.HeaderCell>
           <Table.HeaderCell>Platform</Table.HeaderCell>
           <Table.HeaderCell>Owner</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
-        {experimentsToRender.map((e) => (
-          <React.Fragment key={e.experimentId}>
+        {experimentsToRender.map((experiment) => (
+          <React.Fragment key={experiment.experimentId}>
             <Table.Row>
-              <Table.Cell>{e.experimentId}</Table.Cell>
-              <Table.Cell>{e.name}</Table.Cell>
-              <Table.Cell>{format(e.startDatetime, 'yyyy-MM-dd')}</Table.Cell>
-              <Table.Cell>{format(e.endDatetime, 'yyyy-MM-dd')}</Table.Cell>
-              <Table.Cell>{e.status}</Table.Cell>
-              <Table.Cell>{e.platform}</Table.Cell>
-              <Table.Cell>{e.ownerLogin}</Table.Cell>
+              <Table.Cell>{experiment.experimentId}</Table.Cell>
+              <Table.Cell>{experiment.name}</Table.Cell>
+              <Table.Cell>{format(experiment.startDatetime, 'yyyy-MM-dd')}</Table.Cell>
+              <Table.Cell>{format(experiment.endDatetime, 'yyyy-MM-dd')}</Table.Cell>
+              <Table.Cell>{experiment.status}</Table.Cell>
+              <Table.Cell>{experiment.platform}</Table.Cell>
+              <Table.Cell>{experiment.ownerLogin}</Table.Cell>
             </Table.Row>
           </React.Fragment>
         ))}

@@ -2,20 +2,20 @@ import { fireEvent, getAllByText, getByText, render } from '@testing-library/rea
 import addToDate from 'date-fns/add'
 import React from 'react'
 
-import { Experiment } from '@/models/Experiment'
+import { ExperimentBare } from '@/models/ExperimentBare'
 import { Platform } from '@/models/Platform'
 import { Status } from '@/models/Status'
 
 import ExperimentsTable, { PER_PAGE_DEFAULT } from './ExperimentsTable'
 
 test('with no experiments, renders an empty table', () => {
-  const experiments: Experiment[] = []
+  const experiments: ExperimentBare[] = []
   const { container, getByText } = render(<ExperimentsTable experiments={experiments} />)
 
   expect(getByText('ID')).toBeInTheDocument()
   expect(getByText('Name')).toBeInTheDocument()
-  expect(getByText('Started')).toBeInTheDocument()
-  expect(getByText('Ends')).toBeInTheDocument()
+  expect(getByText('Start')).toBeInTheDocument()
+  expect(getByText('End')).toBeInTheDocument()
   expect(getByText('Status')).toBeInTheDocument()
   expect(getByText('Platform')).toBeInTheDocument()
   expect(getByText('Owner')).toBeInTheDocument()
@@ -26,21 +26,15 @@ test('with no experiments, renders an empty table', () => {
 })
 
 test('with one page of experiments, renders a table', () => {
-  const experiments: Experiment[] = [
+  const experiments: ExperimentBare[] = [
     {
       experimentId: 1,
       name: 'First',
-      description: 'The first ever experiment.',
       endDatetime: addToDate(new Date(), { days: 14 }),
-      existingUsersAllowed: true,
-      metricAssignments: [],
       ownerLogin: 'Owner',
-      p2Url: 'http://p2.a8c.com/',
       platform: Platform.Wpcom,
-      segmentAssignments: [],
       startDatetime: new Date(),
       status: Status.Staging,
-      variations: [],
     },
   ]
   const { container } = render(<ExperimentsTable experiments={experiments} />)
@@ -58,20 +52,14 @@ test('with more than one page of experiments, renders a table with a pagination 
   const COUNT = 40 // Some value greater than "per page"
   const startDatetime = new Date()
   const endDatetime = addToDate(new Date(), { days: 14 })
-  const experiments: Experiment[] = Array.from(Array(COUNT).keys()).map((num) => ({
+  const experiments: ExperimentBare[] = Array.from(Array(COUNT).keys()).map((num) => ({
     experimentId: num + 1,
     name: `Name${num + 1}`,
-    description: 'The description.',
     endDatetime,
-    existingUsersAllowed: true,
-    metricAssignments: [],
     ownerLogin: 'Owner',
-    p2Url: 'http://p2.a8c.com/',
     platform: Platform.Wpcom,
-    segmentAssignments: [],
     startDatetime,
     status: Status.Staging,
-    variations: [],
   }))
 
   const { container } = render(<ExperimentsTable experiments={experiments} />)
