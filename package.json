@@ -82,6 +82,8 @@
     "analyze": "cross-env ANALYZE=true next build",
     "build": "next build",
     "dev": "next --hostname a8c-abacus-local",
+    "docker-build": "docker build -t abacus .",
+    "docker-start": "docker run -p 8888:3000 abacus:latest",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "npm run lint:ts && npm run lint:css",

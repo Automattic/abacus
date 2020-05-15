@@ -22,6 +22,13 @@ In order for our OAuth authorization to work, it needs to be given a redirect UR
 
 All the scripts for this project are initiated via npm scripts. Please see the `"scripts"` section in `package.json`.
 
+### Docker
+
+You can use the following commands to run the server in a Docker container:
+
+- `npm run docker-build`: Build a docker image that runs a production Abacus server at port 3000.
+- `npm run docker-start`: Run the above docker image, mapping port 3000 from the image to port 8888 on your local machine.
+
 ### Bundle Analysis
 
 The Next.js build creates two bundles of files. One for the client and one for the server.
