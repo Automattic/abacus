@@ -8,15 +8,19 @@ import ExperimentsTable from '@/components/ExperimentsTable'
 import Layout from '@/components/Layout'
 
 import { ExperimentBare } from '@/models/index'
+import ErrorsBox from '@/components/ErrorsBox'
 
 const debug = debugFactory('abacus:pages/index.tsx')
 
 const IndexPage = function IndexPage() {
   debug('IndexPage#render')
+  const [error, setError] = useState<Error | null>(null)
   const [experiments, setExperiments] = useState<ExperimentBare[] | null>(null)
 
   useEffect(() => {
-    ExperimentsApi.findAll().then((experiments) => setExperiments(experiments))
+    ExperimentsApi.findAll()
+      .then((experiments) => setExperiments(experiments))
+      .catch(setError)
   }, [])
 
   return (
@@ -24,6 +28,7 @@ const IndexPage = function IndexPage() {
       <Container>
         <img src='/img/logo.png' width='100' />
         <h1>Experiments</h1>
+        {error && <ErrorsBox errors={[error]} />}
         {experiments && (
           <>{experiments.length === 0 ? <p>No experiments yet.</p> : <ExperimentsTable experiments={experiments} />}</>
         )}
