@@ -1,6 +1,15 @@
-import { ExperimentBare, Event, MetricAssignment, SegmentAssignment, Variation } from './index'
+import { ApiData } from '@/api/ApiData'
 
-export interface ExperimentFull extends ExperimentBare {
+import {
+  ExperimentBare,
+  Event,
+  MetricAssignment,
+  MetricAssignmentAttributionWindowSecondsEnum,
+  SegmentAssignment,
+  Variation,
+} from './index'
+
+export class ExperimentFull extends ExperimentBare {
   /**
    * Additional context for running the experiment. This may include initial
    * research, experiment background, hypotheses, etc.
@@ -61,4 +70,42 @@ export interface ExperimentFull extends ExperimentBare {
    * The variation ID that was deployed once the experiment concluded.
    */
   deployedVariationId?: number | null
+
+  constructor(apiData: ApiData) {
+    super(apiData)
+    this.conclusionUrl = apiData.conclusion_url || null
+    this.deployedVariationId = apiData.deployed_variation_id || null
+    this.description = apiData.description
+    this.endReason = apiData.end_reason || null
+    this.existingUsersAllowed = apiData.existing_users_allowed
+    this.exposureEvents = Array.isArray(apiData.exposure_events)
+      ? apiData.exposure_events.map((exposureEvent: ApiData) => ({
+          event: exposureEvent.event,
+          props: exposureEvent.props,
+        }))
+      : null
+    this.metricAssignments = apiData.metric_assignments.map((metricAssignments: ApiData) => ({
+      attributionWindowSeconds: metricAssignments.attribution_window_seconds as MetricAssignmentAttributionWindowSecondsEnum,
+      changeExpected: metricAssignments.change_expected,
+      experimentId: metricAssignments.experiment_id,
+      isPrimary: metricAssignments.is_primary,
+      metricAssignmentId: metricAssignments.metric_assignment_id,
+      metricId: metricAssignments.metric_id,
+      minDifference: metricAssignments.min_difference,
+    }))
+    this.p2Url = apiData.p2_url
+    this.segmentAssignments = apiData.segment_assignments.map((segmentAssignments: ApiData) => ({
+      segmentAssignmentId: segmentAssignments.segment_assignment_id,
+      experimentId: segmentAssignments.experiment_id,
+      segmentId: segmentAssignments.segment_id,
+      isExcluded: segmentAssignments.is_excluded,
+    }))
+    this.variations = apiData.variations.map((variation: ApiData) => ({
+      allocatedPercentage: variation.allocated_percentage,
+      experimentId: variation.experiment_id,
+      isDefault: variation.is_default,
+      name: variation.name,
+      variationId: variation.variation_id,
+    }))
+  }
 }
