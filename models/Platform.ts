@@ -8,13 +8,11 @@ import capitalize from 'lodash/capitalize'
  * - `wpcom`: The experiment is being run on the back-end, like APIs which are
  *   usually written in PHP. Email and landing pages experiments are likely run here.
  */
-enum Platform {
+export enum Platform {
   Calypso = 'calypso',
   Wpcom = 'wpcom',
 }
 
-function toPlatform(input: string) {
+export function toPlatform(input: string) {
   return Platform[capitalize(input) as keyof typeof Platform] || Platform.Calypso
 }
-
-export { Platform, toPlatform }
