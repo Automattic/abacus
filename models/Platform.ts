@@ -1,3 +1,5 @@
+import capitalize from 'lodash/capitalize'
+
 /**
  * The platform where the experiment is running.
  * - `calypso`: The experiment is being run on the front-end Calypso interface,
@@ -12,15 +14,7 @@ enum Platform {
 }
 
 function toPlatform(input: string) {
-  let platform = Platform.Calypso
-
-  if (input === 'calypso') {
-    platform = Platform.Calypso
-  } else if (input === 'wpcom') {
-    platform = Platform.Wpcom
-  }
-
-  return platform
+  return Platform[capitalize(input) as keyof typeof Platform] || Platform.Calypso
 }
 
 export { Platform, toPlatform }

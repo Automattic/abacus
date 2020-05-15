@@ -1,3 +1,5 @@
+import capitalize from 'lodash/capitalize'
+
 /**
  * The status of an experiment.
  */
@@ -9,19 +11,7 @@ enum Status {
 }
 
 function toStatus(input: string) {
-  let status = Status.Staging
-
-  if (input === 'staging') {
-    status = Status.Staging
-  } else if (input === 'running') {
-    status = Status.Running
-  } else if (input === 'completed') {
-    status = Status.Completed
-  } else if (input === 'disabled') {
-    status = Status.Disabled
-  }
-
-  return status
+  return Status[capitalize(input) as keyof typeof Status] || Status.Staging
 }
 
 export { Status, toStatus }
