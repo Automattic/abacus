@@ -1,6 +1,7 @@
-import { ExperimentBare, fromApiDataToBare } from '@/models/index'
+import { ExperimentBare } from '@/models/index'
 import { getExperimentsAuthInfo } from '@/utils/auth'
 
+import { ApiData } from './ApiData'
 import UnauthorizedError from './UnauthorizedError'
 
 const DEVELOPMENT_API_URL_ROOT = 'https://virtserver.swaggerhub.com/yanir/experiments/0.1.0'
@@ -32,7 +33,7 @@ async function findAll(): Promise<ExperimentBare[]> {
       apiUrlRoot === PRODUCTION_API_URL_ROOT ? new Headers({ Authorization: `Bearer ${accessToken}` }) : undefined,
   })
     .then((response) => response.json())
-    .then((result) => result.experiments.map(fromApiDataToBare))
+    .then((result) => result.experiments.map((apiData: ApiData) => new ExperimentBare(apiData)))
 }
 
 const ExperimentsApi = {

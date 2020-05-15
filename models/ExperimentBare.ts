@@ -2,11 +2,9 @@ import parseISO from 'date-fns/fp/parseISO'
 
 import { ApiData } from '@/api/ApiData'
 
-import { toPlatform, toStatus } from '@/models/index'
-
 import { Platform, Status } from './index'
 
-export interface ExperimentBare {
+export class ExperimentBare {
   /**
    * Unique experiment ID.
    */
@@ -38,16 +36,14 @@ export interface ExperimentBare {
    * The login name of the experiment owner.
    */
   ownerLogin: string
-}
 
-export function fromApiDataToBare(apiData: ApiData) {
-  return {
-    endDatetime: parseISO(apiData.end_datetime),
-    experimentId: apiData.experiment_id,
-    name: apiData.name,
-    platform: toPlatform(apiData.platform),
-    ownerLogin: apiData.owner_login,
-    startDatetime: parseISO(apiData.start_datetime),
-    status: toStatus(apiData.status),
+  constructor(apiData: ApiData) {
+    this.experimentId = apiData.experiment_id
+    this.name = apiData.name
+    this.startDatetime = parseISO(apiData.start_datetime)
+    this.endDatetime = parseISO(apiData.end_datetime)
+    this.status = apiData.status as Status
+    this.platform = apiData.platform as Platform
+    this.ownerLogin = apiData.owner_login
   }
 }
