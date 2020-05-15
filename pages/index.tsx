@@ -4,11 +4,11 @@ import Container from 'semantic-ui-react/dist/commonjs/elements/Container'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 
+import ErrorsBox from '@/components/ErrorsBox'
 import ExperimentsTable from '@/components/ExperimentsTable'
 import Layout from '@/components/Layout'
 
 import { ExperimentBare } from '@/models/index'
-import ErrorsBox from '@/components/ErrorsBox'
 
 const debug = debugFactory('abacus:pages/index.tsx')
 
