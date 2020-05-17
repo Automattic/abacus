@@ -16,7 +16,6 @@
   "dependencies": {
     "date-fns": "^2.13.0",
     "debug": "^4.1.1",
-    "dotenv": "^8.2.0",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^9.3.5",
     "qc-to_bool": "^1.1.2",
@@ -50,6 +49,7 @@
     "@typescript-eslint/parser": "^2.29.0",
     "babel-loader": "^8.1.0",
     "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-import-resolver-alias": "^1.1.2",
