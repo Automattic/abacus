@@ -67,6 +67,26 @@ module.exports = {
 
     'padded-blocks': 'off',
 
+    'react/jsx-child-element-spacing': 'warn',
+
+    'react/jsx-closing-bracket-location': 'error',
+
+    'react/jsx-closing-tag-location': 'error',
+
+    'react/jsx-curly-newline': 'error',
+
+    'react/jsx-curly-spacing': ['error', { when: 'never', children: true }],
+
+    'react/jsx-equals-spacing': 'error',
+
+    'react/jsx-indent': ['error', 2],
+
+    'react/jsx-indent-props': ['error', 2],
+
+    'react/jsx-tag-spacing': 'error',
+
+    'react/no-unsafe': ['error', { checkAliases: true }],
+
     // Off because we are using TypeScript which expects us to declare the props.
     'react/prop-types': 'off',
 
