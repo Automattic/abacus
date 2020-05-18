@@ -45,8 +45,10 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
 
     'plugin:react/recommended',
+
+    'plugin:react-hooks/recommended',
   ],
-  plugins: ['@typescript-eslint', 'jsx-a11y'],
+  plugins: ['@typescript-eslint', 'jsx-a11y', 'react-hooks'],
   rules: {
     // Off because favoring @typescript-eslint/naming-convention instead.
     camelcase: 'off',
