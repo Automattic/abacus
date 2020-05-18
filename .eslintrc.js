@@ -26,8 +26,6 @@ module.exports = {
     // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#recommended-configs.
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
 
-    'plugin:react/recommended',
-
     // Disables react-specific linting rules that conflict with prettier.
     'prettier/react',
 
@@ -42,13 +40,19 @@ module.exports = {
     // `--fix` option.
     'plugin:prettier/recommended',
 
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+
     'plugin:jsx-a11y/recommended',
+
+    'plugin:promise/recommended',
 
     'plugin:react/recommended',
 
     'plugin:react-hooks/recommended',
   ],
-  plugins: ['@typescript-eslint', 'jsx-a11y', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'jsx-a11y', 'promise', 'react-hooks'],
   rules: {
     // Off because favoring @typescript-eslint/naming-convention instead.
     camelcase: 'off',
