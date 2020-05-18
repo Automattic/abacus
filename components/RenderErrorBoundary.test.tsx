@@ -28,16 +28,12 @@ test('RenderErrorBoundary called without `onClear` or `onError` passes render pr
     ;(console.error as jest.Mock).mockImplementation(() => {})
 
     const mockRenderProp = jest.fn(({ renderError }) => {
-      return (
+      return renderError === null ? (
+        <BadComponent />
+      ) : (
         <>
-          {renderError === null ? (
-            <BadComponent />
-          ) : (
-            <>
-              <p>Oh no! Not again!</p>
-              <button onClick={renderError.clear}>Clear</button>
-            </>
-          )}
+          <p>Oh no! Not again!</p>
+          <button onClick={renderError.clear}>Clear</button>
         </>
       )
     })
@@ -77,16 +73,12 @@ test('RenderErrorBoundary called with `onClear` or `onError` passes render prop 
     ;(console.error as jest.Mock).mockImplementation(() => {})
 
     const mockRenderProp = jest.fn(({ renderError }) => {
-      return (
+      return renderError === null ? (
+        <BadComponent />
+      ) : (
         <>
-          {renderError === null ? (
-            <BadComponent />
-          ) : (
-            <>
-              <p>Oh no! Not again!</p>
-              <button onClick={renderError.clear}>Clear</button>
-            </>
-          )}
+          <p>Oh no! Not again!</p>
+          <button onClick={renderError.clear}>Clear</button>
         </>
       )
     })
