@@ -42,9 +42,11 @@ module.exports = {
     // `--fix` option.
     'plugin:prettier/recommended',
 
+    'plugin:jsx-a11y/recommended',
+
     'plugin:react/recommended',
   ],
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'jsx-a11y'],
   rules: {
     // Off because favoring @typescript-eslint/naming-convention instead.
     camelcase: 'off',
@@ -66,6 +68,18 @@ module.exports = {
     'no-unused-vars': 'off',
 
     'padded-blocks': 'off',
+
+    // Allows to use an `a` element without an `href` attribute inside a `Link`
+    // component which in our case is a Next.js Link component.
+    // See https://github.com/evcohen/eslint-plugin-jsx-a11y/issues/402#issuecomment-368305051.
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        aspects: ['invalidHref', 'preferButton'],
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+      },
+    ],
 
     'react/jsx-child-element-spacing': 'warn',
 
