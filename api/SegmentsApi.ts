@@ -11,8 +11,7 @@ import { fetchApi } from './utils'
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<Segment[]> {
-  const result = await fetchApi('GET', '/segments')
-  return result.segments.map((apiData: ApiData) => new Segment(apiData))
+  return (await fetchApi('GET', '/segments')).segments.map((apiData: ApiData) => new Segment(apiData))
 }
 
 const SegmentsApi = {
