@@ -26,11 +26,13 @@ async function fetchApi(method: string, path: string, body: BodyInit | null = nu
     headers = new Headers({ Authorization: `Bearer ${accessToken}` })
   }
 
-  return fetch(`${apiUrlRoot}${path}`, {
-    method,
-    headers,
-    body,
-  }).then((response) => response.json())
+  return (
+    await fetch(`${apiUrlRoot}${path}`, {
+      method,
+      headers,
+      body,
+    })
+  ).json()
 }
 
 export { fetchApi }
