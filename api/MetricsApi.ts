@@ -11,8 +11,7 @@ import { fetchApi } from './utils'
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<MetricBare[]> {
-  const result = await fetchApi('GET', '/metrics')
-  return result.metrics.map((apiData: ApiData) => new MetricBare(apiData))
+  return (await fetchApi('GET', '/metrics')).metrics.map((apiData: ApiData) => new MetricBare(apiData))
 }
 
 const MetricsApi = {

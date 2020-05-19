@@ -11,8 +11,7 @@ import { fetchApi } from './utils'
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<ExperimentBare[]> {
-  const result = await fetchApi('GET', '/experiments')
-  return result.experiments.map((apiData: ApiData) => new ExperimentBare(apiData))
+  return (await fetchApi('GET', '/experiments')).experiments.map((apiData: ApiData) => new ExperimentBare(apiData))
 }
 
 const ExperimentsApi = {
