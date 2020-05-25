@@ -17,13 +17,17 @@ const PRODUCTION_API_URL_ROOT = 'https://public-api.wordpress.com/wpcom/v2/exper
 async function fetchApi(method: string, path: string, body: BodyInit | null = null) {
   const apiUrlRoot = window.location.host === 'experiments.a8c.com' ? PRODUCTION_API_URL_ROOT : DEVELOPMENT_API_URL_ROOT
 
-  let headers
+  const headers = new Headers()
   if (apiUrlRoot === PRODUCTION_API_URL_ROOT) {
     const accessToken = getExperimentsAuthInfo()?.accessToken
     if (!accessToken) {
       throw new UnauthorizedError()
     }
-    headers = new Headers({ Authorization: `Bearer ${accessToken}` })
+    headers.append('Authorization', `Bearer ${accessToken}`)
+  }
+
+  if (body !== null) {
+    headers.append('Content-Type', 'application/json')
   }
 
   return (

@@ -26,6 +26,26 @@ describe('models/ExperimentBare.ts module', () => {
           status: Status.Staging,
         })
       })
+      it('called with valid API data using `Date` instances should create a new `ExperimentBare` instance', () => {
+        const experimentBare = new ExperimentBare({
+          end_datetime: new Date(2020, 1, 29),
+          experiment_id: 123,
+          name: 'Example Experiment',
+          platform: 'calypso',
+          owner_login: 'a12n',
+          start_datetime: new Date(2020, 0, 1),
+          status: 'staging',
+        })
+        expect(experimentBare).toEqual({
+          endDatetime: new Date(2020, 1, 29),
+          experimentId: 123,
+          name: 'Example Experiment',
+          platform: Platform.Calypso,
+          ownerLogin: 'a12n',
+          startDatetime: new Date(2020, 0, 1),
+          status: Status.Staging,
+        })
+      })
     })
   })
 })

@@ -198,5 +198,171 @@ describe('models/ExperimentFull.ts module', () => {
         })
       })
     })
+
+    describe('toJSON', () => {
+      it('called on new experiment with minimal fields.', () => {
+        const experiment = new ExperimentFull({
+          p2_url: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
+          name: 'my_experiment',
+          description: 'My first experiment.',
+          start_datetime: '2020-05-01T00:00:00.000Z',
+          end_datetime: '2020-05-04T00:00:00.000Z',
+          status: 'staging',
+          platform: 'wpcom',
+          owner_login: 'wp_johnsmith',
+          existing_users_allowed: 'true',
+          metric_assignments: [],
+          segment_assignments: [],
+          variations: [],
+        })
+        expect(JSON.stringify(experiment, null, 2)).toBe(`{
+  "name": "my_experiment",
+  "description": "My first experiment.",
+  "start_datetime": "2020-05-01T00:00:00.000Z",
+  "end_datetime": "2020-05-04T00:00:00.000Z",
+  "status": "staging",
+  "platform": "wpcom",
+  "owner_login": "wp_johnsmith",
+  "conclusion_url": null,
+  "deployed_variation_id": null,
+  "end_reason": null,
+  "existing_users_allowed": true,
+  "p2_url": "https://betterexperiments.a8c.com/2020-04-28/my-experiment",
+  "metric_assignments": [],
+  "segment_assignments": [],
+  "variations": []
+}`)
+      })
+
+      it('called on new experiment with maximal fields.', () => {
+        const experiment = new ExperimentFull({
+          p2_url: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
+          name: 'my_experiment',
+          description: 'My first experiment.',
+          start_datetime: '2020-05-01T00:00:00.000Z',
+          end_datetime: '2020-05-04T00:00:00.000Z',
+          status: 'staging',
+          platform: 'wpcom',
+          owner_login: 'wp_johnsmith',
+          existing_users_allowed: 'true',
+          metric_assignments: [
+            {
+              attribution_window_seconds: MetricAssignmentAttributionWindowSecondsEnum.OneWeek,
+              change_expected: true,
+              is_primary: true,
+              metric_id: 4,
+              min_difference: 0.05,
+            },
+          ],
+          segment_assignments: [
+            {
+              segment_id: 42,
+              is_excluded: false,
+            },
+            {
+              segment_id: 73,
+              is_excluded: true,
+            },
+          ],
+          variations: [
+            {
+              name: 'foo_bar',
+              is_default: true,
+              allocated_percentage: 47,
+            },
+          ],
+        })
+        expect(experiment.toJSON()).toEqual({
+          name: 'my_experiment',
+          description: 'My first experiment.',
+          start_datetime: '2020-05-01T00:00:00.000Z',
+          end_datetime: '2020-05-04T00:00:00.000Z',
+          status: 'staging',
+          platform: 'wpcom',
+          owner_login: 'wp_johnsmith',
+          conclusion_url: null,
+          deployed_variation_id: null,
+          end_reason: null,
+          experiment_id: undefined,
+          existing_users_allowed: true,
+          p2_url: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
+          metric_assignments: [
+            {
+              metric_assignment_id: undefined,
+              experiment_id: undefined,
+              metric_id: 4,
+              attribution_window_seconds: 604800,
+              change_expected: true,
+              is_primary: true,
+              min_difference: 0.05,
+            },
+          ],
+          segment_assignments: [
+            {
+              segment_assignment_id: undefined,
+              experiment_id: undefined,
+              segment_id: 42,
+              is_excluded: false,
+            },
+            {
+              segment_assignment_id: undefined,
+              experiment_id: undefined,
+              segment_id: 73,
+              is_excluded: true,
+            },
+          ],
+          variations: [
+            {
+              variation_id: undefined,
+              experiment_id: undefined,
+              name: 'foo_bar',
+              is_default: true,
+              allocated_percentage: 47,
+            },
+          ],
+        })
+
+        expect(JSON.stringify(experiment, null, 2)).toBe(`{
+  "name": "my_experiment",
+  "description": "My first experiment.",
+  "start_datetime": "2020-05-01T00:00:00.000Z",
+  "end_datetime": "2020-05-04T00:00:00.000Z",
+  "status": "staging",
+  "platform": "wpcom",
+  "owner_login": "wp_johnsmith",
+  "conclusion_url": null,
+  "deployed_variation_id": null,
+  "end_reason": null,
+  "existing_users_allowed": true,
+  "p2_url": "https://betterexperiments.a8c.com/2020-04-28/my-experiment",
+  "metric_assignments": [
+    {
+      "attribution_window_seconds": 604800,
+      "change_expected": true,
+      "is_primary": true,
+      "metric_id": 4,
+      "min_difference": 0.05
+    }
+  ],
+  "segment_assignments": [
+    {
+      "segment_id": 42,
+      "is_excluded": false
+    },
+    {
+      "segment_id": 73,
+      "is_excluded": true
+    }
+  ],
+  "variations": [
+    {
+      "name": "foo_bar",
+      "is_default": true,
+      "allocated_percentage": 47
+    }
+  ]
+}`)
+      })
+    })
   })
 })
