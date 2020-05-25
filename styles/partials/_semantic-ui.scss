@@ -1,0 +1,18 @@
+/**
+| Semantic UI Override Styles:
+============================================================================= */
+
+.ui.button {
+  border-radius: 0;
+}
+
+// Remove the "field is required" indicator.
+.ui.form .required.field > label::after {
+  display: none;
+  content: '';
+}
+
+.ui.form input,
+.ui.form textarea {
+  border-radius: 0 !important;
+}

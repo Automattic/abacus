@@ -1,4 +1,11 @@
 @import '~semantic-ui-css/semantic.min.css';
+@import '~react-datepicker/src/stylesheets/datepicker.scss';
+@import 'partials/fonts';
+@import 'partials/semantic-ui';
+@import 'partials/elements';
+@import 'partials/forms';
+@import 'partials/utilities';
+@import 'partials/theme';
 
 .errors-box {
   background: #f8d7da;

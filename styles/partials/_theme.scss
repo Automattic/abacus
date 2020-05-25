@@ -1,0 +1,141 @@
+/**
+| Theme Styles:
+============================================================================= */
+
+/**
+| Paragraphs:
+===================================== */
+
+p {
+  font-family: 'Roboto Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 1rem;
+}
+
+/**
+| Focus:
+===================================== */
+
+a,
+button,
+input,
+select,
+textarea {
+  transition: box-shadow 0.15s ease-in-out;
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px #000;
+  }
+}
+
+/**
+| Text Selection:
+===================================== */
+
+::selection {
+  background: darkgray;
+  color: #fff;
+}
+
+/**
+| Headings:
+===================================== */
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.575rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+  margin-bottom: 0.857143333rem;
+  font-size: 0.857143333rem;
+}
+
+h6 {
+  margin-bottom: 0.714286667rem;
+  font-size: 0.714286667rem;
+  line-height: 1.28571429em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-weight: 700;
+}
+
+/**
+| Page:
+===================================== */
+
+.ui.button.link {
+  background: transparent;
+  text-decoration: underline;
+}
+
+.ui.form .field .prompt.label {
+  background: transparent;
+  border: 0 !important;
+  margin: 0.5rem 0;
+}
+
+/**
+| Experiment Form:
+===================================== */
+
+.ui.form {
+  &.experiment {
+    color: inherit;
+
+    footer,
+    header,
+    .content {
+      padding: 1rem;
+
+      &.active {
+        border: 1px solid #d4d4d5;
+      }
+    }
+
+    footer,
+    .content {
+      // display: none;
+
+      &.active {
+        border-top: 0;
+        display: block;
+      }
+    }
+
+    footer {
+      background: #ececec;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+
+      > div {
+        flex: 1 0 auto;
+      }
+    }
+
+    .form-info {
+      margin-top: 10rem;
+    }
+  }
+}

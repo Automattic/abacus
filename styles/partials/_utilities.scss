@@ -1,0 +1,91 @@
+/**
+| Utility Class Declarations:
+|
+| Note: Most of these utility classes are copies from tailwindcss.com or
+| Bootstrap 4. This is done so that we don't need to bring in the whole CSS
+| library.
+|
+| **Adding New Utility Classes**
+|
+| First check Tailwind and Bootstrap 4. Copy the class declaration here following
+| sort order on the main CSS property.
+============================================================================= */
+
+.cursor-default {
+  cursor: default !important;
+}
+
+// Bootstrap 4's utility classes for `display` are more thorough.
+
+.d-none {
+  display: none !important;
+}
+
+.flex,
+.d-flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-initial {
+  flex: 0 1 auto;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+.mt-1 {
+  margin-top: 0.25rem !important;
+}
+
+.mt-2 {
+  margin-top: 0.5rem !important;
+}
+
+.mt-3 {
+  margin-top: 0.75rem !important;
+}
+
+.mt-4 {
+  margin-top: 1rem !important;
+}
+
+.mt-5 {
+  margin-top: 1.25rem !important;
+}
+
+.mt-6 {
+  margin-top: 1.5rem !important;
+}
+
+.mt-8 {
+  margin-top: 2rem !important;
+}
+
+.mt-9 {
+  margin-top: 2.25rem !important;
+}
+
+.underline {
+  text-decoration: underline !important;
+}
+
+.relative {
+  position: relative !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
