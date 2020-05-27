@@ -1,73 +1,73 @@
-export class Analysis {
-  /**
-   * The metric assignment that this analysis is for.
-   * @type {number}
-   * @memberof Analysis
-   */
-  metricAssignmentId: number
+import parseISO from 'date-fns/fp/parseISO'
 
-  /**
-   * The strategy used for the analysis. One of the following:
-   *   * `itt_pure`: Pure intention-to-treat &ndash; all participants are
-   *     analysed based on their initial variation assignment.
-   *   * `mitt_no_spammers`: Modified intention-to-treat &ndash; same as
-   *     `itt_pure`, but excluding spammers that were flagged on
-   *     `analysis_datetime`.
-   *   * `mitt_no_crossovers`: Modified intention-to-treat &ndash; same
-   *     as `itt_pure`, but excluding participants that were assigned to
-   *     multiple experiment variations before `analysis_datetime` (aka
-   *     crossovers).
-   *   * `mitt_no_spammers_no_crossovers`: Modified intention-to-treat
-   *     &ndash; same as `itt_pure`, but excluding both spammers and
-   *     crossovers.
-   *   * `pp_naive`: Naive per-protocol &ndash; only participants that
-   *     triggered one of the experiment's `exposure_events`, excluding
-   *     both spammers and crossovers. This analysis strategy is only
-   *     followed if `exposure_events` isn't null, while the other four
-   *     strategies are used for every experiment.
-   * @type {string}
-   * @memberof Analysis
-   */
-  analysisStrategy: AnalysisStrategy
+import { ApiData } from '@/api/ApiData'
 
-  /**
-   *
-   * @type {{ [key: string]: number; }}
-   * @memberof Analysis
-   */
-  participantStats: { [key: string]: number }
+class Recommendation {
+  constructor(
+    public readonly endExperiment: boolean,
+    public readonly chosenVariationId: number | null,
+    public readonly reason: RecommendationReason,
+    public readonly warnings: Array<RecommendationWarning>,
+  ) {}
 
-  /**
-   *
-   * @type {{ [key: string]: MetricEstimate & AnyType; }}
-   * @memberof Analysis
-   */
-  metricEstimates?: { [key: string]: MetricEstimate & AnyType } | null
-
-  /**
-   *
-   * @type {AnalysisRecommendation}
-   * @memberof Analysis
-   */
-
-  recommendation?: AnalysisRecommendation | null
-
-  /**
-   * Timestamp of the analysis. Each metric assignment is expected to have multiple `analysis_datetime` entries, with a new analysis row produced for each metric assignment on a daily basis. For consistency across metrics and analyses, the `analysis_datetime` is set to midnight of the day on which the analysis ran.
-   * @type {Date}
-   * @memberof Analysis
-   */
-  analysisDatetime: Date
+  static fromApiData(apiData: ApiData) {
+    return new this(
+      apiData.end_experiment,
+      apiData.chosen_variation_id,
+      apiData.reason as RecommendationReason,
+      apiData.warnings.map((warning: string) => warning as RecommendationWarning),
+    )
+  }
 }
 
-/**
- * @export
- * @enum {string}
- */
+class MetricEstimate {
+  constructor(public readonly estimate: number, public readonly bottom: number, public readonly top: number) {}
+
+  static fromApiData(apiData: ApiData) {
+    return new this(apiData.estimate, apiData.bottom, apiData.top)
+  }
+}
+
 export enum AnalysisStrategy {
   IttPure = 'itt_pure',
   MittNoSpammers = 'mitt_no_spammers',
   MittNoCrossovers = 'mitt_no_crossovers',
   MittNoSpammersNoCrossovers = 'mitt_no_spammers_no_crossovers',
   PpNaive = 'pp_naive',
+}
+
+export enum RecommendationReason {
+  CiInRope = 'ci_in_rope',
+  CiGreaterThanRope = 'ci_greater_than_rope',
+  CiLessThanRope = 'ci_less_than_rope',
+  CiRopePartlyOverlap = 'ci_rope_partly_overlap',
+  RopeInCi = 'rope_in_ci',
+}
+
+export enum RecommendationWarning {
+  ShortPeriod = 'short_period',
+  LongPeriod = 'long_period',
+  WideCi = 'wide_ci',
+}
+
+export class Analysis {
+  constructor(
+    public readonly metricAssignmentId: number,
+    public readonly analysisStrategy: AnalysisStrategy,
+    public readonly analysisDatetime: Date,
+    public readonly participantStats: { [key: string]: number },
+    public readonly metricEstimates?: { [key: string]: MetricEstimate } | null,
+    public readonly recommendation?: Recommendation | null,
+  ) {}
+
+  static fromApiData(apiData: ApiData) {
+    return new this(
+      apiData.metric_assignment_id,
+      apiData.analysis_strategy as AnalysisStrategy,
+      parseISO(apiData.analysis_datetime),
+      apiData.participant_stats,
+      apiData.metric_estimates.map((rawMetricEstimate: ApiData) => MetricEstimate.fromApiData(rawMetricEstimate)),
+      Recommendation.fromApiData(apiData.recommendation),
+    )
+  }
 }
