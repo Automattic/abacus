@@ -2,6 +2,7 @@ import parseISO from 'date-fns/fp/parseISO'
 
 import { ApiData } from '@/api/ApiData'
 
+// TODO: add docs
 class Recommendation {
   constructor(
     public readonly endExperiment: boolean,
@@ -20,9 +21,22 @@ class Recommendation {
   }
 }
 
+/**
+ * Probabilistic estimate of a metric value.
+ */
 class MetricEstimate {
+  /**
+   * @param estimate Point estimate for the metric value.
+   * @param bottom Bottom bound of the 95% credible interval.
+   * @param top Top bound of the 95% credible interval.
+   */
   constructor(public readonly estimate: number, public readonly bottom: number, public readonly top: number) {}
 
+  /**
+   * Create an instance from raw API data (parsed JSON).
+   *
+   * @param apiData Raw API data.
+   */
   static fromApiData(apiData: ApiData) {
     return new this(apiData.estimate, apiData.bottom, apiData.top)
   }
