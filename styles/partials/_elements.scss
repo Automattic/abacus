@@ -1,0 +1,103 @@
+/**
+| Element Styles:
+============================================================================= */
+
+/**
+| Border-Box Reset:
+===================================== */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  /*
+  Inherit box-sizing to make it easier to change the property for components that
+  leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+  */
+  box-sizing: inherit;
+}
+
+/**
+| body:
+===================================== */
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/**
+| Paragraphs:
+===================================== */
+
+p {
+  margin-top: 0;
+}
+
+/**
+| Buttons:
+===================================== */
+
+button {
+  display: inline-block;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  padding: 0 0.5rem;
+  border-radius: 0;
+}
+
+button:not(.react-datepicker__navigation),
+[type='button']:not(.react-datepicker__navigation),
+[type='reset']:not(.react-datepicker__navigation),
+[type='submit']:not(.react-datepicker__navigation) {
+  border: 0;
+}
+
+/**
+| Form Elements:
+===================================== */
+
+// See `components/_forms.scss`.
+
+/**
+| Images:
+===================================== */
+
+img {
+  display: inline-block;
+  max-width: 100%;
+}
+
+/**
+| Headings:
+===================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+}
+
+/**
+| Links:
+===================================== */
+
+a {
+  color: inherit;
+  display: inline-block;
+
+  &:hover {
+    color: #000;
+  }
+}
