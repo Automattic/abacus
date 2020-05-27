@@ -11,13 +11,13 @@ class Recommendation {
     public readonly warnings: Array<RecommendationWarning>,
   ) {}
 
-  static fromApiData(apiData: ApiData) {
-    return new this(
-      apiData.end_experiment,
-      apiData.chosen_variation_id,
-      apiData.reason as RecommendationReason,
-      apiData.warnings.map((warning: string) => warning as RecommendationWarning),
-    )
+  static fromApiData(apiData: ApiData): Recommendation {
+    return {
+      endExperiment: apiData.end_experiment,
+      chosenVariationId: apiData.chosen_variation_id,
+      reason: apiData.reason as RecommendationReason,
+      warnings: apiData.warnings.map((warning: string) => warning as RecommendationWarning),
+    }
   }
 }
 
@@ -37,8 +37,8 @@ class MetricEstimate {
    *
    * @param apiData Raw API data.
    */
-  static fromApiData(apiData: ApiData) {
-    return new this(apiData.estimate, apiData.bottom, apiData.top)
+  static fromApiData(apiData: ApiData): MetricEstimate {
+    return apiData as MetricEstimate
   }
 }
 
@@ -68,20 +68,22 @@ export class Analysis {
   constructor(
     public readonly metricAssignmentId: number,
     public readonly analysisStrategy: AnalysisStrategy,
-    public readonly analysisDatetime: Date,
     public readonly participantStats: { [key: string]: number },
-    public readonly metricEstimates?: { [key: string]: MetricEstimate } | null,
-    public readonly recommendation?: Recommendation | null,
+    public readonly metricEstimates: { [key: string]: MetricEstimate } | null,
+    public readonly recommendation: Recommendation | null,
+    public readonly analysisDatetime: Date,
   ) {}
 
-  static fromApiData(apiData: ApiData) {
-    return new this(
-      apiData.metric_assignment_id,
-      apiData.analysis_strategy as AnalysisStrategy,
-      parseISO(apiData.analysis_datetime),
-      apiData.participant_stats,
-      apiData.metric_estimates.map((rawMetricEstimate: ApiData) => MetricEstimate.fromApiData(rawMetricEstimate)),
-      Recommendation.fromApiData(apiData.recommendation),
-    )
+  static fromApiData(apiData: ApiData): Analysis {
+    return {
+      metricAssignmentId: apiData.metric_assignment_id,
+      analysisStrategy: apiData.analysis_strategy as AnalysisStrategy,
+      participantStats: apiData.participant_stats,
+      metricEstimates: apiData.metric_estimates.map((rawMetricEstimate: ApiData) =>
+        MetricEstimate.fromApiData(rawMetricEstimate),
+      ),
+      recommendation: Recommendation.fromApiData(apiData.recommendation),
+      analysisDatetime: parseISO(apiData.analysis_datetime),
+    }
   }
 }
