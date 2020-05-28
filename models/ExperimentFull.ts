@@ -6,24 +6,11 @@ import {
   Event,
   MetricAssignment,
   MetricAssignmentAttributionWindowSecondsEnum,
+  Platform,
   SegmentAssignment,
+  Status,
   Variation,
 } from './index'
-
-import { ExperimentBareData } from './ExperimentBare'
-
-interface ExperimentFullData extends ExperimentBareData {
-  description: string
-  existingUsersAllowed: boolean
-  p2Url: string
-  exposureEvents?: Array<Event> | null
-  variations: Array<Variation>
-  metricAssignments: Array<MetricAssignment>
-  segmentAssignments: Array<SegmentAssignment>
-  endReason?: string | null
-  conclusionUrl?: string | null
-  deployedVariationId?: number | null
-}
 
 export class ExperimentFull extends ExperimentBare {
   /**
@@ -32,7 +19,7 @@ export class ExperimentFull extends ExperimentBare {
    * @param apiData
    */
   static fromApiData(apiData: ApiData) {
-    return new this({
+    return {
       ...ExperimentBare.fromApiData(apiData),
       conclusionUrl: apiData.conclusion_url || null,
       deployedVariationId: apiData.deployed_variation_id || null,
@@ -68,82 +55,29 @@ export class ExperimentFull extends ExperimentBare {
         name: variation.name,
         variationId: variation.variation_id,
       })),
-    })
+    }
   }
 
-  /**
-   * Additional context for running the experiment. This may include initial
-   * research, experiment background, hypotheses, etc.
-   */
-  description: string
-
-  /**
-   * If true, include users that signed up before the experiment. Otherwise, run the
-   * experiment only on new users.
-   */
-  existingUsersAllowed: boolean
-
-  /**
-   * Link to the experiment announcement/discussion post.
-   */
-  p2Url: string
-
-  /**
-   * Events that capture exposure to the experiment. If `null`, only
-   * intention-to-treat analysis and its modifications are possible. Otherwise, this
-   * field is used for per-protocol analysis of the experiment.
-   */
-  exposureEvents?: Array<Event> | null
-
-  /**
-   * Variations that experiment participants may see. Constraints:
-   * - Each experiment must have exactly two variations.
-   * - Exactly one of the experiment variations must have its
-   *   `is_default` attribute set to `true`.
-   * - The sum of the variations' `allocated_percentage` values
-   *   must be between 2 and 100.
-   */
-  variations: Array<Variation>
-
-  /**
-   * Metrics that are assigned to this experiment. May be empty.
-   */
-  metricAssignments: Array<MetricAssignment>
-
-  /**
-   * Segments that are assigned to this experiment. May be empty.
-   */
-  segmentAssignments: Array<SegmentAssignment>
-
-  /**
-   * An explanation or reason why the experiment ended.
-   */
-  endReason?: string | null
-
-  /**
-   * Link to a comment/post that describes the experiment conclusion and future
-   * action items. This should be populated within a reasonable time from
-   * `end_datetime`.
-   */
-  conclusionUrl?: string | null
-
-  /**
-   * The variation ID that was deployed once the experiment concluded.
-   */
-  deployedVariationId?: number | null
-
-  constructor(data: ExperimentFullData) {
-    super(data)
-    this.conclusionUrl = data.conclusionUrl || null
-    this.deployedVariationId = data.deployedVariationId || null
-    this.description = data.description
-    this.endReason = data.endReason || null
-    this.existingUsersAllowed = data.existingUsersAllowed
-    this.exposureEvents = Array.isArray(data.exposureEvents) ? data.exposureEvents.slice() : null
-    this.metricAssignments = data.metricAssignments.slice()
-    this.p2Url = data.p2Url
-    this.segmentAssignments = data.segmentAssignments.slice()
-    this.variations = data.variations.slice()
+  constructor(
+    experimentId: number | null,
+    name: string,
+    startDatetime: Date,
+    endDatetime: Date,
+    status: Status,
+    platform: Platform,
+    ownerLogin: string,
+    public readonly description: string,
+    public readonly existingUsersAllowed: boolean,
+    public readonly p2Url: string,
+    public readonly variations: Array<Variation>,
+    public readonly segmentAssignments: Array<SegmentAssignment>,
+    public readonly metricAssignments: Array<MetricAssignment>,
+    public readonly exposureEvents: Array<Event> | null = null,
+    public readonly endReason: string | null = null,
+    public readonly conclusionUrl: string | null = null,
+    public readonly deployedVariationId: number | null = null,
+  ) {
+    super(experimentId, name, startDatetime, endDatetime, status, platform, ownerLogin)
   }
 
   toApiData() {

@@ -201,20 +201,21 @@ describe('models/ExperimentFull.ts module', () => {
 
     describe('toApiData', () => {
       it('called on new experiment with minimal fields.', () => {
-        const experiment = new ExperimentFull({
-          p2Url: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
-          name: 'my_experiment',
-          description: 'My first experiment.',
-          startDatetime: new Date(Date.UTC(2020, 4, 1)),
-          endDatetime: new Date(Date.UTC(2020, 4, 4)),
-          status: Status.Staging,
-          platform: Platform.Wpcom,
-          ownerLogin: 'wp_johnsmith',
-          existingUsersAllowed: true,
-          metricAssignments: [],
-          segmentAssignments: [],
-          variations: [],
-        })
+        const experiment = new ExperimentFull(
+          null,
+          'my_experiment',
+          new Date(Date.UTC(2020, 4, 1)),
+          new Date(Date.UTC(2020, 4, 4)),
+          Status.Staging,
+          Platform.Wpcom,
+          'wp_johnsmith',
+          'My first experiment.',
+          true,
+          'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
+          [],
+          [],
+          [],
+        )
 
         expect(experiment.toApiData()).toEqual({
           name: 'my_experiment',
@@ -227,7 +228,7 @@ describe('models/ExperimentFull.ts module', () => {
           conclusion_url: null,
           deployed_variation_id: null,
           end_reason: null,
-          experiment_id: undefined,
+          experiment_id: null,
           existing_users_allowed: true,
           p2_url: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
           metric_assignments: [],
@@ -237,26 +238,25 @@ describe('models/ExperimentFull.ts module', () => {
       })
 
       it('called on new experiment with maximal fields.', () => {
-        const experiment = new ExperimentFull({
-          p2Url: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
-          name: 'my_experiment',
-          description: 'My first experiment.',
-          startDatetime: new Date(Date.UTC(2020, 4, 1)),
-          endDatetime: new Date(Date.UTC(2020, 4, 4)),
-          status: Status.Staging,
-          platform: Platform.Wpcom,
-          ownerLogin: 'wp_johnsmith',
-          existingUsersAllowed: true,
-          metricAssignments: [
+        const experiment = new ExperimentFull(
+          null,
+          'my_experiment',
+          new Date(Date.UTC(2020, 4, 1)),
+          new Date(Date.UTC(2020, 4, 4)),
+          Status.Staging,
+          Platform.Wpcom,
+          'wp_johnsmith',
+          'My first experiment.',
+          true,
+          'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
+          [
             {
-              attributionWindowSeconds: MetricAssignmentAttributionWindowSecondsEnum.OneWeek,
-              changeExpected: true,
-              isPrimary: true,
-              metricId: 4,
-              minDifference: 0.05,
+              name: 'foo_bar',
+              isDefault: true,
+              allocatedPercentage: 47,
             },
           ],
-          segmentAssignments: [
+          [
             {
               segmentId: 42,
               isExcluded: false,
@@ -266,14 +266,16 @@ describe('models/ExperimentFull.ts module', () => {
               isExcluded: true,
             },
           ],
-          variations: [
+          [
             {
-              name: 'foo_bar',
-              isDefault: true,
-              allocatedPercentage: 47,
+              attributionWindowSeconds: MetricAssignmentAttributionWindowSecondsEnum.OneWeek,
+              changeExpected: true,
+              isPrimary: true,
+              metricId: 4,
+              minDifference: 0.05,
             },
           ],
-        })
+        )
         expect(experiment.toApiData()).toEqual({
           name: 'my_experiment',
           description: 'My first experiment.',
@@ -285,7 +287,7 @@ describe('models/ExperimentFull.ts module', () => {
           conclusion_url: null,
           deployed_variation_id: null,
           end_reason: null,
-          experiment_id: undefined,
+          experiment_id: null,
           existing_users_allowed: true,
           p2_url: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
           metric_assignments: [

@@ -7,15 +7,15 @@ describe('models/ExperimentBare.ts module', () => {
   describe('ExperimentBare', () => {
     describe('constructor', () => {
       it('called with valid API data should create a new `ExperimentBare` instance', () => {
-        const experimentBare = new ExperimentBare({
-          endDatetime: new Date(2020, 1, 29),
-          experimentId: 123,
-          name: 'Example Experiment',
-          platform: Platform.Calypso,
-          ownerLogin: 'a12n',
-          startDatetime: new Date(2020, 0, 1),
-          status: Status.Staging,
-        })
+        const experimentBare = new ExperimentBare(
+          123,
+          'Example Experiment',
+          new Date(2020, 0, 1),
+          new Date(2020, 1, 29),
+          Status.Staging,
+          Platform.Calypso,
+          'a12n',
+        )
         expect(experimentBare).toEqual({
           endDatetime: new Date(2020, 1, 29),
           experimentId: 123,
