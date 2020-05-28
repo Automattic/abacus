@@ -9,7 +9,7 @@ import { fetchApi } from './utils'
  * Note: Be sure to handle any errors that may be thrown.
  */
 async function create(experiment: ExperimentFull) {
-  return await fetchApi('POST', '/experiments', experiment)
+  return ExperimentFull.fromApiData(await fetchApi('POST', '/experiments', experiment))
 }
 
 /**

@@ -8,7 +8,7 @@ const STATUSES = Object.values(Status)
 describe('ExperimentsApi.ts module', () => {
   describe('create', () => {
     it('should create a new experiment', async () => {
-      const apiData = await ExperimentsApi.create(
+      const newExperiment = await ExperimentsApi.create(
         new ExperimentFull({
           experimentId: null,
           name: 'my_experiment',
@@ -28,11 +28,10 @@ describe('ExperimentsApi.ts module', () => {
       // We expect that the response will return the new experiment with its newly
       // assigned ID. These integration tests test against the "development" API which
       // only returns mock data. So, instead of trying to keep in sync with the actual
-      // mock values, we'll test that it is valid to create an instance from the data.
-      expect(apiData).toBeDefined()
-      expect(() => {
-        ExperimentFull.fromApiData(apiData)
-      }).not.toThrowError()
+      // mock values, the fact that we are using TypeScript and we get a defined
+      // instance should be pretty sufficient.
+      expect(newExperiment).toBeDefined()
+      expect(typeof newExperiment.experimentId).toBe('number')
     })
   })
   describe('findAll', () => {
