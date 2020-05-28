@@ -1,13 +1,46 @@
 import parseISO from 'date-fns/fp/parseISO'
 
 import { ApiData } from '@/api/ApiData'
+import { DataTransferObject } from '@/models/DataTransferObject'
 
 import { Platform, Status } from './index'
 
 /**
- * An experiment with select data.
+ * An experiment summary.
  */
-export class ExperimentBare {
+export class ExperimentBare extends DataTransferObject<ExperimentBare> {
+  /**
+   * Unique experiment ID.
+   */
+  public readonly experimentId: number
+
+  /**
+   * Name of the experiment.
+   */
+  public readonly name: string
+
+  /**
+   * Start date of the experiment. For new experiments, the date must be in the
+   * future to accommodate forward planning of experiments.
+   */
+  public readonly startDatetime: Date
+
+  /**
+   * End date of the experiment. This value must be greater than `start_datetime`.
+   * The server may impose a limited difference between `end_datetime` and
+   * `start_datetime` to ensure that experiments don't run for too long.
+   */
+  public readonly endDatetime: Date
+
+  public readonly status: Status
+
+  public readonly platform: Platform
+
+  /**
+   * The login name of the experiment owner.
+   */
+  public readonly ownerLogin: string
+
   /**
    * Create an instance from raw API data (parsed JSON).
    *
@@ -24,27 +57,4 @@ export class ExperimentBare {
       ownerLogin: apiData.owner_login,
     }
   }
-
-  /**
-   * @param experimentId - Unique experiment ID.
-   * @param name - Name of the experiment.
-   * @param startDatetime - Start date of the experiment. For new experiments, the
-   *   date must be in the future to accommodate forward planning of experiments.
-   * @param endDatetime - End date of the experiment. This value must be greater than
-   *   `start_datetime`. The server may impose a limited difference between\
-   *   `end_datetime` and `start_datetime` to ensure that experiments don't run for
-   *   too long.
-   * @param status -
-   * @param platform -
-   * @param ownerLogin - The login name of the experiment owner.
-   */
-  constructor(
-    public readonly experimentId: number | null,
-    public readonly name: string,
-    public readonly startDatetime: Date,
-    public readonly endDatetime: Date,
-    public readonly status: Status,
-    public readonly platform: Platform,
-    public readonly ownerLogin: string,
-  ) {}
 }

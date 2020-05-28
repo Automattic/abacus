@@ -201,21 +201,21 @@ describe('models/ExperimentFull.ts module', () => {
 
     describe('toApiData', () => {
       it('called on new experiment with minimal fields.', () => {
-        const experiment = new ExperimentFull(
-          null,
-          'my_experiment',
-          new Date(Date.UTC(2020, 4, 1)),
-          new Date(Date.UTC(2020, 4, 4)),
-          Status.Staging,
-          Platform.Wpcom,
-          'wp_johnsmith',
-          'My first experiment.',
-          true,
-          'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
-          [],
-          [],
-          [],
-        )
+        const experiment = new ExperimentFull({
+          experimentId: null,
+          name: 'my_experiment',
+          startDatetime: new Date(Date.UTC(2020, 4, 1)),
+          endDatetime: new Date(Date.UTC(2020, 4, 4)),
+          status: Status.Staging,
+          platform: Platform.Wpcom,
+          ownerLogin: 'wp_johnsmith',
+          description: 'My first experiment.',
+          existingUsersAllowed: true,
+          p2Url: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
+          variations: [],
+          segmentAssignments: [],
+          metricAssignments: [],
+        })
 
         expect(experiment.toApiData()).toEqual({
           name: 'my_experiment',
@@ -225,9 +225,6 @@ describe('models/ExperimentFull.ts module', () => {
           status: 'staging',
           platform: 'wpcom',
           owner_login: 'wp_johnsmith',
-          conclusion_url: null,
-          deployed_variation_id: null,
-          end_reason: null,
           experiment_id: null,
           existing_users_allowed: true,
           p2_url: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
@@ -238,25 +235,28 @@ describe('models/ExperimentFull.ts module', () => {
       })
 
       it('called on new experiment with maximal fields.', () => {
-        const experiment = new ExperimentFull(
-          null,
-          'my_experiment',
-          new Date(Date.UTC(2020, 4, 1)),
-          new Date(Date.UTC(2020, 4, 4)),
-          Status.Staging,
-          Platform.Wpcom,
-          'wp_johnsmith',
-          'My first experiment.',
-          true,
-          'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
-          [
+        const experiment = new ExperimentFull({
+          experimentId: null,
+          name: 'my_experiment',
+          startDatetime: new Date(Date.UTC(2020, 4, 1)),
+          endDatetime: new Date(Date.UTC(2020, 4, 4)),
+          status: Status.Staging,
+          platform: Platform.Wpcom,
+          ownerLogin: 'wp_johnsmith',
+          description: 'My first experiment.',
+          existingUsersAllowed: true,
+          p2Url: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
+          conclusionUrl: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment/conclusion',
+          deployedVariationId: 123,
+          endReason: 'it ended',
+          variations: [
             {
               name: 'foo_bar',
               isDefault: true,
               allocatedPercentage: 47,
             },
           ],
-          [
+          segmentAssignments: [
             {
               segmentId: 42,
               isExcluded: false,
@@ -266,7 +266,7 @@ describe('models/ExperimentFull.ts module', () => {
               isExcluded: true,
             },
           ],
-          [
+          metricAssignments: [
             {
               attributionWindowSeconds: MetricAssignmentAttributionWindowSecondsEnum.OneWeek,
               changeExpected: true,
@@ -275,7 +275,7 @@ describe('models/ExperimentFull.ts module', () => {
               minDifference: 0.05,
             },
           ],
-        )
+        })
         expect(experiment.toApiData()).toEqual({
           name: 'my_experiment',
           description: 'My first experiment.',
@@ -284,9 +284,9 @@ describe('models/ExperimentFull.ts module', () => {
           status: 'staging',
           platform: 'wpcom',
           owner_login: 'wp_johnsmith',
-          conclusion_url: null,
-          deployed_variation_id: null,
-          end_reason: null,
+          conclusion_url: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment/conclusion',
+          deployed_variation_id: 123,
+          end_reason: 'it ended',
           experiment_id: null,
           existing_users_allowed: true,
           p2_url: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
