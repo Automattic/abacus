@@ -1,7 +1,5 @@
-import format from 'date-fns/format'
-import { toBool } from 'qc-to_bool'
-
 import { ApiData } from '@/api/ApiData'
+import { formatIsoUtcOffset } from '@/utils/date'
 
 import {
   ExperimentBare,
@@ -12,7 +10,67 @@ import {
   Variation,
 } from './index'
 
+import { ExperimentBareData } from './ExperimentBare'
+
+interface ExperimentFullData extends ExperimentBareData {
+  description: string
+  existingUsersAllowed: boolean
+  p2Url: string
+  exposureEvents?: Array<Event> | null
+  variations: Array<Variation>
+  metricAssignments: Array<MetricAssignment>
+  segmentAssignments: Array<SegmentAssignment>
+  endReason?: string | null
+  conclusionUrl?: string | null
+  deployedVariationId?: number | null
+}
+
 export class ExperimentFull extends ExperimentBare {
+  /**
+   * Creates an `ExperimentFull` instance from the given API data.
+   *
+   * @param apiData
+   */
+  static fromApiData(apiData: ApiData) {
+    return new this({
+      ...ExperimentBare.fromApiData(apiData),
+      conclusionUrl: apiData.conclusion_url || null,
+      deployedVariationId: apiData.deployed_variation_id || null,
+      description: apiData.description,
+      endReason: apiData.end_reason || null,
+      existingUsersAllowed: apiData.existing_users_allowed,
+      exposureEvents: Array.isArray(apiData.exposure_events)
+        ? apiData.exposure_events.map((exposureEvent: ApiData) => ({
+            event: exposureEvent.event,
+            props: exposureEvent.props,
+          }))
+        : null,
+      metricAssignments: apiData.metric_assignments.map((metricAssignment: ApiData) => ({
+        attributionWindowSeconds: metricAssignment.attribution_window_seconds as MetricAssignmentAttributionWindowSecondsEnum,
+        changeExpected: metricAssignment.change_expected,
+        experimentId: metricAssignment.experiment_id,
+        isPrimary: metricAssignment.is_primary,
+        metricAssignmentId: metricAssignment.metric_assignment_id,
+        metricId: metricAssignment.metric_id,
+        minDifference: metricAssignment.min_difference,
+      })),
+      p2Url: apiData.p2_url,
+      segmentAssignments: apiData.segment_assignments.map((segmentAssignment: ApiData) => ({
+        segmentAssignmentId: segmentAssignment.segment_assignment_id,
+        experimentId: segmentAssignment.experiment_id,
+        segmentId: segmentAssignment.segment_id,
+        isExcluded: segmentAssignment.is_excluded,
+      })),
+      variations: apiData.variations.map((variation: ApiData) => ({
+        allocatedPercentage: variation.allocated_percentage,
+        experimentId: variation.experiment_id,
+        isDefault: variation.is_default,
+        name: variation.name,
+        variationId: variation.variation_id,
+      })),
+    })
+  }
+
   /**
    * Additional context for running the experiment. This may include initial
    * research, experiment background, hypotheses, etc.
@@ -74,52 +132,27 @@ export class ExperimentFull extends ExperimentBare {
    */
   deployedVariationId?: number | null
 
-  constructor(apiData: ApiData) {
-    super(apiData)
-    this.conclusionUrl = apiData.conclusion_url || null
-    this.deployedVariationId = apiData.deployed_variation_id || null
-    this.description = apiData.description
-    this.endReason = apiData.end_reason || null
-    this.existingUsersAllowed = toBool(apiData.existing_users_allowed)
-    this.exposureEvents = Array.isArray(apiData.exposure_events)
-      ? apiData.exposure_events.map((exposureEvent: ApiData) => ({
-          event: exposureEvent.event,
-          props: exposureEvent.props,
-        }))
-      : null
-    this.metricAssignments = apiData.metric_assignments.map((metricAssignment: ApiData) => ({
-      attributionWindowSeconds: metricAssignment.attribution_window_seconds as MetricAssignmentAttributionWindowSecondsEnum,
-      changeExpected: metricAssignment.change_expected,
-      experimentId: metricAssignment.experiment_id,
-      isPrimary: metricAssignment.is_primary,
-      metricAssignmentId: metricAssignment.metric_assignment_id,
-      metricId: metricAssignment.metric_id,
-      minDifference: metricAssignment.min_difference,
-    }))
-    this.p2Url = apiData.p2_url
-    this.segmentAssignments = apiData.segment_assignments.map((segmentAssignment: ApiData) => ({
-      segmentAssignmentId: segmentAssignment.segment_assignment_id,
-      experimentId: segmentAssignment.experiment_id,
-      segmentId: segmentAssignment.segment_id,
-      isExcluded: segmentAssignment.is_excluded,
-    }))
-    this.variations = apiData.variations.map((variation: ApiData) => ({
-      allocatedPercentage: variation.allocated_percentage,
-      experimentId: variation.experiment_id,
-      isDefault: variation.is_default,
-      name: variation.name,
-      variationId: variation.variation_id,
-    }))
+  constructor(data: ExperimentFullData) {
+    super(data)
+    this.conclusionUrl = data.conclusionUrl || null
+    this.deployedVariationId = data.deployedVariationId || null
+    this.description = data.description
+    this.endReason = data.endReason || null
+    this.existingUsersAllowed = data.existingUsersAllowed
+    this.exposureEvents = Array.isArray(data.exposureEvents) ? data.exposureEvents.slice() : null
+    this.metricAssignments = data.metricAssignments.slice()
+    this.p2Url = data.p2Url
+    this.segmentAssignments = data.segmentAssignments.slice()
+    this.variations = data.variations.slice()
   }
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  toJSON() {
+  toApiData() {
     return {
       experiment_id: this.experimentId,
       name: this.name,
       description: this.description,
-      start_datetime: format(this.startDatetime, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"),
-      end_datetime: format(this.endDatetime, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"),
+      start_datetime: formatIsoUtcOffset(this.startDatetime),
+      end_datetime: formatIsoUtcOffset(this.endDatetime),
       status: this.status,
       platform: this.platform,
       owner_login: this.ownerLogin,
@@ -133,18 +166,15 @@ export class ExperimentFull extends ExperimentBare {
         change_expected: metricAssignment.changeExpected,
         experiment_id: metricAssignment.experimentId,
         is_primary: metricAssignment.isPrimary,
-        metric_assignment_id: metricAssignment.metricAssignmentId,
         metric_id: metricAssignment.metricId,
         min_difference: metricAssignment.minDifference,
       })),
       segment_assignments: this.segmentAssignments.map((segmentAssignments: ApiData) => ({
-        segment_assignment_id: segmentAssignments.segmentAssignmentId,
         experiment_id: segmentAssignments.experimentId,
         segment_id: segmentAssignments.segmentId,
         is_excluded: segmentAssignments.isExcluded,
       })),
       variations: this.variations.map((variation: ApiData) => ({
-        variation_id: variation.variationId,
         experiment_id: variation.experimentId,
         name: variation.name,
         is_default: variation.isDefault,

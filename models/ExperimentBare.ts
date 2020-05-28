@@ -4,17 +4,33 @@ import { ApiData } from '@/api/ApiData'
 
 import { Platform, Status } from './index'
 
-const TIME_AND_TZ_INFO_RE = /T?\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}(?::\d{2})?)?/
-
-function stripTimeAndTzInfo(dateStr: string) {
-  return dateStr.replace(TIME_AND_TZ_INFO_RE, '')
+export interface ExperimentBareData {
+  experimentId?: number
+  name: string
+  startDatetime: Date
+  endDatetime: Date
+  status: Status
+  platform: Platform
+  ownerLogin: string
 }
 
 export class ExperimentBare {
+  static fromApiData(apiData: ApiData) {
+    return new this({
+      experimentId: apiData.experiment_id,
+      name: apiData.name,
+      startDatetime: parseISO(apiData.start_datetime),
+      endDatetime: parseISO(apiData.end_datetime),
+      status: apiData.status as Status,
+      platform: apiData.platform as Platform,
+      ownerLogin: apiData.owner_login,
+    })
+  }
+
   /**
    * Unique experiment ID.
    */
-  readonly experimentId: number
+  readonly experimentId?: number
 
   /**
    * Name of the experiment.
@@ -43,17 +59,13 @@ export class ExperimentBare {
    */
   ownerLogin: string
 
-  constructor(apiData: ApiData) {
-    this.experimentId = apiData.experiment_id
-    this.name = apiData.name
-    this.startDatetime =
-      apiData.start_datetime instanceof Date
-        ? apiData.start_datetime
-        : parseISO(stripTimeAndTzInfo(apiData.start_datetime))
-    this.endDatetime =
-      apiData.end_datetime instanceof Date ? apiData.end_datetime : parseISO(stripTimeAndTzInfo(apiData.end_datetime))
-    this.status = apiData.status as Status
-    this.platform = apiData.platform as Platform
-    this.ownerLogin = apiData.owner_login
+  constructor(data: ExperimentBareData) {
+    this.experimentId = data.experimentId
+    this.name = data.name
+    this.startDatetime = data.startDatetime
+    this.endDatetime = data.endDatetime
+    this.status = data.status
+    this.platform = data.platform
+    this.ownerLogin = data.ownerLogin
   }
 }
