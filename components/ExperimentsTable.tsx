@@ -63,7 +63,7 @@ const ExperimentsTable = (props: Props) => {
       </Table.Header>
       <Table.Body>
         {experimentsToRender.map((experiment) => (
-          <React.Fragment key={experiment.experimentId}>
+          <React.Fragment key={experiment.experimentId as number}>
             <Table.Row>
               <Table.Cell>{experiment.experimentId}</Table.Cell>
               <Table.Cell>{experiment.name}</Table.Cell>
