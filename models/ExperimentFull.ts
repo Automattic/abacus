@@ -12,11 +12,14 @@ import {
   Variation,
 } from './index'
 
+/**
+ * An experiment with full data.
+ */
 export class ExperimentFull extends ExperimentBare {
   /**
-   * Creates an `ExperimentFull` instance from the given API data.
+   * Create an instance from raw API data (parsed JSON).
    *
-   * @param apiData
+   * @param apiData Raw API data.
    */
   static fromApiData(apiData: ApiData) {
     return {
@@ -58,6 +61,45 @@ export class ExperimentFull extends ExperimentBare {
     }
   }
 
+  /**
+   * @param experimentId - Unique experiment ID.
+   * @param name - Name of the experiment.
+   * @param startDatetime - Start date of the experiment. For new experiments, the
+   *   date must be in the future to accommodate forward planning of experiments.
+   * @param endDatetime - End date of the experiment. This value must be greater than
+   *   `start_datetime`. The server may impose a limited difference between
+   *   `end_datetime` and `start_datetime` to ensure that experiments don't run for
+   *   too long.
+   * @param status -
+   * @param platform -
+   * @param ownerLogin - The login name of the experiment owner.
+   * @param description - Additional context for running the experiment. This may
+   *   include initial research, experiment background, hypotheses, etc.
+   * @param existingUsersAllowed - If true, include users that signed up before the
+   *   experiment. Otherwise, run the experiment only on new users.
+   * @param p2Url - Link to the experiment announcement/discussion post.
+   * @param variations - Variations that experiment participants may see.
+   *   Constraints:
+   *   - Each experiment must have exactly two variations.
+   *   - Exactly one of the experiment variations must have its
+   *     `is_default` attribute set to `true`.
+   *   - The sum of the variations' `allocated_percentage` values
+   *     must be between 2 and 100.
+   * @param segmentAssignments - Segments that are assigned to this experiment. May be
+   *   empty.
+   * @param metricAssignments - Metrics that are assigned to this experiment. May be
+   *   empty.
+   * @param exposureEvents - Events that capture exposure to the experiment. If `null`,
+   *   only intention-to-treat analysis and its modifications are possible. Otherwise,
+   *   this field is used for per-protocol analysis of the experiment.
+   * @param endReason - An explanation or reason why the experiment ended.
+   * @param conclusionUrl - Link to a comment/post that describes the experiment
+   *   conclusion and future action items. This should be populated within a reasonable
+   *   time from `end_datetime`.
+   * @param deployedVariationId - The variation ID that was deployed once the experiment
+   *   concluded.
+   */
+  // istanbul ignore next (skip coverage for auto-generated constructor)
   constructor(
     experimentId: number | null,
     name: string,
