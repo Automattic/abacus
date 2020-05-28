@@ -49,50 +49,52 @@ describe('models/ExperimentFull.ts module', () => {
             },
           ],
         })
-        expect(stagedExperimentFull).toEqual({
-          conclusionUrl: null,
-          deployedVariationId: null,
-          description: 'An example experiment.',
-          endDatetime: new Date(Date.UTC(2020, 1, 29)),
-          endReason: null,
-          existingUsersAllowed: true,
-          experimentId: 123,
-          exposureEvents: null,
-          metricAssignments: [
-            {
-              attributionWindowSeconds: MetricAssignmentAttributionWindowSecondsEnum.OneHour,
-              changeExpected: true,
-              experimentId: 123,
-              isPrimary: false,
-              metricAssignmentId: 12,
-              metricId: 42,
-              minDifference: 4,
-            },
-          ],
-          name: 'Example Experiment',
-          platform: Platform.Calypso,
-          p2Url: 'https://betterexperiments.wordpress.com/2020/05/01/example',
-          ownerLogin: 'a12n',
-          segmentAssignments: [
-            {
-              isExcluded: true,
-              experimentId: 123,
-              segmentAssignmentId: 1,
-              segmentId: 2,
-            },
-          ],
-          startDatetime: new Date(Date.UTC(2020, 0, 1, 3)),
-          status: Status.Staging,
-          variations: [
-            {
-              allocatedPercentage: 50,
-              experimentId: 123,
-              isDefault: true,
-              name: 'United States',
-              variationId: 6,
-            },
-          ],
-        })
+        expect(stagedExperimentFull).toEqual(
+          new ExperimentFull({
+            conclusionUrl: null,
+            deployedVariationId: null,
+            description: 'An example experiment.',
+            endDatetime: new Date(Date.UTC(2020, 1, 29)),
+            endReason: null,
+            existingUsersAllowed: true,
+            experimentId: 123,
+            exposureEvents: null,
+            metricAssignments: [
+              {
+                attributionWindowSeconds: MetricAssignmentAttributionWindowSecondsEnum.OneHour,
+                changeExpected: true,
+                experimentId: 123,
+                isPrimary: false,
+                metricAssignmentId: 12,
+                metricId: 42,
+                minDifference: 4,
+              },
+            ],
+            name: 'Example Experiment',
+            platform: Platform.Calypso,
+            p2Url: 'https://betterexperiments.wordpress.com/2020/05/01/example',
+            ownerLogin: 'a12n',
+            segmentAssignments: [
+              {
+                isExcluded: true,
+                experimentId: 123,
+                segmentAssignmentId: 1,
+                segmentId: 2,
+              },
+            ],
+            startDatetime: new Date(Date.UTC(2020, 0, 1, 3)),
+            status: Status.Staging,
+            variations: [
+              {
+                allocatedPercentage: 50,
+                experimentId: 123,
+                isDefault: true,
+                name: 'United States',
+                variationId: 6,
+              },
+            ],
+          }),
+        )
 
         const completedExperimentFull = ExperimentFull.fromApiData({
           conclusion_url: 'https://betterexperiments.wordpress.com/2020/03/01/example-conclusion',
@@ -145,57 +147,59 @@ describe('models/ExperimentFull.ts module', () => {
             },
           ],
         })
-        expect(completedExperimentFull).toEqual({
-          conclusionUrl: 'https://betterexperiments.wordpress.com/2020/03/01/example-conclusion',
-          deployedVariationId: 6,
-          description: 'An example experiment.',
-          endDatetime: new Date(Date.UTC(2020, 1, 29)),
-          endReason: 'Successful completion.',
-          existingUsersAllowed: true,
-          experimentId: 123,
-          exposureEvents: [
-            {
-              event: 'foo',
-              props: {
-                foo: 'bar',
+        expect(completedExperimentFull).toEqual(
+          new ExperimentFull({
+            conclusionUrl: 'https://betterexperiments.wordpress.com/2020/03/01/example-conclusion',
+            deployedVariationId: 6,
+            description: 'An example experiment.',
+            endDatetime: new Date(Date.UTC(2020, 1, 29)),
+            endReason: 'Successful completion.',
+            existingUsersAllowed: true,
+            experimentId: 123,
+            exposureEvents: [
+              {
+                event: 'foo',
+                props: {
+                  foo: 'bar',
+                },
               },
-            },
-          ],
-          metricAssignments: [
-            {
-              attributionWindowSeconds: MetricAssignmentAttributionWindowSecondsEnum.OneHour,
-              changeExpected: true,
-              experimentId: 123,
-              isPrimary: false,
-              metricAssignmentId: 12,
-              metricId: 42,
-              minDifference: 4,
-            },
-          ],
-          name: 'Example Experiment',
-          platform: Platform.Calypso,
-          p2Url: 'https://betterexperiments.wordpress.com/2020/05/01/example',
-          ownerLogin: 'a12n',
-          segmentAssignments: [
-            {
-              isExcluded: true,
-              experimentId: 123,
-              segmentAssignmentId: 1,
-              segmentId: 2,
-            },
-          ],
-          startDatetime: new Date(Date.UTC(2020, 0, 1, 3)),
-          status: Status.Completed,
-          variations: [
-            {
-              allocatedPercentage: 50,
-              experimentId: 123,
-              isDefault: true,
-              name: 'United States',
-              variationId: 6,
-            },
-          ],
-        })
+            ],
+            metricAssignments: [
+              {
+                attributionWindowSeconds: MetricAssignmentAttributionWindowSecondsEnum.OneHour,
+                changeExpected: true,
+                experimentId: 123,
+                isPrimary: false,
+                metricAssignmentId: 12,
+                metricId: 42,
+                minDifference: 4,
+              },
+            ],
+            name: 'Example Experiment',
+            platform: Platform.Calypso,
+            p2Url: 'https://betterexperiments.wordpress.com/2020/05/01/example',
+            ownerLogin: 'a12n',
+            segmentAssignments: [
+              {
+                isExcluded: true,
+                experimentId: 123,
+                segmentAssignmentId: 1,
+                segmentId: 2,
+              },
+            ],
+            startDatetime: new Date(Date.UTC(2020, 0, 1, 3)),
+            status: Status.Completed,
+            variations: [
+              {
+                allocatedPercentage: 50,
+                experimentId: 123,
+                isDefault: true,
+                name: 'United States',
+                variationId: 6,
+              },
+            ],
+          }),
+        )
       })
     })
 

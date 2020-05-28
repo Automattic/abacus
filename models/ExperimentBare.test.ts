@@ -16,15 +16,17 @@ describe('models/ExperimentBare.ts module', () => {
           start_datetime: '2020-01-01T03:00:00.000+00:00',
           status: 'staging',
         })
-        expect(experimentBare).toEqual({
-          endDatetime: new Date(Date.UTC(2020, 1, 29)),
-          experimentId: 123,
-          name: 'Example Experiment',
-          platform: Platform.Calypso,
-          ownerLogin: 'a12n',
-          startDatetime: new Date(Date.UTC(2020, 0, 1, 3)),
-          status: Status.Staging,
-        })
+        expect(experimentBare).toEqual(
+          new ExperimentBare({
+            endDatetime: new Date(Date.UTC(2020, 1, 29)),
+            experimentId: 123,
+            name: 'Example Experiment',
+            platform: Platform.Calypso,
+            ownerLogin: 'a12n',
+            startDatetime: new Date(Date.UTC(2020, 0, 1, 3)),
+            status: Status.Staging,
+          }),
+        )
       })
     })
   })
