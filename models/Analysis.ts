@@ -1,15 +1,7 @@
 import parseISO from 'date-fns/fp/parseISO'
 
 import { ApiData } from '@/api/ApiData'
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type ExcludeMethods<T> = Pick<T, { [K in keyof T]: T[K] extends (_: any) => any ? never : K }[keyof T]>
-
-abstract class DataTransferObject<T> {
-  public constructor(initializer: ExcludeMethods<T>) {
-    Object.assign(this, initializer)
-  }
-}
+import { DataTransferObject } from '@/models/DataTransferObject'
 
 /**
  * An analysis recommendation.
