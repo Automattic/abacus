@@ -94,11 +94,20 @@ export enum RecommendationWarning {
   WideCi = 'wide_ci',
 }
 
+// tslint:disable-next-line @typescript-eslint/no-explicit-any
+type ExcludeMethods<T> = Pick<T, { [K in keyof T]: T[K] extends (_: any) => any ? never : K }[keyof T]>
+
+abstract class DataTransferObject<T> {
+  public constructor(initializer: ExcludeMethods<T>) {
+    Object.assign(this, initializer)
+  }
+}
+
 /**
  * A single analysis instance. Typically, an experiment will have multiple analyses: One for each metric assignment,
  * analysis strategy, and analysis day.
  */
-export class Analysis {
+export class Analysis extends DataTransferObject<Analysis> {
   /**
    * @param metricAssignmentId The metric assignment that this analysis is for.
    * @param analysisStrategy The strategy used for the analysis. See `AnalysisStrategy`.
@@ -107,15 +116,13 @@ export class Analysis {
    * @param recommendation Recommendation how to proceed based on the analysis. See `Recommendation`.
    * @param analysisDatetime Timestamp of the analysis.
    */
-  // istanbul ignore next (skip coverage for auto-generated constructor)
-  constructor(
-    public readonly metricAssignmentId: number,
-    public readonly analysisStrategy: AnalysisStrategy,
-    public readonly participantStats: { [key: string]: number },
-    public readonly metricEstimates: { [key: string]: MetricEstimate } | null,
-    public readonly recommendation: Recommendation | null,
-    public readonly analysisDatetime: Date,
-  ) {}
+
+  public readonly metricAssignmentId: number
+  public readonly analysisStrategy: AnalysisStrategy
+  public readonly participantStats: { [key: string]: number }
+  public readonly metricEstimates: { [key: string]: MetricEstimate } | null
+  public readonly recommendation: Recommendation | null
+  public readonly analysisDatetime: Date
 
   /**
    * Create an instance from raw API data (parsed JSON).
@@ -123,7 +130,7 @@ export class Analysis {
    * @param apiData Raw API data.
    */
   static fromApiData(apiData: ApiData): Analysis {
-    return {
+    return new Analysis({
       metricAssignmentId: apiData.metric_assignment_id,
       analysisStrategy: apiData.analysis_strategy as AnalysisStrategy,
       participantStats: apiData.participant_stats,
@@ -131,6 +138,10 @@ export class Analysis {
       metricEstimates: apiData.metric_estimates,
       recommendation: apiData.recommendation && Recommendation.fromApiData(apiData.recommendation),
       analysisDatetime: parseISO(apiData.analysis_datetime),
-    }
+    })
+  }
+
+  testMethod() {
+    return 'hello'
   }
 }
