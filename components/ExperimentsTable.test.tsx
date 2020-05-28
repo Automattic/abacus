@@ -6,13 +6,12 @@ import { ExperimentBare } from '@/models/ExperimentBare'
 import { Platform } from '@/models/Platform'
 import { Status } from '@/models/Status'
 
-import ExperimentsTable, { PER_PAGE_DEFAULT } from './ExperimentsTable'
+import ExperimentsTable from './ExperimentsTable'
 
 test('with no experiments, renders an empty table', () => {
   const experiments: ExperimentBare[] = []
   const { container, getByText } = render(<ExperimentsTable experiments={experiments} />)
 
-  expect(getByText('ID')).toBeInTheDocument()
   expect(getByText('Name')).toBeInTheDocument()
   expect(getByText('Start')).toBeInTheDocument()
   expect(getByText('End')).toBeInTheDocument()
@@ -22,7 +21,9 @@ test('with no experiments, renders an empty table', () => {
 
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
-  expect(tBodyElmt.childElementCount).toBe(0)
+  expect(tBodyElmt.childElementCount).toBe(1)
+
+  expect(getByText('No Data', { selector: '.ant-table-placeholder .ant-empty-description' })).toBeInTheDocument()
 })
 
 test('with one page of experiments, renders a table', () => {
@@ -41,7 +42,6 @@ test('with one page of experiments, renders a table', () => {
 
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
-  expect(getByText(tBodyElmt, '1', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getByText(tBodyElmt, 'First', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toBeInTheDocument()
@@ -49,7 +49,7 @@ test('with one page of experiments, renders a table', () => {
 })
 
 test('with more than one page of experiments, renders a table with a pagination control', () => {
-  const COUNT = 40 // Some value greater than "per page"
+  const COUNT = 15 // Some value greater than "per page". Defaults to 10.
   const startDatetime = new Date()
   const endDatetime = addToDate(new Date(), { days: 14 })
   const experiments: ExperimentBare[] = Array.from(Array(COUNT).keys()).map((num) => ({
@@ -66,57 +66,70 @@ test('with more than one page of experiments, renders a table with a pagination 
 
   let tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
-  expect(getByText(tBodyElmt, '1', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getByText(tBodyElmt, 'Name1', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getAllByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toHaveLength(PER_PAGE_DEFAULT)
-  expect(getAllByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toHaveLength(PER_PAGE_DEFAULT)
-  expect(getAllByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toHaveLength(PER_PAGE_DEFAULT)
+  expect(getAllByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toHaveLength(10)
+  expect(getAllByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toHaveLength(10)
+  expect(getAllByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toHaveLength(10)
 
-  const tFootElmt = container.querySelector('tfoot') as HTMLTableSectionElement
-  expect(tFootElmt).not.toBeNull()
-  const menuItemElmts = tFootElmt.querySelectorAll<HTMLElement>('tr .item')
-  // There should be two direct page buttons and one prev and one next button.
-  expect(menuItemElmts.length).toBe(4)
+  const paginationItemElmts = container.querySelectorAll<HTMLElement>('.ant-table-pagination li')
+  // There should be two direct page buttons, one prev, and one next button.
+  expect(paginationItemElmts.length).toBe(4)
 
   // The first direct page button should have text '1' and be active.
-  expect(getByText(menuItemElmts.item(1), '1', { selector: 'tr .item.active' })).toBeInTheDocument()
+  expect(
+    getByText(paginationItemElmts.item(1), '1', { selector: 'li.ant-pagination-item-active a' }),
+  ).toBeInTheDocument()
 
   // The second direct page button should have text '2' and not be active.
-  expect(getByText(menuItemElmts.item(2), '2', { selector: 'tr .item:not(.active)' })).toBeInTheDocument()
+  expect(
+    getByText(paginationItemElmts.item(2), '2', {
+      selector: 'li:not(.ant-pagination-item-active) a',
+    }),
+  ).toBeInTheDocument()
 
   // Click "next" button
-  fireEvent.click(menuItemElmts.item(3))
+  fireEvent.click(paginationItemElmts.item(3))
 
   // Should be on the second page now.
   tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
-  expect(getByText(tBodyElmt, '26', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getByText(tBodyElmt, 'Name26', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getAllByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toHaveLength(COUNT - PER_PAGE_DEFAULT)
-  expect(getAllByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toHaveLength(COUNT - PER_PAGE_DEFAULT)
-  expect(getAllByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toHaveLength(COUNT - PER_PAGE_DEFAULT)
+  expect(getByText(tBodyElmt, 'Name11', { selector: 'tr > td' })).toBeInTheDocument()
+  expect(getAllByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toHaveLength(COUNT - 10)
+  expect(getAllByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toHaveLength(COUNT - 10)
+  expect(getAllByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toHaveLength(COUNT - 10)
 
   // The first direct page button should have text '1' and be not be active.
-  expect(getByText(menuItemElmts.item(1), '1', { selector: 'tr .item:not(.active)' })).toBeInTheDocument()
+  expect(
+    getByText(paginationItemElmts.item(1), '1', {
+      selector: 'li:not(.ant-pagination-item-active) a',
+    }),
+  ).toBeInTheDocument()
 
   // The second direct page button should have text '2' and not be active.
-  expect(getByText(menuItemElmts.item(2), '2', { selector: 'tr .item.active' })).toBeInTheDocument()
+  expect(
+    getByText(paginationItemElmts.item(2), '2', { selector: 'li.ant-pagination-item-active a' }),
+  ).toBeInTheDocument()
 
   // Click "page 1" button
-  fireEvent.click(menuItemElmts.item(1))
+  fireEvent.click(paginationItemElmts.item(1))
 
   // Should be back on the first page again.
   tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
-  expect(getByText(tBodyElmt, '1', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getByText(tBodyElmt, 'Name1', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getAllByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toHaveLength(PER_PAGE_DEFAULT)
-  expect(getAllByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toHaveLength(PER_PAGE_DEFAULT)
-  expect(getAllByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toHaveLength(PER_PAGE_DEFAULT)
+  expect(getAllByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toHaveLength(10)
+  expect(getAllByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toHaveLength(10)
+  expect(getAllByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toHaveLength(10)
 
   // The first direct page button should have text '1' and be active.
-  expect(getByText(menuItemElmts.item(1), '1', { selector: 'tr .item.active' })).toBeInTheDocument()
+  expect(
+    getByText(paginationItemElmts.item(1), '1', { selector: 'li.ant-pagination-item-active a' }),
+  ).toBeInTheDocument()
 
   // The second direct page button should have text '2' and not be active.
-  expect(getByText(menuItemElmts.item(2), '2', { selector: 'tr .item:not(.active)' })).toBeInTheDocument()
+  expect(
+    getByText(paginationItemElmts.item(2), '2', {
+      selector: 'li:not(.ant-pagination-item-active) a',
+    }),
+  ).toBeInTheDocument()
 })
