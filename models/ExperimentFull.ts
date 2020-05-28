@@ -40,8 +40,14 @@ export class ExperimentFull extends DataTransferObject<ExperimentFull> {
    */
   public readonly endDatetime: Date
 
+  /**
+   * The status of the experiment.
+   */
   public readonly status: Status
 
+  /**
+   * The platform where the experiment is running.
+   */
   public readonly platform: Platform
 
   /**
@@ -155,6 +161,9 @@ export class ExperimentFull extends DataTransferObject<ExperimentFull> {
     }
   }
 
+  /**
+   * Converts this instance into the shape expected by the API.
+   */
   toApiData(): ApiData {
     return {
       experiment_id: this.experimentId,
