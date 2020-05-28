@@ -129,7 +129,7 @@ export class Analysis {
       participantStats: apiData.participant_stats,
       // No need to use fromApiData() on the metric estimates since they're already in camelCase (single word keys).
       metricEstimates: apiData.metric_estimates,
-      recommendation: apiData.recommendation ? Recommendation.fromApiData(apiData.recommendation) : null,
+      recommendation: apiData.recommendation && Recommendation.fromApiData(apiData.recommendation),
       analysisDatetime: parseISO(apiData.analysis_datetime),
     }
   }
