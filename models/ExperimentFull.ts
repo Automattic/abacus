@@ -1,4 +1,5 @@
 import { ApiData } from '@/api/ApiData'
+import { ApiDataSource } from '@/api/ApiDataSource'
 import { DataTransferObject } from '@/models/DataTransferObject'
 import { formatIsoUtcOffset } from '@/utils/date'
 
@@ -16,7 +17,7 @@ import {
 /**
  * An experiment with full data.
  */
-export class ExperimentFull extends DataTransferObject<ExperimentFull> {
+export class ExperimentFull extends DataTransferObject<ExperimentFull> implements ApiDataSource {
   /**
    * Unique experiment ID.
    */
@@ -59,25 +60,25 @@ export class ExperimentFull extends DataTransferObject<ExperimentFull> {
    * Additional context for running the experiment. This may include initial
    * research, experiment background, hypotheses, etc.
    */
-  description: string
+  public readonly description: string
 
   /**
    * If true, include users that signed up before the experiment. Otherwise, run the
    * experiment only on new users.
    */
-  existingUsersAllowed: boolean
+  public readonly existingUsersAllowed: boolean
 
   /**
    * Link to the experiment announcement/discussion post.
    */
-  p2Url: string
+  public readonly p2Url: string
 
   /**
    * Events that capture exposure to the experiment. If `null`, only
    * intention-to-treat analysis and its modifications are possible. Otherwise, this
    * field is used for per-protocol analysis of the experiment.
    */
-  exposureEvents?: Array<Event> | null
+  public readonly exposureEvents?: Array<Event> | null
 
   /**
    * Variations that experiment participants may see. Constraints:
@@ -87,34 +88,34 @@ export class ExperimentFull extends DataTransferObject<ExperimentFull> {
    * - The sum of the variations' `allocated_percentage` values
    *   must be between 2 and 100.
    */
-  variations: Array<Variation>
+  public readonly variations: Array<Variation>
 
   /**
    * Metrics that are assigned to this experiment. May be empty.
    */
-  metricAssignments: Array<MetricAssignment>
+  public readonly metricAssignments: Array<MetricAssignment>
 
   /**
    * Segments that are assigned to this experiment. May be empty.
    */
-  segmentAssignments: Array<SegmentAssignment>
+  public readonly segmentAssignments: Array<SegmentAssignment>
 
   /**
    * An explanation or reason why the experiment ended.
    */
-  endReason?: string | null
+  public readonly endReason?: string | null
 
   /**
    * Link to a comment/post that describes the experiment conclusion and future
    * action items. This should be populated within a reasonable time from
    * `end_datetime`.
    */
-  conclusionUrl?: string | null
+  public readonly conclusionUrl?: string | null
 
   /**
    * The variation ID that was deployed once the experiment concluded.
    */
-  deployedVariationId?: number | null
+  public readonly deployedVariationId?: number | null
 
   /**
    * Create an instance from raw API data (parsed JSON).
