@@ -3,14 +3,14 @@ import { DataTransferObject } from '@/models/DataTransferObject'
 import { formatIsoUtcOffset } from '@/utils/date'
 
 import {
-  ExperimentBare,
   Event,
+  ExperimentBare,
   MetricAssignment,
   MetricAssignmentAttributionWindowSecondsEnum,
-  SegmentAssignment,
-  Variation,
-  Status,
   Platform,
+  SegmentAssignment,
+  Status,
+  Variation,
 } from './index'
 
 /**
