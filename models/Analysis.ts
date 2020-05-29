@@ -35,12 +35,12 @@ class Recommendation extends DataTransferObject<Recommendation> {
    * @param apiData Raw API data.
    */
   static fromApiData(apiData: ApiData): Recommendation {
-    return new Recommendation({
+    return {
       endExperiment: apiData.end_experiment,
       chosenVariationId: apiData.chosen_variation_id,
       reason: apiData.reason as RecommendationReason,
       warnings: apiData.warnings.map((warning: string) => warning as RecommendationWarning),
-    })
+    }
   }
 }
 
@@ -149,7 +149,7 @@ export class Analysis extends DataTransferObject<Analysis> {
    * @param apiData Raw API data.
    */
   static fromApiData(apiData: ApiData): Analysis {
-    return new Analysis({
+    return {
       metricAssignmentId: apiData.metric_assignment_id,
       analysisStrategy: apiData.analysis_strategy as AnalysisStrategy,
       participantStats: apiData.participant_stats,
@@ -157,6 +157,6 @@ export class Analysis extends DataTransferObject<Analysis> {
       metricEstimates: apiData.metric_estimates,
       recommendation: apiData.recommendation && Recommendation.fromApiData(apiData.recommendation),
       analysisDatetime: parseISO(apiData.analysis_datetime),
-    })
+    }
   }
 }
