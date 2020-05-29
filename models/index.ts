@@ -1,3 +1,4 @@
+export * from './Analysis'
 export type { Event } from './Event'
 export * from './ExperimentBare'
 export * from './ExperimentFull'
