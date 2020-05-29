@@ -5,12 +5,12 @@ export interface MetricAssignment {
   /**
    * Globally-unique assignment ID.
    */
-  readonly metricAssignmentId: number
+  readonly metricAssignmentId?: number
 
   /**
    * ID of the experiment the metric is assigned to.
    */
-  readonly experimentId: number
+  readonly experimentId?: number
 
   /**
    * ID of the metric assigned to the experiment.

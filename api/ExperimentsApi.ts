@@ -9,7 +9,7 @@ import { fetchApi } from './utils'
  * Note: Be sure to handle any errors that may be thrown.
  */
 async function create(experiment: ExperimentFull) {
-  return await fetchApi('POST', '/experiments', JSON.stringify(experiment))
+  return ExperimentFull.fromApiData(await fetchApi('POST', '/experiments', experiment))
 }
 
 /**
@@ -20,7 +20,9 @@ async function create(experiment: ExperimentFull) {
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<ExperimentBare[]> {
-  return (await fetchApi('GET', '/experiments')).experiments.map((apiData: ApiData) => new ExperimentBare(apiData))
+  return (await fetchApi('GET', '/experiments')).experiments.map((apiData: ApiData) =>
+    ExperimentBare.fromApiData(apiData),
+  )
 }
 
 const ExperimentsApi = {

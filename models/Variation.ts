@@ -6,12 +6,12 @@ export interface Variation {
   /**
    * Globally-unique variation ID.
    */
-  readonly variationId: number
+  readonly variationId?: number
 
   /**
    * ID of the experiment this variation is assigned to.
    */
-  readonly experimentId: number
+  readonly experimentId?: number
 
   /**
    * Globally-unique variation name.

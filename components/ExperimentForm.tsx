@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { format, isAfter, isBefore, startOfToday } from 'date-fns'
+import { isAfter, isBefore, startOfToday } from 'date-fns'
 import debugFactory from 'debug'
 import pick from 'lodash/pick'
 import { toBool } from 'qc-to_bool'
@@ -11,7 +11,7 @@ import ReactSelect from 'react-select'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 
-import { ExperimentFull, Platform } from '@/models/index'
+import { ExperimentFull, Platform, Status } from '@/models/index'
 
 const SNAKE_CASE_RE = /^[a-z][a-z0-9_]*[a-z0-9]$/
 
@@ -48,11 +48,13 @@ const VariationFieldset = ({
   setValue,
   watch,
 }: {
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   control: any
   errors: any
   register: any
   setValue: any
   watch: any
+  /* eslint-enable @typescript-eslint/no-explicit-any */
 }) => {
   console.log('VariationFieldset#render')
   const { fields, append, remove } = useFieldArray({
@@ -217,25 +219,28 @@ const ExperimentForm = () => {
     console.log('values', values)
 
     const newExperimentData = {
-      ...pick(values, ['description', 'name', 'owner_login', 'p2_url', 'platform', 'status']),
-      start_datetime: format(values.start_datetime, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"),
-      end_datetime: format(values.end_datetime, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"),
-      owner_login: ((values.owner_login as unknown) as StringOption).value,
-      platform: ((values.platform as unknown) as StringOption).value,
-      existing_users_allowed: toBool(values.existing_users_allowed),
+      ...pick(values, ['description', 'name']),
+      experimentId: null,
+      p2Url: values.p2_url,
+      startDatetime: values.start_datetime,
+      endDatetime: values.end_datetime,
+      ownerLogin: ((values.owner_login as unknown) as StringOption).value,
+      platform: ((values.platform as unknown) as StringOption).value as Platform,
+      status: values.status as Status,
+      existingUsersAllowed: toBool(values.existing_users_allowed),
       // TODO: Handle assignments and variations.
-      metric_assignments: [],
-      segment_assignments: [],
+      metricAssignments: [],
+      segmentAssignments: [],
       variations: [
         {
           name: 'aa',
-          is_default: true,
-          allocated_percentage: 60,
+          isDefault: true,
+          allocatedPercentage: 60,
         },
         {
           name: 'bb',
-          is_default: false,
-          allocated_percentage: 40,
+          isDefault: false,
+          allocatedPercentage: 40,
         },
       ],
     }
