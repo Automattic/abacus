@@ -1,26 +1,33 @@
 import parseISO from 'date-fns/fp/parseISO'
 
 import { ApiData } from '@/api/ApiData'
+import { DataTransferObject } from '@/models/DataTransferObject'
 
 /**
  * An analysis recommendation.
  */
-class Recommendation {
+class Recommendation extends DataTransferObject<Recommendation> {
   /**
-   * @param endExperiment A boolean value indicating whether the experiment should end (based only on the raw data and
-   *        ignoring any warnings).
-   * @param chosenVariationId The ID of the variation that should be implemented if the experiment should end.
-   *        This field is `null` if the experiment should continue running.
-   * @param reason The reason for the recommendation. See `RecommendationReason`.
-   * @param warnings An array of string warnings. See `RecommendationWarning`.
+   * A boolean value indicating whether the experiment should end (based only on the raw data and ignoring any
+   * warnings).
    */
-  // istanbul ignore next (skip coverage for auto-generated constructor)
-  constructor(
-    public readonly endExperiment: boolean,
-    public readonly chosenVariationId: number | null,
-    public readonly reason: RecommendationReason,
-    public readonly warnings: Array<RecommendationWarning>,
-  ) {}
+  public readonly endExperiment: boolean
+
+  /**
+   * The ID of the variation that should be implemented if the experiment should end. This field is `null` if the
+   * experiment should continue running.
+   */
+  public readonly chosenVariationId: number | null
+
+  /**
+   * The reason for the recommendation. See `RecommendationReason`.
+   */
+  public readonly reason: RecommendationReason
+
+  /**
+   * An array of string warnings. See `RecommendationWarning`.
+   */
+  public readonly warnings: Array<RecommendationWarning>
 
   /**
    * Create an instance from raw API data (parsed JSON).
@@ -28,26 +35,33 @@ class Recommendation {
    * @param apiData Raw API data.
    */
   static fromApiData(apiData: ApiData): Recommendation {
-    return {
+    return new Recommendation({
       endExperiment: apiData.end_experiment,
       chosenVariationId: apiData.chosen_variation_id,
       reason: apiData.reason as RecommendationReason,
       warnings: apiData.warnings.map((warning: string) => warning as RecommendationWarning),
-    }
+    })
   }
 }
 
 /**
  * Probabilistic estimate of a metric value.
  */
-class MetricEstimate {
+class MetricEstimate extends DataTransferObject<Recommendation> {
   /**
-   * @param estimate Point estimate for the metric value.
-   * @param bottom Bottom bound of the 95% credible interval.
-   * @param top Top bound of the 95% credible interval.
+   * Point estimate for the metric value.
    */
-  // istanbul ignore next (skip coverage for auto-generated constructor)
-  constructor(public readonly estimate: number, public readonly bottom: number, public readonly top: number) {}
+  public readonly estimate: number
+
+  /**
+   * Bottom bound of the 95% credible interval.
+   */
+  public readonly bottom: number
+
+  /**
+   * Top bound of the 95% credible interval.
+   */
+  public readonly top: number
 }
 
 /**
@@ -98,24 +112,36 @@ export enum RecommendationWarning {
  * A single analysis instance. Typically, an experiment will have multiple analyses: One for each metric assignment,
  * analysis strategy, and analysis day.
  */
-export class Analysis {
+export class Analysis extends DataTransferObject<Analysis> {
   /**
-   * @param metricAssignmentId The metric assignment that this analysis is for.
-   * @param analysisStrategy The strategy used for the analysis. See `AnalysisStrategy`.
-   * @param participantStats Mapping from 'total', 'not_final', and 'variation_<id>' value to participant counts.
-   * @param metricEstimates Mapping from 'diff' and 'variation_<id>' values to `MetricEstimate` objects.
-   * @param recommendation Recommendation how to proceed based on the analysis. See `Recommendation`.
-   * @param analysisDatetime Timestamp of the analysis.
+   * The metric assignment that this analysis is for.
    */
-  // istanbul ignore next (skip coverage for auto-generated constructor)
-  constructor(
-    public readonly metricAssignmentId: number,
-    public readonly analysisStrategy: AnalysisStrategy,
-    public readonly participantStats: { [key: string]: number },
-    public readonly metricEstimates: { [key: string]: MetricEstimate } | null,
-    public readonly recommendation: Recommendation | null,
-    public readonly analysisDatetime: Date,
-  ) {}
+  public readonly metricAssignmentId: number
+
+  /**
+   * The strategy used for the analysis. See `AnalysisStrategy`.
+   */
+  public readonly analysisStrategy: AnalysisStrategy
+
+  /**
+   * Mapping from 'total', 'not_final', and 'variation_<id>' value to participant counts.
+   */
+  public readonly participantStats: { [key: string]: number }
+
+  /**
+   * Mapping from 'diff' and 'variation_<id>' values to `MetricEstimate` objects.
+   */
+  public readonly metricEstimates: { [key: string]: MetricEstimate } | null
+
+  /**
+   * Recommendation how to proceed based on the analysis. See `Recommendation`.
+   */
+  public readonly recommendation: Recommendation | null
+
+  /**
+   * Timestamp of the analysis.
+   */
+  public readonly analysisDatetime: Date
 
   /**
    * Create an instance from raw API data (parsed JSON).
@@ -123,14 +149,14 @@ export class Analysis {
    * @param apiData Raw API data.
    */
   static fromApiData(apiData: ApiData): Analysis {
-    return {
+    return new Analysis({
       metricAssignmentId: apiData.metric_assignment_id,
       analysisStrategy: apiData.analysis_strategy as AnalysisStrategy,
       participantStats: apiData.participant_stats,
       // No need to use fromApiData() on the metric estimates since they're already in camelCase (single word keys).
       metricEstimates: apiData.metric_estimates,
-      recommendation: apiData.recommendation ? Recommendation.fromApiData(apiData.recommendation) : null,
+      recommendation: apiData.recommendation && Recommendation.fromApiData(apiData.recommendation),
       analysisDatetime: parseISO(apiData.analysis_datetime),
-    }
+    })
   }
 }

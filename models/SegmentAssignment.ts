@@ -5,12 +5,12 @@ export interface SegmentAssignment {
   /**
    * Globally-unique assignment ID.
    */
-  readonly segmentAssignmentId: number
+  readonly segmentAssignmentId?: number
 
   /**
    * ID of the experiment the segment is assigned to.
    */
-  readonly experimentId: number
+  readonly experimentId?: number
 
   /**
    * ID of the segment assigned to the experiment.
