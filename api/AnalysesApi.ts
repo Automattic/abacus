@@ -11,8 +11,9 @@ import { fetchApi } from './utils'
  * @throws UnauthorizedError
  */
 async function findByExperimentId(experimentId: number): Promise<Analysis[]> {
-  const apiResults = await fetchApi('GET', '/analyses/' + experimentId)
-  return apiResults.analyses.map((apiData: ApiData) => Analysis.fromApiData(apiData))
+  return (await fetchApi('GET', '/analyses/' + experimentId)).analyses.map((apiData: ApiData) =>
+    Analysis.fromApiData(apiData),
+  )
 }
 
 const AnalysesApi = {
