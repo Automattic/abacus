@@ -10,7 +10,7 @@ import Layout from '@/components/Layout'
 
 import { Analysis } from '@/models'
 
-const debug = debugFactory('abacus:pages/index.tsx')
+const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 
 export default function ExperimentPage() {
   const experimentId = Number(useRouter().query.id)

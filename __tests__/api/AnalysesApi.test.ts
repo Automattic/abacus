@@ -11,8 +11,8 @@ describe('AnalysesApi.ts module', () => {
       analyses.forEach((analysis) => {
         expect(typeof analysis.metricAssignmentId).toBe('number')
         expect(Object.values(AnalysisStrategy).includes(analysis.analysisStrategy)).toBe(true)
-        expect(typeof analysis.participantStats['total']).toBe('number')
-        expect(typeof analysis.participantStats['not_final']).toBe('number')
+        expect(typeof analysis.participantStats.total).toBe('number')
+        expect(typeof analysis.participantStats.not_final).toBe('number')
         expect(analysis.analysisDatetime).toBeInstanceOf(Date)
         if (analysis.metricEstimates !== null) {
           Object.entries(analysis.metricEstimates).forEach(([key, metricEstimate]) => {
