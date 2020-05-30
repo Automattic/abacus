@@ -8,13 +8,18 @@ import FieldError from './FieldError'
 
 const debug = debugFactory('project:components/ReactSelectField.tsx')
 
+interface Option {
+  label: string
+  value: string
+}
+
 interface Props {
   input: {
     name: string
-    [attrName: string]: string
+    options: Option[]
+    [attrName: string]: Option[] | string
   }
   label?: ReactNode
-  options: { label: string; value: string }[]
   validate?: (
     value?: ValueType<OptionTypeBase> | OptionsType<OptionTypeBase>,
     values?: unknown,
@@ -31,7 +36,7 @@ function ReactSelectField(props: Props) {
         return (
           <div className='field'>
             {fieldLabel !== undefined && <label>{fieldLabel}</label>}
-            <ReactSelect {...props.input} {...input} options={props.options} />
+            <ReactSelect {...props.input} {...input} />
             <FieldError error={error} touched={touched} />
           </div>
         )

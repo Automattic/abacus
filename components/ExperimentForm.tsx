@@ -266,16 +266,14 @@ const ExperimentForm = () => {
           />
 
           <ReactSelectField
-            input={{ instanceId: 'ownerLogin', name: 'owner_login' }}
+            input={{ instanceId: 'ownerLogin', name: 'owner_login', options: ownerOptions }}
             label='Owner'
-            options={ownerOptions}
             validate={required}
           />
 
           <ReactSelectField
-            input={{ instanceId: 'platform', name: 'platform' }}
+            input={{ instanceId: 'platform', name: 'platform', options: PLATFORM_OPTIONS }}
             label='Platform'
-            options={PLATFORM_OPTIONS}
             validate={required}
           />
 
