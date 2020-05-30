@@ -1,5 +1,5 @@
 import debugFactory from 'debug'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, SyntheticEvent } from 'react'
 import { Field } from 'react-final-form'
 import { FieldMetaState } from 'react-final-form/typescript'
 
@@ -25,6 +25,7 @@ interface Props {
     // | 'tel'
     // | 'time'
     // | 'week'
+    onChange?: (event: SyntheticEvent<HTMLInputElement>) => void
     [attrName: string]: unknown
   }
   label?: ReactNode
@@ -43,12 +44,19 @@ function InputField(props: Props) {
   return (
     <Field name={props.input.name} validate={validate}>
       {({ input, meta: { error, touched } }) => {
+        let onChange = input.onChange
+        if (props.input.onChange) {
+          onChange = (event: SyntheticEvent<HTMLInputElement>) => {
+            props.input.onChange?.(event)
+            input.onChange(event)
+          }
+        }
         return (
           <div className='field'>
             {fieldLabel !== undefined && <label>{fieldLabel}</label>}
             {preHelper !== undefined && <div>{preHelper}</div>}
             <div className='ui input'>
-              <input {...props.input} {...input} />
+              <input {...props.input} {...input} onChange={onChange} />
             </div>
             {postHelper !== undefined && <div>{postHelper}</div>}
             <FieldError error={error} touched={touched} />
