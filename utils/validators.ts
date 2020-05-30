@@ -98,7 +98,14 @@ const createPattern = (
   msg: (data: { [key: string]: unknown }) => string,
   data: { [key: string]: unknown; pattern: string },
 ) => {
-  const patternRegExp = new RegExp(data.pattern)
+  let { pattern } = data
+  if (!pattern.startsWith('^')) {
+    pattern = '^(?:' + pattern
+  }
+  if (!pattern.endsWith('$')) {
+    pattern = pattern + ')$'
+  }
+  const patternRegExp = new RegExp(pattern)
   return (value: unknown): string | undefined => {
     if (!(typeof value === 'string' && patternRegExp.test(value))) {
       return msg(data)
