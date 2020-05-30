@@ -1,4 +1,5 @@
 import debugFactory from 'debug'
+import { toNumOrNull } from 'qc-to_num'
 import React, { ReactNode, SyntheticEvent } from 'react'
 import { Field } from 'react-final-form'
 import { FieldMetaState } from 'react-final-form/typescript'
@@ -41,8 +42,12 @@ interface Props {
 function InputField(props: Props) {
   debug('InputField#render')
   const { label: fieldLabel, postHelper, preHelper, validate } = props
+  let parse
+  if (props.input.type === 'number') {
+    parse = toNumOrNull
+  }
   return (
-    <Field name={props.input.name} validate={validate}>
+    <Field name={props.input.name} parse={parse} validate={validate}>
       {({ input, meta: { error, touched } }) => {
         let onChange = input.onChange
         if (props.input.onChange) {
