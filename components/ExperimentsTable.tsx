@@ -16,6 +16,8 @@ interface Props {
   experiments: ExperimentBare[]
 }
 
+// TODO: Finish tests to run through the following function if this route is chosen.
+/* istanbul ignore next */
 const createSortByComparable = (
   name: 'endDatetime' | 'name' | 'ownerLogin' | 'platform' | 'startDatetime' | 'status',
 ) => {
