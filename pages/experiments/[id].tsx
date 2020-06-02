@@ -1,5 +1,4 @@
 import debugFactory from 'debug'
-import format from 'date-fns/format'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Container from 'semantic-ui-react/dist/commonjs/elements/Container'
@@ -10,6 +9,7 @@ import ExperimentsApi from '@/api/ExperimentsApi'
 import ErrorsBox from '@/components/ErrorsBox'
 import Layout from '@/components/Layout'
 import { Analysis, ExperimentFull } from '@/models'
+import { formatIsoUtcOffset } from '@/utils/date'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 
@@ -17,9 +17,6 @@ function ExperimentDetails(props: { experiment: ExperimentFull }) {
   const { experiment } = props
   return (
     <div>
-      <p>TODO: Determine actual layout.</p>
-      <p>TODO: Determine date format. Include time?</p>
-      <p>TODO: Determine P2 link text</p>
       <table>
         <tr>
           <td>Name</td>
@@ -39,11 +36,11 @@ function ExperimentDetails(props: { experiment: ExperimentFull }) {
         </tr>
         <tr>
           <td>Start</td>
-          <td>{format(experiment.startDatetime, 'yyyy-MM-dd')}</td>
+          <td>{formatIsoUtcOffset(experiment.startDatetime)}</td>
         </tr>
         <tr>
           <td>End</td>
-          <td>{format(experiment.endDatetime, 'yyyy-MM-dd')}</td>
+          <td>{formatIsoUtcOffset(experiment.endDatetime)}</td>
         </tr>
         <tr>
           <td>Status</td>
