@@ -12,8 +12,6 @@ const isoDateRenderer = (date: Date) => <span className='whitespace-no-wrap'>{fo
 
 const debug = debugFactory('abacus:components/ExperimentsTable.tsx')
 
-const PER_PAGE_DEFAULT = 25
-
 interface Props {
   experiments: ExperimentBare[]
 }
@@ -36,10 +34,9 @@ const ExperimentsTable = (props: Props) => {
         { title: 'Owner', field: 'ownerLogin' },
       ]}
       data={experiments}
-      options={{ showTitle: false }}
+      options={{ showEmptyDataSourceMessage: false, showTitle: false }}
     />
   )
 }
 
-export { PER_PAGE_DEFAULT }
 export default ExperimentsTable
