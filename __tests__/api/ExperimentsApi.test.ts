@@ -63,8 +63,7 @@ describe('ExperimentsApi.ts module', () => {
       expect(experiment.startDatetime).toBeInstanceOf(Date)
       expect(experiment.endDatetime).toBeInstanceOf(Date)
       expect(PLATFORMS.includes(experiment.platform)).toBe(true)
-      // TODO: Uncomment the following once the test server is returning back a status.
-      // expect(STATUSES.includes(experiment.status)).toBe(true)
+      expect(STATUSES.includes(experiment.status)).toBe(true)
       expect(typeof experiment.ownerLogin).toBe('string')
       expect(typeof experiment.existingUsersAllowed).toBe('boolean')
       expect(typeof experiment.p2Url).toBe('string')
