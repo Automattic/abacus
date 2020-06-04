@@ -4,11 +4,16 @@ import MaterialTable from 'material-table'
 import React from 'react'
 
 import { ExperimentBare } from '@/models/index'
+import { formatIsoUtcOffset } from '@/utils/date'
 
 /**
  * Renders the date in ISO-8601 date-only format.
  */
-const isoDateRenderer = (date: Date) => <span className='whitespace-no-wrap'>{format(date, 'yyyy-MM-dd')}</span>
+const isoDateRenderer = (date: Date) => (
+  <span className='whitespace-no-wrap' title={formatIsoUtcOffset(date)}>
+    {format(date, 'yyyy-MM-dd')}
+  </span>
+)
 
 const debug = debugFactory('abacus:components/ExperimentsTable.tsx')
 
