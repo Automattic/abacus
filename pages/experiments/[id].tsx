@@ -76,9 +76,7 @@ export default function ExperimentPage() {
     Promise.all([AnalysesApi.findByExperimentId(experimentId), ExperimentsApi.findById(experimentId)])
       .then(([analyses, experiment]) => {
         setAnalyses(analyses)
-        // TODO: See if the following hack can be removed after we figure out the data model
-        // issues.
-        setExperiment(experiment as ExperimentFull) // HACK: Cast to appease TypeScript.
+        setExperiment(experiment)
         return
       })
       .catch(setFetchError)

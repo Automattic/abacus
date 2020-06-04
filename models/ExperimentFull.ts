@@ -1,6 +1,6 @@
 import { ApiData } from '@/api/ApiData'
 import { ApiDataSource } from '@/api/ApiDataSource'
-import { DataTransferObject } from '@/models/DataTransferObject'
+import { ExcludeMethods } from '@/types/ExcludeMethods'
 import { formatIsoUtcOffset } from '@/utils/date'
 
 import {
@@ -17,7 +17,7 @@ import {
 /**
  * An experiment with full data.
  */
-export class ExperimentFull extends DataTransferObject<ExperimentFull> implements ApiDataSource {
+export class ExperimentFull implements ApiDataSource {
   /**
    * Unique experiment ID.
    */
@@ -118,12 +118,19 @@ export class ExperimentFull extends DataTransferObject<ExperimentFull> implement
   public readonly deployedVariationId?: number | null
 
   /**
+   * Constructs a new experiment.
+   */
+  constructor(data: ExcludeMethods<ExperimentFull>) {
+    Object.assign(this, data)
+  }
+
+  /**
    * Create an instance from raw API data (parsed JSON).
    *
    * @param apiData Raw API data.
    */
   static fromApiData(apiData: ApiData) {
-    return {
+    return new ExperimentFull({
       ...ExperimentBare.fromApiData(apiData),
       conclusionUrl: apiData.conclusion_url || null,
       deployedVariationId: apiData.deployed_variation_id || null,
@@ -159,7 +166,7 @@ export class ExperimentFull extends DataTransferObject<ExperimentFull> implement
         name: variation.name,
         variationId: variation.variation_id,
       })),
-    }
+    })
   }
 
   /**
