@@ -19,8 +19,6 @@ test('with no experiments, renders an empty table', () => {
   expect(getByText('Platform')).toBeInTheDocument()
   expect(getByText('Owner')).toBeInTheDocument()
 
-  // The MUI Table's body contains empty `tr`s but should have no textual content
-  // with the table's configuration.
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
   expect(tBodyElmt).toHaveTextContent('')
@@ -49,8 +47,8 @@ test('with one page of experiments, renders a table', () => {
 })
 
 test('with more than one page of experiments, renders a table with a pagination control', () => {
-  const PER_PAGE = 5
-  const COUNT = 8 // Some value greater than "per page".
+  const PER_PAGE = 25
+  const COUNT = 31 // Some value greater than "per page".
   const startDatetime = new Date()
   const endDatetime = addToDate(new Date(), { days: 14 })
   const experiments: ExperimentBare[] = Array.from(Array(COUNT).keys()).map((num) => ({
@@ -84,7 +82,7 @@ test('with more than one page of experiments, renders a table with a pagination 
   // Should be on the second page now.
   tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
-  expect(getByText(tBodyElmt, 'Name6', { selector: 'tr > td' })).toBeInTheDocument()
+  expect(getByText(tBodyElmt, 'Name26', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getAllByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toHaveLength(COUNT - PER_PAGE)
   expect(getAllByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toHaveLength(COUNT - PER_PAGE)
   expect(getAllByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toHaveLength(COUNT - PER_PAGE)

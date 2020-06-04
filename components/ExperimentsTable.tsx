@@ -39,7 +39,13 @@ const ExperimentsTable = (props: Props) => {
         { title: 'Owner', field: 'ownerLogin' },
       ]}
       data={experiments}
-      options={{ showEmptyDataSourceMessage: false, showTitle: false }}
+      options={{
+        emptyRowsWhenPaging: false,
+        pageSize: 25,
+        pageSizeOptions: [25, 50, 100],
+        showEmptyDataSourceMessage: false,
+        showTitle: false,
+      }}
     />
   )
 }
