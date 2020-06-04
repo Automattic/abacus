@@ -2,9 +2,9 @@ import { MetricFull } from './MetricFull'
 
 describe('models/MetricFull.ts module', () => {
   describe('MetricFull', () => {
-    describe('constructor called with apiData', () => {
+    describe('fromApiData', () => {
       it('with non-null eventParams should create a valid instance', () => {
-        const metricFull = new MetricFull({
+        const metricFull = MetricFull.fromApiData({
           metric_id: 123,
           name: 'Example Metric',
           description: 'An example metric.',
@@ -37,7 +37,7 @@ describe('models/MetricFull.ts module', () => {
       })
 
       it('with non-null revenueParams and empty arrays should create a valid instance', () => {
-        const metricFull = new MetricFull({
+        const metricFull = MetricFull.fromApiData({
           metric_id: 123,
           name: 'Example Metric',
           description: 'An example metric.',
@@ -64,7 +64,7 @@ describe('models/MetricFull.ts module', () => {
       })
 
       it('with non-null revenueParams and non-empty product_slugs should create a valid instance', () => {
-        const metricFull = new MetricFull({
+        const metricFull = MetricFull.fromApiData({
           metric_id: 123,
           name: 'Example Metric',
           description: 'An example metric.',
@@ -91,7 +91,7 @@ describe('models/MetricFull.ts module', () => {
       })
 
       it('with non-null revenueParams and non-empty transaction_types should create a valid instance', () => {
-        const metricFull = new MetricFull({
+        const metricFull = MetricFull.fromApiData({
           metric_id: 123,
           name: 'Example Metric',
           description: 'An example metric.',
@@ -118,7 +118,7 @@ describe('models/MetricFull.ts module', () => {
       })
 
       it('with non-null revenueParams and non-empty arrays should create a valid instance', () => {
-        const metricFull = new MetricFull({
+        const metricFull = MetricFull.fromApiData({
           metric_id: 123,
           name: 'Example Metric',
           description: 'An example metric.',

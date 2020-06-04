@@ -1,12 +1,11 @@
 import parseISO from 'date-fns/fp/parseISO'
 
 import { ApiData } from '@/api/ApiData'
-import { DataTransferObject } from '@/models/DataTransferObject'
 
 /**
  * An analysis recommendation.
  */
-class Recommendation extends DataTransferObject<Recommendation> {
+class Recommendation {
   /**
    * A boolean value indicating whether the experiment should end (based only on the raw data and ignoring any
    * warnings).
@@ -30,24 +29,31 @@ class Recommendation extends DataTransferObject<Recommendation> {
   public readonly warnings: Array<RecommendationWarning>
 
   /**
+   * Constructs a new recommendation.
+   */
+  constructor(data: Readonly<Recommendation>) {
+    Object.assign(this, data)
+  }
+
+  /**
    * Create an instance from raw API data (parsed JSON).
    *
    * @param apiData Raw API data.
    */
   static fromApiData(apiData: ApiData): Recommendation {
-    return {
+    return new Recommendation({
       endExperiment: apiData.end_experiment,
       chosenVariationId: apiData.chosen_variation_id,
       reason: apiData.reason as RecommendationReason,
       warnings: apiData.warnings.map((warning: string) => warning as RecommendationWarning),
-    }
+    })
   }
 }
 
 /**
  * Probabilistic estimate of a metric value.
  */
-class MetricEstimate extends DataTransferObject<Recommendation> {
+class MetricEstimate {
   /**
    * Point estimate for the metric value.
    */
@@ -112,7 +118,7 @@ export enum RecommendationWarning {
  * A single analysis instance. Typically, an experiment will have multiple analyses: One for each metric assignment,
  * analysis strategy, and analysis day.
  */
-export class Analysis extends DataTransferObject<Analysis> {
+export class Analysis {
   /**
    * The metric assignment that this analysis is for.
    */
@@ -144,12 +150,19 @@ export class Analysis extends DataTransferObject<Analysis> {
   public readonly analysisDatetime: Date
 
   /**
+   * Constructs a new analysis.
+   */
+  constructor(data: Readonly<Analysis>) {
+    Object.assign(this, data)
+  }
+
+  /**
    * Create an instance from raw API data (parsed JSON).
    *
    * @param apiData Raw API data.
    */
   static fromApiData(apiData: ApiData): Analysis {
-    return {
+    return new Analysis({
       metricAssignmentId: apiData.metric_assignment_id,
       analysisStrategy: apiData.analysis_strategy as AnalysisStrategy,
       participantStats: apiData.participant_stats,
@@ -157,6 +170,6 @@ export class Analysis extends DataTransferObject<Analysis> {
       metricEstimates: apiData.metric_estimates,
       recommendation: apiData.recommendation && Recommendation.fromApiData(apiData.recommendation),
       analysisDatetime: parseISO(apiData.analysis_datetime),
-    }
+    })
   }
 }

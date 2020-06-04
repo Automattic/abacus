@@ -4,21 +4,35 @@ export class MetricBare {
   /**
    * Globally-unique metric ID.
    */
-  readonly metricId: number
+  public readonly metricId: number
 
   /**
    * Globally-unique metric name.
    */
-  name: string
+  public readonly name: string
 
   /**
    * Human-friendly description of what the metric intends to measure.
    */
-  description: string
+  public readonly description: string
 
-  constructor(apiData: ApiData) {
-    this.metricId = apiData.metric_id
-    this.name = apiData.name
-    this.description = apiData.description
+  /**
+   * Constructs a new metric.
+   */
+  constructor(data: Readonly<MetricBare>) {
+    Object.assign(this, data)
+  }
+
+  /**
+   * Create an instance from raw API data (parsed JSON).
+   *
+   * @param apiData Raw API data.
+   */
+  static fromApiData(apiData: ApiData) {
+    return new MetricBare({
+      metricId: apiData.metric_id,
+      name: apiData.name,
+      description: apiData.description,
+    })
   }
 }
