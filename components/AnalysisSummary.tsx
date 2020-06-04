@@ -33,11 +33,13 @@ export default function AnalysisSummary(props: { analyses: Analysis[]; experimen
   )
   const sortedVariations = _.orderBy(experiment.variations, ['isPrimary', 'name'], ['desc', 'asc'])
   // TODO:
-  // - complain/warn if a metric assignment doesn't have data for the latest analysis date -- might actually be fine because of the attribution window
   // - add metric assignment values
+  // - warn if a metric assignment doesn't have any data
+  // - warn if the total and variation counts for a metric assignment don't match the latest for the primary metric
+  // - show the latest values for each metric assignment, noting the analysis date
+  // - add not final under metric assignment summary -- confusing under counts since it's metric-specific
   // - handle edge cases
   // - add some light tests
-  // - move not final to metric assignment summary -- confusing under counts
   return (
     <>
       <h2>Analysis summary for {formatIsoUtcOffset(latestAnalysisDatetime)}</h2>
@@ -50,8 +52,11 @@ export default function AnalysisSummary(props: { analyses: Analysis[]; experimen
             <TableRow>
               <TableCell>Strategy</TableCell>
               <TableCell>Total</TableCell>
-              <TableCell>Not final</TableCell>
-              <TableCell>Variation split</TableCell>
+              {sortedVariations.map((variation) => (
+                <TableCell key={variation.variationId}>
+                  <code>{variation.name}</code>
+                </TableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -59,15 +64,11 @@ export default function AnalysisSummary(props: { analyses: Analysis[]; experimen
               <TableRow key={analysis.analysisStrategy}>
                 <TableCell>{strategyToTitle[analysis.analysisStrategy]}</TableCell>
                 <TableCell>{analysis.participantStats.total}</TableCell>
-                <TableCell>{analysis.participantStats.not_final}</TableCell>
-                <TableCell>
-                  {sortedVariations.map((variation) => (
-                    <div key={variation.name}>
-                      <code>{variation.name}</code>:&nbsp;
-                      <span>{analysis.participantStats[`variation_${variation.variationId}`] || 0}</span>
-                    </div>
-                  ))}
-                </TableCell>
+                {sortedVariations.map((variation) => (
+                  <TableCell key={variation.variationId}>
+                    {analysis.participantStats[`variation_${variation.variationId}`] || 0}
+                  </TableCell>
+                ))}
               </TableRow>
             ))}
           </TableBody>
