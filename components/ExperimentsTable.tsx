@@ -32,7 +32,6 @@ const ExperimentsTable = (props: Props) => {
 
   /* istanbul ignore next; to be handled by an e2e test */
   const handleRowClick = (event?: React.MouseEvent, rowData?: ExperimentBare) => {
-    /* istanbul ignore next */
     router.push('/experiments/[id]', `/experiments/${rowData?.experimentId}`)
   }
 
