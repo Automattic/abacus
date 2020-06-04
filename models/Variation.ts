@@ -2,30 +2,37 @@
  * An experiment variation. Unlike segments and metrics, variations can't exist
  * without an associated experiment.
  */
-export interface Variation {
+export class Variation {
   /**
    * Globally-unique variation ID.
    */
-  readonly variationId?: number
+  public readonly variationId?: number
 
   /**
    * ID of the experiment this variation is assigned to.
    */
-  readonly experimentId?: number
+  public readonly experimentId?: number
 
   /**
    * Globally-unique variation name.
    */
-  name: string
+  public readonly name: string
 
   /**
    * Whether this variation is the default one to fall back to when the experiment
    * is disabled.
    */
-  isDefault: boolean
+  public readonly isDefault: boolean
 
   /**
    * Percentage of traffic to allocate to this variation.
    */
-  allocatedPercentage: number
+  public readonly allocatedPercentage: number
+
+  /**
+   * Construct a new variation.
+   */
+  constructor(data: Readonly<Variation>) {
+    Object.assign(this, data)
+  }
 }

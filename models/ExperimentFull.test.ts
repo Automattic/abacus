@@ -2,7 +2,7 @@ import { Platform } from '@/models/Platform'
 import { Status } from '@/models/Status'
 
 import { ExperimentFull } from './ExperimentFull'
-import { MetricAssignmentAttributionWindowSecondsEnum } from './MetricAssignment'
+import { AttributionWindowSeconds } from './MetricAssignment'
 
 describe('models/ExperimentFull.ts module', () => {
   describe('ExperimentFull', () => {
@@ -61,7 +61,7 @@ describe('models/ExperimentFull.ts module', () => {
             exposureEvents: null,
             metricAssignments: [
               {
-                attributionWindowSeconds: MetricAssignmentAttributionWindowSecondsEnum.OneHour,
+                attributionWindowSeconds: AttributionWindowSeconds.OneHour,
                 changeExpected: true,
                 experimentId: 123,
                 isPrimary: false,
@@ -166,7 +166,7 @@ describe('models/ExperimentFull.ts module', () => {
             ],
             metricAssignments: [
               {
-                attributionWindowSeconds: MetricAssignmentAttributionWindowSecondsEnum.OneHour,
+                attributionWindowSeconds: AttributionWindowSeconds.OneHour,
                 changeExpected: true,
                 experimentId: 123,
                 isPrimary: false,
@@ -272,7 +272,7 @@ describe('models/ExperimentFull.ts module', () => {
           ],
           metricAssignments: [
             {
-              attributionWindowSeconds: MetricAssignmentAttributionWindowSecondsEnum.OneWeek,
+              attributionWindowSeconds: AttributionWindowSeconds.OneWeek,
               changeExpected: true,
               isPrimary: true,
               metricId: 4,

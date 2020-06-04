@@ -7,7 +7,7 @@ import {
   Event,
   ExperimentBare,
   MetricAssignment,
-  MetricAssignmentAttributionWindowSecondsEnum,
+  AttributionWindowSeconds,
   Platform,
   SegmentAssignment,
   Status,
@@ -144,7 +144,7 @@ export class ExperimentFull implements ApiDataSource {
           }))
         : null,
       metricAssignments: apiData.metric_assignments.map((metricAssignment: ApiData) => ({
-        attributionWindowSeconds: metricAssignment.attribution_window_seconds as MetricAssignmentAttributionWindowSecondsEnum,
+        attributionWindowSeconds: metricAssignment.attribution_window_seconds as AttributionWindowSeconds,
         changeExpected: metricAssignment.change_expected,
         experimentId: metricAssignment.experiment_id,
         isPrimary: metricAssignment.is_primary,
