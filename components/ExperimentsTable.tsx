@@ -3,7 +3,7 @@ import debugFactory from 'debug'
 import MaterialTable from 'material-table'
 import React from 'react'
 
-import { ExperimentBare } from '@/models/index'
+import { ExperimentBare } from '@/models'
 import { formatIsoUtcOffset } from '@/utils/date'
 
 /**

@@ -1,4 +1,4 @@
-import { MetricBare } from '@/models/index'
+import { MetricBare } from '@/models'
 
 import { ApiData } from './ApiData'
 import { fetchApi } from './utils'

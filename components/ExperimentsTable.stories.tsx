@@ -3,7 +3,7 @@ import '@/styles/main.scss'
 import addToDate from 'date-fns/add'
 import React from 'react'
 
-import { ExperimentBare, Platform, Status } from '@/models/index'
+import { ExperimentBare, Platform, Status } from '@/models'
 
 import ExperimentsTable from './ExperimentsTable'
 

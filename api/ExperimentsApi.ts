@@ -1,4 +1,4 @@
-import { ExperimentBare, ExperimentFull } from '@/models/index'
+import { ExperimentBare, ExperimentFull } from '@/models'
 
 import { ApiData } from './ApiData'
 import { fetchApi } from './utils'
