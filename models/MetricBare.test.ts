@@ -2,9 +2,9 @@ import { MetricBare } from './MetricBare'
 
 describe('models/MetricBare.ts module', () => {
   describe('MetricBare', () => {
-    describe('constructor', () => {
+    describe('fromApiData', () => {
       it('called with valid API data should create a new `MetricBare` instance', () => {
-        const metricBare = new MetricBare({
+        const metricBare = MetricBare.fromApiData({
           metric_id: 123,
           name: 'Example Metric',
           description: 'An example metric.',
