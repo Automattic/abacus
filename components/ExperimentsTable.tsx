@@ -1,6 +1,7 @@
 import { format } from 'date-fns'
 import debugFactory from 'debug'
 import MaterialTable from 'material-table'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 import { ExperimentBare } from '@/models/index'
@@ -27,6 +28,13 @@ interface Props {
 const ExperimentsTable = (props: Props) => {
   debug('ExperimentsTable#render')
   const { experiments } = props
+  const router = useRouter()
+
+  /* istanbul ignore next; to be handled by an e2e test */
+  const handleRowClick = (event?: React.MouseEvent, rowData?: ExperimentBare) => {
+    /* istanbul ignore next */
+    router.push('/experiments/[id]', `/experiments/${rowData?.experimentId}`)
+  }
 
   return (
     <MaterialTable
@@ -39,6 +47,7 @@ const ExperimentsTable = (props: Props) => {
         { title: 'Owner', field: 'ownerLogin' },
       ]}
       data={experiments}
+      onRowClick={handleRowClick}
       options={{
         emptyRowsWhenPaging: false,
         pageSize: 25,
