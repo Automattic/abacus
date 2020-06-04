@@ -1,7 +1,7 @@
+import Container from '@material-ui/core/Container'
 import Link from 'next/link'
 import Head from 'next/head'
 import React, { ReactNode } from 'react'
-import Container from 'semantic-ui-react/dist/commonjs/elements/Container'
 
 import { onRenderError } from '@/event-handlers/index'
 

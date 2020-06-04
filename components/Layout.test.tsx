@@ -21,7 +21,7 @@ test('renders layout with declared title and children', () => {
   expect(headerElmt).toMatchInlineSnapshot(`
     <header>
       <div
-        class="ui container"
+        class="MuiContainer-root MuiContainer-maxWidthLg"
       >
         <nav>
           <a
@@ -48,7 +48,7 @@ test('renders layout with declared title and children', () => {
     <footer>
       <hr />
       <div
-        class="ui container"
+        class="MuiContainer-root MuiContainer-maxWidthLg"
       >
         <span>
           The Abacus footer, brought to you by Automattic

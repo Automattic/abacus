@@ -1,6 +1,6 @@
+import Container from '@material-ui/core/Container'
 import debugFactory from 'debug'
 import React, { useEffect, useState } from 'react'
-import Container from 'semantic-ui-react/dist/commonjs/elements/Container'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 

@@ -1,7 +1,7 @@
+import Container from '@material-ui/core/Container'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import Container from 'semantic-ui-react/dist/commonjs/elements/Container'
 import { toIntOrNull } from 'qc-to_int'
 
 import AnalysesApi from '@/api/AnalysesApi'
