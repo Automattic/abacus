@@ -8,22 +8,36 @@ export class Segment {
   /**
    * Globally-unique segment ID.
    */
-  readonly segmentId: number
+  public readonly segmentId: number
 
   /**
    * Globally-unique segment name.
    */
-  name: string
+  public readonly name: string
 
   /**
    * Type of segment.
    */
-  type: SegmentType
+  public readonly type: SegmentType
 
-  constructor(apiData: ApiData) {
-    this.segmentId = apiData.segment_id
-    this.name = apiData.name
-    this.type = apiData.type as SegmentType
+  /**
+   * Constructs a new segment.
+   */
+  constructor(data: Readonly<Segment>) {
+    Object.assign(this, data)
+  }
+
+  /**
+   * Create an instance from raw API data (parsed JSON).
+   *
+   * @param apiData Raw API data.
+   */
+  static fromApiData(apiData: ApiData) {
+    return new Segment({
+      segmentId: apiData.segment_id,
+      name: apiData.name,
+      type: apiData.type as SegmentType,
+    })
   }
 }
 

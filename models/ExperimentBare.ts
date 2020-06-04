@@ -1,14 +1,13 @@
 import parseISO from 'date-fns/fp/parseISO'
 
 import { ApiData } from '@/api/ApiData'
-import { DataTransferObject } from '@/models/DataTransferObject'
 
 import { Platform, Status } from './index'
 
 /**
  * An experiment summary.
  */
-export class ExperimentBare extends DataTransferObject<ExperimentBare> {
+export class ExperimentBare {
   /**
    * Unique experiment ID.
    */
@@ -42,12 +41,19 @@ export class ExperimentBare extends DataTransferObject<ExperimentBare> {
   public readonly ownerLogin: string
 
   /**
+   * Constructs a new experiment.
+   */
+  constructor(data: Readonly<ExperimentBare>) {
+    Object.assign(this, data)
+  }
+
+  /**
    * Create an instance from raw API data (parsed JSON).
    *
    * @param apiData Raw API data.
    */
   static fromApiData(apiData: ApiData) {
-    return {
+    return new ExperimentBare({
       experimentId: apiData.experiment_id,
       name: apiData.name,
       startDatetime: parseISO(apiData.start_datetime),
@@ -55,6 +61,6 @@ export class ExperimentBare extends DataTransferObject<ExperimentBare> {
       status: apiData.status as Status,
       platform: apiData.platform as Platform,
       ownerLogin: apiData.owner_login,
-    }
+    })
   }
 }
