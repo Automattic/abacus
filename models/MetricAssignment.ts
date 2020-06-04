@@ -1,3 +1,5 @@
+import { ApiData } from '@/api/ApiData'
+
 /**
  * An assignment of a metric to an experiment.
  */
@@ -52,6 +54,23 @@ export class MetricAssignment {
    */
   constructor(data: Readonly<MetricAssignment>) {
     Object.assign(this, data)
+  }
+
+  /**
+   * Create an instance from raw API data (parsed JSON).
+   *
+   * @param apiData Raw API data.
+   */
+  static fromApiData(apiData: ApiData) {
+    return new MetricAssignment({
+      attributionWindowSeconds: apiData.attribution_window_seconds as AttributionWindowSeconds,
+      changeExpected: apiData.change_expected,
+      experimentId: apiData.experiment_id,
+      isPrimary: apiData.is_primary,
+      metricAssignmentId: apiData.metric_assignment_id,
+      metricId: apiData.metric_id,
+      minDifference: apiData.min_difference,
+    })
   }
 }
 

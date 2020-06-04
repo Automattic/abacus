@@ -1,3 +1,5 @@
+import { ApiData } from '@/api/ApiData'
+
 /**
  * An experiment variation. Unlike segments and metrics, variations can't exist
  * without an associated experiment.
@@ -34,5 +36,20 @@ export class Variation {
    */
   constructor(data: Readonly<Variation>) {
     Object.assign(this, data)
+  }
+
+  /**
+   * Create an instance from raw API data (parsed JSON).
+   *
+   * @param apiData Raw API data.
+   */
+  static fromApiData(apiData: ApiData) {
+    return new Variation({
+      allocatedPercentage: apiData.allocated_percentage,
+      experimentId: apiData.experiment_id,
+      isDefault: apiData.is_default,
+      name: apiData.name,
+      variationId: apiData.variation_id,
+    })
   }
 }
