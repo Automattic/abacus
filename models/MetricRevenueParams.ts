@@ -1,24 +1,46 @@
+import { ApiData } from '@/api/ApiData'
+
 /**
  * Parameters for a revenue query. If `null`, then `event_params` must be given.
  */
-export interface MetricRevenueParams {
+export class MetricRevenueParams {
   /**
    * Number of days to use for the refund window.
    */
-  refundDays?: number
+  public readonly refundDays?: number
 
   /**
    * Product slugs to consider. May be empty to include all product slugs.
    */
-  productSlugs?: Array<string>
+  public readonly productSlugs?: Array<string>
 
   /**
    * Transaction types to consider. May be empty to include all transaction types.
    */
-  transactionTypes?: Array<MetricRevenueParamsTransactionTypesEnum>
+  public readonly transactionTypes?: Array<TransactionTypes>
+
+  /**
+   * Constructs a new instance.
+   */
+  constructor(data: Readonly<MetricRevenueParams>) {
+    Object.assign(this, data)
+  }
+
+  /**
+   * Create an instance from raw API data (parsed JSON).
+   *
+   * @param apiData Raw API data.
+   */
+  static fromApiData(apiData: ApiData) {
+    return new MetricRevenueParams({
+      refundDays: apiData.refund_days,
+      productSlugs: apiData.product_slugs,
+      transactionTypes: apiData.transaction_types.map((transactionType: string) => transactionType as TransactionTypes),
+    })
+  }
 }
 
-export enum MetricRevenueParamsTransactionTypesEnum {
+export enum TransactionTypes {
   NewPurchase = 'new purchase',
   Recurring = 'recurring',
   Cancellation = 'cancellation',

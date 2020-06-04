@@ -1,6 +1,6 @@
 import { ApiData } from '@/api/ApiData'
 
-import { Event, MetricBare, MetricRevenueParams, MetricRevenueParamsTransactionTypesEnum } from './index'
+import { Event, MetricBare, MetricRevenueParams } from './index'
 
 export class MetricFull extends MetricBare {
   /**
@@ -34,32 +34,15 @@ export class MetricFull extends MetricBare {
    * @param apiData Raw API data.
    */
   static fromApiData(apiData: ApiData) {
-    let eventParams = null
-    if (apiData.event_params) {
-      eventParams = apiData.event_params.map((eventParam: ApiData) => ({
-        event: eventParam.event,
-        props: eventParam.props,
-      }))
-    }
-
-    let revenueParams = null
-    if (apiData.revenue_params) {
-      revenueParams = {
-        refundDays: apiData.revenue_params.refund_days,
-        productSlugs: apiData.revenue_params.product_slugs,
-        transactionTypes: apiData.revenue_params.transaction_types.map(
-          (transactionType: string) => transactionType as MetricRevenueParamsTransactionTypesEnum,
-        ),
-      }
-    }
-
     return new MetricFull({
       metricId: apiData.metric_id,
       name: apiData.name,
       description: apiData.description,
       higherIsBetter: apiData.higher_is_better,
-      eventParams,
-      revenueParams,
+      eventParams: apiData.event_params
+        ? apiData.event_params.map((rawEvent: ApiData) => Event.fromApiData(rawEvent))
+        : null,
+      revenueParams: apiData.revenue_params ? MetricRevenueParams.fromApiData(apiData.revenue_params) : null,
     })
   }
 }

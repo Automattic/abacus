@@ -4,7 +4,7 @@ import MaterialTable from 'material-table'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-import { ExperimentBare } from '@/models/index'
+import { ExperimentBare } from '@/models'
 import { formatIsoUtcOffset } from '@/utils/date'
 
 /**
