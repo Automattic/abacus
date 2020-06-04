@@ -2,9 +2,9 @@ import { Segment, SegmentType } from './Segment'
 
 describe('models/Segment.ts module', () => {
   describe('Segment', () => {
-    describe('constructor', () => {
+    describe('fromApiData', () => {
       it('called with valid API data should create a new `Segment` instance', () => {
-        const segment = new Segment({
+        const segment = Segment.fromApiData({
           segment_id: 123,
           name: 'Example Segment',
           type: 'country',

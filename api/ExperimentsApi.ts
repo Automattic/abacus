@@ -25,9 +25,19 @@ async function findAll(): Promise<ExperimentBare[]> {
   )
 }
 
+/**
+ * Fetches the experiment with full details.
+ *
+ * @param id - The ID of the experiment to fetch.
+ */
+async function findById(id: number) {
+  return ExperimentFull.fromApiData(await fetchApi('GET', `/experiments/${id}`))
+}
+
 const ExperimentsApi = {
   create,
   findAll,
+  findById,
 }
 
 export default ExperimentsApi
