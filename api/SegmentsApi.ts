@@ -1,4 +1,4 @@
-import { Segment } from '@/models/index'
+import { Segment } from '@/models'
 
 import { ApiData } from './ApiData'
 import { fetchApi } from './utils'
