@@ -89,9 +89,6 @@ export default function ExperimentPage() {
         setAnalyses(analyses)
         setExperiment(experiment)
         setMetrics(metrics)
-        console.log(experiment)
-        console.log(analyses)
-        console.log(metrics)
         return
       })
       .catch(setFetchError)
