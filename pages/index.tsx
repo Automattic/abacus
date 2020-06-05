@@ -8,7 +8,7 @@ import ErrorsBox from '@/components/ErrorsBox'
 import ExperimentsTable from '@/components/ExperimentsTable'
 import Layout from '@/components/Layout'
 
-import { ExperimentBare } from '@/models/index'
+import { ExperimentBare } from '@/models'
 
 const debug = debugFactory('abacus:pages/index.tsx')
 

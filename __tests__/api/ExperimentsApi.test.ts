@@ -1,6 +1,6 @@
 import ExperimentsApi from '@/api/ExperimentsApi'
 
-import { ExperimentFull, Platform, Status } from '@/models/index'
+import { ExperimentFull, Platform, Status } from '@/models'
 
 const PLATFORMS = Object.values(Platform)
 const STATUSES = Object.values(Status)
