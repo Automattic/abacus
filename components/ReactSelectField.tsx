@@ -34,7 +34,7 @@ function ReactSelectField(props: Props) {
     <Field name={props.input.name} validate={validate}>
       {({ input, meta: { error, touched } }) => {
         return (
-          <div className='field'>
+          <div>
             {fieldLabel !== undefined && <label>{fieldLabel}</label>}
             <ReactSelect {...props.input} {...input} />
             <FieldError error={error} touched={touched} />

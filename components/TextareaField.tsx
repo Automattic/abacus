@@ -27,9 +27,9 @@ function TextareaField(props: Props) {
     <Field name={props.input.name} validate={validate}>
       {({ input, meta: { error, touched } }) => {
         return (
-          <div className='field'>
+          <div>
             {fieldLabel !== undefined && <label>{fieldLabel}</label>}
-            <div className='ui input'>
+            <div>
               <textarea {...props.input} {...input} />
             </div>
             <FieldError error={error} touched={touched} />

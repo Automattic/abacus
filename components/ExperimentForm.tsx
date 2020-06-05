@@ -1,3 +1,9 @@
+import Button from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import Grid from '@material-ui/core/Grid'
+import Hidden from '@material-ui/core/Hidden'
 import { isBefore } from 'date-fns'
 import debugFactory from 'debug'
 import { FormApi, ValidationErrors } from 'final-form'
@@ -8,7 +14,6 @@ import { toInt, toIntOrNull } from 'qc-to_int'
 import React, { useState } from 'react'
 import { Form } from 'react-final-form'
 import { FieldArray } from 'react-final-form-arrays'
-import Confirm from 'semantic-ui-react/dist/commonjs/addons/Confirm'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 
@@ -223,7 +228,7 @@ const ExperimentForm = () => {
       onSubmit={onSubmit}
       validate={validate}
       render={({ form, errors, handleSubmit, pristine, submitting, touched, values }) => (
-        <form className='ui form' onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <InputField
             input={{ name: 'p2_url', type: 'url' }}
             label='P2 link'
@@ -294,109 +299,108 @@ const ExperimentForm = () => {
               return (
                 <fieldset>
                   <legend>Variations</legend>
-                  <div className='ui grid stackable'>
-                    {!errors.variations &&
-                      ((showVariationsLengthError && errors.variations_length) ||
-                        (showVariationNamesDuplicateError && errors.variation_names_duplicate) ||
-                        (showVariationsTotalPercentageError && errors.variations_total_percentage) ||
-                        (showVariationsDefaultError && errors.variations_default)) && (
-                        <div className='row'>
-                          <div className='column four wide'>
-                            <FieldError error={errors.variations_length} touched={showVariationsLengthError} />
-                            <FieldError
-                              error={errors.variation_names_duplicate}
-                              touched={showVariationNamesDuplicateError}
-                            />
-                          </div>
-                          <div className='column four wide'>
-                            <FieldError
-                              error={errors.variations_total_percentage}
-                              touched={showVariationsTotalPercentageError}
-                            />
-                          </div>
-                          <div className='column three wide'>
-                            <FieldError error={errors.variations_default} touched={showVariationsDefaultError} />
-                          </div>
-                          <div className='column two wide'></div>
-                        </div>
-                      )}
-                    {fields.map((name, index) => (
-                      <div key={name} className='row'>
-                        <div className='column four wide'>
-                          <InputField
-                            input={{
-                              name: `${name}.name`,
-                              onChange: handleVariationNameChange,
-                              placeholder: 'variation_name',
-                            }}
-                            validate={composeValidators(
-                              required,
-                              createPattern(mustMatchPattern, { pattern: SNAKE_CASE_PATTERN }),
-                              createMaxLength(lengthMustBeLessThan, { maxLength: 128 }),
-                            )}
+                  {!errors.variations &&
+                    ((showVariationsLengthError && errors.variations_length) ||
+                      (showVariationNamesDuplicateError && errors.variation_names_duplicate) ||
+                      (showVariationsTotalPercentageError && errors.variations_total_percentage) ||
+                      (showVariationsDefaultError && errors.variations_default)) && (
+                      <Grid container>
+                        <Grid item xs={12} sm={5}>
+                          <FieldError error={errors.variations_length} touched={showVariationsLengthError} />
+                          <FieldError
+                            error={errors.variation_names_duplicate}
+                            touched={showVariationNamesDuplicateError}
                           />
-                        </div>
-                        <div className='column four wide'>
-                          <InputField
-                            input={{
-                              max: 100,
-                              min: 1,
-                              name: `${name}.allocatedPercentage`,
-                              onChange: handleVariationAllocatedPercentageChange,
-                              type: 'number',
-                            }}
-                            validate={composeValidators(
-                              required,
-                              createMax(mustBeLessThanOrEqual, { max: 100 }),
-                              createMin(mustBeGreaterThanOrEqual, { min: 1 }),
-                            )}
+                        </Grid>
+                        <Grid item xs={4} sm={2}>
+                          <FieldError
+                            error={errors.variations_total_percentage}
+                            touched={showVariationsTotalPercentageError}
                           />
-                        </div>
-                        <div className='column three wide'>
-                          <RadioInput
-                            name={`variationsDefaultIndex`}
-                            label='default'
-                            value={'' + index}
-                            validate={required}
-                          />
-                        </div>
-                        <div className='column two wide'>
-                          <button type='button' onClick={handleDeleteVariationButtonClick}>
-                            -
-                          </button>
-                          <Confirm
-                            content='Delete variation?'
-                            onCancel={hideDeleteVariationConfirm}
-                            onClose={hideDeleteVariationConfirm}
-                            onConfirm={() => {
-                              fields.remove(index)
-                              hideDeleteVariationConfirm()
-                            }}
-                            open={showDeleteVariationConfirm}
-                            size='mini'
-                          />
-                        </div>
-                      </div>
-                    ))}
-                    {(fields.length || 0) > 0 && (
-                      <div className='row pt-0'>
-                        <div className='column four wide'></div>
-                        <div className='column four wide'>
-                          <div className='column two wide'>{totalPercentage}%</div>
-                        </div>
-                        <div className='column five wide'></div>
-                      </div>
+                        </Grid>
+                        <Grid item xs={4} sm={2}>
+                          <FieldError error={errors.variations_default} touched={showVariationsDefaultError} />
+                        </Grid>
+                      </Grid>
                     )}
-                    <div className='row'>
-                      <div className='column two wide'>
-                        <button
-                          type='button'
-                          onClick={() => handleAddVariationButtonClick(form, errors, fields, values)}
-                        >
-                          +
+                  {fields.map((name, index) => (
+                    <Grid key={name} container>
+                      <Grid item xs={12} sm={5}>
+                        <InputField
+                          input={{
+                            name: `${name}.name`,
+                            onChange: handleVariationNameChange,
+                            placeholder: 'variation_name',
+                          }}
+                          validate={composeValidators(
+                            required,
+                            createPattern(mustMatchPattern, { pattern: SNAKE_CASE_PATTERN }),
+                            createMaxLength(lengthMustBeLessThan, { maxLength: 128 }),
+                          )}
+                        />
+                      </Grid>
+                      <Grid item xs={4} sm={2}>
+                        <InputField
+                          input={{
+                            max: 100,
+                            min: 1,
+                            name: `${name}.allocatedPercentage`,
+                            onChange: handleVariationAllocatedPercentageChange,
+                            type: 'number',
+                          }}
+                          validate={composeValidators(
+                            required,
+                            createMax(mustBeLessThanOrEqual, { max: 100 }),
+                            createMin(mustBeGreaterThanOrEqual, { min: 1 }),
+                          )}
+                        />
+                      </Grid>
+                      <Grid item xs={4} sm={2}>
+                        <RadioInput
+                          name={`variationsDefaultIndex`}
+                          label='default'
+                          value={'' + index}
+                          validate={required}
+                        />
+                      </Grid>
+                      <Grid item xs={2} sm={1}>
+                        <button type='button' onClick={handleDeleteVariationButtonClick}>
+                          -
                         </button>
-                      </div>
-                    </div>
+                        <Dialog onClose={hideDeleteVariationConfirm} open={showDeleteVariationConfirm}>
+                          <DialogTitle>Delete variation?</DialogTitle>
+                          <DialogActions>
+                            <Button color='primary' onClick={hideDeleteVariationConfirm}>
+                              No
+                            </Button>
+                            <Button
+                              color='secondary'
+                              onClick={() => {
+                                fields.remove(index)
+                                hideDeleteVariationConfirm()
+                              }}
+                            >
+                              Yes
+                            </Button>
+                          </DialogActions>
+                        </Dialog>
+                      </Grid>
+                    </Grid>
+                  ))}
+                  {(fields.length || 0) > 0 && (
+                    <Grid container>
+                      <Grid item xs={12} sm={5}>
+                        <Hidden smUp>{totalPercentage}%</Hidden>
+                      </Grid>
+                      <Grid item xs={12} sm={7}>
+                        <Hidden xsDown>{totalPercentage}%</Hidden>
+                      </Grid>
+                    </Grid>
+                  )}
+                  <div>
+                    <button type='button' onClick={() => handleAddVariationButtonClick(form, errors, fields, values)}>
+                      +
+                    </button>
                   </div>
                 </fieldset>
               )
@@ -404,12 +408,7 @@ const ExperimentForm = () => {
           </FieldArray>
 
           <footer>
-            <button
-              type='submit'
-              className='ui button large black'
-              onClick={handleSubmitButtonClick}
-              disabled={submitting || pristine}
-            >
+            <button type='submit' onClick={handleSubmitButtonClick} disabled={submitting || pristine}>
               Schedule Experiment
             </button>
           </footer>

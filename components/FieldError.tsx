@@ -12,7 +12,7 @@ function FieldError(props: Props) {
   debug('FieldError#render')
   return (
     (props.touched && props.error && (
-      <div className='prompt label' role='alert' aria-atomic='true'>
+      <div role='alert' aria-atomic='true'>
         {props.error}
       </div>
     )) ||

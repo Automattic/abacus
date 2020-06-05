@@ -29,7 +29,7 @@ function ReactDatepickerField(props: Props) {
     <Field name={props.input.name} validate={validate}>
       {({ input: { onBlur, onChange, value }, meta: { error, touched } }) => {
         return (
-          <div className='field'>
+          <div>
             {fieldLabel !== undefined && <label>{fieldLabel}</label>}
             <ReactDatepicker
               {...props.input}

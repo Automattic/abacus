@@ -1,6 +1,6 @@
+import Container from '@material-ui/core/Container'
 import debugFactory from 'debug'
 import React from 'react'
-import Container from 'semantic-ui-react/dist/commonjs/elements/Container'
 
 import ExperimentForm from '@/components/ExperimentForm'
 import Layout from '@/components/Layout'

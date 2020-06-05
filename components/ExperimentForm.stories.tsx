@@ -1,7 +1,7 @@
 import '@/styles/main.scss'
 
+import Container from '@material-ui/core/Container'
 import React from 'react'
-import Container from 'semantic-ui-react/dist/commonjs/elements/Container'
 
 import ExperimentForm from './ExperimentForm'
 

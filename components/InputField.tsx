@@ -57,10 +57,10 @@ function InputField(props: Props) {
           }
         }
         return (
-          <div className='field'>
+          <div>
             {fieldLabel !== undefined && <label>{fieldLabel}</label>}
             {preHelper !== undefined && <div>{preHelper}</div>}
-            <div className='ui input'>
+            <div>
               <input {...props.input} {...input} onChange={onChange} />
             </div>
             {postHelper !== undefined && <div>{postHelper}</div>}

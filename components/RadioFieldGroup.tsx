@@ -30,7 +30,7 @@ function RadioFieldGroup(props: Props) {
     meta: { error, touched },
   } = useField(props.input.name)
   return (
-    <div className='field'>
+    <div>
       {fieldLabel !== undefined && <label>{fieldLabel}</label>}
       {preHelper !== undefined && <div>{preHelper}</div>}
       <div>
