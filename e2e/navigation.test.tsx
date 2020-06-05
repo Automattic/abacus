@@ -16,10 +16,6 @@ describe('Experiments', () => {
       // experiment data loads, hence the reason for the wait.
       await page.waitForSelector('.MuiTableHead-root')
 
-      // Assert the experiment list is rendered.
-      const $tableHead = await page.$('.MuiTableHead-root')
-      expect($tableHead).toBeDefined()
-
       // Click an experiment row.
       const $tableRows = await page.$$('.MuiTableBody-root .MuiTableRow-root')
       expect($tableRows.length).toBeGreaterThan(0)
