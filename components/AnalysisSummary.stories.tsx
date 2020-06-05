@@ -8,6 +8,7 @@ import {
   AttributionWindowSeconds,
   ExperimentFull,
   MetricAssignment,
+  MetricBare,
   Platform,
   RecommendationReason,
   Status,
@@ -55,8 +56,20 @@ const experiment: ExperimentFull = new ExperimentFull({
   ],
   segmentAssignments: [],
 })
+const metrics = [
+  new MetricBare({
+    metricId: 1,
+    name: 'metric_1',
+    description: 'This is metric 1',
+  }),
+  new MetricBare({
+    metricId: 2,
+    name: 'metric_2',
+    description: 'This is metric 2',
+  }),
+]
 
-export const noAnalyses = () => <AnalysisSummary analyses={[]} experiment={experiment} />
+export const noAnalyses = () => <AnalysisSummary analyses={[]} experiment={experiment} metrics={metrics} />
 
 const analyses: Analysis[] = [
   new Analysis({
@@ -169,5 +182,7 @@ const analyses: Analysis[] = [
     },
     analysisDatetime: new Date(2020, 4, 10),
   }),
+
+  // TODO: make this example richer -- more metrics and dates (+ some docs)
 ]
-export const someAnalyses = () => <AnalysisSummary analyses={analyses} experiment={experiment} />
+export const someAnalyses = () => <AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} />

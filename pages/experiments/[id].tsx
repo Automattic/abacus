@@ -8,9 +8,10 @@ import AnalysesApi from '@/api/AnalysesApi'
 import ExperimentsApi from '@/api/ExperimentsApi'
 import ErrorsBox from '@/components/ErrorsBox'
 import Layout from '@/components/Layout'
-import { Analysis, ExperimentFull } from '@/models'
+import { Analysis, ExperimentFull, MetricBare } from '@/models'
 import { formatIsoUtcOffset } from '@/utils/date'
 import AnalysisSummary from '@/components/AnalysisSummary'
+import MetricsApi from '@/api/MetricsApi'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 
@@ -66,6 +67,7 @@ export default function ExperimentPage() {
   const [fetchError, setFetchError] = useState<Error | null>(null)
   const [analyses, setAnalyses] = useState<Analysis[] | null>(null)
   const [experiment, setExperiment] = useState<ExperimentFull | null>(null)
+  const [metrics, setMetrics] = useState<MetricBare[] | null>(null)
 
   useEffect(() => {
     if (experimentId === null) {
@@ -76,11 +78,20 @@ export default function ExperimentPage() {
     setFetchError(null)
     setAnalyses(null)
     setExperiment(null)
+    setMetrics(null)
 
-    Promise.all([AnalysesApi.findByExperimentId(experimentId), ExperimentsApi.findById(experimentId)])
-      .then(([analyses, experiment]) => {
+    Promise.all([
+      AnalysesApi.findByExperimentId(experimentId),
+      ExperimentsApi.findById(experimentId),
+      MetricsApi.findAll(),
+    ])
+      .then(([analyses, experiment, metrics]) => {
         setAnalyses(analyses)
         setExperiment(experiment)
+        setMetrics(metrics)
+        console.log(experiment)
+        console.log(analyses)
+        console.log(metrics)
         return
       })
       .catch(setFetchError)
@@ -92,7 +103,9 @@ export default function ExperimentPage() {
         <h1>Experiment {experiment ? experiment.name : 'not found'}</h1>
         {fetchError && <ErrorsBox errors={[fetchError]} />}
         {experiment && <ExperimentDetails experiment={experiment} />}
-        {experiment && analyses && <AnalysisSummary analyses={analyses} experiment={experiment} />}
+        {experiment && analyses && metrics && (
+          <AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} />
+        )}
         <p>
           TODO: Fix the flash-of-error-before-data-load. That is, the `ErrorsBox` initially renders because
           `experimentId` is initially `null`.

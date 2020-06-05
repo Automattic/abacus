@@ -1,14 +1,13 @@
-import { Analysis, AnalysisStrategy, ExperimentFull } from '@/models'
+import { Analysis, AnalysisStrategy, ExperimentFull, MetricBare, Recommendation } from '@/models'
 // TODO: split to specific imports
 import _ from 'lodash'
-import { formatIsoUtcOffset } from '@/utils/date'
 // TODO: use MaterialTable?
 // import MaterialTable from 'material-table'
 import React from 'react'
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core'
 import { format } from 'date-fns'
 
-// TODO: move?
+// TODO: move these helpers? make them methods of model classes?
 const strategyToTitle = {
   [AnalysisStrategy.IttPure]: 'All participants',
   [AnalysisStrategy.MittNoCrossovers]: 'Without crossovers',
@@ -17,37 +16,59 @@ const strategyToTitle = {
   [AnalysisStrategy.PpNaive]: 'Exposed without crossovers and spammers',
 }
 
-export default function AnalysisSummary(props: { analyses: Analysis[]; experiment: ExperimentFull }) {
-  const { analyses, experiment } = props
+function recommendationToString(recommendation: Recommendation, experiment: ExperimentFull) {
+  if (recommendation.endExperiment) {
+    if (recommendation.chosenVariationId) {
+      const variationName = _.filter(experiment.variations, ['variationId', recommendation.chosenVariationId])[0].name
+      return (
+        <>
+          End experiment; deploy <code>{variationName}</code>
+        </>
+      )
+    }
+    return <>End experiment; deploy either variation</>
+  }
+  return <>Keep running</>
+}
+
+export default function AnalysisSummary(props: {
+  analyses: Analysis[]
+  experiment: ExperimentFull
+  metrics: MetricBare[]
+}) {
+  const { analyses, experiment, metrics } = props
   if (analyses.length === 0) {
     return <h2>No analyses yet.</h2>
   }
+  const metricsById = _.zipObject(_.map(metrics, 'metricId'), metrics)
+  const metricAssignmentsById = _.zipObject(
+    _.map(experiment.metricAssignments, 'metricAssignmentId') as number[],
+    experiment.metricAssignments,
+  )
   const sortedAnalyses = _.orderBy(analyses, ['analysisDatetime'], ['desc'])
   const latestAnalysisDatetime = sortedAnalyses[0].analysisDatetime
-  // TODO: is order still guaranteed?
-  const metricAssignmentIdToSortedAnalyses = _.groupBy(sortedAnalyses, 'metricAssignmentId')
-  // _.forOwn(metricAssignmentIdToSortedAnalyses, (val, key) => console.log(val + key))
-  const metricAssignmentIdToLatestAnalyses = _.mapValues(metricAssignmentIdToSortedAnalyses, (arr) =>
-    _.sortBy(_.filter(arr, ['analysisDatetime', arr[0].analysisDatetime]), 'analysisStrategy'),
+  // TODO: is order still guaranteed after grouping?
+  const metricAssignmentIdToLatestAnalyses = _.mapValues(
+    _.groupBy(sortedAnalyses, 'metricAssignmentId'),
+    (metricAnalyses) =>
+      _.sortBy(_.filter(metricAnalyses, ['analysisDatetime', metricAnalyses[0].analysisDatetime]), 'analysisStrategy'),
   )
 
   const primaryMetricAssignmentId = _.filter(experiment.metricAssignments, ['isPrimary', true])[0]
     .metricAssignmentId as number
   const sortedVariations = _.orderBy(experiment.variations, ['isPrimary', 'name'], ['desc', 'asc'])
   // TODO:
-  // - add metric assignment values
   // - warn if a metric assignment doesn't have any data
-  // - warn if the total and variation counts for a metric assignment don't match the latest for the primary metric
-  // - show the latest values for each metric assignment, noting the analysis date
-  // - add not final under metric assignment summary -- confusing under counts since it's metric-specific (show percent final?)
-  // - handle edge cases
-  // - add some light tests
+  // - warn if the total and variation counts for a metric assignment don't match the latest for the primary metric (might be fine due to different analysis datetimes)
+  // - clean up presentation: show percent final rather than count? format days rather than hours when appropriate, make warnings human-friendly
+  // - handle edge cases -- add them to the story
+  // - add some light tests for things that shouldn't change
   return (
     <>
-      <h2>Analysis summary for {formatIsoUtcOffset(latestAnalysisDatetime)}</h2>
+      <h2>Analysis summary for {format(latestAnalysisDatetime, 'yyyy-MM-dd')}</h2>
       <p>Found {analyses.length} analysis objects in total.</p>
 
-      <h3>Participant counts</h3>
+      <h3>Participant counts for the primary metric</h3>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -83,6 +104,7 @@ export default function AnalysisSummary(props: { analyses: Analysis[]; experimen
           <TableHead>
             <TableRow>
               <TableCell>Metric</TableCell>
+              <TableCell>Attribution window</TableCell>
               <TableCell>Last analyzed</TableCell>
               <TableCell>Strategy</TableCell>
               <TableCell>Participants (not final)</TableCell>
@@ -93,10 +115,25 @@ export default function AnalysisSummary(props: { analyses: Analysis[]; experimen
           </TableHead>
           <TableBody>
             {Object.entries(metricAssignmentIdToLatestAnalyses).map(([metricAssignmentId, metricAnalyses]) =>
-              metricAnalyses.map((analysis) => (
+              metricAnalyses.map((analysis, index) => (
                 <TableRow key={metricAssignmentId + strategyToTitle[analysis.analysisStrategy]}>
-                  <TableCell>{metricAssignmentId}</TableCell>
-                  <TableCell>{format(analysis.analysisDatetime, 'yyyy-MM-dd')}</TableCell>
+                  {index === 0 ? (
+                    <>
+                      <TableCell>
+                        <code>{metricsById[metricAssignmentsById[metricAssignmentId].metricId].name}</code>
+                      </TableCell>
+                      <TableCell>
+                        {metricAssignmentsById[metricAssignmentId].attributionWindowSeconds / 3600} hours
+                      </TableCell>
+                      <TableCell>{format(analysis.analysisDatetime, 'yyyy-MM-dd')}</TableCell>
+                    </>
+                  ) : (
+                    <>
+                      <TableCell />
+                      <TableCell />
+                      <TableCell />
+                    </>
+                  )}
                   <TableCell>{strategyToTitle[analysis.analysisStrategy]}</TableCell>
                   <TableCell>
                     {analysis.participantStats.total} ({analysis.participantStats.not_final})
@@ -104,9 +141,10 @@ export default function AnalysisSummary(props: { analyses: Analysis[]; experimen
                   {analysis.metricEstimates && analysis.recommendation ? (
                     <>
                       <TableCell>
-                        [{analysis.metricEstimates.diff.bottom}, {analysis.metricEstimates.diff.top}]
+                        [{_.round(analysis.metricEstimates.diff.bottom, 4)},{' '}
+                        {_.round(analysis.metricEstimates.diff.top, 4)}]
                       </TableCell>
-                      <TableCell>{analysis.recommendation.endExperiment ? 'End experiment' : 'N/A'}</TableCell>
+                      <TableCell>{recommendationToString(analysis.recommendation, experiment)}</TableCell>
                       <TableCell>{analysis.recommendation.warnings.join(', ')}</TableCell>
                     </>
                   ) : (

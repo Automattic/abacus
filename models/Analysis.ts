@@ -5,7 +5,7 @@ import { ApiData } from '@/api/ApiData'
 /**
  * An analysis recommendation.
  */
-class Recommendation {
+export class Recommendation {
   /**
    * A boolean value indicating whether the experiment should end (based only on the raw data and ignoring any
    * warnings).
