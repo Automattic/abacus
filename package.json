@@ -24,9 +24,7 @@
     "qc-to_int": "^1.0.1",
     "querystring": "^0.2.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.2"
+    "react-dom": "^16.13.1"
   },
   "@comment devDependencies": {
     "@package babel-loader": "Required by @storybook/react",
