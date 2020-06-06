@@ -1,4 +1,5 @@
 import { ApiData } from '@/api/ApiData'
+import { ExcludeMethods } from '@/types/ExcludeMethods'
 
 import { Event, MetricBare, MetricRevenueParams } from './index'
 
@@ -24,8 +25,18 @@ export class MetricFull extends MetricBare {
   /**
    * Constructs a new metric.
    */
-  constructor(data: Readonly<MetricFull>) {
+  constructor(data: ExcludeMethods<MetricFull>) {
     super(data)
+  }
+
+  /**
+   * Determines the parameter type of this metric based on its data.
+   */
+  determineParameterType() {
+    if (this.eventParams) {
+      return 'event'
+    }
+    return 'revenue'
   }
 
   /**
