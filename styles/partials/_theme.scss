@@ -85,3 +85,39 @@ h6 {
 /**
 | Experiment Form:
 ===================================== */
+.form.experiment {
+  color: inherit;
+
+  footer,
+  header,
+  .content {
+    padding: 1rem;
+
+    &.active {
+      border: 1px solid #d4d4d5;
+    }
+  }
+
+  footer,
+  .content {
+    display: none;
+
+    &.active {
+      display: block;
+      border-top: 0;
+    }
+  }
+
+  footer {
+    background: #ececec;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+
+    > div {
+      flex: 1 0 auto;
+    }
+  }
+}

@@ -4,6 +4,7 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Grid from '@material-ui/core/Grid'
 import Hidden from '@material-ui/core/Hidden'
+import cn from 'classnames'
 import { isBefore } from 'date-fns'
 import debugFactory from 'debug'
 import { FormApi, ValidationErrors } from 'final-form'
@@ -56,6 +57,10 @@ const PLATFORM_OPTIONS = [
   { label: 'WordPress.com', value: Platform.Wpcom },
 ]
 
+const STEP0_FIELD_NAMES = ['p2_url']
+const STEP1_FIELD_NAMES = ['description', 'end_datetime', 'name', 'owner_login', 'start_datetime']
+const STEP2_FIELD_NAMES = ['existing_users_allowed', 'platform', 'segment_assignments', 'variations']
+
 interface StringOption {
   value: string
 }
@@ -79,6 +84,7 @@ interface FormValues {
 // TODO: Look into using camelCase field names. May simplify things.
 const ExperimentForm = () => {
   debug('ExperimentForm#render')
+  const [step, setStep] = useState(0)
   const [showDeleteVariationConfirm, setShowDeleteVariationConfirm] = useState<boolean>(false)
   const [showVariationNamesDuplicateError, setShowVariationNamesDuplicateError] = useState<boolean>(false)
   const [showVariationsDefaultError, setShowVariationsDefaultError] = useState<boolean>(false)
@@ -99,6 +105,8 @@ const ExperimentForm = () => {
       setShowVariationsDefaultError(false)
       setShowVariationsLengthError(false)
     } else {
+      setShowVariationsDefaultError(true)
+      setShowVariationsLengthError(true)
       // Blur all variation fields to make them all touched so if they have any
       // errors, then they will be displayed.
       form.blur('variations')
@@ -121,13 +129,6 @@ const ExperimentForm = () => {
 
   const handleVariationNameChange = () => {
     setShowVariationNamesDuplicateError(true)
-  }
-
-  const handleSubmitButtonClick = () => {
-    setShowVariationNamesDuplicateError(true)
-    setShowVariationsDefaultError(true)
-    setShowVariationsLengthError(true)
-    setShowVariationsTotalPercentageError(true)
   }
 
   const onSubmit = async (values: FormValues) => {
@@ -227,196 +228,360 @@ const ExperimentForm = () => {
       }}
       onSubmit={onSubmit}
       validate={validate}
-      render={({ form, errors, handleSubmit, pristine, submitting, touched, values }) => (
-        <form onSubmit={handleSubmit}>
-          <InputField
-            input={{ name: 'p2_url', type: 'url' }}
-            label='P2 link'
-            preHelper={<p>Once you&apos;ve designed and documented your experiment, enter the p2 post URL</p>}
-            validate={composeValidators(
-              required,
-              createMaxLength(lengthMustBeLessThan, { maxLength: 512, label: 'P2 link' }),
-            )}
-          />
+      render={({ form, errors, handleSubmit, pristine, submitting, touched, values }) => {
+        const step0HasErrors = !!errors.p2_url
+        const step1ErrorCount = STEP1_FIELD_NAMES.reduce((acc, fieldName) => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
+          return (errors[fieldName] ? 1 : 0) + acc
+        }, 0)
+        const step1HasErrors = step1ErrorCount > 0
 
-          <InputField
-            input={{ name: 'name', placeholder: 'experiment_name' }}
-            label='Experiment name'
-            validate={composeValidators(required, createPattern(mustMatchPattern, { pattern: SNAKE_CASE_PATTERN }))}
-            postHelper={<small className='form-text'>Please use snake_case, all lowercase</small>}
-          />
+        const step2ErrorCount = [
+          ...STEP2_FIELD_NAMES,
+          'variation_names_duplicate',
+          'variations_default',
+          'variations_length',
+          'variations_total_percentage',
+        ].reduce((acc, fieldName) => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
+          return (errors[fieldName] ? 1 : 0) + acc
+        }, 0)
+        const step2HasErrors = step2ErrorCount > 0
 
-          <TextareaField
-            input={{ name: 'description' }}
-            label='Description'
-            validate={composeValidators(required, createMaxLength(lengthMustBeLessThan, { maxLength: 5000 }))}
-          />
+        function handleStep0Next() {
+          STEP0_FIELD_NAMES.forEach((fieldName) => form.blur(fieldName))
+          if (!step0HasErrors) {
+            setStep(1)
+          }
+        }
 
-          <ReactDatepickerField
-            input={{
-              minDate: new Date(),
-              name: 'start_datetime',
-              todayButton: 'Today',
-            }}
-            label='Start date'
-            validate={required}
-          />
+        function handleStep1Next() {
+          STEP1_FIELD_NAMES.forEach((fieldName) => form.blur(fieldName))
+          // If step 1 is valid, then allow to move to step 2.
+          if (!step1HasErrors) {
+            setStep(2)
+          }
+        }
 
-          <ReactDatepickerField
-            input={{
-              name: 'end_datetime',
-            }}
-            label='End date'
-            validate={required}
-          />
+        function handleStep2Next(values: FormValues) {
+          STEP2_FIELD_NAMES.forEach((fieldName) => form.blur(fieldName))
+          const variations = values.variations || []
+          variations.forEach((_variation, idx: number) => {
+            form.blur(`variations[${idx}].name`)
+            form.blur(`variations[${idx}].allocatedPercentage`)
+          })
+          setShowVariationNamesDuplicateError(true)
+          setShowVariationsDefaultError(true)
+          setShowVariationsLengthError(true)
+          setShowVariationsTotalPercentageError(true)
+          // If step 2 is valid, then allow to move to step 3.
+          if (!step2HasErrors) {
+            setStep(3)
+          }
+        }
 
-          <ReactSelectField
-            input={{ instanceId: 'ownerLogin', name: 'owner_login', options: ownerOptions }}
-            label='Owner'
-            validate={required}
-          />
+        return (
+          <form className='form experiment' onSubmit={handleSubmit}>
+            <section className={cn({ 'd-none': step !== 0 })}>
+              <p>
+                To create a new experiment, please first{' '}
+                <a
+                  className='underline'
+                  href='https://betterexperiments.wordpress.com/'
+                  rel='noopener noreferrer'
+                  target='_blank'
+                >
+                  post on this p2.
+                </a>{' '}
+                We think one of the best ways to prevent a failed experiment is by documenting what you hope to learn.
+              </p>
 
-          <ReactSelectField
-            input={{ instanceId: 'platform', name: 'platform', options: PLATFORM_OPTIONS }}
-            label='Platform'
-            validate={required}
-          />
+              <InputField
+                input={{ name: 'p2_url', type: 'url' }}
+                label='P2 link'
+                preHelper={<p>Once you&apos;ve designed and documented your experiment, enter the p2 post URL</p>}
+                validate={composeValidators(
+                  required,
+                  createMaxLength(lengthMustBeLessThan, { maxLength: 512, label: 'P2 link' }),
+                )}
+              />
 
-          <RadioFieldGroup
-            input={{ name: 'existing_users_allowed' }}
-            label='User types'
-            options={[
-              { label: 'New users only', value: 'false' },
-              { label: 'All users (new + existing)', value: 'true' },
-            ]}
-            validate={required}
-          />
+              <button type='button' onClick={handleStep0Next}>
+                Begin
+              </button>
+            </section>
 
-          <FieldArray name='variations'>
-            {({ fields }) => {
-              const totalPercentage =
-                values.variations?.reduce((acc, variation) => acc + toInt(variation.allocatedPercentage, 0), 0) || 0
-              return (
+            <section className={cn({ 'd-none': step < 1 })}>
+              <header className={cn({ active: step === 1 })}>
+                <div>
+                  <h2>Basic Info</h2>
+                  <p>Step 1 of 3</p>
+                </div>
+                {step > 1 && (
+                  <button type='button' className='relative' onClick={() => setStep(1)}>
+                    Edit
+                    {step1HasErrors && <div>{step1ErrorCount}</div>}
+                  </button>
+                )}
+              </header>
+              <div className={cn('content', { active: step === 1 })}>
+                <Grid container>
+                  <Grid item xs={12} sm={8}>
+                    <InputField
+                      input={{ name: 'name', placeholder: 'experiment_name' }}
+                      label='Experiment name'
+                      validate={composeValidators(
+                        required,
+                        createPattern(mustMatchPattern, { pattern: SNAKE_CASE_PATTERN }),
+                      )}
+                      postHelper={<small className='form-text'>Please use snake_case, all lowercase</small>}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={8}>
+                    <TextareaField
+                      input={{ name: 'description' }}
+                      label='Description'
+                      validate={composeValidators(required, createMaxLength(lengthMustBeLessThan, { maxLength: 5000 }))}
+                    />
+                  </Grid>
+                  <Grid container item xs={12} sm={8}>
+                    <Grid item xs={12} sm>
+                      <ReactDatepickerField
+                        input={{
+                          minDate: new Date(),
+                          name: 'start_datetime',
+                          todayButton: 'Today',
+                        }}
+                        label='Start date'
+                        validate={required}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={2}>
+                      <span>through</span>
+                    </Grid>
+                    <Grid item xs={12} sm>
+                      <ReactDatepickerField
+                        input={{
+                          name: 'end_datetime',
+                        }}
+                        label='End date'
+                        validate={required}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12} sm={8}>
+                    <ReactSelectField
+                      input={{ instanceId: 'ownerLogin', name: 'owner_login', options: ownerOptions }}
+                      label='Owner'
+                      validate={required}
+                    />
+                  </Grid>
+                </Grid>
+              </div>
+              <footer className={cn({ active: step === 1 })}>
+                <button type='button' onClick={handleStep1Next}>
+                  Next
+                </button>
+              </footer>
+
+              <header className={cn({ active: step === 2 })}>
+                <div>
+                  <h2>Audience</h2>
+                  <p>Step 2 of 3</p>
+                </div>
+                {step > 2 && (
+                  <button type='button' onClick={() => setStep(2)}>
+                    Edit
+                    {step2HasErrors && <div>{step2ErrorCount}</div>}
+                  </button>
+                )}
+              </header>
+              <div className={cn('content', { active: step === 2 })}>
+                <ReactSelectField
+                  input={{ instanceId: 'platform', name: 'platform', options: PLATFORM_OPTIONS }}
+                  label='Platform'
+                  validate={required}
+                />
+
+                <RadioFieldGroup
+                  input={{ name: 'existing_users_allowed' }}
+                  label='User types'
+                  options={[
+                    { label: 'New users only', value: 'false' },
+                    { label: 'All users (new + existing)', value: 'true' },
+                  ]}
+                  validate={required}
+                />
+
+                <FieldArray name='variations'>
+                  {({ fields }) => {
+                    const totalPercentage =
+                      values.variations?.reduce((acc, variation) => acc + toInt(variation.allocatedPercentage, 0), 0) ||
+                      0
+                    return (
+                      <fieldset>
+                        <legend>Variations</legend>
+                        {!errors.variations &&
+                          ((showVariationsLengthError && errors.variations_length) ||
+                            (showVariationNamesDuplicateError && errors.variation_names_duplicate) ||
+                            (showVariationsTotalPercentageError && errors.variations_total_percentage) ||
+                            (showVariationsDefaultError && errors.variations_default)) && (
+                            <Grid container>
+                              <Grid item xs={12} sm={5}>
+                                <FieldError error={errors.variations_length} touched={showVariationsLengthError} />
+                                <FieldError
+                                  error={errors.variation_names_duplicate}
+                                  touched={showVariationNamesDuplicateError}
+                                />
+                              </Grid>
+                              <Grid item xs={4} sm={2}>
+                                <FieldError
+                                  error={errors.variations_total_percentage}
+                                  touched={showVariationsTotalPercentageError}
+                                />
+                              </Grid>
+                              <Grid item xs={4} sm>
+                                <FieldError error={errors.variations_default} touched={showVariationsDefaultError} />
+                              </Grid>
+                              <Grid item xs={2} sm={1}></Grid>
+                            </Grid>
+                          )}
+                        {fields.map((name, index) => (
+                          <Grid key={name} container>
+                            <Grid item xs={12} sm={5}>
+                              <InputField
+                                input={{
+                                  name: `${name}.name`,
+                                  onChange: handleVariationNameChange,
+                                  placeholder: 'variation_name',
+                                }}
+                                validate={composeValidators(
+                                  required,
+                                  createPattern(mustMatchPattern, { pattern: SNAKE_CASE_PATTERN }),
+                                  createMaxLength(lengthMustBeLessThan, { maxLength: 128 }),
+                                )}
+                              />
+                            </Grid>
+                            <Grid item xs={4} sm={2}>
+                              <InputField
+                                input={{
+                                  max: 100,
+                                  min: 1,
+                                  name: `${name}.allocatedPercentage`,
+                                  onChange: handleVariationAllocatedPercentageChange,
+                                  type: 'number',
+                                }}
+                                validate={composeValidators(
+                                  required,
+                                  createMax(mustBeLessThanOrEqual, { max: 100 }),
+                                  createMin(mustBeGreaterThanOrEqual, { min: 1 }),
+                                )}
+                              />
+                            </Grid>
+                            <Grid item xs={4} sm>
+                              <RadioInput
+                                name={`variationsDefaultIndex`}
+                                label='default'
+                                value={'' + index}
+                                validate={required}
+                              />
+                            </Grid>
+                            <Grid item xs={2} sm={1}>
+                              <button type='button' onClick={handleDeleteVariationButtonClick}>
+                                -
+                              </button>
+                              <Dialog onClose={hideDeleteVariationConfirm} open={showDeleteVariationConfirm}>
+                                <DialogTitle>Delete variation?</DialogTitle>
+                                <DialogActions>
+                                  <Button color='primary' onClick={hideDeleteVariationConfirm}>
+                                    No
+                                  </Button>
+                                  <Button
+                                    color='secondary'
+                                    onClick={() => {
+                                      fields.remove(index)
+                                      hideDeleteVariationConfirm()
+                                    }}
+                                  >
+                                    Yes
+                                  </Button>
+                                </DialogActions>
+                              </Dialog>
+                            </Grid>
+                          </Grid>
+                        ))}
+                        {(fields.length || 0) > 0 && (
+                          <Grid container>
+                            <Grid item xs={12} sm={5}>
+                              <Hidden smUp>{totalPercentage}%</Hidden>
+                            </Grid>
+                            <Grid item xs={12} sm={7}>
+                              <Hidden xsDown>{totalPercentage}%</Hidden>
+                            </Grid>
+                          </Grid>
+                        )}
+                        <div>
+                          <button
+                            type='button'
+                            onClick={() => handleAddVariationButtonClick(form, errors, fields, values)}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </fieldset>
+                    )
+                  }}
+                </FieldArray>
+
                 <fieldset>
-                  <legend>Variations</legend>
-                  {!errors.variations &&
-                    ((showVariationsLengthError && errors.variations_length) ||
-                      (showVariationNamesDuplicateError && errors.variation_names_duplicate) ||
-                      (showVariationsTotalPercentageError && errors.variations_total_percentage) ||
-                      (showVariationsDefaultError && errors.variations_default)) && (
-                      <Grid container>
-                        <Grid item xs={12} sm={5}>
-                          <FieldError error={errors.variations_length} touched={showVariationsLengthError} />
-                          <FieldError
-                            error={errors.variation_names_duplicate}
-                            touched={showVariationNamesDuplicateError}
-                          />
-                        </Grid>
-                        <Grid item xs={4} sm={2}>
-                          <FieldError
-                            error={errors.variations_total_percentage}
-                            touched={showVariationsTotalPercentageError}
-                          />
-                        </Grid>
-                        <Grid item xs={4} sm={2}>
-                          <FieldError error={errors.variations_default} touched={showVariationsDefaultError} />
-                        </Grid>
-                      </Grid>
-                    )}
-                  {fields.map((name, index) => (
-                    <Grid key={name} container>
-                      <Grid item xs={12} sm={5}>
-                        <InputField
-                          input={{
-                            name: `${name}.name`,
-                            onChange: handleVariationNameChange,
-                            placeholder: 'variation_name',
-                          }}
-                          validate={composeValidators(
-                            required,
-                            createPattern(mustMatchPattern, { pattern: SNAKE_CASE_PATTERN }),
-                            createMaxLength(lengthMustBeLessThan, { maxLength: 128 }),
-                          )}
-                        />
-                      </Grid>
-                      <Grid item xs={4} sm={2}>
-                        <InputField
-                          input={{
-                            max: 100,
-                            min: 1,
-                            name: `${name}.allocatedPercentage`,
-                            onChange: handleVariationAllocatedPercentageChange,
-                            type: 'number',
-                          }}
-                          validate={composeValidators(
-                            required,
-                            createMax(mustBeLessThanOrEqual, { max: 100 }),
-                            createMin(mustBeGreaterThanOrEqual, { min: 1 }),
-                          )}
-                        />
-                      </Grid>
-                      <Grid item xs={4} sm={2}>
-                        <RadioInput
-                          name={`variationsDefaultIndex`}
-                          label='default'
-                          value={'' + index}
-                          validate={required}
-                        />
-                      </Grid>
-                      <Grid item xs={2} sm={1}>
-                        <button type='button' onClick={handleDeleteVariationButtonClick}>
-                          -
-                        </button>
-                        <Dialog onClose={hideDeleteVariationConfirm} open={showDeleteVariationConfirm}>
-                          <DialogTitle>Delete variation?</DialogTitle>
-                          <DialogActions>
-                            <Button color='primary' onClick={hideDeleteVariationConfirm}>
-                              No
-                            </Button>
-                            <Button
-                              color='secondary'
-                              onClick={() => {
-                                fields.remove(index)
-                                hideDeleteVariationConfirm()
-                              }}
-                            >
-                              Yes
-                            </Button>
-                          </DialogActions>
-                        </Dialog>
-                      </Grid>
-                    </Grid>
-                  ))}
-                  {(fields.length || 0) > 0 && (
-                    <Grid container>
-                      <Grid item xs={12} sm={5}>
-                        <Hidden smUp>{totalPercentage}%</Hidden>
-                      </Grid>
-                      <Grid item xs={12} sm={7}>
-                        <Hidden xsDown>{totalPercentage}%</Hidden>
-                      </Grid>
-                    </Grid>
-                  )}
-                  <div>
-                    <button type='button' onClick={() => handleAddVariationButtonClick(form, errors, fields, values)}>
-                      +
-                    </button>
-                  </div>
+                  <legend>Segmentation</legend>
+                  <p>Optionally, add segmentation to your experiment</p>
+                  <button type='button' onClick={() => alert('TODO: Allow to add segmentation.')}>
+                    + Add segmentation
+                  </button>
                 </fieldset>
-              )
-            }}
-          </FieldArray>
+              </div>
+              <footer className={cn({ active: step === 2 })}>
+                <button type='button' onClick={() => handleStep2Next(values)}>
+                  Next
+                </button>
+              </footer>
 
-          <footer>
-            <button type='submit' onClick={handleSubmitButtonClick} disabled={submitting || pristine}>
-              Schedule Experiment
-            </button>
-          </footer>
-          <pre>{JSON.stringify(errors, null, 2)}</pre>
-          <pre>{JSON.stringify(values, null, 2)}</pre>
-          <pre>{JSON.stringify(touched, null, 2)}</pre>
-        </form>
-      )}
+              <header className={cn({ active: step === 3 })}>
+                <div>
+                  <h2>User details &amp; metrics</h2>
+                  <p>Step 3 of 3</p>
+                </div>
+              </header>
+              <div className={cn('content', { active: step === 3 })}>
+                <h4>User set</h4>
+                <p>
+                  New {'{platform}'} users located in {'{place[0]}'}, {'{place[1]}'} with their site language set to{' '}
+                  <span>en</span>.
+                </p>
+
+                <fieldset>
+                  <legend>Metrics</legend>
+                  <p>Quantify the impact you&apos;re trying to measure.</p>
+                  <p>TODO: Add metric assignments.</p>
+                  <small className='form-text'>If it doesn&apos;t exist, add a new metric.</small>
+                </fieldset>
+              </div>
+              <footer className={cn({ active: step === 3 })}>
+                <button type='submit' disabled={submitting || pristine}>
+                  Schedule Experiment
+                </button>
+              </footer>
+            </section>
+
+            <pre>{JSON.stringify(errors, null, 2)}</pre>
+            <pre>{JSON.stringify(values, null, 2)}</pre>
+            <pre>{JSON.stringify(touched, null, 2)}</pre>
+          </form>
+        )
+      }}
     />
   )
 }
