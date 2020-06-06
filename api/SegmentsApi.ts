@@ -1,4 +1,4 @@
-import { Segment } from '@/models/index'
+import { Segment } from '@/models'
 
 import { ApiData } from './ApiData'
 import { fetchApi } from './utils'
@@ -11,7 +11,7 @@ import { fetchApi } from './utils'
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<Segment[]> {
-  return (await fetchApi('GET', '/segments')).segments.map((apiData: ApiData) => new Segment(apiData))
+  return (await fetchApi('GET', '/segments')).segments.map((apiData: ApiData) => Segment.fromApiData(apiData))
 }
 
 const SegmentsApi = {

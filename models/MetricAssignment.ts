@@ -1,33 +1,35 @@
+import { ApiData } from '@/api/ApiData'
+
 /**
  * An assignment of a metric to an experiment.
  */
-export interface MetricAssignment {
+export class MetricAssignment {
   /**
    * Globally-unique assignment ID.
    */
-  readonly metricAssignmentId?: number
+  public readonly metricAssignmentId?: number
 
   /**
    * ID of the experiment the metric is assigned to.
    */
-  readonly experimentId?: number
+  public readonly experimentId?: number
 
   /**
    * ID of the metric assigned to the experiment.
    */
-  metricId: number
+  public readonly metricId: number
 
   /**
    * `true` if this metric is the primary metric for `experiment_id`. An experiment
    * must have exactly one primary metric before it is allowed to run.
    */
-  isPrimary: boolean
+  public readonly isPrimary: boolean
 
   /**
    * The minimum difference in the metric value between experiment variations that is
    * considered non-negligible for the purposes of the experiment.
    */
-  minDifference: number
+  public readonly minDifference: number
 
   /**
    * The maximum time in seconds a participant has between the start and end of the
@@ -40,15 +42,39 @@ export interface MetricAssignment {
    * metrics (`revenue_params` isn't `null`), only transactions that occur within the
    * attribution window are counted.
    */
-  attributionWindowSeconds: MetricAssignmentAttributionWindowSecondsEnum
+  public readonly attributionWindowSeconds: AttributionWindowSeconds
 
   /**
    * If true, the experimenter expects changes to the metric value with respect to experiment variations. There may be cases where we do not expect the metric value to change. For example, an A/A experiment will have `change_expected` set to `false` for all the assigned metrics. Even when metrics like revenue are better when higher, this property may be set to false because we do not expect the revenue to change between the experiment variations.
    */
-  changeExpected: boolean
+  public readonly changeExpected: boolean
+
+  /**
+   * Construct a new metric assignment.
+   */
+  constructor(data: Readonly<MetricAssignment>) {
+    Object.assign(this, data)
+  }
+
+  /**
+   * Create an instance from raw API data (parsed JSON).
+   *
+   * @param apiData Raw API data.
+   */
+  static fromApiData(apiData: ApiData) {
+    return new MetricAssignment({
+      attributionWindowSeconds: apiData.attribution_window_seconds as AttributionWindowSeconds,
+      changeExpected: apiData.change_expected,
+      experimentId: apiData.experiment_id,
+      isPrimary: apiData.is_primary,
+      metricAssignmentId: apiData.metric_assignment_id,
+      metricId: apiData.metric_id,
+      minDifference: apiData.min_difference,
+    })
+  }
 }
 
-export enum MetricAssignmentAttributionWindowSecondsEnum {
+export enum AttributionWindowSeconds {
   OneHour = 3600,
   SixHours = 21600,
   TwelveHours = 43200,

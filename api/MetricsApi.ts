@@ -1,4 +1,4 @@
-import { MetricBare } from '@/models/index'
+import { MetricBare } from '@/models'
 
 import { ApiData } from './ApiData'
 import { fetchApi } from './utils'
@@ -11,7 +11,7 @@ import { fetchApi } from './utils'
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<MetricBare[]> {
-  return (await fetchApi('GET', '/metrics')).metrics.map((apiData: ApiData) => new MetricBare(apiData))
+  return (await fetchApi('GET', '/metrics')).metrics.map((apiData: ApiData) => MetricBare.fromApiData(apiData))
 }
 
 const MetricsApi = {

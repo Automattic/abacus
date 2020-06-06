@@ -1,23 +1,14 @@
 import { ApiData } from '@/api/ApiData'
 import { ApiDataSource } from '@/api/ApiDataSource'
-import { DataTransferObject } from '@/models/DataTransferObject'
+import { ExcludeMethods } from '@/types/ExcludeMethods'
 import { formatIsoUtcOffset } from '@/utils/date'
 
-import {
-  Event,
-  ExperimentBare,
-  MetricAssignment,
-  MetricAssignmentAttributionWindowSecondsEnum,
-  Platform,
-  SegmentAssignment,
-  Status,
-  Variation,
-} from './index'
+import { Event, ExperimentBare, MetricAssignment, Platform, SegmentAssignment, Status, Variation } from './index'
 
 /**
  * An experiment with full data.
  */
-export class ExperimentFull extends DataTransferObject<ExperimentFull> implements ApiDataSource {
+export class ExperimentFull implements ApiDataSource {
   /**
    * Unique experiment ID.
    */
@@ -118,12 +109,19 @@ export class ExperimentFull extends DataTransferObject<ExperimentFull> implement
   public readonly deployedVariationId?: number | null
 
   /**
+   * Constructs a new experiment.
+   */
+  constructor(data: ExcludeMethods<ExperimentFull>) {
+    Object.assign(this, data)
+  }
+
+  /**
    * Create an instance from raw API data (parsed JSON).
    *
    * @param apiData Raw API data.
    */
   static fromApiData(apiData: ApiData) {
-    return {
+    return new ExperimentFull({
       ...ExperimentBare.fromApiData(apiData),
       conclusionUrl: apiData.conclusion_url || null,
       deployedVariationId: apiData.deployed_variation_id || null,
@@ -131,35 +129,17 @@ export class ExperimentFull extends DataTransferObject<ExperimentFull> implement
       endReason: apiData.end_reason || null,
       existingUsersAllowed: apiData.existing_users_allowed,
       exposureEvents: Array.isArray(apiData.exposure_events)
-        ? apiData.exposure_events.map((exposureEvent: ApiData) => ({
-            event: exposureEvent.event,
-            props: exposureEvent.props,
-          }))
+        ? apiData.exposure_events.map((rawEvent: ApiData) => Event.fromApiData(rawEvent))
         : null,
-      metricAssignments: apiData.metric_assignments.map((metricAssignment: ApiData) => ({
-        attributionWindowSeconds: metricAssignment.attribution_window_seconds as MetricAssignmentAttributionWindowSecondsEnum,
-        changeExpected: metricAssignment.change_expected,
-        experimentId: metricAssignment.experiment_id,
-        isPrimary: metricAssignment.is_primary,
-        metricAssignmentId: metricAssignment.metric_assignment_id,
-        metricId: metricAssignment.metric_id,
-        minDifference: metricAssignment.min_difference,
-      })),
+      metricAssignments: apiData.metric_assignments.map((rawMetricAssignment: ApiData) =>
+        MetricAssignment.fromApiData(rawMetricAssignment),
+      ),
       p2Url: apiData.p2_url,
-      segmentAssignments: apiData.segment_assignments.map((segmentAssignment: ApiData) => ({
-        segmentAssignmentId: segmentAssignment.segment_assignment_id,
-        experimentId: segmentAssignment.experiment_id,
-        segmentId: segmentAssignment.segment_id,
-        isExcluded: segmentAssignment.is_excluded,
-      })),
-      variations: apiData.variations.map((variation: ApiData) => ({
-        allocatedPercentage: variation.allocated_percentage,
-        experimentId: variation.experiment_id,
-        isDefault: variation.is_default,
-        name: variation.name,
-        variationId: variation.variation_id,
-      })),
-    }
+      segmentAssignments: apiData.segment_assignments.map((rawSegmentAssignment: ApiData) =>
+        SegmentAssignment.fromApiData(rawSegmentAssignment),
+      ),
+      variations: apiData.variations.map((rawVariation: ApiData) => Variation.fromApiData(rawVariation)),
+    })
   }
 
   /**
@@ -180,7 +160,7 @@ export class ExperimentFull extends DataTransferObject<ExperimentFull> implement
       end_reason: this.endReason,
       existing_users_allowed: this.existingUsersAllowed,
       p2_url: this.p2Url,
-      metric_assignments: this.metricAssignments.map((metricAssignment: ApiData) => ({
+      metric_assignments: this.metricAssignments.map((metricAssignment: MetricAssignment) => ({
         attribution_window_seconds: metricAssignment.attributionWindowSeconds,
         change_expected: metricAssignment.changeExpected,
         experiment_id: metricAssignment.experimentId,
@@ -188,12 +168,12 @@ export class ExperimentFull extends DataTransferObject<ExperimentFull> implement
         metric_id: metricAssignment.metricId,
         min_difference: metricAssignment.minDifference,
       })),
-      segment_assignments: this.segmentAssignments.map((segmentAssignments: ApiData) => ({
+      segment_assignments: this.segmentAssignments.map((segmentAssignments: SegmentAssignment) => ({
         experiment_id: segmentAssignments.experimentId,
         segment_id: segmentAssignments.segmentId,
         is_excluded: segmentAssignments.isExcluded,
       })),
-      variations: this.variations.map((variation: ApiData) => ({
+      variations: this.variations.map((variation: Variation) => ({
         experiment_id: variation.experimentId,
         name: variation.name,
         is_default: variation.isDefault,

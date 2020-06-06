@@ -1,6 +1,6 @@
 import { ApiData } from '@/api/ApiData'
 
-import { Event, MetricBare, MetricRevenueParams, MetricRevenueParamsTransactionTypesEnum } from './index'
+import { Event, MetricBare, MetricRevenueParams } from './index'
 
 export class MetricFull extends MetricBare {
   /**
@@ -8,40 +8,41 @@ export class MetricFull extends MetricBare {
    * example, if the metric event measures signups, this should be `true`. If the
    * event measures refunds, it should be `false`.
    */
-  higherIsBetter: boolean
+  public readonly higherIsBetter: boolean
 
   /**
    * Events that capture metric conversion. If `null`, then `revenue_params` must
    * be given.
    */
-  eventParams: Array<Event> | null
+  public readonly eventParams: Array<Event> | null
 
   /**
    * Parameters for a revenue query. If `null`, then `event_params` must be given.
    */
-  revenueParams: MetricRevenueParams | null
+  public readonly revenueParams: MetricRevenueParams | null
 
-  constructor(apiData: ApiData) {
-    super(apiData)
-    this.higherIsBetter = apiData.higher_is_better
-    if (apiData.event_params) {
-      this.eventParams = apiData.event_params.map((eventParam: ApiData) => ({
-        event: eventParam.event,
-        props: eventParam.props,
-      }))
-    } else {
-      this.eventParams = null
-    }
-    if (apiData.revenue_params) {
-      this.revenueParams = {
-        refundDays: apiData.revenue_params.refund_days,
-        productSlugs: apiData.revenue_params.product_slugs,
-        transactionTypes: apiData.revenue_params.transaction_types.map(
-          (transactionType: string) => transactionType as MetricRevenueParamsTransactionTypesEnum,
-        ),
-      }
-    } else {
-      this.revenueParams = null
-    }
+  /**
+   * Constructs a new metric.
+   */
+  constructor(data: Readonly<MetricFull>) {
+    super(data)
+  }
+
+  /**
+   * Create an instance from raw API data (parsed JSON).
+   *
+   * @param apiData Raw API data.
+   */
+  static fromApiData(apiData: ApiData) {
+    return new MetricFull({
+      metricId: apiData.metric_id,
+      name: apiData.name,
+      description: apiData.description,
+      higherIsBetter: apiData.higher_is_better,
+      eventParams: apiData.event_params
+        ? apiData.event_params.map((rawEvent: ApiData) => Event.fromApiData(rawEvent))
+        : null,
+      revenueParams: apiData.revenue_params ? MetricRevenueParams.fromApiData(apiData.revenue_params) : null,
+    })
   }
 }

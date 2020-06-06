@@ -2,7 +2,7 @@
 // config. Note: This can be removed once something is being imported.
 export {}
 
-jest.setTimeout(60000)
+jest.setTimeout(90000)
 
 describe('Experiments', () => {
   beforeAll(async () => {
