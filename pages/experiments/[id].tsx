@@ -1,4 +1,3 @@
-import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
 import Dialog from '@material-ui/core/Dialog'
@@ -19,6 +18,7 @@ import ErrorsBox from '@/components/ErrorsBox'
 import Layout from '@/components/Layout'
 import MetricDetails from '@/components/MetricDetails'
 import MetricMinimumDifference from '@/components/MetricMinimumDifference'
+import OwnerAvatar from '@/components/OwnerAvatar'
 import {
   AttributionWindowSeconds,
   ExperimentFull,
@@ -248,17 +248,7 @@ function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricF
                 <label>Owner</label>
               </td>
               <td>
-                <span className='d-inline-block'>
-                  <Avatar className='small'>
-                    {experiment.ownerLogin
-                      .split('_')
-                      .slice(0, 2)
-                      .map((parts) => parts[0])
-                      .join('')
-                      .toUpperCase()}
-                  </Avatar>
-                </span>{' '}
-                {experiment.ownerLogin}
+                <OwnerAvatar ownerLogin={experiment.ownerLogin} /> {experiment.ownerLogin}
               </td>
             </tr>
           </tbody>
