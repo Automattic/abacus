@@ -4,23 +4,14 @@ import React from 'react'
 import BooleanText from '@/components/BooleanText'
 import { MetricFull } from '@/models'
 
-interface Props {
-  metric: MetricFull
-}
-
 /**
  * Renders the metric details.
  */
-const MetricDetails = (props: Props) => {
+const MetricDetails = (props: { metric: MetricFull }) => {
   const { metric } = props
   return (
     <div>
       <table>
-        <thead>
-          <tr>
-            <th></th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
             <td>
