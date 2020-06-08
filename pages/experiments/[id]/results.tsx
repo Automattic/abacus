@@ -13,7 +13,7 @@ import ExperimentTabs from '@/components/ExperimentTabs'
 
 const debug = debugFactory('abacus:pages/experiments/[id]/results.tsx')
 
-export default function ResultPage() {
+export default function ResultsPage() {
   const router = useRouter()
   const experimentId = toIntOrNull(router.query.id)
   debug(`ResultPage#render ${experimentId}`)
