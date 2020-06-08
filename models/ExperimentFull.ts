@@ -181,4 +181,11 @@ export class ExperimentFull implements ApiDataSource {
       })),
     }
   }
+
+  /**
+   * Return the primary metric assignment ID for this experiment if one exists.
+   */
+  getPrimaryMetricAssignmentId(): number | undefined {
+    return this.metricAssignments.filter((metricAssignment) => metricAssignment.isPrimary)[0].metricAssignmentId
+  }
 }
