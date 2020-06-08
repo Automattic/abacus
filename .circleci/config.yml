@@ -8,7 +8,7 @@ jobs:
     executor:
       name: node/default
       tag: '10.18.1'
-      size: large
+    resource_class: large
     steps:
       - checkout
       - node/with-cache:
