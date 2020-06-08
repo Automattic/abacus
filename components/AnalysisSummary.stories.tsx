@@ -186,3 +186,7 @@ const analyses: Analysis[] = [
   // TODO: make this example richer -- more metrics and dates (+ some docs)
 ]
 export const someAnalyses = () => <AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} />
+
+export const someAnalysesDebugMode = () => (
+  <AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} debugMode={true} />
+)

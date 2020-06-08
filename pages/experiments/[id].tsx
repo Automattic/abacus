@@ -61,7 +61,8 @@ function ExperimentDetails(props: { experiment: ExperimentFull }) {
 }
 
 export default function ExperimentPage() {
-  const experimentId = toIntOrNull(useRouter().query.id)
+  const router = useRouter()
+  const experimentId = toIntOrNull(router.query.id)
   debug(`ExperimentPage#render ${experimentId}`)
 
   const [fetchError, setFetchError] = useState<Error | null>(null)
@@ -101,7 +102,12 @@ export default function ExperimentPage() {
         {fetchError && <ErrorsBox errors={[fetchError]} />}
         {experiment && <ExperimentDetails experiment={experiment} />}
         {experiment && analyses && metrics && (
-          <AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} />
+          <AnalysisSummary
+            analyses={analyses}
+            experiment={experiment}
+            metrics={metrics}
+            debugMode={router.query.debug === 'true'}
+          />
         )}
         <p>
           TODO: Fix the flash-of-error-before-data-load. That is, the `ErrorsBox` initially renders because
