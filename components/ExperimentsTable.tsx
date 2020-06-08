@@ -18,21 +18,20 @@ const isoDateRenderer = (date: Date) => (
 
 const debug = debugFactory('abacus:components/ExperimentsTable.tsx')
 
-interface Props {
-  experiments: ExperimentBare[]
-}
-
 /**
  * Renders a table of "bare" experiment information.
  */
-const ExperimentsTable = (props: Props) => {
+const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }) => {
   debug('ExperimentsTable#render')
-  const { experiments } = props
   const router = useRouter()
 
   /* istanbul ignore next; to be handled by an e2e test */
   const handleRowClick = (event?: React.MouseEvent, rowData?: ExperimentBare) => {
-    router.push('/experiments/[id]', `/experiments/${rowData?.experimentId}`)
+    if (rowData?.status === 'staging') {
+      router.push('/experiments/[id]', `/experiments/${rowData?.experimentId}`)
+    } else {
+      router.push('/experiments/[id]/results', `/experiments/${rowData?.experimentId}/results`)
+    }
   }
 
   return (
