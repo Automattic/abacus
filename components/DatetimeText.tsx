@@ -8,7 +8,7 @@ import { formatIsoUtcOffset } from '@/utils/date'
  */
 const DatetimeText = (props: { value: Date }) => (
   <span className='whitespace-no-wrap' title={formatIsoUtcOffset(props.value)}>
-    {format(props.value, "MMMM d',' yyyy")}
+    {format(props.value, 'yyyy-MM-dd')}
   </span>
 )
 
