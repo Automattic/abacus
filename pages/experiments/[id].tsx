@@ -87,20 +87,20 @@ function AudienceTable(props: { experiment: ExperimentFull; segments: Segment[] 
   return (
     <Table>
       <TableBody>
-        <TableRow>
-          <TableCell component='th' variant='head'>
+        <TableRow className='align-top'>
+          <TableCell component='th' scope='row' variant='head'>
             Platform
           </TableCell>
           <TableCell>{experiment.platform}</TableCell>
         </TableRow>
-        <TableRow>
-          <TableCell component='th' variant='head'>
+        <TableRow className='align-top'>
+          <TableCell component='th' scope='row' variant='head'>
             User Type
           </TableCell>
           <TableCell>{experiment.existingUsersAllowed ? 'All User (new + existing)' : 'New users only'}</TableCell>
         </TableRow>
-        <TableRow>
-          <TableCell component='th' variant='head'>
+        <TableRow className='align-top'>
+          <TableCell component='th' scope='row' variant='head'>
             Variations
           </TableCell>
           <TableCell>
@@ -108,8 +108,8 @@ function AudienceTable(props: { experiment: ExperimentFull; segments: Segment[] 
           </TableCell>
         </TableRow>
         {hasSegments ? (
-          <TableRow>
-            <TableCell component='th' variant='head'>
+          <TableRow className='align-top'>
+            <TableCell component='th' scope='row' variant='head'>
               Segments
             </TableCell>
             <TableCell>
@@ -139,20 +139,20 @@ function ConclusionsTable(props: { experiment: ExperimentFull }) {
   return (
     <Table>
       <TableBody>
-        <TableRow>
-          <TableCell component='th' variant='head'>
+        <TableRow className='align-top'>
+          <TableCell component='th' scope='row' variant='head'>
             Description for ending experiment
           </TableCell>
           <TableCell>{experiment.endReason}</TableCell>
         </TableRow>
-        <TableRow>
-          <TableCell component='th' variant='head'>
+        <TableRow className='align-top'>
+          <TableCell component='th' scope='row' variant='head'>
             Conclusion URL
           </TableCell>
           <TableCell>{experiment.conclusionUrl}</TableCell>
         </TableRow>
-        <TableRow>
-          <TableCell component='th' variant='head'>
+        <TableRow className='align-top'>
+          <TableCell component='th' scope='row' variant='head'>
             Deployed variation
           </TableCell>
           <TableCell>{deployedVariation?.name}</TableCell>
@@ -167,13 +167,13 @@ function GeneralTable(props: { experiment: ExperimentFull }) {
   return (
     <Table>
       <TableBody>
-        <TableRow>
+        <TableRow className='align-top'>
           <TableCell component='th' variant='head'>
             Description
           </TableCell>
           <TableCell>{experiment.description}</TableCell>
         </TableRow>
-        <TableRow>
+        <TableRow className='align-top'>
           <TableCell component='th' variant='head'>
             P2 Link
           </TableCell>
@@ -183,7 +183,7 @@ function GeneralTable(props: { experiment: ExperimentFull }) {
             </a>
           </TableCell>
         </TableRow>
-        <TableRow>
+        <TableRow className='align-top'>
           <TableCell component='th' variant='head'>
             Dates
           </TableCell>
@@ -191,7 +191,7 @@ function GeneralTable(props: { experiment: ExperimentFull }) {
             <DatetimeText value={experiment.startDatetime} /> to <DatetimeText value={experiment.endDatetime} />
           </TableCell>
         </TableRow>
-        <TableRow>
+        <TableRow className='align-top'>
           <TableCell component='th' variant='head'>
             Owner
           </TableCell>
