@@ -79,132 +79,141 @@ function toSegmentsByType(segmentAssignments: SegmentAssignment[], segments: Seg
   return segmentsByType
 }
 
-function AudienceTable(props: { experiment: ExperimentFull; segments: Segment[] }) {
+function AudiencePanel(props: { experiment: ExperimentFull; segments: Segment[] }) {
   const { experiment, segments } = props
 
   const segmentsByType = toSegmentsByType(experiment.segmentAssignments, segments)
   const hasSegments = experiment.segmentAssignments.length > 0
   return (
-    <Table>
-      <TableBody>
-        <TableRow className='align-top'>
-          <TableCell component='th' scope='row' variant='head'>
-            Platform
-          </TableCell>
-          <TableCell>{experiment.platform}</TableCell>
-        </TableRow>
-        <TableRow className='align-top'>
-          <TableCell component='th' scope='row' variant='head'>
-            User Type
-          </TableCell>
-          <TableCell>{experiment.existingUsersAllowed ? 'All User (new + existing)' : 'New users only'}</TableCell>
-        </TableRow>
-        <TableRow className='align-top'>
-          <TableCell component='th' scope='row' variant='head'>
-            Variations
-          </TableCell>
-          <TableCell>
-            <VariationsTable variations={experiment.variations} />
-          </TableCell>
-        </TableRow>
-        {hasSegments ? (
+    <Paper>
+      <h3>Audience</h3>
+      <Table>
+        <TableBody>
           <TableRow className='align-top'>
             <TableCell component='th' scope='row' variant='head'>
-              Segments
+              Platform
+            </TableCell>
+            <TableCell>{experiment.platform}</TableCell>
+          </TableRow>
+          <TableRow className='align-top'>
+            <TableCell component='th' scope='row' variant='head'>
+              User Type
+            </TableCell>
+            <TableCell>{experiment.existingUsersAllowed ? 'All User (new + existing)' : 'New users only'}</TableCell>
+          </TableRow>
+          <TableRow className='align-top'>
+            <TableCell component='th' scope='row' variant='head'>
+              Variations
             </TableCell>
             <TableCell>
-              {segmentsByType[SegmentType.Country].length > 0 && (
-                <SegmentsTable segments={segmentsByType[SegmentType.Country]} type={SegmentType.Country} />
-              )}
-              {segmentsByType[SegmentType.Locale].length > 0 && (
-                <SegmentsTable segments={segmentsByType[SegmentType.Locale]} type={SegmentType.Locale} />
-              )}
+              <VariationsTable variations={experiment.variations} />
             </TableCell>
           </TableRow>
-        ) : (
-          <TableRow>
-            <TableCell colSpan={2}>No segments assigned</TableCell>
-          </TableRow>
-        )}
-      </TableBody>
-    </Table>
+          {hasSegments ? (
+            <TableRow className='align-top'>
+              <TableCell component='th' scope='row' variant='head'>
+                Segments
+              </TableCell>
+              <TableCell>
+                {segmentsByType[SegmentType.Country].length > 0 && (
+                  <SegmentsTable segments={segmentsByType[SegmentType.Country]} type={SegmentType.Country} />
+                )}
+                {segmentsByType[SegmentType.Locale].length > 0 && (
+                  <SegmentsTable segments={segmentsByType[SegmentType.Locale]} type={SegmentType.Locale} />
+                )}
+              </TableCell>
+            </TableRow>
+          ) : (
+            <TableRow>
+              <TableCell colSpan={2}>No segments assigned</TableCell>
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+    </Paper>
   )
 }
 
-function ConclusionsTable(props: { experiment: ExperimentFull }) {
+function ConclusionsPanel(props: { experiment: ExperimentFull }) {
   const { experiment } = props
   const deployedVariation = experiment.variations.find(
     (variation) => experiment.deployedVariationId === variation.variationId,
   )
   return (
-    <Table>
-      <TableBody>
-        <TableRow className='align-top'>
-          <TableCell component='th' scope='row' variant='head'>
-            Description for ending experiment
-          </TableCell>
-          <TableCell>{experiment.endReason}</TableCell>
-        </TableRow>
-        <TableRow className='align-top'>
-          <TableCell component='th' scope='row' variant='head'>
-            Conclusion URL
-          </TableCell>
-          <TableCell>{experiment.conclusionUrl}</TableCell>
-        </TableRow>
-        <TableRow className='align-top'>
-          <TableCell component='th' scope='row' variant='head'>
-            Deployed variation
-          </TableCell>
-          <TableCell>{deployedVariation?.name}</TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+    <Paper>
+      <h3>Conclusions</h3>
+      <Table>
+        <TableBody>
+          <TableRow className='align-top'>
+            <TableCell component='th' scope='row' variant='head'>
+              Description for ending experiment
+            </TableCell>
+            <TableCell>{experiment.endReason}</TableCell>
+          </TableRow>
+          <TableRow className='align-top'>
+            <TableCell component='th' scope='row' variant='head'>
+              Conclusion URL
+            </TableCell>
+            <TableCell>{experiment.conclusionUrl}</TableCell>
+          </TableRow>
+          <TableRow className='align-top'>
+            <TableCell component='th' scope='row' variant='head'>
+              Deployed variation
+            </TableCell>
+            <TableCell>{deployedVariation?.name}</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </Paper>
   )
 }
 
-function GeneralTable(props: { experiment: ExperimentFull }) {
+function GeneralPanel(props: { experiment: ExperimentFull }) {
   const { experiment } = props
   return (
-    <Table>
-      <TableBody>
-        <TableRow className='align-top'>
-          <TableCell component='th' variant='head'>
-            Description
-          </TableCell>
-          <TableCell>{experiment.description}</TableCell>
-        </TableRow>
-        <TableRow className='align-top'>
-          <TableCell component='th' variant='head'>
-            P2 Link
-          </TableCell>
-          <TableCell>
-            <a href={experiment.p2Url} rel='noopener noreferrer' target='_blank'>
-              {experiment.p2Url}
-            </a>
-          </TableCell>
-        </TableRow>
-        <TableRow className='align-top'>
-          <TableCell component='th' variant='head'>
-            Dates
-          </TableCell>
-          <TableCell>
-            <DatetimeText value={experiment.startDatetime} /> to <DatetimeText value={experiment.endDatetime} />
-          </TableCell>
-        </TableRow>
-        <TableRow className='align-top'>
-          <TableCell component='th' variant='head'>
-            Owner
-          </TableCell>
-          <TableCell>
-            <OwnerAvatar ownerLogin={experiment.ownerLogin} /> {experiment.ownerLogin}
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+    <Paper>
+      <h3>General</h3>
+      <Table>
+        <TableBody>
+          <TableRow className='align-top'>
+            <TableCell component='th' variant='head'>
+              Description
+            </TableCell>
+            <TableCell>{experiment.description}</TableCell>
+          </TableRow>
+          <TableRow className='align-top'>
+            <TableCell component='th' variant='head'>
+              P2 Link
+            </TableCell>
+            <TableCell>
+              <a href={experiment.p2Url} rel='noopener noreferrer' target='_blank'>
+                {experiment.p2Url}
+              </a>
+            </TableCell>
+          </TableRow>
+          <TableRow className='align-top'>
+            <TableCell component='th' variant='head'>
+              Dates
+            </TableCell>
+            <TableCell>
+              <DatetimeText value={experiment.startDatetime} /> to <DatetimeText value={experiment.endDatetime} />
+            </TableCell>
+          </TableRow>
+          <TableRow className='align-top'>
+            <TableCell component='th' variant='head'>
+              Owner
+            </TableCell>
+            <TableCell>
+              <OwnerAvatar ownerLogin={experiment.ownerLogin} /> {experiment.ownerLogin}
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </Paper>
   )
 }
 
-function MetricAssignmentsTable(props: { metricAssignmentsRowData: MetricAssignmentsRowData[] }) {
+function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignmentsRowData[] }) {
   const [selectedMetric, setSelectedMetric] = useState<MetricFull | null>(null)
 
   const handleDetailsClick = (event: React.SyntheticEvent<HTMLButtonElement>) => {
@@ -223,7 +232,8 @@ function MetricAssignmentsTable(props: { metricAssignmentsRowData: MetricAssignm
   }
 
   return (
-    <>
+    <Paper>
+      <h3>Metrics</h3>
       <Table>
         <TableHead>
           <TableRow>
@@ -288,7 +298,7 @@ function MetricAssignmentsTable(props: { metricAssignmentsRowData: MetricAssignm
           </DialogActions>
         </Dialog>
       )}
-    </>
+    </Paper>
   )
 }
 
@@ -357,22 +367,10 @@ function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricF
           Edit
         </Button>
       </div>
-      <Paper>
-        <h3>General</h3>
-        <GeneralTable experiment={experiment} />
-      </Paper>
-      <Paper>
-        <h3>Audience</h3>
-        <AudienceTable experiment={experiment} segments={segments} />
-      </Paper>
-      <Paper>
-        <h3>Metrics</h3>
-        <MetricAssignmentsTable metricAssignmentsRowData={metricAssignmentsRowData} />
-      </Paper>
-      <Paper>
-        <h3>Conclusions</h3>
-        <ConclusionsTable experiment={experiment} />
-      </Paper>
+      <GeneralPanel experiment={experiment} />
+      <AudiencePanel experiment={experiment} segments={segments} />
+      <MetricAssignmentsPanel metricAssignmentsRowData={metricAssignmentsRowData} />
+      <ConclusionsPanel experiment={experiment} />
       <pre>{JSON.stringify(experiment, null, 2)}</pre>
     </div>
   )
