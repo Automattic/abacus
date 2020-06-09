@@ -8,9 +8,7 @@ import React from 'react'
 
 import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import RenderErrorView from '@/components/RenderErrorView'
-
 import { onRenderError } from '@/event-handlers/index'
-
 import { getAuthClientId, getExperimentsAuthInfo, saveExperimentsAuthInfo } from '@/utils/auth'
 
 const debug = debugFactory('abacus:pages/_app.tsx')
