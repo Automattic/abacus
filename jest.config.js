@@ -1,4 +1,17 @@
 module.exports = {
+  collectCoverageFrom: [
+    // Note: Dot directories (e.g., .storybook) are also excluded automatically.
+    '**/*.{ts,tsx}',
+    '!**/*stories.tsx',
+    '!**/node_modules/**',
+    '!<rootDir>/api/**', // We tests these with integration tests.
+    '!<rootDir>/coverage/**',
+    '!<rootDir>/e2e/**',
+    '!<rootDir>/pages/**', // We plan to test these with e2e tests.
+    '!<rootDir>/public/**',
+    '!<rootDir>/styles/**',
+    '!<rootDir>/__tests__/**',
+  ],
   coverageThreshold: {
     global: {
       branches: 100,
