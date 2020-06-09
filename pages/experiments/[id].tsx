@@ -86,8 +86,14 @@ function AudiencePanel(props: { experiment: ExperimentFull; segments: Segment[] 
   const hasSegments = experiment.segmentAssignments.length > 0
   return (
     <Paper>
-      <h3>Audience</h3>
       <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell colSpan={2}>
+              <h3 className='m-0'>Audience</h3>
+            </TableCell>
+          </TableRow>
+        </TableHead>
         <TableBody>
           <TableRow className='align-top'>
             <TableCell component='th' scope='row' variant='head'>
@@ -141,8 +147,14 @@ function ConclusionsPanel(props: { experiment: ExperimentFull }) {
   )
   return (
     <Paper>
-      <h3>Conclusions</h3>
       <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell colSpan={2}>
+              <h3 className='m-0'>Conclusions</h3>
+            </TableCell>
+          </TableRow>
+        </TableHead>
         <TableBody>
           <TableRow className='align-top'>
             <TableCell component='th' scope='row' variant='head'>
@@ -172,8 +184,14 @@ function GeneralPanel(props: { experiment: ExperimentFull }) {
   const { experiment } = props
   return (
     <Paper>
-      <h3>General</h3>
       <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell colSpan={2}>
+              <h3 className='m-0'>General</h3>
+            </TableCell>
+          </TableRow>
+        </TableHead>
         <TableBody>
           <TableRow className='align-top'>
             <TableCell component='th' variant='head'>
@@ -233,8 +251,14 @@ function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignm
 
   return (
     <Paper>
-      <h3>Metrics</h3>
       <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell colSpan={5}>
+              <h3 className='m-0'>Metrics</h3>
+            </TableCell>
+          </TableRow>
+        </TableHead>
         <TableHead>
           <TableRow>
             <TableCell component='th' variant='head'>
