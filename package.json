@@ -100,7 +100,7 @@
     "lint:ts:fix": "eslint . --ext .ts,.tsx --fix",
     "start": "next start",
     "storybook": "start-storybook",
-    "test:all": "npm run test:unit -- --coverage && npm run test:integration && npm run test:e2e -- --coverage",
+    "test:all": "npm run test:unit -- --coverage && npm run test:integration -- --coverage && npm run test:e2e -- --coverage",
     "@comment test:e2e": "Runs the e2e tests. It will spawn Chromium to run the tests.",
     "test:e2e": "jest --config=jest.e2e.config.js --runInBand",
     "test:e2e:smoke": "jest --config=jest.e2e.config.js --runInBand e2e/smoke.test.tsx",
