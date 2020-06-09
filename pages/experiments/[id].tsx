@@ -55,13 +55,13 @@ function toMetricAssignmentsRowData(metricAssignments: MetricAssignment[], metri
   return metricAssignmentsRowData
 }
 
-function toSegmentsByType(segmentAssignments: SegmentAssignment[], segmentsLut: Segment[]) {
+function toSegmentsByType(segmentAssignments: SegmentAssignment[], segments: Segment[]) {
   const segmentsByType: { [SegmentType.Country]: Segment[]; [SegmentType.Locale]: Segment[] } = {
     [SegmentType.Country]: [],
     [SegmentType.Locale]: [],
   }
   segmentAssignments.forEach((segmentAssignment) => {
-    const segment = segmentsLut.find((segment) => segment.segmentId === segmentAssignment.segmentId)
+    const segment = segments.find((segment) => segment.segmentId === segmentAssignment.segmentId)
     if (segment) {
       const { type } = segment
       const segments = segmentsByType[type]
@@ -74,8 +74,112 @@ function toSegmentsByType(segmentAssignments: SegmentAssignment[], segmentsLut: 
   return segmentsByType
 }
 
+function AudienceTable(props: { experiment: ExperimentFull; segments: Segment[] }) {
+  const { experiment, segments } = props
+
+  const segmentsByType = toSegmentsByType(experiment.segmentAssignments, segments)
+  const hasSegments = experiment.segmentAssignments.length > 0
+  return (
+    <table>
+      <tbody>
+        <tr>
+          <th>Platform</th>
+          <td>{experiment.platform}</td>
+        </tr>
+        <tr>
+          <th>User Type</th>
+          <td>{experiment.existingUsersAllowed ? 'All User (new + existing)' : 'New users only'}</td>
+        </tr>
+        <tr>
+          <th>Variations</th>
+          <td>
+            <VariationsTable variations={experiment.variations} />
+          </td>
+        </tr>
+        {hasSegments ? (
+          <tr>
+            <th>Segments</th>
+            <td>
+              {segmentsByType[SegmentType.Country].length > 0 && (
+                <SegmentsTable segments={segmentsByType[SegmentType.Country]} type={SegmentType.Country} />
+              )}
+              {segmentsByType[SegmentType.Locale].length > 0 && (
+                <SegmentsTable segments={segmentsByType[SegmentType.Locale]} type={SegmentType.Locale} />
+              )}
+            </td>
+          </tr>
+        ) : (
+          <tr>
+            <td colSpan={2}>No segments assigned</td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  )
+}
+
+function ConclusionsTable(props: { experiment: ExperimentFull }) {
+  const { experiment } = props
+  const deployedVariation = experiment.variations.find(
+    (variation) => experiment.deployedVariationId === variation.variationId,
+  )
+  return (
+    <table>
+      <tbody>
+        <tr>
+          <th>Description for ending experiment</th>
+          <td>{experiment.endReason}</td>
+        </tr>
+        <tr>
+          <th>Conclusion URL</th>
+          <td>{experiment.conclusionUrl}</td>
+        </tr>
+        <tr>
+          <th>Deployed variation</th>
+          <td>{deployedVariation?.name}</td>
+        </tr>
+      </tbody>
+    </table>
+  )
+}
+
+function GeneralTable(props: { experiment: ExperimentFull }) {
+  const { experiment } = props
+  return (
+    <table>
+      <tbody>
+        <tr>
+          <th>Description</th>
+          <td>{experiment.description}</td>
+        </tr>
+        <tr>
+          <th>P2 Link</th>
+          <td>
+            <a href={experiment.p2Url} rel='noopener noreferrer' target='_blank'>
+              {experiment.p2Url}
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <th>Dates</th>
+          <td>
+            <DatetimeText value={experiment.startDatetime} /> to <DatetimeText value={experiment.endDatetime} />
+          </td>
+        </tr>
+        <tr>
+          <th>Owner</th>
+          <td>
+            <OwnerAvatar ownerLogin={experiment.ownerLogin} /> {experiment.ownerLogin}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  )
+}
+
 function MetricAssignmentsTable(props: { metricAssignmentsRowData: MetricAssignmentsRowData[] }) {
   const [selectedMetric, setSelectedMetric] = useState<MetricFull | null>(null)
+
   const handleDetailsClick = (event: React.SyntheticEvent<HTMLButtonElement>) => {
     const { currentTarget } = event
     const metricId = toIntOrNull(currentTarget.dataset.metricId)
@@ -199,13 +303,10 @@ function VariationsTable(props: { variations: Variation[] }) {
 }
 
 function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricFull[]; segments: Segment[] }) {
-  const { experiment, metrics: metricsLut, segments: segmentsLut } = props
+  const { experiment, metrics, segments } = props
 
-  const metricAssignmentsRowData = toMetricAssignmentsRowData(experiment.metricAssignments, metricsLut)
-  const segmentsByType = toSegmentsByType(experiment.segmentAssignments, segmentsLut)
-  const hasSegments = experiment.segmentAssignments.length > 0
+  const metricAssignmentsRowData = toMetricAssignmentsRowData(experiment.metricAssignments, metrics)
 
-  /* eslint-disable jsx-a11y/label-has-associated-control */
   return (
     <div>
       <div className='clearfix'>
@@ -217,97 +318,23 @@ function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricF
       </div>
       <Paper>
         <h3>General</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <label>Description</label>
-              </td>
-              <td>{experiment.description}</td>
-            </tr>
-            <tr>
-              <td>
-                <label>P2 Link</label>
-              </td>
-              <td>
-                <a href={experiment.p2Url} rel='noopener noreferrer' target='_blank'>
-                  {experiment.p2Url}
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Dates</label>
-              </td>
-              <td>
-                <DatetimeText value={experiment.startDatetime} /> to <DatetimeText value={experiment.endDatetime} />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>Owner</label>
-              </td>
-              <td>
-                <OwnerAvatar ownerLogin={experiment.ownerLogin} /> {experiment.ownerLogin}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <GeneralTable experiment={experiment} />
       </Paper>
       <Paper>
         <h3>Audience</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <label>Platform</label>
-              </td>
-              <td>{experiment.platform}</td>
-            </tr>
-            <tr>
-              <td>
-                <label>User Type</label>
-              </td>
-              <td>{experiment.existingUsersAllowed ? 'All User (new + existing)' : 'New users only'}</td>
-            </tr>
-            <tr>
-              <td>
-                <label>Variations</label>
-              </td>
-              <td>
-                <VariationsTable variations={experiment.variations} />
-              </td>
-            </tr>
-            {hasSegments ? (
-              <tr>
-                <td>
-                  <label>Segments</label>
-                </td>
-                <td>
-                  {segmentsByType[SegmentType.Country].length > 0 && (
-                    <SegmentsTable segments={segmentsByType[SegmentType.Country]} type={SegmentType.Country} />
-                  )}
-                  {segmentsByType[SegmentType.Locale].length > 0 && (
-                    <SegmentsTable segments={segmentsByType[SegmentType.Locale]} type={SegmentType.Locale} />
-                  )}
-                </td>
-              </tr>
-            ) : (
-              <tr>
-                <td colSpan={2}>No segments assigned</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+        <AudienceTable experiment={experiment} segments={segments} />
       </Paper>
       <Paper>
         <h3>Metrics</h3>
         <MetricAssignmentsTable metricAssignmentsRowData={metricAssignmentsRowData} />
       </Paper>
+      <Paper>
+        <h3>Conclusions</h3>
+        <ConclusionsTable experiment={experiment} />
+      </Paper>
       <pre>{JSON.stringify(experiment, null, 2)}</pre>
     </div>
   )
-  /* eslint-enable jsx-a11y/label-has-associated-control */
 }
 
 export default function ExperimentPage() {
@@ -349,10 +376,6 @@ export default function ExperimentPage() {
         {experiment && metrics && segments && (
           <ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />
         )}
-        <p>
-          TODO: Fix the flash-of-error-before-data-load. That is, the `ErrorsBox` initially renders because
-          `experimentId` is initially `null`.
-        </p>
       </Container>
     </Layout>
   )
