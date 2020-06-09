@@ -136,16 +136,24 @@ function LatestResults(props: {
   )
 }
 
-export default function AnalysisSummary(props: {
+/**
+ * Main component for summarizing experiment analyses.
+ */
+export default function AnalysisSummary({
+  analyses,
+  experiment,
+  metrics,
+  debugMode,
+}: {
   analyses: Analysis[]
   experiment: ExperimentFull
   metrics: MetricBare[]
   debugMode?: boolean
 }) {
-  const { analyses, experiment, metrics, debugMode } = props
   if (analyses.length === 0) {
-    return <h2>No analyses yet.</h2>
+    return <h2>No analyses yet for {experiment.name}.</h2>
   }
+
   const metricAssignmentIdToLatestAnalyses = _.mapValues(
     _.groupBy(analyses, 'metricAssignmentId'),
     (metricAnalyses) => {

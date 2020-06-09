@@ -21,7 +21,7 @@ test('renders layout with declared title and children', () => {
   expect(headerElmt).toMatchInlineSnapshot(`
     <header>
       <div
-        class="ui container"
+        class="MuiContainer-root MuiContainer-maxWidthLg"
       >
         <nav>
           <a
@@ -48,7 +48,7 @@ test('renders layout with declared title and children', () => {
     <footer>
       <hr />
       <div
-        class="ui container"
+        class="MuiContainer-root MuiContainer-maxWidthLg"
       >
         <span>
           The Abacus footer, brought to you by Automattic
@@ -78,4 +78,15 @@ test('renders RenderErrorView when has bad children', () => {
   } finally {
     ;(console.error as jest.Mock).mockRestore()
   }
+})
+
+test('renders an error when it is passed in', () => {
+  const err: Error = { name: 'testError', message: 'An error occurred' }
+  const { container } = render(
+    <Layout title='Some Title' error={err}>
+      A child.
+    </Layout>,
+  )
+
+  expect(container.querySelector('.error-box')).toHaveTextContent('An error occurred')
 })

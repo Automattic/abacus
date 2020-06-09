@@ -1,6 +1,7 @@
 import { format } from 'date-fns'
 import debugFactory from 'debug'
 import MaterialTable from 'material-table'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 import { ExperimentBare } from '@/models'
@@ -17,16 +18,21 @@ const isoDateRenderer = (date: Date) => (
 
 const debug = debugFactory('abacus:components/ExperimentsTable.tsx')
 
-interface Props {
-  experiments: ExperimentBare[]
-}
-
 /**
  * Renders a table of "bare" experiment information.
  */
-const ExperimentsTable = (props: Props) => {
+const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }) => {
   debug('ExperimentsTable#render')
-  const { experiments } = props
+  const router = useRouter()
+
+  /* istanbul ignore next; to be handled by an e2e test */
+  const handleRowClick = (event?: React.MouseEvent, rowData?: ExperimentBare) => {
+    if (rowData?.status === 'staging') {
+      router.push('/experiments/[id]', `/experiments/${rowData?.experimentId}`)
+    } else {
+      router.push('/experiments/[id]/results', `/experiments/${rowData?.experimentId}/results`)
+    }
+  }
 
   return (
     <MaterialTable
@@ -39,6 +45,7 @@ const ExperimentsTable = (props: Props) => {
         { title: 'Owner', field: 'ownerLogin' },
       ]}
       data={experiments}
+      onRowClick={handleRowClick}
       options={{
         emptyRowsWhenPaging: false,
         pageSize: 25,

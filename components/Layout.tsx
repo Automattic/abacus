@@ -1,19 +1,15 @@
+import Container from '@material-ui/core/Container'
 import Link from 'next/link'
 import Head from 'next/head'
 import React, { ReactNode } from 'react'
-import Container from 'semantic-ui-react/dist/commonjs/elements/Container'
 
-import { onRenderError } from '@/event-handlers/index'
+import { onRenderError } from '@/event-handlers'
 
 import RenderErrorBoundary from './RenderErrorBoundary'
 import RenderErrorView from './RenderErrorView'
+import ErrorsBox from '@/components/ErrorsBox'
 
-type Props = {
-  children?: ReactNode
-  title: string
-}
-
-const Layout = ({ children, title }: Props) => (
+const Layout = ({ title, error, children }: { title: string; error?: Error | null; children?: ReactNode }) => (
   <RenderErrorBoundary onError={onRenderError}>
     {({ renderError }) => {
       return renderError ? (
@@ -38,7 +34,11 @@ const Layout = ({ children, title }: Props) => (
               </nav>
             </Container>
           </header>
-          {children}
+          <Container>
+            <h1>{title}</h1>
+            {error && <ErrorsBox errors={[error]} />}
+            {children}
+          </Container>
           <footer>
             <hr />
             <Container>
