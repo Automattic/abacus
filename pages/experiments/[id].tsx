@@ -297,9 +297,13 @@ function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignm
                   <BooleanText value={metricsRowDatum.changeExpected} />
                 </TableCell>
                 <TableCell className='border-b-0'>
-                  <button type='button' data-metric-id={metricsRowDatum.metric.metricId} onClick={handleDetailsClick}>
+                  <Button
+                    data-metric-id={metricsRowDatum.metric.metricId}
+                    onClick={handleDetailsClick}
+                    variant='contained'
+                  >
                     Details
-                  </button>
+                  </Button>
                 </TableCell>
               </TableRow>
             ) : (
