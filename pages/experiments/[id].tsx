@@ -5,6 +5,11 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Paper from '@material-ui/core/Paper'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -80,41 +85,49 @@ function AudienceTable(props: { experiment: ExperimentFull; segments: Segment[] 
   const segmentsByType = toSegmentsByType(experiment.segmentAssignments, segments)
   const hasSegments = experiment.segmentAssignments.length > 0
   return (
-    <table>
-      <tbody>
-        <tr>
-          <th>Platform</th>
-          <td>{experiment.platform}</td>
-        </tr>
-        <tr>
-          <th>User Type</th>
-          <td>{experiment.existingUsersAllowed ? 'All User (new + existing)' : 'New users only'}</td>
-        </tr>
-        <tr>
-          <th>Variations</th>
-          <td>
+    <Table>
+      <TableBody>
+        <TableRow>
+          <TableCell component='th' variant='head'>
+            Platform
+          </TableCell>
+          <TableCell>{experiment.platform}</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell component='th' variant='head'>
+            User Type
+          </TableCell>
+          <TableCell>{experiment.existingUsersAllowed ? 'All User (new + existing)' : 'New users only'}</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell component='th' variant='head'>
+            Variations
+          </TableCell>
+          <TableCell>
             <VariationsTable variations={experiment.variations} />
-          </td>
-        </tr>
+          </TableCell>
+        </TableRow>
         {hasSegments ? (
-          <tr>
-            <th>Segments</th>
-            <td>
+          <TableRow>
+            <TableCell component='th' variant='head'>
+              Segments
+            </TableCell>
+            <TableCell>
               {segmentsByType[SegmentType.Country].length > 0 && (
                 <SegmentsTable segments={segmentsByType[SegmentType.Country]} type={SegmentType.Country} />
               )}
               {segmentsByType[SegmentType.Locale].length > 0 && (
                 <SegmentsTable segments={segmentsByType[SegmentType.Locale]} type={SegmentType.Locale} />
               )}
-            </td>
-          </tr>
+            </TableCell>
+          </TableRow>
         ) : (
-          <tr>
-            <td colSpan={2}>No segments assigned</td>
-          </tr>
+          <TableRow>
+            <TableCell colSpan={2}>No segments assigned</TableCell>
+          </TableRow>
         )}
-      </tbody>
-    </table>
+      </TableBody>
+    </Table>
   )
 }
 
@@ -124,56 +137,70 @@ function ConclusionsTable(props: { experiment: ExperimentFull }) {
     (variation) => experiment.deployedVariationId === variation.variationId,
   )
   return (
-    <table>
-      <tbody>
-        <tr>
-          <th>Description for ending experiment</th>
-          <td>{experiment.endReason}</td>
-        </tr>
-        <tr>
-          <th>Conclusion URL</th>
-          <td>{experiment.conclusionUrl}</td>
-        </tr>
-        <tr>
-          <th>Deployed variation</th>
-          <td>{deployedVariation?.name}</td>
-        </tr>
-      </tbody>
-    </table>
+    <Table>
+      <TableBody>
+        <TableRow>
+          <TableCell component='th' variant='head'>
+            Description for ending experiment
+          </TableCell>
+          <TableCell>{experiment.endReason}</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell component='th' variant='head'>
+            Conclusion URL
+          </TableCell>
+          <TableCell>{experiment.conclusionUrl}</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell component='th' variant='head'>
+            Deployed variation
+          </TableCell>
+          <TableCell>{deployedVariation?.name}</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   )
 }
 
 function GeneralTable(props: { experiment: ExperimentFull }) {
   const { experiment } = props
   return (
-    <table>
-      <tbody>
-        <tr>
-          <th>Description</th>
-          <td>{experiment.description}</td>
-        </tr>
-        <tr>
-          <th>P2 Link</th>
-          <td>
+    <Table>
+      <TableBody>
+        <TableRow>
+          <TableCell component='th' variant='head'>
+            Description
+          </TableCell>
+          <TableCell>{experiment.description}</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell component='th' variant='head'>
+            P2 Link
+          </TableCell>
+          <TableCell>
             <a href={experiment.p2Url} rel='noopener noreferrer' target='_blank'>
               {experiment.p2Url}
             </a>
-          </td>
-        </tr>
-        <tr>
-          <th>Dates</th>
-          <td>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell component='th' variant='head'>
+            Dates
+          </TableCell>
+          <TableCell>
             <DatetimeText value={experiment.startDatetime} /> to <DatetimeText value={experiment.endDatetime} />
-          </td>
-        </tr>
-        <tr>
-          <th>Owner</th>
-          <td>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell component='th' variant='head'>
+            Owner
+          </TableCell>
+          <TableCell>
             <OwnerAvatar ownerLogin={experiment.ownerLogin} /> {experiment.ownerLogin}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   )
 }
 
@@ -197,49 +224,57 @@ function MetricAssignmentsTable(props: { metricAssignmentsRowData: MetricAssignm
 
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Minimum Difference</th>
-            <th>Attribution Window</th>
-            <th>Changes Expected</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell component='th' variant='head'>
+              Name
+            </TableCell>
+            <TableCell component='th' variant='head'>
+              Minimum Difference
+            </TableCell>
+            <TableCell component='th' variant='head'>
+              Attribution Window
+            </TableCell>
+            <TableCell component='th' variant='head'>
+              Changes Expected
+            </TableCell>
+            <TableCell component='th' variant='head'></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {props.metricAssignmentsRowData.map((metricsRowDatum) =>
             metricsRowDatum.metric ? (
-              <tr key={metricsRowDatum.metricAssignmentId}>
-                <td>{metricsRowDatum.metric.name}</td>
-                <td>
+              <TableRow key={metricsRowDatum.metricAssignmentId}>
+                <TableCell>{metricsRowDatum.metric.name}</TableCell>
+                <TableCell>
                   <MetricMinimumDifference
                     metric={metricsRowDatum.metric}
                     minDifference={metricsRowDatum.minDifference}
                   />
-                </td>
-                <td>
+                </TableCell>
+                <TableCell>
                   <AttributionWindow attributionWindowSeconds={metricsRowDatum.attributionWindowSeconds} />
-                </td>
-                <td>
+                </TableCell>
+                <TableCell>
                   <BooleanText value={metricsRowDatum.changeExpected} />
-                </td>
-                <td>
+                </TableCell>
+                <TableCell>
                   <button type='button' data-metric-id={metricsRowDatum.metric.metricId} onClick={handleDetailsClick}>
                     Details
                   </button>
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             ) : (
-              <tr>
-                <td colSpan={5}>
+              <TableRow>
+                <TableCell colSpan={5}>
                   <p>TODO: Decide how to handle this unlikely situation</p>
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             ),
           )}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
       {selectedMetric && (
         <Dialog onClose={handleDialogClose} open>
           <DialogTitle>Metric Details</DialogTitle>
@@ -260,45 +295,51 @@ function MetricAssignmentsTable(props: { metricAssignmentsRowData: MetricAssignm
 function SegmentsTable(props: { segments: Segment[]; type: SegmentType }) {
   const sortedSegments = [...props.segments].sort()
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>{props.type}</th>
-        </tr>
-      </thead>
-      <tbody>
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell component='th' variant='head'>
+            {props.type}
+          </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
         {sortedSegments.map((segment) => (
-          <tr key={segment.segmentId}>
-            <td>{segment.name}</td>
-          </tr>
+          <TableRow key={segment.segmentId}>
+            <TableCell>{segment.name}</TableCell>
+          </TableRow>
         ))}
-      </tbody>
-    </table>
+      </TableBody>
+    </Table>
   )
 }
 
 function VariationsTable(props: { variations: Variation[] }) {
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Percent</th>
-        </tr>
-      </thead>
-      <tbody>
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell component='th' variant='head'>
+            Name
+          </TableCell>
+          <TableCell component='th' variant='head'>
+            Percent
+          </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
         {props.variations.map((variation) => {
           return (
-            <tr key={variation.variationId}>
-              <td>
+            <TableRow key={variation.variationId}>
+              <TableCell>
                 {variation.name} {variation.isDefault && <span className='pill'>Default</span>}
-              </td>
-              <td>{variation.allocatedPercentage}%</td>
-            </tr>
+              </TableCell>
+              <TableCell>{variation.allocatedPercentage}%</TableCell>
+            </TableRow>
           )
         })}
-      </tbody>
-    </table>
+      </TableBody>
+    </Table>
   )
 }
 
