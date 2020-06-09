@@ -4,7 +4,6 @@ module.exports = {
     '!**/node_modules/**',
     // FIXME: TODO: Get tests on the following.
     '!<rootDir>/api/UnauthorizedError.ts',
-    '!<rootDir>/api/utils.ts',
   ],
   coverageThreshold: {
     global: {
