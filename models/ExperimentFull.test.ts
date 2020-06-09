@@ -3,6 +3,7 @@ import { Status } from '@/models/Status'
 
 import { ExperimentFull } from './ExperimentFull'
 import { AttributionWindowSeconds } from './MetricAssignment'
+import Fixtures from '@/helpers/fixtures'
 
 describe('models/ExperimentFull.ts module', () => {
   describe('ExperimentFull', () => {
@@ -325,6 +326,16 @@ describe('models/ExperimentFull.ts module', () => {
             },
           ],
         })
+      })
+    })
+
+    describe('getPrimaryMetricAssignmentId', () => {
+      it('returns the primary assignment ID when it exists', () => {
+        expect(Fixtures.createExperimentFull().getPrimaryMetricAssignmentId()).toBe(123)
+      })
+
+      it('returns undefined when no primary assignment ID exists', () => {
+        expect(Fixtures.createExperimentFull({ metricAssignments: [] }).getPrimaryMetricAssignmentId()).toBe(undefined)
       })
     })
   })

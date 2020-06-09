@@ -1,0 +1,167 @@
+import {
+  Analysis,
+  AnalysisStrategy,
+  AttributionWindowSeconds,
+  ExperimentFull,
+  MetricAssignment,
+  MetricBare,
+  Platform,
+  RecommendationReason,
+  Status,
+  Variation,
+} from '@/models'
+
+function createAnalysis(fieldOverrides: Partial<Analysis>) {
+  return new Analysis({
+    metricAssignmentId: 123,
+    analysisStrategy: AnalysisStrategy.IttPure,
+    participantStats: {
+      total: 1000,
+      not_final: 100,
+      variation_1: 600,
+      variation_2: 400,
+    },
+    metricEstimates: {
+      diff: { estimate: 0.0, bottom: -0.01, top: 0.01 },
+      variation_1: { estimate: 0.12, bottom: 0, top: 10.0 },
+      variation_2: { estimate: -0.12, bottom: -1.123, top: 1.0 },
+    },
+    recommendation: {
+      endExperiment: true,
+      chosenVariationId: 2,
+      reason: RecommendationReason.CiInRope,
+      warnings: [],
+    },
+    analysisDatetime: new Date(2020, 4, 10),
+    ...fieldOverrides,
+  })
+}
+
+function createAnalyses() {
+  return [
+    createAnalysis({
+      analysisStrategy: AnalysisStrategy.IttPure,
+      participantStats: {
+        total: 1000,
+        not_final: 100,
+        variation_1: 600,
+        variation_2: 400,
+      },
+    }),
+    createAnalysis({
+      analysisStrategy: AnalysisStrategy.MittNoCrossovers,
+      participantStats: {
+        total: 900,
+        not_final: 90,
+        variation_1: 540,
+        variation_2: 360,
+      },
+      recommendation: {
+        endExperiment: false,
+        chosenVariationId: null,
+        reason: RecommendationReason.RopeInCi,
+        warnings: [],
+      },
+    }),
+    createAnalysis({
+      analysisStrategy: AnalysisStrategy.MittNoSpammers,
+      participantStats: {
+        total: 850,
+        not_final: 85,
+        variation_1: 510,
+        variation_2: 340,
+      },
+      recommendation: {
+        endExperiment: true,
+        chosenVariationId: null,
+        reason: RecommendationReason.CiInRope,
+        warnings: [],
+      },
+    }),
+    createAnalysis({
+      analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
+      participantStats: {
+        total: 800,
+        not_final: 80,
+        variation_1: 480,
+        variation_2: 320,
+      },
+    }),
+    createAnalysis({
+      analysisStrategy: AnalysisStrategy.PpNaive,
+      participantStats: {
+        total: 700,
+        not_final: 70,
+        variation_1: 420,
+        variation_2: 280,
+      },
+    }),
+
+    // TODO: make this example richer -- more metrics and dates (+ some docs)
+  ]
+}
+
+function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}) {
+  return new ExperimentFull({
+    experimentId: 1,
+    name: 'experiment_1',
+    startDatetime: new Date(2020, 5, 4),
+    endDatetime: new Date(2020, 6, 4),
+    status: Status.Completed,
+    platform: Platform.Calypso,
+    ownerLogin: 'test_a11n',
+    description: 'Experiment with things. Change stuff. Profit.',
+    existingUsersAllowed: false,
+    p2Url: 'https://wordpress.com/experiment_1',
+    exposureEvents: null,
+    variations: [
+      new Variation({
+        variationId: 2,
+        name: 'test',
+        isDefault: false,
+        allocatedPercentage: 40,
+      }),
+      new Variation({
+        variationId: 1,
+        name: 'control',
+        isDefault: true,
+        allocatedPercentage: 60,
+      }),
+    ],
+    metricAssignments: [
+      new MetricAssignment({
+        metricAssignmentId: 123,
+        metricId: 1,
+        experimentId: 1,
+        attributionWindowSeconds: AttributionWindowSeconds.OneWeek,
+        changeExpected: true,
+        isPrimary: true,
+        minDifference: 0.1,
+      }),
+    ],
+    segmentAssignments: [],
+    ...fieldOverrides,
+  })
+}
+
+function createMetricsBares(numMetrics = 3) {
+  const metrics = []
+  for (let i = 0; i < numMetrics; i++) {
+    metrics.push(
+      new MetricBare({
+        metricId: i,
+        name: `metric_${i}`,
+        description: `This is metric ${i}`,
+      }),
+    )
+  }
+  return metrics
+}
+
+const Fixtures = {
+  createAnalyses,
+  createExperimentFull,
+  createMetricsBares,
+}
+
+export default Fixtures
