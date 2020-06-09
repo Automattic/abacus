@@ -403,23 +403,23 @@ function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricF
         </Button>
       </div>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={8}>
           <Grid container direction='column' spacing={2}>
             <Grid item>
               <GeneralPanel experiment={experiment} />
             </Grid>
             <Grid item>
-              <AudiencePanel experiment={experiment} segments={segments} />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} md={8}>
-          <Grid container direction='column' spacing={2}>
-            <Grid item>
               <MetricAssignmentsPanel metricAssignmentsRowData={metricAssignmentsRowData} />
             </Grid>
             <Grid item>
               <ConclusionsPanel experiment={experiment} />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Grid container direction='column' spacing={2}>
+            <Grid item>
+              <AudiencePanel experiment={experiment} segments={segments} />
             </Grid>
           </Grid>
         </Grid>
