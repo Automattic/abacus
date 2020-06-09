@@ -8,12 +8,14 @@ import {
   AttributionWindowSeconds,
   ExperimentFull,
   MetricAssignment,
+  MetricBare,
   Platform,
   RecommendationReason,
   Status,
   Variation,
 } from '@/models'
 
+// TODO: share fixtures with stories
 const experiment: ExperimentFull = new ExperimentFull({
   experimentId: 1,
   name: 'experiment_1',
@@ -53,6 +55,18 @@ const experiment: ExperimentFull = new ExperimentFull({
   ],
   segmentAssignments: [],
 })
+const metrics = [
+  new MetricBare({
+    metricId: 1,
+    name: 'metric_1',
+    description: 'This is metric 1',
+  }),
+  new MetricBare({
+    metricId: 2,
+    name: 'metric_2',
+    description: 'This is metric 2',
+  }),
+]
 const analyses: Analysis[] = [
   new Analysis({
     metricAssignmentId: 123,
@@ -167,18 +181,18 @@ const analyses: Analysis[] = [
 ]
 
 test('renders an appropriate message with no analyses', () => {
-  const { container } = render(<AnalysisSummary analyses={[]} experiment={experiment} metrics={[]} />)
+  const { container } = render(<AnalysisSummary analyses={[]} experiment={experiment} metrics={metrics} />)
   expect(container).toHaveTextContent('No analyses yet for experiment_1.')
 })
 
 test('renders an appropriate message with some analyses', () => {
-  const { container } = render(<AnalysisSummary analyses={analyses} experiment={experiment} metrics={[]} />)
-  expect(container).toHaveTextContent('Found 5 analysis objects in total. There are 0 metrics in the system.')
+  const { container } = render(<AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} />)
+  expect(container).toHaveTextContent('Found 5 analysis objects in total.')
 })
 
 test('shows the analyses JSON in debug mode', () => {
   const { container } = render(
-    <AnalysisSummary analyses={analyses} experiment={experiment} metrics={[]} debugMode={true} />,
+    <AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} debugMode={true} />,
   )
   expect(container.querySelector('pre')).not.toBeNull()
 })

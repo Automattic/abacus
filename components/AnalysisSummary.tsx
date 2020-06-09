@@ -78,7 +78,7 @@ function LatestResults(props: {
   return (
     <>
       {Object.entries(metricAssignmentIdToLatestAnalyses).map(([metricAssignmentId, metricAnalyses]) => (
-        <>
+        <div key={metricAssignmentId}>
           <div>
             <strong>Metric: </strong>
             <code>{metricsById[metricAssignmentsById[metricAssignmentId].metricId].name}</code>
@@ -130,7 +130,7 @@ function LatestResults(props: {
               </TableBody>
             </Table>
           </TableContainer>
-        </>
+        </div>
       ))}
     </>
   )
