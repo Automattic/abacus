@@ -1,5 +1,4 @@
 import Button from '@material-ui/core/Button'
-import Container from '@material-ui/core/Container'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
@@ -13,14 +12,14 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
 import { toIntOrNull } from 'qc-to_int'
+import React, { useEffect, useState } from 'react'
 
 import { ExperimentsApi, MetricsApi, SegmentsApi } from '@/api'
 import AttributionWindow from '@/components/AttributionWindow'
 import BooleanText from '@/components/BooleanText'
 import DatetimeText from '@/components/DatetimeText'
-import ErrorsBox from '@/components/ErrorsBox'
+import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
 import MetricDetails from '@/components/MetricDetails'
 import MetricMinimumDifference from '@/components/MetricMinimumDifference'
@@ -452,13 +451,11 @@ export default function ExperimentPage() {
   }, [experimentId])
 
   return (
-    <Layout title='Experiment: insert_name_here'>
-      <Container>
-        {fetchError && <ErrorsBox errors={[fetchError]} />}
-        {experiment && metrics && segments && (
-          <ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />
-        )}
-      </Container>
+    <Layout title={`Experiment: ${experiment ? experiment.name : 'Not Found'}`} error={fetchError}>
+      <ExperimentTabs experiment={experiment} />
+      {experiment && metrics && segments && (
+        <ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />
+      )}
     </Layout>
   )
 }

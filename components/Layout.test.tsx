@@ -79,3 +79,14 @@ test('renders RenderErrorView when has bad children', () => {
     ;(console.error as jest.Mock).mockRestore()
   }
 })
+
+test('renders an error when it is passed in', () => {
+  const err: Error = { name: 'testError', message: 'An error occurred' }
+  const { container } = render(
+    <Layout title='Some Title' error={err}>
+      A child.
+    </Layout>,
+  )
+
+  expect(container.querySelector('.error-box')).toHaveTextContent('An error occurred')
+})
