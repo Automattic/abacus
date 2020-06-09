@@ -4,10 +4,10 @@ module.exports = {
     '**/*.{ts,tsx}',
     '!**/*stories.tsx',
     '!**/node_modules/**',
-    '!<rootDir>/api/**', // We tests these with integration tests.
+    '!<rootDir>/api/**', // We test these with integration tests.
     '!<rootDir>/coverage/**',
     '!<rootDir>/e2e/**',
-    '!<rootDir>/pages/**', // We plan to test these with e2e tests.
+    '!<rootDir>/pages/**', // We test these with e2e tests.
     '!<rootDir>/public/**',
     '!<rootDir>/styles/**',
     '!<rootDir>/__tests__/**',
