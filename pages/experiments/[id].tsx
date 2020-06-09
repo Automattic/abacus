@@ -4,6 +4,7 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
+import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -391,10 +392,28 @@ function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricF
           Edit
         </Button>
       </div>
-      <GeneralPanel experiment={experiment} />
-      <AudiencePanel experiment={experiment} segments={segments} />
-      <MetricAssignmentsPanel metricAssignmentsRowData={metricAssignmentsRowData} />
-      <ConclusionsPanel experiment={experiment} />
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={4}>
+          <Grid container direction='column' spacing={2}>
+            <Grid item>
+              <GeneralPanel experiment={experiment} />
+            </Grid>
+            <Grid item>
+              <AudiencePanel experiment={experiment} segments={segments} />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={12} md={8}>
+          <Grid container direction='column' spacing={2}>
+            <Grid item>
+              <MetricAssignmentsPanel metricAssignmentsRowData={metricAssignmentsRowData} />
+            </Grid>
+            <Grid item>
+              <ConclusionsPanel experiment={experiment} />
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
       <pre>{JSON.stringify(experiment, null, 2)}</pre>
     </div>
   )
