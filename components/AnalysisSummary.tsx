@@ -1,5 +1,6 @@
-import { Analysis, ExperimentFull, MetricBare } from '@/models'
 import React from 'react'
+
+import { Analysis, ExperimentFull, MetricBare } from '@/models'
 
 /**
  * Main component for summarizing experiment analyses.

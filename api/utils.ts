@@ -16,9 +16,11 @@ const PRODUCTION_API_URL_ROOT = 'https://public-api.wordpress.com/wpcom/v2/exper
  * @throws UnauthorizedError
  */
 async function fetchApi(method: string, path: string, body: ApiDataSource | null = null) {
+  /* istanbul ignore next; code branch not reachable in integration tests -- we don't hit production */
   const apiUrlRoot = window.location.host === 'experiments.a8c.com' ? PRODUCTION_API_URL_ROOT : DEVELOPMENT_API_URL_ROOT
 
   const headers = new Headers()
+  /* istanbul ignore next; code branch not reachable in integration tests -- we don't hit production */
   if (apiUrlRoot === PRODUCTION_API_URL_ROOT) {
     const accessToken = getExperimentsAuthInfo()?.accessToken
     if (!accessToken) {

@@ -28,12 +28,12 @@ import OwnerAvatar from '@/components/OwnerAvatar'
 import {
   AttributionWindowSeconds,
   ExperimentFull,
+  MetricAssignment,
   MetricFull,
   Segment,
   SegmentAssignment,
   SegmentType,
   Variation,
-  MetricAssignment,
 } from '@/models'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')

@@ -111,17 +111,25 @@ This will open a browser window of the Storybook webapp.
 
 Runs the unit tests with Jest.
 
-The unit tests are found throughout the project excluding tests in the `__tests__` directory which is being reserved for integration tests.
+The unit tests are found throughout the project excluding tests in the `__tests__` directory which is being reserved for integration tests and the `e2e` directory which is being reserved for e2e tests.
 
 ```sh
 npm run test:unit
-npm run test:unit -- --coverage
 npm run test:unit -- --watch
+```
+
+**test:integration**
+
+Runs the integration tests with Jest. These are in the `__tests__` directory.
+
+```sh
+npm run test:integration
+npm run test:integration -- --watch
 ```
 
 **test:e2e**
 
-Runs the end-to-end tests with Jest and Puppeteer in a headless Chrome browser.
+Runs the end-to-end tests with Jest and Puppeteer in a headless Chrome browser. These are in the `e2e` directory.
 
 ```sh
 # Run all the E2E tests

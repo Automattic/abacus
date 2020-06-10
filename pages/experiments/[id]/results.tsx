@@ -1,15 +1,15 @@
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
 import { toIntOrNull } from 'qc-to_int'
+import React, { useEffect, useState } from 'react'
 
 import AnalysesApi from '@/api/AnalysesApi'
 import ExperimentsApi from '@/api/ExperimentsApi'
+import MetricsApi from '@/api/MetricsApi'
+import AnalysisSummary from '@/components/AnalysisSummary'
+import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
 import { Analysis, ExperimentFull, MetricBare } from '@/models'
-import AnalysisSummary from '@/components/AnalysisSummary'
-import MetricsApi from '@/api/MetricsApi'
-import ExperimentTabs from '@/components/ExperimentTabs'
 
 const debug = debugFactory('abacus:pages/experiments/[id]/results.tsx')
 

@@ -1,5 +1,4 @@
 import ExperimentsApi from '@/api/ExperimentsApi'
-
 import { ExperimentFull, Platform, Status } from '@/models'
 
 const PLATFORMS = Object.values(Platform)
