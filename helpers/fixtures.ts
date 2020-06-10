@@ -7,6 +7,7 @@ import {
   MetricBare,
   Platform,
   RecommendationReason,
+  RecommendationWarning,
   Status,
   Variation,
 } from '@/models'
@@ -30,7 +31,7 @@ function createAnalysis(fieldOverrides: Partial<Analysis>) {
       endExperiment: true,
       chosenVariationId: 2,
       reason: RecommendationReason.CiInRope,
-      warnings: [],
+      warnings: [RecommendationWarning.ShortPeriod, RecommendationWarning.WideCi],
     },
     analysisDatetime: new Date(Date.UTC(2020, 4, 10)),
     ...fieldOverrides,
@@ -98,6 +99,70 @@ function createAnalyses() {
       },
     }),
 
+    // Another set of analyses for the default metric assignment with an earlier date.
+    createAnalysis({
+      analysisStrategy: AnalysisStrategy.IttPure,
+      participantStats: {
+        total: 100,
+        not_final: 10,
+        variation_1: 60,
+        variation_2: 40,
+      },
+      analysisDatetime: new Date(Date.UTC(2020, 4, 9)),
+    }),
+    createAnalysis({
+      analysisStrategy: AnalysisStrategy.MittNoCrossovers,
+      participantStats: {
+        total: 90,
+        not_final: 9,
+        variation_1: 54,
+        variation_2: 36,
+      },
+      recommendation: {
+        endExperiment: false,
+        chosenVariationId: null,
+        reason: RecommendationReason.RopeInCi,
+        warnings: [],
+      },
+      analysisDatetime: new Date(Date.UTC(2020, 4, 9)),
+    }),
+    createAnalysis({
+      analysisStrategy: AnalysisStrategy.MittNoSpammers,
+      participantStats: {
+        total: 85,
+        not_final: 8,
+        variation_1: 51,
+        variation_2: 34,
+      },
+      recommendation: {
+        endExperiment: true,
+        chosenVariationId: null,
+        reason: RecommendationReason.CiInRope,
+        warnings: [],
+      },
+      analysisDatetime: new Date(Date.UTC(2020, 4, 9)),
+    }),
+    createAnalysis({
+      analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
+      participantStats: {
+        total: 80,
+        not_final: 8,
+        variation_1: 48,
+        variation_2: 32,
+      },
+      analysisDatetime: new Date(Date.UTC(2020, 4, 9)),
+    }),
+    createAnalysis({
+      analysisStrategy: AnalysisStrategy.PpNaive,
+      participantStats: {
+        total: 70,
+        not_final: 7,
+        variation_1: 42,
+        variation_2: 28,
+      },
+      analysisDatetime: new Date(Date.UTC(2020, 4, 9)),
+    }),
+
     // One example of a metric assignment with no data on one variation.
     createAnalysis({
       metricAssignmentId: 124,
@@ -110,8 +175,6 @@ function createAnalyses() {
       metricEstimates: null,
       recommendation: null,
     }),
-
-    // TODO: make this example richer -- more metrics and dates (+ some docs)
   ]
 }
 

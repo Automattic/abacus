@@ -1,18 +1,17 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core'
 import { format } from 'date-fns'
-// TODO: split to specific imports
 import _ from 'lodash'
 import React, { useMemo } from 'react'
 
-import { Analysis, AnalysisStrategy, ExperimentFull, MetricBare, Recommendation, Variation } from '@/models'
-
-const strategyToTitle = {
-  [AnalysisStrategy.IttPure]: 'All participants',
-  [AnalysisStrategy.MittNoCrossovers]: 'Without crossovers',
-  [AnalysisStrategy.MittNoSpammers]: 'Without spammers',
-  [AnalysisStrategy.MittNoSpammersNoCrossovers]: 'Without crossovers and spammers',
-  [AnalysisStrategy.PpNaive]: 'Exposed without crossovers and spammers',
-}
+import {
+  Analysis,
+  AnalysisStrategyToHuman,
+  ExperimentFull,
+  MetricBare,
+  Recommendation,
+  RecommendationWarningToHuman,
+  Variation,
+} from '@/models'
 
 function RecommendationString({
   recommendation,
@@ -62,7 +61,7 @@ function ParticipantCounts({
         <TableBody>
           {latestPrimaryMetricAnalyses.map((analysis) => (
             <TableRow key={analysis.analysisStrategy}>
-              <TableCell>{strategyToTitle[analysis.analysisStrategy]}</TableCell>
+              <TableCell>{AnalysisStrategyToHuman[analysis.analysisStrategy]}</TableCell>
               <TableCell>{analysis.participantStats.total}</TableCell>
               {sortedVariations.map((variation) => (
                 <TableCell key={variation.variationId}>
@@ -86,7 +85,7 @@ function LatestResults({
   metrics: MetricBare[]
   metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
 }) {
-  const metricsById = _.zipObject(_.map(metrics, 'metricId'), metrics)
+  const metricsById = useMemo(() => _.zipObject(_.map(metrics, 'metricId'), metrics), [metrics])
   const metricAssignmentsById = _.zipObject(
     _.map(experiment.metricAssignments, 'metricAssignmentId') as number[],
     experiment.metricAssignments,
@@ -120,8 +119,8 @@ function LatestResults({
               </TableHead>
               <TableBody>
                 {metricAnalyses.map((analysis) => (
-                  <TableRow key={metricAssignmentId + strategyToTitle[analysis.analysisStrategy]}>
-                    <TableCell>{strategyToTitle[analysis.analysisStrategy]}</TableCell>
+                  <TableRow key={`${metricAssignmentId}_${analysis.analysisStrategy}`}>
+                    <TableCell>{AnalysisStrategyToHuman[analysis.analysisStrategy]}</TableCell>
                     <TableCell>
                       {analysis.participantStats.total} ({analysis.participantStats.not_final})
                     </TableCell>
@@ -134,7 +133,11 @@ function LatestResults({
                         <TableCell>
                           <RecommendationString recommendation={analysis.recommendation} experiment={experiment} />
                         </TableCell>
-                        <TableCell>{analysis.recommendation.warnings.join(', ')}</TableCell>
+                        <TableCell>
+                          {analysis.recommendation.warnings.map((warning) => (
+                            <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
+                          ))}
+                        </TableCell>
                       </>
                     ) : (
                       <>
@@ -184,28 +187,29 @@ export default function AnalysisSummary({
     return <h2>No analyses yet for {experiment.name}.</h2>
   }
 
-  // TODO:
-  // - make warnings human-friendly
-  // - handle edge cases -- add them to the story (see real data)
   return (
     <>
       <h2>Analysis summary</h2>
       <p>Found {analyses.length} analysis objects in total.</p>
 
-      <h3>Participant counts for the primary metric</h3>
-      <ParticipantCounts
-        experiment={experiment}
-        latestPrimaryMetricAnalyses={
-          metricAssignmentIdToLatestAnalyses[experiment.getPrimaryMetricAssignmentId() as number]
-        }
-      />
+      <div className='analysis-participant-counts'>
+        <h3>Participant counts for the primary metric</h3>
+        <ParticipantCounts
+          experiment={experiment}
+          latestPrimaryMetricAnalyses={
+            metricAssignmentIdToLatestAnalyses[experiment.getPrimaryMetricAssignmentId() as number]
+          }
+        />
+      </div>
 
-      <h3>Latest results by metric</h3>
-      <LatestResults
-        experiment={experiment}
-        metrics={metrics}
-        metricAssignmentIdToLatestAnalyses={metricAssignmentIdToLatestAnalyses}
-      />
+      <div className='analysis-latest-results'>
+        <h3>Latest results by metric</h3>
+        <LatestResults
+          experiment={experiment}
+          metrics={metrics}
+          metricAssignmentIdToLatestAnalyses={metricAssignmentIdToLatestAnalyses}
+        />
+      </div>
 
       {debugMode ? <pre>{JSON.stringify(analyses, null, 2)}</pre> : ''}
     </>
