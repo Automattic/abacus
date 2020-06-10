@@ -1,13 +1,13 @@
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
 import { toIntOrNull } from 'qc-to_int'
+import React, { useEffect, useState } from 'react'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
+import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
 import { ExperimentFull } from '@/models'
 import { formatIsoUtcOffset } from '@/utils/date'
-import ExperimentTabs from '@/components/ExperimentTabs'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 

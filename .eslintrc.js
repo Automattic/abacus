@@ -52,7 +52,7 @@ module.exports = {
 
     'plugin:react-hooks/recommended',
   ],
-  plugins: ['@typescript-eslint', 'jsx-a11y', 'promise', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'jsx-a11y', 'promise', 'react-hooks', 'simple-import-sort'],
   rules: {
     // Off because favoring @typescript-eslint/naming-convention instead.
     camelcase: 'off',
@@ -74,6 +74,12 @@ module.exports = {
     'no-unused-vars': 'off',
 
     'padded-blocks': 'off',
+
+    // Off because we are using `simple-import-sort` instead.
+    'sort-imports': 'off',
+
+    // Off because we are using `simple-import-sort` instead.
+    'import/order': 'off',
 
     // Allows to use an `a` element without an `href` attribute inside a `Link`
     // component which in our case is a Next.js Link component.
@@ -100,6 +106,8 @@ module.exports = {
 
     // Off because we are using TypeScript which expects us to declare the props.
     'react/prop-types': 'off',
+
+    'simple-import-sort/sort': 'error',
 
     // Off because it is deprecated and favoring @typescript-eslint/naming-convention
     // instead.

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+
 import { ExperimentFull } from '@/models'
 
 /**
@@ -12,11 +13,11 @@ export default function ExperimentTabs({ experiment }: { experiment: ExperimentF
   }
   return (
     <nav>
-      <Link href={`/experiments/${experiment.experimentId}`}>
+      <Link as={`/experiments/${experiment.experimentId}`} href='/experiments/[id]'>
         <a>Details</a>
       </Link>
       <span>|</span>
-      <Link href={`/experiments/${experiment.experimentId}/results`}>
+      <Link as={`/experiments/${experiment.experimentId}/results`} href='/experiments/[id]/results'>
         <a>Results</a>
       </Link>
     </nav>

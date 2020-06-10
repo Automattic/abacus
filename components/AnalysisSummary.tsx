@@ -1,9 +1,10 @@
-import { Analysis, AnalysisStrategy, ExperimentFull, MetricBare, Recommendation } from '@/models'
 // TODO: split to specific imports
-import _ from 'lodash'
-import React from 'react'
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core'
 import { format } from 'date-fns'
+import _ from 'lodash'
+import React from 'react'
+
+import { Analysis, AnalysisStrategy, ExperimentFull, MetricBare, Recommendation } from '@/models'
 
 // TODO: move these helpers? make them methods of model classes?
 const strategyToTitle = {

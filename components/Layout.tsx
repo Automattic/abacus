@@ -1,13 +1,13 @@
 import Container from '@material-ui/core/Container'
-import Link from 'next/link'
 import Head from 'next/head'
+import Link from 'next/link'
 import React, { ReactNode } from 'react'
 
+import ErrorsBox from '@/components/ErrorsBox'
 import { onRenderError } from '@/event-handlers'
 
 import RenderErrorBoundary from './RenderErrorBoundary'
 import RenderErrorView from './RenderErrorView'
-import ErrorsBox from '@/components/ErrorsBox'
 
 const Layout = ({ title, error, children }: { title: string; error?: Error | null; children?: ReactNode }) => (
   <RenderErrorBoundary onError={onRenderError}>

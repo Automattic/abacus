@@ -1,4 +1,21 @@
 module.exports = {
+  collectCoverageFrom: [
+    '<rootDir>/api/**/*.ts',
+    '!**/node_modules/**',
+    // FIXME: TODO: Get tests on the following. This is related to issues 52 and 64.
+    // Currently we are unable to test the following because the code won't hit the
+    // code branch that leads to this error being thrown. If we test against the
+    // production API or a more sophisticated mock, then we may be able.
+    '!<rootDir>/api/UnauthorizedError.ts',
+  ],
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
+    },
+  },
   globals: {
     // Must specify a custom tsconfig for tests because we need the TypeScript
     // transform to transform JSX into js rather than leaving it as JSX which the
