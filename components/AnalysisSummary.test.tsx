@@ -1,7 +1,6 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import AnalysisSummary from './AnalysisSummary'
 import {
   Analysis,
   AnalysisStrategy,
@@ -13,6 +12,8 @@ import {
   Status,
   Variation,
 } from '@/models'
+
+import AnalysisSummary from './AnalysisSummary'
 
 const experiment: ExperimentFull = new ExperimentFull({
   experimentId: 1,
