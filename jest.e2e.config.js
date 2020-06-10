@@ -2,7 +2,7 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/pages/**/*.{ts,tsx}',
     '!**/node_modules/**',
-    // FIXME: TODO: Get tests on the following.
+    // FIXME: TODO: Get tests on the following. Issue #114.
     '!<rootDir>/pages/_app.tsx',
     '!<rootDir>/pages/auth.tsx',
     '!<rootDir>/pages/index.tsx',
