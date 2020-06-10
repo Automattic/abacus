@@ -21,6 +21,7 @@ class MetricsCache {
     if (entry) {
       const { cachedAt } = entry
       const age = Date.now() - cachedAt.getTime()
+      /* istanbul ignore else; not going to wait for expiration of cache during automated testing */
       if (age < FIVE_MINUTES_IN_MS) {
         metric = entry.metric
       }
@@ -64,7 +65,7 @@ async function findAll(): Promise<MetricBare[]> {
  */
 async function findById(metricIds: number[]): Promise<MetricFull[]> {
   const cachedMetrics = metricIds.map((metricId) => cache.get(metricId)).filter(Boolean) as MetricFull[]
-  const cachedMetricIds = cachedMetrics.map((metric) => metric?.metricId).filter(Boolean)
+  const cachedMetricIds = cachedMetrics.map((metric) => metric.metricId).filter(Boolean)
   const toFetchMetricIds = _.difference(metricIds, cachedMetricIds)
 
   const metrics = await Promise.all(
