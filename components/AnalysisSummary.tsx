@@ -1,12 +1,11 @@
-// TODO: split to specific imports
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core'
 import { format } from 'date-fns'
+// TODO: split to specific imports
 import _ from 'lodash'
-import React from 'react'
+import React, { useMemo } from 'react'
 
-import { Analysis, AnalysisStrategy, ExperimentFull, MetricBare, Recommendation } from '@/models'
+import { Analysis, AnalysisStrategy, ExperimentFull, MetricBare, Recommendation, Variation } from '@/models'
 
-// TODO: move these helpers? make them methods of model classes?
 const strategyToTitle = {
   [AnalysisStrategy.IttPure]: 'All participants',
   [AnalysisStrategy.MittNoCrossovers]: 'Without crossovers',
@@ -15,13 +14,21 @@ const strategyToTitle = {
   [AnalysisStrategy.PpNaive]: 'Exposed without crossovers and spammers',
 }
 
-function recommendationToString(recommendation: Recommendation, experiment: ExperimentFull) {
+function RecommendationString({
+  recommendation,
+  experiment,
+}: {
+  recommendation: Recommendation
+  experiment: ExperimentFull
+}) {
   if (recommendation.endExperiment) {
     if (recommendation.chosenVariationId) {
-      const variationName = _.filter(experiment.variations, ['variationId', recommendation.chosenVariationId])[0].name
+      const chosenVariation = experiment.variations.find(
+        (variation) => variation.variationId === recommendation.chosenVariationId,
+      ) as Variation
       return (
         <>
-          End experiment; deploy <code>{variationName}</code>
+          End experiment; deploy <code>{chosenVariation.name}</code>
         </>
       )
     }
@@ -30,8 +37,13 @@ function recommendationToString(recommendation: Recommendation, experiment: Expe
   return <>Keep running</>
 }
 
-function ParticipantCounts(props: { experiment: ExperimentFull; latestPrimaryMetricAnalyses: Analysis[] }) {
-  const { experiment, latestPrimaryMetricAnalyses } = props
+function ParticipantCounts({
+  experiment,
+  latestPrimaryMetricAnalyses,
+}: {
+  experiment: ExperimentFull
+  latestPrimaryMetricAnalyses: Analysis[]
+}) {
   const sortedVariations = _.orderBy(experiment.variations, ['isPrimary', 'name'], ['desc', 'asc'])
   return (
     <TableContainer component={Paper}>
@@ -65,12 +77,15 @@ function ParticipantCounts(props: { experiment: ExperimentFull; latestPrimaryMet
   )
 }
 
-function LatestResults(props: {
+function LatestResults({
+  experiment,
+  metrics,
+  metricAssignmentIdToLatestAnalyses,
+}: {
   experiment: ExperimentFull
   metrics: MetricBare[]
   metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
 }) {
-  const { experiment, metrics, metricAssignmentIdToLatestAnalyses } = props
   const metricsById = _.zipObject(_.map(metrics, 'metricId'), metrics)
   const metricAssignmentsById = _.zipObject(
     _.map(experiment.metricAssignments, 'metricAssignmentId') as number[],
@@ -116,7 +131,9 @@ function LatestResults(props: {
                           [{_.round(analysis.metricEstimates.diff.bottom, 4)},{' '}
                           {_.round(analysis.metricEstimates.diff.top, 4)}]
                         </TableCell>
-                        <TableCell>{recommendationToString(analysis.recommendation, experiment)}</TableCell>
+                        <TableCell>
+                          <RecommendationString recommendation={analysis.recommendation} experiment={experiment} />
+                        </TableCell>
                         <TableCell>{analysis.recommendation.warnings.join(', ')}</TableCell>
                       </>
                     ) : (
@@ -151,26 +168,25 @@ export default function AnalysisSummary({
   metrics: MetricBare[]
   debugMode?: boolean
 }) {
+  const metricAssignmentIdToLatestAnalyses = useMemo(
+    () =>
+      _.mapValues(_.groupBy(analyses, 'metricAssignmentId'), (metricAnalyses) => {
+        metricAnalyses = _.orderBy(metricAnalyses, ['analysisDatetime'], ['desc'])
+        return _.sortBy(
+          _.filter(metricAnalyses, ['analysisDatetime', metricAnalyses[0].analysisDatetime]),
+          'analysisStrategy',
+        )
+      }),
+    [analyses],
+  )
+
   if (analyses.length === 0) {
     return <h2>No analyses yet for {experiment.name}.</h2>
   }
 
-  const metricAssignmentIdToLatestAnalyses = _.mapValues(
-    _.groupBy(analyses, 'metricAssignmentId'),
-    (metricAnalyses) => {
-      metricAnalyses = _.orderBy(metricAnalyses, ['analysisDatetime'], ['desc'])
-      return _.sortBy(
-        _.filter(metricAnalyses, ['analysisDatetime', metricAnalyses[0].analysisDatetime]),
-        'analysisStrategy',
-      )
-    },
-  )
-
   // TODO:
-  // - warn if the total and variation counts for a metric assignment don't match the latest for the primary metric (might be fine due to different analysis datetimes)
-  // - clean up presentation: show percent final rather than count? make warnings human-friendly
-  // - handle edge cases -- add them to the story
-  // - add some light tests for things that shouldn't change
+  // - make warnings human-friendly
+  // - handle edge cases -- add them to the story (see real data)
   return (
     <>
       <h2>Analysis summary</h2>
@@ -179,7 +195,9 @@ export default function AnalysisSummary({
       <h3>Participant counts for the primary metric</h3>
       <ParticipantCounts
         experiment={experiment}
-        latestPrimaryMetricAnalyses={metricAssignmentIdToLatestAnalyses[experiment.getPrimaryMetricAssignmentId() || 0]}
+        latestPrimaryMetricAnalyses={
+          metricAssignmentIdToLatestAnalyses[experiment.getPrimaryMetricAssignmentId() as number]
+        }
       />
 
       <h3>Latest results by metric</h3>

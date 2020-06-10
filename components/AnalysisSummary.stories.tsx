@@ -1,8 +1,10 @@
 import '@/styles/main.scss'
+
 import React from 'react'
 
-import AnalysisSummary from './AnalysisSummary'
 import Fixtures from '@/helpers/fixtures'
+
+import AnalysisSummary from './AnalysisSummary'
 
 export default { title: 'Analysis summary' }
 

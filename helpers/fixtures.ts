@@ -32,13 +32,14 @@ function createAnalysis(fieldOverrides: Partial<Analysis>) {
       reason: RecommendationReason.CiInRope,
       warnings: [],
     },
-    analysisDatetime: new Date(2020, 4, 10),
+    analysisDatetime: new Date(Date.UTC(2020, 4, 10)),
     ...fieldOverrides,
   })
 }
 
 function createAnalyses() {
   return [
+    // Full set of "latest" analyses for the default metric assignment.
     createAnalysis({
       analysisStrategy: AnalysisStrategy.IttPure,
       participantStats: {
@@ -97,16 +98,42 @@ function createAnalyses() {
       },
     }),
 
+    // One example of a metric assignment with no data on one variation.
+    createAnalysis({
+      metricAssignmentId: 124,
+      analysisStrategy: AnalysisStrategy.IttPure,
+      participantStats: {
+        total: 10,
+        not_final: 10,
+        variation_1: 10,
+      },
+      metricEstimates: null,
+      recommendation: null,
+    }),
+
     // TODO: make this example richer -- more metrics and dates (+ some docs)
   ]
+}
+
+function createMetricAssignment(fieldOverrides: Partial<MetricAssignment>) {
+  return new MetricAssignment({
+    metricAssignmentId: 123,
+    metricId: 1,
+    experimentId: 1,
+    attributionWindowSeconds: AttributionWindowSeconds.OneWeek,
+    changeExpected: true,
+    isPrimary: true,
+    minDifference: 0.1,
+    ...fieldOverrides,
+  })
 }
 
 function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}) {
   return new ExperimentFull({
     experimentId: 1,
     name: 'experiment_1',
-    startDatetime: new Date(2020, 5, 4),
-    endDatetime: new Date(2020, 6, 4),
+    startDatetime: new Date(Date.UTC(2020, 5, 4)),
+    endDatetime: new Date(Date.UTC(2020, 6, 4)),
     status: Status.Completed,
     platform: Platform.Calypso,
     ownerLogin: 'test_a11n',
@@ -129,14 +156,21 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}) {
       }),
     ],
     metricAssignments: [
-      new MetricAssignment({
+      createMetricAssignment({
         metricAssignmentId: 123,
         metricId: 1,
-        experimentId: 1,
         attributionWindowSeconds: AttributionWindowSeconds.OneWeek,
         changeExpected: true,
         isPrimary: true,
         minDifference: 0.1,
+      }),
+      createMetricAssignment({
+        metricAssignmentId: 124,
+        metricId: 2,
+        attributionWindowSeconds: AttributionWindowSeconds.FourWeeks,
+        changeExpected: false,
+        isPrimary: false,
+        minDifference: 10.5,
       }),
     ],
     segmentAssignments: [],
@@ -161,6 +195,7 @@ function createMetricsBares(numMetrics = 3) {
 const Fixtures = {
   createAnalyses,
   createExperimentFull,
+  createMetricAssignment,
   createMetricsBares,
 }
 
