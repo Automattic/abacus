@@ -38,13 +38,13 @@ jobs:
                 command: npm run lint
             - run:
                 name: Unit Testing
-                command: npm run test:unit -- --ci --coverage --maxWorkers 2
+                command: npm run test:unit -- --ci --maxWorkers 2
             - run:
                 name: Integration Testing
-                command: npm run test:integration -- --ci --coverage
+                command: npm run test:integration -- --ci
             - run:
                 name: End-to-End Testing
-                command: npm run test:e2e -- --ci --coverage
+                command: npm run test:e2e -- --ci
 
 workflows:
   build-and-verify:
