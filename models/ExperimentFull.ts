@@ -186,6 +186,6 @@ export class ExperimentFull implements ApiDataSource {
    * Return the primary metric assignment ID for this experiment if one exists.
    */
   getPrimaryMetricAssignmentId(): number | null {
-    return this.metricAssignments.find((metricAssignment) => metricAssignment.isPrimary)?.metricAssignmentId || null
+    return this.metricAssignments.find((metricAssignment) => metricAssignment.isPrimary)?.metricAssignmentId ?? null
   }
 }
