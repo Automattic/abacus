@@ -23,35 +23,10 @@
   border-bottom-width: 0 !important;
 }
 
-.cursor-default {
-  cursor: default !important;
-}
-
 // Bootstrap 4's utility classes for `display` are more thorough.
 
 .d-inline-block {
   display: inline-block !important;
-}
-
-.d-none {
-  display: none !important;
-}
-
-.flex,
-.d-flex {
-  display: flex;
-}
-
-.flex-1 {
-  flex: 1 1 0%;
-}
-
-.flex-initial {
-  flex: 0 1 auto;
-}
-
-.flex-auto {
-  flex: 1 1 auto;
 }
 
 .float-right {
@@ -66,62 +41,6 @@
   margin: 0;
 }
 
-.mt-0 {
-  margin-top: 0 !important;
-}
-
-.mt-1 {
-  margin-top: 0.25rem !important;
-}
-
-.mt-2 {
-  margin-top: 0.5rem !important;
-}
-
-.mt-3 {
-  margin-top: 0.75rem !important;
-}
-
-.mt-4 {
-  margin-top: 1rem !important;
-}
-
-.mt-5 {
-  margin-top: 1.25rem !important;
-}
-
-.mt-6 {
-  margin-top: 1.5rem !important;
-}
-
-.mt-8 {
-  margin-top: 2rem !important;
-}
-
-.mt-9 {
-  margin-top: 2.25rem !important;
-}
-
-.pt-0 {
-  padding-top: 0 !important;
-}
-
-.relative {
-  position: relative !important;
-}
-
-.text-center {
-  text-align: center !important;
-}
-
-.underline {
-  text-decoration: underline !important;
-}
-
 .align-top {
   vertical-align: top !important;
-}
-
-.w-100 {
-  width: 100% !important;
 }
