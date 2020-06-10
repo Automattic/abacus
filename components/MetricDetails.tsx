@@ -39,6 +39,7 @@ const MetricDetails = (props: { metric: MetricFull }) => {
                 <label>Event Parameters</label>
               </td>
               <td>
+                {/* TODO: Test details of conversion parameters once decided and added. */}
                 <pre>{JSON.stringify(metric.eventParams, null, 2)}</pre>
               </td>
             </tr>
@@ -49,6 +50,7 @@ const MetricDetails = (props: { metric: MetricFull }) => {
                 <label>Revenue Parameters</label>
               </td>
               <td>
+                {/* TODO: Test details of revenue parameters once decided and added. */}
                 <pre>{JSON.stringify(metric.revenueParams, null, 2)}</pre>
               </td>
             </tr>
