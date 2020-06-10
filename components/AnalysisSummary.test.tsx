@@ -298,8 +298,7 @@ test('renders the full tables with some analyses', () => {
                 >
                   [
                   -0.01
-                  ,
-                   
+                  , 
                   0.01
                   ]
                 </td>
@@ -343,8 +342,7 @@ test('renders the full tables with some analyses', () => {
                 >
                   [
                   -0.01
-                  ,
-                   
+                  , 
                   0.01
                   ]
                 </td>
@@ -378,8 +376,7 @@ test('renders the full tables with some analyses', () => {
                 >
                   [
                   -0.01
-                  ,
-                   
+                  , 
                   0.01
                   ]
                 </td>
@@ -413,8 +410,7 @@ test('renders the full tables with some analyses', () => {
                 >
                   [
                   -0.01
-                  ,
-                   
+                  , 
                   0.01
                   ]
                 </td>
@@ -458,8 +454,7 @@ test('renders the full tables with some analyses', () => {
                 >
                   [
                   -0.01
-                  ,
-                   
+                  , 
                   0.01
                   ]
                 </td>
@@ -695,5 +690,5 @@ test('shows the analyses JSON in debug mode', () => {
   const { container } = render(
     <AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} debugMode={true} />,
   )
-  expect(container.querySelector('pre')).toMatchSnapshot()
+  expect(container.querySelector('pre.debug-json')).toMatchSnapshot()
 })

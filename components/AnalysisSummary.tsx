@@ -57,22 +57,20 @@ function ParticipantCounts({
           <TableRow>
             <TableCell>Strategy</TableCell>
             <TableCell>Total</TableCell>
-            {sortedVariations.map((variation) => (
-              <TableCell key={variation.variationId}>
-                <code>{variation.name}</code>
+            {sortedVariations.map(({ variationId, name }) => (
+              <TableCell key={variationId}>
+                <code>{name}</code>
               </TableCell>
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {latestPrimaryMetricAnalyses.map((analysis) => (
-            <TableRow key={analysis.analysisStrategy}>
-              <TableCell>{AnalysisStrategyToHuman[analysis.analysisStrategy]}</TableCell>
-              <TableCell>{analysis.participantStats.total}</TableCell>
-              {sortedVariations.map((variation) => (
-                <TableCell key={variation.variationId}>
-                  {analysis.participantStats[`variation_${variation.variationId}`] || 0}
-                </TableCell>
+          {latestPrimaryMetricAnalyses.map(({ analysisStrategy, participantStats }) => (
+            <TableRow key={analysisStrategy}>
+              <TableCell>{AnalysisStrategyToHuman[analysisStrategy]}</TableCell>
+              <TableCell>{participantStats.total}</TableCell>
+              {sortedVariations.map(({ variationId }) => (
+                <TableCell key={variationId}>{participantStats[`variation_${variationId}`] || 0}</TableCell>
               ))}
             </TableRow>
           ))}
@@ -96,26 +94,40 @@ function LatestResults({
   metrics: MetricBare[]
   metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
 }) {
+  // TODO: It'd be better to move some mappings to model methods once things are more stable. We should be able to make
+  // TODO: calls like metricAssignment.getMetric().name and experiment.getMetricAssignmentById(123).getMetric().name
+  // TODO: rather than construct mappings in the components.
   const metricsById = useMemo(() => _.zipObject(_.map(metrics, 'metricId'), metrics), [metrics])
-  const metricAssignmentsById = _.zipObject(
-    _.map(experiment.metricAssignments, 'metricAssignmentId') as number[],
-    experiment.metricAssignments,
-  )
+  // Sort the assignments for consistency and collect the data we need to render the component.
+  const resultSummaries = useMemo(() => {
+    return _.orderBy(experiment.metricAssignments, ['isPrimary', 'metricAssignmentId'], ['desc', 'asc']).map(
+      ({ metricAssignmentId, attributionWindowSeconds, metricId }) => {
+        return {
+          metricAssignmentId,
+          attributionWindowSeconds,
+          metricName: metricsById[metricId].name,
+          latestAnalyses: metricAssignmentIdToLatestAnalyses[metricAssignmentId as number],
+        }
+      },
+    )
+  }, [experiment.metricAssignments, metricsById, metricAssignmentIdToLatestAnalyses])
   return (
     <>
-      {Object.entries(metricAssignmentIdToLatestAnalyses).map(([metricAssignmentId, metricAnalyses]) => (
+      {resultSummaries.map(({ metricAssignmentId, metricName, attributionWindowSeconds, latestAnalyses }) => (
         <div key={metricAssignmentId}>
           <div>
             <strong>Metric: </strong>
-            <code>{metricsById[metricAssignmentsById[metricAssignmentId].metricId].name}</code>
+            <code>{metricName}</code>
           </div>
           <div>
             <strong>Attribution window: </strong>
-            {metricAssignmentsById[metricAssignmentId].attributionWindowSeconds / 3600} hours
+            {/* TODO: use component to handle formatting */}
+            {attributionWindowSeconds / 3600} hours
           </div>
           <div>
             <strong>Last analyzed: </strong>
-            {format(metricAnalyses[0].analysisDatetime, 'yyyy-MM-dd')}
+            {/* TODO: use component to handle formatting */}
+            {format(latestAnalyses[0].analysisDatetime, 'yyyy-MM-dd')}
           </div>
           <TableContainer component={Paper}>
             <Table>
@@ -129,23 +141,22 @@ function LatestResults({
                 </TableRow>
               </TableHead>
               <TableBody>
-                {metricAnalyses.map((analysis) => (
-                  <TableRow key={`${metricAssignmentId}_${analysis.analysisStrategy}`}>
-                    <TableCell>{AnalysisStrategyToHuman[analysis.analysisStrategy]}</TableCell>
+                {latestAnalyses.map(({ analysisStrategy, participantStats, metricEstimates, recommendation }) => (
+                  <TableRow key={`${metricAssignmentId}_${analysisStrategy}`}>
+                    <TableCell>{AnalysisStrategyToHuman[analysisStrategy]}</TableCell>
                     <TableCell>
-                      {analysis.participantStats.total} ({analysis.participantStats.not_final})
+                      {participantStats.total} ({participantStats.not_final})
                     </TableCell>
-                    {analysis.metricEstimates && analysis.recommendation ? (
+                    {metricEstimates && recommendation ? (
                       <>
                         <TableCell>
-                          [{_.round(analysis.metricEstimates.diff.bottom, 4)},{' '}
-                          {_.round(analysis.metricEstimates.diff.top, 4)}]
+                          [{_.round(metricEstimates.diff.bottom, 4)}, {_.round(metricEstimates.diff.top, 4)}]
                         </TableCell>
                         <TableCell>
-                          <RecommendationString recommendation={analysis.recommendation} experiment={experiment} />
+                          <RecommendationString recommendation={recommendation} experiment={experiment} />
                         </TableCell>
                         <TableCell>
-                          {analysis.recommendation.warnings.map((warning) => (
+                          {recommendation.warnings.map((warning) => (
                             <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
                           ))}
                         </TableCell>
@@ -222,7 +233,7 @@ export default function AnalysisSummary({
         />
       </div>
 
-      {debugMode ? <pre>{JSON.stringify(analyses, null, 2)}</pre> : ''}
+      {debugMode ? <pre className='debug-json'>{JSON.stringify(analyses, null, 2)}</pre> : ''}
     </>
   )
 }

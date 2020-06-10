@@ -335,7 +335,7 @@ describe('models/ExperimentFull.ts module', () => {
       })
 
       it('returns undefined when no primary assignment ID exists', () => {
-        expect(Fixtures.createExperimentFull({ metricAssignments: [] }).getPrimaryMetricAssignmentId()).toBe(undefined)
+        expect(Fixtures.createExperimentFull({ metricAssignments: [] }).getPrimaryMetricAssignmentId()).toBeNull()
       })
     })
   })

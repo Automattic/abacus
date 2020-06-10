@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`shows the analyses JSON in debug mode 1`] = `
-<pre>
+<pre
+  class="debug-json"
+>
   [
   {
     "metricAssignmentId": 123,
