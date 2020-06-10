@@ -1,5 +1,6 @@
-import { MetricBare, MetricFull } from '@/models'
 import _ from 'lodash'
+
+import { MetricBare, MetricFull } from '@/models'
 
 import { ApiData } from './ApiData'
 import { fetchApi } from './utils'

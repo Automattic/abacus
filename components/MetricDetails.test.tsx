@@ -2,6 +2,7 @@ import { render } from '@testing-library/react'
 import React from 'react'
 
 import { Event, MetricFull, MetricRevenueParams, TransactionTypes } from '@/models'
+
 import MetricDetails from './MetricDetails'
 
 const WITHIN_TD = 'td, td > *'
