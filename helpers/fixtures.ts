@@ -1,3 +1,10 @@
+/**
+ * Data fixtures to use in tests.
+ *
+ * Functions in this file return new objects populated with dummy values, which may potentially be overridden in
+ * functions that accept Partial<T> as an argument.
+ */
+
 import {
   Analysis,
   AnalysisStrategy,

@@ -13,6 +13,9 @@ import {
   Variation,
 } from '@/models'
 
+/**
+ * Convert a recommendation's endExperiment and chosenVariationId fields to a human-friendly description.
+ */
 function RecommendationString({
   recommendation,
   experiment,
@@ -36,6 +39,9 @@ function RecommendationString({
   return <>Keep running</>
 }
 
+/**
+ * Render a table of participant counts based on the latest metric analyses for the given experiment.
+ */
 function ParticipantCounts({
   experiment,
   latestPrimaryMetricAnalyses,
@@ -76,6 +82,11 @@ function ParticipantCounts({
   )
 }
 
+/**
+ * Render the latest results for the experiment for each metric assignment.
+ *
+ * Note: This is likely to change a lot as part of https://github.com/Automattic/abacus/issues/96.
+ */
 function LatestResults({
   experiment,
   metrics,
