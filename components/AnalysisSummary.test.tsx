@@ -1,185 +1,694 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import {
-  Analysis,
-  AnalysisStrategy,
-  AttributionWindowSeconds,
-  ExperimentFull,
-  MetricAssignment,
-  Platform,
-  RecommendationReason,
-  Status,
-  Variation,
-} from '@/models'
+import Fixtures from '@/helpers/fixtures'
 
 import AnalysisSummary from './AnalysisSummary'
 
-const experiment: ExperimentFull = new ExperimentFull({
-  experimentId: 1,
-  name: 'experiment_1',
-  startDatetime: new Date(2020, 5, 4),
-  endDatetime: new Date(2020, 6, 4),
-  status: Status.Completed,
-  platform: Platform.Calypso,
-  ownerLogin: 'test_a11n',
-  description: 'Experiment with things. Change stuff. Profit.',
-  existingUsersAllowed: false,
-  p2Url: 'https://wordpress.com/experiment_1',
-  exposureEvents: null,
-  variations: [
-    new Variation({
-      variationId: 2,
-      name: 'test',
-      isDefault: false,
-      allocatedPercentage: 40,
-    }),
-    new Variation({
-      variationId: 1,
-      name: 'control',
-      isDefault: true,
-      allocatedPercentage: 60,
-    }),
-  ],
-  metricAssignments: [
-    new MetricAssignment({
-      metricAssignmentId: 123,
-      metricId: 1,
-      experimentId: 1,
-      attributionWindowSeconds: AttributionWindowSeconds.OneWeek,
-      changeExpected: true,
-      isPrimary: true,
-      minDifference: 0.1,
-    }),
-  ],
-  segmentAssignments: [],
-})
-const analyses: Analysis[] = [
-  new Analysis({
-    metricAssignmentId: 123,
-    analysisStrategy: AnalysisStrategy.IttPure,
-    participantStats: {
-      total: 1000,
-      not_final: 100,
-      variation_1: 600,
-      variation_2: 400,
-    },
-    metricEstimates: {
-      diff: { estimate: 0.0, bottom: -0.01, top: 0.01 },
-      variation_1: { estimate: 0.12, bottom: 0, top: 10.0 },
-      variation_2: { estimate: -0.12, bottom: -1.123, top: 1.0 },
-    },
-    recommendation: {
-      endExperiment: true,
-      chosenVariationId: 2,
-      reason: RecommendationReason.CiInRope,
-      warnings: [],
-    },
-    analysisDatetime: new Date(2020, 4, 10),
-  }),
-  new Analysis({
-    metricAssignmentId: 123,
-    analysisStrategy: AnalysisStrategy.MittNoCrossovers,
-    participantStats: {
-      total: 900,
-      not_final: 90,
-      variation_1: 540,
-      variation_2: 360,
-    },
-    metricEstimates: {
-      diff: { estimate: 0.0, bottom: -0.01, top: 0.01 },
-      variation_1: { estimate: 0.12, bottom: 0, top: 10.0 },
-      variation_2: { estimate: -0.12, bottom: -1.123, top: 1.0 },
-    },
-    recommendation: {
-      endExperiment: true,
-      chosenVariationId: 2,
-      reason: RecommendationReason.CiInRope,
-      warnings: [],
-    },
-    analysisDatetime: new Date(2020, 4, 10),
-  }),
-  new Analysis({
-    metricAssignmentId: 123,
-    analysisStrategy: AnalysisStrategy.MittNoSpammers,
-    participantStats: {
-      total: 850,
-      not_final: 85,
-      variation_1: 510,
-      variation_2: 340,
-    },
-    metricEstimates: {
-      diff: { estimate: 0.0, bottom: -0.01, top: 0.01 },
-      variation_1: { estimate: 0.12, bottom: 0, top: 10.0 },
-      variation_2: { estimate: -0.12, bottom: -1.123, top: 1.0 },
-    },
-    recommendation: {
-      endExperiment: true,
-      chosenVariationId: 2,
-      reason: RecommendationReason.CiInRope,
-      warnings: [],
-    },
-    analysisDatetime: new Date(2020, 4, 10),
-  }),
-  new Analysis({
-    metricAssignmentId: 123,
-    analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
-    participantStats: {
-      total: 800,
-      not_final: 80,
-      variation_1: 480,
-      variation_2: 320,
-    },
-    metricEstimates: {
-      diff: { estimate: 0.0, bottom: -0.01, top: 0.01 },
-      variation_1: { estimate: 0.12, bottom: 0, top: 10.0 },
-      variation_2: { estimate: -0.12, bottom: -1.123, top: 1.0 },
-    },
-    recommendation: {
-      endExperiment: true,
-      chosenVariationId: 2,
-      reason: RecommendationReason.CiInRope,
-      warnings: [],
-    },
-    analysisDatetime: new Date(2020, 4, 10),
-  }),
-  new Analysis({
-    metricAssignmentId: 123,
-    analysisStrategy: AnalysisStrategy.PpNaive,
-    participantStats: {
-      total: 700,
-      not_final: 70,
-      variation_1: 420,
-      variation_2: 280,
-    },
-    metricEstimates: {
-      diff: { estimate: 0.0, bottom: -0.01, top: 0.01 },
-      variation_1: { estimate: 0.12, bottom: 0, top: 10.0 },
-      variation_2: { estimate: -0.12, bottom: -1.123, top: 1.0 },
-    },
-    recommendation: {
-      endExperiment: true,
-      chosenVariationId: 2,
-      reason: RecommendationReason.CiInRope,
-      warnings: [],
-    },
-    analysisDatetime: new Date(2020, 4, 10),
-  }),
-]
+const experiment = Fixtures.createExperimentFull()
+const metrics = Fixtures.createMetricsBares()
+const analyses = Fixtures.createAnalyses()
 
 test('renders an appropriate message with no analyses', () => {
-  const { container } = render(<AnalysisSummary analyses={[]} experiment={experiment} metrics={[]} />)
+  const { container } = render(<AnalysisSummary analyses={[]} experiment={experiment} metrics={metrics} />)
   expect(container).toHaveTextContent('No analyses yet for experiment_1.')
 })
 
-test('renders an appropriate message with some analyses', () => {
-  const { container } = render(<AnalysisSummary analyses={analyses} experiment={experiment} metrics={[]} />)
-  expect(container).toHaveTextContent('Found 5 analysis objects in total. There are 0 metrics in the system.')
+test('renders the full tables with some analyses', () => {
+  const { container } = render(<AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} />)
+
+  expect(container).toHaveTextContent(`Found ${analyses.length} analysis objects in total.`)
+  // In non-debug mode, we shouldn't have a <pre> element with the JSON.
+  expect(container.querySelector('pre')).toBeNull()
+
+  // Table snapshots are somewhat verbose, but they will allow us to see if there are any expected changes to the
+  // numbers in the tables.
+  expect(container.querySelector('.analysis-participant-counts')).toMatchInlineSnapshot(`
+    <div
+      class="analysis-participant-counts"
+    >
+      <h3>
+        Participant counts for the primary metric
+      </h3>
+      <div
+        class="MuiPaper-root MuiTableContainer-root MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <table
+          class="MuiTable-root"
+        >
+          <thead
+            class="MuiTableHead-root"
+          >
+            <tr
+              class="MuiTableRow-root MuiTableRow-head"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Strategy
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Total
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                <code>
+                  control
+                </code>
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                <code>
+                  test
+                </code>
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class="MuiTableBody-root"
+          >
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                All participants
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                1000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                600
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                400
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                Without crossovers
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                900
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                540
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                360
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                Without spammers
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                850
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                510
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                340
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                Without crossovers and spammers
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                800
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                480
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                320
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                Exposed without crossovers and spammers
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                700
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                420
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                280
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `)
+
+  expect(container.querySelector('.analysis-latest-results')).toMatchInlineSnapshot(`
+    <div
+      class="analysis-latest-results"
+    >
+      <h3>
+        Latest results by metric
+      </h3>
+      <div>
+        <div>
+          <strong>
+            Metric: 
+          </strong>
+          <code>
+            metric_1
+          </code>
+        </div>
+        <div>
+          <strong>
+            Attribution window: 
+          </strong>
+          168
+           hours
+        </div>
+        <div>
+          <strong>
+            Last analyzed: 
+          </strong>
+          2020-05-10
+        </div>
+        <div
+          class="MuiPaper-root MuiTableContainer-root MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <table
+            class="MuiTable-root"
+          >
+            <thead
+              class="MuiTableHead-root"
+            >
+              <tr
+                class="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Strategy
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Participants (not final)
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Difference interval
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Recommendation
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Warnings
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="MuiTableBody-root"
+            >
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  All participants
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  1000
+                   (
+                  100
+                  )
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  [
+                  -0.01
+                  , 
+                  0.01
+                  ]
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  End experiment; deploy 
+                  <code>
+                    test
+                  </code>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  <div>
+                    Experiment period is too short. Wait a few days to be safer.
+                  </div>
+                  <div>
+                    The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                  </div>
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  Without crossovers
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  900
+                   (
+                  90
+                  )
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  [
+                  -0.01
+                  , 
+                  0.01
+                  ]
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  Keep running
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                />
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  Without spammers
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  850
+                   (
+                  85
+                  )
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  [
+                  -0.01
+                  , 
+                  0.01
+                  ]
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  End experiment; deploy either variation
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                />
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  Without crossovers and spammers
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  800
+                   (
+                  80
+                  )
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  [
+                  -0.01
+                  , 
+                  0.01
+                  ]
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  End experiment; deploy 
+                  <code>
+                    test
+                  </code>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  <div>
+                    Experiment period is too short. Wait a few days to be safer.
+                  </div>
+                  <div>
+                    The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                  </div>
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  Exposed without crossovers and spammers
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  700
+                   (
+                  70
+                  )
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  [
+                  -0.01
+                  , 
+                  0.01
+                  ]
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  End experiment; deploy 
+                  <code>
+                    test
+                  </code>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  <div>
+                    Experiment period is too short. Wait a few days to be safer.
+                  </div>
+                  <div>
+                    The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div>
+          <strong>
+            Metric: 
+          </strong>
+          <code>
+            metric_2
+          </code>
+        </div>
+        <div>
+          <strong>
+            Attribution window: 
+          </strong>
+          672
+           hours
+        </div>
+        <div>
+          <strong>
+            Last analyzed: 
+          </strong>
+          2020-05-10
+        </div>
+        <div
+          class="MuiPaper-root MuiTableContainer-root MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <table
+            class="MuiTable-root"
+          >
+            <thead
+              class="MuiTableHead-root"
+            >
+              <tr
+                class="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Strategy
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Participants (not final)
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Difference interval
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Recommendation
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Warnings
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="MuiTableBody-root"
+            >
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  All participants
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  10
+                   (
+                  10
+                  )
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  N/A
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  N/A
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  Not analyzed yet
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  `)
+})
+
+test('renders the full tables with some analyses and a different primary metric', () => {
+  const diffPrimaryExperiment = Fixtures.createExperimentFull({
+    metricAssignments: [
+      Fixtures.createMetricAssignment({ ...experiment.metricAssignments[0], isPrimary: false }),
+      Fixtures.createMetricAssignment({ ...experiment.metricAssignments[1], isPrimary: true }),
+    ],
+  })
+  const { container } = render(
+    <AnalysisSummary analyses={analyses} experiment={diffPrimaryExperiment} metrics={metrics} />,
+  )
+  expect(container).toHaveTextContent(`Found ${analyses.length} analysis objects in total.`)
+
+  // Only looking at the participant counts for this test: They should match the primary metric.
+  expect(container.querySelector('.analysis-participant-counts')).toMatchInlineSnapshot(`
+    <div
+      class="analysis-participant-counts"
+    >
+      <h3>
+        Participant counts for the primary metric
+      </h3>
+      <div
+        class="MuiPaper-root MuiTableContainer-root MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <table
+          class="MuiTable-root"
+        >
+          <thead
+            class="MuiTableHead-root"
+          >
+            <tr
+              class="MuiTableRow-root MuiTableRow-head"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Strategy
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Total
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                <code>
+                  control
+                </code>
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                <code>
+                  test
+                </code>
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class="MuiTableBody-root"
+          >
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                All participants
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                10
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                10
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                0
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `)
 })
 
 test('shows the analyses JSON in debug mode', () => {
   const { container } = render(
-    <AnalysisSummary analyses={analyses} experiment={experiment} metrics={[]} debugMode={true} />,
+    <AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} debugMode={true} />,
   )
-  expect(container.querySelector('pre')).not.toBeNull()
+  expect(container.querySelector('pre.debug-json')).toMatchSnapshot()
 })

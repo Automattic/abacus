@@ -1,6 +1,8 @@
 .dockerignore
 .prettierignore
 
+*.snap
+
 .next/
 
 .idea/
