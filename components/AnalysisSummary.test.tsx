@@ -221,8 +221,7 @@ test('renders the full tables with some analyses', () => {
           <strong>
             Attribution window: 
           </strong>
-          168
-           hours
+          1 week
         </div>
         <div>
           <strong>
@@ -494,8 +493,7 @@ test('renders the full tables with some analyses', () => {
           <strong>
             Attribution window: 
           </strong>
-          672
-           hours
+          4 weeks
         </div>
         <div>
           <strong>

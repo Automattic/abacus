@@ -5,6 +5,7 @@ import React, { useMemo } from 'react'
 import {
   Analysis,
   AnalysisStrategyToHuman,
+  AttributionWindowSecondsToHuman,
   ExperimentFull,
   MetricBare,
   Recommendation,
@@ -121,8 +122,7 @@ function LatestResults({
           </div>
           <div>
             <strong>Attribution window: </strong>
-            {/* TODO: use component to handle formatting */}
-            {attributionWindowSeconds / 3600} hours
+            {AttributionWindowSecondsToHuman[attributionWindowSeconds]}
           </div>
           <div>
             <strong>Last analyzed: </strong>
