@@ -1,6 +1,23 @@
+.d-inline-block {
+  display: inline-block !important;
+}
+
 .errors-box {
   background: #f8d7da;
   border: 1px solid #f5c6cb;
   color: #721c24;
   padding: 1rem;
+}
+
+.whitespace-no-wrap {
+  white-space: nowrap !important;
+}
+
+/**
+| MUI Avatar:
+===================================== */
+.MuiAvatar-root.small {
+  width: 20px;
+  height: 20px;
+  font-size: 0.625rem;
 }
