@@ -4,7 +4,7 @@ const usCurrencyDollarFormatter = new Intl.NumberFormat('us', { style: 'currency
 
 /**
  * Formats the date in ISO-8601 format with a UTC timezone value plus a `+00:00`
- * offset.
+ * offset. This is in the same format as we receive from the API.
  */
 function formatIsoUtcOffset(date: Date) {
   return format(new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000), "yyyy-MM-dd'T'HH:mm:ss.SSS'+00:00'")
