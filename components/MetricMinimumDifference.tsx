@@ -1,15 +1,16 @@
 import React from 'react'
 
-import { MetricFull } from '@/models'
+import { MetricBare } from '@/models'
 import { formatUsCurrencyDollar } from '@/utils/formatters'
 
 /**
  * Renders the attribution window in concise, human readable text.
  */
-const MetricMinimumDifference = (props: { metric: MetricFull; minDifference: number }) => {
+const MetricMinimumDifference = (props: { metric: MetricBare; minDifference: number }) => {
   const { metric, minDifference } = props
-  const parameterType = metric.determineParameterType()
-  return <span>{parameterType === 'revenue' ? formatUsCurrencyDollar(minDifference) : `${minDifference} pp`}</span>
+  return (
+    <span>{metric.parameterType === 'revenue' ? formatUsCurrencyDollar(minDifference) : `${minDifference} pp`}</span>
+  )
 }
 
 export default MetricMinimumDifference
