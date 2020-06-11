@@ -17,7 +17,7 @@ export class MetricBare {
   public readonly description: string
 
   /**
-   * Human-friendly description of what the metric intends to measure.
+   * Type type of parameters of this metric.
    */
   public readonly parameterType: 'conversion' | 'revenue'
 
