@@ -2,7 +2,11 @@ import React from 'react'
 
 import type { RenderError } from '@/components/RenderErrorBoundary'
 
-const RenderErrorView = (props: { renderError: RenderError }) => {
+type Props = {
+  renderError: RenderError
+}
+
+const RenderErrorView = (props: Props) => {
   return (
     <>
       <strong>Oops!</strong>

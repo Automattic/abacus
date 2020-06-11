@@ -2,7 +2,9 @@ import { fireEvent, getAllByText, getByText, getByTitle, render } from '@testing
 import addToDate from 'date-fns/add'
 import React from 'react'
 
-import { ExperimentBare, Platform, Status } from '@/models'
+import { ExperimentBare } from '@/models/ExperimentBare'
+import { Platform } from '@/models/Platform'
+import { Status } from '@/models/Status'
 
 import ExperimentsTable from './ExperimentsTable'
 

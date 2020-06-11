@@ -1,9 +1,13 @@
 import React from 'react'
 
+interface Props {
+  errors: Error[]
+}
+
 /**
  * Renders an array of error messages.
  */
-const ErrorsBox = (props: { errors: Error[] }) => {
+const ErrorsBox = (props: Props) => {
   return (
     <div className='errors-box'>
       {props.errors.map((err) => (
