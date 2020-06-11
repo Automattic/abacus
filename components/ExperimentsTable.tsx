@@ -32,13 +32,13 @@ const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }) =>
           title: 'Start',
           field: 'startDatetime',
           // eslint-disable-next-line react/display-name
-          render: (experiment) => <DatetimeText time={false} value={experiment.startDatetime} />,
+          render: (experiment) => <DatetimeText datetime={experiment.startDatetime} excludeTime />,
         },
         {
           title: 'End',
           field: 'endDatetime',
           // eslint-disable-next-line react/display-name
-          render: (experiment) => <DatetimeText time={false} value={experiment.endDatetime} />,
+          render: (experiment) => <DatetimeText datetime={experiment.endDatetime} excludeTime />,
         },
         { title: 'Status', field: 'status' },
         { title: 'Platform', field: 'platform' },
