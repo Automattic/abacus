@@ -1,0 +1,380 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shows the analyses JSON in debug mode 1`] = `
+<pre
+  class="debug-json"
+>
+  [
+  {
+    "metricAssignmentId": 123,
+    "analysisStrategy": "itt_pure",
+    "participantStats": {
+      "total": 1000,
+      "not_final": 100,
+      "variation_1": 600,
+      "variation_2": 400
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": true,
+      "chosenVariationId": 2,
+      "reason": "ci_in_rope",
+      "warnings": [
+        "short_period",
+        "wide_ci"
+      ]
+    },
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+  },
+  {
+    "metricAssignmentId": 123,
+    "analysisStrategy": "mitt_no_crossovers",
+    "participantStats": {
+      "total": 900,
+      "not_final": 90,
+      "variation_1": 540,
+      "variation_2": 360
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": false,
+      "chosenVariationId": null,
+      "reason": "rope_in_ci",
+      "warnings": []
+    },
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+  },
+  {
+    "metricAssignmentId": 123,
+    "analysisStrategy": "mitt_no_spammers",
+    "participantStats": {
+      "total": 850,
+      "not_final": 85,
+      "variation_1": 510,
+      "variation_2": 340
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": true,
+      "chosenVariationId": null,
+      "reason": "ci_in_rope",
+      "warnings": []
+    },
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+  },
+  {
+    "metricAssignmentId": 123,
+    "analysisStrategy": "mitt_no_spammers_no_crossovers",
+    "participantStats": {
+      "total": 800,
+      "not_final": 80,
+      "variation_1": 480,
+      "variation_2": 320
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": true,
+      "chosenVariationId": 2,
+      "reason": "ci_in_rope",
+      "warnings": [
+        "short_period",
+        "wide_ci"
+      ]
+    },
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+  },
+  {
+    "metricAssignmentId": 123,
+    "analysisStrategy": "pp_naive",
+    "participantStats": {
+      "total": 700,
+      "not_final": 70,
+      "variation_1": 420,
+      "variation_2": 280
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": true,
+      "chosenVariationId": 2,
+      "reason": "ci_in_rope",
+      "warnings": [
+        "short_period",
+        "wide_ci"
+      ]
+    },
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+  },
+  {
+    "metricAssignmentId": 123,
+    "analysisStrategy": "itt_pure",
+    "participantStats": {
+      "total": 100,
+      "not_final": 10,
+      "variation_1": 60,
+      "variation_2": 40
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": true,
+      "chosenVariationId": 2,
+      "reason": "ci_in_rope",
+      "warnings": [
+        "short_period",
+        "wide_ci"
+      ]
+    },
+    "analysisDatetime": "2020-05-09T00:00:00.000Z"
+  },
+  {
+    "metricAssignmentId": 123,
+    "analysisStrategy": "mitt_no_crossovers",
+    "participantStats": {
+      "total": 90,
+      "not_final": 9,
+      "variation_1": 54,
+      "variation_2": 36
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": false,
+      "chosenVariationId": null,
+      "reason": "rope_in_ci",
+      "warnings": []
+    },
+    "analysisDatetime": "2020-05-09T00:00:00.000Z"
+  },
+  {
+    "metricAssignmentId": 123,
+    "analysisStrategy": "mitt_no_spammers",
+    "participantStats": {
+      "total": 85,
+      "not_final": 8,
+      "variation_1": 51,
+      "variation_2": 34
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": true,
+      "chosenVariationId": null,
+      "reason": "ci_in_rope",
+      "warnings": []
+    },
+    "analysisDatetime": "2020-05-09T00:00:00.000Z"
+  },
+  {
+    "metricAssignmentId": 123,
+    "analysisStrategy": "mitt_no_spammers_no_crossovers",
+    "participantStats": {
+      "total": 80,
+      "not_final": 8,
+      "variation_1": 48,
+      "variation_2": 32
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": true,
+      "chosenVariationId": 2,
+      "reason": "ci_in_rope",
+      "warnings": [
+        "short_period",
+        "wide_ci"
+      ]
+    },
+    "analysisDatetime": "2020-05-09T00:00:00.000Z"
+  },
+  {
+    "metricAssignmentId": 123,
+    "analysisStrategy": "pp_naive",
+    "participantStats": {
+      "total": 70,
+      "not_final": 7,
+      "variation_1": 42,
+      "variation_2": 28
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": true,
+      "chosenVariationId": 2,
+      "reason": "ci_in_rope",
+      "warnings": [
+        "short_period",
+        "wide_ci"
+      ]
+    },
+    "analysisDatetime": "2020-05-09T00:00:00.000Z"
+  },
+  {
+    "metricAssignmentId": 124,
+    "analysisStrategy": "itt_pure",
+    "participantStats": {
+      "total": 10,
+      "not_final": 10,
+      "variation_1": 10
+    },
+    "metricEstimates": null,
+    "recommendation": null,
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+  }
+]
+</pre>
+`;

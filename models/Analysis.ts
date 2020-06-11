@@ -5,7 +5,7 @@ import { ApiData } from '@/api/ApiData'
 /**
  * An analysis recommendation.
  */
-class Recommendation {
+export class Recommendation {
   /**
    * A boolean value indicating whether the experiment should end (based only on the raw data and ignoring any
    * warnings).
@@ -91,6 +91,17 @@ export enum AnalysisStrategy {
 }
 
 /**
+ * Mapping from AnalysisStrategy to human-friendly descriptions.
+ */
+export const AnalysisStrategyToHuman = {
+  [AnalysisStrategy.IttPure]: 'All participants',
+  [AnalysisStrategy.MittNoCrossovers]: 'Without crossovers',
+  [AnalysisStrategy.MittNoSpammers]: 'Without spammers',
+  [AnalysisStrategy.MittNoSpammersNoCrossovers]: 'Without crossovers and spammers',
+  [AnalysisStrategy.PpNaive]: 'Exposed without crossovers and spammers',
+}
+
+/**
  * The reason for the recommendation, describing the relationship between the credible interval (CI) and the region of
  * practical equivalence to zero (ROPE).
  */
@@ -112,6 +123,15 @@ export enum RecommendationWarning {
   ShortPeriod = 'short_period',
   LongPeriod = 'long_period',
   WideCi = 'wide_ci',
+}
+
+/**
+ * Mapping from RecommendationWarning to human-friendly descriptions.
+ */
+export const RecommendationWarningToHuman = {
+  [RecommendationWarning.ShortPeriod]: 'Experiment period is too short. Wait a few days to be safer.',
+  [RecommendationWarning.LongPeriod]: 'Experiment period is too long. Consider stopping it.',
+  [RecommendationWarning.WideCi]: 'The CI is too wide in comparison to the ROPE. Collect more data to be safer.',
 }
 
 /**
