@@ -1,0 +1,46 @@
+/**
+| Utility Class Declarations:
+|
+| Note: Most of these utility classes are copies from tailwindcss.com or
+| Bootstrap 4. This is done so that we don't need to bring in the whole CSS
+| library.
+|
+| **Adding New Utility Classes**
+|
+| First check Tailwind and Bootstrap 4. Copy the class declaration here following
+| sort order on the main CSS property.
+============================================================================= */
+
+.clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.border-b-0 {
+  border-bottom-width: 0 !important;
+}
+
+// Bootstrap 4's utility classes for `display` are more thorough.
+
+.d-inline-block {
+  display: inline-block !important;
+}
+
+.float-right {
+  float: right !important;
+}
+
+.font-bold {
+  font-weight: 700 !important;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.align-top {
+  vertical-align: top !important;
+}
