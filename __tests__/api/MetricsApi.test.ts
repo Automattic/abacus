@@ -1,4 +1,5 @@
 import MetricsApi from '@/api/MetricsApi'
+import NotFoundError from '@/api/NotFoundError'
 
 describe('MetricsApi.ts module', () => {
   describe('findAll', () => {
@@ -35,10 +36,14 @@ describe('MetricsApi.ts module', () => {
     })
 
     // TODO: Unskip this once the mock API stops returning the mock metric regardless
-    // of the given ID.
-    it.skip('called with an unknown metric ID should ', async () => {
-      const metric = await MetricsApi.findById(0)
-      expect(metric).not.toBeDefined()
+    // of the given ID. Also, remove the `instanbul ignore` comment from NotFoundError.
+    it.skip('called with an unknown metric ID should throw a NotFoundError', async () => {
+      try {
+        await MetricsApi.findById(0)
+        expect(false).toBe(true) // This should never be reached.
+      } catch (err) {
+        expect(err).toBeInstanceOf(NotFoundError)
+      }
     })
   })
 })
