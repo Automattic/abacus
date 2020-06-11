@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { MetricFull } from '@/models'
-import { formatUsCurrencyDollar } from '@/utils/currency'
+import { formatUsCurrencyDollar } from '@/utils/formatters'
 
 /**
  * Renders the attribution window in concise, human readable text.
