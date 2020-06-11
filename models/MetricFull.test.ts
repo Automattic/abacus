@@ -34,7 +34,6 @@ describe('models/MetricFull.ts module', () => {
           ],
           revenueParams: null,
         })
-        expect(metricFull.determineParameterType()).toBe('event')
       })
 
       it('with non-null revenueParams and empty arrays should create a valid instance', () => {
@@ -62,7 +61,6 @@ describe('models/MetricFull.ts module', () => {
             transactionTypes: [],
           },
         })
-        expect(metricFull.determineParameterType()).toBe('revenue')
       })
 
       it('with non-null revenueParams and non-empty product_slugs should create a valid instance', () => {
@@ -90,7 +88,6 @@ describe('models/MetricFull.ts module', () => {
             transactionTypes: [],
           },
         })
-        expect(metricFull.determineParameterType()).toBe('revenue')
       })
 
       it('with non-null revenueParams and non-empty transaction_types should create a valid instance', () => {
@@ -118,7 +115,6 @@ describe('models/MetricFull.ts module', () => {
             transactionTypes: ['new purchase', 'start trial'],
           },
         })
-        expect(metricFull.determineParameterType()).toBe('revenue')
       })
 
       it('with non-null revenueParams and non-empty arrays should create a valid instance', () => {
@@ -146,7 +142,6 @@ describe('models/MetricFull.ts module', () => {
             transactionTypes: ['new purchase', 'start trial'],
           },
         })
-        expect(metricFull.determineParameterType()).toBe('revenue')
       })
     })
   })
