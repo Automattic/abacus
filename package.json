@@ -96,6 +96,7 @@
     "docker-start": "docker run -p 8888:3000 abacus:latest",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "jest:clear": "jest --clearCache",
     "lint": "npm run lint:ts && npm run lint:css",
     "lint:css": "stylelint **/*.{css,scss}",
     "lint:css:fix": "stylelint **/*.{css,scss} --fix",
