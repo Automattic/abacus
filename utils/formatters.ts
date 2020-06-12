@@ -1,6 +1,6 @@
 import format from 'date-fns/format'
 
-const usCurrencyDollarFormatter = new Intl.NumberFormat('us', { style: 'currency', currency: 'USD' })
+const usCurrencyDollarFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
 
 /**
  * Formats the date in ISO-8601 format with a UTC timezone value plus a `+00:00`
