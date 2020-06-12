@@ -24,7 +24,6 @@ import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
 import MetricDetails from '@/components/MetricDetails'
 import MetricMinimumDifference from '@/components/MetricMinimumDifference'
-import OwnerAvatar from '@/components/OwnerAvatar'
 import {
   AttributionWindowSeconds,
   ExperimentFull,
@@ -224,9 +223,7 @@ function GeneralPanel(props: { experiment: ExperimentFull }) {
             <TableCell className='border-b-0' component='th' variant='head'>
               Owner
             </TableCell>
-            <TableCell className='border-b-0'>
-              <OwnerAvatar ownerLogin={experiment.ownerLogin} /> {experiment.ownerLogin}
-            </TableCell>
+            <TableCell className='border-b-0'>{experiment.ownerLogin}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
