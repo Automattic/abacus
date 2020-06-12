@@ -229,7 +229,7 @@ test('renders the full tables with some analyses', () => {
           </strong>
           <span
             class="whitespace-no-wrap"
-            title="09/05/2020, 19:00:00"
+            title="09/05/2020, 20:00:00"
           >
             2020-05-10
           </span>
@@ -506,7 +506,7 @@ test('renders the full tables with some analyses', () => {
           </strong>
           <span
             class="whitespace-no-wrap"
-            title="09/05/2020, 19:00:00"
+            title="09/05/2020, 20:00:00"
           >
             2020-05-10
           </span>
