@@ -227,7 +227,12 @@ test('renders the full tables with some analyses', () => {
           <strong>
             Last analyzed: 
           </strong>
-          2020-05-10T00:00:00.000+00:00
+          <span
+            class="whitespace-no-wrap"
+            title="09/05/2020, 19:00:00"
+          >
+            2020-05-10
+          </span>
         </div>
         <div
           class="MuiPaper-root MuiTableContainer-root MuiPaper-elevation1 MuiPaper-rounded"
@@ -499,7 +504,12 @@ test('renders the full tables with some analyses', () => {
           <strong>
             Last analyzed: 
           </strong>
-          2020-05-10T00:00:00.000+00:00
+          <span
+            class="whitespace-no-wrap"
+            title="09/05/2020, 19:00:00"
+          >
+            2020-05-10
+          </span>
         </div>
         <div
           class="MuiPaper-root MuiTableContainer-root MuiPaper-elevation1 MuiPaper-rounded"
