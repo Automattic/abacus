@@ -392,11 +392,11 @@ function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricF
   const metricAssignmentsRowData = toMetricAssignmentsRowData(experiment.metricAssignments, metrics)
 
   return (
-    <div>
+    <div className='experiment experiment--details'>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <div className='clearfix'>
-            <span className='font-bold'>{experiment.name}</span>
+            <span className='name mr-2'>{experiment.name}</span>
             <StatusText status={experiment.status} />
             <Button className='float-right' variant='contained'>
               Edit
