@@ -31,11 +31,10 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
             </div>
             <div className='bottom'>
               <Container maxWidth='xl'>
-                <nav>
+                <nav className='app-nav'>
                   <Link href='/'>
                     <a>Experiments</a>
                   </Link>
-                  <span>|</span>
                   <Link href='/metrics'>
                     <a>Metrics</a>
                   </Link>

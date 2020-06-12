@@ -92,6 +92,19 @@ h6 {
     font-family: 'Comfortaa', cursive;
     font-size: 1.5rem;
   }
+
+  &-nav {
+    a {
+      margin-right: 1rem;
+      color: #4f4f4f;
+      font-family: Roboto, sans-serif;
+      text-decoration: none;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
 }
 
 /**
