@@ -36,7 +36,8 @@ describe('MetricsApi.ts module', () => {
     })
 
     // TODO: Unskip this once the mock API stops returning the mock metric regardless
-    // of the given ID. Also, remove the `instanbul ignore` comment from NotFoundError.
+    // of the given ID. Also, remove the `instanbul ignore` comment from NotFoundError
+    // and in `api/utils.ts` above the `if (response.status === 404)`.
     it.skip('called with an unknown metric ID should throw a NotFoundError', async () => {
       try {
         await MetricsApi.findById(0)

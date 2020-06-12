@@ -40,6 +40,7 @@ async function fetchApi(method: string, path: string, body: ApiDataSource | null
     body: body === null ? null : JSON.stringify(body.toApiData()),
   })
 
+  // istanbul ignore next; branch can't be reached with the current tests.
   if (response.status === 404) {
     throw new NotFoundError()
   }
