@@ -7,7 +7,7 @@ import ExperimentsApi from '@/api/ExperimentsApi'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
 import { ExperimentFull } from '@/models'
-import { formatIsoUtcOffset } from '@/utils/date'
+import { formatIsoUtcOffset } from '@/utils/formatters'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 
