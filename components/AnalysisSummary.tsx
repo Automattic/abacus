@@ -1,5 +1,4 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core'
-import { format } from 'date-fns'
 import _ from 'lodash'
 import React, { useMemo } from 'react'
 
@@ -12,6 +11,7 @@ import {
   RecommendationWarningToHuman,
   Variation,
 } from '@/models'
+import { formatIsoUtcOffset } from '@/utils/formatters'
 
 /**
  * Convert a recommendation's endExperiment and chosenVariationId fields to a human-friendly description.
@@ -127,7 +127,7 @@ function LatestResults({
           <div>
             <strong>Last analyzed: </strong>
             {/* TODO: use component to handle formatting */}
-            {format(latestAnalyses[0].analysisDatetime, 'yyyy-MM-dd')}
+            {formatIsoUtcOffset(latestAnalyses[0].analysisDatetime)}
           </div>
           <TableContainer component={Paper}>
             <Table>

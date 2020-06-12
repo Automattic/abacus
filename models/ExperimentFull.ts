@@ -1,7 +1,7 @@
 import { ApiData } from '@/api/ApiData'
 import { ApiDataSource } from '@/api/ApiDataSource'
 import { ExcludeMethods } from '@/types/ExcludeMethods'
-import { formatIsoUtcOffset } from '@/utils/date'
+import { formatIsoUtcOffset } from '@/utils/formatters'
 
 import { Event, ExperimentBare, MetricAssignment, Platform, SegmentAssignment, Status, Variation } from './index'
 

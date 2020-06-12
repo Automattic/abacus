@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 
 import { ExperimentBare } from '@/models'
-import { formatIsoUtcOffset } from '@/utils/date'
+import { formatIsoUtcOffset } from '@/utils/formatters'
 
 /**
  * Renders the date in ISO-8601 date-only format.
