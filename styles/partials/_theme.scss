@@ -90,6 +90,35 @@ h6 {
 }
 
 /**
+| Experiment Status:
+===================================== */
+
+.experiment-status {
+  display: inline-block;
+  background: #ddd;
+  border-radius: 1px;
+  font-family: 'Roboto Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  padding: 0.5rem;
+  text-transform: uppercase;
+
+  &.disabled,
+  &.staging {
+    background: #82828214;
+    color: #828282;
+  }
+
+  &.completed {
+    background: #4caf5014;
+    color: #4caf50;
+  }
+
+  &.running {
+    background: #ff980014;
+    color: #ff9800;
+  }
+}
+
+/**
 | Pill:
 ===================================== */
 

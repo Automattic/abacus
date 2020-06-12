@@ -24,6 +24,7 @@ import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
 import MetricDetails from '@/components/MetricDetails'
 import MetricMinimumDifference from '@/components/MetricMinimumDifference'
+import StatusText from '@/components/StatusText'
 import {
   AttributionWindowSeconds,
   ExperimentFull,
@@ -392,14 +393,16 @@ function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricF
 
   return (
     <div>
-      <div className='clearfix'>
-        <span className='font-bold'>{experiment.name}</span>
-        <span className='pill'>{experiment.status}</span>
-        <Button className='float-right' variant='contained'>
-          Edit
-        </Button>
-      </div>
       <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <div className='clearfix'>
+            <span className='font-bold'>{experiment.name}</span>
+            <StatusText status={experiment.status} />
+            <Button className='float-right' variant='contained'>
+              Edit
+            </Button>
+          </div>
+        </Grid>
         <Grid item xs={12} md={8}>
           <Grid container direction='column' spacing={2}>
             <Grid item>

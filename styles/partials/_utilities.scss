@@ -25,6 +25,10 @@
 
 // Bootstrap 4's utility classes for `display` are more thorough.
 
+.d-flex {
+  display: flex !important;
+}
+
 .d-inline-block {
   display: inline-block !important;
 }
@@ -37,8 +41,16 @@
   font-weight: 700 !important;
 }
 
+.justify-around {
+  justify-content: space-around !important;
+}
+
 .m-0 {
   margin: 0;
+}
+
+.mr-2 {
+  margin-right: 0.5rem !important;
 }
 
 .align-top {
