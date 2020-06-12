@@ -11,7 +11,7 @@ import {
   RecommendationWarningToHuman,
   Variation,
 } from '@/models'
-import { formatIsoUtcOffset } from '@/utils/date'
+import { formatIsoUtcOffset } from '@/utils/formatters'
 
 /**
  * Convert a recommendation's endExperiment and chosenVariationId fields to a human-friendly description.
