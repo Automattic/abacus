@@ -1,6 +1,7 @@
 import { getExperimentsAuthInfo } from '@/utils/auth'
 
 import { ApiDataSource } from './ApiDataSource'
+import NotFoundError from './NotFoundError'
 import UnauthorizedError from './UnauthorizedError'
 
 const DEVELOPMENT_API_URL_ROOT = 'https://virtserver.swaggerhub.com/yanir/experiments/0.1.0'
@@ -33,13 +34,18 @@ async function fetchApi(method: string, path: string, body: ApiDataSource | null
     headers.append('Content-Type', 'application/json')
   }
 
-  return (
-    await fetch(`${apiUrlRoot}${path}`, {
-      method,
-      headers,
-      body: body === null ? null : JSON.stringify(body.toApiData()),
-    })
-  ).json()
+  const response = await fetch(`${apiUrlRoot}${path}`, {
+    method,
+    headers,
+    body: body === null ? null : JSON.stringify(body.toApiData()),
+  })
+
+  // istanbul ignore next; branch can't be reached with the current tests.
+  if (response.status === 404) {
+    throw new NotFoundError()
+  }
+
+  return response.json()
 }
 
 export { fetchApi }

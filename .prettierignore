@@ -1,11 +1,11 @@
 .dockerignore
 .prettierignore
 
+*.snap
+
 .next/
 
 .idea/
 .vscode/
 
 coverage/
-
-*.snap
