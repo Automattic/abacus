@@ -21,7 +21,6 @@ const IndexPage = function IndexPage() {
 
   return (
     <Layout title='Experiments' error={error}>
-      <img alt='logo' src='/img/logo.png' width='100' />
       {experiments &&
         (experiments.length === 0 ? <p>No experiments yet.</p> : <ExperimentsTable experiments={experiments} />)}
     </Layout>

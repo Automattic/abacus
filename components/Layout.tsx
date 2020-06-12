@@ -25,6 +25,7 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
           <AppBar color='inherit' position='relative'>
             <div className='top'>
               <Container maxWidth='xl'>
+                <img alt='logo' className='mr-1' src='/img/logo.png' width='24' />
                 <span className='app-name'>Abacus</span>
               </Container>
             </div>
