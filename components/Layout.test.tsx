@@ -19,25 +19,49 @@ test('renders layout with declared title and children', () => {
   // Note: Using snapshots instead of selective expects so that additions, such as
   // new links, are being tested.
   expect(headerElmt).toMatchInlineSnapshot(`
-    <header>
+    <header
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorInherit MuiPaper-elevation4"
+    >
       <div
-        class="MuiContainer-root MuiContainer-maxWidthLg"
+        class="top"
       >
-        <nav>
-          <a
-            href="/"
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthXl"
+        >
+          <img
+            alt="logo"
+            class="mr-1"
+            src="/img/logo.png"
+            width="24"
+          />
+          <span
+            class="app-name"
           >
-            Experiments
-          </a>
-          <span>
-            |
+            Abacus
           </span>
-          <a
-            href="/metrics"
+        </div>
+      </div>
+      <div
+        class="bottom"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthXl"
+        >
+          <nav
+            class="app-nav"
           >
-            Metrics
-          </a>
-        </nav>
+            <a
+              href="/"
+            >
+              Experiments
+            </a>
+            <a
+              href="/metrics"
+            >
+              Metrics
+            </a>
+          </nav>
+        </div>
       </div>
     </header>
   `)
@@ -46,7 +70,6 @@ test('renders layout with declared title and children', () => {
   expect(footerElmt).not.toBeNull()
   expect(footerElmt).toMatchInlineSnapshot(`
     <footer>
-      <hr />
       <div
         class="MuiContainer-root MuiContainer-maxWidthLg"
       >
