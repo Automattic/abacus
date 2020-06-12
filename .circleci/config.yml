@@ -41,10 +41,10 @@ jobs:
                 command: npm run test:unit -- -- --ci --maxWorkers 2
             - run:
                 name: Integration Testing
-                command: npm run test:integration -- -- --ci
+                command: npm run test:integration -- --ci
             - run:
                 name: End-to-End Testing
-                command: npm run test:e2e -- -- --ci
+                command: npm run test:e2e -- --ci
 
 workflows:
   build-and-verify:
