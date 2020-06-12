@@ -79,6 +79,40 @@ h6 {
 }
 
 /**
+| App:
+===================================== */
+.app {
+  &-content {
+    min-height: 100vh;
+    background: #f4f6f8;
+  }
+
+  &-name {
+    color: #fff;
+    font-family: 'Comfortaa', cursive;
+    font-size: 1.5rem;
+  }
+}
+
+/**
+| MUI AppBar:
+===================================== */
+.MuiAppBar {
+  &-root {
+    background: #194661 !important;
+
+    .top {
+      padding: 1rem 0;
+    }
+
+    .bottom {
+      background: #fff;
+      padding: 0.75rem 0;
+    }
+  }
+}
+
+/**
 | MUI Avatar:
 ===================================== */
 .MuiAvatar-root.small {

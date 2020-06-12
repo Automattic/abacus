@@ -50,6 +50,10 @@ const App = React.memo(function App(props: AppProps) {
       {({ renderError }) => (
         <>
           <Head>
+            <link
+              rel='stylesheet'
+              href='https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&display=swap'
+            />
             <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap' />
             <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
           </Head>
