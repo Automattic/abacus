@@ -11,14 +11,11 @@ const DatetimeText = ({ datetime, excludeTime }: { datetime: Date; excludeTime?:
   // behaves as if no parameters were passed to it. Note: Setting the env vars and
   // not explicitly setting them here works in non-Windows environments. We are only
   // being explicit here because of Windows.
-  const datetimeText = datetime.toLocaleString(process.env.LANG, { timeZone: process.env.TZ })
-  let text = datetime.toISOString()
-  if (excludeTime) {
-    text = text.substring(0, ISO_DATE_LENGTH)
-  }
+  const localeString = datetime.toLocaleString(process.env.LANG, { timeZone: process.env.TZ })
+  const isoString = datetime.toISOString()
   return (
-    <span className='datetime-text' title={datetimeText}>
-      {text}
+    <span className='datetime-text' title={localeString}>
+      {excludeTime ? isoString.substring(0, ISO_DATE_LENGTH) : isoString}
     </span>
   )
 }
