@@ -12,7 +12,7 @@ const DatetimeText = ({ datetime, excludeTime }: { datetime: Date; excludeTime?:
     text = text.replace(TIME_PART_RE, '')
   }
   return (
-    <span className='whitespace-no-wrap' title={datetimeText}>
+    <span className='datetime-text' title={datetimeText}>
       {text}
     </span>
   )
