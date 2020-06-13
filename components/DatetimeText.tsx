@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TIME_PART_RE = /T\d{2}:\d{2}:\d{2}(?:\.\d+(?:Z)?)?/
+const ISO_DATE_LENGTH = 10
 
 /**
  * Renders the date value in ISO 8601 format UTC.
@@ -9,7 +9,7 @@ const DatetimeText = ({ datetime, excludeTime }: { datetime: Date; excludeTime?:
   const datetimeText = datetime.toLocaleString(process.env.LANG, { timeZone: process.env.TZ })
   let text = datetime.toISOString()
   if (excludeTime) {
-    text = text.replace(TIME_PART_RE, '')
+    text = text.substring(0, ISO_DATE_LENGTH)
   }
   return (
     <span className='datetime-text' title={datetimeText}>
