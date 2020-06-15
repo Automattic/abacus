@@ -2,16 +2,17 @@ import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow
 import _ from 'lodash'
 import React, { useMemo } from 'react'
 
+import DatetimeText from '@/components/DatetimeText'
 import {
   Analysis,
   AnalysisStrategyToHuman,
+  AttributionWindowSecondsToHuman,
   ExperimentFull,
   MetricBare,
   Recommendation,
   RecommendationWarningToHuman,
   Variation,
 } from '@/models'
-import { formatIsoUtcOffset } from '@/utils/formatters'
 
 /**
  * Convert a recommendation's endExperiment and chosenVariationId fields to a human-friendly description.
@@ -121,13 +122,11 @@ function LatestResults({
           </div>
           <div>
             <strong>Attribution window: </strong>
-            {/* TODO: use component to handle formatting */}
-            {attributionWindowSeconds / 3600} hours
+            {AttributionWindowSecondsToHuman[attributionWindowSeconds]}
           </div>
           <div>
             <strong>Last analyzed: </strong>
-            {/* TODO: use component to handle formatting */}
-            {formatIsoUtcOffset(latestAnalyses[0].analysisDatetime)}
+            {DatetimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true })}
           </div>
           <TableContainer component={Paper}>
             <Table>

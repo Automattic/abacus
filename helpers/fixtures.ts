@@ -256,6 +256,7 @@ function createMetricsBares(numMetrics = 3) {
         metricId: i,
         name: `metric_${i}`,
         description: `This is metric ${i}`,
+        parameterType: 'revenue',
       }),
     )
   }

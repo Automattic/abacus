@@ -17,6 +17,11 @@ export class MetricBare {
   public readonly description: string
 
   /**
+   * Type of parameters of this metric.
+   */
+  public readonly parameterType: 'conversion' | 'revenue'
+
+  /**
    * Constructs a new metric.
    */
   constructor(data: Readonly<MetricBare>) {
@@ -33,6 +38,7 @@ export class MetricBare {
       metricId: apiData.metric_id,
       name: apiData.name,
       description: apiData.description,
+      parameterType: 'revenue', // TODO: Get this from the API. Be sure to update the unit test if necessary.
     })
   }
 }

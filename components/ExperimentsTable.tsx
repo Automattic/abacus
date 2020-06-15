@@ -1,20 +1,10 @@
-import { format } from 'date-fns'
 import debugFactory from 'debug'
 import MaterialTable from 'material-table'
 import { useRouter } from 'next/router'
 import React from 'react'
 
+import DatetimeText from '@/components/DatetimeText'
 import { ExperimentBare } from '@/models'
-import { formatIsoUtcOffset } from '@/utils/formatters'
-
-/**
- * Renders the date in ISO-8601 date-only format.
- */
-const isoDateRenderer = (date: Date) => (
-  <span className='whitespace-no-wrap' title={formatIsoUtcOffset(date)}>
-    {format(date, 'yyyy-MM-dd')}
-  </span>
-)
 
 const debug = debugFactory('abacus:components/ExperimentsTable.tsx')
 
@@ -38,8 +28,16 @@ const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }) =>
     <MaterialTable
       columns={[
         { title: 'Name', field: 'name' },
-        { title: 'Start', field: 'startDatetime', render: (experiment) => isoDateRenderer(experiment.endDatetime) },
-        { title: 'End', field: 'endDatetime', render: (experiment) => isoDateRenderer(experiment.endDatetime) },
+        {
+          title: 'Start',
+          field: 'startDatetime',
+          render: (experiment) => <DatetimeText datetime={experiment.startDatetime} excludeTime />,
+        },
+        {
+          title: 'End',
+          field: 'endDatetime',
+          render: (experiment) => <DatetimeText datetime={experiment.endDatetime} excludeTime />,
+        },
         { title: 'Status', field: 'status' },
         { title: 'Platform', field: 'platform' },
         { title: 'Owner', field: 'ownerLogin' },

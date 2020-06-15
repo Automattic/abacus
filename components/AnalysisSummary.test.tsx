@@ -221,14 +221,18 @@ test('renders the full tables with some analyses', () => {
           <strong>
             Attribution window: 
           </strong>
-          168
-           hours
+          1 week
         </div>
         <div>
           <strong>
             Last analyzed: 
           </strong>
-          2020-05-10T00:00:00.000+00:00
+          <span
+            class="datetime-text"
+            title="09/05/2020, 20:00:00"
+          >
+            2020-05-10
+          </span>
         </div>
         <div
           class="MuiPaper-root MuiTableContainer-root MuiPaper-elevation1 MuiPaper-rounded"
@@ -494,14 +498,18 @@ test('renders the full tables with some analyses', () => {
           <strong>
             Attribution window: 
           </strong>
-          672
-           hours
+          4 weeks
         </div>
         <div>
           <strong>
             Last analyzed: 
           </strong>
-          2020-05-10T00:00:00.000+00:00
+          <span
+            class="datetime-text"
+            title="09/05/2020, 20:00:00"
+          >
+            2020-05-10
+          </span>
         </div>
         <div
           class="MuiPaper-root MuiTableContainer-root MuiPaper-elevation1 MuiPaper-rounded"
