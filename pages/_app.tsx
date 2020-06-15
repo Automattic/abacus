@@ -1,5 +1,6 @@
 import '@/styles/main.scss'
 
+import CssBaseline from '@material-ui/core/CssBaseline'
 import debugFactory from 'debug'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -57,6 +58,7 @@ const App = React.memo(function App(props: AppProps) {
             <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap' />
             <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
           </Head>
+          <CssBaseline />
           {renderError ? (
             <RenderErrorView renderError={renderError} />
           ) : (
