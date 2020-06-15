@@ -85,6 +85,11 @@ h6 {
   min-height: 100vh;
   background: #f4f6f8;
 
+  &-logo {
+    width: 24px;
+    margin-right: 0.5rem;
+  }
+
   &-name {
     color: #fff;
     font-family: 'Comfortaa', cursive;
