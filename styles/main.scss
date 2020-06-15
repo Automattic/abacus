@@ -1,2 +1,67 @@
-@import 'partials/forms';
-@import 'partials/theme';
+/**
+| App:
+===================================== */
+.app {
+  min-height: 100vh;
+  background: #f4f6f8;
+
+  &-logo {
+    width: 24px;
+    margin-right: 0.5rem;
+  }
+
+  &-name {
+    color: #fff;
+    font-family: 'Comfortaa', cursive;
+    font-size: 1.5rem;
+  }
+
+  &-nav {
+    a {
+      margin-right: 1rem;
+      color: #4f4f4f;
+      font-family: Roboto, sans-serif;
+      text-decoration: none;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+/**
+| MUI AppBar:
+===================================== */
+.MuiAppBar {
+  &-root {
+    background: #194661 !important;
+
+    .top {
+      padding: 1rem 0;
+    }
+
+    .bottom {
+      background: #fff;
+      padding: 0.75rem 0;
+    }
+  }
+}
+
+/**
+| Datetime Text:
+===================================== */
+.datetime-text {
+  white-space: nowrap;
+}
+
+/**
+| Errors Box:
+===================================== */
+
+.errors-box {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 1rem;
+}
