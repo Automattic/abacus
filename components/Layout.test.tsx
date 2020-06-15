@@ -30,9 +30,8 @@ test('renders layout with declared title and children', () => {
         >
           <img
             alt="logo"
-            class="mr-1"
+            class="app-logo"
             src="/img/logo.png"
-            width="24"
           />
           <span
             class="app-name"
