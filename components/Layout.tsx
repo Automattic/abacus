@@ -16,7 +16,7 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
       return renderError ? (
         <RenderErrorView renderError={renderError} />
       ) : (
-        <div className='app-content'>
+        <>
           <Head>
             <title>{title} | Abacus</title>
             <meta charSet='utf-8' />
@@ -52,7 +52,7 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
               <span>The Abacus footer, brought to you by Automattic</span>
             </Container>
           </footer>
-        </div>
+        </>
       )
     }}
   </RenderErrorBoundary>

@@ -82,10 +82,8 @@ h6 {
 | App:
 ===================================== */
 .app {
-  &-content {
-    min-height: 100vh;
-    background: #f4f6f8;
-  }
+  min-height: 100vh;
+  background: #f4f6f8;
 
   &-name {
     color: #fff;
