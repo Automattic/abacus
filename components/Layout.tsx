@@ -22,7 +22,7 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
             <meta charSet='utf-8' />
             <meta name='viewport' content='initial-scale=1.0, width=device-width' />
           </Head>
-          <AppBar color='inherit' position='relative'>
+          <AppBar position='relative'>
             <div className='top'>
               <Container maxWidth='xl'>
                 <img alt='logo' className='app-logo' src='/img/logo.png' />

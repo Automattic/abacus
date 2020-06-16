@@ -1,6 +1,7 @@
 import '@/styles/main.scss'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import debugFactory from 'debug'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -13,6 +14,16 @@ import { onRenderError } from '@/event-handlers/index'
 import { getAuthClientId, getExperimentsAuthInfo, saveExperimentsAuthInfo } from '@/utils/auth'
 
 const debug = debugFactory('abacus:pages/_app.tsx')
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiAppBar: {
+      colorPrimary: {
+        backgroundColor: '#194661',
+      },
+    },
+  },
+})
 
 const App = React.memo(function App(props: AppProps) {
   debug('App#render')
@@ -58,14 +69,16 @@ const App = React.memo(function App(props: AppProps) {
             <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap' />
             <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
           </Head>
-          <CssBaseline />
-          {renderError ? (
-            <RenderErrorView renderError={renderError} />
-          ) : (
-            <div className='app'>
-              <Route {...routeProps} />
-            </div>
-          )}
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            {renderError ? (
+              <RenderErrorView renderError={renderError} />
+            ) : (
+              <div className='app'>
+                <Route {...routeProps} />
+              </div>
+            )}
+          </ThemeProvider>
         </>
       )}
     </RenderErrorBoundary>
