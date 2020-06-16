@@ -1,7 +1,7 @@
 import '@/styles/main.scss'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider } from '@material-ui/core/styles'
 import debugFactory from 'debug'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -11,19 +11,10 @@ import React from 'react'
 import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import RenderErrorView from '@/components/RenderErrorView'
 import { onRenderError } from '@/event-handlers/index'
+import theme from '@/styles/theme'
 import { getAuthClientId, getExperimentsAuthInfo, saveExperimentsAuthInfo } from '@/utils/auth'
 
 const debug = debugFactory('abacus:pages/_app.tsx')
-
-const theme = createMuiTheme({
-  overrides: {
-    MuiAppBar: {
-      colorPrimary: {
-        backgroundColor: '#194661',
-      },
-    },
-  },
-})
 
 const App = React.memo(function App(props: AppProps) {
   debug('App#render')
