@@ -110,5 +110,5 @@ test('renders an error when it is passed in', () => {
     </Layout>,
   )
 
-  expect(container.querySelector('.error-box')).toHaveTextContent('An error occurred')
+  expect(container.querySelector('.error-box_js')).toHaveTextContent('An error occurred')
 })
