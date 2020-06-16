@@ -10,7 +10,7 @@ test('renders as ISO 8601 UTC', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       <span
-        class="datetime-text"
+        class="makeStyles-root-1"
         title="01/05/2020, 20:00:00"
       >
         2020-05-02T00:00:00.000Z
@@ -26,7 +26,7 @@ test('renders as ISO 8601 UTC without time', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       <span
-        class="datetime-text"
+        class="makeStyles-root-2"
         title="01/05/2020, 20:00:00"
       >
         2020-05-02

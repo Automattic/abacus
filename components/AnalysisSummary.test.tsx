@@ -228,7 +228,7 @@ test('renders the full tables with some analyses', () => {
             Last analyzed: 
           </strong>
           <span
-            class="datetime-text"
+            class="makeStyles-root-1"
             title="09/05/2020, 20:00:00"
           >
             2020-05-10
@@ -505,7 +505,7 @@ test('renders the full tables with some analyses', () => {
             Last analyzed: 
           </strong>
           <span
-            class="datetime-text"
+            class="makeStyles-root-1"
             title="09/05/2020, 20:00:00"
           >
             2020-05-10
