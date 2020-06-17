@@ -1,7 +1,5 @@
-import '@/styles/main.scss'
-
 import CssBaseline from '@material-ui/core/CssBaseline'
-import { ThemeProvider } from '@material-ui/core/styles'
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import debugFactory from 'debug'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -16,9 +14,17 @@ import { getAuthClientId, getExperimentsAuthInfo, saveExperimentsAuthInfo } from
 
 const debug = debugFactory('abacus:pages/_app.tsx')
 
+const useStyles = makeStyles({
+  app: {
+    background: '#f4f6f8',
+    minHeight: '100vh', // Ensures background color extends whole length of viewport.
+  },
+})
+
 const App = React.memo(function App(props: AppProps) {
   debug('App#render')
   const { Component: Route, pageProps: routeProps } = props
+  const classes = useStyles()
 
   if (typeof window !== 'undefined') {
     // Inject a fake auth token to skip authentication in non-production contexts.
@@ -65,7 +71,7 @@ const App = React.memo(function App(props: AppProps) {
             {renderError ? (
               <RenderErrorView renderError={renderError} />
             ) : (
-              <div className='app'>
+              <div className={classes.app}>
                 <Route {...routeProps} />
               </div>
             )}
