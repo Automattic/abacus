@@ -2,7 +2,6 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/api/**/*.ts',
     '!**/node_modules/**',
-    '!<rootDir>/api/index.ts', // Note: `ignore istanbul file` does not work.
     // FIXME: TODO: Get tests on the following. This is related to issues 52 and 64.
     // Currently we are unable to test the following because the code won't hit the
     // code branch that leads to this error being thrown. If we test against the
