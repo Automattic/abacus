@@ -14,14 +14,10 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-interface Props {
-  errors: Error[]
-}
-
 /**
  * Renders an array of error messages.
  */
-const ErrorsBox = (props: Props) => {
+const ErrorsBox = (props: { errors: Error[] }) => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
