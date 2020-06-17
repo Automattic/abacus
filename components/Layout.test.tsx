@@ -47,7 +47,7 @@ test('renders layout with declared title and children', () => {
           class="MuiContainer-root MuiContainer-maxWidthXl"
         >
           <nav
-            class="makeStyles-appTheme-5"
+            class="makeStyles-appNav-5"
           >
             <a
               href="/"

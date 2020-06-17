@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     fontFamily: 'Comfortaa, cursive',
     fontSize: '1.5rem',
   },
-  appTheme: {
+  appNav: {
     '& a': {
       color: '#4f4f4f',
       fontFamily: 'Roboto, sans-serif',
@@ -64,7 +64,7 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
               </div>
               <div className={classes.appBarBottom}>
                 <Container maxWidth='xl'>
-                  <nav className={classes.appTheme}>
+                  <nav className={classes.appNav}>
                     <Link href='/'>
                       <a>Experiments</a>
                     </Link>
