@@ -19,12 +19,12 @@ import React, { useEffect, useState } from 'react'
 import ExperimentsApi from '@/api/ExperimentsApi'
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
-import AttributionWindow from '@/components/AttributionWindow'
 import DatetimeText from '@/components/DatetimeText'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
 import {
   AttributionWindowSeconds,
+  AttributionWindowSecondsToHuman,
   ExperimentFull,
   MetricAssignment,
   MetricBare,
@@ -292,7 +292,7 @@ function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignm
                   </span>
                 </TableCell>
                 <TableCell className='border-b-0'>
-                  <AttributionWindow attributionWindowSeconds={metricsRowDatum.attributionWindowSeconds} />
+                  {AttributionWindowSecondsToHuman[metricsRowDatum.attributionWindowSeconds]}
                 </TableCell>
                 <TableCell className='border-b-0'>{formatBoolean(metricsRowDatum.changeExpected)}</TableCell>
                 <TableCell className='border-b-0'>
