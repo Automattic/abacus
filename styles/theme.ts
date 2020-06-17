@@ -4,14 +4,6 @@ declare module '@material-ui/core/styles/createPalette' {
   interface TypeBackground {
     error: React.CSSProperties['color']
   }
-
-  interface Palette {
-    background: Palette['background']
-  }
-
-  interface PaletteOptions {
-    background?: PaletteOptions['background']
-  }
 }
 
 const theme = createMuiTheme({
