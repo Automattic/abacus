@@ -32,9 +32,8 @@ import {
   Variation,
 } from '@/models'
 // import { ExperimentFull } from '@/models'
-import { formatUsCurrencyDollar } from '@/utils/currency'
 // import { formatIsoUtcOffset } from '@/utils/formatters'
-import { formatBoolean } from '@/utils/formatters'
+import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 
