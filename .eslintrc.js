@@ -94,6 +94,7 @@ module.exports = {
     ],
     'jsx-a11y/no-autofocus': 'off',
 
+    'react/display-name': 'off',
     'react/jsx-child-element-spacing': 'warn',
     'react/jsx-closing-bracket-location': 'error',
     'react/jsx-closing-tag-location': 'error',

@@ -1,7 +1,7 @@
 import { ApiData } from '@/api/ApiData'
 import { ApiDataSource } from '@/api/ApiDataSource'
 import { ExcludeMethods } from '@/types/ExcludeMethods'
-import { formatIsoUtcOffset } from '@/utils/date'
+import { formatIsoUtcOffset } from '@/utils/formatters'
 
 import { Event, ExperimentBare, MetricAssignment, Platform, SegmentAssignment, Status, Variation } from './index'
 
@@ -180,5 +180,12 @@ export class ExperimentFull implements ApiDataSource {
         allocated_percentage: variation.allocatedPercentage,
       })),
     }
+  }
+
+  /**
+   * Return the primary metric assignment ID for this experiment if one exists.
+   */
+  getPrimaryMetricAssignmentId(): number | null {
+    return this.metricAssignments.find((metricAssignment) => metricAssignment.isPrimary)?.metricAssignmentId ?? null
   }
 }

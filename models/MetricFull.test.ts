@@ -1,4 +1,6 @@
+import { Event } from './Event'
 import { MetricFull } from './MetricFull'
+import { MetricRevenueParams, TransactionTypes } from './MetricRevenueParams'
 
 describe('models/MetricFull.ts module', () => {
   describe('MetricFull', () => {
@@ -19,22 +21,24 @@ describe('models/MetricFull.ts module', () => {
           ],
           revenue_params: null,
         })
-        expect(metricFull).toEqual({
-          metricId: 123,
-          name: 'Example Metric',
-          description: 'An example metric.',
-          higherIsBetter: true,
-          eventParams: [
-            {
-              event: 'foo',
-              props: {
-                foo: 'bar',
-              },
-            },
-          ],
-          revenueParams: null,
-        })
-        expect(metricFull.determineParameterType()).toBe('event')
+        expect(metricFull).toEqual(
+          new MetricFull({
+            metricId: 123,
+            name: 'Example Metric',
+            description: 'An example metric.',
+            higherIsBetter: true,
+            eventParams: [
+              new Event({
+                event: 'foo',
+                props: {
+                  foo: 'bar',
+                },
+              }),
+            ],
+            parameterType: 'conversion',
+            revenueParams: null,
+          }),
+        )
       })
 
       it('with non-null revenueParams and empty arrays should create a valid instance', () => {
@@ -50,19 +54,21 @@ describe('models/MetricFull.ts module', () => {
             transaction_types: [],
           },
         })
-        expect(metricFull).toEqual({
-          metricId: 123,
-          name: 'Example Metric',
-          description: 'An example metric.',
-          higherIsBetter: true,
-          eventParams: null,
-          revenueParams: {
-            refundDays: 30,
-            productSlugs: [],
-            transactionTypes: [],
-          },
-        })
-        expect(metricFull.determineParameterType()).toBe('revenue')
+        expect(metricFull).toEqual(
+          new MetricFull({
+            metricId: 123,
+            name: 'Example Metric',
+            description: 'An example metric.',
+            higherIsBetter: true,
+            eventParams: null,
+            parameterType: 'revenue',
+            revenueParams: new MetricRevenueParams({
+              refundDays: 30,
+              productSlugs: [],
+              transactionTypes: [],
+            }),
+          }),
+        )
       })
 
       it('with non-null revenueParams and non-empty product_slugs should create a valid instance', () => {
@@ -78,19 +84,21 @@ describe('models/MetricFull.ts module', () => {
             transaction_types: [],
           },
         })
-        expect(metricFull).toEqual({
-          metricId: 123,
-          name: 'Example Metric',
-          description: 'An example metric.',
-          higherIsBetter: true,
-          eventParams: null,
-          revenueParams: {
-            refundDays: 30,
-            productSlugs: ['foo', 'bar'],
-            transactionTypes: [],
-          },
-        })
-        expect(metricFull.determineParameterType()).toBe('revenue')
+        expect(metricFull).toEqual(
+          new MetricFull({
+            metricId: 123,
+            name: 'Example Metric',
+            description: 'An example metric.',
+            higherIsBetter: true,
+            eventParams: null,
+            parameterType: 'revenue',
+            revenueParams: new MetricRevenueParams({
+              refundDays: 30,
+              productSlugs: ['foo', 'bar'],
+              transactionTypes: [],
+            }),
+          }),
+        )
       })
 
       it('with non-null revenueParams and non-empty transaction_types should create a valid instance', () => {
@@ -106,19 +114,21 @@ describe('models/MetricFull.ts module', () => {
             transaction_types: ['new purchase', 'start trial'],
           },
         })
-        expect(metricFull).toEqual({
-          metricId: 123,
-          name: 'Example Metric',
-          description: 'An example metric.',
-          higherIsBetter: true,
-          eventParams: null,
-          revenueParams: {
-            refundDays: 30,
-            productSlugs: [],
-            transactionTypes: ['new purchase', 'start trial'],
-          },
-        })
-        expect(metricFull.determineParameterType()).toBe('revenue')
+        expect(metricFull).toEqual(
+          new MetricFull({
+            metricId: 123,
+            name: 'Example Metric',
+            description: 'An example metric.',
+            higherIsBetter: true,
+            eventParams: null,
+            parameterType: 'revenue',
+            revenueParams: new MetricRevenueParams({
+              refundDays: 30,
+              productSlugs: [],
+              transactionTypes: [TransactionTypes.NewPurchase, TransactionTypes.StartTrial],
+            }),
+          }),
+        )
       })
 
       it('with non-null revenueParams and non-empty arrays should create a valid instance', () => {
@@ -134,19 +144,21 @@ describe('models/MetricFull.ts module', () => {
             transaction_types: ['new purchase', 'start trial'],
           },
         })
-        expect(metricFull).toEqual({
-          metricId: 123,
-          name: 'Example Metric',
-          description: 'An example metric.',
-          higherIsBetter: true,
-          eventParams: null,
-          revenueParams: {
-            refundDays: 30,
-            productSlugs: ['foo', 'bar'],
-            transactionTypes: ['new purchase', 'start trial'],
-          },
-        })
-        expect(metricFull.determineParameterType()).toBe('revenue')
+        expect(metricFull).toEqual(
+          new MetricFull({
+            metricId: 123,
+            name: 'Example Metric',
+            description: 'An example metric.',
+            higherIsBetter: true,
+            eventParams: null,
+            parameterType: 'revenue',
+            revenueParams: new MetricRevenueParams({
+              refundDays: 30,
+              productSlugs: ['foo', 'bar'],
+              transactionTypes: [TransactionTypes.NewPurchase, TransactionTypes.StartTrial],
+            }),
+          }),
+        )
       })
     })
   })

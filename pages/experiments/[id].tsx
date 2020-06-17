@@ -18,23 +18,23 @@ import React, { useEffect, useState } from 'react'
 
 import { ExperimentsApi, MetricsApi, SegmentsApi } from '@/api'
 import AttributionWindow from '@/components/AttributionWindow'
-import BooleanText from '@/components/BooleanText'
 import DatetimeText from '@/components/DatetimeText'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
-import MetricDetails from '@/components/MetricDetails'
-import MetricMinimumDifference from '@/components/MetricMinimumDifference'
-import StatusText from '@/components/StatusText'
 import {
   AttributionWindowSeconds,
   ExperimentFull,
   MetricAssignment,
-  MetricFull,
+  MetricBare,
   Segment,
   SegmentAssignment,
   SegmentType,
   Variation,
 } from '@/models'
+// import { ExperimentFull } from '@/models'
+import { formatUsCurrencyDollar } from '@/utils/currency'
+// import { formatIsoUtcOffset } from '@/utils/formatters'
+import { formatBoolean } from '@/utils/formatters'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 
@@ -42,12 +42,12 @@ interface MetricAssignmentsRowData {
   attributionWindowSeconds: AttributionWindowSeconds
   changeExpected: boolean
   isPrimary: boolean
-  metric?: MetricFull
+  metric?: MetricBare
   metricAssignmentId: number
   minDifference: number
 }
 
-function toMetricAssignmentsRowData(metricAssignments: MetricAssignment[], metrics: MetricFull[]) {
+function toMetricAssignmentsRowData(metricAssignments: MetricAssignment[], metrics: MetricBare[]) {
   console.log('toMetricAssignmentsRowData', metricAssignments, metrics)
   const metricAssignmentsRowData: MetricAssignmentsRowData[] = metricAssignments.map((metricAssignment) => ({
     attributionWindowSeconds: metricAssignment.attributionWindowSeconds,
@@ -217,7 +217,8 @@ function GeneralPanel(props: { experiment: ExperimentFull }) {
               Dates
             </TableCell>
             <TableCell>
-              <DatetimeText value={experiment.startDatetime} /> to <DatetimeText value={experiment.endDatetime} />
+              <DatetimeText datetime={experiment.startDatetime} excludeTime /> to{' '}
+              <DatetimeText datetime={experiment.endDatetime} excludeTime />
             </TableCell>
           </TableRow>
           <TableRow className='align-top'>
@@ -233,7 +234,7 @@ function GeneralPanel(props: { experiment: ExperimentFull }) {
 }
 
 function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignmentsRowData[] }) {
-  const [selectedMetric, setSelectedMetric] = useState<MetricFull | null>(null)
+  const [selectedMetric, setSelectedMetric] = useState<MetricBare | null>(null)
 
   const handleDetailsClick = (event: React.SyntheticEvent<HTMLButtonElement>) => {
     const { currentTarget } = event
@@ -283,17 +284,16 @@ function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignm
               <TableRow key={metricsRowDatum.metricAssignmentId}>
                 <TableCell className='border-b-0'>{metricsRowDatum.metric.name}</TableCell>
                 <TableCell className='border-b-0'>
-                  <MetricMinimumDifference
-                    metric={metricsRowDatum.metric}
-                    minDifference={metricsRowDatum.minDifference}
-                  />
+                  <span>
+                    {metricsRowDatum.metric.parameterType === 'revenue'
+                      ? formatUsCurrencyDollar(metricsRowDatum.minDifference)
+                      : `${metricsRowDatum.minDifference} pp`}
+                  </span>
                 </TableCell>
                 <TableCell className='border-b-0'>
                   <AttributionWindow attributionWindowSeconds={metricsRowDatum.attributionWindowSeconds} />
                 </TableCell>
-                <TableCell className='border-b-0'>
-                  <BooleanText value={metricsRowDatum.changeExpected} />
-                </TableCell>
+                <TableCell className='border-b-0'>{formatBoolean(metricsRowDatum.changeExpected)}</TableCell>
                 <TableCell className='border-b-0'>
                   <Button
                     data-metric-id={metricsRowDatum.metric.metricId}
@@ -318,7 +318,7 @@ function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignm
         <Dialog onClose={handleDialogClose} open>
           <DialogTitle>Metric Details</DialogTitle>
           <DialogContent>
-            <MetricDetails metric={selectedMetric} />
+            <p>TODO: Remove dialog and link to /metrics/[id].</p>
           </DialogContent>
           <DialogActions>
             <Button autoFocus onClick={handleDialogClose} color='primary'>
@@ -386,7 +386,7 @@ function VariationsTable(props: { variations: Variation[] }) {
   )
 }
 
-function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricFull[]; segments: Segment[] }) {
+function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricBare[]; segments: Segment[] }) {
   const { experiment, metrics, segments } = props
 
   const metricAssignmentsRowData = toMetricAssignmentsRowData(experiment.metricAssignments, metrics)
@@ -397,7 +397,7 @@ function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricF
         <Grid item xs={12}>
           <div className='clearfix'>
             <span className='name mr-2'>{experiment.name}</span>
-            <StatusText status={experiment.status} />
+            <span className={clsx('experiment-status', status)}>{status}</span>
             <Button className='float-right' variant='contained'>
               Edit
             </Button>
@@ -435,7 +435,7 @@ export default function ExperimentPage() {
 
   const [fetchError, setFetchError] = useState<Error | null>(null)
   const [experiment, setExperiment] = useState<ExperimentFull | null>(null)
-  const [metrics, setMetrics] = useState<MetricFull[] | null>(null)
+  const [metrics, setMetrics] = useState<MetricBare[] | null>(null)
   const [segments, setSegments] = useState<Segment[] | null>(null)
 
   useEffect(() => {
@@ -453,9 +453,7 @@ export default function ExperimentPage() {
       .then(async ([experiment, segments]) => {
         setExperiment(experiment)
         setSegments(segments)
-
-        const metricIds = experiment.metricAssignments.map((metricAssignment) => metricAssignment.metricId)
-        setMetrics(await MetricsApi.findById(metricIds))
+        setMetrics(await MetricsApi.findAll())
         return
       })
       .catch(setFetchError)

@@ -38,7 +38,7 @@ jobs:
                 command: npm run lint
             - run:
                 name: Unit Testing
-                command: npm run test:unit -- --ci --maxWorkers 2
+                command: npm run test:unit -- -- --ci --maxWorkers 2
             - run:
                 name: Integration Testing
                 command: npm run test:integration -- --ci

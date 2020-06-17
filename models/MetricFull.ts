@@ -30,16 +30,6 @@ export class MetricFull extends MetricBare {
   }
 
   /**
-   * Determines the parameter type of this metric based on its data.
-   */
-  determineParameterType() {
-    if (this.eventParams) {
-      return 'event'
-    }
-    return 'revenue'
-  }
-
-  /**
    * Create an instance from raw API data (parsed JSON).
    *
    * @param apiData Raw API data.
@@ -54,6 +44,10 @@ export class MetricFull extends MetricBare {
         ? apiData.event_params.map((rawEvent: ApiData) => Event.fromApiData(rawEvent))
         : null,
       revenueParams: apiData.revenue_params ? MetricRevenueParams.fromApiData(apiData.revenue_params) : null,
+      // TODO: Once MetricBare API is extended to include `parameterType`, determine
+      // whether to calculate or use data from API (assuming `parameterType` is added
+      // to MetricFull too).
+      parameterType: apiData.revenue_params ? 'revenue' : 'conversion',
     })
   }
 }

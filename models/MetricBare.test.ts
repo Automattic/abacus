@@ -13,6 +13,7 @@ describe('models/MetricBare.ts module', () => {
           metricId: 123,
           name: 'Example Metric',
           description: 'An example metric.',
+          parameterType: 'revenue',
         })
       })
     })

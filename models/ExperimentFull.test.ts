@@ -1,3 +1,4 @@
+import Fixtures from '@/helpers/fixtures'
 import { Platform } from '@/models/Platform'
 import { Status } from '@/models/Status'
 
@@ -325,6 +326,16 @@ describe('models/ExperimentFull.ts module', () => {
             },
           ],
         })
+      })
+    })
+
+    describe('getPrimaryMetricAssignmentId', () => {
+      it('returns the primary assignment ID when it exists', () => {
+        expect(Fixtures.createExperimentFull().getPrimaryMetricAssignmentId()).toBe(123)
+      })
+
+      it('returns undefined when no primary assignment ID exists', () => {
+        expect(Fixtures.createExperimentFull({ metricAssignments: [] }).getPrimaryMetricAssignmentId()).toBeNull()
       })
     })
   })

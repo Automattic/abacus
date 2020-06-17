@@ -14,6 +14,7 @@ test('conversion metric should render expected labels and data', () => {
     name: 'metric_1',
     higherIsBetter: false,
     eventParams: [new Event({ event: 'an_event', props: { foo: 'bar' } })],
+    parameterType: 'conversion',
     revenueParams: null,
   })
   const { getByText } = render(<MetricDetails metric={metric} />)
@@ -41,6 +42,7 @@ test('revenue metric should render expected labels and data', () => {
     name: 'metric_1',
     higherIsBetter: true,
     eventParams: null,
+    parameterType: 'revenue',
     revenueParams: new MetricRevenueParams({
       productSlugs: ['foo-bar'],
       refundDays: 42,

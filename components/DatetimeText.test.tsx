@@ -5,18 +5,32 @@ import DatetimeText from './DatetimeText'
 
 test('renders as ISO 8601 UTC', () => {
   const input = new Date(Date.UTC(2020, 4, 2))
-  const { getByText, getByTitle } = render(<DatetimeText value={input} />)
+  const { container } = render(<DatetimeText datetime={input} />)
 
-  expect(getByText('2020-05-02T00:00:00.000Z')).toBeInTheDocument()
-  // The following test is locale dependent.
-  expect(getByTitle(input.toLocaleString())).toBeInTheDocument()
+  expect(container).toMatchInlineSnapshot(`
+    <div>
+      <span
+        class="makeStyles-root-1"
+        title="01/05/2020, 20:00:00"
+      >
+        2020-05-02T00:00:00.000Z
+      </span>
+    </div>
+  `)
 })
 
 test('renders as ISO 8601 UTC without time', () => {
   const input = new Date(Date.UTC(2020, 4, 2))
-  const { getByText, getByTitle } = render(<DatetimeText time={false} value={input} />)
+  const { container } = render(<DatetimeText datetime={input} excludeTime />)
 
-  expect(getByText('2020-05-02')).toBeInTheDocument()
-  // The following test is locale dependent.
-  expect(getByTitle(input.toLocaleString())).toBeInTheDocument()
+  expect(container).toMatchInlineSnapshot(`
+    <div>
+      <span
+        class="makeStyles-root-2"
+        title="01/05/2020, 20:00:00"
+      >
+        2020-05-02
+      </span>
+    </div>
+  `)
 })

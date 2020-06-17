@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react'
 
-import BooleanText from '@/components/BooleanText'
 import { MetricFull } from '@/models'
+import { formatBoolean } from '@/utils/formatters'
 
 /**
  * Renders the metric details.
@@ -29,9 +29,7 @@ const MetricDetails = (props: { metric: MetricFull }) => {
             <td>
               <label>Higher Is Better?</label>
             </td>
-            <td>
-              <BooleanText value={metric.higherIsBetter} />
-            </td>
+            <td>{formatBoolean(metric.higherIsBetter)}</td>
           </tr>
           {metric.eventParams && (
             <tr>

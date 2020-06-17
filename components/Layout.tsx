@@ -1,3 +1,4 @@
+import AppBar from '@material-ui/core/AppBar'
 import Container from '@material-ui/core/Container'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -21,26 +22,32 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
             <meta charSet='utf-8' />
             <meta name='viewport' content='initial-scale=1.0, width=device-width' />
           </Head>
-          <header>
-            <Container>
-              <nav>
-                <Link href='/'>
-                  <a>Experiments</a>
-                </Link>
-                <span>|</span>
-                <Link href='/metrics'>
-                  <a>Metrics</a>
-                </Link>
-              </nav>
-            </Container>
-          </header>
+          <AppBar position='relative'>
+            <div className='top'>
+              <Container maxWidth='xl'>
+                <img alt='logo' className='app-logo' src='/img/logo.png' />
+                <span className='app-name'>Abacus</span>
+              </Container>
+            </div>
+            <div className='bottom'>
+              <Container maxWidth='xl'>
+                <nav className='app-nav'>
+                  <Link href='/'>
+                    <a>Experiments</a>
+                  </Link>
+                  <Link href='/metrics'>
+                    <a>Metrics</a>
+                  </Link>
+                </nav>
+              </Container>
+            </div>
+          </AppBar>
           <Container>
             <h1>{title}</h1>
             {error && <ErrorsBox errors={[error]} />}
             {children}
           </Container>
           <footer>
-            <hr />
             <Container>
               <span>The Abacus footer, brought to you by Automattic</span>
             </Container>

@@ -1,5 +1,7 @@
 import '@/styles/main.scss'
 
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { ThemeProvider } from '@material-ui/core/styles'
 import debugFactory from 'debug'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -9,6 +11,7 @@ import React from 'react'
 import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import RenderErrorView from '@/components/RenderErrorView'
 import { onRenderError } from '@/event-handlers/index'
+import theme from '@/styles/theme'
 import { getAuthClientId, getExperimentsAuthInfo, saveExperimentsAuthInfo } from '@/utils/auth'
 
 const debug = debugFactory('abacus:pages/_app.tsx')
@@ -50,16 +53,23 @@ const App = React.memo(function App(props: AppProps) {
       {({ renderError }) => (
         <>
           <Head>
-            <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap' />
+            <link
+              rel='stylesheet'
+              href='https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&display=swap'
+            />
+            <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap' />
             <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
           </Head>
-          {renderError ? (
-            <RenderErrorView renderError={renderError} />
-          ) : (
-            <div className='app'>
-              <Route {...routeProps} />
-            </div>
-          )}
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            {renderError ? (
+              <RenderErrorView renderError={renderError} />
+            ) : (
+              <div className='app'>
+                <Route {...routeProps} />
+              </div>
+            )}
+          </ThemeProvider>
         </>
       )}
     </RenderErrorBoundary>
