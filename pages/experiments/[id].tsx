@@ -10,6 +10,7 @@ import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
+import Typography from '@material-ui/core/Typography'
 import clsx from 'clsx'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
@@ -33,8 +34,6 @@ import {
   SegmentType,
   Variation,
 } from '@/models'
-// import { ExperimentFull } from '@/models'
-// import { formatIsoUtcOffset } from '@/utils/formatters'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
@@ -49,7 +48,7 @@ interface MetricAssignmentsRowData {
 }
 
 function toMetricAssignmentsRowData(metricAssignments: MetricAssignment[], metrics: MetricBare[]) {
-  console.log('toMetricAssignmentsRowData', metricAssignments, metrics)
+  debug('toMetricAssignmentsRowData', metricAssignments, metrics)
   const metricAssignmentsRowData: MetricAssignmentsRowData[] = metricAssignments.map((metricAssignment) => ({
     attributionWindowSeconds: metricAssignment.attributionWindowSeconds,
     changeExpected: metricAssignment.changeExpected,
@@ -92,7 +91,9 @@ function AudiencePanel(props: { experiment: ExperimentFull; segments: Segment[] 
         <TableHead>
           <TableRow>
             <TableCell colSpan={2}>
-              <h3 className='m-0'>Audience</h3>
+              <Typography color='textPrimary' variant='h3'>
+                Audience
+              </Typography>
             </TableCell>
           </TableRow>
         </TableHead>
@@ -155,7 +156,9 @@ function ConclusionsPanel(props: { experiment: ExperimentFull }) {
         <TableHead>
           <TableRow>
             <TableCell colSpan={2}>
-              <h3 className='m-0'>Conclusions</h3>
+              <Typography color='textPrimary' variant='h3'>
+                Conclusions
+              </Typography>
             </TableCell>
           </TableRow>
         </TableHead>
@@ -192,7 +195,9 @@ function GeneralPanel(props: { experiment: ExperimentFull }) {
         <TableHead>
           <TableRow>
             <TableCell colSpan={2}>
-              <h3 className='m-0'>General</h3>
+              <Typography color='textPrimary' variant='h3'>
+                General
+              </Typography>
             </TableCell>
           </TableRow>
         </TableHead>
@@ -258,7 +263,9 @@ function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignm
         <TableHead>
           <TableRow>
             <TableCell colSpan={5}>
-              <h3 className='m-0'>Metrics</h3>
+              <Typography color='textPrimary' variant='h3'>
+                Metrics
+              </Typography>
             </TableCell>
           </TableRow>
         </TableHead>
