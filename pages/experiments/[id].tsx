@@ -5,12 +5,14 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
+import { useTheme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Typography from '@material-ui/core/Typography'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 import clsx from 'clsx'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
@@ -388,6 +390,8 @@ function VariationsTable(props: { variations: Variation[] }) {
 
 function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricBare[]; segments: Segment[] }) {
   const { experiment, metrics, segments } = props
+  const theme = useTheme()
+  const isSmDown = useMediaQuery(theme.breakpoints.down('sm'))
 
   const metricAssignmentsRowData = toMetricAssignmentsRowData(experiment.metricAssignments, metrics)
 
@@ -408,6 +412,11 @@ function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricB
             <Grid item>
               <GeneralPanel experiment={experiment} />
             </Grid>
+            {isSmDown && (
+              <Grid item>
+                <AudiencePanel experiment={experiment} segments={segments} />
+              </Grid>
+            )}
             <Grid item>
               <MetricAssignmentsPanel metricAssignmentsRowData={metricAssignmentsRowData} />
             </Grid>
@@ -416,13 +425,11 @@ function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricB
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} md={4}>
-          <Grid container direction='column' spacing={2}>
-            <Grid item>
-              <AudiencePanel experiment={experiment} segments={segments} />
-            </Grid>
+        {!isSmDown && (
+          <Grid item md={4}>
+            <AudiencePanel experiment={experiment} segments={segments} />
           </Grid>
-        </Grid>
+        )}
       </Grid>
       <pre>{JSON.stringify(experiment, null, 2)}</pre>
     </div>
