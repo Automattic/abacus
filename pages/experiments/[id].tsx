@@ -120,10 +120,10 @@ function AudiencePanel(props: { experiment: ExperimentFull; segments: Segment[] 
           </TableRow>
           {hasSegments ? (
             <TableRow className='align-top'>
-              <TableCell className='border-b-0' component='th' scope='row' variant='head'>
+              <TableCell component='th' scope='row' variant='head'>
                 Segments
               </TableCell>
-              <TableCell className='border-b-0' padding='none'>
+              <TableCell padding='none'>
                 {segmentsByType[SegmentType.Country].length > 0 && (
                   <SegmentsTable segments={segmentsByType[SegmentType.Country]} type={SegmentType.Country} />
                 )}
@@ -134,9 +134,7 @@ function AudiencePanel(props: { experiment: ExperimentFull; segments: Segment[] 
             </TableRow>
           ) : (
             <TableRow>
-              <TableCell className='border-b-0' colSpan={2}>
-                No segments assigned
-              </TableCell>
+              <TableCell colSpan={2}>No segments assigned</TableCell>
             </TableRow>
           )}
         </TableBody>
@@ -176,10 +174,10 @@ function ConclusionsPanel(props: { experiment: ExperimentFull }) {
             <TableCell>{experiment.conclusionUrl}</TableCell>
           </TableRow>
           <TableRow className='align-top'>
-            <TableCell className='border-b-0' component='th' scope='row' variant='head'>
+            <TableCell component='th' scope='row' variant='head'>
               Deployed variation
             </TableCell>
-            <TableCell className='border-b-0'>{deployedVariation?.name}</TableCell>
+            <TableCell>{deployedVariation?.name}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
@@ -228,10 +226,10 @@ function GeneralPanel(props: { experiment: ExperimentFull }) {
             </TableCell>
           </TableRow>
           <TableRow className='align-top'>
-            <TableCell className='border-b-0' component='th' variant='head'>
+            <TableCell component='th' variant='head'>
               Owner
             </TableCell>
-            <TableCell className='border-b-0'>{experiment.ownerLogin}</TableCell>
+            <TableCell>{experiment.ownerLogin}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
@@ -290,19 +288,17 @@ function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignm
           {props.metricAssignmentsRowData.map((metricsRowDatum) =>
             metricsRowDatum.metric ? (
               <TableRow key={metricsRowDatum.metricAssignmentId}>
-                <TableCell className='border-b-0'>{metricsRowDatum.metric.name}</TableCell>
-                <TableCell className='border-b-0'>
+                <TableCell>{metricsRowDatum.metric.name}</TableCell>
+                <TableCell>
                   <span>
                     {metricsRowDatum.metric.parameterType === 'revenue'
                       ? formatUsCurrencyDollar(metricsRowDatum.minDifference)
                       : `${metricsRowDatum.minDifference} pp`}
                   </span>
                 </TableCell>
-                <TableCell className='border-b-0'>
-                  {AttributionWindowSecondsToHuman[metricsRowDatum.attributionWindowSeconds]}
-                </TableCell>
-                <TableCell className='border-b-0'>{formatBoolean(metricsRowDatum.changeExpected)}</TableCell>
-                <TableCell className='border-b-0'>
+                <TableCell>{AttributionWindowSecondsToHuman[metricsRowDatum.attributionWindowSeconds]}</TableCell>
+                <TableCell>{formatBoolean(metricsRowDatum.changeExpected)}</TableCell>
+                <TableCell>
                   <Button
                     data-metric-id={metricsRowDatum.metric.metricId}
                     onClick={handleDetailsClick}
@@ -314,7 +310,7 @@ function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignm
               </TableRow>
             ) : (
               <TableRow>
-                <TableCell className='border-b-0' colSpan={5}>
+                <TableCell colSpan={5}>
                   <p>TODO: Decide how to handle this unlikely situation</p>
                 </TableCell>
               </TableRow>
@@ -341,7 +337,6 @@ function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignm
 
 function SegmentsTable(props: { segments: Segment[]; type: SegmentType }) {
   const sortedSegments = [...props.segments].sort()
-  const lastIndex = sortedSegments.length - 1
   return (
     <Table>
       <TableHead>
@@ -352,9 +347,9 @@ function SegmentsTable(props: { segments: Segment[]; type: SegmentType }) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {sortedSegments.map((segment, index) => (
+        {sortedSegments.map((segment) => (
           <TableRow key={segment.segmentId}>
-            <TableCell className={clsx({ 'border-b-0': index === lastIndex })}>{segment.name}</TableCell>
+            <TableCell>{segment.name}</TableCell>
           </TableRow>
         ))}
       </TableBody>
@@ -363,7 +358,6 @@ function SegmentsTable(props: { segments: Segment[]; type: SegmentType }) {
 }
 
 function VariationsTable(props: { variations: Variation[] }) {
-  const lastIndex = props.variations.length - 1
   return (
     <Table>
       <TableHead>
@@ -377,15 +371,13 @@ function VariationsTable(props: { variations: Variation[] }) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {props.variations.map((variation, index) => {
+        {props.variations.map((variation) => {
           return (
             <TableRow key={variation.variationId}>
-              <TableCell className={clsx({ 'border-b-0': index === lastIndex })}>
+              <TableCell>
                 {variation.name} {variation.isDefault && <span className='pill'>Default</span>}
               </TableCell>
-              <TableCell className={clsx({ 'border-b-0': index === lastIndex })}>
-                {variation.allocatedPercentage}%
-              </TableCell>
+              <TableCell>{variation.allocatedPercentage}%</TableCell>
             </TableRow>
           )
         })}

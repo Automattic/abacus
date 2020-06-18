@@ -13,6 +13,23 @@ const theme = createMuiTheme({
         backgroundColor: '#194661',
       },
     },
+    MuiCssBaseline: {
+      '@global': {
+        // Remove the last table cell border when in MuiPaper. Otherwise the paper's
+        // border butts up with the last table cell's border.
+        '.MuiPaper-root': {
+          '& .MuiTable-root >': {
+            '& .MuiTableBody-root >': {
+              '& .MuiTableRow-root:last-child >': {
+                '& .MuiTableCell-root': {
+                  borderBottom: '0',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   palette: {
     background: {
