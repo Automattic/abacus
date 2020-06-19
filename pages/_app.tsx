@@ -25,6 +25,14 @@ const App = React.memo(function App(props: AppProps) {
   const { Component: Route, pageProps: routeProps } = props
   const classes = useStyles()
 
+  React.useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side')
+    if (jssStyles) {
+      jssStyles.parentElement?.removeChild(jssStyles)
+    }
+  }, [])
+
   if (typeof window !== 'undefined') {
     // Inject a fake auth token to skip authentication in non-production contexts.
     // This is a temporary solution. Ideally, we should test the full authentication flow in every environment.
