@@ -9,3 +9,5 @@
 .vscode/
 
 coverage/
+
+templates/
