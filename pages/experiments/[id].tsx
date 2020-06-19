@@ -167,7 +167,16 @@ interface MetricAssignmentsRowData {
   minDifference: number
 }
 
-function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignmentsRowData[] }) {
+function MetricAssignmentsPanel({ experiment, metrics }: { experiment: ExperimentFull; metrics: MetricBare[] }) {
+  const metricAssignmentsRowData = experiment.metricAssignments.map((metricAssignment) => ({
+    attributionWindowSeconds: metricAssignment.attributionWindowSeconds,
+    changeExpected: metricAssignment.changeExpected,
+    isPrimary: metricAssignment.isPrimary,
+    metric: metrics.find((metric) => metric.metricId === metricAssignment.metricId),
+    metricAssignmentId: metricAssignment.metricAssignmentId as number,
+    minDifference: metricAssignment.minDifference,
+  }))
+
   return (
     <Paper>
       <Table>
@@ -197,7 +206,7 @@ function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignm
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.metricAssignmentsRowData.map((metricsRowDatum) =>
+          {metricAssignmentsRowData.map((metricsRowDatum) =>
             metricsRowDatum.metric ? (
               <TableRow key={metricsRowDatum.metricAssignmentId}>
                 <TableCell>{metricsRowDatum.metric.name}</TableCell>
@@ -318,15 +327,6 @@ function ExperimentDetails({
   const theme = useTheme()
   const isSmDown = useMediaQuery(theme.breakpoints.down('sm'))
 
-  const metricAssignmentsRowData = experiment.metricAssignments.map((metricAssignment) => ({
-    attributionWindowSeconds: metricAssignment.attributionWindowSeconds,
-    changeExpected: metricAssignment.changeExpected,
-    isPrimary: metricAssignment.isPrimary,
-    metric: metrics.find((metric) => metric.metricId === metricAssignment.metricId),
-    metricAssignmentId: metricAssignment.metricAssignmentId as number,
-    minDifference: metricAssignment.minDifference,
-  }))
-
   return (
     <div className='experiment experiment--details'>
       <Grid container spacing={2}>
@@ -348,7 +348,7 @@ function ExperimentDetails({
               </Grid>
             )}
             <Grid item>
-              <MetricAssignmentsPanel metricAssignmentsRowData={metricAssignmentsRowData} />
+              <MetricAssignmentsPanel experiment={experiment} metrics={metrics} />
             </Grid>
             <Grid item>
               <ConclusionsPanel experiment={experiment} />
