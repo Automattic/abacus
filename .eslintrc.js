@@ -92,7 +92,6 @@ module.exports = {
         specialLink: ['hrefLeft', 'hrefRight'],
       },
     ],
-    'jsx-a11y/no-autofocus': 'off',
 
     'react/display-name': 'off',
     'react/jsx-child-element-spacing': 'warn',

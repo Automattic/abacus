@@ -1,8 +1,4 @@
 import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogTitle from '@material-ui/core/DialogTitle'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
@@ -187,8 +183,6 @@ function GeneralPanel(props: { experiment: ExperimentFull }) {
 }
 
 function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignmentsRowData[] }) {
-  const [selectedMetric, setSelectedMetric] = useState<MetricBare | null>(null)
-
   const handleDetailsClick = (event: React.SyntheticEvent<HTMLButtonElement>) => {
     const { currentTarget } = event
     const metricId = toIntOrNull(currentTarget.dataset.metricId)
@@ -196,12 +190,8 @@ function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignm
       (metricsRowDatum) => metricsRowDatum.metric?.metricId === metricId,
     )
     if (metricsRowDatum) {
-      setSelectedMetric(metricsRowDatum.metric || null)
+      // TODO: Link to /metrics/[id]
     }
-  }
-
-  const handleDialogClose = () => {
-    setSelectedMetric(null)
   }
 
   return (
@@ -267,19 +257,6 @@ function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignm
           )}
         </TableBody>
       </Table>
-      {selectedMetric && (
-        <Dialog onClose={handleDialogClose} open>
-          <DialogTitle>Metric Details</DialogTitle>
-          <DialogContent>
-            <p>TODO: Remove dialog and link to /metrics/[id].</p>
-          </DialogContent>
-          <DialogActions>
-            <Button autoFocus onClick={handleDialogClose} color='primary'>
-              Dismiss
-            </Button>
-          </DialogActions>
-        </Dialog>
-      )}
     </Paper>
   )
 }
