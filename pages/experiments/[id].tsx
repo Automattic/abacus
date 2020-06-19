@@ -410,7 +410,7 @@ function ExperimentDetails({
         <Grid item xs={12}>
           <div>
             <span>{experiment.name}</span>
-            <span className={clsx('experiment-status', status)}>{status}</span>
+            <span className={clsx('experiment-status', experiment.status)}>{experiment.status}</span>
             <Button variant='contained'>Edit</Button>
           </div>
         </Grid>
