@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Fixtures from '@/helpers/fixtures'
+import ThemeProvider from '@/styles/ThemeProvider'
 
 import AnalysisSummary from './AnalysisSummary'
 
@@ -10,8 +11,20 @@ const analyses = Fixtures.createAnalyses()
 const experiment = Fixtures.createExperimentFull()
 const metrics = Fixtures.createMetricsBares()
 
-export const noAnalyses = () => <AnalysisSummary analyses={[]} experiment={experiment} metrics={metrics} />
-export const someAnalyses = () => <AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} />
+export const noAnalyses = () => (
+  <ThemeProvider>
+    <AnalysisSummary analyses={[]} experiment={experiment} metrics={metrics} />
+  </ThemeProvider>
+)
+
+export const someAnalyses = () => (
+  <ThemeProvider>
+    <AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} />
+  </ThemeProvider>
+)
+
 export const someAnalysesDebugMode = () => (
-  <AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} debugMode={true} />
+  <ThemeProvider>
+    <AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} debugMode={true} />
+  </ThemeProvider>
 )
