@@ -183,23 +183,12 @@ function GeneralPanel(props: { experiment: ExperimentFull }) {
 }
 
 function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignmentsRowData[] }) {
-  const handleDetailsClick = (event: React.SyntheticEvent<HTMLButtonElement>) => {
-    const { currentTarget } = event
-    const metricId = toIntOrNull(currentTarget.dataset.metricId)
-    const metricsRowDatum = props.metricAssignmentsRowData.find(
-      (metricsRowDatum) => metricsRowDatum.metric?.metricId === metricId,
-    )
-    if (metricsRowDatum) {
-      // TODO: Link to /metrics/[id]
-    }
-  }
-
   return (
     <Paper>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell colSpan={5}>
+            <TableCell colSpan={4}>
               <Typography color='textPrimary' variant='h3'>
                 Metrics
               </Typography>
@@ -220,7 +209,6 @@ function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignm
             <TableCell component='th' variant='head'>
               Changes Expected
             </TableCell>
-            <TableCell component='th' variant='head'></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -237,19 +225,10 @@ function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignm
                 </TableCell>
                 <TableCell>{AttributionWindowSecondsToHuman[metricsRowDatum.attributionWindowSeconds]}</TableCell>
                 <TableCell>{formatBoolean(metricsRowDatum.changeExpected)}</TableCell>
-                <TableCell>
-                  <Button
-                    data-metric-id={metricsRowDatum.metric.metricId}
-                    onClick={handleDetailsClick}
-                    variant='contained'
-                  >
-                    Details
-                  </Button>
-                </TableCell>
               </TableRow>
             ) : (
               <TableRow>
-                <TableCell colSpan={5}>
+                <TableCell colSpan={4}>
                   <p>TODO: Decide how to handle this unlikely situation</p>
                 </TableCell>
               </TableRow>
