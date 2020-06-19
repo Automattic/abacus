@@ -388,8 +388,17 @@ function VariationsTable(props: { variations: Variation[] }) {
   )
 }
 
-function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricBare[]; segments: Segment[] }) {
-  const { experiment, metrics, segments } = props
+function ExperimentDetails({
+  debugMode,
+  experiment,
+  metrics,
+  segments,
+}: {
+  experiment: ExperimentFull
+  metrics: MetricBare[]
+  segments: Segment[]
+  debugMode?: boolean
+}) {
   const theme = useTheme()
   const isSmDown = useMediaQuery(theme.breakpoints.down('sm'))
 
@@ -431,13 +440,14 @@ function ExperimentDetails(props: { experiment: ExperimentFull; metrics: MetricB
           </Grid>
         )}
       </Grid>
-      <pre>{JSON.stringify(experiment, null, 2)}</pre>
+      {debugMode && <pre className='debug-json'>{JSON.stringify(experiment, null, 2)}</pre>}
     </div>
   )
 }
 
 export default function ExperimentPage() {
-  const experimentId = toIntOrNull(useRouter().query.id)
+  const router = useRouter()
+  const experimentId = toIntOrNull(router.query.id)
   debug(`ExperimentPage#render ${experimentId}`)
 
   const [fetchError, setFetchError] = useState<Error | null>(null)
@@ -470,7 +480,12 @@ export default function ExperimentPage() {
     <Layout title={`Experiment: ${experiment ? experiment.name : 'Not Found'}`} error={fetchError}>
       <ExperimentTabs experiment={experiment} />
       {experiment && metrics && segments && (
-        <ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />
+        <ExperimentDetails
+          debugMode={router.query.debug === 'true'}
+          experiment={experiment}
+          metrics={metrics}
+          segments={segments}
+        />
       )}
     </Layout>
   )
