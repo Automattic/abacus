@@ -1,5 +1,6 @@
 .dockerignore
 .prettierignore
+.eslintignore
 
 *.snap
 
