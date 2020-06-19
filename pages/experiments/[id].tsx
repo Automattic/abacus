@@ -5,7 +5,7 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
-import { useTheme } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
@@ -388,6 +388,34 @@ function VariationsTable(props: { variations: Variation[] }) {
   )
 }
 
+const useStatusStyles = makeStyles({
+  root: {
+    borderRadius: 1,
+    padding: '0.5rem',
+  },
+  completed: {
+    background: '#4caf5014',
+    color: '#4caf50',
+  },
+  disabled: {
+    background: '#82828214',
+    color: '#828282',
+  },
+  running: {
+    background: '#ff980014',
+    color: '#ff9800',
+  },
+  staging: {
+    background: '#82828214',
+    color: '#828282',
+  },
+})
+
+function ExperimentStatus({ experiment }: { experiment: ExperimentFull }) {
+  const classes = useStatusStyles()
+  return <span className={clsx(classes.root, classes[experiment.status])}>{experiment.status}</span>
+}
+
 function ExperimentDetails({
   debugMode,
   experiment,
@@ -410,7 +438,7 @@ function ExperimentDetails({
         <Grid item xs={12}>
           <div>
             <span>{experiment.name}</span>
-            <span className={clsx('experiment-status', experiment.status)}>{experiment.status}</span>
+            <ExperimentStatus experiment={experiment} />
             <Button variant='contained'>Edit</Button>
           </div>
         </Grid>
