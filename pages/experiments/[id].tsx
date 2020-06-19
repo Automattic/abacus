@@ -56,7 +56,8 @@ function ExperimentDetails({ experiment }: { experiment: ExperimentFull }) {
 }
 
 export default function ExperimentPage() {
-  const experimentId = toIntOrNull(useRouter().query.id)
+  const router = useRouter()
+  const experimentId = toIntOrNull(router.query.id)
   debug(`ExperimentPage#render ${experimentId}`)
 
   const [fetchError, setFetchError] = useState<Error | null>(null)
