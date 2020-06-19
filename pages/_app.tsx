@@ -2,7 +2,6 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import debugFactory from 'debug'
 import { AppProps } from 'next/app'
-import Head from 'next/head'
 import qs from 'querystring'
 import React from 'react'
 
@@ -25,6 +24,14 @@ const App = React.memo(function App(props: AppProps) {
   debug('App#render')
   const { Component: Route, pageProps: routeProps } = props
   const classes = useStyles()
+
+  React.useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side')
+    if (jssStyles) {
+      jssStyles.parentElement?.removeChild(jssStyles)
+    }
+  }, [])
 
   if (typeof window !== 'undefined') {
     // Inject a fake auth token to skip authentication in non-production contexts.
@@ -57,26 +64,16 @@ const App = React.memo(function App(props: AppProps) {
   return (
     <RenderErrorBoundary onError={onRenderError}>
       {({ renderError }) => (
-        <>
-          <Head>
-            <link
-              rel='stylesheet'
-              href='https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&display=swap'
-            />
-            <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap' />
-            <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
-          </Head>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            {renderError ? (
-              <RenderErrorView renderError={renderError} />
-            ) : (
-              <div className={classes.app}>
-                <Route {...routeProps} />
-              </div>
-            )}
-          </ThemeProvider>
-        </>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {renderError ? (
+            <RenderErrorView renderError={renderError} />
+          ) : (
+            <div className={classes.app}>
+              <Route {...routeProps} />
+            </div>
+          )}
+        </ThemeProvider>
       )}
     </RenderErrorBoundary>
   )
