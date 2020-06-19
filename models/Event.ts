@@ -12,7 +12,7 @@ export class Event {
   /**
    * Event properties that further constrain this event selection.
    */
-  public readonly props?: { [key: string]: unknown }
+  public readonly props?: { [key: string]: string }
 
   /**
    * Construct a new event.
