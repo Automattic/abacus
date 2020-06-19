@@ -5,7 +5,7 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
-import { useTheme } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell, { TableCellProps } from '@material-ui/core/TableCell'
@@ -101,7 +101,7 @@ function LabelValuePanel(props: {
         </TableHead>
         <TableBody>
           {data.map(({ label, padding, value }) => (
-            <TableRow key={label} className='align-top'>
+            <TableRow key={label}>
               <TableCell component='th' scope='row' variant='head'>
                 {label}
               </TableCell>
@@ -335,6 +335,34 @@ function VariationsTable(props: { variations: Variation[] }) {
   )
 }
 
+const useStatusStyles = makeStyles({
+  root: {
+    borderRadius: 1,
+    padding: '0.5rem',
+  },
+  completed: {
+    background: '#4caf5014',
+    color: '#4caf50',
+  },
+  disabled: {
+    background: '#82828214',
+    color: '#828282',
+  },
+  running: {
+    background: '#ff980014',
+    color: '#ff9800',
+  },
+  staging: {
+    background: '#82828214',
+    color: '#828282',
+  },
+})
+
+function ExperimentStatus({ experiment }: { experiment: ExperimentFull }) {
+  const classes = useStatusStyles()
+  return <span className={clsx(classes.root, classes[experiment.status])}>{experiment.status}</span>
+}
+
 function ExperimentDetails({
   debugMode,
   experiment,
@@ -355,12 +383,10 @@ function ExperimentDetails({
     <div className='experiment experiment--details'>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <div className='clearfix'>
-            <span className='name mr-2'>{experiment.name}</span>
-            <span className={clsx('experiment-status', status)}>{status}</span>
-            <Button className='float-right' variant='contained'>
-              Edit
-            </Button>
+          <div>
+            <span>{experiment.name}</span>
+            <ExperimentStatus experiment={experiment} />
+            <Button variant='contained'>Edit</Button>
           </div>
         </Grid>
         <Grid item xs={12} md={8}>
