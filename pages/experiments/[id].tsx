@@ -100,19 +100,19 @@ function AudiencePanel(props: { experiment: ExperimentFull; segments: Segment[] 
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow className='align-top'>
+          <TableRow>
             <TableCell component='th' scope='row' variant='head'>
               Platform
             </TableCell>
             <TableCell>{experiment.platform}</TableCell>
           </TableRow>
-          <TableRow className='align-top'>
+          <TableRow>
             <TableCell component='th' scope='row' variant='head'>
               User Type
             </TableCell>
             <TableCell>{experiment.existingUsersAllowed ? 'All User (new + existing)' : 'New users only'}</TableCell>
           </TableRow>
-          <TableRow className='align-top'>
+          <TableRow>
             <TableCell component='th' scope='row' variant='head'>
               Variations
             </TableCell>
@@ -121,7 +121,7 @@ function AudiencePanel(props: { experiment: ExperimentFull; segments: Segment[] 
             </TableCell>
           </TableRow>
           {hasSegments ? (
-            <TableRow className='align-top'>
+            <TableRow>
               <TableCell component='th' scope='row' variant='head'>
                 Segments
               </TableCell>
@@ -163,19 +163,19 @@ function ConclusionsPanel(props: { experiment: ExperimentFull }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow className='align-top'>
+          <TableRow>
             <TableCell component='th' scope='row' variant='head'>
               Description for ending experiment
             </TableCell>
             <TableCell>{experiment.endReason}</TableCell>
           </TableRow>
-          <TableRow className='align-top'>
+          <TableRow>
             <TableCell component='th' scope='row' variant='head'>
               Conclusion URL
             </TableCell>
             <TableCell>{experiment.conclusionUrl}</TableCell>
           </TableRow>
-          <TableRow className='align-top'>
+          <TableRow>
             <TableCell component='th' scope='row' variant='head'>
               Deployed variation
             </TableCell>
@@ -202,13 +202,13 @@ function GeneralPanel(props: { experiment: ExperimentFull }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow className='align-top'>
+          <TableRow>
             <TableCell component='th' variant='head'>
               Description
             </TableCell>
             <TableCell>{experiment.description}</TableCell>
           </TableRow>
-          <TableRow className='align-top'>
+          <TableRow>
             <TableCell component='th' variant='head'>
               P2 Link
             </TableCell>
@@ -218,7 +218,7 @@ function GeneralPanel(props: { experiment: ExperimentFull }) {
               </a>
             </TableCell>
           </TableRow>
-          <TableRow className='align-top'>
+          <TableRow>
             <TableCell component='th' variant='head'>
               Dates
             </TableCell>
@@ -227,7 +227,7 @@ function GeneralPanel(props: { experiment: ExperimentFull }) {
               <DatetimeText datetime={experiment.endDatetime} excludeTime />
             </TableCell>
           </TableRow>
-          <TableRow className='align-top'>
+          <TableRow>
             <TableCell component='th' variant='head'>
               Owner
             </TableCell>
@@ -408,12 +408,10 @@ function ExperimentDetails({
     <div className='experiment experiment--details'>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <div className='clearfix'>
-            <span className='name mr-2'>{experiment.name}</span>
+          <div>
+            <span>{experiment.name}</span>
             <span className={clsx('experiment-status', status)}>{status}</span>
-            <Button className='float-right' variant='contained'>
-              Edit
-            </Button>
+            <Button variant='contained'>Edit</Button>
           </div>
         </Grid>
         <Grid item xs={12} md={8}>
