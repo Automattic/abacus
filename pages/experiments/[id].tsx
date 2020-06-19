@@ -22,7 +22,6 @@ import DatetimeText from '@/components/DatetimeText'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
 import {
-  AttributionWindowSeconds,
   AttributionWindowSecondsToHuman,
   ExperimentFull,
   MetricBare,
@@ -156,15 +155,6 @@ function GeneralPanel(props: { experiment: ExperimentFull }) {
     { label: 'Owner', value: experiment.ownerLogin },
   ]
   return <LabelValuePanel data={data} title='General' />
-}
-
-interface MetricAssignmentsRowData {
-  attributionWindowSeconds: AttributionWindowSeconds
-  changeExpected: boolean
-  isPrimary: boolean
-  metric?: MetricBare
-  metricAssignmentId: number
-  minDifference: number
 }
 
 function MetricAssignmentsPanel({ experiment, metrics }: { experiment: ExperimentFull; metrics: MetricBare[] }) {
