@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
+import TableCell, { TableCellProps } from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Typography from '@material-ui/core/Typography'
@@ -17,7 +17,7 @@ import clsx from 'clsx'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
 import { toIntOrNull } from 'qc-to_int'
-import React, { useEffect, useState } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 import MetricsApi from '@/api/MetricsApi'
@@ -82,11 +82,11 @@ function toSegmentsByType(segmentAssignments: SegmentAssignment[], segments: Seg
   return segmentsByType
 }
 
-function AudiencePanel(props: { experiment: ExperimentFull; segments: Segment[] }) {
-  const { experiment, segments } = props
-
-  const segmentsByType = toSegmentsByType(experiment.segmentAssignments, segments)
-  const hasSegments = experiment.segmentAssignments.length > 0
+function LabelValuePanel(props: {
+  data: { label: string; padding?: TableCellProps['padding']; value: ReactNode }[]
+  title: string
+}) {
+  const { data, title } = props
   return (
     <Paper>
       <Table>
@@ -94,55 +94,57 @@ function AudiencePanel(props: { experiment: ExperimentFull; segments: Segment[] 
           <TableRow>
             <TableCell colSpan={2}>
               <Typography color='textPrimary' variant='h3'>
-                Audience
+                {title}
               </Typography>
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
-            <TableCell component='th' scope='row' variant='head'>
-              Platform
-            </TableCell>
-            <TableCell>{experiment.platform}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component='th' scope='row' variant='head'>
-              User Type
-            </TableCell>
-            <TableCell>{experiment.existingUsersAllowed ? 'All User (new + existing)' : 'New users only'}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component='th' scope='row' variant='head'>
-              Variations
-            </TableCell>
-            <TableCell padding='none'>
-              <VariationsTable variations={experiment.variations} />
-            </TableCell>
-          </TableRow>
-          {hasSegments ? (
-            <TableRow>
+          {data.map(({ label, padding, value }) => (
+            <TableRow key={label}>
               <TableCell component='th' scope='row' variant='head'>
-                Segments
+                {label}
               </TableCell>
-              <TableCell padding='none'>
-                {segmentsByType[SegmentType.Country].length > 0 && (
-                  <SegmentsTable segments={segmentsByType[SegmentType.Country]} type={SegmentType.Country} />
-                )}
-                {segmentsByType[SegmentType.Locale].length > 0 && (
-                  <SegmentsTable segments={segmentsByType[SegmentType.Locale]} type={SegmentType.Locale} />
-                )}
-              </TableCell>
+              <TableCell padding={padding}>{value}</TableCell>
             </TableRow>
-          ) : (
-            <TableRow>
-              <TableCell colSpan={2}>No segments assigned</TableCell>
-            </TableRow>
-          )}
+          ))}
         </TableBody>
       </Table>
     </Paper>
   )
+}
+
+function AudiencePanel(props: { experiment: ExperimentFull; segments: Segment[] }) {
+  const { experiment, segments } = props
+
+  const segmentsByType = toSegmentsByType(experiment.segmentAssignments, segments)
+  const hasSegments = experiment.segmentAssignments.length > 0
+  const data = [
+    { label: 'Platform', value: experiment.platform },
+    { label: 'User Type', value: experiment.existingUsersAllowed ? 'All User (new + existing)' : 'New users only' },
+    {
+      label: 'Variations',
+      padding: 'none' as TableCellProps['padding'],
+      value: <VariationsTable variations={experiment.variations} />,
+    },
+    {
+      label: 'Segments',
+      padding: (hasSegments ? 'none' : undefined) as TableCellProps['padding'],
+      value: hasSegments ? (
+        <>
+          {segmentsByType[SegmentType.Country].length > 0 && (
+            <SegmentsTable segments={segmentsByType[SegmentType.Country]} type={SegmentType.Country} />
+          )}
+          {segmentsByType[SegmentType.Locale].length > 0 && (
+            <SegmentsTable segments={segmentsByType[SegmentType.Locale]} type={SegmentType.Locale} />
+          )}
+        </>
+      ) : (
+        'No segments assigned'
+      ),
+    },
+  ]
+  return <LabelValuePanel data={data} title='Audience' />
 }
 
 function ConclusionsPanel(props: { experiment: ExperimentFull }) {
@@ -150,93 +152,38 @@ function ConclusionsPanel(props: { experiment: ExperimentFull }) {
   const deployedVariation = experiment.variations.find(
     (variation) => experiment.deployedVariationId === variation.variationId,
   )
-  return (
-    <Paper>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell colSpan={2}>
-              <Typography color='textPrimary' variant='h3'>
-                Conclusions
-              </Typography>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell component='th' scope='row' variant='head'>
-              Description for ending experiment
-            </TableCell>
-            <TableCell>{experiment.endReason}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component='th' scope='row' variant='head'>
-              Conclusion URL
-            </TableCell>
-            <TableCell>{experiment.conclusionUrl}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component='th' scope='row' variant='head'>
-              Deployed variation
-            </TableCell>
-            <TableCell>{deployedVariation?.name}</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </Paper>
-  )
+  const data = [
+    { label: 'Description for ending experiment', value: experiment.endReason },
+    { label: 'Conclusion URL', value: experiment.conclusionUrl },
+    { label: 'Deployed variation', value: deployedVariation?.name },
+  ]
+  return <LabelValuePanel data={data} title='Conclusions' />
 }
 
 function GeneralPanel(props: { experiment: ExperimentFull }) {
   const { experiment } = props
-  return (
-    <Paper>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell colSpan={2}>
-              <Typography color='textPrimary' variant='h3'>
-                General
-              </Typography>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell component='th' variant='head'>
-              Description
-            </TableCell>
-            <TableCell>{experiment.description}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component='th' variant='head'>
-              P2 Link
-            </TableCell>
-            <TableCell>
-              <a href={experiment.p2Url} rel='noopener noreferrer' target='_blank'>
-                {experiment.p2Url}
-              </a>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component='th' variant='head'>
-              Dates
-            </TableCell>
-            <TableCell>
-              <DatetimeText datetime={experiment.startDatetime} excludeTime /> to{' '}
-              <DatetimeText datetime={experiment.endDatetime} excludeTime />
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component='th' variant='head'>
-              Owner
-            </TableCell>
-            <TableCell>{experiment.ownerLogin}</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </Paper>
-  )
+  const data = [
+    { label: 'Description', value: experiment.description },
+    {
+      label: 'P2 Link',
+      value: (
+        <a href={experiment.p2Url} rel='noopener noreferrer' target='_blank'>
+          {experiment.p2Url}
+        </a>
+      ),
+    },
+    {
+      label: 'Dates',
+      value: (
+        <>
+          <DatetimeText datetime={experiment.startDatetime} excludeTime /> to{' '}
+          <DatetimeText datetime={experiment.endDatetime} excludeTime />
+        </>
+      ),
+    },
+    { label: 'Owner', value: experiment.ownerLogin },
+  ]
+  return <LabelValuePanel data={data} title='General' />
 }
 
 function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignmentsRowData[] }) {
