@@ -3,13 +3,6 @@ import format from 'date-fns/format'
 const usCurrencyDollarFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
 
 /**
- * Formats the boolean as Yes or No.
- */
-function formatBoolean(bool: boolean) {
-  return bool ? 'Yes' : 'No'
-}
-
-/**
  * Formats the date in ISO-8601 format with a UTC timezone value plus a `+00:00`
  * offset. This is in the same format as we receive from the API.
  */
@@ -24,4 +17,4 @@ function formatUsCurrencyDollar(value: number) {
   return usCurrencyDollarFormatter.format(value)
 }
 
-export { formatBoolean, formatIsoUtcOffset, formatUsCurrencyDollar }
+export { formatIsoUtcOffset, formatUsCurrencyDollar }
