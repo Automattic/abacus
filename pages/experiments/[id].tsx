@@ -31,7 +31,7 @@ import {
   SegmentType,
   Variation,
 } from '@/models'
-import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
+import { formatUsCurrencyDollar } from '@/utils/formatters'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 
@@ -218,7 +218,9 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                   </span>
                 </TableCell>
                 <TableCell>{AttributionWindowSecondsToHuman[metricsRowDatum.attributionWindowSeconds]}</TableCell>
-                <TableCell>{formatBoolean(metricsRowDatum.changeExpected)}</TableCell>
+                <TableCell>
+                  {/* TODO: Update to use formatBoolean */ metricsRowDatum.changeExpected ? 'Yes' : 'No'}
+                </TableCell>
               </TableRow>
             ) : (
               <TableRow>
