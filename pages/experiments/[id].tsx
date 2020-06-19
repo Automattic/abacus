@@ -25,7 +25,6 @@ import {
   AttributionWindowSeconds,
   AttributionWindowSecondsToHuman,
   ExperimentFull,
-  MetricAssignment,
   MetricBare,
   Segment,
   SegmentAssignment,
@@ -35,29 +34,6 @@ import {
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
-
-interface MetricAssignmentsRowData {
-  attributionWindowSeconds: AttributionWindowSeconds
-  changeExpected: boolean
-  isPrimary: boolean
-  metric?: MetricBare
-  metricAssignmentId: number
-  minDifference: number
-}
-
-function toMetricAssignmentsRowData(metricAssignments: MetricAssignment[], metrics: MetricBare[]) {
-  debug('toMetricAssignmentsRowData', metricAssignments, metrics)
-  const metricAssignmentsRowData: MetricAssignmentsRowData[] = metricAssignments.map((metricAssignment) => ({
-    attributionWindowSeconds: metricAssignment.attributionWindowSeconds,
-    changeExpected: metricAssignment.changeExpected,
-    isPrimary: metricAssignment.isPrimary,
-    metric: metrics.find((metric) => metric.metricId === metricAssignment.metricId),
-    metricAssignmentId: metricAssignment.metricAssignmentId || -1, // Forces to a number to make TS happy.
-    minDifference: metricAssignment.minDifference,
-  }))
-
-  return metricAssignmentsRowData
-}
 
 function toSegmentsByType(segmentAssignments: SegmentAssignment[], segments: Segment[]) {
   const segmentsByType: { [SegmentType.Country]: Segment[]; [SegmentType.Locale]: Segment[] } = {
@@ -180,6 +156,15 @@ function GeneralPanel(props: { experiment: ExperimentFull }) {
     { label: 'Owner', value: experiment.ownerLogin },
   ]
   return <LabelValuePanel data={data} title='General' />
+}
+
+interface MetricAssignmentsRowData {
+  attributionWindowSeconds: AttributionWindowSeconds
+  changeExpected: boolean
+  isPrimary: boolean
+  metric?: MetricBare
+  metricAssignmentId: number
+  minDifference: number
 }
 
 function MetricAssignmentsPanel(props: { metricAssignmentsRowData: MetricAssignmentsRowData[] }) {
@@ -333,7 +318,14 @@ function ExperimentDetails({
   const theme = useTheme()
   const isSmDown = useMediaQuery(theme.breakpoints.down('sm'))
 
-  const metricAssignmentsRowData = toMetricAssignmentsRowData(experiment.metricAssignments, metrics)
+  const metricAssignmentsRowData = experiment.metricAssignments.map((metricAssignment) => ({
+    attributionWindowSeconds: metricAssignment.attributionWindowSeconds,
+    changeExpected: metricAssignment.changeExpected,
+    isPrimary: metricAssignment.isPrimary,
+    metric: metrics.find((metric) => metric.metricId === metricAssignment.metricId),
+    metricAssignmentId: metricAssignment.metricAssignmentId as number,
+    minDifference: metricAssignment.minDifference,
+  }))
 
   return (
     <div className='experiment experiment--details'>
