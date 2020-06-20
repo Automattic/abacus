@@ -12,7 +12,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
 import { toIntOrNull } from 'qc-to_int'
-import React, { ReactNode, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 import MetricsApi from '@/api/MetricsApi'
@@ -20,6 +20,7 @@ import SegmentsApi from '@/api/SegmentsApi'
 import DatetimeText from '@/components/DatetimeText'
 import ExperimentStatus from '@/components/ExperimentStatus'
 import ExperimentTabs from '@/components/ExperimentTabs'
+import LabelValuePanel from '@/components/LabelValuePanel'
 import Layout from '@/components/Layout'
 import {
   AttributionWindowSecondsToHuman,
@@ -51,38 +52,6 @@ function toSegmentsByType(segmentAssignments: SegmentAssignment[], segments: Seg
     }
   })
   return segmentsByType
-}
-
-function LabelValuePanel(props: {
-  data: { label: string; padding?: TableCellProps['padding']; value: ReactNode }[]
-  title: string
-}) {
-  const { data, title } = props
-  return (
-    <Paper>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell colSpan={2}>
-              <Typography color='textPrimary' variant='h3'>
-                {title}
-              </Typography>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map(({ label, padding, value }) => (
-            <TableRow key={label}>
-              <TableCell component='th' scope='row' variant='head'>
-                {label}
-              </TableCell>
-              <TableCell padding={padding}>{value}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Paper>
-  )
 }
 
 function AudiencePanel(props: { experiment: ExperimentFull; segments: Segment[] }) {
