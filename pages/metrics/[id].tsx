@@ -21,8 +21,6 @@ const MetricsDetailPage = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    // eslint bug: promise/catch-or-return doesn't work with finally
-    // eslint-disable-next-line promise/catch-or-return
     MetricsApi.findById(metricId)
       .then(setMetric)
       .catch(setError)
