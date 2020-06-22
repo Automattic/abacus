@@ -1,5 +1,6 @@
 .dockerignore
 .prettierignore
+.eslintignore
 
 *.snap
 
@@ -9,3 +10,5 @@
 .vscode/
 
 coverage/
+
+templates/

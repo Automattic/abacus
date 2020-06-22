@@ -1,6 +1,5 @@
 import Fixtures from '@/helpers/fixtures'
-import { Platform } from '@/models/Platform'
-import { Status } from '@/models/Status'
+import { Platform, Status } from '@/models'
 
 import { ExperimentFull } from './ExperimentFull'
 import { AttributionWindowSeconds } from './MetricAssignment'
