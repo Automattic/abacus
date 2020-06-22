@@ -246,6 +246,7 @@ function VariationsTable(props: { variations: Variation[] }) {
   )
 }
 
+// TODO: Merge with standalone ExperimentDetails component.
 function ExperimentDetails({
   debugMode,
   experiment,

@@ -8,11 +8,6 @@ declare module '@material-ui/core/styles/createPalette' {
 
 const theme = createMuiTheme({
   overrides: {
-    MuiAppBar: {
-      colorPrimary: {
-        backgroundColor: '#194661',
-      },
-    },
     MuiCssBaseline: {
       '@global': {
         // Remove the last table cell border when in MuiPaper. Otherwise the paper's
@@ -34,6 +29,9 @@ const theme = createMuiTheme({
   palette: {
     background: {
       error: '#f8d7da',
+    },
+    primary: {
+      main: '#194661',
     },
   },
 })
