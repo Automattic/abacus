@@ -7,16 +7,12 @@ declare module '@material-ui/core/styles/createPalette' {
 }
 
 const theme = createMuiTheme({
-  overrides: {
-    MuiAppBar: {
-      colorPrimary: {
-        backgroundColor: '#194661',
-      },
-    },
-  },
   palette: {
     background: {
       error: '#f8d7da',
+    },
+    primary: {
+      main: '#194661',
     },
   },
 })
