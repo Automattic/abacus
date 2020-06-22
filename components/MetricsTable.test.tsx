@@ -18,20 +18,27 @@ test('with no metrics, renders an empty table', () => {
   expect(tBodyElmt).toHaveTextContent('')
 })
 
-test('with one page of metrics, renders a table', () => {
+test('with some metrics, renders a table', () => {
   const metrics: MetricBare[] = [
     {
       metricId: 1,
-      name: 'name',
-      description: 'description',
+      name: 'name 1',
+      description: 'description 1',
       parameterType: 'revenue',
+    },
+    {
+      metricId: 2,
+      name: 'name 2',
+      description: 'description 2',
+      parameterType: 'conversion',
     },
   ]
   const { container } = render(<MetricsTable metrics={metrics} />)
 
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
-  expect(getByText(tBodyElmt, 'name', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getByText(tBodyElmt, 'description', { selector: 'tr > td' })).toBeInTheDocument()
+  expect(getByText(tBodyElmt, 'name 1', { selector: 'tr > td' })).toBeInTheDocument()
+  expect(getByText(tBodyElmt, 'description 1', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getByText(tBodyElmt, 'revenue', { selector: 'tr > td' })).toBeInTheDocument()
+  expect(getByText(tBodyElmt, 'conversion', { selector: 'tr > td' })).toBeInTheDocument()
 })
