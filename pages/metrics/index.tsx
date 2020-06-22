@@ -10,24 +10,23 @@ const debug = debugFactory('abacus:pages/metrics/index.tsx')
 
 const MetricsIndexPage = () => {
   debug('MetricsIndexPage#render')
-  const [isLoaded, setIsLoaded] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [error, setError] = useState<Error | null>(null)
   const [metrics, setMetrics] = useState<MetricBare[] | null>(null)
 
   useEffect(() => {
-    setIsLoaded(false)
+    setIsLoading(true)
     // eslint bug: promise/catch-or-return doesn't work with finally
     // eslint-disable-next-line promise/catch-or-return
     MetricsApi.findAll()
       .then(setMetrics)
       .catch(setError)
-      .finally(() => setIsLoaded(true))
+      .finally(() => setIsLoading(false))
   }, [])
 
   return (
     <Layout title='Metrics' error={error}>
-      {!isLoaded && <LinearProgress />}
-      {isLoaded && <pre> {JSON.stringify(metrics, null, 2)} </pre>}
+      {isLoading ? <LinearProgress /> : <pre> {JSON.stringify(metrics, null, 2)} </pre>}
     </Layout>
   )
 }
