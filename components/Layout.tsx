@@ -54,6 +54,9 @@ const useStyles = makeStyles(
     content: {
       flex: '1 0',
     },
+    contentTitle: {
+      margin: '1rem 0',
+    },
 
     // Footer
     footer: {
@@ -98,7 +101,9 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
               </div>
             </AppBar>
             <Container className={classes.content}>
-              <h1>{title}</h1>
+              <Typography variant='h4' component='h2' className={classes.contentTitle}>
+                {title}
+              </Typography>
               {error && <ErrorsBox errors={[error]} />}
               {children}
             </Container>
