@@ -1,6 +1,5 @@
-import AppBar from '@material-ui/core/AppBar'
-import Container from '@material-ui/core/Container'
-import { makeStyles } from '@material-ui/core/styles'
+import { AppBar, Container, Typography } from '@material-ui/core'
+import { createStyles, makeStyles } from '@material-ui/core/styles'
 import Head from 'next/head'
 import Link from 'next/link'
 import React, { ReactNode } from 'react'
@@ -11,55 +10,58 @@ import { onRenderError } from '@/event-handlers'
 import RenderErrorBoundary from './RenderErrorBoundary'
 import RenderErrorView from './RenderErrorView'
 
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh',
-  },
+const useStyles = makeStyles(
+  createStyles({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh',
+    },
 
-  // AppBar
-  appBar: {
-    flexStretch: 0,
-  },
-  appBarBottom: {
-    background: '#fff',
-    padding: '0.75rem 0',
-  },
-  appBarTop: {
-    padding: '1rem 0',
-  },
-  appLogo: {
-    width: 24,
-    marginRight: '0.5rem',
-  },
-  appName: {
-    color: '#fff',
-    fontFamily: 'Comfortaa, cursive',
-    fontSize: '1.5rem',
-  },
-  appNav: {
-    '& a': {
-      color: '#4f4f4f',
-      fontFamily: 'Roboto, sans-serif',
-      marginRight: '1rem',
-      textDecoration: 'none',
-      '&:last-child': {
-        marginRight: 0,
+    // AppBar
+    appBar: {
+      flexStretch: 0,
+    },
+    appBarBottom: {
+      background: '#fff',
+      padding: '0.75rem 0',
+    },
+    appBarTop: {
+      padding: '1rem 0',
+    },
+    appLogo: {
+      width: 24,
+      marginRight: '0.5rem',
+    },
+    appName: {
+      color: '#fff',
+      fontFamily: 'Comfortaa, cursive',
+      fontSize: '1.5rem',
+    },
+    appNav: {
+      '& a': {
+        color: '#4f4f4f',
+        fontFamily: 'Roboto, sans-serif',
+        marginRight: '1rem',
+        textDecoration: 'none',
+        '&:last-child': {
+          marginRight: 0,
+        },
       },
     },
-  },
 
-  // Content
-  content: {
-    flex: '1 0',
-  },
+    // Content
+    content: {
+      flex: '1 0',
+    },
 
-  // Footer
-  footer: {
-    flexShrink: 0,
-  },
-})
+    // Footer
+    footer: {
+      flexShrink: 0,
+      padding: '1rem 0',
+    },
+  }),
+)
 
 const Layout = ({ title, error, children }: { title: string; error?: Error | null; children?: ReactNode }) => {
   const classes = useStyles()
@@ -102,7 +104,7 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
             </Container>
             <footer className={classes.footer}>
               <Container>
-                <span>The Abacus footer, brought to you by Automattic</span>
+                <Typography variant='body1'>The Abacus footer, brought to you by Automattic.</Typography>
               </Container>
             </footer>
           </div>
