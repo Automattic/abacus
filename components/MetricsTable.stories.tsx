@@ -23,7 +23,6 @@ const newId = (): number => {
 const randomMetric = (): MetricBare => {
   const id = newId()
   return {
-    // ts-ignore: don't know what is wrong with this fella
     metricId: id,
     name: `Name: ${id}`,
     description: 'The description for ${id}.',
