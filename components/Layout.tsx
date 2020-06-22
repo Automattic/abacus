@@ -12,6 +12,16 @@ import RenderErrorBoundary from './RenderErrorBoundary'
 import RenderErrorView from './RenderErrorView'
 
 const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  },
+
+  // AppBar
+  appBar: {
+    flexStretch: 0,
+  },
   appBarBottom: {
     background: '#fff',
     padding: '0.75rem 0',
@@ -39,6 +49,16 @@ const useStyles = makeStyles({
       },
     },
   },
+
+  // Content
+  content: {
+    flex: '1 0',
+  },
+
+  // Footer
+  footer: {
+    flexShrink: 0,
+  },
 })
 
 const Layout = ({ title, error, children }: { title: string; error?: Error | null; children?: ReactNode }) => {
@@ -49,13 +69,13 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
         return renderError ? (
           <RenderErrorView renderError={renderError} />
         ) : (
-          <>
+          <div className={classes.root}>
             <Head>
               <title>{title} | Abacus</title>
               <meta charSet='utf-8' />
               <meta name='viewport' content='initial-scale=1.0, width=device-width' />
             </Head>
-            <AppBar position='relative'>
+            <AppBar position='relative' className={classes.appBar}>
               <div className={classes.appBarTop}>
                 <Container maxWidth='xl'>
                   <img alt='logo' className={classes.appLogo} src='/img/logo.png' />
@@ -75,17 +95,17 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
                 </Container>
               </div>
             </AppBar>
-            <Container>
+            <Container className={classes.content}>
               <h1>{title}</h1>
               {error && <ErrorsBox errors={[error]} />}
               {children}
             </Container>
-            <footer>
+            <footer className={classes.footer}>
               <Container>
                 <span>The Abacus footer, brought to you by Automattic</span>
               </Container>
             </footer>
-          </>
+          </div>
         )
       }}
     </RenderErrorBoundary>
