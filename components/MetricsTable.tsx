@@ -22,16 +22,11 @@ const MetricsTable = ({ metrics }: { metrics: MetricBare[] }) => {
   const router = useRouter()
 
   /* istanbul ignore next; to be handled by an e2e test */
-  const onSelectMetric = (metricId: number) => {
-    router.push('/metrics/[id]', `/metrics/${metricId}`)
-  }
-
-  /* istanbul ignore next; to be handled by an e2e test */
   const onRowClick = (event?: React.MouseEvent, rowData?: MetricBare) => {
     if (!rowData) {
       throw new Error('Missing rowData')
     }
-    onSelectMetric(rowData.metricId)
+    router.push('/metrics/[id]', `/metrics/${rowData.metricId}`)
   }
 
   return <MaterialTable columns={tableColumns} data={metrics} onRowClick={onRowClick} options={defaultTableOptions} />
