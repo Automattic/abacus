@@ -1,5 +1,4 @@
-import { Platform } from '@/models/Platform'
-import { Status } from '@/models/Status'
+import { Platform, Status } from '@/models'
 
 import { ExperimentBare } from './ExperimentBare'
 
