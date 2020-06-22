@@ -24,7 +24,7 @@ test('with one page of metrics, renders a table', () => {
       metricId: 1,
       name: 'name',
       description: 'description',
-      parameterType: 'revenue' as 'revenue',
+      parameterType: 'revenue',
     },
   ]
   const { container } = render(<MetricsTable metrics={metrics} />)
