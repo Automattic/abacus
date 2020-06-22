@@ -13,11 +13,6 @@ const metrics: MetricBare[] = []
 
 export const withNoMetrics = () => <MetricsTable metrics={metrics} />
 
-const METRIC_TEMPLATE = {
-  description: 'The description.',
-  parameterType: 'revenue' as 'revenue',
-}
-
 let idCounter = 0
 const newId = (): number => {
   const thisId = idCounter
@@ -28,10 +23,11 @@ const newId = (): number => {
 const randomMetric = (): MetricBare => {
   const id = newId()
   return {
-    ...METRIC_TEMPLATE,
     // ts-ignore: don't know what is wrong with this fella
     metricId: id,
     name: `Name: ${id}`,
+    description: 'The description for ${id}.',
+    parameterType: id % 2 === 0 ? 'revenue' : 'conversion',
   } as MetricBare
 }
 
