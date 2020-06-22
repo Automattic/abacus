@@ -94,7 +94,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "@comment jest": "Run jest with consistent TZ and LANG",
-    "jest": "cross-env NODE_ICU_DATA=node_modules/full-icu TZ=America/New_York LANG=en-GB jest --coverage",
+    "jest": "cross-env NODE_ICU_DATA=node_modules/full-icu TZ=America/New_York LANG=en-GB jest",
     "lint": "npm run lint:ts",
     "lint:ts": "eslint . --ext .ts,.tsx",
     "lint:ts:fix": "eslint . --ext .ts,.tsx --fix",
