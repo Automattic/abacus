@@ -9,6 +9,8 @@ module.exports = {
     '!<rootDir>/pages/index.tsx',
     '!<rootDir>/pages/experiments/[id].tsx',
     '!<rootDir>/pages/experiments/[id]/results.tsx',
+    '!<rootDir>/pages/metrics/[id].tsx',
+    '!<rootDir>/pages/metrics/index.tsx',
   ],
   coverageThreshold: {
     global: {
