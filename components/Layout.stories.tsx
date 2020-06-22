@@ -1,5 +1,3 @@
-import '@/styles/main.scss'
-
 import { withRouter } from 'next/router'
 import React from 'react'
 

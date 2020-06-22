@@ -1,5 +1,3 @@
-import '@/styles/main.scss'
-
 import React from 'react'
 
 import Fixtures from '@/helpers/fixtures'

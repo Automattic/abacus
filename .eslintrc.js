@@ -75,6 +75,8 @@ module.exports = {
 
     'padded-blocks': 'off',
 
+    'promise/catch-or-return': ['error', { allowFinally: true }],
+
     // Off because we are using `simple-import-sort` instead.
     'sort-imports': 'off',
 
