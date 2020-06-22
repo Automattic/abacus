@@ -4,6 +4,7 @@ module.exports = {
     '!**/node_modules/**',
     // FIXME: TODO: Get tests on the following. Issue #114.
     '!<rootDir>/pages/_app.tsx',
+    '!<rootDir>/pages/_document.tsx',
     '!<rootDir>/pages/auth.tsx',
     '!<rootDir>/pages/index.tsx',
     '!<rootDir>/pages/experiments/[id].tsx',

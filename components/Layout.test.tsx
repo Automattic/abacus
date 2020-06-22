@@ -23,31 +23,31 @@ test('renders layout with declared title and children', () => {
       class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary MuiPaper-elevation4"
     >
       <div
-        class="top"
+        class="makeStyles-appBarTop-2"
       >
         <div
           class="MuiContainer-root MuiContainer-maxWidthXl"
         >
           <img
             alt="logo"
-            class="app-logo"
+            class="makeStyles-appLogo-3"
             src="/img/logo.png"
           />
           <span
-            class="app-name"
+            class="makeStyles-appName-4"
           >
             Abacus
           </span>
         </div>
       </div>
       <div
-        class="bottom"
+        class="makeStyles-appBarBottom-1"
       >
         <div
           class="MuiContainer-root MuiContainer-maxWidthXl"
         >
           <nav
-            class="app-nav"
+            class="makeStyles-appNav-5"
           >
             <a
               href="/"
