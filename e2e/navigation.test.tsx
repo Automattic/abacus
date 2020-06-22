@@ -6,10 +6,10 @@ jest.setTimeout(30000)
 
 describe('Experiments', () => {
   beforeAll(async () => {
-    await page.goto('http://a8c-abacus-local:3000')
+    await page.goto('http://a8c-abacus-local:3000/experiments')
   })
 
-  describe('from home page', () => {
+  describe('from experiments table', () => {
     // In non-production contexts, we should see the main page immediately.
     it('should navigate to experiment details page on row click', async () => {
       // Rendering of the table is dynamic. That is, it is not rendered until the
