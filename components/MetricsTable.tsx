@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 
 import { MetricBare } from '@/models'
+import { defaultTableOptions } from '@/utils/material-table'
 
 const debug = debugFactory('abacus:components/MetricsTable.tsx')
 
@@ -12,14 +13,6 @@ const tableColumns = [
   { title: 'Description', field: 'description' },
   { title: 'Parameter Type', field: 'parameterType' },
 ]
-
-const tableOptions = {
-  emptyRowsWhenPaging: false,
-  pageSize: 25,
-  pageSizeOptions: [25, 50, 100],
-  showEmptyDataSourceMessage: false,
-  showTitle: false,
-}
 
 /**
  * Renders a table of "bare" metric information.
@@ -41,7 +34,7 @@ const MetricsTable = ({ metrics }: { metrics: MetricBare[] }) => {
     onSelectMetric(rowData.metricId)
   }
 
-  return <MaterialTable columns={tableColumns} data={metrics} onRowClick={onRowClick} options={tableOptions} />
+  return <MaterialTable columns={tableColumns} data={metrics} onRowClick={onRowClick} options={defaultTableOptions} />
 }
 
 export default MetricsTable
