@@ -1,5 +1,3 @@
-import '@/styles/main.scss'
-
 import addToDate from 'date-fns/add'
 import React from 'react'
 
