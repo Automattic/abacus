@@ -72,9 +72,6 @@
     "lint-staged": "^10.1.7",
     "prettier": "^2.0.5",
     "puppeteer": "^3.0.2",
-    "sass": "^1.26.5",
-    "stylelint": "^13.3.3",
-    "stylelint-config-standard": "^20.0.0",
     "ts-jest": "^25.4.0",
     "ts-loader": "^7.0.2",
     "typescript": "^3.8.3"
@@ -86,7 +83,6 @@
   },
   "lint-staged": {
     "*.*": "prettier --write",
-    "*.{css,scss}": "stylelint --fix",
     "*.{ts,tsx}": "eslint --fix"
   },
   "scripts": {
@@ -99,9 +95,7 @@
     "format:check": "prettier --check .",
     "@comment jest": "Run jest with consistent TZ and LANG",
     "jest": "cross-env NODE_ICU_DATA=node_modules/full-icu TZ=America/New_York LANG=en-GB jest --coverage",
-    "lint": "npm run lint:ts && npm run lint:css",
-    "lint:css": "stylelint **/*.{css,scss}",
-    "lint:css:fix": "stylelint **/*.{css,scss} --fix",
+    "lint": "npm run lint:ts",
     "lint:ts": "eslint . --ext .ts,.tsx",
     "lint:ts:fix": "eslint . --ext .ts,.tsx --fix",
     "start": "next start",

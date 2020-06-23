@@ -10,6 +10,7 @@ module.exports = {
     '!<rootDir>/pages/**', // We test these with e2e tests.
     '!<rootDir>/public/**',
     '!<rootDir>/styles/**',
+    '!<rootDir>/templates/**',
     '!<rootDir>/__tests__/**',
   ],
   coverageThreshold: {
