@@ -4,6 +4,9 @@ import React, { ReactNode } from 'react'
 
 import theme from './theme'
 
+/**
+ * A pre-configured MUI theme provider.
+ */
 const ThemeProvider = ({ children }: { children: ReactNode }) => (
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
