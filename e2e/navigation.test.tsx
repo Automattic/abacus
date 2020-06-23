@@ -6,15 +6,8 @@ jest.setTimeout(30000)
 
 describe('Dashboard', () => {
   it('should redirect to /experiments', async () => {
-    // This test might be a bit fiddly as page redirect timing can be variable, but seems to be alright on mine.
-
-    await page.goto('http://a8c-abacus-local:3000')
-
-    expect(new URL(page.url()).pathname).toBe('/')
-
-    await page.waitForNavigation({
-      timeout: 0, // Sometimes the navigation has already occured, this stops the test from waiting indefinitely
-    })
+    // This helps prevent race conditions around waitForNavigation and the redirect.
+    await Promise.all([page.goto('http://a8c-abacus-local:3000'), page.waitForNavigation({ timeout: 2000 })])
 
     expect(new URL(page.url()).pathname).toBe('/experiments')
   })
