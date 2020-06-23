@@ -33,6 +33,9 @@ const useStyles = makeStyles(
       width: 24,
       marginRight: '0.5rem',
     },
+    appLogotype: {
+      textDecoration: 'none',
+    },
     appName: {
       color: '#fff',
       fontFamily: 'Comfortaa, cursive',
@@ -82,11 +85,9 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
             </Head>
             <AppBar position='relative' className={classes.appBar}>
               <div className={classes.appBarTop}>
-                <Container maxWidth='xl'>
+                <Container maxWidth='xl' component='a' className={classes.appLogotype} href='/'>
                   <img alt='logo' className={classes.appLogo} src='/img/logo.png' />
-                  <a href='/' className={classes.appName}>
-                    Abacus
-                  </a>
+                  <span className={classes.appName}>Abacus</span>
                 </Container>
               </div>
               <div className={classes.appBarBottom}>
