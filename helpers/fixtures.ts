@@ -264,26 +264,24 @@ function createMetricBares(numMetrics = 3) {
   return _.range(numMetrics).map(createMetricBare)
 }
 
-function createSegments(count: number) {
-  const segments = []
-  for (let i = 0; i < count; i++) {
-    segments.push(
-      new Segment({
-        segmentId: i,
-        name: `segment_${i}`,
-        type: i % 2 === 0 ? SegmentType.Country : SegmentType.Locale,
-      }),
-    )
-  }
-  return segments
+function createSegment(id: number) {
+  return new Segment({
+    segmentId: id,
+    name: `segment_${id}`,
+    type: id % 2 === 0 ? SegmentType.Country : SegmentType.Locale,
+  })
+}
+
+function createSegments(numSegments: number) {
+  return _.range(numSegments).map(createSegment)
 }
 
 const Fixtures = {
   createAnalyses,
   createExperimentFull,
   createMetricAssignment,
-  createSegments,
   createMetricBares,
+  createSegments,
 }
 
 export default Fixtures
