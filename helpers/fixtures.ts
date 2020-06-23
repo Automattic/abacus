@@ -4,6 +4,7 @@
  * Functions in this file return new objects populated with dummy values, which may potentially be overridden in
  * functions that accept Partial<T> as an argument.
  */
+import _ from 'lodash'
 
 import {
   Analysis,
@@ -250,19 +251,17 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}) {
   })
 }
 
-function createMetricsBares(numMetrics = 3) {
-  const metrics = []
-  for (let i = 0; i < numMetrics; i++) {
-    metrics.push(
-      new MetricBare({
-        metricId: i,
-        name: `metric_${i}`,
-        description: `This is metric ${i}`,
-        parameterType: 'revenue',
-      }),
-    )
-  }
-  return metrics
+function createMetricBare(id: number) {
+  return new MetricBare({
+    metricId: id,
+    name: `metric_${id}`,
+    description: `This is metric ${id}`,
+    parameterType: id % 2 === 0 ? 'revenue' : 'conversion',
+  })
+}
+
+function createMetricBares(numMetrics = 3) {
+  return _.range(numMetrics).map(createMetricBare)
 }
 
 function createSegments(count: number) {
@@ -283,8 +282,8 @@ const Fixtures = {
   createAnalyses,
   createExperimentFull,
   createMetricAssignment,
-  createMetricsBares,
   createSegments,
+  createMetricBares,
 }
 
 export default Fixtures
