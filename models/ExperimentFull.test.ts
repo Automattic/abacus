@@ -1,9 +1,7 @@
 import Fixtures from '@/helpers/fixtures'
-import { Platform, Segment, SegmentAssignment, Status } from '@/models'
+import { AttributionWindowSeconds, Platform, Segment, SegmentAssignment, SegmentType, Status } from '@/models'
 
 import { ExperimentFull } from './ExperimentFull'
-import { AttributionWindowSeconds } from './MetricAssignment'
-import { SegmentType } from './Segment'
 
 describe('models/ExperimentFull.ts module', () => {
   describe('ExperimentFull', () => {
