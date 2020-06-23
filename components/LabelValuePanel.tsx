@@ -10,8 +10,6 @@ import React, { ReactNode } from 'react'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     title: {
-      // paddingLeft: theme.spacing(2),
-      // paddingRight: theme.spacing(2),
       padding: theme.spacing(1, 2),
     },
   }),
@@ -21,12 +19,14 @@ const useStyles = makeStyles((theme: Theme) =>
  * A panel to display a label followed by its value. The label/value pairs are
  * rendered in a columnar fashion.
  */
-function LabelValuePanel(props: {
+function LabelValuePanel({
+  data,
+  title,
+}: {
   data: { label: string; padding?: TableCellProps['padding']; value: ReactNode }[]
   title: string
 }) {
   const classes = useStyles()
-  const { data, title } = props
   return (
     <Paper>
       <Typography className={classes.title} color='textPrimary' variant='h3'>
