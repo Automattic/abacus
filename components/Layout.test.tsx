@@ -25,21 +25,21 @@ test('renders layout with declared title and children', () => {
       <div
         class="makeStyles-appBarTop-4"
       >
-        <div
-          class="MuiContainer-root MuiContainer-maxWidthXl"
+        <a
+          class="MuiContainer-root makeStyles-appLogotype-6 MuiContainer-maxWidthXl"
+          href="/"
         >
           <img
             alt="logo"
             class="makeStyles-appLogo-5"
             src="/img/logo.png"
           />
-          <a
-            class="makeStyles-appName-6"
-            href="/"
+          <span
+            class="makeStyles-appName-7"
           >
             Abacus
-          </a>
-        </div>
+          </span>
+        </a>
       </div>
       <div
         class="makeStyles-appBarBottom-3"
@@ -48,7 +48,7 @@ test('renders layout with declared title and children', () => {
           class="MuiContainer-root MuiContainer-maxWidthXl"
         >
           <nav
-            class="makeStyles-appNav-7"
+            class="makeStyles-appNav-8"
           >
             <a
               href="/"
@@ -70,7 +70,7 @@ test('renders layout with declared title and children', () => {
   expect(footerElmt).not.toBeNull()
   expect(footerElmt).toMatchInlineSnapshot(`
     <footer
-      class="makeStyles-footer-10"
+      class="makeStyles-footer-11"
     >
       <div
         class="MuiContainer-root MuiContainer-maxWidthLg"
