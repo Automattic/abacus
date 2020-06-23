@@ -8,5 +8,5 @@ import Fixtures from '../helpers/fixtures'
 
 export default { title: 'MetricsTable' }
 export const withNoMetrics = () => <MetricsTable metrics={[]} />
-export const withFewMetrics = () => <MetricsTable metrics={Fixtures.createMetricsBares(4)} />
-export const withManyMetrics = () => <MetricsTable metrics={Fixtures.createMetricsBares(40)} />
+export const withFewMetrics = () => <MetricsTable metrics={Fixtures.createMetricBares(4)} />
+export const withManyMetrics = () => <MetricsTable metrics={Fixtures.createMetricBares(40)} />

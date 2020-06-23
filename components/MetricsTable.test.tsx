@@ -18,7 +18,7 @@ test('with no metrics, renders an empty table', () => {
 })
 
 test('with some metrics, renders a table', () => {
-  const { container } = render(<MetricsTable metrics={Fixtures.createMetricsBares(2)} />)
+  const { container } = render(<MetricsTable metrics={Fixtures.createMetricBares(2)} />)
 
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()

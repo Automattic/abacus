@@ -258,7 +258,7 @@ function createMetricBare(id: number) {
   })
 }
 
-function createMetricsBares(numMetrics = 3) {
+function createMetricBares(numMetrics = 3) {
   return _.range(numMetrics).map(createMetricBare)
 }
 
@@ -266,7 +266,7 @@ const Fixtures = {
   createAnalyses,
   createExperimentFull,
   createMetricAssignment,
-  createMetricsBares,
+  createMetricBares,
 }
 
 export default Fixtures

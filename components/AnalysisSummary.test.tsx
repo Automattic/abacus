@@ -6,7 +6,7 @@ import Fixtures from '@/helpers/fixtures'
 import AnalysisSummary from './AnalysisSummary'
 
 const experiment = Fixtures.createExperimentFull()
-const metrics = Fixtures.createMetricsBares()
+const metrics = Fixtures.createMetricBares()
 const analyses = Fixtures.createAnalyses()
 
 test('renders an appropriate message with no analyses', () => {
