@@ -17,7 +17,7 @@ test('renders labels and values', () => {
         class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
       >
         <h3
-          class="MuiTypography-root MuiTypography-h3 MuiTypography-colorTextPrimary"
+          class="MuiTypography-root makeStyles-title-1 MuiTypography-h3 MuiTypography-colorTextPrimary"
         >
           Foo Bar
         </h3>
