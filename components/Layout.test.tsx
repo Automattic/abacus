@@ -33,11 +33,12 @@ test('renders layout with declared title and children', () => {
             class="makeStyles-appLogo-5"
             src="/img/logo.png"
           />
-          <span
+          <a
             class="makeStyles-appName-6"
+            href="/"
           >
             Abacus
-          </span>
+          </a>
         </div>
       </div>
       <div

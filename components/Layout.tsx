@@ -84,7 +84,9 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
               <div className={classes.appBarTop}>
                 <Container maxWidth='xl'>
                   <img alt='logo' className={classes.appLogo} src='/img/logo.png' />
-                  <span className={classes.appName}>Abacus</span>
+                  <a href='/' className={classes.appName}>
+                    Abacus
+                  </a>
                 </Container>
               </div>
               <div className={classes.appBarBottom}>
