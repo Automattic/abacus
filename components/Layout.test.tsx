@@ -20,34 +20,35 @@ test('renders layout with declared title and children', () => {
   // new links, are being tested.
   expect(headerElmt).toMatchInlineSnapshot(`
     <header
-      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary MuiPaper-elevation4"
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary makeStyles-appBar-2 MuiPaper-elevation4"
     >
       <div
-        class="makeStyles-appBarTop-2"
+        class="makeStyles-appBarTop-4"
       >
-        <div
-          class="MuiContainer-root MuiContainer-maxWidthXl"
+        <a
+          class="MuiContainer-root makeStyles-appLogotype-6 MuiContainer-maxWidthXl"
+          href="/"
         >
           <img
             alt="logo"
-            class="makeStyles-appLogo-3"
+            class="makeStyles-appLogo-5"
             src="/img/logo.png"
           />
           <span
-            class="makeStyles-appName-4"
+            class="makeStyles-appName-7"
           >
             Abacus
           </span>
-        </div>
+        </a>
       </div>
       <div
-        class="makeStyles-appBarBottom-1"
+        class="makeStyles-appBarBottom-3"
       >
         <div
           class="MuiContainer-root MuiContainer-maxWidthXl"
         >
           <nav
-            class="makeStyles-appNav-5"
+            class="makeStyles-appNav-8"
           >
             <a
               href="/"
@@ -68,13 +69,17 @@ test('renders layout with declared title and children', () => {
   const footerElmt = container.querySelector('footer')
   expect(footerElmt).not.toBeNull()
   expect(footerElmt).toMatchInlineSnapshot(`
-    <footer>
+    <footer
+      class="makeStyles-footer-11"
+    >
       <div
         class="MuiContainer-root MuiContainer-maxWidthLg"
       >
-        <span>
-          The Abacus footer, brought to you by Automattic
-        </span>
+        <p
+          class="MuiTypography-root MuiTypography-body1"
+        >
+          The Abacus footer, brought to you by Automattic.
+        </p>
       </div>
     </footer>
   `)

@@ -1,4 +1,5 @@
 module.exports = {
+  collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/api/**/*.ts',
     '!**/node_modules/**',
@@ -16,6 +17,7 @@ module.exports = {
       statements: 100,
     },
   },
+
   globals: {
     // Must specify a custom tsconfig for tests because we need the TypeScript
     // transform to transform JSX into js rather than leaving it as JSX which the
