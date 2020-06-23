@@ -1,5 +1,4 @@
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import debugFactory from 'debug'
 import { AppProps } from 'next/app'
 import qs from 'querystring'
@@ -8,7 +7,7 @@ import React from 'react'
 import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import RenderErrorView from '@/components/RenderErrorView'
 import { onRenderError } from '@/event-handlers/index'
-import theme from '@/styles/theme'
+import ThemeProvider from '@/styles/ThemeProvider'
 import { getAuthClientId, getExperimentsAuthInfo, saveExperimentsAuthInfo } from '@/utils/auth'
 
 const debug = debugFactory('abacus:pages/_app.tsx')
@@ -64,8 +63,7 @@ const App = React.memo(function App(props: AppProps) {
   return (
     <RenderErrorBoundary onError={onRenderError}>
       {({ renderError }) => (
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
+        <ThemeProvider>
           {renderError ? (
             <RenderErrorView renderError={renderError} />
           ) : (
