@@ -5,6 +5,7 @@ import React from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
 import { ExperimentBare } from '@/models'
+import { defaultTableOptions } from '@/utils/material-table'
 
 const debug = debugFactory('abacus:components/ExperimentsTable.tsx')
 
@@ -44,13 +45,7 @@ const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }) =>
       ]}
       data={experiments}
       onRowClick={handleRowClick}
-      options={{
-        emptyRowsWhenPaging: false,
-        pageSize: 25,
-        pageSizeOptions: [25, 50, 100],
-        showEmptyDataSourceMessage: false,
-        showTitle: false,
-      }}
+      options={defaultTableOptions}
     />
   )
 }

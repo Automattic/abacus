@@ -8,7 +8,7 @@ export default { title: 'Analysis summary' }
 
 const analyses = Fixtures.createAnalyses()
 const experiment = Fixtures.createExperimentFull()
-const metrics = Fixtures.createMetricsBares()
+const metrics = Fixtures.createMetricBares()
 
 export const noAnalyses = () => <AnalysisSummary analyses={[]} experiment={experiment} metrics={metrics} />
 export const someAnalyses = () => <AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} />
