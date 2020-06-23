@@ -1,8 +1,9 @@
 import Fixtures from '@/helpers/fixtures'
-import { Platform, Status } from '@/models'
+import { Platform, Segment, SegmentAssignment, Status } from '@/models'
 
 import { ExperimentFull } from './ExperimentFull'
 import { AttributionWindowSeconds } from './MetricAssignment'
+import { SegmentType } from './Segment'
 
 describe('models/ExperimentFull.ts module', () => {
   describe('ExperimentFull', () => {
@@ -200,6 +201,69 @@ describe('models/ExperimentFull.ts module', () => {
             ],
           }),
         )
+      })
+    })
+
+    describe('resolveSegmentAssignments', () => {
+      let consoleErrorSpy: jest.SpyInstance | null = null
+
+      afterEach(() => {
+        if (consoleErrorSpy) {
+          consoleErrorSpy.mockRestore()
+        }
+      })
+
+      it('called with all corresponding segments will return "resolved" segment assignments', () => {
+        const segments = Fixtures.createSegments(5)
+        const segmentAssignments = [
+          new SegmentAssignment({ segmentAssignmentId: 101, experimentId: 11, segmentId: 1, isExcluded: false }),
+          new SegmentAssignment({ segmentAssignmentId: 102, experimentId: 11, segmentId: 3, isExcluded: true }),
+        ]
+
+        const resolveSegmentAssignments = ExperimentFull.resolveSegmentAssignments(segmentAssignments, segments)
+        expect(resolveSegmentAssignments).toEqual([
+          {
+            segmentAssignmentId: 101,
+            experimentId: 11,
+            segment: new Segment({ segmentId: 1, name: 'segment_1', type: SegmentType.Locale }),
+            isExcluded: false,
+          },
+          {
+            segmentAssignmentId: 102,
+            experimentId: 11,
+            segment: new Segment({ segmentId: 3, name: 'segment_3', type: SegmentType.Locale }),
+            isExcluded: true,
+          },
+        ])
+      })
+
+      it('called with missing segments will return null segment in assignment', () => {
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {})
+
+        const segments = Fixtures.createSegments(5).filter((segment) => segment.segmentId !== 3)
+        const segmentAssignments = [
+          new SegmentAssignment({ segmentAssignmentId: 101, experimentId: 11, segmentId: 1, isExcluded: false }),
+          new SegmentAssignment({ segmentAssignmentId: 102, experimentId: 11, segmentId: 3, isExcluded: true }),
+        ]
+
+        const resolveSegmentAssignments = ExperimentFull.resolveSegmentAssignments(segmentAssignments, segments)
+        expect(resolveSegmentAssignments).toEqual([
+          {
+            segmentAssignmentId: 101,
+            experimentId: 11,
+            segment: new Segment({ segmentId: 1, name: 'segment_1', type: SegmentType.Locale }),
+            isExcluded: false,
+          },
+          {
+            segmentAssignmentId: 102,
+            experimentId: 11,
+            segment: null,
+            isExcluded: true,
+          },
+        ])
+
+        expect(consoleErrorSpy).toHaveBeenCalledTimes(1)
       })
     })
 
