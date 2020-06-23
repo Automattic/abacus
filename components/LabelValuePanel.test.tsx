@@ -6,7 +6,7 @@ import LabelValuePanel from './LabelValuePanel'
 test('renders labels and values', () => {
   const data = [
     { label: 'String', value: 'string' },
-    { label: 'HTML', value: <span>HTML span</span> },
+    { label: 'HTML', value: <span>React Element</span> },
   ]
   const { container } = render(<LabelValuePanel data={data} title='Foo Bar' />)
 
@@ -16,28 +16,14 @@ test('renders labels and values', () => {
       <div
         class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
       >
+        <h3
+          class="MuiTypography-root makeStyles-title-1 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        >
+          Foo Bar
+        </h3>
         <table
           class="MuiTable-root"
         >
-          <thead
-            class="MuiTableHead-root"
-          >
-            <tr
-              class="MuiTableRow-root MuiTableRow-head"
-            >
-              <th
-                class="MuiTableCell-root MuiTableCell-head"
-                colspan="2"
-                scope="col"
-              >
-                <h3
-                  class="MuiTypography-root MuiTypography-h3 MuiTypography-colorTextPrimary"
-                >
-                  Foo Bar
-                </h3>
-              </th>
-            </tr>
-          </thead>
           <tbody
             class="MuiTableBody-root"
           >
@@ -71,7 +57,7 @@ test('renders labels and values', () => {
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 <span>
-                  HTML span
+                  React Element
                 </span>
               </td>
             </tr>

@@ -1,33 +1,38 @@
 import Paper from '@material-ui/core/Paper'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell, { TableCellProps } from '@material-ui/core/TableCell'
-import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Typography from '@material-ui/core/Typography'
 import React, { ReactNode } from 'react'
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    title: {
+      padding: theme.spacing(1, 2),
+    },
+  }),
+)
+
 /**
- * A panel to display a label followed by it's value. The label/value pairs are
+ * A panel to display a label followed by its value. The label/value pairs are
  * rendered in a columnar fashion.
  */
-function LabelValuePanel(props: {
+function LabelValuePanel({
+  data,
+  title,
+}: {
   data: { label: string; padding?: TableCellProps['padding']; value: ReactNode }[]
   title: string
 }) {
-  const { data, title } = props
+  const classes = useStyles()
   return (
     <Paper>
+      <Typography className={classes.title} color='textPrimary' variant='h3'>
+        {title}
+      </Typography>
       <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell colSpan={2}>
-              <Typography color='textPrimary' variant='h3'>
-                {title}
-              </Typography>
-            </TableCell>
-          </TableRow>
-        </TableHead>
         <TableBody>
           {data.map(({ label, padding, value }) => (
             <TableRow key={label}>
