@@ -99,7 +99,7 @@
     "lint:ts": "eslint . --ext .ts,.tsx",
     "lint:ts:fix": "eslint . --ext .ts,.tsx --fix",
     "start": "next start",
-    "storybook": "start-storybook",
+    "storybook": "start-storybook -s ./public",
     "test:all": "npm run test:unit && npm run test:integration && npm run test:e2e",
     "@comment test:e2e": "Runs the e2e tests. It will spawn Chromium to run the tests.",
     "test:e2e": "npm run jest -- --config=jest.e2e.config.js --runInBand",
