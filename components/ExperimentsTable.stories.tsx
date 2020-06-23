@@ -2,7 +2,6 @@ import addToDate from 'date-fns/add'
 import React from 'react'
 
 import { ExperimentBare, Platform, Status } from '@/models'
-import ThemeProvider from '@/styles/ThemeProvider'
 
 import ExperimentsTable from './ExperimentsTable'
 
@@ -10,11 +9,7 @@ export default { title: 'ExperimentsTable' }
 
 const experiments: ExperimentBare[] = []
 
-export const withNoExperiments = () => (
-  <ThemeProvider>
-    <ExperimentsTable experiments={experiments} />
-  </ThemeProvider>
-)
+export const withNoExperiments = () => <ExperimentsTable experiments={experiments} />
 
 const endDatetime = addToDate(new Date(), { days: 14 })
 const startDatetime = new Date()
@@ -56,11 +51,7 @@ const onePageOfExperiments: ExperimentBare[] = [
   },
 ]
 
-export const withOnePageOfExperiments = () => (
-  <ThemeProvider>
-    <ExperimentsTable experiments={onePageOfExperiments} />
-  </ThemeProvider>
-)
+export const withOnePageOfExperiments = () => <ExperimentsTable experiments={onePageOfExperiments} />
 
 const moreThanOnePageOfExperiments: ExperimentBare[] = Array.from(Array(40).keys()).map((num) => ({
   experimentId: num + 1,
@@ -72,8 +63,4 @@ const moreThanOnePageOfExperiments: ExperimentBare[] = Array.from(Array(40).keys
   status: Status.Staging,
 }))
 
-export const withMoreThanOnePageOfExperiments = () => (
-  <ThemeProvider>
-    <ExperimentsTable experiments={moreThanOnePageOfExperiments} />
-  </ThemeProvider>
-)
+export const withMoreThanOnePageOfExperiments = () => <ExperimentsTable experiments={moreThanOnePageOfExperiments} />
