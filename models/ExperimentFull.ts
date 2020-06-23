@@ -160,8 +160,11 @@ export class ExperimentFull implements ApiDataSource {
    * @param segments - The segments to associate with the assignments.
    */
   static resolveSegmentAssignments(segmentAssignments: SegmentAssignment[], segments: Segment[]) {
+    const segmentsLut: { [segmentId: string]: Segment } = {}
+    segments.forEach((segment) => (segmentsLut[segment.segmentId] = segment))
+
     return segmentAssignments.map((segmentAssignment) => {
-      const segment = segments.find((segment) => segment.segmentId === segmentAssignment.segmentId) || null
+      const segment = segmentsLut[segmentAssignment.segmentId] ?? null
 
       if (!segment) {
         console.error(`Unable to lookup segment with ID ${segmentAssignment.segmentId}.`)
