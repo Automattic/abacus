@@ -1,4 +1,5 @@
 module.exports = {
+  collectCoverage: true,
   collectCoverageFrom: [
     // Note: Dot directories (e.g., .storybook) are also excluded automatically.
     '**/*.{ts,tsx}',

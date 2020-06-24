@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
 import Layout from '@/components/Layout'
+import MetricsTable from '@/components/MetricsTable'
 import { MetricBare } from '@/models'
 
 const debug = debugFactory('abacus:pages/metrics/index.tsx')
@@ -24,7 +25,7 @@ const MetricsIndexPage = () => {
 
   return (
     <Layout title='Metrics' error={error}>
-      {isLoading ? <LinearProgress /> : <pre> {JSON.stringify(metrics, null, 2)} </pre>}
+      {isLoading ? <LinearProgress /> : <MetricsTable metrics={metrics || []} />}
     </Layout>
   )
 }
