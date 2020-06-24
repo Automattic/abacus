@@ -1,12 +1,13 @@
 import debugFactory from 'debug'
 import React from 'react'
 
-import { ExperimentFull } from '@/models'
+import AudiencePanel from '@/components/AudiencePanel'
+import { ExperimentFull, Segment } from '@/models'
 import { formatIsoUtcOffset } from '@/utils/formatters'
 
 const debug = debugFactory('abacus:components/ExperimentDetails.tsx')
 
-function ExperimentDetails({ experiment }: { experiment: ExperimentFull }) {
+function ExperimentDetails({ experiment, segments }: { experiment: ExperimentFull; segments: Segment[] }) {
   debug('ExperimentDetails#render')
   return (
     <div>
@@ -47,6 +48,7 @@ function ExperimentDetails({ experiment }: { experiment: ExperimentFull }) {
           </tr>
         </tbody>
       </table>
+      <AudiencePanel experiment={experiment} segments={segments} />
     </div>
   )
 }

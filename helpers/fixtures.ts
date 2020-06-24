@@ -16,6 +16,9 @@ import {
   Platform,
   RecommendationReason,
   RecommendationWarning,
+  Segment,
+  SegmentAssignment,
+  SegmentType,
   Status,
   Variation,
 } from '@/models'
@@ -262,11 +265,38 @@ function createMetricBares(numMetrics = 3) {
   return _.range(numMetrics).map(createMetricBare)
 }
 
+function createSegment(id: number) {
+  return new Segment({
+    segmentId: id,
+    name: `segment_${id}`,
+    type: id % 2 === 0 ? SegmentType.Country : SegmentType.Locale,
+  })
+}
+
+/**
+ * Creates an array of segments.
+ */
+function createSegments(numSegments: number) {
+  return _.range(numSegments).map(createSegment)
+}
+
+function createSegmentAssignment(fieldOverrides: Partial<SegmentAssignment>) {
+  return new SegmentAssignment({
+    segmentAssignmentId: 123,
+    experimentId: 1,
+    segmentId: 1,
+    isExcluded: false,
+    ...fieldOverrides,
+  })
+}
+
 const Fixtures = {
   createAnalyses,
   createExperimentFull,
   createMetricAssignment,
   createMetricBares,
+  createSegmentAssignment,
+  createSegments,
 }
 
 export default Fixtures
