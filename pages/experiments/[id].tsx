@@ -10,6 +10,7 @@ import TableRow from '@material-ui/core/TableRow'
 import Typography from '@material-ui/core/Typography'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import debugFactory from 'debug'
+import _ from 'lodash'
 import { useRouter } from 'next/router'
 import { toIntOrNull } from 'qc-to_int'
 import React, { useEffect, useState } from 'react'
@@ -22,42 +23,16 @@ import ExperimentStatus from '@/components/ExperimentStatus'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import LabelValuePanel from '@/components/LabelValuePanel'
 import Layout from '@/components/Layout'
-import {
-  AttributionWindowSecondsToHuman,
-  ExperimentFull,
-  MetricBare,
-  Segment,
-  SegmentAssignment,
-  SegmentType,
-  Variation,
-} from '@/models'
+import { AttributionWindowSecondsToHuman, ExperimentFull, MetricBare, Segment, SegmentType, Variation } from '@/models'
 import { formatUsCurrencyDollar } from '@/utils/formatters'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 
-function toSegmentsByType(segmentAssignments: SegmentAssignment[], segments: Segment[]) {
-  const segmentsByType: { [SegmentType.Country]: Segment[]; [SegmentType.Locale]: Segment[] } = {
-    [SegmentType.Country]: [],
-    [SegmentType.Locale]: [],
-  }
-  segmentAssignments.forEach((segmentAssignment) => {
-    const segment = segments.find((segment) => segment.segmentId === segmentAssignment.segmentId)
-    if (segment) {
-      const { type } = segment
-      const segments = segmentsByType[type]
-      segments.push(segment)
-      segmentsByType[type] = segments
-    } else {
-      console.error(`Unable to lookup segment with ID ${segmentAssignment.segmentId}.`)
-    }
-  })
-  return segmentsByType
-}
-
 function AudiencePanel(props: { experiment: ExperimentFull; segments: Segment[] }) {
   const { experiment, segments } = props
 
-  const segmentsByType = toSegmentsByType(experiment.segmentAssignments, segments)
+  const resolvedSegmentAssignments = experiment.resolveSegmentAssignments(segments)
+  const segmentsByType = _.groupBy(resolvedSegmentAssignments, _.property('segment.type'))
   const hasSegments = experiment.segmentAssignments.length > 0
   const data = [
     { label: 'Platform', value: experiment.platform },
@@ -72,11 +47,14 @@ function AudiencePanel(props: { experiment: ExperimentFull; segments: Segment[] 
       padding: (hasSegments ? 'none' : undefined) as TableCellProps['padding'],
       value: hasSegments ? (
         <>
-          {segmentsByType[SegmentType.Country].length > 0 && (
-            <SegmentsTable segments={segmentsByType[SegmentType.Country]} type={SegmentType.Country} />
+          {segmentsByType[SegmentType.Country]?.length > 0 && (
+            <SegmentsTable
+              resolvedSegmentAssignments={segmentsByType[SegmentType.Country]}
+              type={SegmentType.Country}
+            />
           )}
-          {segmentsByType[SegmentType.Locale].length > 0 && (
-            <SegmentsTable segments={segmentsByType[SegmentType.Locale]} type={SegmentType.Locale} />
+          {segmentsByType[SegmentType.Locale]?.length > 0 && (
+            <SegmentsTable resolvedSegmentAssignments={segmentsByType[SegmentType.Locale]} type={SegmentType.Locale} />
           )}
         </>
       ) : (
@@ -195,8 +173,18 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
   )
 }
 
-function SegmentsTable(props: { segments: Segment[]; type: SegmentType }) {
-  const sortedSegments = [...props.segments].sort()
+function SegmentsTable(props: {
+  resolvedSegmentAssignments: {
+    segment: Segment | null
+    isExcluded: boolean
+  }[]
+  type: SegmentType
+}) {
+  const sortedResolvedSegmentAssignments = [...props.resolvedSegmentAssignments].sort((a, b) => {
+    const segmentNameA = a.segment?.name ?? ''
+    const segmentNameB = b.segment?.name ?? ''
+    return segmentNameA < segmentNameB ? 1 : segmentNameA === segmentNameB ? -1 : 0
+  })
   return (
     <Table>
       <TableHead>
@@ -207,11 +195,17 @@ function SegmentsTable(props: { segments: Segment[]; type: SegmentType }) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {sortedSegments.map((segment) => (
-          <TableRow key={segment.segmentId}>
-            <TableCell>{segment.name}</TableCell>
-          </TableRow>
-        ))}
+        {sortedResolvedSegmentAssignments.map(
+          (resolvedSegmentAssignment) =>
+            resolvedSegmentAssignment.segment && (
+              <TableRow key={resolvedSegmentAssignment.segment.segmentId}>
+                <TableCell>
+                  {resolvedSegmentAssignment.segment.name}{' '}
+                  {resolvedSegmentAssignment.isExcluded && <span>Excluded</span>}
+                </TableCell>
+              </TableRow>
+            ),
+        )}
       </TableBody>
     </Table>
   )

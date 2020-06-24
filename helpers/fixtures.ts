@@ -16,6 +16,8 @@ import {
   Platform,
   RecommendationReason,
   RecommendationWarning,
+  Segment,
+  SegmentType,
   Status,
   Variation,
 } from '@/models'
@@ -262,11 +264,24 @@ function createMetricBares(numMetrics = 3) {
   return _.range(numMetrics).map(createMetricBare)
 }
 
+function createSegment(id: number) {
+  return new Segment({
+    segmentId: id,
+    name: `segment_${id}`,
+    type: id % 2 === 0 ? SegmentType.Country : SegmentType.Locale,
+  })
+}
+
+function createSegments(numSegments: number) {
+  return _.range(numSegments).map(createSegment)
+}
+
 const Fixtures = {
   createAnalyses,
   createExperimentFull,
   createMetricAssignment,
   createMetricBares,
+  createSegments,
 }
 
 export default Fixtures
