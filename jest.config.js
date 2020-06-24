@@ -6,6 +6,7 @@ module.exports = {
     '!**/*stories.tsx',
     '!**/node_modules/**',
     '!<rootDir>/api/**', // We test these with integration tests.
+    '!<rootDir>/components/ExperimentsPage.tsx', // Ignore for unit testing.
     '!<rootDir>/coverage/**',
     '!<rootDir>/e2e/**',
     '!<rootDir>/pages/**', // We test these with e2e tests.

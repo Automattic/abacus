@@ -12,6 +12,11 @@ import { Analysis, ExperimentFull, MetricBare } from '@/models'
 
 const debug = debugFactory('abacus:components/ExperimentPage.tsx')
 
+// TODO: Write tests. Might be able to write unit tests if all the API calls are
+// mocked. Otherwise, an integration or e2e may be more appropriate.
+/**
+ * Renders the experiment page based on section.
+ */
 function ExperimentPage({
   experimentId,
   section,
