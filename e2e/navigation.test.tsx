@@ -6,8 +6,12 @@ jest.setTimeout(30000)
 
 describe('Dashboard', () => {
   it('should redirect to /experiments', async () => {
-    // This helps prevent race conditions around waitForNavigation and the redirect.
-    await Promise.all([page.goto('http://a8c-abacus-local:3000'), page.waitForNavigation({ timeout: 2000 })])
+    await page.goto('http://a8c-abacus-local:3000')
+
+    // Sometimes the redirect has not occurred yet. So, we need to wait.
+    if (new URL(page.url()).pathname === '/') {
+      await page.waitForNavigation({ timeout: 2000 })
+    }
 
     expect(new URL(page.url()).pathname).toBe('/experiments')
   })
