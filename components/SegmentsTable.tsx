@@ -7,6 +7,12 @@ import React, { useMemo } from 'react'
 
 import { Segment, SegmentType } from '@/models'
 
+/**
+ *
+ * @param props.resolveSegmentAssignments - The segment assignments with the
+ *   segment IDs resolved to the actual segment.
+ * @param props.type - The segment type the segment assignments represent.
+ */
 function SegmentsTable({
   resolvedSegmentAssignments,
   type,

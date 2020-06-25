@@ -7,6 +7,11 @@ import React from 'react'
 
 import { Variation } from '@/models'
 
+/**
+ * Renders the variations in tabular formation.
+ *
+ * @param props.variations - The variations to render.
+ */
 function VariationsTable({ variations }: { variations: Variation[] }) {
   return (
     <Table>

@@ -7,6 +7,13 @@ import SegmentsTable from '@/components/SegmentsTable'
 import VariationsTable from '@/components/VariationsTable'
 import { ExperimentFull, Segment, SegmentType } from '@/models'
 
+/**
+ * Renders the audience information of an experiment in a panel component.
+ *
+ * @param props.experiment - The experiment with the audience information.
+ * @param props.segments - The segments to look up (aka resolve) the segment IDs
+ *   of the experiment's segment assignments.
+ */
 function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; segments: Segment[] }) {
   const segmentsByType = _.groupBy(experiment.resolveSegmentAssignments(segments), _.property('segment.type'))
 
