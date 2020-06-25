@@ -215,14 +215,10 @@ describe('models/ExperimentFull.ts module', () => {
         const resolveSegmentAssignments = experiment.resolveSegmentAssignments(segments)
         expect(resolveSegmentAssignments).toEqual([
           {
-            segmentAssignmentId: 101,
-            experimentId: 11,
             segment: new Segment({ segmentId: 1, name: 'segment_1', type: SegmentType.Locale }),
             isExcluded: false,
           },
           {
-            segmentAssignmentId: 102,
-            experimentId: 11,
             segment: new Segment({ segmentId: 3, name: 'segment_3', type: SegmentType.Locale }),
             isExcluded: true,
           },

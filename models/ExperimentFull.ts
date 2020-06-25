@@ -162,8 +162,6 @@ export class ExperimentFull implements ApiDataSource {
   resolveSegmentAssignments(
     segments: Segment[],
   ): {
-    segmentAssignmentId?: number
-    experimentId?: number
     segment: Segment
     isExcluded: boolean
   }[] {
@@ -180,8 +178,6 @@ export class ExperimentFull implements ApiDataSource {
       }
 
       return {
-        segmentAssignmentId: segmentAssignment.segmentAssignmentId,
-        experimentId: segmentAssignment.experimentId,
         segment,
         isExcluded: segmentAssignment.isExcluded,
       }
