@@ -16,7 +16,7 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
   const hasSegments = countryResolvedSegmentAssignments.length + localeResolvedSegmentAssignments.length > 0
   const data = [
     { label: 'Platform', value: experiment.platform },
-    { label: 'User Type', value: experiment.existingUsersAllowed ? 'All User (new + existing)' : 'New users only' },
+    { label: 'User Type', value: experiment.existingUsersAllowed ? 'All users (new + existing)' : 'New users only' },
     {
       label: 'Variations',
       padding: 'none' as TableCellProps['padding'],
