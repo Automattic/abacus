@@ -153,10 +153,11 @@ export class ExperimentFull implements ApiDataSource {
 
   /**
    * Resolves the segment ID of the segment assignment with the actual segment.
-   * If the ID cannot be resolved, then the "resolved" segment assignment will
-   * have a `null` `segment` property.
+   * If the ID cannot be resolved, then an `Error` will be thrown.
    *
    * @param segments - The segments to associate with the assignments.
+   * @throws {Error} When unable to resolve a segment ID with one of the supplied
+   *   segments.
    */
   resolveSegmentAssignments(
     segments: Segment[],
