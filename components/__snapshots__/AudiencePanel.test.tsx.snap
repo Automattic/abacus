@@ -286,7 +286,7 @@ exports[`renders as expected with existing users allowed 1`] = `
           <td
             class="MuiTableCell-root MuiTableCell-body"
           >
-            All User (new + existing)
+            All users (new + existing)
           </td>
         </tr>
         <tr
