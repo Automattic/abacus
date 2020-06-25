@@ -167,11 +167,11 @@ export class ExperimentFull implements ApiDataSource {
     segment: Segment
     isExcluded: boolean
   }[] {
-    const segmentsLut: { [segmentId: string]: Segment } = {}
-    segments.forEach((segment) => (segmentsLut[segment.segmentId] = segment))
+    const segmentsById: { [segmentId: string]: Segment } = {}
+    segments.forEach((segment) => (segmentsById[segment.segmentId] = segment))
 
     return this.segmentAssignments.map((segmentAssignment) => {
-      const segment = segmentsLut[segmentAssignment.segmentId]
+      const segment = segmentsById[segmentAssignment.segmentId]
 
       if (!segment) {
         throw Error(
