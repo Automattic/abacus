@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
+import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import Fixtures from '@/helpers/fixtures'
 
 import AudiencePanel from './AudiencePanel'
@@ -44,7 +45,7 @@ test('renders as expected with all segments resolvable', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('renders as expected with some segments not resolvable', () => {
+test('throws an error when some segments not resolvable', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {})
 
@@ -58,8 +59,13 @@ test('renders as expected with some segments not resolvable', () => {
       Fixtures.createSegmentAssignment({ segmentAssignmentId: 110, segmentId: 10 }),
     ],
   })
-  const { container } = render(<AudiencePanel experiment={experiment} segments={segments} />)
 
-  expect(container).toMatchSnapshot()
-  expect(consoleErrorSpy).toHaveBeenCalledTimes(1)
+  try {
+    render(
+      <RenderErrorBoundary>{() => <AudiencePanel experiment={experiment} segments={segments} />}</RenderErrorBoundary>,
+    )
+    expect(false).toBe(true) // Should never be reached
+  } catch (err) {
+    expect(consoleErrorSpy).toHaveBeenCalled()
+  }
 })

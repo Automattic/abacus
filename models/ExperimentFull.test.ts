@@ -203,14 +203,6 @@ describe('models/ExperimentFull.ts module', () => {
     })
 
     describe('resolveSegmentAssignments', () => {
-      let consoleErrorSpy: jest.SpyInstance | null = null
-
-      afterEach(() => {
-        if (consoleErrorSpy) {
-          consoleErrorSpy.mockRestore()
-        }
-      })
-
       it('called with all corresponding segments will return "resolved" segment assignments', () => {
         const segments = Fixtures.createSegments(5)
         const experiment = Fixtures.createExperimentFull({
@@ -237,10 +229,7 @@ describe('models/ExperimentFull.ts module', () => {
         ])
       })
 
-      it('called with missing segments will return null segment in assignment', () => {
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {})
-
+      it('called with missing segments will throw an error', () => {
         const segments = Fixtures.createSegments(5).filter((segment) => segment.segmentId !== 3)
         const experiment = Fixtures.createExperimentFull({
           segmentAssignments: [
@@ -249,23 +238,9 @@ describe('models/ExperimentFull.ts module', () => {
           ],
         })
 
-        const resolveSegmentAssignments = experiment.resolveSegmentAssignments(segments)
-        expect(resolveSegmentAssignments).toEqual([
-          {
-            segmentAssignmentId: 101,
-            experimentId: 11,
-            segment: new Segment({ segmentId: 1, name: 'segment_1', type: SegmentType.Locale }),
-            isExcluded: false,
-          },
-          {
-            segmentAssignmentId: 102,
-            experimentId: 11,
-            segment: null,
-            isExcluded: true,
-          },
-        ])
-
-        expect(consoleErrorSpy).toHaveBeenCalledTimes(1)
+        expect(() => {
+          experiment.resolveSegmentAssignments(segments)
+        }).toThrowError('Failed to lookup segment with ID 3 for assignment with ID 102.')
       })
     })
 

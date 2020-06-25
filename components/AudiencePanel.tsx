@@ -10,13 +10,8 @@ import { ExperimentFull, Segment, SegmentType } from '@/models'
 function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; segments: Segment[] }) {
   const segmentsByType = _.groupBy(experiment.resolveSegmentAssignments(segments), _.property('segment.type'))
 
-  const countryResolvedSegmentAssignments = (segmentsByType[SegmentType.Country] ?? []).filter(
-    (resolvedSegmentAssignment) => !!resolvedSegmentAssignment.segment,
-  ) as { segment: Segment; isExcluded: boolean }[]
-
-  const localeResolvedSegmentAssignments = (segmentsByType[SegmentType.Locale] ?? []).filter(
-    (resolvedSegmentAssignment) => !!resolvedSegmentAssignment.segment,
-  ) as { segment: Segment; isExcluded: boolean }[]
+  const countryResolvedSegmentAssignments = segmentsByType[SegmentType.Country] ?? []
+  const localeResolvedSegmentAssignments = segmentsByType[SegmentType.Locale] ?? []
 
   const hasSegments = countryResolvedSegmentAssignments.length + localeResolvedSegmentAssignments.length > 0
   const data = [
