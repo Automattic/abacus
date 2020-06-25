@@ -29,6 +29,9 @@ const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }) =>
     <MaterialTable
       columns={[
         { title: 'Name', field: 'name' },
+        { title: 'Status', field: 'status' },
+        { title: 'Platform', field: 'platform' },
+        { title: 'Owner', field: 'ownerLogin' },
         {
           title: 'Start',
           field: 'startDatetime',
@@ -39,9 +42,6 @@ const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }) =>
           field: 'endDatetime',
           render: (experiment) => <DatetimeText datetime={experiment.endDatetime} excludeTime />,
         },
-        { title: 'Status', field: 'status' },
-        { title: 'Platform', field: 'platform' },
-        { title: 'Owner', field: 'ownerLogin' },
       ]}
       data={experiments}
       onRowClick={handleRowClick}
