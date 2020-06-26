@@ -27,6 +27,11 @@ const theme = createMuiTheme({
         },
       },
     },
+    MuiTableCell: {
+      head: {
+        fontWeight: 700,
+      },
+    },
   },
   palette: {
     background: {
