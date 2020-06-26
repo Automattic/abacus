@@ -165,21 +165,6 @@ exports[`renders as expected 1`] = `
                     <td
                       class="MuiTableCell-root MuiTableCell-body"
                     >
-                      test
-                    </td>
-                    <td
-                      class="MuiTableCell-root MuiTableCell-body"
-                    >
-                      40
-                      %
-                    </td>
-                  </tr>
-                  <tr
-                    class="MuiTableRow-root"
-                  >
-                    <td
-                      class="MuiTableCell-root MuiTableCell-body"
-                    >
                       control
                       <div
                         class="MuiChip-root makeStyles-default-2"
@@ -195,6 +180,21 @@ exports[`renders as expected 1`] = `
                       class="MuiTableCell-root MuiTableCell-body"
                     >
                       60
+                      %
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      test
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      40
                       %
                     </td>
                   </tr>

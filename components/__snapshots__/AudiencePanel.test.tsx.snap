@@ -95,21 +95,6 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    test
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    40
-                    %
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root"
-                >
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     control
                     <div
                       class="MuiChip-root makeStyles-default-8"
@@ -125,6 +110,21 @@ exports[`renders as expected with all segments resolvable 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     60
+                    %
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    test
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    40
                     %
                   </td>
                 </tr>
@@ -348,21 +348,6 @@ exports[`renders as expected with existing users allowed 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    test
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    40
-                    %
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root"
-                >
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     control
                     <div
                       class="MuiChip-root makeStyles-default-5"
@@ -378,6 +363,21 @@ exports[`renders as expected with existing users allowed 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     60
+                    %
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    test
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    40
                     %
                   </td>
                 </tr>
@@ -569,21 +569,6 @@ exports[`renders as expected with no segment assignments 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    test
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    40
-                    %
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root"
-                >
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     control
                     <div
                       class="MuiChip-root makeStyles-default-2"
@@ -599,6 +584,21 @@ exports[`renders as expected with no segment assignments 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     60
+                    %
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    test
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    40
                     %
                   </td>
                 </tr>
