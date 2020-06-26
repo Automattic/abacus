@@ -1,3 +1,5 @@
+import Chip from '@material-ui/core/Chip'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
@@ -7,12 +9,21 @@ import React from 'react'
 
 import { Variation } from '@/models'
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    default: {
+      marginLeft: theme.spacing(1),
+    },
+  }),
+)
+
 /**
  * Renders the variations in tabular formation.
  *
  * @param props.variations - The variations to render.
  */
 function VariationsTable({ variations }: { variations: Variation[] }) {
+  const classes = useStyles()
   return (
     <Table>
       <TableHead>
@@ -31,7 +42,7 @@ function VariationsTable({ variations }: { variations: Variation[] }) {
             <TableRow key={variation.variationId}>
               <TableCell>
                 {variation.name}
-                {variation.isDefault && <span className='pill'>Default</span>}
+                {variation.isDefault && <Chip className={classes.default} label='Default' />}
               </TableCell>
               <TableCell>{variation.allocatedPercentage}%</TableCell>
             </TableRow>

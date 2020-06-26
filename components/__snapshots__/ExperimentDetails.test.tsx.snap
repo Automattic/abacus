@@ -181,11 +181,15 @@ exports[`renders as expected 1`] = `
                       class="MuiTableCell-root MuiTableCell-body"
                     >
                       control
-                      <span
-                        class="pill"
+                      <div
+                        class="MuiChip-root makeStyles-default-2"
                       >
-                        Default
-                      </span>
+                        <span
+                          class="MuiChip-label"
+                        >
+                          Default
+                        </span>
+                      </div>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body"
@@ -239,11 +243,15 @@ exports[`renders as expected 1`] = `
                       class="MuiTableCell-root MuiTableCell-body"
                     >
                       segment_2
-                      <span
-                        class="pill"
+                      <div
+                        class="MuiChip-root makeStyles-excluded-3 MuiChip-sizeSmall"
                       >
-                        Excluded
-                      </span>
+                        <span
+                          class="MuiChip-label MuiChip-labelSmall"
+                        >
+                          Excluded
+                        </span>
+                      </div>
                     </td>
                   </tr>
                 </tbody>

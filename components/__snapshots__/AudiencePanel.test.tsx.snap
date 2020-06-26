@@ -6,7 +6,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
     class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
   >
     <h3
-      class="MuiTypography-root makeStyles-title-3 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      class="MuiTypography-root makeStyles-title-5 MuiTypography-h3 MuiTypography-colorTextPrimary"
     >
       Audience
     </h3>
@@ -111,11 +111,15 @@ exports[`renders as expected with all segments resolvable 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     control
-                    <span
-                      class="pill"
+                    <div
+                      class="MuiChip-root makeStyles-default-6"
                     >
-                      Default
-                    </span>
+                      <span
+                        class="MuiChip-label"
+                      >
+                        Default
+                      </span>
+                    </div>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -169,11 +173,15 @@ exports[`renders as expected with all segments resolvable 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     segment_2
-                    <span
-                      class="pill"
+                    <div
+                      class="MuiChip-root makeStyles-excluded-7 MuiChip-sizeSmall"
                     >
-                      Excluded
-                    </span>
+                      <span
+                        class="MuiChip-label MuiChip-labelSmall"
+                      >
+                        Excluded
+                      </span>
+                    </div>
                   </td>
                 </tr>
                 <tr
@@ -224,11 +232,15 @@ exports[`renders as expected with all segments resolvable 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     segment_3
-                    <span
-                      class="pill"
+                    <div
+                      class="MuiChip-root makeStyles-excluded-7 MuiChip-sizeSmall"
                     >
-                      Excluded
-                    </span>
+                      <span
+                        class="MuiChip-label MuiChip-labelSmall"
+                      >
+                        Excluded
+                      </span>
+                    </div>
                   </td>
                 </tr>
               </tbody>
@@ -247,7 +259,7 @@ exports[`renders as expected with existing users allowed 1`] = `
     class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
   >
     <h3
-      class="MuiTypography-root makeStyles-title-2 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      class="MuiTypography-root makeStyles-title-3 MuiTypography-h3 MuiTypography-colorTextPrimary"
     >
       Audience
     </h3>
@@ -352,11 +364,15 @@ exports[`renders as expected with existing users allowed 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     control
-                    <span
-                      class="pill"
+                    <div
+                      class="MuiChip-root makeStyles-default-4"
                     >
-                      Default
-                    </span>
+                      <span
+                        class="MuiChip-label"
+                      >
+                        Default
+                      </span>
+                    </div>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -502,11 +518,15 @@ exports[`renders as expected with no segment assignments 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     control
-                    <span
-                      class="pill"
+                    <div
+                      class="MuiChip-root makeStyles-default-2"
                     >
-                      Default
-                    </span>
+                      <span
+                        class="MuiChip-label"
+                      >
+                        Default
+                      </span>
+                    </div>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"

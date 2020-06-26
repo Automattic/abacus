@@ -1,3 +1,5 @@
+import Chip from '@material-ui/core/Chip'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
@@ -6,6 +8,14 @@ import TableRow from '@material-ui/core/TableRow'
 import React, { useMemo } from 'react'
 
 import { Segment, SegmentType, SegmentTypeToHuman } from '@/models'
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    excluded: {
+      marginLeft: theme.spacing(1),
+    },
+  }),
+)
 
 /**
  *
@@ -30,6 +40,7 @@ function SegmentsTable({
       }),
     [resolvedSegmentAssignments],
   )
+  const classes = useStyles()
   return (
     <Table>
       <TableHead>
@@ -46,7 +57,9 @@ function SegmentsTable({
               <TableRow key={resolvedSegmentAssignment.segment.segmentId}>
                 <TableCell>
                   {resolvedSegmentAssignment.segment.name}
-                  {resolvedSegmentAssignment.isExcluded && <span className='pill'>Excluded</span>}
+                  {resolvedSegmentAssignment.isExcluded && (
+                    <Chip className={classes.excluded} label='Excluded' size='small' />
+                  )}
                 </TableCell>
               </TableRow>
             ),
