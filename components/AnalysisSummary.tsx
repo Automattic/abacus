@@ -50,7 +50,7 @@ function ParticipantCounts({
   experiment: ExperimentFull
   latestPrimaryMetricAnalyses: Analysis[]
 }) {
-  const sortedVariations = _.orderBy(experiment.variations, ['isPrimary', 'name'], ['desc', 'asc'])
+  const sortedVariations = _.orderBy(experiment.variations, ['isDefault', 'name'], ['desc', 'asc'])
   return (
     <TableContainer component={Paper}>
       <Table>
