@@ -229,6 +229,38 @@ exports[`renders as expected 1`] = `
                       role="columnheader"
                       scope="col"
                     >
+                      Locales
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="MuiTableBody-root"
+                >
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      segment_1
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table
+                class="MuiTable-root"
+              >
+                <thead
+                  class="MuiTableHead-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-head"
+                  >
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head"
+                      role="columnheader"
+                      scope="col"
+                    >
                       Countries
                     </th>
                   </tr>
@@ -252,38 +284,6 @@ exports[`renders as expected 1`] = `
                           Excluded
                         </span>
                       </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table
-                class="MuiTable-root"
-              >
-                <thead
-                  class="MuiTableHead-root"
-                >
-                  <tr
-                    class="MuiTableRow-root MuiTableRow-head"
-                  >
-                    <th
-                      class="MuiTableCell-root MuiTableCell-head"
-                      role="columnheader"
-                      scope="col"
-                    >
-                      Locales
-                    </th>
-                  </tr>
-                </thead>
-                <tbody
-                  class="MuiTableBody-root"
-                >
-                  <tr
-                    class="MuiTableRow-root"
-                  >
-                    <td
-                      class="MuiTableCell-root MuiTableCell-body"
-                    >
-                      segment_1
                     </td>
                   </tr>
                 </tbody>

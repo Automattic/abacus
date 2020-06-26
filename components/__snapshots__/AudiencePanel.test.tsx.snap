@@ -6,7 +6,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
     class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
   >
     <h3
-      class="MuiTypography-root makeStyles-title-5 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      class="MuiTypography-root makeStyles-title-7 MuiTypography-h3 MuiTypography-colorTextPrimary"
     >
       Audience
     </h3>
@@ -112,7 +112,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   >
                     control
                     <div
-                      class="MuiChip-root makeStyles-default-6"
+                      class="MuiChip-root makeStyles-default-8"
                     >
                       <span
                         class="MuiChip-label"
@@ -159,56 +159,6 @@ exports[`renders as expected with all segments resolvable 1`] = `
                     role="columnheader"
                     scope="col"
                   >
-                    Countries
-                  </th>
-                </tr>
-              </thead>
-              <tbody
-                class="MuiTableBody-root"
-              >
-                <tr
-                  class="MuiTableRow-root"
-                >
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    segment_2
-                    <div
-                      class="MuiChip-root makeStyles-excluded-7 MuiChip-sizeSmall"
-                    >
-                      <span
-                        class="MuiChip-label MuiChip-labelSmall"
-                      >
-                        Excluded
-                      </span>
-                    </div>
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root"
-                >
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    segment_4
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table
-              class="MuiTable-root"
-            >
-              <thead
-                class="MuiTableHead-root"
-              >
-                <tr
-                  class="MuiTableRow-root MuiTableRow-head"
-                >
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head"
-                    role="columnheader"
-                    scope="col"
-                  >
                     Locales
                   </th>
                 </tr>
@@ -233,7 +183,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   >
                     segment_3
                     <div
-                      class="MuiChip-root makeStyles-excluded-7 MuiChip-sizeSmall"
+                      class="MuiChip-root makeStyles-excluded-9 MuiChip-sizeSmall"
                     >
                       <span
                         class="MuiChip-label MuiChip-labelSmall"
@@ -241,6 +191,56 @@ exports[`renders as expected with all segments resolvable 1`] = `
                         Excluded
                       </span>
                     </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Countries
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    segment_2
+                    <div
+                      class="MuiChip-root makeStyles-excluded-9 MuiChip-sizeSmall"
+                    >
+                      <span
+                        class="MuiChip-label MuiChip-labelSmall"
+                      >
+                        Excluded
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    segment_4
                   </td>
                 </tr>
               </tbody>
@@ -259,7 +259,7 @@ exports[`renders as expected with existing users allowed 1`] = `
     class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
   >
     <h3
-      class="MuiTypography-root makeStyles-title-3 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      class="MuiTypography-root makeStyles-title-4 MuiTypography-h3 MuiTypography-colorTextPrimary"
     >
       Audience
     </h3>
@@ -365,7 +365,7 @@ exports[`renders as expected with existing users allowed 1`] = `
                   >
                     control
                     <div
-                      class="MuiChip-root makeStyles-default-4"
+                      class="MuiChip-root makeStyles-default-5"
                     >
                       <span
                         class="MuiChip-label"
@@ -398,7 +398,74 @@ exports[`renders as expected with existing users allowed 1`] = `
           <td
             class="MuiTableCell-root MuiTableCell-body"
           >
-            No segments assigned
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Locales
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    All 
+                    locales
+                     included
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Countries
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    All 
+                    countries
+                     included
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </td>
         </tr>
       </tbody>
@@ -552,7 +619,74 @@ exports[`renders as expected with no segment assignments 1`] = `
           <td
             class="MuiTableCell-root MuiTableCell-body"
           >
-            No segments assigned
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Locales
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    All 
+                    locales
+                     included
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Countries
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    All 
+                    countries
+                     included
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </td>
         </tr>
       </tbody>

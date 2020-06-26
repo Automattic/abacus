@@ -35,17 +35,11 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
     {
       label: 'Segments',
       padding: (hasSegments ? 'none' : undefined) as TableCellProps['padding'],
-      value: hasSegments ? (
+      value: (
         <>
-          {countryResolvedSegmentAssignments.length > 0 && (
-            <SegmentsTable resolvedSegmentAssignments={countryResolvedSegmentAssignments} type={SegmentType.Country} />
-          )}
-          {localeResolvedSegmentAssignments.length > 0 && (
-            <SegmentsTable resolvedSegmentAssignments={localeResolvedSegmentAssignments} type={SegmentType.Locale} />
-          )}
+          <SegmentsTable resolvedSegmentAssignments={localeResolvedSegmentAssignments} type={SegmentType.Locale} />
+          <SegmentsTable resolvedSegmentAssignments={countryResolvedSegmentAssignments} type={SegmentType.Country} />
         </>
-      ) : (
-        'No segments assigned'
       ),
     },
   ]

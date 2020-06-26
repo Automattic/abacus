@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 /**
+ * Renders the segments of a particular type.
  *
  * @param props.resolveSegmentAssignments - The segment assignments with the
  *   segment IDs resolved to the actual segment.
@@ -41,6 +42,7 @@ function SegmentsTable({
     [resolvedSegmentAssignments],
   )
   const classes = useStyles()
+  const what = type === SegmentType.Country ? 'countries' : 'locales'
   return (
     <Table>
       <TableHead>
@@ -51,18 +53,24 @@ function SegmentsTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {sortedResolvedSegmentAssignments.map(
-          (resolvedSegmentAssignment) =>
-            resolvedSegmentAssignment.segment && (
-              <TableRow key={resolvedSegmentAssignment.segment.segmentId}>
-                <TableCell>
-                  {resolvedSegmentAssignment.segment.name}
-                  {resolvedSegmentAssignment.isExcluded && (
-                    <Chip className={classes.excluded} label='Excluded' size='small' />
-                  )}
-                </TableCell>
-              </TableRow>
-            ),
+        {resolvedSegmentAssignments.length === 0 ? (
+          <TableRow>
+            <TableCell>All {what} included</TableCell>
+          </TableRow>
+        ) : (
+          sortedResolvedSegmentAssignments.map(
+            (resolvedSegmentAssignment) =>
+              resolvedSegmentAssignment.segment && (
+                <TableRow key={resolvedSegmentAssignment.segment.segmentId}>
+                  <TableCell>
+                    {resolvedSegmentAssignment.segment.name}
+                    {resolvedSegmentAssignment.isExcluded && (
+                      <Chip className={classes.excluded} label='Excluded' size='small' />
+                    )}
+                  </TableCell>
+                </TableRow>
+              ),
+          )
         )}
       </TableBody>
     </Table>
