@@ -55,10 +55,6 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
     [experiment.segmentAssignments, segments],
   )
 
-  const countryResolvedSegmentAssignments = segmentsByType[SegmentType.Country] ?? []
-  const localeResolvedSegmentAssignments = segmentsByType[SegmentType.Locale] ?? []
-
-  const hasSegments = countryResolvedSegmentAssignments.length + localeResolvedSegmentAssignments.length > 0
   const data = [
     { label: 'Platform', value: experiment.platform },
     { label: 'User Type', value: experiment.existingUsersAllowed ? 'All users (new + existing)' : 'New users only' },
@@ -69,11 +65,17 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
     },
     {
       label: 'Segments',
-      padding: (hasSegments ? 'none' : undefined) as TableCellProps['padding'],
+      padding: 'none' as TableCellProps['padding'],
       value: (
         <>
-          <SegmentsTable resolvedSegmentAssignments={localeResolvedSegmentAssignments} type={SegmentType.Locale} />
-          <SegmentsTable resolvedSegmentAssignments={countryResolvedSegmentAssignments} type={SegmentType.Country} />
+          <SegmentsTable
+            resolvedSegmentAssignments={segmentsByType[SegmentType.Locale] ?? []}
+            type={SegmentType.Locale}
+          />
+          <SegmentsTable
+            resolvedSegmentAssignments={segmentsByType[SegmentType.Country] ?? []}
+            type={SegmentType.Country}
+          />
         </>
       ),
     },
