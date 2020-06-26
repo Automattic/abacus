@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
 /**
  * Renders the segments of a particular type.
  *
- * @param props.resolveSegmentAssignments - The segment assignments with the
+ * @param props.resolvedSegmentAssignments - The segment assignments with the
  *   segment IDs resolved to the actual segment.
  * @param props.type - The segment type the segment assignments represent.
  */
