@@ -5,8 +5,10 @@ export const defaultTableOptions: Options = {
   pageSize: 25,
   showEmptyDataSourceMessage: false,
   showTitle: false,
-  search: false,
-  toolbar: false,
+  search: true,
+  toolbar: true,
+  searchFieldVariant: 'standard',
+  searchFieldAlignment: 'left',
   pageSizeOptions: [],
   showFirstLastPageButtons: false,
   headerStyle: {
