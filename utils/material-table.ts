@@ -1,4 +1,6 @@
-export const defaultTableOptions = {
+import { Options } from 'material-table'
+
+export const defaultTableOptions: Options = {
   emptyRowsWhenPaging: false,
   pageSize: 25,
   showEmptyDataSourceMessage: false,
@@ -7,4 +9,10 @@ export const defaultTableOptions = {
   toolbar: false,
   pageSizeOptions: [],
   showFirstLastPageButtons: false,
+  headerStyle: {
+    fontWeight: 600,
+  },
+  rowStyle: {
+    opacity: 0.8,
+  },
 }
