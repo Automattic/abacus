@@ -3,11 +3,23 @@ import React from 'react'
 
 import AudiencePanel from '@/components/AudiencePanel'
 import GeneralPanel from '@/components/GeneralPanel'
-import { ExperimentFull, Segment } from '@/models'
+import MetricAssignmentsPanel from '@/components/MetricAssignmentsPanel'
+import { ExperimentFull, MetricBare, Segment } from '@/models'
 
 const debug = debugFactory('abacus:components/ExperimentDetails.tsx')
 
-function ExperimentDetails({ experiment, segments }: { experiment: ExperimentFull; segments: Segment[] }) {
+/**
+ * Renders the main details of an experiment.
+ */
+function ExperimentDetails({
+  experiment,
+  metrics,
+  segments,
+}: {
+  experiment: ExperimentFull
+  metrics: MetricBare[]
+  segments: Segment[]
+}) {
   debug('ExperimentDetails#render')
   return (
     <div>
@@ -15,6 +27,8 @@ function ExperimentDetails({ experiment, segments }: { experiment: ExperimentFul
       <GeneralPanel experiment={experiment} />
       <br />
       <AudiencePanel experiment={experiment} segments={segments} />
+      <br />
+      <MetricAssignmentsPanel experiment={experiment} metrics={metrics} />
     </div>
   )
 }

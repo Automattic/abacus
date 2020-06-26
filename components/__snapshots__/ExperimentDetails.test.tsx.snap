@@ -331,6 +331,121 @@ exports[`renders as expected 1`] = `
         </tbody>
       </table>
     </div>
+    <br />
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <h3
+        class="MuiTypography-root makeStyles-title-7 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        Metrics
+      </h3>
+      <table
+        class="MuiTable-root"
+      >
+        <thead
+          class="MuiTableHead-root"
+        >
+          <tr
+            class="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="columnheader"
+              scope="col"
+            >
+              Name
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="columnheader"
+              scope="col"
+            >
+              Minimum Difference
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="columnheader"
+              scope="col"
+            >
+              Attribution Window
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="columnheader"
+              scope="col"
+            >
+              Changes Expected
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              metric_1
+              <div
+                class="MuiChip-root makeStyles-primary-6"
+              >
+                <span
+                  class="MuiChip-label"
+                >
+                  Primary
+                </span>
+              </div>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <span>
+                0.1 pp
+              </span>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              1 week
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              Yes
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              metric_2
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <span>
+                $10.50
+              </span>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              4 weeks
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              No
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 `;
