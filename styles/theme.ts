@@ -6,6 +6,19 @@ declare module '@material-ui/core/styles/createPalette' {
   }
 }
 
+declare module '@material-ui/core/styles' {
+  interface ThemeOptions {
+    custom: {
+      fonts: Record<string, React.CSSProperties['fontFamily']>
+    }
+  }
+  interface Theme {
+    custom: {
+      fonts: Record<string, React.CSSProperties['fontFamily']>
+    }
+  }
+}
+
 const theme = createMuiTheme({
   overrides: {
     MuiCssBaseline: {
@@ -39,6 +52,11 @@ const theme = createMuiTheme({
     },
     primary: {
       main: '#194661',
+    },
+  },
+  custom: {
+    fonts: {
+      monospace: `'Roboto Mono', monospace`,
     },
   },
 })
