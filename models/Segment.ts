@@ -50,6 +50,6 @@ export enum SegmentType {
  * Mapping from SegmentType to human-friendly values.
  */
 export const SegmentTypeToHuman = {
-  [SegmentType.Country]: 'Country',
-  [SegmentType.Locale]: 'Locale',
+  [SegmentType.Country]: 'Countries',
+  [SegmentType.Locale]: 'Locales',
 }
