@@ -1,6 +1,6 @@
 import { TableCellProps } from '@material-ui/core/TableCell'
 import _ from 'lodash'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import LabelValuePanel from '@/components/LabelValuePanel'
 import SegmentsTable from '@/components/SegmentsTable'
@@ -15,7 +15,10 @@ import { ExperimentFull, Segment, SegmentType } from '@/models'
  *   of the experiment's segment assignments.
  */
 function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; segments: Segment[] }) {
-  const segmentsByType = _.groupBy(experiment.resolveSegmentAssignments(segments), _.property('segment.type'))
+  const segmentsByType = useMemo(
+    () => _.groupBy(experiment.resolveSegmentAssignments(segments), _.property('segment.type')),
+    [experiment, segments],
+  )
 
   const countryResolvedSegmentAssignments = segmentsByType[SegmentType.Country] ?? []
   const localeResolvedSegmentAssignments = segmentsByType[SegmentType.Locale] ?? []
