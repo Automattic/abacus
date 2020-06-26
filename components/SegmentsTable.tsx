@@ -8,7 +8,7 @@ import TableRow from '@material-ui/core/TableRow'
 import _ from 'lodash'
 import React, { useMemo } from 'react'
 
-import { Segment, SegmentType, SegmentTypeToHuman } from '@/models'
+import { Segment, SegmentType } from '@/models'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -17,6 +17,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 )
+
+/**
+ * Mapping from SegmentType to human-friendly values.
+ */
+const SegmentTypeToHeading = {
+  [SegmentType.Country]: 'Countries',
+  [SegmentType.Locale]: 'Locales',
+}
 
 /**
  * Renders the segments of a particular type.
@@ -40,20 +48,19 @@ function SegmentsTable({
     [resolvedSegmentAssignments],
   )
   const classes = useStyles()
-  const what = type === SegmentType.Country ? 'countries' : 'locales'
   return (
     <Table>
       <TableHead>
         <TableRow>
           <TableCell component='th' variant='head'>
-            {SegmentTypeToHuman[type]}
+            {SegmentTypeToHeading[type]}
           </TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         {resolvedSegmentAssignments.length === 0 ? (
           <TableRow>
-            <TableCell>All {what} included</TableCell>
+            <TableCell>All {type === SegmentType.Country ? 'countries' : 'locales'} included</TableCell>
           </TableRow>
         ) : (
           sortedResolvedSegmentAssignments.map(
