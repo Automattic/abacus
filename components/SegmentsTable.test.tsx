@@ -30,7 +30,7 @@ test('renders as expected with segment names not in order', () => {
               role="columnheader"
               scope="col"
             >
-              country
+              Country
             </th>
           </tr>
         </thead>

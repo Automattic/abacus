@@ -155,7 +155,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
                     role="columnheader"
                     scope="col"
                   >
-                    country
+                    Country
                   </th>
                 </tr>
               </thead>
@@ -201,7 +201,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
                     role="columnheader"
                     scope="col"
                   >
-                    locale
+                    Locale
                   </th>
                 </tr>
               </thead>

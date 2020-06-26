@@ -5,7 +5,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import React, { useMemo } from 'react'
 
-import { Segment, SegmentType } from '@/models'
+import { Segment, SegmentType, SegmentTypeToHuman } from '@/models'
 
 /**
  *
@@ -35,7 +35,7 @@ function SegmentsTable({
       <TableHead>
         <TableRow>
           <TableCell component='th' variant='head'>
-            {type}
+            {SegmentTypeToHuman[type]}
           </TableCell>
         </TableRow>
       </TableHead>
