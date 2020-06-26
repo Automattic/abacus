@@ -69,9 +69,7 @@ function SegmentsTable({
                 <TableRow key={resolvedSegmentAssignment.segment.segmentId}>
                   <TableCell>
                     {resolvedSegmentAssignment.segment.name}
-                    {resolvedSegmentAssignment.isExcluded && (
-                      <Chip className={classes.excluded} label='Excluded' size='small' />
-                    )}
+                    {resolvedSegmentAssignment.isExcluded && <Chip className={classes.excluded} label='Excluded' />}
                   </TableCell>
                 </TableRow>
               ),

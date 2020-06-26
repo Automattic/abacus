@@ -45,10 +45,10 @@ test('renders as expected with segment names not in order', () => {
             >
               bar
               <div
-                class="MuiChip-root makeStyles-excluded-1 MuiChip-sizeSmall"
+                class="MuiChip-root makeStyles-excluded-1"
               >
                 <span
-                  class="MuiChip-label MuiChip-labelSmall"
+                  class="MuiChip-label"
                 >
                   Excluded
                 </span>

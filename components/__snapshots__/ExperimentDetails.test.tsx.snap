@@ -276,10 +276,10 @@ exports[`renders as expected 1`] = `
                     >
                       segment_2
                       <div
-                        class="MuiChip-root makeStyles-excluded-3 MuiChip-sizeSmall"
+                        class="MuiChip-root makeStyles-excluded-3"
                       >
                         <span
-                          class="MuiChip-label MuiChip-labelSmall"
+                          class="MuiChip-label"
                         >
                           Excluded
                         </span>

@@ -183,10 +183,10 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   >
                     segment_3
                     <div
-                      class="MuiChip-root makeStyles-excluded-9 MuiChip-sizeSmall"
+                      class="MuiChip-root makeStyles-excluded-9"
                     >
                       <span
-                        class="MuiChip-label MuiChip-labelSmall"
+                        class="MuiChip-label"
                       >
                         Excluded
                       </span>
@@ -224,10 +224,10 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   >
                     segment_2
                     <div
-                      class="MuiChip-root makeStyles-excluded-9 MuiChip-sizeSmall"
+                      class="MuiChip-root makeStyles-excluded-9"
                     >
                       <span
-                        class="MuiChip-label MuiChip-labelSmall"
+                        class="MuiChip-label"
                       >
                         Excluded
                       </span>
@@ -396,7 +396,7 @@ exports[`renders as expected with existing users allowed 1`] = `
             Segments
           </th>
           <td
-            class="MuiTableCell-root MuiTableCell-body"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
           >
             <table
               class="MuiTable-root"
@@ -617,7 +617,7 @@ exports[`renders as expected with no segment assignments 1`] = `
             Segments
           </th>
           <td
-            class="MuiTableCell-root MuiTableCell-body"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
           >
             <table
               class="MuiTable-root"
