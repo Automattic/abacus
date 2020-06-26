@@ -6,14 +6,6 @@ import Fixtures from '@/helpers/fixtures'
 
 import AudiencePanel from './AudiencePanel'
 
-let consoleErrorSpy: jest.SpyInstance | null = null
-
-afterEach(() => {
-  if (consoleErrorSpy) {
-    consoleErrorSpy.mockRestore()
-  }
-})
-
 test('renders as expected with no segment assignments', () => {
   const experiment = Fixtures.createExperimentFull()
   const { container } = render(<AudiencePanel experiment={experiment} segments={[]} />)
@@ -46,9 +38,6 @@ test('renders as expected with all segments resolvable', () => {
 })
 
 test('throws an error when some segments not resolvable', () => {
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {})
-
   const segments = Fixtures.createSegments(5)
   const experiment = Fixtures.createExperimentFull({
     segmentAssignments: [
@@ -60,6 +49,10 @@ test('throws an error when some segments not resolvable', () => {
     ],
   })
 
+  // Note: This console.error spy is mainly used to suppress the output that the
+  // `render` function outputs.
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {})
   try {
     render(
       <RenderErrorBoundary>{() => <AudiencePanel experiment={experiment} segments={segments} />}</RenderErrorBoundary>,
@@ -67,5 +60,7 @@ test('throws an error when some segments not resolvable', () => {
     expect(false).toBe(true) // Should never be reached
   } catch (err) {
     expect(consoleErrorSpy).toHaveBeenCalled()
+  } finally {
+    consoleErrorSpy.mockRestore()
   }
 })
