@@ -3,16 +3,7 @@ import { ApiDataSource } from '@/api/ApiDataSource'
 import { ExcludeMethods } from '@/types/ExcludeMethods'
 import { formatIsoUtcOffset } from '@/utils/formatters'
 
-import {
-  Event,
-  ExperimentBare,
-  MetricAssignment,
-  Platform,
-  Segment,
-  SegmentAssignment,
-  Status,
-  Variation,
-} from './index'
+import { Event, ExperimentBare, MetricAssignment, Platform, SegmentAssignment, Status, Variation } from './index'
 
 /**
  * An experiment with full data.
@@ -148,39 +139,6 @@ export class ExperimentFull implements ApiDataSource {
         SegmentAssignment.fromApiData(rawSegmentAssignment),
       ),
       variations: apiData.variations.map((rawVariation: ApiData) => Variation.fromApiData(rawVariation)),
-    })
-  }
-
-  /**
-   * Resolves the segment ID of the segment assignment with the actual segment.
-   * If the ID cannot be resolved, then an `Error` will be thrown.
-   *
-   * @param segments - The segments to associate with the assignments.
-   * @throws {Error} When unable to resolve a segment ID with one of the supplied
-   *   segments.
-   */
-  resolveSegmentAssignments(
-    segments: Segment[],
-  ): {
-    segment: Segment
-    isExcluded: boolean
-  }[] {
-    const segmentsById: { [segmentId: string]: Segment } = {}
-    segments.forEach((segment) => (segmentsById[segment.segmentId] = segment))
-
-    return this.segmentAssignments.map((segmentAssignment) => {
-      const segment = segmentsById[segmentAssignment.segmentId]
-
-      if (!segment) {
-        throw Error(
-          `Failed to lookup segment with ID ${segmentAssignment.segmentId} for assignment with ID ${segmentAssignment.segmentAssignmentId}.`,
-        )
-      }
-
-      return {
-        segment,
-        isExcluded: segmentAssignment.isExcluded,
-      }
     })
   }
 

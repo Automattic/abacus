@@ -1,5 +1,5 @@
 import Fixtures from '@/helpers/fixtures'
-import { AttributionWindowSeconds, Platform, Segment, SegmentAssignment, SegmentType, Status } from '@/models'
+import { AttributionWindowSeconds, Platform, Status } from '@/models'
 
 import { ExperimentFull } from './ExperimentFull'
 
@@ -199,44 +199,6 @@ describe('models/ExperimentFull.ts module', () => {
             ],
           }),
         )
-      })
-    })
-
-    describe('resolveSegmentAssignments', () => {
-      it('called with all corresponding segments will return "resolved" segment assignments', () => {
-        const segments = Fixtures.createSegments(5)
-        const experiment = Fixtures.createExperimentFull({
-          segmentAssignments: [
-            new SegmentAssignment({ segmentAssignmentId: 101, experimentId: 11, segmentId: 1, isExcluded: false }),
-            new SegmentAssignment({ segmentAssignmentId: 102, experimentId: 11, segmentId: 3, isExcluded: true }),
-          ],
-        })
-
-        const resolveSegmentAssignments = experiment.resolveSegmentAssignments(segments)
-        expect(resolveSegmentAssignments).toEqual([
-          {
-            segment: new Segment({ segmentId: 1, name: 'segment_1', type: SegmentType.Locale }),
-            isExcluded: false,
-          },
-          {
-            segment: new Segment({ segmentId: 3, name: 'segment_3', type: SegmentType.Locale }),
-            isExcluded: true,
-          },
-        ])
-      })
-
-      it('called with missing segments will throw an error', () => {
-        const segments = Fixtures.createSegments(5).filter((segment) => segment.segmentId !== 3)
-        const experiment = Fixtures.createExperimentFull({
-          segmentAssignments: [
-            new SegmentAssignment({ segmentAssignmentId: 101, experimentId: 11, segmentId: 1, isExcluded: false }),
-            new SegmentAssignment({ segmentAssignmentId: 102, experimentId: 11, segmentId: 3, isExcluded: true }),
-          ],
-        })
-
-        expect(() => {
-          experiment.resolveSegmentAssignments(segments)
-        }).toThrowError('Failed to lookup segment with ID 3 for assignment with ID 102.')
       })
     })
 
