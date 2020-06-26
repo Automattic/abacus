@@ -5,6 +5,7 @@ import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
+import _ from 'lodash'
 import React, { useMemo } from 'react'
 
 import { Segment, SegmentType, SegmentTypeToHuman } from '@/models'
@@ -35,10 +36,7 @@ function SegmentsTable({
   type: SegmentType
 }) {
   const sortedResolvedSegmentAssignments = useMemo(
-    () =>
-      [...resolvedSegmentAssignments].sort((a, b) => {
-        return a.segment.name > b.segment.name ? 1 : -1
-      }),
+    () => _.orderBy(resolvedSegmentAssignments, [_.property('segment.name')]),
     [resolvedSegmentAssignments],
   )
   const classes = useStyles()
