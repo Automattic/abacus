@@ -7,7 +7,7 @@ import { createMatchMedia } from '@/helpers/test-utils'
 import ExperimentDetails from './ExperimentDetails'
 
 const initialJsDomWindowInnerWidth = window.innerWidth
-afterAll(() => {
+afterEach(() => {
   window.matchMedia = createMatchMedia(initialJsDomWindowInnerWidth)
 })
 

@@ -5,7 +5,7 @@ import mediaQuery from 'css-mediaquery'
  * width.
  *
  *     const initialJsDomWindowInnerWidth = window.innerWidth
- *     afterAll(() => {
+ *     afterEach(() => {
  *       // Reset back to initial width for tests that don't explicitly set the width
  *       // themselves.
  *       window.matchMedia = createMatchMedia(initialJsDomWindowInnerWidth)
