@@ -20,15 +20,17 @@ const useStyles = makeStyles((theme: Theme) =>
  * rendered in a columnar fashion.
  */
 function LabelValuePanel({
+  className,
   data,
   title,
 }: {
+  className?: string
   data: { label: string; padding?: TableCellProps['padding']; value: ReactNode }[]
   title: string
 }) {
   const classes = useStyles()
   return (
-    <Paper>
+    <Paper className={className}>
       <Typography className={classes.title} color='textPrimary' variant='h3'>
         {title}
       </Typography>
