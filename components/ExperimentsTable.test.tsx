@@ -3,12 +3,17 @@ import addToDate from 'date-fns/add'
 import React from 'react'
 
 import { ExperimentBare, Platform, Status } from '@/models'
+import ThemeProvider from '@/styles/ThemeProvider'
 
 import ExperimentsTable from './ExperimentsTable'
 
 test('with no experiments, renders an empty table', () => {
   const experiments: ExperimentBare[] = []
-  const { container, getByText } = render(<ExperimentsTable experiments={experiments} />)
+  const { container, getByText } = render(
+    <ThemeProvider>
+      <ExperimentsTable experiments={experiments} />
+    </ThemeProvider>,
+  )
 
   expect(getByText('Name')).toBeInTheDocument()
   expect(getByText('Start')).toBeInTheDocument()
@@ -34,12 +39,15 @@ test('with one page of experiments, renders a table', () => {
       status: Status.Staging,
     },
   ]
-  const { container } = render(<ExperimentsTable experiments={experiments} />)
+  const { container } = render(
+    <ThemeProvider>
+      <ExperimentsTable experiments={experiments} />
+    </ThemeProvider>,
+  )
 
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
   expect(getByText(tBodyElmt, 'First', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toBeInTheDocument()
 })
@@ -59,12 +67,15 @@ test('with more than one page of experiments, renders a table with a pagination 
     status: Status.Staging,
   }))
 
-  const { container } = render(<ExperimentsTable experiments={experiments} />)
+  const { container } = render(
+    <ThemeProvider>
+      <ExperimentsTable experiments={experiments} />
+    </ThemeProvider>,
+  )
 
   let tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
   expect(getByText(tBodyElmt, 'Name1', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getAllByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toHaveLength(PER_PAGE)
   expect(getAllByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toHaveLength(PER_PAGE)
   expect(getAllByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toHaveLength(PER_PAGE)
 
@@ -81,7 +92,6 @@ test('with more than one page of experiments, renders a table with a pagination 
   tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
   expect(getByText(tBodyElmt, 'Name26', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getAllByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toHaveLength(COUNT - PER_PAGE)
   expect(getAllByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toHaveLength(COUNT - PER_PAGE)
   expect(getAllByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toHaveLength(COUNT - PER_PAGE)
 
@@ -96,7 +106,6 @@ test('with more than one page of experiments, renders a table with a pagination 
   tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
   expect(getByText(tBodyElmt, 'Name1', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getAllByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toHaveLength(PER_PAGE)
   expect(getAllByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toHaveLength(PER_PAGE)
   expect(getAllByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toHaveLength(PER_PAGE)
 })
