@@ -8,6 +8,8 @@ import DatetimeText from '@/components/DatetimeText'
 import { ExperimentBare } from '@/models'
 import { defaultTableOptions } from '@/utils/material-table'
 
+import ExperimentStatus from './ExperimentStatus'
+
 const debug = debugFactory('abacus:components/ExperimentsTable.tsx')
 
 /**
@@ -41,6 +43,7 @@ const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }) =>
         {
           title: 'Status',
           field: 'status',
+          render: (experiment) => <ExperimentStatus status={experiment.status} />,
         },
         {
           title: 'Platform',
