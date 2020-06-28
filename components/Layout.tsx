@@ -1,4 +1,4 @@
-import { AppBar, Container, Typography } from '@material-ui/core'
+import { AppBar, Container, Theme, Typography } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -10,7 +10,7 @@ import { onRenderError } from '@/event-handlers'
 import RenderErrorBoundary from './RenderErrorBoundary'
 import RenderErrorView from './RenderErrorView'
 
-const useStyles = makeStyles(
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
@@ -58,7 +58,7 @@ const useStyles = makeStyles(
       flex: '1 0',
     },
     contentTitle: {
-      margin: '1rem 0',
+      margin: theme.spacing(4, 0, 2, 0),
     },
 
     // Footer
@@ -93,7 +93,7 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
               <div className={classes.appBarBottom}>
                 <Container maxWidth='xl'>
                   <nav className={classes.appNav}>
-                    <Link href='/'>
+                    <Link href='/experiments'>
                       <a>Experiments</a>
                     </Link>
                     <Link href='/metrics'>
