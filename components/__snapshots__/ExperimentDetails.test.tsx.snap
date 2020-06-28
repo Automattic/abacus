@@ -6,77 +6,115 @@ exports[`renders as expected 1`] = `
     <h2>
       Experiment details
     </h2>
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            Name
-          </td>
-          <td>
-            experiment_1
-          </td>
-        </tr>
-        <tr>
-          <td>
-            P2 Link
-          </td>
-          <td>
-            <a
-              href="https://wordpress.com/experiment_1"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              P2
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Description
-          </td>
-          <td>
-            Experiment with things. Change stuff. Profit.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Start
-          </td>
-          <td>
-            2020-06-04T00:00:00.000+00:00
-          </td>
-        </tr>
-        <tr>
-          <td>
-            End
-          </td>
-          <td>
-            2020-07-04T00:00:00.000+00:00
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Status
-          </td>
-          <td>
-            completed
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Platform
-          </td>
-          <td>
-            calypso
-          </td>
-        </tr>
-      </tbody>
-    </table>
     <div
       class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
     >
       <h3
-        class="MuiTypography-root makeStyles-title-1 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        class="MuiTypography-root makeStyles-title-2 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        General
+      </h3>
+      <table
+        class="MuiTable-root"
+      >
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              Description
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              Experiment with things. Change stuff. Profit.
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              P2 Link
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <a
+                href="https://wordpress.com/experiment_1"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                https://wordpress.com/experiment_1
+              </a>
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              Dates
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <span
+                class="makeStyles-root-3"
+                title="03/06/2020, 20:00:00"
+              >
+                2020-06-04
+              </span>
+              <span
+                class="makeStyles-to-1"
+              >
+                to
+              </span>
+              <span
+                class="makeStyles-root-3"
+                title="03/07/2020, 20:00:00"
+              >
+                2020-07-04
+              </span>
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              Owner
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              test_a11n
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <h3
+        class="MuiTypography-root makeStyles-title-2 MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Audience
       </h3>
@@ -167,7 +205,7 @@ exports[`renders as expected 1`] = `
                     >
                       control
                       <div
-                        class="MuiChip-root makeStyles-default-2"
+                        class="MuiChip-root makeStyles-default-4"
                       >
                         <span
                           class="MuiChip-label"
@@ -276,7 +314,7 @@ exports[`renders as expected 1`] = `
                     >
                       segment_2
                       <div
-                        class="MuiChip-root makeStyles-excluded-3"
+                        class="MuiChip-root makeStyles-excluded-5"
                       >
                         <span
                           class="MuiChip-label"
