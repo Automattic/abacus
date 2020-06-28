@@ -93,7 +93,7 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
               <div className={classes.appBarBottom}>
                 <Container maxWidth='xl'>
                   <nav className={classes.appNav}>
-                    <Link href='/'>
+                    <Link href='/experiments'>
                       <a>Experiments</a>
                     </Link>
                     <Link href='/metrics'>
