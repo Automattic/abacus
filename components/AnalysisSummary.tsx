@@ -14,6 +14,7 @@ import {
   Variation,
 } from '@/models'
 import AnalysisProcessor from '@/utils/AnalysisProcessor'
+import { formatBoolean } from '@/utils/formatters'
 
 /**
  * Convert a recommendation's endExperiment and chosenVariationId fields to a human-friendly description.
@@ -91,7 +92,7 @@ function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProce
   return (
     <>
       {analysisProcessor.resultSummaries.map(
-        ({ metricAssignmentId, metricName, attributionWindowSeconds, latestAnalyses }) => (
+        ({ metricAssignmentId, metricName, attributionWindowSeconds, latestAnalyses, recommendationConflict }) => (
           <div key={metricAssignmentId}>
             <div>
               <strong>Metric: </strong>
@@ -104,6 +105,10 @@ function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProce
             <div>
               <strong>Last analyzed: </strong>
               {DatetimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true })}
+            </div>
+            <div>
+              <strong>Recommendations conflict? </strong>
+              {formatBoolean(recommendationConflict)}
             </div>
             <TableContainer component={Paper}>
               <Table>
@@ -182,6 +187,22 @@ export default function AnalysisSummary({
   if (analyses.length === 0) {
     return <h2>No analyses yet for {experiment.name}.</h2>
   }
+
+  if (analysisProcessor.manualAnalysisRequired) {
+    return <h2>Manual analysis required.</h2>
+  }
+
+  // TODO:
+  // - Show ParticipantCounts and LatestResults only in debug mode? Definitely LatestResults
+  // - Create a single LatestResults table that will be shown in non-debug mode if no manualAnalysisRequired:
+  //   - Show mitt_no_spammers_no_crossovers if there are no exposure events
+  //   - Show pp_naive if there are exposure events
+  // - Add more warnings
+  //   - If the observed variation split is very different from the requested split?
+  //   - If a metric assignment hasn’t been analysed? May be completely missing?
+  //   - If the total and variation counts for a metric assignment don't match the latest for the primary metric?
+  //     (might be fine due to different analysis datetimes)
+  // - Handle Python warnings better? Or at a later stage.
 
   return (
     <>

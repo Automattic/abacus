@@ -8,11 +8,13 @@ interface ResultSummary {
   attributionWindowSeconds: AttributionWindowSeconds
   metricName: string
   latestAnalyses: Analysis[]
+  recommendationConflict: boolean
 }
 
 export default class AnalysisProcessor {
   public readonly metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
   public readonly resultSummaries: ResultSummary[]
+  public readonly manualAnalysisRequired: boolean
 
   constructor(
     public readonly analyses: Analysis[],
@@ -31,18 +33,25 @@ export default class AnalysisProcessor {
     )
 
     const metricsById = _.zipObject(_.map(metrics, 'metricId'), metrics)
+    let manualAnalysisRequired = false
     this.resultSummaries = _.orderBy(
       experiment.metricAssignments,
       ['isPrimary', 'metricAssignmentId'],
       ['desc', 'asc'],
     ).map(({ metricAssignmentId, attributionWindowSeconds, metricId }) => {
+      const latestAnalyses = this.metricAssignmentIdToLatestAnalyses[metricAssignmentId as number]
+      const recommendationConflict =
+        _.uniq(latestAnalyses.map(({ recommendation }) => JSON.stringify(recommendation))).length !== 1
+      manualAnalysisRequired = manualAnalysisRequired || recommendationConflict
       return {
         metricAssignmentId: metricAssignmentId as number,
         attributionWindowSeconds,
         metricName: metricsById[metricId].name,
-        latestAnalyses: this.metricAssignmentIdToLatestAnalyses[metricAssignmentId as number],
+        latestAnalyses,
+        recommendationConflict,
       }
     })
+    this.manualAnalysisRequired = manualAnalysisRequired
   }
 
   getLatestPrimaryMetricAnalyses() {
