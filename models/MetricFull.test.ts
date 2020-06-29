@@ -20,6 +20,7 @@ describe('models/MetricFull.ts module', () => {
             },
           ],
           revenue_params: null,
+          parameter_type: 'conversion',
         })
         expect(metricFull).toEqual(
           new MetricFull({
@@ -53,6 +54,7 @@ describe('models/MetricFull.ts module', () => {
             product_slugs: [],
             transaction_types: [],
           },
+          parameter_type: 'revenue',
         })
         expect(metricFull).toEqual(
           new MetricFull({
@@ -83,6 +85,7 @@ describe('models/MetricFull.ts module', () => {
             product_slugs: ['foo', 'bar'],
             transaction_types: [],
           },
+          parameter_type: 'revenue',
         })
         expect(metricFull).toEqual(
           new MetricFull({
@@ -113,6 +116,7 @@ describe('models/MetricFull.ts module', () => {
             product_slugs: [],
             transaction_types: ['new purchase', 'start trial'],
           },
+          parameter_type: 'revenue',
         })
         expect(metricFull).toEqual(
           new MetricFull({
@@ -143,6 +147,7 @@ describe('models/MetricFull.ts module', () => {
             product_slugs: ['foo', 'bar'],
             transaction_types: ['new purchase', 'start trial'],
           },
+          parameter_type: 'revenue',
         })
         expect(metricFull).toEqual(
           new MetricFull({
