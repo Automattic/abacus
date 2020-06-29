@@ -35,14 +35,7 @@ function resolveMetricAssignments(metricAssignments: MetricAssignment[], metrics
       )
     }
 
-    return {
-      attributionWindowSeconds: metricAssignment.attributionWindowSeconds,
-      changeExpected: metricAssignment.changeExpected,
-      isPrimary: metricAssignment.isPrimary,
-      metric,
-      metricAssignmentId: metricAssignment.metricAssignmentId as number,
-      minDifference: metricAssignment.minDifference,
-    }
+    return { ...metricAssignment, metric }
   })
 }
 
