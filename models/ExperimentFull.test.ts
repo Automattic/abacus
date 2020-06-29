@@ -1,8 +1,7 @@
 import Fixtures from '@/helpers/fixtures'
-import { Platform, Status } from '@/models'
+import { AttributionWindowSeconds, Platform, Status } from '@/models'
 
 import { ExperimentFull } from './ExperimentFull'
-import { AttributionWindowSeconds } from './MetricAssignment'
 
 describe('models/ExperimentFull.ts module', () => {
   describe('ExperimentFull', () => {
