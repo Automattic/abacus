@@ -1,3 +1,4 @@
+import { LinearProgress } from '@material-ui/core'
 import debugFactory from 'debug'
 import React, { useEffect, useState } from 'react'
 
@@ -10,19 +11,21 @@ const debug = debugFactory('abacus:pages/experiments/index.tsx')
 
 const ExperimentsIndexPage = function () {
   debug('ExperimentsIndexPage#render')
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [error, setError] = useState<Error | null>(null)
   const [experiments, setExperiments] = useState<ExperimentBare[] | null>(null)
 
   useEffect(() => {
+    setIsLoading(true)
     ExperimentsApi.findAll()
       .then((experiments) => setExperiments(experiments))
       .catch(setError)
+      .finally(() => setIsLoading(false))
   }, [])
 
   return (
     <Layout title='Experiments' error={error}>
-      {experiments &&
-        (experiments.length === 0 ? <p>No experiments yet.</p> : <ExperimentsTable experiments={experiments} />)}
+      {isLoading ? <LinearProgress /> : <ExperimentsTable experiments={experiments || []} />}
     </Layout>
   )
 }
