@@ -1,10 +1,11 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core'
+import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from '@material-ui/core'
 import _ from 'lodash'
-import React, { useMemo } from 'react'
+import React, {useMemo} from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
 import {
   Analysis,
+  AnalysisStrategy,
   AnalysisStrategyToHuman,
   AttributionWindowSecondsToHuman,
   ExperimentFull,
@@ -14,7 +15,7 @@ import {
   Variation,
 } from '@/models'
 import AnalysisProcessor from '@/utils/AnalysisProcessor'
-import { formatBoolean } from '@/utils/formatters'
+import {formatBoolean} from '@/utils/formatters'
 
 /**
  * Convert a recommendation's endExperiment and chosenVariationId fields to a human-friendly description.
@@ -88,7 +89,7 @@ function ParticipantCounts({
  *
  * Note: This is likely to change a lot as part of https://github.com/Automattic/abacus/issues/96.
  */
-function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProcessor }) {
+function LatestResultsDebug({ analysisProcessor }: { analysisProcessor: AnalysisProcessor }) {
   return (
     <>
       {analysisProcessor.resultSummaries.map(
@@ -164,6 +165,95 @@ function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProce
   )
 }
 
+function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProcessor }) {
+  const filteredResults = useMemo(() => {
+    // TODO: Move?
+    const defaultAnalysisStrategy = analysisProcessor.experiment.exposureEvents ? AnalysisStrategy.PpNaive : AnalysisStrategy.MittNoSpammersNoCrossovers
+    return analysisProcessor.resultSummaries.map(
+      ({ metricAssignmentId, metricName, attributionWindowSeconds, latestAnalyses }) => {
+        return {
+          metricAssignmentId,
+          metricName,
+          attributionWindowSeconds,
+          analysis: latestAnalyses.filter((analysis) => analysis.analysisStrategy === defaultAnalysisStrategy)[0]
+        }
+      }
+    )
+  }, [analysisProcessor])
+  // TODO: collapse all cells except for metric, attribution window, last analyzed, and recommendation
+  // TODO: drop strategy column
+  // TODO: try material table again?
+  // TODO: combine with LatestResultsDebug?
+  return (
+    <>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Metric</TableCell>
+              <TableCell>Attribution window</TableCell>
+              <TableCell>Last analyzed</TableCell>
+              <TableCell>Strategy</TableCell>
+              <TableCell>Participants (not final)</TableCell>
+              <TableCell>Difference interval</TableCell>
+              <TableCell>Recommendation</TableCell>
+              <TableCell>Warnings</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {filteredResults.map(
+              ({ metricAssignmentId, metricName, attributionWindowSeconds, analysis }) => (
+                <TableRow key={metricAssignmentId}>
+                  <TableCell><code>{metricName}</code></TableCell>
+                  <TableCell>{AttributionWindowSecondsToHuman[attributionWindowSeconds]}</TableCell>
+                  {analysis ? (
+                    <>
+                      <TableCell>{DatetimeText({ datetime: analysis.analysisDatetime, excludeTime: true })}</TableCell>
+                      <TableCell>{AnalysisStrategyToHuman[analysis.analysisStrategy]}</TableCell>
+                      <TableCell>{analysis.participantStats.total} ({analysis.participantStats.not_final})</TableCell>
+                    </>
+                   ) : (
+                     <>
+                       <TableCell>N/A</TableCell>
+                       <TableCell>N/A</TableCell>
+                       <TableCell>N/A</TableCell>
+                     </>
+                   )
+                  }
+                  {analysis && analysis.metricEstimates && analysis.recommendation ? (
+                    <>
+                      <TableCell>
+                        [{_.round(analysis.metricEstimates.diff.bottom, 4)}, {_.round(analysis.metricEstimates.diff.top, 4)}]
+                      </TableCell>
+                      <TableCell>
+                        <RecommendationString
+                          recommendation={analysis.recommendation}
+                          experiment={analysisProcessor.experiment}
+                        />
+                      </TableCell>
+                      <TableCell>
+                        {analysis.recommendation.warnings.map((warning) => (
+                          <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
+                        ))}
+                      </TableCell>
+                    </>
+                  ) : (
+                    <>
+                      <TableCell>N/A</TableCell>
+                      <TableCell>N/A</TableCell>
+                      <TableCell>Not analyzed yet</TableCell>
+                    </>
+                  )}
+                </TableRow>
+              ),
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
+  )
+}
+
 /**
  * Main component for summarizing experiment analyses.
  */
@@ -197,7 +287,7 @@ export default function AnalysisSummary({
   // - Create a single LatestResults table that will be shown in non-debug mode if no manualAnalysisRequired:
   //   - Show mitt_no_spammers_no_crossovers if there are no exposure events
   //   - Show pp_naive if there are exposure events
-  // - Add more warnings
+  // - Add more warnings? seems unnecessary and better handled elsewhere
   //   - If the observed variation split is very different from the requested split?
   //   - If a metric assignment hasn’t been analysed? May be completely missing?
   //   - If the total and variation counts for a metric assignment don't match the latest for the primary metric?
