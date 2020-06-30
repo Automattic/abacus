@@ -12,6 +12,7 @@ describe('MetricsApi.ts module', () => {
         expect(typeof metric.metricId).toBe('number')
         expect(typeof metric.name).toBe('string')
         expect(typeof metric.description).toBe('string')
+        expect(typeof metric.parameterType).toBe('string')
       })
     })
   })
@@ -26,6 +27,7 @@ describe('MetricsApi.ts module', () => {
       expect(typeof metric.name).toBe('string')
       expect(typeof metric.description).toBe('string')
       expect(typeof metric.higherIsBetter).toBe('boolean')
+      expect(typeof metric.parameterType).toBe('string')
       expect(Array.isArray(metric.eventParams)).toBe(true)
       metric.eventParams?.forEach((eventParam) => {
         expect(typeof eventParam.event).toBe('string')

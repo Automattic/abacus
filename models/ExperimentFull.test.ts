@@ -327,6 +327,27 @@ describe('models/ExperimentFull.ts module', () => {
       })
     })
 
+    describe('getDeployedVariation', () => {
+      it('should return null when no deployed variation declared', () => {
+        expect(Fixtures.createExperimentFull().getDeployedVariation()).toBeNull()
+      })
+
+      it('should return the deployed variation when declared', () => {
+        expect(Fixtures.createExperimentFull({ deployedVariationId: 1 }).getDeployedVariation()).toEqual({
+          variationId: 1,
+          name: 'control',
+          isDefault: true,
+          allocatedPercentage: 60,
+        })
+      })
+
+      it('should throw an error when deployed variation is declared but cannot be resolved', () => {
+        expect(() => {
+          Fixtures.createExperimentFull({ deployedVariationId: 0 }).getDeployedVariation()
+        }).toThrowError()
+      })
+    })
+
     describe('getPrimaryMetricAssignmentId', () => {
       it('returns the primary assignment ID when it exists', () => {
         expect(Fixtures.createExperimentFull().getPrimaryMetricAssignmentId()).toBe(123)
@@ -334,6 +355,22 @@ describe('models/ExperimentFull.ts module', () => {
 
       it('returns undefined when no primary assignment ID exists', () => {
         expect(Fixtures.createExperimentFull({ metricAssignments: [] }).getPrimaryMetricAssignmentId()).toBeNull()
+      })
+    })
+
+    describe('hasConclusionData', () => {
+      it('should return true if at least one piece of conclusion data is set', () => {
+        expect(
+          Fixtures.createExperimentFull({
+            conclusionUrl: 'https://betterexperiments.wordpress.com/experiment_1/conclusion',
+          }).hasConclusionData(),
+        ).toBe(true)
+        expect(Fixtures.createExperimentFull({ deployedVariationId: 1 }).hasConclusionData()).toBe(true)
+        expect(Fixtures.createExperimentFull({ endReason: 'Ran its course.' }).hasConclusionData()).toBe(true)
+      })
+
+      it('should return false if no conclusion data is set', () => {
+        expect(Fixtures.createExperimentFull().hasConclusionData()).toBe(false)
       })
     })
   })

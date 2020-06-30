@@ -46,9 +46,11 @@ function ExperimentDetails({
           <Grid item>
             <MetricAssignmentsPanel experiment={experiment} metrics={metrics} />
           </Grid>
-          <Grid item>
-            <ConclusionsPanel experiment={experiment} />
-          </Grid>
+          {experiment.hasConclusionData() && (
+            <Grid item>
+              <ConclusionsPanel experiment={experiment} />
+            </Grid>
+          )}
         </Grid>
       </Grid>
       {!isMdDown && (
