@@ -6,6 +6,8 @@ declare module '@material-ui/core/styles/createPalette' {
   }
 }
 
+const staticTheme = createMuiTheme()
+
 const theme = createMuiTheme({
   overrides: {
     MuiCssBaseline: {
@@ -27,9 +29,23 @@ const theme = createMuiTheme({
         },
       },
     },
+    MuiContainer: {
+      root: {
+        // Make the padding smaller at narrow window sizes.
+        [staticTheme.breakpoints.down('xs')]: {
+          padding: staticTheme.spacing(1),
+        },
+      },
+    },
     MuiTableCell: {
       head: {
         fontWeight: 700,
+      },
+      root: {
+        // Make the padding smaller at narrow window sizes.
+        [staticTheme.breakpoints.down('xs')]: {
+          padding: staticTheme.spacing(1),
+        },
       },
     },
   },
