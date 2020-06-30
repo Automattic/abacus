@@ -37,7 +37,7 @@ test('renders as expected with complete conclusion data', () => {
                 role="cell"
                 scope="row"
               >
-                Description for ending experiment
+                Reason the experiment ended
               </th>
               <td
                 class="MuiTableCell-root MuiTableCell-body"
@@ -122,7 +122,7 @@ test('renders as expected without deployed variation', () => {
                 role="cell"
                 scope="row"
               >
-                Description for ending experiment
+                Reason the experiment ended
               </th>
               <td
                 class="MuiTableCell-root MuiTableCell-body"

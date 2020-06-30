@@ -11,7 +11,7 @@ import { ExperimentFull } from '@/models'
 function ConclusionsPanel({ experiment }: { experiment: ExperimentFull }) {
   const deployedVariation = experiment.getDeployedVariation()
   const data = [
-    { label: 'Description for ending experiment', value: experiment.endReason },
+    { label: 'Reason the experiment ended', value: experiment.endReason },
     {
       label: 'Conclusion URL',
       value: !!experiment.conclusionUrl && (

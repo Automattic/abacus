@@ -469,7 +469,7 @@ exports[`renders as expected with conclusion data 1`] = `
               role="cell"
               scope="row"
             >
-              Description for ending experiment
+              Reason the experiment ended
             </th>
             <td
               class="MuiTableCell-root MuiTableCell-body"
