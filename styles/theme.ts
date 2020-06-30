@@ -6,7 +6,10 @@ declare module '@material-ui/core/styles/createPalette' {
   }
 }
 
-const staticTheme = createMuiTheme()
+// The base theme is used to provide defaults for other themes to depend on.
+// Idea came from
+// https://stackoverflow.com/questions/47977618/accessing-previous-theme-variables-in-createmuitheme.
+const baseTheme = createMuiTheme()
 
 const theme = createMuiTheme({
   overrides: {
@@ -32,8 +35,8 @@ const theme = createMuiTheme({
     MuiContainer: {
       root: {
         // Make the padding smaller at narrow window sizes.
-        [staticTheme.breakpoints.down('xs')]: {
-          padding: staticTheme.spacing(1),
+        [baseTheme.breakpoints.down('xs')]: {
+          padding: baseTheme.spacing(1),
         },
       },
     },
@@ -43,8 +46,8 @@ const theme = createMuiTheme({
       },
       root: {
         // Make the padding smaller at narrow window sizes.
-        [staticTheme.breakpoints.down('xs')]: {
-          padding: staticTheme.spacing(1),
+        [baseTheme.breakpoints.down('xs')]: {
+          padding: baseTheme.spacing(1),
         },
       },
     },
