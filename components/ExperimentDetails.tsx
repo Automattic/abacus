@@ -30,8 +30,12 @@ function ExperimentDetails({
       <AudiencePanel experiment={experiment} segments={segments} />
       <br />
       <MetricAssignmentsPanel experiment={experiment} metrics={metrics} />
-      <br />
-      <ConclusionsPanel experiment={experiment} />
+      {experiment.hasConclusionData() && (
+        <>
+          <br />
+          <ConclusionsPanel experiment={experiment} />
+        </>
+      )}
     </div>
   )
 }
