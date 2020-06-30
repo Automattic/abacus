@@ -6,13 +6,6 @@ exports[`renders as expected at large width 1`] = `
     class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
   >
     <div
-      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-    >
-      <h2>
-        Experiment details
-      </h2>
-    </div>
-    <div
       class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-7"
     >
       <div
@@ -480,13 +473,6 @@ exports[`renders as expected at small width 1`] = `
     class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
   >
     <div
-      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-    >
-      <h2>
-        Experiment details
-      </h2>
-    </div>
-    <div
       class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-7"
     >
       <div
@@ -953,13 +939,6 @@ exports[`renders as expected with conclusion data 1`] = `
   <div
     class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
   >
-    <div
-      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-    >
-      <h2>
-        Experiment details
-      </h2>
-    </div>
     <div
       class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-7"
     >
@@ -1502,13 +1481,6 @@ exports[`renders as expected without conclusion data 1`] = `
   <div
     class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
   >
-    <div
-      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-    >
-      <h2>
-        Experiment details
-      </h2>
-    </div>
     <div
       class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-7"
     >
