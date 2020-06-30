@@ -1,6 +1,528 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders as expected 1`] = `
+exports[`renders as expected with conclusion data 1`] = `
+<div>
+  <div>
+    <h2>
+      Experiment details
+    </h2>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <h3
+        class="MuiTypography-root makeStyles-title-9 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        General
+      </h3>
+      <table
+        class="MuiTable-root"
+      >
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              Description
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              Experiment with things. Change stuff. Profit.
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              P2 Link
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <a
+                href="https://wordpress.com/experiment_1"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                https://wordpress.com/experiment_1
+              </a>
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              Dates
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <span
+                class="makeStyles-root-10"
+                title="03/06/2020, 20:00:00"
+              >
+                2020-06-04
+              </span>
+              <span
+                class="makeStyles-to-8"
+              >
+                to
+              </span>
+              <span
+                class="makeStyles-root-10"
+                title="03/07/2020, 20:00:00"
+              >
+                2020-07-04
+              </span>
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              Owner
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              test_a11n
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <h3
+        class="MuiTypography-root makeStyles-title-9 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        Audience
+      </h3>
+      <table
+        class="MuiTable-root"
+      >
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              Platform
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              calypso
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              User Type
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              New users only
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              Variations
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+            >
+              <table
+                class="MuiTable-root"
+              >
+                <thead
+                  class="MuiTableHead-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-head"
+                  >
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head"
+                      role="columnheader"
+                      scope="col"
+                    >
+                      Name
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head"
+                      role="columnheader"
+                      scope="col"
+                    >
+                      Percent
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="MuiTableBody-root"
+                >
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      control
+                      <div
+                        class="MuiChip-root makeStyles-default-11"
+                      >
+                        <span
+                          class="MuiChip-label"
+                        >
+                          Default
+                        </span>
+                      </div>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      60
+                      %
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      test
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      40
+                      %
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              Segments
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+            >
+              <table
+                class="MuiTable-root"
+              >
+                <thead
+                  class="MuiTableHead-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-head"
+                  >
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head"
+                      role="columnheader"
+                      scope="col"
+                    >
+                      Locales
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="MuiTableBody-root"
+                >
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      segment_1
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table
+                class="MuiTable-root"
+              >
+                <thead
+                  class="MuiTableHead-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-head"
+                  >
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head"
+                      role="columnheader"
+                      scope="col"
+                    >
+                      Countries
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="MuiTableBody-root"
+                >
+                  <tr
+                    class="MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body"
+                    >
+                      segment_2
+                      <div
+                        class="MuiChip-root makeStyles-excluded-12"
+                      >
+                        <span
+                          class="MuiChip-label"
+                        >
+                          Excluded
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <h3
+        class="MuiTypography-root makeStyles-title-14 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        Metrics
+      </h3>
+      <table
+        class="MuiTable-root"
+      >
+        <thead
+          class="MuiTableHead-root"
+        >
+          <tr
+            class="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="columnheader"
+              scope="col"
+            >
+              Name
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="columnheader"
+              scope="col"
+            >
+              Minimum Difference
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="columnheader"
+              scope="col"
+            >
+              Attribution Window
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="columnheader"
+              scope="col"
+            >
+              Changes Expected
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              metric_1
+              <div
+                class="MuiChip-root makeStyles-primary-13"
+              >
+                <span
+                  class="MuiChip-label"
+                >
+                  Primary
+                </span>
+              </div>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <span>
+                0.1 pp
+              </span>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              1 week
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              Yes
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              metric_2
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <span>
+                $10.50
+              </span>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              4 weeks
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              No
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <h3
+        class="MuiTypography-root makeStyles-title-9 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        Conclusions
+      </h3>
+      <table
+        class="MuiTable-root"
+      >
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              Reason the experiment ended
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              Ran its course.
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              Conclusion URL
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <a
+                href="https://betterexperiments.wordpress.com/experiment_1/conclusion"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                https://betterexperiments.wordpress.com/experiment_1/conclusion
+              </a>
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              role="cell"
+              scope="row"
+            >
+              Deployed variation
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              test
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders as expected without conclusion data 1`] = `
 <div>
   <div>
     <h2>
