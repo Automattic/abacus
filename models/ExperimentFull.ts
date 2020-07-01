@@ -218,3 +218,22 @@ export class ExperimentFull implements ApiDataSource {
     return !!this.endReason || !!this.conclusionUrl || typeof this.deployedVariationId === 'number'
   }
 }
+
+export const newExperimentTemplate = {
+  experimentId: null,
+  name: null,
+  description: null,
+  startDatetime: null,
+  endDatetime: null,
+  status: null,
+  platform: null,
+  ownerLogin: null,
+  conclusionUrl: null,
+  deployedVariationId: null,
+  endReason: null,
+  existingUsersAllowed: null,
+  p2Url: null,
+  metricAssignments: [],
+  segmentAssignments: [],
+  variations: [],
+}
