@@ -18,6 +18,15 @@ import AnalysisProcessor from '@/utils/AnalysisProcessor'
 import {formatBoolean} from '@/utils/formatters'
 import MaterialTable from "material-table";
 
+function createStaticTableOptions(numRows: number) {
+  return {
+    pageSize: numRows,
+    paging: false,
+    sorting: false,
+    toolbar: false,
+  }
+}
+
 /**
  * Convert a recommendation's endExperiment and chosenVariationId fields to a human-friendly description.
  */
@@ -54,36 +63,23 @@ function ParticipantCounts({
   experiment: ExperimentFull
   latestPrimaryMetricAnalyses: Analysis[]
 }) {
+  // TODO: add sortedVariations as method or sort on load?
   const sortedVariations = _.orderBy(experiment.variations, ['isDefault', 'name'], ['desc', 'asc'])
-  // TODO: convert to static material table (next component as well)?
-  return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Strategy</TableCell>
-            <TableCell>Total</TableCell>
-            {sortedVariations.map(({ variationId, name }) => (
-              <TableCell key={variationId}>
-                <code>{name}</code>
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {latestPrimaryMetricAnalyses.map(({ analysisStrategy, participantStats }) => (
-            <TableRow key={analysisStrategy}>
-              <TableCell>{AnalysisStrategyToHuman[analysisStrategy]}</TableCell>
-              <TableCell>{participantStats.total}</TableCell>
-              {sortedVariations.map(({ variationId }) => (
-                <TableCell key={variationId}>{participantStats[`variation_${variationId}`] || 0}</TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  )
+  const tableColumns = [
+    {title: 'Strategy', render: ({analysisStrategy}: Analysis) => AnalysisStrategyToHuman[analysisStrategy]},
+    {title: 'Total', render: ({participantStats}: Analysis) => participantStats.total},
+  ]
+  sortedVariations.forEach(({variationId, name}) => {
+    tableColumns.push({
+      title: name,
+      render: ({participantStats}: Analysis) => participantStats[`variation_${variationId}`] || 0
+    })
+  })
+  return <MaterialTable
+    columns={tableColumns}
+    data={latestPrimaryMetricAnalyses}
+    options={createStaticTableOptions(latestPrimaryMetricAnalyses.length)}
+  />
 }
 
 /**
@@ -92,6 +88,7 @@ function ParticipantCounts({
  * Note: This is likely to change a lot as part of https://github.com/Automattic/abacus/issues/96.
  */
 function LatestResultsDebug({ analysisProcessor }: { analysisProcessor: AnalysisProcessor }) {
+  // TODO: switch to static Card + MaterialTable
   return (
     <>
       {analysisProcessor.resultSummaries.map(
@@ -248,17 +245,11 @@ function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProce
       }
     }
   ]
-  const tableOptions = {
-    pageSize: filteredResults.length,
-    paging: false,
-    sorting: false,
-    toolbar: false,
-  }
   return (
     <MaterialTable
       columns={tableColumns}
       data={filteredResults}
-      options={tableOptions}
+      options={createStaticTableOptions(filteredResults.length)}
       onRowClick={(_event, rowData, togglePanel) => togglePanel && rowData?.analysis && !rowData?.recommendationConflict && togglePanel()}
       detailPanel={detailPanel}
     />
