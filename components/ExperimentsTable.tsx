@@ -63,17 +63,11 @@ const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }) =>
           title: 'Start',
           field: 'startDatetime',
           render: (experiment) => <DatetimeText datetime={experiment.startDatetime} excludeTime />,
-          cellStyle: {
-            fontFamily: theme.custom.fonts.monospace,
-          },
         },
         {
           title: 'End',
           field: 'endDatetime',
           render: (experiment) => <DatetimeText datetime={experiment.endDatetime} excludeTime />,
-          cellStyle: {
-            fontFamily: theme.custom.fonts.monospace,
-          },
         },
       ]}
       data={experiments}
