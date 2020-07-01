@@ -11,8 +11,12 @@ test('renders as completed', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       <span
-        class="MuiTypography-root makeStyles-root-1 makeStyles-completed-2 MuiTypography-caption"
+        class="makeStyles-root-1"
       >
+        <span
+          class="makeStyles-statusDot-6 makeStyles-completed-2"
+        />
+         
         completed
       </span>
     </div>
@@ -25,8 +29,12 @@ test('renders as disabled', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       <span
-        class="MuiTypography-root makeStyles-root-6 makeStyles-disabled-10 MuiTypography-caption"
+        class="makeStyles-root-7"
       >
+        <span
+          class="makeStyles-statusDot-12 makeStyles-disabled-11"
+        />
+         
         disabled
       </span>
     </div>
@@ -39,8 +47,12 @@ test('renders as running', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       <span
-        class="MuiTypography-root makeStyles-root-11 makeStyles-running-13 MuiTypography-caption"
+        class="makeStyles-root-13"
       >
+        <span
+          class="makeStyles-statusDot-18 makeStyles-running-15"
+        />
+         
         running
       </span>
     </div>
@@ -53,8 +65,12 @@ test('renders as staging', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       <span
-        class="MuiTypography-root makeStyles-root-16 makeStyles-staging-19 MuiTypography-caption"
+        class="makeStyles-root-19"
       >
+        <span
+          class="makeStyles-statusDot-24 makeStyles-staging-22"
+        />
+         
         staging
       </span>
     </div>
