@@ -14,7 +14,6 @@ interface ResultSummary {
 export default class AnalysisProcessor {
   public readonly metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
   public readonly resultSummaries: ResultSummary[]
-  public readonly manualAnalysisRequired: boolean
 
   constructor(
     public readonly analyses: Analysis[],
@@ -33,7 +32,6 @@ export default class AnalysisProcessor {
     )
 
     const metricsById = _.zipObject(_.map(metrics, 'metricId'), metrics)
-    let manualAnalysisRequired = false
     this.resultSummaries = _.orderBy(
       experiment.metricAssignments,
       ['isPrimary', 'metricAssignmentId'],
@@ -42,7 +40,6 @@ export default class AnalysisProcessor {
       const latestAnalyses = this.metricAssignmentIdToLatestAnalyses[metricAssignmentId as number]
       const recommendationConflict =
         _.uniq(latestAnalyses.map(({ recommendation }) => JSON.stringify(recommendation))).length !== 1
-      manualAnalysisRequired = manualAnalysisRequired || recommendationConflict
       return {
         metricAssignmentId: metricAssignmentId as number,
         attributionWindowSeconds,
@@ -51,7 +48,6 @@ export default class AnalysisProcessor {
         recommendationConflict,
       }
     })
-    this.manualAnalysisRequired = manualAnalysisRequired
   }
 
   getLatestPrimaryMetricAnalyses() {

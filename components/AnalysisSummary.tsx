@@ -6,7 +6,7 @@ import DatetimeText from '@/components/DatetimeText'
 import {
   Analysis,
   AnalysisStrategy,
-  AnalysisStrategyToHuman,
+  AnalysisStrategyToHuman, AttributionWindowSeconds,
   AttributionWindowSecondsToHuman,
   ExperimentFull,
   MetricBare,
@@ -16,6 +16,7 @@ import {
 } from '@/models'
 import AnalysisProcessor from '@/utils/AnalysisProcessor'
 import {formatBoolean} from '@/utils/formatters'
+import MaterialTable from "material-table";
 
 /**
  * Convert a recommendation's endExperiment and chosenVariationId fields to a human-friendly description.
@@ -54,6 +55,7 @@ function ParticipantCounts({
   latestPrimaryMetricAnalyses: Analysis[]
 }) {
   const sortedVariations = _.orderBy(experiment.variations, ['isDefault', 'name'], ['desc', 'asc'])
+  // TODO: convert to static material table (next component as well)?
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -165,6 +167,45 @@ function LatestResultsDebug({ analysisProcessor }: { analysisProcessor: Analysis
   )
 }
 
+function ResultDetail({ analysis, experiment }: { analysis: Analysis, experiment: ExperimentFull }) {
+  // TODO: move to ExperimentFull, do it on construction?
+  const sortedVariations = _.orderBy(experiment.variations, ['isDefault', 'name'], ['desc', 'asc'])
+  return (
+    <dl>
+      <dt>Last analyzed</dt>
+      <dd>{DatetimeText({ datetime: analysis.analysisDatetime, excludeTime: true })}</dd>
+      <dt>Analysis strategy</dt>
+      <dd>{AnalysisStrategyToHuman[analysis.analysisStrategy]}</dd>
+      <dt>Analyzed participants</dt>
+      <dd>
+        {analysis.participantStats.total} ({analysis.participantStats.not_final} not final
+        {sortedVariations.map(({ variationId, name }) => (
+          <span key={variationId}>; {analysis.participantStats[`variation_${variationId}`] || 0} in {name}</span>)
+        )}
+        )
+      </dd>
+      {analysis.metricEstimates && analysis.recommendation && (
+        <>
+          <dt>Difference interval</dt>
+          <dd>
+            [{_.round(analysis.metricEstimates.diff.bottom, 4)}, {_.round(analysis.metricEstimates.diff.top, 4)}]
+          </dd>
+          {analysis.recommendation.warnings.length > 0 && (
+            <>
+              <dt>Warnings</dt>
+              <dd>
+                {analysis.recommendation.warnings.map((warning) => (
+                  <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
+                ))}
+              </dd>
+            </>
+          )}
+        </>
+      )}
+    </dl>
+  )
+}
+
 function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProcessor }) {
   const filteredResults = useMemo(() => {
     // TODO: Move?
@@ -180,77 +221,46 @@ function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProce
       }
     )
   }, [analysisProcessor])
-  // TODO: collapse all cells except for metric, attribution window, last analyzed, and recommendation
-  // TODO: drop strategy column
-  // TODO: try material table again?
-  // TODO: combine with LatestResultsDebug?
+  // TODO: mark primary
+  // TODO: recommendation text should match status (keep running after the experiment ended is useless)
+  const tableColumns = [
+    { title: 'Metric', field: 'metricName' },
+    { title: 'Attribution window', render: ({attributionWindowSeconds}: {attributionWindowSeconds: AttributionWindowSeconds}) => AttributionWindowSecondsToHuman[attributionWindowSeconds] },
+    {
+      title: 'Recommendation',
+      render: ({analysis, recommendationsConflict}: {analysis?: Analysis, recommendationsConflict?: boolean}) => {
+        if (recommendationsConflict) {
+          return <>Manual analysis required</>
+        }
+        if (!analysis?.recommendation) {
+          return <>Not analyzed yet</>
+        }
+        return <RecommendationString recommendation={analysis.recommendation} experiment={analysisProcessor.experiment} />
+      }
+    },
+  ]
+  const detailPanel = [
+    ({analysis}: {analysis?: Analysis}) => {
+      return {
+        render: () => analysis && <ResultDetail analysis={analysis} experiment={analysisProcessor.experiment}/>,
+        disabled: !analysis
+      }
+    }
+  ]
+  const tableOptions = {
+    pageSize: filteredResults.length,
+    paging: false,
+    sorting: false,
+    toolbar: false,
+  }
   return (
-    <>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Metric</TableCell>
-              <TableCell>Attribution window</TableCell>
-              <TableCell>Last analyzed</TableCell>
-              <TableCell>Strategy</TableCell>
-              <TableCell>Participants (not final)</TableCell>
-              <TableCell>Difference interval</TableCell>
-              <TableCell>Recommendation</TableCell>
-              <TableCell>Warnings</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {filteredResults.map(
-              ({ metricAssignmentId, metricName, attributionWindowSeconds, analysis }) => (
-                <TableRow key={metricAssignmentId}>
-                  <TableCell><code>{metricName}</code></TableCell>
-                  <TableCell>{AttributionWindowSecondsToHuman[attributionWindowSeconds]}</TableCell>
-                  {analysis ? (
-                    <>
-                      <TableCell>{DatetimeText({ datetime: analysis.analysisDatetime, excludeTime: true })}</TableCell>
-                      <TableCell>{AnalysisStrategyToHuman[analysis.analysisStrategy]}</TableCell>
-                      <TableCell>{analysis.participantStats.total} ({analysis.participantStats.not_final})</TableCell>
-                    </>
-                   ) : (
-                     <>
-                       <TableCell>N/A</TableCell>
-                       <TableCell>N/A</TableCell>
-                       <TableCell>N/A</TableCell>
-                     </>
-                   )
-                  }
-                  {analysis && analysis.metricEstimates && analysis.recommendation ? (
-                    <>
-                      <TableCell>
-                        [{_.round(analysis.metricEstimates.diff.bottom, 4)}, {_.round(analysis.metricEstimates.diff.top, 4)}]
-                      </TableCell>
-                      <TableCell>
-                        <RecommendationString
-                          recommendation={analysis.recommendation}
-                          experiment={analysisProcessor.experiment}
-                        />
-                      </TableCell>
-                      <TableCell>
-                        {analysis.recommendation.warnings.map((warning) => (
-                          <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
-                        ))}
-                      </TableCell>
-                    </>
-                  ) : (
-                    <>
-                      <TableCell>N/A</TableCell>
-                      <TableCell>N/A</TableCell>
-                      <TableCell>Not analyzed yet</TableCell>
-                    </>
-                  )}
-                </TableRow>
-              ),
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </>
+    <MaterialTable
+      columns={tableColumns}
+      data={filteredResults}
+      options={tableOptions}
+      onRowClick={(_event, _rowData, togglePanel) => togglePanel && togglePanel()}
+      detailPanel={detailPanel}
+    />
   )
 }
 
@@ -275,44 +285,42 @@ export default function AnalysisSummary({
   ])
 
   if (analyses.length === 0) {
-    return <h2>No analyses yet for {experiment.name}.</h2>
+    return <p>No analyses yet for {experiment.name}.</p>
   }
 
-  if (analysisProcessor.manualAnalysisRequired) {
-    return <h2>Manual analysis required.</h2>
+  if (debugMode) {
+    return (
+      <>
+        <p>Found {analyses.length} analysis objects in total.</p>
+
+        <div className='analysis-participant-counts'>
+          <h3>Participant counts for the primary metric</h3>
+          <ParticipantCounts
+            experiment={experiment}
+            latestPrimaryMetricAnalyses={analysisProcessor.getLatestPrimaryMetricAnalyses()}
+          />
+        </div>
+
+        <div className='analysis-latest-results'>
+          <h3>Latest results by metric</h3>
+          <LatestResultsDebug analysisProcessor={analysisProcessor} />
+        </div>
+
+        <pre className='debug-json'>{JSON.stringify(analyses, null, 2)}</pre>
+      </>
+    )
   }
 
   // TODO:
-  // - Show ParticipantCounts and LatestResults only in debug mode? Definitely LatestResults
-  // - Create a single LatestResults table that will be shown in non-debug mode if no manualAnalysisRequired:
-  //   - Show mitt_no_spammers_no_crossovers if there are no exposure events
-  //   - Show pp_naive if there are exposure events
   // - Add more warnings? seems unnecessary and better handled elsewhere
   //   - If the observed variation split is very different from the requested split?
-  //   - If a metric assignment hasn’t been analysed? May be completely missing?
-  //   - If the total and variation counts for a metric assignment don't match the latest for the primary metric?
-  //     (might be fine due to different analysis datetimes)
+  //   - If a metric assignment hasn’t been analysed? May be completely missing? Iterate over the metric assignments
   // - Handle Python warnings better? Or at a later stage.
 
   return (
-    <>
-      <h2>Analysis summary</h2>
-      <p>Found {analyses.length} analysis objects in total.</p>
-
-      <div className='analysis-participant-counts'>
-        <h3>Participant counts for the primary metric</h3>
-        <ParticipantCounts
-          experiment={experiment}
-          latestPrimaryMetricAnalyses={analysisProcessor.getLatestPrimaryMetricAnalyses()}
-        />
-      </div>
-
-      <div className='analysis-latest-results'>
-        <h3>Latest results by metric</h3>
-        <LatestResults analysisProcessor={analysisProcessor} />
-      </div>
-
-      {debugMode ? <pre className='debug-json'>{JSON.stringify(analyses, null, 2)}</pre> : ''}
-    </>
+    <div className='analysis-latest-results'>
+      <h3>Latest results by metric</h3>
+      <LatestResults analysisProcessor={analysisProcessor} />
+    </div>
   )
 }
