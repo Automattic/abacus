@@ -37,15 +37,14 @@ export default class AnalysisProcessor {
       ['isPrimary', 'metricAssignmentId'],
       ['desc', 'asc'],
     ).map(({ metricAssignmentId, attributionWindowSeconds, metricId }) => {
-      const latestAnalyses = this.metricAssignmentIdToLatestAnalyses[metricAssignmentId as number]
-      const recommendationConflict =
-        _.uniq(latestAnalyses.map(({ recommendation }) => JSON.stringify(recommendation))).length !== 1
+      const latestAnalyses = this.metricAssignmentIdToLatestAnalyses[metricAssignmentId as number] || []
+      const uniqueRecommendations = _.uniq(latestAnalyses.map(({ recommendation }) => JSON.stringify(recommendation)))
       return {
         metricAssignmentId: metricAssignmentId as number,
         attributionWindowSeconds,
         metricName: metricsById[metricId].name,
         latestAnalyses,
-        recommendationConflict,
+        recommendationConflict: uniqueRecommendations.length > 1,
       }
     })
   }

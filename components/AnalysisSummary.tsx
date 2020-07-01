@@ -107,7 +107,7 @@ function LatestResultsDebug({ analysisProcessor }: { analysisProcessor: Analysis
             </div>
             <div>
               <strong>Last analyzed: </strong>
-              {DatetimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true })}
+              {latestAnalyses.length > 0 ? DatetimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true }) : 'N/A'}
             </div>
             <div>
               <strong>Recommendations conflict? </strong>
@@ -211,11 +211,12 @@ function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProce
     // TODO: Move?
     const defaultAnalysisStrategy = analysisProcessor.experiment.exposureEvents ? AnalysisStrategy.PpNaive : AnalysisStrategy.MittNoSpammersNoCrossovers
     return analysisProcessor.resultSummaries.map(
-      ({ metricAssignmentId, metricName, attributionWindowSeconds, latestAnalyses }) => {
+      ({ metricAssignmentId, metricName, attributionWindowSeconds, recommendationConflict, latestAnalyses }) => {
         return {
           metricAssignmentId,
           metricName,
           attributionWindowSeconds,
+          recommendationConflict,
           analysis: latestAnalyses.filter((analysis) => analysis.analysisStrategy === defaultAnalysisStrategy)[0]
         }
       }
@@ -228,8 +229,8 @@ function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProce
     { title: 'Attribution window', render: ({attributionWindowSeconds}: {attributionWindowSeconds: AttributionWindowSeconds}) => AttributionWindowSecondsToHuman[attributionWindowSeconds] },
     {
       title: 'Recommendation',
-      render: ({analysis, recommendationsConflict}: {analysis?: Analysis, recommendationsConflict?: boolean}) => {
-        if (recommendationsConflict) {
+      render: ({analysis, recommendationConflict}: {analysis?: Analysis, recommendationConflict?: boolean}) => {
+        if (recommendationConflict) {
           return <>Manual analysis required</>
         }
         if (!analysis?.recommendation) {
@@ -240,10 +241,10 @@ function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProce
     },
   ]
   const detailPanel = [
-    ({analysis}: {analysis?: Analysis}) => {
+    ({analysis, recommendationConflict}: {analysis?: Analysis, recommendationConflict?: boolean}) => {
       return {
         render: () => analysis && <ResultDetail analysis={analysis} experiment={analysisProcessor.experiment}/>,
-        disabled: !analysis
+        disabled: !analysis || recommendationConflict
       }
     }
   ]
@@ -258,7 +259,7 @@ function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProce
       columns={tableColumns}
       data={filteredResults}
       options={tableOptions}
-      onRowClick={(_event, _rowData, togglePanel) => togglePanel && togglePanel()}
+      onRowClick={(_event, rowData, togglePanel) => togglePanel && rowData?.analysis && !rowData?.recommendationConflict && togglePanel()}
       detailPanel={detailPanel}
     />
   )
