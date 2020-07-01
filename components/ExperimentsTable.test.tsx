@@ -1,19 +1,15 @@
-import { fireEvent, getAllByText, getByText, getByTitle, render } from '@testing-library/react'
+import { fireEvent, getAllByText, getByText, getByTitle } from '@testing-library/react'
 import addToDate from 'date-fns/add'
 import React from 'react'
 
+import render from '@/helpers/render'
 import { ExperimentBare, Platform, Status } from '@/models'
-import ThemeProvider from '@/styles/ThemeProvider'
 
 import ExperimentsTable from './ExperimentsTable'
 
 test('with no experiments, renders an empty table', () => {
   const experiments: ExperimentBare[] = []
-  const { container, getByText } = render(
-    <ThemeProvider>
-      <ExperimentsTable experiments={experiments} />
-    </ThemeProvider>,
-  )
+  const { container, getByText } = render(<ExperimentsTable experiments={experiments} />)
 
   expect(getByText('Name')).toBeInTheDocument()
   expect(getByText('Start')).toBeInTheDocument()
@@ -39,11 +35,7 @@ test('with one page of experiments, renders a table', () => {
       status: Status.Staging,
     },
   ]
-  const { container } = render(
-    <ThemeProvider>
-      <ExperimentsTable experiments={experiments} />
-    </ThemeProvider>,
-  )
+  const { container } = render(<ExperimentsTable experiments={experiments} />)
 
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
@@ -67,11 +59,7 @@ test('with more than one page of experiments, renders a table with a pagination 
     status: Status.Staging,
   }))
 
-  const { container } = render(
-    <ThemeProvider>
-      <ExperimentsTable experiments={experiments} />
-    </ThemeProvider>,
-  )
+  const { container } = render(<ExperimentsTable experiments={experiments} />)
 
   let tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
