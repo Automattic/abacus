@@ -1,6 +1,6 @@
 import React from 'react'
 
-import render from '@/helpers/render'
+import { render } from '@/helpers/test-utils'
 import { Status } from '@/models'
 
 import ExperimentStatus from './ExperimentStatus'

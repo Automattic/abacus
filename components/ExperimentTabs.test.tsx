@@ -1,6 +1,6 @@
 import React from 'react'
 
-import render from '@/helpers/render'
+import { render } from '@/helpers/test-utils'
 import { ExperimentFull, Platform, Status, Variation } from '@/models'
 
 import ExperimentTabs from './ExperimentTabs'

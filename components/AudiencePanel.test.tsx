@@ -2,7 +2,7 @@ import React from 'react'
 
 import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import Fixtures from '@/helpers/fixtures'
-import render from '@/helpers/render'
+import { render } from '@/helpers/test-utils'
 
 import AudiencePanel from './AudiencePanel'
 
