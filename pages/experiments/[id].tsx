@@ -7,7 +7,6 @@ import ExperimentsApi from '@/api/ExperimentsApi'
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
 import ExperimentDetails from '@/components/ExperimentDetails'
-import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
 import { ExperimentFull, MetricBare, Segment } from '@/models'
 
@@ -46,7 +45,6 @@ export default function ExperimentPage() {
 
   return (
     <Layout title={`Experiment: ${experiment ? experiment.name : 'Not Found'}`} error={fetchError}>
-      <ExperimentTabs experiment={experiment} />
       {experiment && metrics && segments && (
         <ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />
       )}

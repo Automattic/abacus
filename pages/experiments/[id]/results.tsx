@@ -7,7 +7,6 @@ import AnalysesApi from '@/api/AnalysesApi'
 import ExperimentsApi from '@/api/ExperimentsApi'
 import MetricsApi from '@/api/MetricsApi'
 import AnalysisSummary from '@/components/AnalysisSummary'
-import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
 import { Analysis, ExperimentFull, MetricBare } from '@/models'
 
@@ -50,7 +49,6 @@ export default function ResultsPage() {
 
   return (
     <Layout title={`Experiment results: ${experiment ? experiment.name : 'Not Found'}`} error={fetchError}>
-      <ExperimentTabs experiment={experiment} />
       {experiment && analyses && metrics && (
         <AnalysisSummary
           analyses={analyses}

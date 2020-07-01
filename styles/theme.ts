@@ -32,6 +32,14 @@ const theme = createMuiTheme({
         },
       },
     },
+    MuiButton: {
+      containedPrimary: {
+        backgroundColor: '#219653',
+        '&:hover': {
+          backgroundColor: '#006729',
+        },
+      },
+    },
     MuiContainer: {
       root: {
         // Make the padding smaller at narrow window sizes.
@@ -58,6 +66,9 @@ const theme = createMuiTheme({
     },
     primary: {
       main: '#194661',
+    },
+    secondary: {
+      main: '#1e77a5',
     },
   },
 })

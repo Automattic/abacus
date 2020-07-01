@@ -6,6 +6,119 @@ exports[`renders as expected at large width 1`] = `
     class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
   >
     <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <div
+        class="makeStyles-root-3"
+      >
+        <div
+          class="MuiTabs-root makeStyles-tabs-4"
+        >
+          <div
+            class="MuiTabs-scroller MuiTabs-fixed"
+            style="overflow: hidden;"
+          >
+            <div
+              class="MuiTabs-flexContainer"
+              role="tablist"
+            >
+              <button
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-6"
+                role="tab"
+                tabindex="-1"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  Details
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-6"
+                role="tab"
+                tabindex="-1"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  Results
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-6"
+                role="tab"
+                tabindex="-1"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  Snippets
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <span
+              class="PrivateTabIndicator-root-14 PrivateTabIndicator-colorSecondary-16 MuiTabs-indicator"
+              style="left: 0px; width: 0px;"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-5"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-1 makeStyles-marginLeft-2"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Disable
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-2 MuiButton-containedPrimary"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              <span
+                class="MuiButton-startIcon MuiButton-iconSizeMedium"
+              >
+                <span
+                  aria-hidden="true"
+                  class="material-icons MuiIcon-root"
+                >
+                  add_circle_outline
+                </span>
+              </span>
+              Add Conclusions
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
       class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-7"
     >
       <div
@@ -18,7 +131,7 @@ exports[`renders as expected at large width 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-2 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-8 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               General
             </h3>
@@ -80,18 +193,18 @@ exports[`renders as expected at large width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-3"
+                      class="makeStyles-root-9"
                       title="03/06/2020, 20:00:00"
                     >
                       2020-06-04
                     </span>
                     <span
-                      class="makeStyles-to-1"
+                      class="makeStyles-to-7"
                     >
                       to
                     </span>
                     <span
-                      class="makeStyles-root-3"
+                      class="makeStyles-root-9"
                       title="03/07/2020, 20:00:00"
                     >
                       2020-07-04
@@ -125,7 +238,7 @@ exports[`renders as expected at large width 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-5 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-11 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Metrics
             </h3>
@@ -179,7 +292,7 @@ exports[`renders as expected at large width 1`] = `
                   >
                     metric_1
                     <div
-                      class="MuiChip-root makeStyles-primary-4"
+                      class="MuiChip-root makeStyles-primary-10"
                     >
                       <span
                         class="MuiChip-label"
@@ -245,7 +358,7 @@ exports[`renders as expected at large width 1`] = `
         class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
       >
         <h3
-          class="MuiTypography-root makeStyles-title-2 MuiTypography-h3 MuiTypography-colorTextPrimary"
+          class="MuiTypography-root makeStyles-title-8 MuiTypography-h3 MuiTypography-colorTextPrimary"
         >
           Audience
         </h3>
@@ -336,7 +449,7 @@ exports[`renders as expected at large width 1`] = `
                       >
                         control
                         <div
-                          class="MuiChip-root makeStyles-default-6"
+                          class="MuiChip-root makeStyles-default-12"
                         >
                           <span
                             class="MuiChip-label"
@@ -445,7 +558,7 @@ exports[`renders as expected at large width 1`] = `
                       >
                         segment_2
                         <div
-                          class="MuiChip-root makeStyles-excluded-7"
+                          class="MuiChip-root makeStyles-excluded-13"
                         >
                           <span
                             class="MuiChip-label"
@@ -473,6 +586,119 @@ exports[`renders as expected at small width 1`] = `
     class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
   >
     <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <div
+        class="makeStyles-root-20"
+      >
+        <div
+          class="MuiTabs-root makeStyles-tabs-21"
+        >
+          <div
+            class="MuiTabs-scroller MuiTabs-fixed"
+            style="overflow: hidden;"
+          >
+            <div
+              class="MuiTabs-flexContainer"
+              role="tablist"
+            >
+              <button
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-23"
+                role="tab"
+                tabindex="-1"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  Details
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-23"
+                role="tab"
+                tabindex="-1"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  Results
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-23"
+                role="tab"
+                tabindex="-1"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  Snippets
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <span
+              class="PrivateTabIndicator-root-31 PrivateTabIndicator-colorSecondary-33 MuiTabs-indicator"
+              style="left: 0px; width: 0px;"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-22"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-18 makeStyles-marginLeft-19"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Disable
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-19 MuiButton-containedPrimary"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              <span
+                class="MuiButton-startIcon MuiButton-iconSizeMedium"
+              >
+                <span
+                  aria-hidden="true"
+                  class="material-icons MuiIcon-root"
+                >
+                  add_circle_outline
+                </span>
+              </span>
+              Add Conclusions
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
       class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-7"
     >
       <div
@@ -485,7 +711,7 @@ exports[`renders as expected at small width 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-9 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-25 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               General
             </h3>
@@ -547,18 +773,18 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-10"
+                      class="makeStyles-root-26"
                       title="03/06/2020, 20:00:00"
                     >
                       2020-06-04
                     </span>
                     <span
-                      class="makeStyles-to-8"
+                      class="makeStyles-to-24"
                     >
                       to
                     </span>
                     <span
-                      class="makeStyles-root-10"
+                      class="makeStyles-root-26"
                       title="03/07/2020, 20:00:00"
                     >
                       2020-07-04
@@ -592,7 +818,7 @@ exports[`renders as expected at small width 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-9 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-25 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Audience
             </h3>
@@ -683,7 +909,7 @@ exports[`renders as expected at small width 1`] = `
                           >
                             control
                             <div
-                              class="MuiChip-root makeStyles-default-13"
+                              class="MuiChip-root makeStyles-default-29"
                             >
                               <span
                                 class="MuiChip-label"
@@ -792,7 +1018,7 @@ exports[`renders as expected at small width 1`] = `
                           >
                             segment_2
                             <div
-                              class="MuiChip-root makeStyles-excluded-14"
+                              class="MuiChip-root makeStyles-excluded-30"
                             >
                               <span
                                 class="MuiChip-label"
@@ -817,7 +1043,7 @@ exports[`renders as expected at small width 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-12 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-28 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Metrics
             </h3>
@@ -871,7 +1097,7 @@ exports[`renders as expected at small width 1`] = `
                   >
                     metric_1
                     <div
-                      class="MuiChip-root makeStyles-primary-11"
+                      class="MuiChip-root makeStyles-primary-27"
                     >
                       <span
                         class="MuiChip-label"
@@ -940,6 +1166,119 @@ exports[`renders as expected with conclusion data 1`] = `
     class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
   >
     <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <div
+        class="makeStyles-root-37"
+      >
+        <div
+          class="MuiTabs-root makeStyles-tabs-38"
+        >
+          <div
+            class="MuiTabs-scroller MuiTabs-fixed"
+            style="overflow: hidden;"
+          >
+            <div
+              class="MuiTabs-flexContainer"
+              role="tablist"
+            >
+              <button
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-40"
+                role="tab"
+                tabindex="-1"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  Details
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-40"
+                role="tab"
+                tabindex="-1"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  Results
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-40"
+                role="tab"
+                tabindex="-1"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  Snippets
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <span
+              class="PrivateTabIndicator-root-48 PrivateTabIndicator-colorSecondary-50 MuiTabs-indicator"
+              style="left: 0px; width: 0px;"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-39"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-35 makeStyles-marginLeft-36"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Disable
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-36"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              <span
+                class="MuiButton-startIcon MuiButton-iconSizeMedium"
+              >
+                <span
+                  aria-hidden="true"
+                  class="material-icons MuiIcon-root"
+                >
+                  edit
+                </span>
+              </span>
+              Edit
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
       class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-7"
     >
       <div
@@ -952,7 +1291,7 @@ exports[`renders as expected with conclusion data 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-16 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-42 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               General
             </h3>
@@ -1014,18 +1353,18 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-17"
+                      class="makeStyles-root-43"
                       title="03/06/2020, 20:00:00"
                     >
                       2020-06-04
                     </span>
                     <span
-                      class="makeStyles-to-15"
+                      class="makeStyles-to-41"
                     >
                       to
                     </span>
                     <span
-                      class="makeStyles-root-17"
+                      class="makeStyles-root-43"
                       title="03/07/2020, 20:00:00"
                     >
                       2020-07-04
@@ -1059,7 +1398,7 @@ exports[`renders as expected with conclusion data 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-16 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-42 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Audience
             </h3>
@@ -1150,7 +1489,7 @@ exports[`renders as expected with conclusion data 1`] = `
                           >
                             control
                             <div
-                              class="MuiChip-root makeStyles-default-20"
+                              class="MuiChip-root makeStyles-default-46"
                             >
                               <span
                                 class="MuiChip-label"
@@ -1259,7 +1598,7 @@ exports[`renders as expected with conclusion data 1`] = `
                           >
                             segment_2
                             <div
-                              class="MuiChip-root makeStyles-excluded-21"
+                              class="MuiChip-root makeStyles-excluded-47"
                             >
                               <span
                                 class="MuiChip-label"
@@ -1284,7 +1623,7 @@ exports[`renders as expected with conclusion data 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-19 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-45 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Metrics
             </h3>
@@ -1338,7 +1677,7 @@ exports[`renders as expected with conclusion data 1`] = `
                   >
                     metric_1
                     <div
-                      class="MuiChip-root makeStyles-primary-18"
+                      class="MuiChip-root makeStyles-primary-44"
                     >
                       <span
                         class="MuiChip-label"
@@ -1402,7 +1741,7 @@ exports[`renders as expected with conclusion data 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-16 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-42 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Conclusions
             </h3>
@@ -1482,6 +1821,119 @@ exports[`renders as expected without conclusion data 1`] = `
     class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
   >
     <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <div
+        class="makeStyles-root-54"
+      >
+        <div
+          class="MuiTabs-root makeStyles-tabs-55"
+        >
+          <div
+            class="MuiTabs-scroller MuiTabs-fixed"
+            style="overflow: hidden;"
+          >
+            <div
+              class="MuiTabs-flexContainer"
+              role="tablist"
+            >
+              <button
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-57"
+                role="tab"
+                tabindex="-1"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  Details
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-57"
+                role="tab"
+                tabindex="-1"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  Results
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-57"
+                role="tab"
+                tabindex="-1"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  Snippets
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <span
+              class="PrivateTabIndicator-root-65 PrivateTabIndicator-colorSecondary-67 MuiTabs-indicator"
+              style="left: 0px; width: 0px;"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-56"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-52 makeStyles-marginLeft-53"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Disable
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-53 MuiButton-containedPrimary"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              <span
+                class="MuiButton-startIcon MuiButton-iconSizeMedium"
+              >
+                <span
+                  aria-hidden="true"
+                  class="material-icons MuiIcon-root"
+                >
+                  add_circle_outline
+                </span>
+              </span>
+              Add Conclusions
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
       class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-7"
     >
       <div
@@ -1494,7 +1946,7 @@ exports[`renders as expected without conclusion data 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-23 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-59 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               General
             </h3>
@@ -1556,18 +2008,18 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-24"
+                      class="makeStyles-root-60"
                       title="03/06/2020, 20:00:00"
                     >
                       2020-06-04
                     </span>
                     <span
-                      class="makeStyles-to-22"
+                      class="makeStyles-to-58"
                     >
                       to
                     </span>
                     <span
-                      class="makeStyles-root-24"
+                      class="makeStyles-root-60"
                       title="03/07/2020, 20:00:00"
                     >
                       2020-07-04
@@ -1601,7 +2053,7 @@ exports[`renders as expected without conclusion data 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-23 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-59 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Audience
             </h3>
@@ -1692,7 +2144,7 @@ exports[`renders as expected without conclusion data 1`] = `
                           >
                             control
                             <div
-                              class="MuiChip-root makeStyles-default-27"
+                              class="MuiChip-root makeStyles-default-63"
                             >
                               <span
                                 class="MuiChip-label"
@@ -1801,7 +2253,7 @@ exports[`renders as expected without conclusion data 1`] = `
                           >
                             segment_2
                             <div
-                              class="MuiChip-root makeStyles-excluded-28"
+                              class="MuiChip-root makeStyles-excluded-64"
                             >
                               <span
                                 class="MuiChip-label"
@@ -1826,7 +2278,7 @@ exports[`renders as expected without conclusion data 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-26 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-62 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Metrics
             </h3>
@@ -1880,7 +2332,7 @@ exports[`renders as expected without conclusion data 1`] = `
                   >
                     metric_1
                     <div
-                      class="MuiChip-root makeStyles-primary-25"
+                      class="MuiChip-root makeStyles-primary-61"
                     >
                       <span
                         class="MuiChip-label"
