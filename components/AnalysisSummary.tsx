@@ -2,7 +2,7 @@ import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow
 import _ from 'lodash'
 import React, { useMemo } from 'react'
 
-import DateTimeText from '@/components/DateTimeText'
+import DatetimeText from '@/components/DatetimeText'
 import {
   Analysis,
   AnalysisStrategyToHuman,
@@ -126,7 +126,7 @@ function LatestResults({
           </div>
           <div>
             <strong>Last analyzed: </strong>
-            {DateTimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true })}
+            {DatetimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true })}
           </div>
           <TableContainer component={Paper}>
             <Table>

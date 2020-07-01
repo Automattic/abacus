@@ -2,11 +2,11 @@ import React from 'react'
 
 import render from '@/helpers/render'
 
-import DateTimeText from './DateTimeText'
+import DatetimeText from './DatetimeText'
 
 test('renders as ISO 8601 UTC', () => {
   const input = new Date(Date.UTC(2020, 4, 2))
-  const { container } = render(<DateTimeText datetime={input} />)
+  const { container } = render(<DatetimeText datetime={input} />)
 
   expect(container).toMatchInlineSnapshot(`
     <div>
@@ -22,7 +22,7 @@ test('renders as ISO 8601 UTC', () => {
 
 test('renders as ISO 8601 UTC without time', () => {
   const input = new Date(Date.UTC(2020, 4, 2))
-  const { container } = render(<DateTimeText datetime={input} excludeTime />)
+  const { container } = render(<DatetimeText datetime={input} excludeTime />)
 
   expect(container).toMatchInlineSnapshot(`
     <div>
