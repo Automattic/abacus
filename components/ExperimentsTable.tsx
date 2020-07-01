@@ -4,7 +4,7 @@ import MaterialTable from 'material-table'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-import DatetimeText from '@/components/DatetimeText'
+import DateTimeText from '@/components/DateTimeText'
 import { ExperimentBare } from '@/models'
 import { defaultTableOptions } from '@/utils/material-table'
 
@@ -62,12 +62,12 @@ const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }) =>
         {
           title: 'Start',
           field: 'startDatetime',
-          render: (experiment) => <DatetimeText datetime={experiment.startDatetime} excludeTime />,
+          render: (experiment) => <DateTimeText datetime={experiment.startDatetime} excludeTime />,
         },
         {
           title: 'End',
           field: 'endDatetime',
-          render: (experiment) => <DatetimeText datetime={experiment.endDatetime} excludeTime />,
+          render: (experiment) => <DateTimeText datetime={experiment.endDatetime} excludeTime />,
         },
       ]}
       data={experiments}

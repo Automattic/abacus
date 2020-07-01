@@ -15,7 +15,7 @@ const ISO_DATE_LENGTH = 10
 /**
  * Renders the date value in ISO 8601 format UTC.
  */
-const DatetimeText = ({ datetime, excludeTime }: { datetime: Date; excludeTime?: boolean }) => {
+const DateTimeText = ({ datetime, excludeTime }: { datetime: Date; excludeTime?: boolean }) => {
   const classes = useStyles()
   // In order to force a consistent locale and timezone for the unit tests, we set
   // the following env vars. In the browser, we don't have these set and the function
@@ -31,4 +31,4 @@ const DatetimeText = ({ datetime, excludeTime }: { datetime: Date; excludeTime?:
   )
 }
 
-export default DatetimeText
+export default DateTimeText
