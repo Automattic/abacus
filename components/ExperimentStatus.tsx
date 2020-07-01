@@ -1,32 +1,33 @@
-import { Typography } from '@material-ui/core'
+import { Theme } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import React from 'react'
 
 import { Status } from '@/models'
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      padding: '3px 5px',
-      borderRadius: 3,
-      textTransform: 'uppercase',
+      fontFamily: theme.custom.fonts.monospace,
     },
     completed: {
-      color: '#4CAF50',
-      background: 'rgba(76, 175, 80, 0.08)',
+      backgroundColor: '#4CAF50',
     },
     running: {
-      color: '#FF9800',
-      background: 'rgba(255, 152, 0, 0.08)',
+      backgroundColor: '#FF9800',
     },
     staging: {
-      color: '#1E77A5',
-      background: 'rgba(30, 119, 165, 0.08)',
+      backgroundColor: '#1E77A5',
     },
     disabled: {
-      color: '#828282',
-      background: 'rgba(130, 130, 130, 0.08)',
+      backgroundColor: '#828282',
+    },
+    statusDot: {
+      display: 'inline-block',
+      borderRadius: 100,
+      height: '.8em',
+      width: '.8em',
+      verticalAlign: 'middle',
     },
   }),
 )
@@ -34,9 +35,9 @@ const useStyles = makeStyles(() =>
 function ExperimentStatus({ status }: { status: Status }) {
   const classes = useStyles()
   return (
-    <Typography className={clsx(classes.root, classes[status])} variant='caption'>
-      {status}
-    </Typography>
+    <span className={classes.root}>
+      <span className={clsx(classes.statusDot, classes[status])}></span> {status}
+    </span>
   )
 }
 
