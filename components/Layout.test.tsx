@@ -51,7 +51,7 @@ test('renders layout with declared title and children', () => {
             class="makeStyles-appNav-8"
           >
             <a
-              href="/"
+              href="/experiments"
             >
               Experiments
             </a>
