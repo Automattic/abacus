@@ -1,5 +1,7 @@
 import { Options } from 'material-table'
 
+import theme from '@/styles/theme'
+
 export const defaultTableOptions: Options = {
   emptyRowsWhenPaging: false,
   pageSize: 25,
@@ -12,7 +14,7 @@ export const defaultTableOptions: Options = {
   pageSizeOptions: [],
   showFirstLastPageButtons: false,
   headerStyle: {
-    fontWeight: 600,
+    fontWeight: theme.custom.fontWeights.monospaceBold,
   },
   rowStyle: {
     opacity: 0.8,

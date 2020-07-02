@@ -10,11 +10,13 @@ declare module '@material-ui/core/styles' {
   interface ThemeOptions {
     custom: {
       fonts: Record<string, React.CSSProperties['fontFamily']>
+      fontWeights: Record<string, React.CSSProperties['fontWeight']>
     }
   }
   interface Theme {
     custom: {
       fonts: Record<string, React.CSSProperties['fontFamily']>
+      fontWeights: Record<string, React.CSSProperties['fontWeight']>
     }
   }
 }
@@ -76,6 +78,9 @@ const theme = createMuiTheme({
   custom: {
     fonts: {
       monospace: `'Roboto Mono', monospace`,
+    },
+    fontWeights: {
+      monospaceBold: 700,
     },
   },
 })
