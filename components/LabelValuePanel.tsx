@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     title: {
       padding: theme.spacing(1, 2),
+      [theme.breakpoints.down('xs')]: {
+        padding: theme.spacing(1),
+      },
     },
   }),
 )
