@@ -104,7 +104,7 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
               </div>
             </AppBar>
             <Container className={classes.content}>
-              <Typography variant='h2' component='h1' className={classes.contentTitle}>
+              <Typography variant='h1' className={classes.contentTitle}>
                 {title}
               </Typography>
               {error && <ErrorsBox errors={[error]} />}
