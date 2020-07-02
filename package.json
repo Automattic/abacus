@@ -26,7 +26,8 @@
     "qc-to_int": "^1.0.1",
     "querystring": "^0.2.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "yup": "^0.29.1"
   },
   "@comment devDependencies": {
     "@package babel-loader": "Required by @storybook/react",
@@ -50,6 +51,7 @@
     "@types/puppeteer": "^2.0.1",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
+    "@types/yup": "^0.29.3",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
     "babel-loader": "^8.1.0",
