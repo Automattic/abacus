@@ -1,9 +1,14 @@
+import * as yup from 'yup'
+
 import { ApiData } from '@/api/ApiData'
 import { ApiDataSource } from '@/api/ApiDataSource'
 import { ExcludeMethods } from '@/types/ExcludeMethods'
 import { formatIsoUtcOffset } from '@/utils/formatters'
 
-import { Event, ExperimentBare, MetricAssignment, Platform, SegmentAssignment, Status, Variation } from './index'
+import { Event, ExperimentBare, MetricAssignment, SegmentAssignment, Variation } from './index'
+import { Platform } from './Platform'
+// These are seperate because of an import bug
+import { Status } from './Status'
 
 /**
  * An experiment with full data.
@@ -218,3 +223,58 @@ export class ExperimentFull implements ApiDataSource {
     return !!this.endReason || !!this.conclusionUrl || typeof this.deployedVariationId === 'number'
   }
 }
+
+// Placing these here for now, but they should go in a schema.ts file
+//
+
+const idSchema = yup.number().integer().positive()
+
+export const metricAssignmentSchema = yup
+  .object({
+    attributionWindowSeconds: yup.number().integer().positive().defined(),
+    changeExpected: yup.bool().defined(),
+    experimentId: idSchema.defined(),
+    isPrimary: yup.bool().defined(),
+    metricId: idSchema.defined(),
+    minDifference: yup.number().defined(),
+  })
+  .defined()
+
+export const segmentAssignmentSchema = yup
+  .object({
+    experimentId: idSchema.defined(),
+    segmentId: idSchema.defined(),
+    isExcluded: yup.bool().defined(),
+  })
+  .defined()
+
+export const variationSchema = yup
+  .object({
+    experimentId: idSchema.defined(),
+    name: yup.string().max(128).defined(),
+    isDefault: yup.bool().defined(),
+    allocatedPercentage: yup.number().integer().min(1).max(99).defined(),
+  })
+  .defined()
+
+export const experimentFullSchema = yup
+  .object({
+    experimentId: idSchema.defined(),
+    name: yup.string().max(128).defined(),
+    description: yup.string().defined(),
+    startDatetime: yup.date().defined(),
+    endDatetime: yup.date().defined(),
+    status: yup.string().oneOf([Status.Staging, Status.Running, Status.Completed, Status.Disabled]).defined(),
+    platform: yup.string().oneOf([Platform.Wpcom, Platform.Calypso]).defined(),
+    ownerLogin: yup.string().defined(),
+    existingUsersAllowed: yup.boolean().defined(),
+    p2Url: yup.string().url().defined(),
+    endReason: yup.string().defined().nullable(),
+    conclusionUrl: yup.string().url().defined().nullable(),
+    deployedVariationId: idSchema.defined().nullable(),
+    metricAssignments: yup.array(metricAssignmentSchema).defined(),
+    segmentAssignments: yup.array(segmentAssignmentSchema).defined(),
+    variations: yup.array(variationSchema).defined(),
+  })
+  .defined()
+  .camelCase()
