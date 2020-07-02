@@ -11,6 +11,10 @@ export default class Document extends NextDocument {
         <Head>
           <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&display=swap' />
           <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap' />
+          <link
+            rel='stylesheet'
+            href='https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap'
+          />
           <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' />
         </Head>
         <body>

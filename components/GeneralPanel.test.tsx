@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react'
 import React from 'react'
 
 import Fixtures from '@/helpers/fixtures'
+import { render } from '@/helpers/test-utils'
 
 import GeneralPanel from './GeneralPanel'
 

@@ -183,9 +183,38 @@ export class ExperimentFull implements ApiDataSource {
   }
 
   /**
+   * Return the deployed variation if one has been selected, otherwise `null`.
+   *
+   * @throws {Error} If a `deployedVariationId` is set but cannot be found in the
+   *   variations.
+   */
+  getDeployedVariation(): null | Variation {
+    let deployedVariation = null
+
+    if (typeof this.deployedVariationId === 'number') {
+      deployedVariation = this.variations.find((variation) => this.deployedVariationId === variation.variationId)
+
+      if (!deployedVariation) {
+        throw Error(
+          `Failed to resolve the deployed variation with ID ${this.deployedVariationId} for experiment with ID ${this.experimentId}.`,
+        )
+      }
+    }
+
+    return deployedVariation
+  }
+
+  /**
    * Return the primary metric assignment ID for this experiment if one exists.
    */
   getPrimaryMetricAssignmentId(): number | null {
     return this.metricAssignments.find((metricAssignment) => metricAssignment.isPrimary)?.metricAssignmentId ?? null
+  }
+
+  /**
+   * Determines whether conclusion data has been entered for this experiment.
+   */
+  hasConclusionData(): boolean {
+    return !!this.endReason || !!this.conclusionUrl || typeof this.deployedVariationId === 'number'
   }
 }
