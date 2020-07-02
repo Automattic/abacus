@@ -1,4 +1,4 @@
-import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from '@material-ui/core'
+import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography} from '@material-ui/core'
 import _ from 'lodash'
 import React, {useMemo} from 'react'
 
@@ -16,11 +16,12 @@ import {
 } from '@/models'
 import AnalysisProcessor from '@/utils/AnalysisProcessor'
 import {formatBoolean} from '@/utils/formatters'
-import MaterialTable from "material-table";
+import MaterialTable, {Options as MaterialTableOptions} from "material-table";
 
-function createStaticTableOptions(numRows: number) {
+function createStaticTableOptions(numRows: number): MaterialTableOptions {
   return {
     pageSize: numRows,
+    draggable: false,
     paging: false,
     sorting: false,
     toolbar: false,
@@ -88,75 +89,39 @@ function ParticipantCounts({
  * Note: This is likely to change a lot as part of https://github.com/Automattic/abacus/issues/96.
  */
 function LatestResultsDebug({ analysisProcessor }: { analysisProcessor: AnalysisProcessor }) {
-  // TODO: switch to static Card + MaterialTable
+  const tableColumns = [
+    {title: 'Strategy', render: ({analysisStrategy}: Analysis) => AnalysisStrategyToHuman[analysisStrategy]},
+    {title: 'Participants (not final)', render: ({participantStats}: Analysis) => `${participantStats.total} (${participantStats.not_final})`},
+    {title: 'Difference interval', render: ({metricEstimates}: Analysis) => metricEstimates ? `[${_.round(metricEstimates.diff.bottom, 4)}, ${_.round(metricEstimates.diff.top, 4)}]` : 'N/A'},
+    {title: 'Recommendation', render: ({recommendation}: Analysis) => recommendation && <RecommendationString recommendation={recommendation} experiment={analysisProcessor.experiment} />},
+    {
+      title: 'Warnings',
+      render: ({recommendation}: Analysis) => {
+        if (!recommendation) {
+          return ''
+        }
+        return <>
+          {recommendation.warnings.map((warning) => (<div key={warning}>{RecommendationWarningToHuman[warning]}</div>))}
+        </>
+      }
+    }
+  ]
   return (
     <>
       {analysisProcessor.resultSummaries.map(
         ({ metricAssignmentId, metricName, attributionWindowSeconds, latestAnalyses, recommendationConflict }) => (
           <div key={metricAssignmentId}>
-            <div>
-              <strong>Metric: </strong>
-              <code>{metricName}</code>
-            </div>
-            <div>
-              <strong>Attribution window: </strong>
-              {AttributionWindowSecondsToHuman[attributionWindowSeconds]}
-            </div>
-            <div>
-              <strong>Last analyzed: </strong>
-              {latestAnalyses.length > 0 ? DatetimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true }) : 'N/A'}
-            </div>
-            <div>
-              <strong>Recommendations conflict? </strong>
-              {formatBoolean(recommendationConflict)}
-            </div>
-            <TableContainer component={Paper}>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Strategy</TableCell>
-                    <TableCell>Participants (not final)</TableCell>
-                    <TableCell>Difference interval</TableCell>
-                    <TableCell>Recommendation</TableCell>
-                    <TableCell>Warnings</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {latestAnalyses.map(({ analysisStrategy, participantStats, metricEstimates, recommendation }) => (
-                    <TableRow key={`${metricAssignmentId}_${analysisStrategy}`}>
-                      <TableCell>{AnalysisStrategyToHuman[analysisStrategy]}</TableCell>
-                      <TableCell>
-                        {participantStats.total} ({participantStats.not_final})
-                      </TableCell>
-                      {metricEstimates && recommendation ? (
-                        <>
-                          <TableCell>
-                            [{_.round(metricEstimates.diff.bottom, 4)}, {_.round(metricEstimates.diff.top, 4)}]
-                          </TableCell>
-                          <TableCell>
-                            <RecommendationString
-                              recommendation={recommendation}
-                              experiment={analysisProcessor.experiment}
-                            />
-                          </TableCell>
-                          <TableCell>
-                            {recommendation.warnings.map((warning) => (
-                              <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
-                            ))}
-                          </TableCell>
-                        </>
-                      ) : (
-                        <>
-                          <TableCell>N/A</TableCell>
-                          <TableCell>N/A</TableCell>
-                          <TableCell>Not analyzed yet</TableCell>
-                        </>
-                      )}
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <Typography variant={'subtitle1'}>
+              <strong><code>{metricName}</code></strong> with {AttributionWindowSecondsToHuman[attributionWindowSeconds]} attribution,
+              last analyzed on {latestAnalyses.length > 0 ? DatetimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true }) : 'N/A'}.
+              <strong>{recommendationConflict && ' Conflicting recommendations!'}</strong>
+            </Typography>
+            <MaterialTable
+              columns={tableColumns}
+              data={latestAnalyses}
+              options={createStaticTableOptions(latestAnalyses.length)}
+            />
+            <br />
           </div>
         ),
       )}
