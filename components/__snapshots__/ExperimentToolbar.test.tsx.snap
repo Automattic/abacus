@@ -1,1657 +1,575 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`on results section and in view mode will render expected buttons 1`] = `
+exports[`with a complete experiment, no conclusions, and in conclude mode will render expected buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-143"
+    class="MuiToolbar-root MuiToolbar-regular"
   >
-    <div
-      class="MuiTabs-root makeStyles-tabs-144"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-2"
+      tabindex="0"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
+      <span
+        class="MuiButton-label"
       >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-146"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-146"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-146"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-147 PrivateTabIndicator-colorSecondary-149 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
+        Cancel
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-2 MuiButton-containedPrimary"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Save Conclusions
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
   </div>
 </div>
 `;
 
-exports[`on snippets section and in view mode will render expected buttons 1`] = `
+exports[`with a complete experiment, no conclusions, and in disable mode will render expected buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-153"
+    class="MuiToolbar-root MuiToolbar-regular"
   >
-    <div
-      class="MuiTabs-root makeStyles-tabs-154"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-5 makeStyles-marginLeft-6 Mui-disabled Mui-disabled"
+      disabled=""
+      tabindex="-1"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
+      <span
+        class="MuiButton-label"
       >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-156"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-156"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-156"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-157 PrivateTabIndicator-colorSecondary-159 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`with a complete experiment, no conclusions, on details section, and in conclude mode will render expected buttons 1`] = `
-<div>
-  <div
-    class="makeStyles-root-3"
-  >
-    <div
-      class="MuiTabs-root makeStyles-tabs-4"
+        Disable
+      </span>
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-6 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+      disabled=""
+      tabindex="-1"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
-      >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-6"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-6"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-6"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-7 PrivateTabIndicator-colorSecondary-9 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-5"
-    >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-2"
-        tabindex="0"
-        type="button"
+      <span
+        class="MuiButton-label"
       >
         <span
-          class="MuiButton-label"
-        >
-          Cancel
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-2 MuiButton-containedPrimary"
-        tabindex="0"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
-        >
-          Save Conclusions
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`with a complete experiment, no conclusions, on details section, and in disable mode will render expected buttons 1`] = `
-<div>
-  <div
-    class="makeStyles-root-23"
-  >
-    <div
-      class="MuiTabs-root makeStyles-tabs-24"
-    >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
-      >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-26"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-26"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-26"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-27 PrivateTabIndicator-colorSecondary-29 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-25"
-    >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-21 makeStyles-marginLeft-22 Mui-disabled Mui-disabled"
-        disabled=""
-        tabindex="-1"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
-        >
-          Disable
-        </span>
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-22 MuiButton-containedPrimary Mui-disabled Mui-disabled"
-        disabled=""
-        tabindex="-1"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
+          class="MuiButton-startIcon MuiButton-iconSizeMedium"
         >
           <span
-            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+            aria-hidden="true"
+            class="material-icons MuiIcon-root"
           >
-            <span
-              aria-hidden="true"
-              class="material-icons MuiIcon-root"
-            >
-              add_circle_outline
-            </span>
+            add_circle_outline
           </span>
-          Add Conclusions
         </span>
-      </button>
-    </div>
+        Add Conclusions
+      </span>
+    </button>
   </div>
 </div>
 `;
 
-exports[`with a complete experiment, no conclusions, on details section, and in view mode will render expected buttons 1`] = `
+exports[`with a complete experiment, no conclusions, and in view mode will render expected buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-83"
+    class="MuiToolbar-root MuiToolbar-regular"
   >
-    <div
-      class="MuiTabs-root makeStyles-tabs-84"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-17 makeStyles-marginLeft-18"
+      tabindex="0"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
+      <span
+        class="MuiButton-label"
       >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-86"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-86"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-86"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-87 PrivateTabIndicator-colorSecondary-89 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-85"
+        Disable
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-18 MuiButton-containedPrimary"
+      tabindex="0"
+      type="button"
     >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-81 makeStyles-marginLeft-82"
-        tabindex="0"
-        type="button"
+      <span
+        class="MuiButton-label"
       >
         <span
-          class="MuiButton-label"
-        >
-          Disable
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-82 MuiButton-containedPrimary"
-        tabindex="0"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
+          class="MuiButton-startIcon MuiButton-iconSizeMedium"
         >
           <span
-            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+            aria-hidden="true"
+            class="material-icons MuiIcon-root"
           >
-            <span
-              aria-hidden="true"
-              class="material-icons MuiIcon-root"
-            >
-              add_circle_outline
-            </span>
+            add_circle_outline
           </span>
-          Add Conclusions
         </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-    </div>
+        Add Conclusions
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
   </div>
 </div>
 `;
 
-exports[`with a complete experiment, with conclusion, on details section, and in disable mode will render expected buttons 1`] = `
+exports[`with a complete experiment, with conclusion, and in disable mode will render expected buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-33"
+    class="MuiToolbar-root MuiToolbar-regular"
   >
-    <div
-      class="MuiTabs-root makeStyles-tabs-34"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-7 makeStyles-marginLeft-8 Mui-disabled Mui-disabled"
+      disabled=""
+      tabindex="-1"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
+      <span
+        class="MuiButton-label"
       >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-36"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-36"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-36"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-37 PrivateTabIndicator-colorSecondary-39 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-35"
+        Disable
+      </span>
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-8 Mui-disabled Mui-disabled"
+      disabled=""
+      tabindex="-1"
+      type="button"
     >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-31 makeStyles-marginLeft-32 Mui-disabled Mui-disabled"
-        disabled=""
-        tabindex="-1"
-        type="button"
+      <span
+        class="MuiButton-label"
       >
         <span
-          class="MuiButton-label"
-        >
-          Disable
-        </span>
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-32 Mui-disabled Mui-disabled"
-        disabled=""
-        tabindex="-1"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
+          class="MuiButton-startIcon MuiButton-iconSizeMedium"
         >
           <span
-            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+            aria-hidden="true"
+            class="material-icons MuiIcon-root"
           >
-            <span
-              aria-hidden="true"
-              class="material-icons MuiIcon-root"
-            >
-              edit
-            </span>
+            edit
           </span>
-          Edit
         </span>
-      </button>
-    </div>
+        Edit
+      </span>
+    </button>
   </div>
 </div>
 `;
 
-exports[`with a complete experiment, with conclusions, on details section, and in view mode will render expected buttons 1`] = `
+exports[`with a complete experiment, with conclusions, and in view mode will render expected buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-93"
+    class="MuiToolbar-root MuiToolbar-regular"
   >
-    <div
-      class="MuiTabs-root makeStyles-tabs-94"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-19 makeStyles-marginLeft-20"
+      tabindex="0"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
+      <span
+        class="MuiButton-label"
       >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-96"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-96"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-96"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-97 PrivateTabIndicator-colorSecondary-99 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-95"
+        Disable
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-20"
+      tabindex="0"
+      type="button"
     >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-91 makeStyles-marginLeft-92"
-        tabindex="0"
-        type="button"
+      <span
+        class="MuiButton-label"
       >
         <span
-          class="MuiButton-label"
-        >
-          Disable
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-92"
-        tabindex="0"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
+          class="MuiButton-startIcon MuiButton-iconSizeMedium"
         >
           <span
-            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+            aria-hidden="true"
+            class="material-icons MuiIcon-root"
           >
-            <span
-              aria-hidden="true"
-              class="material-icons MuiIcon-root"
-            >
-              edit
-            </span>
+            edit
           </span>
-          Edit
         </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-    </div>
+        Edit
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
   </div>
 </div>
 `;
 
-exports[`with a disabled experiment, no conclusions, on details section, and in conclude mode will render expected buttons 1`] = `
+exports[`with a disabled experiment, no conclusions, and in conclude mode will render expected buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-13"
+    class="MuiToolbar-root MuiToolbar-regular"
   >
-    <div
-      class="MuiTabs-root makeStyles-tabs-14"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-4"
+      tabindex="0"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
+      <span
+        class="MuiButton-label"
       >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-16"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-16"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-16"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-17 PrivateTabIndicator-colorSecondary-19 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-15"
+        Cancel
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-4 MuiButton-containedPrimary"
+      tabindex="0"
+      type="button"
     >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-12"
-        tabindex="0"
-        type="button"
+      <span
+        class="MuiButton-label"
       >
-        <span
-          class="MuiButton-label"
-        >
-          Cancel
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-12 MuiButton-containedPrimary"
-        tabindex="0"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
-        >
-          Save Conclusions
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-    </div>
+        Save Conclusions
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
   </div>
 </div>
 `;
 
-exports[`with a disabled experiment, no conclusions, on details section, and in view mode will render expected buttons 1`] = `
+exports[`with a disabled experiment, no conclusions, and in view mode will render expected buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-103"
+    class="MuiToolbar-root MuiToolbar-regular"
   >
-    <div
-      class="MuiTabs-root makeStyles-tabs-104"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-22 MuiButton-containedPrimary"
+      tabindex="0"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
-      >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-106"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-106"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-106"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-107 PrivateTabIndicator-colorSecondary-109 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-105"
-    >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-102 MuiButton-containedPrimary"
-        tabindex="0"
-        type="button"
+      <span
+        class="MuiButton-label"
       >
         <span
-          class="MuiButton-label"
+          class="MuiButton-startIcon MuiButton-iconSizeMedium"
         >
           <span
-            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+            aria-hidden="true"
+            class="material-icons MuiIcon-root"
           >
-            <span
-              aria-hidden="true"
-              class="material-icons MuiIcon-root"
-            >
-              add_circle_outline
-            </span>
+            add_circle_outline
           </span>
-          Add Conclusions
         </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-    </div>
+        Add Conclusions
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
   </div>
 </div>
 `;
 
-exports[`with a disabled experiment, with conclusion, on details section, and in view mode will render expected buttons 1`] = `
+exports[`with a disabled experiment, with conclusion, and in view mode will render expected buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-113"
+    class="MuiToolbar-root MuiToolbar-regular"
   >
-    <div
-      class="MuiTabs-root makeStyles-tabs-114"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-24"
+      tabindex="0"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
-      >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-116"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-116"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-116"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-117 PrivateTabIndicator-colorSecondary-119 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-115"
-    >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-112"
-        tabindex="0"
-        type="button"
+      <span
+        class="MuiButton-label"
       >
         <span
-          class="MuiButton-label"
+          class="MuiButton-startIcon MuiButton-iconSizeMedium"
         >
           <span
-            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+            aria-hidden="true"
+            class="material-icons MuiIcon-root"
           >
-            <span
-              aria-hidden="true"
-              class="material-icons MuiIcon-root"
-            >
-              edit
-            </span>
+            edit
           </span>
-          Edit
         </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-    </div>
+        Edit
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
   </div>
 </div>
 `;
 
-exports[`with a running experiment, on details section, and in disable mode will render expected buttons 1`] = `
+exports[`with a running experiment and in disable mode will render expected buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-43"
+    class="MuiToolbar-root MuiToolbar-regular"
   >
-    <div
-      class="MuiTabs-root makeStyles-tabs-44"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-9 makeStyles-marginLeft-10 Mui-disabled Mui-disabled"
+      disabled=""
+      tabindex="-1"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
+      <span
+        class="MuiButton-label"
       >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-46"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-46"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-46"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-47 PrivateTabIndicator-colorSecondary-49 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-45"
+        Disable
+      </span>
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-10 Mui-disabled Mui-disabled"
+      disabled=""
+      tabindex="-1"
+      type="button"
     >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-41 makeStyles-marginLeft-42 Mui-disabled Mui-disabled"
-        disabled=""
-        tabindex="-1"
-        type="button"
+      <span
+        class="MuiButton-label"
       >
         <span
-          class="MuiButton-label"
-        >
-          Disable
-        </span>
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-42 Mui-disabled Mui-disabled"
-        disabled=""
-        tabindex="-1"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
+          class="MuiButton-startIcon MuiButton-iconSizeMedium"
         >
           <span
-            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+            aria-hidden="true"
+            class="material-icons MuiIcon-root"
           >
-            <span
-              aria-hidden="true"
-              class="material-icons MuiIcon-root"
-            >
-              edit
-            </span>
+            edit
           </span>
-          Edit
         </span>
-      </button>
-    </div>
+        Edit
+      </span>
+    </button>
   </div>
 </div>
 `;
 
-exports[`with a running experiment, on details section, and in edit mode will render expected buttons 1`] = `
+exports[`with a running experiment and in edit mode will render expected buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-63"
+    class="MuiToolbar-root MuiToolbar-regular"
   >
-    <div
-      class="MuiTabs-root makeStyles-tabs-64"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-14"
+      tabindex="0"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
+      <span
+        class="MuiButton-label"
       >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-66"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-66"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-66"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-67 PrivateTabIndicator-colorSecondary-69 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-65"
+        Cancel
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-14 MuiButton-containedPrimary"
+      tabindex="0"
+      type="button"
     >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-62"
-        tabindex="0"
-        type="button"
+      <span
+        class="MuiButton-label"
       >
-        <span
-          class="MuiButton-label"
-        >
-          Cancel
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-62 MuiButton-containedPrimary"
-        tabindex="0"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
-        >
-          Update Details
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-    </div>
+        Update Details
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
   </div>
 </div>
 `;
 
-exports[`with a running experiment, on details section, and in view mode will render expected buttons 1`] = `
+exports[`with a running experiment and in view mode will render expected buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-123"
+    class="MuiToolbar-root MuiToolbar-regular"
   >
-    <div
-      class="MuiTabs-root makeStyles-tabs-124"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-25 makeStyles-marginLeft-26"
+      tabindex="0"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
+      <span
+        class="MuiButton-label"
       >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-126"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-126"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-126"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-127 PrivateTabIndicator-colorSecondary-129 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-125"
+        Disable
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-26"
+      tabindex="0"
+      type="button"
     >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-121 makeStyles-marginLeft-122"
-        tabindex="0"
-        type="button"
+      <span
+        class="MuiButton-label"
       >
         <span
-          class="MuiButton-label"
-        >
-          Disable
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-122"
-        tabindex="0"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
+          class="MuiButton-startIcon MuiButton-iconSizeMedium"
         >
           <span
-            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+            aria-hidden="true"
+            class="material-icons MuiIcon-root"
           >
-            <span
-              aria-hidden="true"
-              class="material-icons MuiIcon-root"
-            >
-              edit
-            </span>
+            edit
           </span>
-          Edit
         </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-    </div>
+        Edit
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
   </div>
 </div>
 `;
 
-exports[`with a staging experiment, on details section, and in disable mode will render expected buttons 1`] = `
+exports[`with a staging experiment and in disable mode will render expected buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-53"
+    class="MuiToolbar-root MuiToolbar-regular"
   >
-    <div
-      class="MuiTabs-root makeStyles-tabs-54"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-11 makeStyles-marginLeft-12 Mui-disabled Mui-disabled"
+      disabled=""
+      tabindex="-1"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
+      <span
+        class="MuiButton-label"
       >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-56"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-56"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-56"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-57 PrivateTabIndicator-colorSecondary-59 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-55"
+        Disable
+      </span>
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-12 Mui-disabled Mui-disabled"
+      disabled=""
+      tabindex="-1"
+      type="button"
     >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-51 makeStyles-marginLeft-52 Mui-disabled Mui-disabled"
-        disabled=""
-        tabindex="-1"
-        type="button"
+      <span
+        class="MuiButton-label"
       >
         <span
-          class="MuiButton-label"
-        >
-          Disable
-        </span>
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-52 Mui-disabled Mui-disabled"
-        disabled=""
-        tabindex="-1"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
+          class="MuiButton-startIcon MuiButton-iconSizeMedium"
         >
           <span
-            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+            aria-hidden="true"
+            class="material-icons MuiIcon-root"
           >
-            <span
-              aria-hidden="true"
-              class="material-icons MuiIcon-root"
-            >
-              edit
-            </span>
+            edit
           </span>
-          Edit
         </span>
-      </button>
-    </div>
+        Edit
+      </span>
+    </button>
   </div>
 </div>
 `;
 
-exports[`with a staging experiment, on details section, and in edit mode will render expected buttons 1`] = `
+exports[`with a staging experiment and in edit mode will render expected buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-73"
+    class="MuiToolbar-root MuiToolbar-regular"
   >
-    <div
-      class="MuiTabs-root makeStyles-tabs-74"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-16"
+      tabindex="0"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
+      <span
+        class="MuiButton-label"
       >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-76"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-76"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-76"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-77 PrivateTabIndicator-colorSecondary-79 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-75"
+        Cancel
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-16 MuiButton-containedPrimary"
+      tabindex="0"
+      type="button"
     >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-72"
-        tabindex="0"
-        type="button"
+      <span
+        class="MuiButton-label"
       >
-        <span
-          class="MuiButton-label"
-        >
-          Cancel
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-marginLeft-72 MuiButton-containedPrimary"
-        tabindex="0"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
-        >
-          Update Details
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-    </div>
+        Update Details
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
   </div>
 </div>
 `;
 
-exports[`with a staging experiment, on details section, and in view mode will render expected buttons 1`] = `
+exports[`with a staging experiment and in view mode will render expected buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-133"
+    class="MuiToolbar-root MuiToolbar-regular"
   >
-    <div
-      class="MuiTabs-root makeStyles-tabs-134"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-27 makeStyles-marginLeft-28"
+      tabindex="0"
+      type="button"
     >
-      <div
-        class="MuiTabs-scroller MuiTabs-fixed"
-        style="overflow: hidden;"
+      <span
+        class="MuiButton-label"
       >
-        <div
-          class="MuiTabs-flexContainer"
-          role="tablist"
-        >
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-136"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Details
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-136"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Results
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit makeStyles-tab-136"
-            role="tab"
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiTab-wrapper"
-            >
-              Snippets
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <span
-          class="PrivateTabIndicator-root-137 PrivateTabIndicator-colorSecondary-139 MuiTabs-indicator"
-          style="left: 0px; width: 0px;"
-        />
-      </div>
-    </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-regular makeStyles-toolbarRoot-135"
+        Disable
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-28"
+      tabindex="0"
+      type="button"
     >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-disableButton-131 makeStyles-marginLeft-132"
-        tabindex="0"
-        type="button"
+      <span
+        class="MuiButton-label"
       >
         <span
-          class="MuiButton-label"
-        >
-          Disable
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-marginLeft-132"
-        tabindex="0"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
+          class="MuiButton-startIcon MuiButton-iconSizeMedium"
         >
           <span
-            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+            aria-hidden="true"
+            class="material-icons MuiIcon-root"
           >
-            <span
-              aria-hidden="true"
-              class="material-icons MuiIcon-root"
-            >
-              edit
-            </span>
+            edit
           </span>
-          Edit
         </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
-    </div>
+        Edit
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
   </div>
 </div>
 `;

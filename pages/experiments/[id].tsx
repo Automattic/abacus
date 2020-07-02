@@ -1,3 +1,4 @@
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
 import { toIntOrNull } from 'qc-to_int'
@@ -7,13 +8,47 @@ import ExperimentsApi from '@/api/ExperimentsApi'
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
 import ExperimentDetails from '@/components/ExperimentDetails'
+import ExperimentTabs from '@/components/ExperimentTabs'
 import ExperimentToolbar, { ExperimentToolbarMode } from '@/components/ExperimentToolbar'
 import Layout from '@/components/Layout'
 import { ExperimentFull, MetricBare, Segment } from '@/models'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    tabs: {
+      flex: '1 0 auto',
+    },
+    tabsAndToolbar: {
+      alignItems: 'center',
+      display: 'flex',
+    },
+    toolbarRoot: {
+      justifyContent: 'flex-end',
+      minHeight: 48,
+    },
+    // Note: The `xs` breakpoint is too late to switch to column flex layout. The
+    // `sm` breakpoint is way too soon to switch. So, picked a value somewhere in
+    // between. The toolbar is widest when both the "Disable" and "Add Conclusions"
+    // buttons are displayed.
+    [theme.breakpoints.down(640)]: {
+      tabs: {
+        alignSelf: 'flex-start',
+        flex: '1 0 auto',
+      },
+      tabsAndToolbar: {
+        flexDirection: 'column',
+      },
+      toolbarRoot: {
+        alignSelf: 'flex-end',
+      },
+    },
+  }),
+)
+
 export default function ExperimentPage() {
+  const classes = useStyles()
   const router = useRouter()
   const experimentId = toIntOrNull(router.query.id)
   debug(`ExperimentPage#render ${experimentId}`)
@@ -98,16 +133,19 @@ export default function ExperimentPage() {
     <Layout title={`Experiment: ${experiment ? experiment.name : 'Not Found'}`} error={fetchError}>
       {experiment && metrics && segments && (
         <>
-          <ExperimentToolbar
-            experiment={experiment}
-            mode={mode}
-            onCancel={handleCancel}
-            onConclude={handleConclude}
-            onDisable={handleDisable}
-            onEdit={handleEdit}
-            onSave={handleSave}
-            section='details'
-          />
+          <div className={classes.tabsAndToolbar}>
+            <ExperimentTabs className={classes.tabs} experiment={experiment} />
+            <ExperimentToolbar
+              className={classes.toolbarRoot}
+              experiment={experiment}
+              mode={mode}
+              onCancel={handleCancel}
+              onConclude={handleConclude}
+              onDisable={handleDisable}
+              onEdit={handleEdit}
+              onSave={handleSave}
+            />
+          </div>
           <ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />
         </>
       )}

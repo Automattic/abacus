@@ -7,182 +7,162 @@ import { Status } from '@/models'
 import ExperimentToolbar from './ExperimentToolbar'
 
 // |                     state                        |
-// | exp status: | conclusions: | section: | mode:    | valid:
-// | ----------- | ------------ | -------- | -------- | ------
-// | complete    | no           | details  | conclude | yes
-// | disabled    | no           | details  | conclude | yes
-// | complete    | no           | details  | disable  | yes
-// | complete    | yes          | details  | disable  | yes
-// | running     | n/a          | details  | disable  | yes
-// | staging     | n/a          | details  | disable  | yes
-// | running     | n/a          | details  | edit     | yes
-// | staging     | n/a          | details  | edit     | yes
-// | complete    | no           | details  | view     | yes
-// | complete    | yes          | details  | view     | yes
-// | disabled    | no           | details  | view     | yes
-// | disabled    | yes          | details  | view     | yes
-// | running     | n/a          | details  | view     | yes
-// | staging     | n/a          | details  | view     | yes
-// | n/a         | n/a          | results  | view     | yes
-// | n/a         | n/a          | snippets | view     | yes
+// | exp status: | conclusions: | mode:    | valid:
+// | ----------- | ------------ | -------- | ------
+// | complete    | no           | conclude | yes
+// | disabled    | no           | conclude | yes
+// | complete    | no           | disable  | yes
+// | complete    | yes          | disable  | yes
+// | running     | n/a          | disable  | yes
+// | staging     | n/a          | disable  | yes
+// | running     | n/a          | edit     | yes
+// | staging     | n/a          | edit     | yes
+// | complete    | no           | view     | yes
+// | complete    | yes          | view     | yes
+// | disabled    | no           | view     | yes
+// | disabled    | yes          | view     | yes
+// | running     | n/a          | view     | yes
+// | staging     | n/a          | view     | yes
 
-test('with a complete experiment, no conclusions, on details section, and in conclude mode will render expected buttons', () => {
+test('with a complete experiment, no conclusions, and in conclude mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull()
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='conclude' section='details' />)
+  const { container } = render(<ExperimentToolbar experiment={experiment} mode='conclude' />)
 
   // Expect "Cancel" and "Save Conclusions" buttons.
   expect(container).toMatchSnapshot()
 })
 
-test('with a disabled experiment, no conclusions, on details section, and in conclude mode will render expected buttons', () => {
+test('with a disabled experiment, no conclusions, and in conclude mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Disabled,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='conclude' section='details' />)
+  const { container } = render(<ExperimentToolbar experiment={experiment} mode='conclude' />)
 
   // Expect "Cancel" and "Save Conclusions" buttons.
   expect(container).toMatchSnapshot()
 })
 
-test('with a complete experiment, no conclusions, on details section, and in disable mode will render expected buttons', () => {
+test('with a complete experiment, no conclusions, and in disable mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull()
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='disable' section='details' />)
+  const { container } = render(<ExperimentToolbar experiment={experiment} mode='disable' />)
 
   // Expect disabled "Disable" and disabled "Add Conclusions" buttons.
   expect(container).toMatchSnapshot()
 })
 
-test('with a complete experiment, with conclusion, on details section, and in disable mode will render expected buttons', () => {
+test('with a complete experiment, with conclusion, and in disable mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     endReason: 'Ran its course.',
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='disable' section='details' />)
+  const { container } = render(<ExperimentToolbar experiment={experiment} mode='disable' />)
 
   // Expect disabled "Disable" and disabled "Edit" buttons.
   expect(container).toMatchSnapshot()
 })
 
-test('with a running experiment, on details section, and in disable mode will render expected buttons', () => {
+test('with a running experiment and in disable mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Running,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='disable' section='details' />)
+  const { container } = render(<ExperimentToolbar experiment={experiment} mode='disable' />)
 
   // Expect disabled "Disable" and disabled "Edit" buttons.
   expect(container).toMatchSnapshot()
 })
 
-test('with a staging experiment, on details section, and in disable mode will render expected buttons', () => {
+test('with a staging experiment and in disable mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Staging,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='disable' section='details' />)
+  const { container } = render(<ExperimentToolbar experiment={experiment} mode='disable' />)
 
   // Expect disabled "Disable" and disabled "Edit" buttons.
   expect(container).toMatchSnapshot()
 })
 
-test('with a running experiment, on details section, and in edit mode will render expected buttons', () => {
+test('with a running experiment and in edit mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Running,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='edit' section='details' />)
+  const { container } = render(<ExperimentToolbar experiment={experiment} mode='edit' />)
 
   // Expect "Cancel" and "Update Details" buttons.
   expect(container).toMatchSnapshot()
 })
 
-test('with a staging experiment, on details section, and in edit mode will render expected buttons', () => {
+test('with a staging experiment and in edit mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Staging,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='edit' section='details' />)
+  const { container } = render(<ExperimentToolbar experiment={experiment} mode='edit' />)
 
   // Expect "Cancel" and "Update Details" buttons.
   expect(container).toMatchSnapshot()
 })
 
-test('with a complete experiment, no conclusions, on details section, and in view mode will render expected buttons', () => {
+test('with a complete experiment, no conclusions, and in view mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull()
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' section='details' />)
+  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
 
   // Expect "Disable" and "Add Conclusions" buttons.
   expect(container).toMatchSnapshot()
 })
 
-test('with a complete experiment, with conclusions, on details section, and in view mode will render expected buttons', () => {
+test('with a complete experiment, with conclusions, and in view mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     endReason: 'Ran its course.',
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' section='details' />)
+  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
 
   // Expect "Disable" and "Edit" buttons.
   expect(container).toMatchSnapshot()
 })
 
-test('with a disabled experiment, no conclusions, on details section, and in view mode will render expected buttons', () => {
+test('with a disabled experiment, no conclusions, and in view mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Disabled,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' section='details' />)
+  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
 
   // Expect "Add Conclusions" button.
   expect(container).toMatchSnapshot()
 })
 
-test('with a disabled experiment, with conclusion, on details section, and in view mode will render expected buttons', () => {
+test('with a disabled experiment, with conclusion, and in view mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Disabled,
     endReason: 'Ran its course.',
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' section='details' />)
+  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
 
   // Expect "Edit" button.
   expect(container).toMatchSnapshot()
 })
 
-test('with a running experiment, on details section, and in view mode will render expected buttons', () => {
+test('with a running experiment and in view mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Running,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' section='details' />)
+  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
 
   // Expect "Disable" and "Edit" buttons.
   expect(container).toMatchSnapshot()
 })
 
-test('with a staging experiment, on details section, and in view mode will render expected buttons', () => {
+test('with a staging experiment and in view mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Staging,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' section='details' />)
+  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
 
   // Expect "Disable" and "Edit" buttons.
-  expect(container).toMatchSnapshot()
-})
-
-test('on results section and in view mode will render expected buttons', () => {
-  const experiment = Fixtures.createExperimentFull()
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' section='results' />)
-
-  // Expect no toolbar buttons.
-  expect(container).toMatchSnapshot()
-})
-
-test('on snippets section and in view mode will render expected buttons', () => {
-  const experiment = Fixtures.createExperimentFull()
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' section='snippets' />)
-
-  // Expect no toolbar buttons.
   expect(container).toMatchSnapshot()
 })
 
 test('clicking "Disable" button calls `onDisabled` callback', () => {
   const handleDisable = jest.fn()
   const experiment = Fixtures.createExperimentFull({ status: Status.Staging })
-  const { getByText } = render(
-    <ExperimentToolbar experiment={experiment} mode='view' onDisable={handleDisable} section='details' />,
-  )
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='view' onDisable={handleDisable} />)
 
   const disableElmt = getByText('Disable')
 
@@ -194,9 +174,7 @@ test('clicking "Disable" button calls `onDisabled` callback', () => {
 test('clicking "Edit" button calls `onEdit` callback', () => {
   const handleEdit = jest.fn()
   const experiment = Fixtures.createExperimentFull({ status: Status.Staging })
-  const { getByText } = render(
-    <ExperimentToolbar experiment={experiment} mode='view' onEdit={handleEdit} section='details' />,
-  )
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='view' onEdit={handleEdit} />)
 
   const editElmt = getByText('Edit')
 
@@ -208,9 +186,7 @@ test('clicking "Edit" button calls `onEdit` callback', () => {
 test('clicking "Cancel" button calls `onCancel` callback', () => {
   const handleCancel = jest.fn()
   const experiment = Fixtures.createExperimentFull({ status: Status.Staging })
-  const { getByText } = render(
-    <ExperimentToolbar experiment={experiment} mode='edit' onCancel={handleCancel} section='details' />,
-  )
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='edit' onCancel={handleCancel} />)
 
   const cancelElmt = getByText('Cancel')
 
@@ -222,9 +198,7 @@ test('clicking "Cancel" button calls `onCancel` callback', () => {
 test('clicking "Update Details" button calls `onSave` callback', () => {
   const handleSave = jest.fn()
   const experiment = Fixtures.createExperimentFull({ status: Status.Staging })
-  const { getByText } = render(
-    <ExperimentToolbar experiment={experiment} mode='edit' onSave={handleSave} section='details' />,
-  )
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='edit' onSave={handleSave} />)
 
   const updateDetailsElmt = getByText('Update Details')
 
@@ -236,9 +210,7 @@ test('clicking "Update Details" button calls `onSave` callback', () => {
 test('clicking "Add Conclusions" button calls `onConclude` callback', () => {
   const handleConclude = jest.fn()
   const experiment = Fixtures.createExperimentFull()
-  const { getByText } = render(
-    <ExperimentToolbar experiment={experiment} mode='view' onConclude={handleConclude} section='details' />,
-  )
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='view' onConclude={handleConclude} />)
 
   const addConclusionsElmt = getByText('Add Conclusions')
 
@@ -250,9 +222,7 @@ test('clicking "Add Conclusions" button calls `onConclude` callback', () => {
 test('clicking "Cancel" button calls `onCancel` callback', () => {
   const handleCancel = jest.fn()
   const experiment = Fixtures.createExperimentFull()
-  const { getByText } = render(
-    <ExperimentToolbar experiment={experiment} mode='conclude' onCancel={handleCancel} section='details' />,
-  )
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='conclude' onCancel={handleCancel} />)
 
   const cancelElmt = getByText('Cancel')
 
@@ -264,9 +234,7 @@ test('clicking "Cancel" button calls `onCancel` callback', () => {
 test('clicking "Save Conclusions" button calls `onSave` callback', () => {
   const handleSave = jest.fn()
   const experiment = Fixtures.createExperimentFull()
-  const { getByText } = render(
-    <ExperimentToolbar experiment={experiment} mode='conclude' onSave={handleSave} section='details' />,
-  )
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='conclude' onSave={handleSave} />)
 
   const saveConclusionsElmt = getByText('Save Conclusions')
 
