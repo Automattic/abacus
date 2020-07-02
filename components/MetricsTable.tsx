@@ -45,6 +45,7 @@ const useMetricDetailStyles = makeStyles((theme: Theme) =>
       borderWidth: 1,
       borderColor: theme.palette.divider,
       borderStyle: 'solid',
+      background: '#fff',
     },
   }),
 )
