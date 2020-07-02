@@ -1,34 +1,49 @@
-import { createStyles, LinearProgress, makeStyles, Snackbar, Theme, Typography } from '@material-ui/core'
+import {
+  createStyles,
+  LinearProgress,
+  makeStyles,
+  Snackbar,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Theme,
+  useTheme,
+} from '@material-ui/core'
 import debugFactory from 'debug'
 import MaterialTable from 'material-table'
 import React, { useEffect, useState } from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
 import { MetricBare, MetricFull } from '@/models'
+import { formatBoolean } from '@/utils/formatters'
 import { defaultTableOptions } from '@/utils/material-table'
 
 const debug = debugFactory('abacus:components/MetricsTable.tsx')
 
-const tableColumns = [
-  { title: 'Name', field: 'name' },
-  { title: 'Description', field: 'description' },
-  { title: 'Parameter Type', field: 'parameterType' },
-]
-
 const useMetricDetailStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: 'grid',
-      gridTemplateColumns: '10rem auto',
-      gridRowGap: theme.spacing(1),
-      padding: theme.spacing(1, 4),
-      '& dt': {
-        fontWeight: 600,
-      },
-      '& dd': {
-        fontFamily: 'monospace',
-        whiteSpace: 'pre',
-      },
+      padding: theme.spacing(2, 8),
+      background: theme.palette.action.hover,
+    },
+    headerCell: {
+      fontWeight: 'bold',
+      width: '9rem',
+      verticalAlign: 'top',
+    },
+    dataCell: {
+      fontFamily: theme.custom.fonts.monospace,
+    },
+    pre: {
+      whiteSpace: 'pre',
+      maxHeight: '15rem',
+      overflow: 'scroll',
+      padding: theme.spacing(1),
+      borderWidth: 1,
+      borderColor: theme.palette.divider,
+      borderStyle: 'solid',
     },
   }),
 )
@@ -53,15 +68,25 @@ const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
 
   return (
     <>
-      {isLoading && <LinearProgress />}
       <Snackbar open={!!error} message='Oops! Something went wrong while trying to load a Metric.' />
+      {isLoading && <LinearProgress />}
       {!isLoading && !error && metricFull && (
-        <dl className={classes.root}>
-          <Typography component='dt'>Direction:</Typography>
-          <Typography component='dd'>{metricFull.higherIsBetter ? 'Higher is better.' : 'Lower is better.'}</Typography>
-          <Typography component='dt'>Parameters:</Typography>
-          <Typography component='dd'>{paramsStringified}</Typography>
-        </dl>
+        <TableContainer className={classes.root}>
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell className={classes.headerCell}>Higher is Better:</TableCell>
+                <TableCell className={classes.dataCell}>{formatBoolean(metricFull.higherIsBetter)}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className={classes.headerCell}>Parameters:</TableCell>
+                <TableCell className={classes.dataCell}>
+                  <div className={classes.pre}>{paramsStringified}</div>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
       )}
     </>
   )
@@ -72,6 +97,32 @@ const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
  */
 const MetricsTable = ({ metrics }: { metrics: MetricBare[] }) => {
   debug('MetricsTable#render')
+
+  const theme = useTheme()
+  const tableColumns = [
+    {
+      title: 'Name',
+      field: 'name',
+      cellStyle: {
+        fontFamily: theme.custom.fonts.monospace,
+        fontWeight: theme.custom.fontWeights.monospaceBold,
+      },
+    },
+    {
+      title: 'Description',
+      field: 'description',
+      cellStyle: {
+        fontFamily: theme.custom.fonts.monospace,
+      },
+    },
+    {
+      title: 'Parameter Type',
+      field: 'parameterType',
+      cellStyle: {
+        fontFamily: theme.custom.fonts.monospace,
+      },
+    },
+  ]
 
   return (
     <MaterialTable
