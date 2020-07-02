@@ -48,7 +48,7 @@ const useMetricDetailStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-/* istanbul ignore next; TODO: Test once concrete */
+/* istanbul ignore next; e2e is covering this for now */
 const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
   const classes = useMetricDetailStyles()
 

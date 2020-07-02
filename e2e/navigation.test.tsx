@@ -39,3 +39,19 @@ describe('Experiments', () => {
     })
   })
 })
+
+describe('Metrics', () => {
+  describe('from Metrics table', () => {
+    it('should show metric details on row click', async () => {
+      await page.goto('http://a8c-abacus-local:3001/metrics')
+
+      await page.waitForSelector('.MuiTableHead-root')
+
+      const $tableRows = await page.$$('.MuiTableBody-root tr')
+      expect($tableRows.length).toBeGreaterThan(0)
+      $tableRows[0].click()
+      await page.waitForSelector('.MuiTableBody-root .MuiTableBody-root')
+      expect(await page.content()).toMatch(/Higher is Better/)
+    })
+  })
+})
