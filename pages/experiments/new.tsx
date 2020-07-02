@@ -5,13 +5,13 @@ import React, { useEffect, useState } from 'react'
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
 import Layout from '@/components/Layout'
-import { MetricBare, newExperimentTemplate, Segment } from '@/models'
+import { createNewExperiment, MetricBare, Segment } from '@/models'
 
 const debug = debugFactory('abacus:pages/experiments/new.tsx')
 
 const ExperimentsNewPage = function () {
   debug('ExperimentsNewPage#render')
-  const initialExperiment = newExperimentTemplate
+  const initialExperiment = createNewExperiment()
 
   // TODO: Create a component from this point to allow editing as
   //       well as creation.
