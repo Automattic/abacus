@@ -1,8 +1,7 @@
-import { render } from '@testing-library/react'
 import React from 'react'
 
 import Fixtures from '@/helpers/fixtures'
-import { createMatchMedia } from '@/helpers/test-utils'
+import { createMatchMedia, render } from '@/helpers/test-utils'
 
 import ExperimentDetails from './ExperimentDetails'
 
