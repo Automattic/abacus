@@ -38,7 +38,7 @@ export class MetricBare {
       metricId: apiData.metric_id,
       name: apiData.name,
       description: apiData.description,
-      parameterType: 'revenue', // TODO: Get this from the API. Be sure to update the unit test if necessary.
+      parameterType: apiData.parameter_type,
     })
   }
 }

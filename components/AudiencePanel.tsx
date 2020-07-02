@@ -11,7 +11,7 @@ import { ExperimentFull, Segment, SegmentAssignment, SegmentType } from '@/model
  * Resolves the segment ID of the segment assignment with the actual segment.
  * If the ID cannot be resolved, then an `Error` will be thrown.
  *
- * @param
+ * @param segmentAssignments - The segment assignments to be resolved.
  * @param segments - The segments to associate with the assignments.
  * @throws {Error} When unable to resolve a segment ID with one of the supplied
  *   segments.

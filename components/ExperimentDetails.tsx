@@ -1,55 +1,61 @@
+import Grid from '@material-ui/core/Grid'
+import { useTheme } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 import debugFactory from 'debug'
 import React from 'react'
 
 import AudiencePanel from '@/components/AudiencePanel'
-import { ExperimentFull, Segment } from '@/models'
-import { formatIsoUtcOffset } from '@/utils/formatters'
+import ConclusionsPanel from '@/components/ConclusionsPanel'
+import GeneralPanel from '@/components/GeneralPanel'
+import MetricAssignmentsPanel from '@/components/MetricAssignmentsPanel'
+import { ExperimentFull, MetricBare, Segment } from '@/models'
 
 const debug = debugFactory('abacus:components/ExperimentDetails.tsx')
 
-function ExperimentDetails({ experiment, segments }: { experiment: ExperimentFull; segments: Segment[] }) {
+/**
+ * Renders the main details of an experiment.
+ */
+function ExperimentDetails({
+  experiment,
+  metrics,
+  segments,
+}: {
+  experiment: ExperimentFull
+  metrics: MetricBare[]
+  segments: Segment[]
+}) {
   debug('ExperimentDetails#render')
+  const theme = useTheme()
+  const isMdDown = useMediaQuery(theme.breakpoints.down('md'))
+
   return (
-    <div>
-      <h2>Experiment details</h2>
-      <table>
-        <tbody>
-          <tr>
-            <td>Name</td>
-            <td>{experiment.name}</td>
-          </tr>
-          <tr>
-            <td>P2 Link</td>
-            <td>
-              <a href={experiment.p2Url} rel='noopener noreferrer' target='_blank'>
-                P2
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>Description</td>
-            <td>{experiment.description}</td>
-          </tr>
-          <tr>
-            <td>Start</td>
-            <td>{formatIsoUtcOffset(experiment.startDatetime)}</td>
-          </tr>
-          <tr>
-            <td>End</td>
-            <td>{formatIsoUtcOffset(experiment.endDatetime)}</td>
-          </tr>
-          <tr>
-            <td>Status</td>
-            <td>{experiment.status}</td>
-          </tr>
-          <tr>
-            <td>Platform</td>
-            <td>{experiment.platform}</td>
-          </tr>
-        </tbody>
-      </table>
-      <AudiencePanel experiment={experiment} segments={segments} />
-    </div>
+    <Grid container spacing={2}>
+      <Grid item xs={12} lg={7}>
+        <Grid container direction='column' spacing={2}>
+          <Grid item>
+            <GeneralPanel experiment={experiment} />
+          </Grid>
+          {isMdDown && (
+            <Grid item>
+              <AudiencePanel experiment={experiment} segments={segments} />
+            </Grid>
+          )}
+          <Grid item>
+            <MetricAssignmentsPanel experiment={experiment} metrics={metrics} />
+          </Grid>
+          {experiment.hasConclusionData() && (
+            <Grid item>
+              <ConclusionsPanel experiment={experiment} />
+            </Grid>
+          )}
+        </Grid>
+      </Grid>
+      {!isMdDown && (
+        <Grid item lg={5}>
+          <AudiencePanel experiment={experiment} segments={segments} />
+        </Grid>
+      )}
+    </Grid>
   )
 }
 

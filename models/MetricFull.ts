@@ -43,10 +43,7 @@ export class MetricFull extends MetricBare {
         ? apiData.event_params.map((rawEvent: ApiData) => Event.fromApiData(rawEvent))
         : null,
       revenueParams: apiData.revenue_params ? MetricRevenueParams.fromApiData(apiData.revenue_params) : null,
-      // TODO: Once MetricBare API is extended to include `parameterType`, determine
-      // whether to calculate or use data from API (assuming `parameterType` is added
-      // to MetricFull too).
-      parameterType: apiData.revenue_params ? 'revenue' : 'conversion',
+      parameterType: apiData.parameter_type,
     })
   }
 }

@@ -6,7 +6,7 @@ jest.setTimeout(30000)
 
 describe('Dashboard', () => {
   it('should redirect to /experiments', async () => {
-    await page.goto('http://a8c-abacus-local:3000')
+    await page.goto('http://a8c-abacus-local:3001')
 
     // Sometimes the redirect has not occurred yet. So, we need to wait.
     if (new URL(page.url()).pathname === '/') {
@@ -19,7 +19,7 @@ describe('Dashboard', () => {
 
 describe('Experiments', () => {
   beforeAll(async () => {
-    await page.goto('http://a8c-abacus-local:3000/experiments')
+    await page.goto('http://a8c-abacus-local:3001/experiments')
   })
 
   describe('from experiments table', () => {
@@ -35,7 +35,7 @@ describe('Experiments', () => {
       await Promise.all([page.waitForNavigation(), $tableRows[0].click()])
 
       // Assert clicking a row navigated to the details page of that experiment.
-      expect(page.url()).toMatch(/^http:\/\/a8c-abacus-local:3000\/experiments\/\d+/)
+      expect(page.url()).toMatch(/^http:\/\/a8c-abacus-local:3001\/experiments\/\d+/)
     })
   })
 })
