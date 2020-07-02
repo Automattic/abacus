@@ -3,7 +3,6 @@ import _ from 'lodash'
 import React, { useMemo } from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
-import ExperimentToolbar from '@/components/ExperimentToolbar'
 import {
   Analysis,
   AnalysisStrategyToHuman,
@@ -211,7 +210,6 @@ export default function AnalysisSummary({
 
   return (
     <>
-      <ExperimentToolbar experiment={experiment} mode='view' section='results' />
       <h2>Analysis summary</h2>
       <p>Found {analyses.length} analysis objects in total.</p>
 

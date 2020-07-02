@@ -7,6 +7,7 @@ import AnalysesApi from '@/api/AnalysesApi'
 import ExperimentsApi from '@/api/ExperimentsApi'
 import MetricsApi from '@/api/MetricsApi'
 import AnalysisSummary from '@/components/AnalysisSummary'
+import ExperimentToolbar from '@/components/ExperimentToolbar'
 import Layout from '@/components/Layout'
 import { Analysis, ExperimentFull, MetricBare } from '@/models'
 
@@ -50,12 +51,15 @@ export default function ResultsPage() {
   return (
     <Layout title={`Experiment results: ${experiment ? experiment.name : 'Not Found'}`} error={fetchError}>
       {experiment && analyses && metrics && (
-        <AnalysisSummary
-          analyses={analyses}
-          experiment={experiment}
-          metrics={metrics}
-          debugMode={router.query.debug === 'true'}
-        />
+        <>
+          <ExperimentToolbar experiment={experiment} mode='view' section='results' />
+          <AnalysisSummary
+            analyses={analyses}
+            experiment={experiment}
+            metrics={metrics}
+            debugMode={router.query.debug === 'true'}
+          />
+        </>
       )}
     </Layout>
   )
