@@ -22,6 +22,7 @@ import { defaultTableOptions } from '@/utils/material-table'
 
 const debug = debugFactory('abacus:components/MetricsTable.tsx')
 
+/* istanbul ignore next */
 const useMetricDetailStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -124,6 +125,7 @@ const MetricsTable = ({ metrics }: { metrics: MetricBare[] }) => {
     },
   ]
 
+  /* istanbul ignore next; e2e tests the metric details */
   return (
     <MaterialTable
       columns={tableColumns}
