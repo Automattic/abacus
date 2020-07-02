@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react'
 import React from 'react'
 
 import BadComponent from '@/helpers/BadComponent'
+import { render } from '@/helpers/test-utils'
 
 import Layout from './Layout'
 

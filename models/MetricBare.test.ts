@@ -8,6 +8,7 @@ describe('models/MetricBare.ts module', () => {
           metric_id: 123,
           name: 'Example Metric',
           description: 'An example metric.',
+          parameter_type: 'revenue',
         })
         expect(metricBare).toEqual({
           metricId: 123,
