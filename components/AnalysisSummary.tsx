@@ -1,12 +1,14 @@
-import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography} from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 import _ from 'lodash'
-import React, {useMemo} from 'react'
+import MaterialTable, { Options as MaterialTableOptions } from 'material-table'
+import React, { useMemo } from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
 import {
   Analysis,
   AnalysisStrategy,
-  AnalysisStrategyToHuman, AttributionWindowSeconds,
+  AnalysisStrategyToHuman,
+  AttributionWindowSeconds,
   AttributionWindowSecondsToHuman,
   ExperimentFull,
   MetricBare,
@@ -15,8 +17,6 @@ import {
   Variation,
 } from '@/models'
 import AnalysisProcessor from '@/utils/AnalysisProcessor'
-import {formatBoolean} from '@/utils/formatters'
-import MaterialTable, {Options as MaterialTableOptions} from "material-table";
 
 function createStaticTableOptions(numRows: number): MaterialTableOptions {
   return {
@@ -67,20 +67,22 @@ function ParticipantCounts({
   // TODO: add sortedVariations as method or sort on load?
   const sortedVariations = _.orderBy(experiment.variations, ['isDefault', 'name'], ['desc', 'asc'])
   const tableColumns = [
-    {title: 'Strategy', render: ({analysisStrategy}: Analysis) => AnalysisStrategyToHuman[analysisStrategy]},
-    {title: 'Total', render: ({participantStats}: Analysis) => participantStats.total},
+    { title: 'Strategy', render: ({ analysisStrategy }: Analysis) => AnalysisStrategyToHuman[analysisStrategy] },
+    { title: 'Total', render: ({ participantStats }: Analysis) => participantStats.total },
   ]
-  sortedVariations.forEach(({variationId, name}) => {
+  sortedVariations.forEach(({ variationId, name }) => {
     tableColumns.push({
       title: name,
-      render: ({participantStats}: Analysis) => participantStats[`variation_${variationId}`] || 0
+      render: ({ participantStats }: Analysis) => participantStats[`variation_${variationId}`] || 0,
     })
   })
-  return <MaterialTable
-    columns={tableColumns}
-    data={latestPrimaryMetricAnalyses}
-    options={createStaticTableOptions(latestPrimaryMetricAnalyses.length)}
-  />
+  return (
+    <MaterialTable
+      columns={tableColumns}
+      data={latestPrimaryMetricAnalyses}
+      options={createStaticTableOptions(latestPrimaryMetricAnalyses.length)}
+    />
+  )
 }
 
 /**
@@ -90,21 +92,40 @@ function ParticipantCounts({
  */
 function LatestResultsDebug({ analysisProcessor }: { analysisProcessor: AnalysisProcessor }) {
   const tableColumns = [
-    {title: 'Strategy', render: ({analysisStrategy}: Analysis) => AnalysisStrategyToHuman[analysisStrategy]},
-    {title: 'Participants (not final)', render: ({participantStats}: Analysis) => `${participantStats.total} (${participantStats.not_final})`},
-    {title: 'Difference interval', render: ({metricEstimates}: Analysis) => metricEstimates ? `[${_.round(metricEstimates.diff.bottom, 4)}, ${_.round(metricEstimates.diff.top, 4)}]` : 'N/A'},
-    {title: 'Recommendation', render: ({recommendation}: Analysis) => recommendation && <RecommendationString recommendation={recommendation} experiment={analysisProcessor.experiment} />},
+    { title: 'Strategy', render: ({ analysisStrategy }: Analysis) => AnalysisStrategyToHuman[analysisStrategy] },
+    {
+      title: 'Participants (not final)',
+      render: ({ participantStats }: Analysis) => `${participantStats.total} (${participantStats.not_final})`,
+    },
+    {
+      title: 'Difference interval',
+      render: ({ metricEstimates }: Analysis) =>
+        metricEstimates
+          ? `[${_.round(metricEstimates.diff.bottom, 4)}, ${_.round(metricEstimates.diff.top, 4)}]`
+          : 'N/A',
+    },
+    {
+      title: 'Recommendation',
+      render: ({ recommendation }: Analysis) =>
+        recommendation && (
+          <RecommendationString recommendation={recommendation} experiment={analysisProcessor.experiment} />
+        ),
+    },
     {
       title: 'Warnings',
-      render: ({recommendation}: Analysis) => {
+      render: ({ recommendation }: Analysis) => {
         if (!recommendation) {
           return ''
         }
-        return <>
-          {recommendation.warnings.map((warning) => (<div key={warning}>{RecommendationWarningToHuman[warning]}</div>))}
-        </>
-      }
-    }
+        return (
+          <>
+            {recommendation.warnings.map((warning) => (
+              <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
+            ))}
+          </>
+        )
+      },
+    },
   ]
   return (
     <>
@@ -112,9 +133,14 @@ function LatestResultsDebug({ analysisProcessor }: { analysisProcessor: Analysis
         ({ metricAssignmentId, metricName, attributionWindowSeconds, latestAnalyses, recommendationConflict }) => (
           <div key={metricAssignmentId}>
             <Typography variant={'subtitle1'}>
-              <strong><code>{metricName}</code></strong> with {AttributionWindowSecondsToHuman[attributionWindowSeconds]} attribution,
-              last analyzed on {latestAnalyses.length > 0 ? DatetimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true }) : 'N/A'}.
-              <strong>{recommendationConflict && ' Conflicting recommendations!'}</strong>
+              <strong>
+                <code>{metricName}</code>
+              </strong>{' '}
+              with {AttributionWindowSecondsToHuman[attributionWindowSeconds]} attribution, last analyzed on{' '}
+              {latestAnalyses.length > 0
+                ? DatetimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true })
+                : 'N/A'}
+              .<strong>{recommendationConflict && ' Conflicting recommendations!'}</strong>
             </Typography>
             <MaterialTable
               columns={tableColumns}
@@ -129,7 +155,7 @@ function LatestResultsDebug({ analysisProcessor }: { analysisProcessor: Analysis
   )
 }
 
-function ResultDetail({ analysis, experiment }: { analysis: Analysis, experiment: ExperimentFull }) {
+function ResultDetail({ analysis, experiment }: { analysis: Analysis; experiment: ExperimentFull }) {
   // TODO: move to ExperimentFull, do it on construction?
   const sortedVariations = _.orderBy(experiment.variations, ['isDefault', 'name'], ['desc', 'asc'])
   return (
@@ -142,8 +168,10 @@ function ResultDetail({ analysis, experiment }: { analysis: Analysis, experiment
       <dd>
         {analysis.participantStats.total} ({analysis.participantStats.not_final} not final
         {sortedVariations.map(({ variationId, name }) => (
-          <span key={variationId}>; {analysis.participantStats[`variation_${variationId}`] || 0} in {name}</span>)
-        )}
+          <span key={variationId}>
+            ; {analysis.participantStats[`variation_${variationId}`] || 0} in {name}
+          </span>
+        ))}
         )
       </dd>
       {analysis.metricEstimates && analysis.recommendation && (
@@ -171,7 +199,9 @@ function ResultDetail({ analysis, experiment }: { analysis: Analysis, experiment
 function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProcessor }) {
   const filteredResults = useMemo(() => {
     // TODO: Move?
-    const defaultAnalysisStrategy = analysisProcessor.experiment.exposureEvents ? AnalysisStrategy.PpNaive : AnalysisStrategy.MittNoSpammersNoCrossovers
+    const defaultAnalysisStrategy = analysisProcessor.experiment.exposureEvents
+      ? AnalysisStrategy.PpNaive
+      : AnalysisStrategy.MittNoSpammersNoCrossovers
     return analysisProcessor.resultSummaries.map(
       ({ metricAssignmentId, metricName, attributionWindowSeconds, recommendationConflict, latestAnalyses }) => {
         return {
@@ -179,43 +209,51 @@ function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProce
           metricName,
           attributionWindowSeconds,
           recommendationConflict,
-          analysis: latestAnalyses.filter((analysis) => analysis.analysisStrategy === defaultAnalysisStrategy)[0]
+          analysis: latestAnalyses.filter((analysis) => analysis.analysisStrategy === defaultAnalysisStrategy)[0],
         }
-      }
+      },
     )
   }, [analysisProcessor])
   // TODO: mark primary
   // TODO: recommendation text should match status (keep running after the experiment ended is useless)
   const tableColumns = [
     { title: 'Metric', field: 'metricName' },
-    { title: 'Attribution window', render: ({attributionWindowSeconds}: {attributionWindowSeconds: AttributionWindowSeconds}) => AttributionWindowSecondsToHuman[attributionWindowSeconds] },
+    {
+      title: 'Attribution window',
+      render: ({ attributionWindowSeconds }: { attributionWindowSeconds: AttributionWindowSeconds }) =>
+        AttributionWindowSecondsToHuman[attributionWindowSeconds],
+    },
     {
       title: 'Recommendation',
-      render: ({analysis, recommendationConflict}: {analysis?: Analysis, recommendationConflict?: boolean}) => {
+      render: ({ analysis, recommendationConflict }: { analysis?: Analysis; recommendationConflict?: boolean }) => {
         if (recommendationConflict) {
           return <>Manual analysis required</>
         }
         if (!analysis?.recommendation) {
           return <>Not analyzed yet</>
         }
-        return <RecommendationString recommendation={analysis.recommendation} experiment={analysisProcessor.experiment} />
-      }
+        return (
+          <RecommendationString recommendation={analysis.recommendation} experiment={analysisProcessor.experiment} />
+        )
+      },
     },
   ]
   const detailPanel = [
-    ({analysis, recommendationConflict}: {analysis?: Analysis, recommendationConflict?: boolean}) => {
+    ({ analysis, recommendationConflict }: { analysis?: Analysis; recommendationConflict?: boolean }) => {
       return {
-        render: () => analysis && <ResultDetail analysis={analysis} experiment={analysisProcessor.experiment}/>,
-        disabled: !analysis || recommendationConflict
+        render: () => analysis && <ResultDetail analysis={analysis} experiment={analysisProcessor.experiment} />,
+        disabled: !analysis || recommendationConflict,
       }
-    }
+    },
   ]
   return (
     <MaterialTable
       columns={tableColumns}
       data={filteredResults}
       options={createStaticTableOptions(filteredResults.length)}
-      onRowClick={(_event, rowData, togglePanel) => togglePanel && rowData?.analysis && !rowData?.recommendationConflict && togglePanel()}
+      onRowClick={(_event, rowData, togglePanel) => {
+        togglePanel && rowData?.analysis && !rowData?.recommendationConflict && togglePanel()
+      }}
       detailPanel={detailPanel}
     />
   )
