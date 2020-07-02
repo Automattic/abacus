@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react'
 import React from 'react'
 
+import { render } from '@/helpers/test-utils'
 import { Segment, SegmentType } from '@/models'
 
 import SegmentsTable from './SegmentsTable'
