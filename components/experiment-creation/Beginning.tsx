@@ -1,4 +1,4 @@
-import { Button, Link, TextField, Typography } from '@material-ui/core'
+import { Button, TextField, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React from 'react'
 
@@ -34,10 +34,6 @@ const Beginning = () => {
       <Typography variant='body1'>
         We think one of the best ways to prevent a failed experiment is by documenting what you hope to learn.
       </Typography>
-      <Typography variant='body1' className={classes.p2LinkLine}>
-        To create a new experiment, please first <Link href='#TODO'>post on this P2</Link>.{' '}
-      </Typography>
-
       <div className={classes.p2Entry}>
         <Typography variant='h6' gutterBottom>
           P2 Link
