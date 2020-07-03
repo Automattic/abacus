@@ -1,3 +1,4 @@
+import { LinearProgress } from '@material-ui/core'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
 import { toIntOrNull } from 'qc-to_int'
@@ -18,22 +19,19 @@ export default function ExperimentPage() {
   const experimentId = toIntOrNull(router.query.id)
   debug(`ExperimentPage#render ${experimentId}`)
 
-  const [fetchError, setFetchError] = useState<Error | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [error, setError] = useState<Error | null>(null)
   const [experiment, setExperiment] = useState<ExperimentFull | null>(null)
   const [metrics, setMetrics] = useState<MetricBare[] | null>(null)
   const [segments, setSegments] = useState<Segment[] | null>(null)
 
   useEffect(() => {
     if (experimentId === null) {
-      setFetchError({ name: 'nullExperimentId', message: 'Experiment not found' })
+      setError({ name: 'NotFound', message: 'Experiment not found' })
       return
     }
 
-    setFetchError(null)
-    setExperiment(null)
-    setMetrics(null)
-    setSegments(null)
-
+    setIsLoading(true)
     Promise.all([ExperimentsApi.findById(experimentId), MetricsApi.findAll(), SegmentsApi.findAll()])
       .then(([experiment, metrics, segments]) => {
         setExperiment(experiment)
@@ -41,14 +39,23 @@ export default function ExperimentPage() {
         setSegments(segments)
         return
       })
-      .catch(setFetchError)
+      .catch(setError)
+      .finally(() => setIsLoading(false))
   }, [experimentId])
 
   return (
-    <Layout title={`Experiment: ${experiment ? experiment.name : 'Not Found'}`} error={fetchError}>
-      <ExperimentTabs experiment={experiment} />
-      {experiment && metrics && segments && (
-        <ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />
+    <Layout title={`Experiment: ${experiment?.name || ''}`} error={error}>
+      {isLoading ? (
+        <LinearProgress />
+      ) : (
+        experiment &&
+        metrics &&
+        segments && (
+          <>
+            <ExperimentTabs experiment={experiment} />
+            <ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />
+          </>
+        )
       )}
     </Layout>
   )
