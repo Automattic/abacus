@@ -46,9 +46,11 @@ export default function ExperimentPage() {
 
   return (
     <Layout title={`Experiment: ${experiment ? experiment.name : 'Not Found'}`} error={fetchError}>
-      <ExperimentTabs experiment={experiment} />
       {experiment && metrics && segments && (
-        <ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />
+        <>
+          <ExperimentTabs experiment={experiment} />
+          <ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />
+        </>
       )}
     </Layout>
   )
