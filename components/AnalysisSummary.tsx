@@ -125,7 +125,7 @@ function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProce
                 <code>{metricName}</code>
               </strong>{' '}
               with {AttributionWindowSecondsToHuman[attributionWindowSeconds]} attribution, last analyzed on{' '}
-              {DatetimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true })}
+              <DatetimeText datetime={latestAnalyses[0].analysisDatetime} excludeTime={true} />
             </Typography>
             <MaterialTable
               columns={tableColumns}
