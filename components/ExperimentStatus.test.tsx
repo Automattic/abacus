@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react'
 import React from 'react'
 
+import { render } from '@/helpers/test-utils'
 import { Status } from '@/models'
 
 import ExperimentStatus from './ExperimentStatus'
@@ -11,8 +11,12 @@ test('renders as completed', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       <span
-        class="makeStyles-root-1 makeStyles-completed-2"
+        class="makeStyles-root-1"
       >
+        <span
+          class="makeStyles-statusDot-6 makeStyles-completed-2"
+        />
+         
         completed
       </span>
     </div>
@@ -25,8 +29,12 @@ test('renders as disabled', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       <span
-        class="makeStyles-root-6 makeStyles-disabled-8"
+        class="makeStyles-root-7"
       >
+        <span
+          class="makeStyles-statusDot-12 makeStyles-disabled-11"
+        />
+         
         disabled
       </span>
     </div>
@@ -39,8 +47,12 @@ test('renders as running', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       <span
-        class="makeStyles-root-11 makeStyles-running-14"
+        class="makeStyles-root-13"
       >
+        <span
+          class="makeStyles-statusDot-18 makeStyles-running-15"
+        />
+         
         running
       </span>
     </div>
@@ -53,8 +65,12 @@ test('renders as staging', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       <span
-        class="makeStyles-root-16 makeStyles-staging-20"
+        class="makeStyles-root-19"
       >
+        <span
+          class="makeStyles-statusDot-24 makeStyles-staging-22"
+        />
+         
         staging
       </span>
     </div>

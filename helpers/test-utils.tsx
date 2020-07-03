@@ -1,4 +1,14 @@
+import { Queries, render as actualRender, RenderOptions } from '@testing-library/react'
 import mediaQuery from 'css-mediaquery'
+import React from 'react'
+
+import ThemeProvider from '@/styles/ThemeProvider'
+
+/**
+ * A wrapped unit-test react-renderer, useful for adding React Contexts globally.
+ */
+export const render: typeof actualRender = <Q extends Queries>(ui: React.ReactElement, options?: RenderOptions<Q>) =>
+  actualRender((<ThemeProvider>{ui}</ThemeProvider>) as React.ReactElement, options) as ReturnType<typeof actualRender>
 
 /**
  * Create a `matchMedia` function that will match a query based on the specified
@@ -18,7 +28,7 @@ import mediaQuery from 'css-mediaquery'
  *
  * @param width - The width of the window to simulate.
  */
-function createMatchMedia(width: number) {
+export function createMatchMedia(width: number) {
   return (query: string) => ({
     matches: mediaQuery.match(query, { width }),
     media: query,
@@ -30,5 +40,3 @@ function createMatchMedia(width: number) {
     removeListener: jest.fn(),
   })
 }
-
-export { createMatchMedia }

@@ -1,7 +1,8 @@
-import { fireEvent, getAllByText, getByText, getByTitle, render } from '@testing-library/react'
+import { fireEvent, getAllByText, getByText, getByTitle } from '@testing-library/react'
 import addToDate from 'date-fns/add'
 import React from 'react'
 
+import { render } from '@/helpers/test-utils'
 import { ExperimentBare, Platform, Status } from '@/models'
 
 import ExperimentsTable from './ExperimentsTable'
@@ -39,7 +40,6 @@ test('with one page of experiments, renders a table', () => {
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
   expect(getByText(tBodyElmt, 'First', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toBeInTheDocument()
 })
@@ -64,7 +64,6 @@ test('with more than one page of experiments, renders a table with a pagination 
   let tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
   expect(getByText(tBodyElmt, 'Name1', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getAllByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toHaveLength(PER_PAGE)
   expect(getAllByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toHaveLength(PER_PAGE)
   expect(getAllByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toHaveLength(PER_PAGE)
 
@@ -81,7 +80,6 @@ test('with more than one page of experiments, renders a table with a pagination 
   tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
   expect(getByText(tBodyElmt, 'Name26', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getAllByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toHaveLength(COUNT - PER_PAGE)
   expect(getAllByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toHaveLength(COUNT - PER_PAGE)
   expect(getAllByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toHaveLength(COUNT - PER_PAGE)
 
@@ -96,7 +94,6 @@ test('with more than one page of experiments, renders a table with a pagination 
   tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
   expect(getByText(tBodyElmt, 'Name1', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getAllByText(tBodyElmt, 'staging', { selector: 'tr > td' })).toHaveLength(PER_PAGE)
   expect(getAllByText(tBodyElmt, 'wpcom', { selector: 'tr > td' })).toHaveLength(PER_PAGE)
   expect(getAllByText(tBodyElmt, 'Owner', { selector: 'tr > td' })).toHaveLength(PER_PAGE)
 })
