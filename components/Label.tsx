@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
 /**
  * A simple component for rendering and styling labeled text.
  *
- * Note: Don't confusion this with a label for an input control.
+ * Note: Don't confuse this with a label for an input control.
  */
 function Label({ className, text }: { className?: string; text: ReactNode }) {
   const classes = useStyles()
