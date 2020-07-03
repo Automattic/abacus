@@ -40,7 +40,10 @@ exports[`shows the analyses JSON in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 0
+    }
   },
   {
     "metricAssignmentId": 123,
@@ -74,7 +77,10 @@ exports[`shows the analyses JSON in debug mode 1`] = `
       "reason": "rope_in_ci",
       "warnings": []
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 1
+    }
   },
   {
     "metricAssignmentId": 123,
@@ -108,7 +114,10 @@ exports[`shows the analyses JSON in debug mode 1`] = `
       "reason": "ci_in_rope",
       "warnings": []
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 2
+    }
   },
   {
     "metricAssignmentId": 123,
@@ -145,7 +154,10 @@ exports[`shows the analyses JSON in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 3
+    }
   },
   {
     "metricAssignmentId": 123,
@@ -182,7 +194,10 @@ exports[`shows the analyses JSON in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 4
+    }
   },
   {
     "metricAssignmentId": 123,
@@ -373,7 +388,10 @@ exports[`shows the analyses JSON in debug mode 1`] = `
     },
     "metricEstimates": null,
     "recommendation": null,
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 0
+    }
   }
 ]
 </pre>

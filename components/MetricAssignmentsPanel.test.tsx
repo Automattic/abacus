@@ -69,15 +69,11 @@ test('renders as expected with all metrics resolvable', () => {
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 metric_1
-                <div
-                  class="MuiChip-root makeStyles-primary-1"
+                <span
+                  class="makeStyles-primary-1 makeStyles-root-3"
                 >
-                  <span
-                    class="MuiChip-label"
-                  >
-                    Primary
-                  </span>
-                </div>
+                  Primary
+                </span>
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body"

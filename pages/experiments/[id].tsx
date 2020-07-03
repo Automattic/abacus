@@ -1,3 +1,4 @@
+import { LinearProgress } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     tabs: {
       flex: '1 0 auto',
+      marginBottom: theme.spacing(2),
     },
     tabsAndToolbar: {
       alignItems: 'center',
@@ -54,7 +56,8 @@ export default function ExperimentPage() {
   debug(`ExperimentPage#render ${experimentId}`)
 
   const [mode, setMode] = useState<ExperimentToolbarMode>('view')
-  const [fetchError, setFetchError] = useState<Error | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [error, setError] = useState<Error | null>(null)
   const [experiment, setExperiment] = useState<ExperimentFull | null>(null)
   const [metrics, setMetrics] = useState<MetricBare[] | null>(null)
   const [segments, setSegments] = useState<Segment[] | null>(null)
@@ -109,16 +112,7 @@ export default function ExperimentPage() {
   }
 
   useEffect(() => {
-    if (experimentId === null) {
-      setFetchError({ name: 'nullExperimentId', message: 'Experiment not found' })
-      return
-    }
-
-    setFetchError(null)
-    setExperiment(null)
-    setMetrics(null)
-    setSegments(null)
-
+    setIsLoading(true)
     Promise.all([ExperimentsApi.findById(experimentId), MetricsApi.findAll(), SegmentsApi.findAll()])
       .then(([experiment, metrics, segments]) => {
         setExperiment(experiment)
@@ -126,28 +120,35 @@ export default function ExperimentPage() {
         setSegments(segments)
         return
       })
-      .catch(setFetchError)
+      .catch(setError)
+      .finally(() => setIsLoading(false))
   }, [experimentId])
 
   return (
-    <Layout title={`Experiment: ${experiment ? experiment.name : 'Not Found'}`} error={fetchError}>
-      {experiment && metrics && segments && (
-        <>
-          <div className={classes.tabsAndToolbar}>
-            <ExperimentTabs className={classes.tabs} experiment={experiment} />
-            <ExperimentToolbar
-              className={classes.toolbarRoot}
-              experiment={experiment}
-              mode={mode}
-              onCancel={handleCancel}
-              onConclude={handleConclude}
-              onDisable={handleDisable}
-              onEdit={handleEdit}
-              onSave={handleSave}
-            />
-          </div>
-          <ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />
-        </>
+    <Layout title={`Experiment: ${experiment?.name || ''}`} error={error}>
+      {isLoading ? (
+        <LinearProgress />
+      ) : (
+        experiment &&
+        metrics &&
+        segments && (
+          <>
+            <div className={classes.tabsAndToolbar}>
+              <ExperimentTabs className={classes.tabs} experiment={experiment} tab='details' />
+              <ExperimentToolbar
+                className={classes.toolbarRoot}
+                experiment={experiment}
+                mode={mode}
+                onCancel={handleCancel}
+                onConclude={handleConclude}
+                onDisable={handleDisable}
+                onEdit={handleEdit}
+                onSave={handleSave}
+              />
+            </div>
+            <ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />
+          </>
+        )
       )}
     </Layout>
   )
