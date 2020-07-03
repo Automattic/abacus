@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     toolbarRoot: {
       justifyContent: 'flex-end',
-      minHeight: 48,
+      minHeight: 48, // Same height used by MUITabs. Allows them to align well.
     },
     // Note: The `xs` breakpoint is too late to switch to column flex layout. The
     // `sm` breakpoint is way too soon to switch. So, picked a value somewhere in
