@@ -26,106 +26,116 @@ import ExperimentToolbar from './ExperimentToolbar'
 
 test('with a complete experiment, no conclusions, and in conclude mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull()
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='conclude' />)
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='conclude' />)
 
   // Expect "Cancel" and "Save Conclusions" buttons.
-  expect(container).toMatchSnapshot()
+  expect(getByText('Cancel', { selector: 'button *' })).toBeInTheDocument()
+  expect(getByText('Save Conclusions', { selector: 'button *' })).toBeInTheDocument()
 })
 
 test('with a disabled experiment, no conclusions, and in conclude mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Disabled,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='conclude' />)
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='conclude' />)
 
   // Expect "Cancel" and "Save Conclusions" buttons.
-  expect(container).toMatchSnapshot()
+  expect(getByText('Cancel', { selector: 'button *' })).toBeInTheDocument()
+  expect(getByText('Save Conclusions', { selector: 'button *' })).toBeInTheDocument()
 })
 
 test('with a complete experiment, no conclusions, and in disable mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull()
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='disable' />)
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='disable' />)
 
   // Expect disabled "Disable" and disabled "Add Conclusions" buttons.
-  expect(container).toMatchSnapshot()
+  expect(getByText('Disable', { selector: 'button:disabled *' })).toBeInTheDocument()
+  expect(getByText('Add Conclusions', { selector: 'button:disabled *' })).toBeInTheDocument()
 })
 
 test('with a complete experiment, with conclusion, and in disable mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     endReason: 'Ran its course.',
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='disable' />)
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='disable' />)
 
   // Expect disabled "Disable" and disabled "Edit" buttons.
-  expect(container).toMatchSnapshot()
+  expect(getByText('Disable', { selector: 'button:disabled *' })).toBeInTheDocument()
+  expect(getByText('Edit', { selector: 'button:disabled *' })).toBeInTheDocument()
 })
 
 test('with a running experiment and in disable mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Running,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='disable' />)
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='disable' />)
 
   // Expect disabled "Disable" and disabled "Edit" buttons.
-  expect(container).toMatchSnapshot()
+  expect(getByText('Disable', { selector: 'button:disabled *' })).toBeInTheDocument()
+  expect(getByText('Edit', { selector: 'button:disabled *' })).toBeInTheDocument()
 })
 
 test('with a staging experiment and in disable mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Staging,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='disable' />)
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='disable' />)
 
   // Expect disabled "Disable" and disabled "Edit" buttons.
-  expect(container).toMatchSnapshot()
+  expect(getByText('Disable', { selector: 'button:disabled *' })).toBeInTheDocument()
+  expect(getByText('Edit', { selector: 'button:disabled *' })).toBeInTheDocument()
 })
 
 test('with a running experiment and in edit mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Running,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='edit' />)
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='edit' />)
 
   // Expect "Cancel" and "Update Details" buttons.
-  expect(container).toMatchSnapshot()
+  expect(getByText('Cancel', { selector: 'button *' })).toBeInTheDocument()
+  expect(getByText('Update Details', { selector: 'button *' })).toBeInTheDocument()
 })
 
 test('with a staging experiment and in edit mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Staging,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='edit' />)
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='edit' />)
 
   // Expect "Cancel" and "Update Details" buttons.
-  expect(container).toMatchSnapshot()
+  expect(getByText('Cancel', { selector: 'button *' })).toBeInTheDocument()
+  expect(getByText('Update Details', { selector: 'button *' })).toBeInTheDocument()
 })
 
 test('with a complete experiment, no conclusions, and in view mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull()
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
 
   // Expect "Disable" and "Add Conclusions" buttons.
-  expect(container).toMatchSnapshot()
+  expect(getByText('Disable', { selector: 'button *' })).toBeInTheDocument()
+  expect(getByText('Add Conclusions', { selector: 'button *' })).toBeInTheDocument()
 })
 
 test('with a complete experiment, with conclusions, and in view mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     endReason: 'Ran its course.',
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
 
   // Expect "Disable" and "Edit" buttons.
-  expect(container).toMatchSnapshot()
+  expect(getByText('Disable', { selector: 'button *' })).toBeInTheDocument()
+  expect(getByText('Edit', { selector: 'button *' })).toBeInTheDocument()
 })
 
 test('with a disabled experiment, no conclusions, and in view mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Disabled,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
 
   // Expect "Add Conclusions" button.
-  expect(container).toMatchSnapshot()
+  expect(getByText('Add Conclusions', { selector: 'button *' })).toBeInTheDocument()
 })
 
 test('with a disabled experiment, with conclusion, and in view mode will render expected buttons', () => {
@@ -133,30 +143,32 @@ test('with a disabled experiment, with conclusion, and in view mode will render 
     status: Status.Disabled,
     endReason: 'Ran its course.',
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
 
   // Expect "Edit" button.
-  expect(container).toMatchSnapshot()
+  expect(getByText('Edit', { selector: 'button *' })).toBeInTheDocument()
 })
 
 test('with a running experiment and in view mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Running,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
 
   // Expect "Disable" and "Edit" buttons.
-  expect(container).toMatchSnapshot()
+  expect(getByText('Disable', { selector: 'button *' })).toBeInTheDocument()
+  expect(getByText('Edit', { selector: 'button *' })).toBeInTheDocument()
 })
 
 test('with a staging experiment and in view mode will render expected buttons', () => {
   const experiment = Fixtures.createExperimentFull({
     status: Status.Staging,
   })
-  const { container } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
+  const { getByText } = render(<ExperimentToolbar experiment={experiment} mode='view' />)
 
   // Expect "Disable" and "Edit" buttons.
-  expect(container).toMatchSnapshot()
+  expect(getByText('Disable', { selector: 'button *' })).toBeInTheDocument()
+  expect(getByText('Edit', { selector: 'button *' })).toBeInTheDocument()
 })
 
 test('clicking "Disable" button calls `onDisabled` callback', () => {
