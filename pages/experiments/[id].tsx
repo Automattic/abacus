@@ -36,11 +36,6 @@ export default function ExperimentPage() {
   const [segments, setSegments] = useState<Segment[] | null>(null)
 
   useEffect(() => {
-    if (experimentId === null) {
-      setError({ name: 'NotFound', message: 'Experiment not found' })
-      return
-    }
-
     setIsLoading(true)
     Promise.all([ExperimentsApi.findById(experimentId), MetricsApi.findAll(), SegmentsApi.findAll()])
       .then(([experiment, metrics, segments]) => {

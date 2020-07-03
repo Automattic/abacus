@@ -26,11 +26,6 @@ export default function ResultsPage() {
   const [metrics, setMetrics] = useState<MetricBare[] | null>(null)
 
   useEffect(() => {
-    if (experimentId === null) {
-      setError({ name: 'NotFound', message: 'Experiment not found' })
-      return
-    }
-
     setIsLoading(true)
     Promise.all([
       AnalysesApi.findByExperimentId(experimentId),
