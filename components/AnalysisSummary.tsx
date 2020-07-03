@@ -1,6 +1,6 @@
 import { Typography } from '@material-ui/core'
 import _ from 'lodash'
-import MaterialTable, { Options as MaterialTableOptions } from 'material-table'
+import MaterialTable from 'material-table'
 import React, { useMemo } from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
@@ -16,17 +16,7 @@ import {
   RecommendationWarningToHuman,
   Variation,
 } from '@/models'
-import AnalysisProcessor from '@/utils/AnalysisProcessor'
-
-function createStaticTableOptions(numRows: number): MaterialTableOptions {
-  return {
-    pageSize: numRows,
-    draggable: false,
-    paging: false,
-    sorting: false,
-    toolbar: false,
-  }
-}
+import { createStaticTableOptions } from '@/utils/material-table'
 
 /**
  * Convert a recommendation's endExperiment and chosenVariationId fields to a human-friendly description.
@@ -90,7 +80,32 @@ function ParticipantCounts({
  *
  * Note: This is likely to change a lot as part of https://github.com/Automattic/abacus/issues/96.
  */
-function LatestResultsDebug({ analysisProcessor }: { analysisProcessor: AnalysisProcessor }) {
+function LatestResultsDebug({
+  experiment,
+  metrics,
+  metricAssignmentIdToLatestAnalyses,
+}: {
+  experiment: ExperimentFull
+  metrics: MetricBare[]
+  metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
+}) {
+  // TODO: It'd be better to move some mappings to model methods once things are more stable. We should be able to make
+  // TODO: calls like metricAssignment.getMetric().name and experiment.getMetricAssignmentById(123).getMetric().name
+  // TODO: rather than construct mappings in the components.
+  const metricsById = useMemo(() => _.zipObject(_.map(metrics, 'metricId'), metrics), [metrics])
+  // Sort the assignments for consistency and collect the data we need to render the component.
+  const resultSummaries = useMemo(() => {
+    return _.orderBy(experiment.metricAssignments, ['isPrimary', 'metricAssignmentId'], ['desc', 'asc']).map(
+      ({ metricAssignmentId, attributionWindowSeconds, metricId }) => {
+        return {
+          metricAssignmentId,
+          attributionWindowSeconds,
+          metricName: metricsById[metricId].name,
+          latestAnalyses: metricAssignmentIdToLatestAnalyses[metricAssignmentId as number] || [],
+        }
+      },
+    )
+  }, [experiment.metricAssignments, metricsById, metricAssignmentIdToLatestAnalyses])
   const tableColumns = [
     { title: 'Strategy', render: ({ analysisStrategy }: Analysis) => AnalysisStrategyToHuman[analysisStrategy] },
     {
@@ -107,9 +122,7 @@ function LatestResultsDebug({ analysisProcessor }: { analysisProcessor: Analysis
     {
       title: 'Recommendation',
       render: ({ recommendation }: Analysis) =>
-        recommendation && (
-          <RecommendationString recommendation={recommendation} experiment={analysisProcessor.experiment} />
-        ),
+        recommendation && <RecommendationString recommendation={recommendation} experiment={experiment} />,
     },
     {
       title: 'Warnings',
@@ -129,28 +142,25 @@ function LatestResultsDebug({ analysisProcessor }: { analysisProcessor: Analysis
   ]
   return (
     <>
-      {analysisProcessor.resultSummaries.map(
-        ({ metricAssignmentId, metricName, attributionWindowSeconds, latestAnalyses, recommendationConflict }) => (
-          <div key={metricAssignmentId}>
-            <Typography variant={'subtitle1'}>
-              <strong>
-                <code>{metricName}</code>
-              </strong>{' '}
-              with {AttributionWindowSecondsToHuman[attributionWindowSeconds]} attribution, last analyzed on{' '}
-              {latestAnalyses.length > 0
-                ? DatetimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true })
-                : 'N/A'}
-              .<strong>{recommendationConflict && ' Conflicting recommendations!'}</strong>
-            </Typography>
-            <MaterialTable
-              columns={tableColumns}
-              data={latestAnalyses}
-              options={createStaticTableOptions(latestAnalyses.length)}
-            />
-            <br />
-          </div>
-        ),
-      )}
+      {resultSummaries.map(({ metricAssignmentId, metricName, attributionWindowSeconds, latestAnalyses }) => (
+        <div key={metricAssignmentId}>
+          <Typography variant={'subtitle1'}>
+            <strong>
+              <code>{metricName}</code>
+            </strong>{' '}
+            with {AttributionWindowSecondsToHuman[attributionWindowSeconds]} attribution, last analyzed on{' '}
+            {latestAnalyses.length > 0
+              ? DatetimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true })
+              : 'N/A'}
+          </Typography>
+          <MaterialTable
+            columns={tableColumns}
+            data={latestAnalyses}
+            options={createStaticTableOptions(latestAnalyses.length)}
+          />
+          <br />
+        </div>
+      ))}
     </>
   )
 }
@@ -196,13 +206,39 @@ function ResultDetail({ analysis, experiment }: { analysis: Analysis; experiment
   )
 }
 
-function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProcessor }) {
+function LatestResults({
+  experiment,
+  metrics,
+  metricAssignmentIdToLatestAnalyses,
+}: {
+  experiment: ExperimentFull
+  metrics: MetricBare[]
+  metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
+}) {
+  // TODO: eliminate duplication with LatestResults
+  const metricsById = useMemo(() => _.zipObject(_.map(metrics, 'metricId'), metrics), [metrics])
+  // Sort the assignments for consistency and collect the data we need to render the component.
+  const resultSummaries = useMemo(() => {
+    return _.orderBy(experiment.metricAssignments, ['isPrimary', 'metricAssignmentId'], ['desc', 'asc']).map(
+      ({ metricAssignmentId, attributionWindowSeconds, metricId }) => {
+        const latestAnalyses = metricAssignmentIdToLatestAnalyses[metricAssignmentId as number] || []
+        const uniqueRecommendations = _.uniq(latestAnalyses.map(({ recommendation }) => JSON.stringify(recommendation)))
+        return {
+          metricAssignmentId,
+          attributionWindowSeconds,
+          metricName: metricsById[metricId].name,
+          latestAnalyses,
+          recommendationConflict: uniqueRecommendations.length > 1,
+        }
+      },
+    )
+  }, [experiment.metricAssignments, metricsById, metricAssignmentIdToLatestAnalyses])
   const filteredResults = useMemo(() => {
     // TODO: Move?
-    const defaultAnalysisStrategy = analysisProcessor.experiment.exposureEvents
+    const defaultAnalysisStrategy = experiment.exposureEvents
       ? AnalysisStrategy.PpNaive
       : AnalysisStrategy.MittNoSpammersNoCrossovers
-    return analysisProcessor.resultSummaries.map(
+    return resultSummaries.map(
       ({ metricAssignmentId, metricName, attributionWindowSeconds, recommendationConflict, latestAnalyses }) => {
         return {
           metricAssignmentId,
@@ -213,7 +249,7 @@ function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProce
         }
       },
     )
-  }, [analysisProcessor])
+  }, [experiment, resultSummaries])
   // TODO: mark primary
   // TODO: recommendation text should match status (keep running after the experiment ended is useless)
   const tableColumns = [
@@ -232,16 +268,14 @@ function LatestResults({ analysisProcessor }: { analysisProcessor: AnalysisProce
         if (!analysis?.recommendation) {
           return <>Not analyzed yet</>
         }
-        return (
-          <RecommendationString recommendation={analysis.recommendation} experiment={analysisProcessor.experiment} />
-        )
+        return <RecommendationString recommendation={analysis.recommendation} experiment={experiment} />
       },
     },
   ]
   const detailPanel = [
     ({ analysis, recommendationConflict }: { analysis?: Analysis; recommendationConflict?: boolean }) => {
       return {
-        render: () => analysis && <ResultDetail analysis={analysis} experiment={analysisProcessor.experiment} />,
+        render: () => analysis && <ResultDetail analysis={analysis} experiment={experiment} />,
         disabled: !analysis || recommendationConflict,
       }
     },
@@ -273,11 +307,17 @@ export default function AnalysisSummary({
   metrics: MetricBare[]
   debugMode?: boolean
 }) {
-  const analysisProcessor = useMemo(() => new AnalysisProcessor(analyses, experiment, metrics), [
-    analyses,
-    experiment,
-    metrics,
-  ])
+  const metricAssignmentIdToLatestAnalyses = useMemo(
+    () =>
+      _.mapValues(_.groupBy(analyses, 'metricAssignmentId'), (metricAnalyses) => {
+        metricAnalyses = _.orderBy(metricAnalyses, ['analysisDatetime'], ['desc'])
+        return _.sortBy(
+          _.filter(metricAnalyses, ['analysisDatetime', metricAnalyses[0].analysisDatetime]),
+          'analysisStrategy',
+        )
+      }),
+    [analyses],
+  )
 
   if (analyses.length === 0) {
     return <p>No analyses yet for {experiment.name}.</p>
@@ -292,13 +332,19 @@ export default function AnalysisSummary({
           <h3>Participant counts for the primary metric</h3>
           <ParticipantCounts
             experiment={experiment}
-            latestPrimaryMetricAnalyses={analysisProcessor.getLatestPrimaryMetricAnalyses()}
+            latestPrimaryMetricAnalyses={
+              metricAssignmentIdToLatestAnalyses[experiment.getPrimaryMetricAssignmentId() as number]
+            }
           />
         </div>
 
         <div className='analysis-latest-results'>
           <h3>Latest results by metric</h3>
-          <LatestResultsDebug analysisProcessor={analysisProcessor} />
+          <LatestResultsDebug
+            experiment={experiment}
+            metrics={metrics}
+            metricAssignmentIdToLatestAnalyses={metricAssignmentIdToLatestAnalyses}
+          />
         </div>
 
         <pre className='debug-json'>{JSON.stringify(analyses, null, 2)}</pre>
@@ -315,7 +361,11 @@ export default function AnalysisSummary({
   return (
     <div className='analysis-latest-results'>
       <h3>Latest results by metric</h3>
-      <LatestResults analysisProcessor={analysisProcessor} />
+      <LatestResults
+        experiment={experiment}
+        metrics={metrics}
+        metricAssignmentIdToLatestAnalyses={metricAssignmentIdToLatestAnalyses}
+      />
     </div>
   )
 }
