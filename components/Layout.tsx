@@ -1,10 +1,10 @@
 import { AppBar, Container, Theme, Typography } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
+import Alert from '@material-ui/lab/Alert'
 import Head from 'next/head'
 import Link from 'next/link'
 import React, { ReactNode } from 'react'
 
-import ErrorsBox from '@/components/ErrorsBox'
 import { onRenderError } from '@/event-handlers'
 
 import RenderErrorBoundary from './RenderErrorBoundary'
@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       flexDirection: 'column',
       minHeight: '100vh',
+    },
+
+    // Alert
+    alert: {
+      marginBottom: theme.spacing(2),
     },
 
     // AppBar
@@ -110,7 +115,11 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
               <Typography variant='h1' className={classes.contentTitle}>
                 {title}
               </Typography>
-              {error && <ErrorsBox errors={[error]} />}
+              {error && (
+                <Alert className={classes.alert} severity='error'>
+                  {error.message}
+                </Alert>
+              )}
               {children}
             </Container>
             <footer className={classes.footer}>
