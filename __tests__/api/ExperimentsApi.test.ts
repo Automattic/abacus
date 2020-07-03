@@ -54,22 +54,8 @@ describe('ExperimentsApi.ts module', () => {
 
   describe('findById', () => {
     it('should return an experiment with the expected experiment shape', async () => {
-      const experiment = await ExperimentsApi.findById(123)
-      expect(experiment).toBeDefined()
-      expect(typeof experiment.experimentId).toBe('number')
-      expect(typeof experiment.name).toBe('string')
-      expect(typeof experiment.description).toBe('string')
-      expect(experiment.startDatetime).toBeInstanceOf(Date)
-      expect(experiment.endDatetime).toBeInstanceOf(Date)
-      expect(PLATFORMS.includes(experiment.platform)).toBe(true)
-      expect(STATUSES.includes(experiment.status)).toBe(true)
-      expect(typeof experiment.ownerLogin).toBe('string')
-      expect(typeof experiment.existingUsersAllowed).toBe('boolean')
-      expect(typeof experiment.p2Url).toBe('string')
-
-      expect(Array.isArray(experiment.variations)).toBe(true)
-      expect(Array.isArray(experiment.segmentAssignments)).toBe(true)
-      expect(Array.isArray(experiment.metricAssignments)).toBe(true)
+      // The implicit schema validation will verify the experiment shape
+      await ExperimentsApi.findById(123)
     })
   })
 })

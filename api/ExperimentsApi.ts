@@ -1,4 +1,7 @@
-import { ExperimentBare, ExperimentFull } from '@/models'
+/* eslint-disable @typescript-eslint/ban-ts-ignore */
+// This is temporary for the WIP,
+
+import { ExperimentBare, ExperimentFull, experimentFullSchema } from '@/models'
 
 import { ApiData } from './ApiData'
 import { fetchApi } from './utils'
@@ -30,8 +33,9 @@ async function findAll(): Promise<ExperimentBare[]> {
  *
  * @param id - The ID of the experiment to fetch.
  */
-async function findById(id: number) {
-  return ExperimentFull.fromApiData(await fetchApi('GET', `/experiments/${id}`))
+async function findById(id: number): Promise<ExperimentFull> {
+  // @ts-ignore: Temporary for the WIP PR, the inferred type perfectly matches the Interface except for the methods
+  return await experimentFullSchema.validate(await fetchApi('GET', `/experiments/${id}`))
 }
 
 const ExperimentsApi = {
