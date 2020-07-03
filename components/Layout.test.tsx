@@ -56,6 +56,11 @@ test('renders layout with declared title and children', () => {
               Experiments
             </a>
             <a
+              href="/experiments/new"
+            >
+              Create Experiment
+            </a>
+            <a
               href="/metrics"
             >
               Metrics

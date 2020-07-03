@@ -56,7 +56,7 @@ export default function ResultsPage() {
         analyses &&
         metrics && (
           <>
-            <ExperimentTabs experiment={experiment} />
+            <ExperimentTabs experiment={experiment} tab='results' />
             <AnalysisSummary
               analyses={analyses}
               experiment={experiment}

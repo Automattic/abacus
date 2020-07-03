@@ -1,4 +1,5 @@
 import { LinearProgress } from '@material-ui/core'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
 import { toIntOrNull } from 'qc-to_int'
@@ -14,7 +15,16 @@ import { ExperimentFull, MetricBare, Segment } from '@/models'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    tabs: {
+      marginBottom: theme.spacing(2),
+    },
+  }),
+)
+
 export default function ExperimentPage() {
+  const classes = useStyles()
   const router = useRouter()
   const experimentId = toIntOrNull(router.query.id)
   debug(`ExperimentPage#render ${experimentId}`)
@@ -52,7 +62,7 @@ export default function ExperimentPage() {
         metrics &&
         segments && (
           <>
-            <ExperimentTabs experiment={experiment} />
+            <ExperimentTabs className={classes.tabs} experiment={experiment} tab='details' />
             <ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />
           </>
         )
