@@ -96,6 +96,9 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
                     <Link href='/experiments'>
                       <a>Experiments</a>
                     </Link>
+                    <Link href='/experiments/new'>
+                      <a>Create Experiment</a>
+                    </Link>
                     <Link href='/metrics'>
                       <a>Metrics</a>
                     </Link>
