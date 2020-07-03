@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flex: '1 0',
     },
     contentTitle: {
-      margin: theme.spacing(3, 0, 2, 0),
+      margin: theme.spacing(4, 0, 2, 0),
     },
 
     // Footer
