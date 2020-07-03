@@ -178,15 +178,11 @@ exports[`renders as expected at large width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     metric_1
-                    <div
-                      class="MuiChip-root makeStyles-primary-4"
+                    <span
+                      class="makeStyles-primary-4 makeStyles-root-6"
                     >
-                      <span
-                        class="MuiChip-label"
-                      >
-                        Primary
-                      </span>
-                    </div>
+                      Primary
+                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -335,15 +331,11 @@ exports[`renders as expected at large width 1`] = `
                         class="MuiTableCell-root MuiTableCell-body"
                       >
                         control
-                        <div
-                          class="MuiChip-root makeStyles-default-6"
+                        <span
+                          class="makeStyles-default-7 makeStyles-root-6"
                         >
-                          <span
-                            class="MuiChip-label"
-                          >
-                            Default
-                          </span>
-                        </div>
+                          Default
+                        </span>
                       </td>
                       <td
                         class="MuiTableCell-root MuiTableCell-body"
@@ -444,15 +436,11 @@ exports[`renders as expected at large width 1`] = `
                         class="MuiTableCell-root MuiTableCell-body"
                       >
                         segment_2
-                        <div
-                          class="MuiChip-root makeStyles-excluded-7"
+                        <span
+                          class="makeStyles-excluded-8 makeStyles-root-6"
                         >
-                          <span
-                            class="MuiChip-label"
-                          >
-                            Excluded
-                          </span>
-                        </div>
+                          Excluded
+                        </span>
                       </td>
                     </tr>
                   </tbody>
@@ -485,7 +473,7 @@ exports[`renders as expected at small width 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-9 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-10 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               General
             </h3>
@@ -547,18 +535,18 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-10"
+                      class="makeStyles-root-11"
                       title="03/06/2020, 20:00:00"
                     >
                       2020-06-04
                     </span>
                     <span
-                      class="makeStyles-to-8"
+                      class="makeStyles-to-9"
                     >
                       to
                     </span>
                     <span
-                      class="makeStyles-root-10"
+                      class="makeStyles-root-11"
                       title="03/07/2020, 20:00:00"
                     >
                       2020-07-04
@@ -592,7 +580,7 @@ exports[`renders as expected at small width 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-9 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-10 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Audience
             </h3>
@@ -682,15 +670,11 @@ exports[`renders as expected at small width 1`] = `
                             class="MuiTableCell-root MuiTableCell-body"
                           >
                             control
-                            <div
-                              class="MuiChip-root makeStyles-default-13"
+                            <span
+                              class="makeStyles-default-15 makeStyles-root-14"
                             >
-                              <span
-                                class="MuiChip-label"
-                              >
-                                Default
-                              </span>
-                            </div>
+                              Default
+                            </span>
                           </td>
                           <td
                             class="MuiTableCell-root MuiTableCell-body"
@@ -791,15 +775,11 @@ exports[`renders as expected at small width 1`] = `
                             class="MuiTableCell-root MuiTableCell-body"
                           >
                             segment_2
-                            <div
-                              class="MuiChip-root makeStyles-excluded-14"
+                            <span
+                              class="makeStyles-excluded-16 makeStyles-root-14"
                             >
-                              <span
-                                class="MuiChip-label"
-                              >
-                                Excluded
-                              </span>
-                            </div>
+                              Excluded
+                            </span>
                           </td>
                         </tr>
                       </tbody>
@@ -817,7 +797,7 @@ exports[`renders as expected at small width 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-12 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-13 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Metrics
             </h3>
@@ -870,15 +850,11 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     metric_1
-                    <div
-                      class="MuiChip-root makeStyles-primary-11"
+                    <span
+                      class="makeStyles-primary-12 makeStyles-root-14"
                     >
-                      <span
-                        class="MuiChip-label"
-                      >
-                        Primary
-                      </span>
-                    </div>
+                      Primary
+                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -952,7 +928,7 @@ exports[`renders as expected with conclusion data 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-16 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-18 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               General
             </h3>
@@ -1014,18 +990,18 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-17"
+                      class="makeStyles-root-19"
                       title="03/06/2020, 20:00:00"
                     >
                       2020-06-04
                     </span>
                     <span
-                      class="makeStyles-to-15"
+                      class="makeStyles-to-17"
                     >
                       to
                     </span>
                     <span
-                      class="makeStyles-root-17"
+                      class="makeStyles-root-19"
                       title="03/07/2020, 20:00:00"
                     >
                       2020-07-04
@@ -1059,7 +1035,7 @@ exports[`renders as expected with conclusion data 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-16 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-18 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Audience
             </h3>
@@ -1149,15 +1125,11 @@ exports[`renders as expected with conclusion data 1`] = `
                             class="MuiTableCell-root MuiTableCell-body"
                           >
                             control
-                            <div
-                              class="MuiChip-root makeStyles-default-20"
+                            <span
+                              class="makeStyles-default-23 makeStyles-root-22"
                             >
-                              <span
-                                class="MuiChip-label"
-                              >
-                                Default
-                              </span>
-                            </div>
+                              Default
+                            </span>
                           </td>
                           <td
                             class="MuiTableCell-root MuiTableCell-body"
@@ -1258,15 +1230,11 @@ exports[`renders as expected with conclusion data 1`] = `
                             class="MuiTableCell-root MuiTableCell-body"
                           >
                             segment_2
-                            <div
-                              class="MuiChip-root makeStyles-excluded-21"
+                            <span
+                              class="makeStyles-excluded-24 makeStyles-root-22"
                             >
-                              <span
-                                class="MuiChip-label"
-                              >
-                                Excluded
-                              </span>
-                            </div>
+                              Excluded
+                            </span>
                           </td>
                         </tr>
                       </tbody>
@@ -1284,7 +1252,7 @@ exports[`renders as expected with conclusion data 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-19 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-21 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Metrics
             </h3>
@@ -1337,15 +1305,11 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     metric_1
-                    <div
-                      class="MuiChip-root makeStyles-primary-18"
+                    <span
+                      class="makeStyles-primary-20 makeStyles-root-22"
                     >
-                      <span
-                        class="MuiChip-label"
-                      >
-                        Primary
-                      </span>
-                    </div>
+                      Primary
+                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -1402,7 +1366,7 @@ exports[`renders as expected with conclusion data 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-16 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-18 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Conclusions
             </h3>
@@ -1494,7 +1458,7 @@ exports[`renders as expected without conclusion data 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-23 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-26 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               General
             </h3>
@@ -1556,18 +1520,18 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-24"
+                      class="makeStyles-root-27"
                       title="03/06/2020, 20:00:00"
                     >
                       2020-06-04
                     </span>
                     <span
-                      class="makeStyles-to-22"
+                      class="makeStyles-to-25"
                     >
                       to
                     </span>
                     <span
-                      class="makeStyles-root-24"
+                      class="makeStyles-root-27"
                       title="03/07/2020, 20:00:00"
                     >
                       2020-07-04
@@ -1601,7 +1565,7 @@ exports[`renders as expected without conclusion data 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-23 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-26 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Audience
             </h3>
@@ -1691,15 +1655,11 @@ exports[`renders as expected without conclusion data 1`] = `
                             class="MuiTableCell-root MuiTableCell-body"
                           >
                             control
-                            <div
-                              class="MuiChip-root makeStyles-default-27"
+                            <span
+                              class="makeStyles-default-31 makeStyles-root-30"
                             >
-                              <span
-                                class="MuiChip-label"
-                              >
-                                Default
-                              </span>
-                            </div>
+                              Default
+                            </span>
                           </td>
                           <td
                             class="MuiTableCell-root MuiTableCell-body"
@@ -1800,15 +1760,11 @@ exports[`renders as expected without conclusion data 1`] = `
                             class="MuiTableCell-root MuiTableCell-body"
                           >
                             segment_2
-                            <div
-                              class="MuiChip-root makeStyles-excluded-28"
+                            <span
+                              class="makeStyles-excluded-32 makeStyles-root-30"
                             >
-                              <span
-                                class="MuiChip-label"
-                              >
-                                Excluded
-                              </span>
-                            </div>
+                              Excluded
+                            </span>
                           </td>
                         </tr>
                       </tbody>
@@ -1826,7 +1782,7 @@ exports[`renders as expected without conclusion data 1`] = `
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h3
-              class="MuiTypography-root makeStyles-title-26 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              class="MuiTypography-root makeStyles-title-29 MuiTypography-h3 MuiTypography-colorTextPrimary"
             >
               Metrics
             </h3>
@@ -1879,15 +1835,11 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     metric_1
-                    <div
-                      class="MuiChip-root makeStyles-primary-25"
+                    <span
+                      class="makeStyles-primary-28 makeStyles-root-30"
                     >
-                      <span
-                        class="MuiChip-label"
-                      >
-                        Primary
-                      </span>
-                    </div>
+                      Primary
+                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"

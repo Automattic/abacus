@@ -1,25 +1,65 @@
-import Link from 'next/link'
-import React from 'react'
+import { createStyles, makeStyles } from '@material-ui/core/styles'
+import Tab from '@material-ui/core/Tab'
+import Tabs from '@material-ui/core/Tabs'
+import { useRouter } from 'next/router'
+import React, { ReactNode } from 'react'
 
 import { ExperimentFull } from '@/models'
 
-/**
- * Experiment tab component. Used to switch between experiment details and results.
- */
-export default function ExperimentTabs({ experiment }: { experiment: ExperimentFull | null }) {
-  // TODO: Render using Material UI tabs and add tests
-  if (!experiment) {
-    return <></>
-  }
+const useStyles = makeStyles(() =>
+  createStyles({
+    tab: {
+      minWidth: 110,
+    },
+  }),
+)
+
+function LinkTab({ as, label, url, value }: { as?: string; label: ReactNode; url: string; value: string }) {
+  const classes = useStyles()
+  const router = useRouter()
   return (
-    <nav>
-      <Link as={`/experiments/${experiment.experimentId}`} href='/experiments/[id]'>
-        <a>Details</a>
-      </Link>
-      <span>|</span>
-      <Link as={`/experiments/${experiment.experimentId}/results`} href='/experiments/[id]/results'>
-        <a>Results</a>
-      </Link>
-    </nav>
+    <Tab
+      className={classes.tab}
+      label={label}
+      onClick={
+        /* istanbul ignore next; to be handled by an e2e test */
+        () => {
+          router.push(url, as)
+        }
+      }
+      value={value}
+    />
+  )
+}
+
+/**
+ * Experiment tab component. Used to switch between the various sections of the
+ * experiment information.
+ */
+export default function ExperimentTabs({
+  className,
+  experiment,
+  tab,
+}: {
+  className?: string
+  experiment: ExperimentFull
+  tab: 'details' | 'results' | 'snippets'
+}) {
+  return (
+    <Tabs className={className} value={tab}>
+      <LinkTab as={`/experiments/${experiment.experimentId}`} label='Details' value='details' url='/experiments/[id]' />
+      <LinkTab
+        as={`/experiments/${experiment.experimentId}/results`}
+        label='Results'
+        value='results'
+        url='/experiments/[id]/results'
+      />
+      <LinkTab
+        as={`/experiments/${experiment.experimentId}/snippets`}
+        label='Snippets'
+        value='snippets'
+        url='/experiments/[id]/snippets'
+      />
+    </Tabs>
   )
 }

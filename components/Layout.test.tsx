@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react'
 import React from 'react'
 
 import BadComponent from '@/helpers/BadComponent'
+import { render } from '@/helpers/test-utils'
 
 import Layout from './Layout'
 
@@ -54,6 +54,11 @@ test('renders layout with declared title and children', () => {
               href="/experiments"
             >
               Experiments
+            </a>
+            <a
+              href="/experiments/new"
+            >
+              Create Experiment
             </a>
             <a
               href="/metrics"

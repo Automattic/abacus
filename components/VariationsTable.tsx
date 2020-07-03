@@ -1,4 +1,3 @@
-import Chip from '@material-ui/core/Chip'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -8,6 +7,7 @@ import TableRow from '@material-ui/core/TableRow'
 import _ from 'lodash'
 import React from 'react'
 
+import Label from '@/components/Label'
 import { Variation } from '@/models'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -44,7 +44,7 @@ function VariationsTable({ variations }: { variations: Variation[] }) {
             <TableRow key={variation.variationId}>
               <TableCell>
                 {variation.name}
-                {variation.isDefault && <Chip className={classes.default} label='Default' />}
+                {variation.isDefault && <Label className={classes.default} text='Default' />}
               </TableCell>
               <TableCell>{variation.allocatedPercentage}%</TableCell>
             </TableRow>

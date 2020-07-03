@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react'
 import React from 'react'
 
+import { render } from '@/helpers/test-utils'
 import { Segment, SegmentType } from '@/models'
 
 import SegmentsTable from './SegmentsTable'
@@ -44,15 +44,11 @@ test('renders as expected with segment names not in order', () => {
               class="MuiTableCell-root MuiTableCell-body"
             >
               bar
-              <div
-                class="MuiChip-root makeStyles-excluded-1"
+              <span
+                class="makeStyles-excluded-1 makeStyles-root-2"
               >
-                <span
-                  class="MuiChip-label"
-                >
-                  Excluded
-                </span>
-              </div>
+                Excluded
+              </span>
             </td>
           </tr>
           <tr

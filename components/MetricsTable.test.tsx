@@ -1,7 +1,8 @@
-import { getByText, render } from '@testing-library/react'
+import { getByText } from '@testing-library/react'
 import React from 'react'
 
 import Fixtures from '@/helpers/fixtures'
+import { render } from '@/helpers/test-utils'
 
 import MetricsTable from './MetricsTable'
 

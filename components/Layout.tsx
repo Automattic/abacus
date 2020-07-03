@@ -96,6 +96,9 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
                     <Link href='/experiments'>
                       <a>Experiments</a>
                     </Link>
+                    <Link href='/experiments/new'>
+                      <a>Create Experiment</a>
+                    </Link>
                     <Link href='/metrics'>
                       <a>Metrics</a>
                     </Link>
@@ -104,7 +107,7 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
               </div>
             </AppBar>
             <Container className={classes.content}>
-              <Typography variant='h4' component='h1' className={classes.contentTitle}>
+              <Typography variant='h1' className={classes.contentTitle}>
                 {title}
               </Typography>
               {error && <ErrorsBox errors={[error]} />}

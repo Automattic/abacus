@@ -1,15 +1,9 @@
-import { render } from '@testing-library/react'
 import React from 'react'
 
+import { render } from '@/helpers/test-utils'
 import { ExperimentFull, Platform, Status, Variation } from '@/models'
 
 import ExperimentTabs from './ExperimentTabs'
-
-test('renders nothing when experiment prop is `null`', () => {
-  const { container } = render(<ExperimentTabs experiment={null} />)
-
-  expect(container.hasChildNodes()).toBe(false)
-})
 
 test('renders expected links', () => {
   // TODO: Get from fixtures.
@@ -42,8 +36,9 @@ test('renders expected links', () => {
     metricAssignments: [],
     segmentAssignments: [],
   })
-  const { getByText } = render(<ExperimentTabs experiment={experiment} />)
+  const { getByText } = render(<ExperimentTabs experiment={experiment} tab='details' />)
 
-  expect(getByText('Details', { selector: 'a' })).toBeInTheDocument()
-  expect(getByText('Results', { selector: 'a' })).toBeInTheDocument()
+  expect(getByText('Details', { selector: '.MuiTab-wrapper' })).toBeInTheDocument()
+  expect(getByText('Results', { selector: '.MuiTab-wrapper' })).toBeInTheDocument()
+  expect(getByText('Snippets', { selector: '.MuiTab-wrapper' })).toBeInTheDocument()
 })

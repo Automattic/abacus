@@ -6,6 +6,26 @@ declare module '@material-ui/core/styles/createPalette' {
   }
 }
 
+declare module '@material-ui/core/styles' {
+  interface ThemeOptions {
+    custom: {
+      fonts: Record<string, React.CSSProperties['fontFamily']>
+      fontWeights: Record<string, React.CSSProperties['fontWeight']>
+    }
+  }
+  interface Theme {
+    custom: {
+      fonts: Record<string, React.CSSProperties['fontFamily']>
+      fontWeights: Record<string, React.CSSProperties['fontWeight']>
+    }
+  }
+}
+
+const headingDefaults = {
+  fontWeight: 500,
+  lineHeight: 1.2,
+}
+
 // The base theme is used to provide defaults for other themes to depend on.
 // Idea came from
 // https://stackoverflow.com/questions/47977618/accessing-previous-theme-variables-in-createmuitheme.
@@ -36,7 +56,8 @@ const theme = createMuiTheme({
       root: {
         // Make the padding smaller at narrow window sizes.
         [baseTheme.breakpoints.down('xs')]: {
-          padding: baseTheme.spacing(1),
+          paddingLeft: baseTheme.spacing(1),
+          paddingRight: baseTheme.spacing(1),
         },
       },
     },
@@ -58,6 +79,43 @@ const theme = createMuiTheme({
     },
     primary: {
       main: '#194661',
+    },
+    secondary: {
+      main: '#1e77a5',
+    },
+  },
+  typography: {
+    h1: {
+      ...headingDefaults,
+      fontSize: '2.25rem',
+    },
+    h2: {
+      ...headingDefaults,
+      fontSize: '2rem',
+    },
+    h3: {
+      ...headingDefaults,
+      fontSize: '1.75rem',
+    },
+    h4: {
+      ...headingDefaults,
+      fontSize: '1.5rem',
+    },
+    h5: {
+      ...headingDefaults,
+      fontSize: '1.25rem',
+    },
+    h6: {
+      ...headingDefaults,
+      fontSize: '1rem',
+    },
+  },
+  custom: {
+    fonts: {
+      monospace: `'Roboto Mono', monospace`,
+    },
+    fontWeights: {
+      monospaceBold: 700,
     },
   },
 })
