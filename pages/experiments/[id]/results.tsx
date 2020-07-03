@@ -50,14 +50,16 @@ export default function ResultsPage() {
 
   return (
     <Layout title={`Experiment results: ${experiment ? experiment.name : 'Not Found'}`} error={fetchError}>
-      <ExperimentTabs experiment={experiment} />
       {experiment && analyses && metrics && (
-        <AnalysisSummary
-          analyses={analyses}
-          experiment={experiment}
-          metrics={metrics}
-          debugMode={router.query.debug === 'true'}
-        />
+        <>
+          <ExperimentTabs experiment={experiment} tab='results' />
+          <AnalysisSummary
+            analyses={analyses}
+            experiment={experiment}
+            metrics={metrics}
+            debugMode={router.query.debug === 'true'}
+          />
+        </>
       )}
     </Layout>
   )
