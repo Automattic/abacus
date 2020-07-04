@@ -20,11 +20,11 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     tabs: {
       flex: '1 0 auto',
-      marginBottom: theme.spacing(2),
     },
     tabsAndToolbar: {
       alignItems: 'center',
       display: 'flex',
+      marginBottom: theme.spacing(2),
     },
     toolbarRoot: {
       justifyContent: 'flex-end',
