@@ -4,6 +4,7 @@ import { ExcludeMethods } from '@/types/ExcludeMethods'
 import { formatIsoUtcOffset } from '@/utils/formatters'
 
 import { Event, ExperimentBare, MetricAssignment, Platform, SegmentAssignment, Status, Variation } from './index'
+import _ from "lodash";
 
 /**
  * An experiment with full data.
@@ -216,6 +217,21 @@ export class ExperimentFull implements ApiDataSource {
    */
   hasConclusionData(): boolean {
     return !!this.endReason || !!this.conclusionUrl || typeof this.deployedVariationId === 'number'
+  }
+
+  /**
+   * Return the experiment's variations sorted in the canonical order: Default first, then by name.
+   */
+  // TODO: add tests
+  getSortedVariations(): Variation[] {
+    return _.orderBy(this.variations, ['isDefault', 'name'], ['desc', 'asc'])
+  }
+
+  /**
+   * Return the experiment's variations sorted in the canonical order: Primary first, then by metric name and attribution window.
+   */
+  getSortedMetricAssignments() {
+    return _.orderBy(this.metricAssignments, ['isPrimary', _.property('metric.name'), 'attributionWindowSeconds'], ['desc', 'asc', 'asc'])
   }
 }
 

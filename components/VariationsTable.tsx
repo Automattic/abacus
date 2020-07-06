@@ -21,11 +21,10 @@ const useStyles = makeStyles((theme: Theme) =>
 /**
  * Renders the variations in tabular formation.
  *
- * @param props.variations - The variations to render.
+ * @param props.variations - The variations to render. This component assumes that the variations are already sorted in the desired order.
  */
 function VariationsTable({ variations }: { variations: Variation[] }) {
   const classes = useStyles()
-  const sortedVariations = _.orderBy(variations, ['isDefault', 'name'], ['desc', 'asc'])
   return (
     <Table>
       <TableHead>
@@ -39,7 +38,7 @@ function VariationsTable({ variations }: { variations: Variation[] }) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {sortedVariations.map((variation) => {
+        {variations.map((variation) => {
           return (
             <TableRow key={variation.variationId}>
               <TableCell>

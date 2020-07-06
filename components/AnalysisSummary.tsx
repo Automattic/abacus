@@ -35,13 +35,13 @@ function RecommendationString({
       ) as Variation
       return (
         <>
-          End experiment; deploy <code>{chosenVariation.name}</code>
+          Deploy <code>{chosenVariation.name}</code>
         </>
       )
     }
-    return <>End experiment; deploy either variation</>
+    return <>Deploy either variation</>
   }
-  return <>Keep running</>
+  return <>Inconclusive</>
 }
 
 /**
@@ -54,13 +54,11 @@ function ParticipantCounts({
   experiment: ExperimentFull
   latestPrimaryMetricAnalyses: Analysis[]
 }) {
-  // TODO: add sortedVariations as method or sort on load?
-  const sortedVariations = _.orderBy(experiment.variations, ['isDefault', 'name'], ['desc', 'asc'])
   const tableColumns = [
     { title: 'Strategy', render: ({ analysisStrategy }: Analysis) => AnalysisStrategyToHuman[analysisStrategy] },
     { title: 'Total', render: ({ participantStats }: Analysis) => participantStats.total },
   ]
-  sortedVariations.forEach(({ variationId, name }) => {
+  experiment.getSortedVariations().forEach(({ variationId, name }) => {
     tableColumns.push({
       title: name,
       render: ({ participantStats }: Analysis) => participantStats[`variation_${variationId}`] || 0,
@@ -77,25 +75,19 @@ function ParticipantCounts({
 
 /**
  * Render the latest results for the experiment for each metric assignment.
- *
- * Note: This is likely to change a lot as part of https://github.com/Automattic/abacus/issues/96.
  */
 function LatestResultsDebug({
   experiment,
-  metrics,
+  metricsById,
   metricAssignmentIdToLatestAnalyses,
 }: {
   experiment: ExperimentFull
-  metrics: MetricBare[]
+  metricsById: { [key: number]: MetricBare },
   metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
 }) {
-  // TODO: It'd be better to move some mappings to model methods once things are more stable. We should be able to make
-  // TODO: calls like metricAssignment.getMetric().name and experiment.getMetricAssignmentById(123).getMetric().name
-  // TODO: rather than construct mappings in the components.
-  const metricsById = useMemo(() => _.zipObject(_.map(metrics, 'metricId'), metrics), [metrics])
   // Sort the assignments for consistency and collect the data we need to render the component.
   const resultSummaries = useMemo(() => {
-    return _.orderBy(experiment.metricAssignments, ['isPrimary', 'metricAssignmentId'], ['desc', 'asc']).map(
+    return experiment.getSortedMetricAssignments().map(
       ({ metricAssignmentId, attributionWindowSeconds, metricId }) => {
         return {
           metricAssignmentId,
@@ -166,8 +158,6 @@ function LatestResultsDebug({
 }
 
 function ResultDetail({ analysis, experiment }: { analysis: Analysis; experiment: ExperimentFull }) {
-  // TODO: move to ExperimentFull, do it on construction?
-  const sortedVariations = _.orderBy(experiment.variations, ['isDefault', 'name'], ['desc', 'asc'])
   return (
     <dl>
       <dt>Last analyzed</dt>
@@ -177,7 +167,7 @@ function ResultDetail({ analysis, experiment }: { analysis: Analysis; experiment
       <dt>Analyzed participants</dt>
       <dd>
         {analysis.participantStats.total} ({analysis.participantStats.not_final} not final
-        {sortedVariations.map(({ variationId, name }) => (
+        {experiment.getSortedVariations().map(({ variationId, name }) => (
           <span key={variationId}>
             ; {analysis.participantStats[`variation_${variationId}`] || 0} in {name}
           </span>
@@ -208,18 +198,19 @@ function ResultDetail({ analysis, experiment }: { analysis: Analysis; experiment
 
 function LatestResults({
   experiment,
-  metrics,
+  metricsById,
   metricAssignmentIdToLatestAnalyses,
 }: {
   experiment: ExperimentFull
-  metrics: MetricBare[]
+  metricsById: { [key: number]: MetricBare },
   metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
 }) {
-  // TODO: eliminate duplication with LatestResults
-  const metricsById = useMemo(() => _.zipObject(_.map(metrics, 'metricId'), metrics), [metrics])
   // Sort the assignments for consistency and collect the data we need to render the component.
   const resultSummaries = useMemo(() => {
-    return _.orderBy(experiment.metricAssignments, ['isPrimary', 'metricAssignmentId'], ['desc', 'asc']).map(
+    const defaultAnalysisStrategy = experiment.exposureEvents
+      ? AnalysisStrategy.PpNaive
+      : AnalysisStrategy.MittNoSpammersNoCrossovers
+    return experiment.getSortedMetricAssignments().map(
       ({ metricAssignmentId, attributionWindowSeconds, metricId }) => {
         const latestAnalyses = metricAssignmentIdToLatestAnalyses[metricAssignmentId as number] || []
         const uniqueRecommendations = _.uniq(latestAnalyses.map(({ recommendation }) => JSON.stringify(recommendation)))
@@ -227,31 +218,13 @@ function LatestResults({
           metricAssignmentId,
           attributionWindowSeconds,
           metricName: metricsById[metricId].name,
-          latestAnalyses,
+          analysis: latestAnalyses.find((analysis) => analysis.analysisStrategy === defaultAnalysisStrategy),
           recommendationConflict: uniqueRecommendations.length > 1,
         }
       },
     )
   }, [experiment.metricAssignments, metricsById, metricAssignmentIdToLatestAnalyses])
-  const filteredResults = useMemo(() => {
-    // TODO: Move?
-    const defaultAnalysisStrategy = experiment.exposureEvents
-      ? AnalysisStrategy.PpNaive
-      : AnalysisStrategy.MittNoSpammersNoCrossovers
-    return resultSummaries.map(
-      ({ metricAssignmentId, metricName, attributionWindowSeconds, recommendationConflict, latestAnalyses }) => {
-        return {
-          metricAssignmentId,
-          metricName,
-          attributionWindowSeconds,
-          recommendationConflict,
-          analysis: latestAnalyses.filter((analysis) => analysis.analysisStrategy === defaultAnalysisStrategy)[0],
-        }
-      },
-    )
-  }, [experiment, resultSummaries])
   // TODO: mark primary
-  // TODO: recommendation text should match status (keep running after the experiment ended is useless)
   const tableColumns = [
     { title: 'Metric', field: 'metricName' },
     {
@@ -283,8 +256,8 @@ function LatestResults({
   return (
     <MaterialTable
       columns={tableColumns}
-      data={filteredResults}
-      options={createStaticTableOptions(filteredResults.length)}
+      data={resultSummaries}
+      options={createStaticTableOptions(resultSummaries.length)}
       onRowClick={(_event, rowData, togglePanel) => {
         togglePanel && rowData?.analysis && !rowData?.recommendationConflict && togglePanel()
       }}
@@ -307,6 +280,7 @@ export default function AnalysisSummary({
   metrics: MetricBare[]
   debugMode?: boolean
 }) {
+  const metricsById = useMemo(() => _.zipObject(_.map(metrics, 'metricId'), metrics), [metrics])
   const metricAssignmentIdToLatestAnalyses = useMemo(
     () =>
       _.mapValues(_.groupBy(analyses, 'metricAssignmentId'), (metricAnalyses) => {
@@ -342,7 +316,7 @@ export default function AnalysisSummary({
           <h3>Latest results by metric</h3>
           <LatestResultsDebug
             experiment={experiment}
-            metrics={metrics}
+            metricsById={metricsById}
             metricAssignmentIdToLatestAnalyses={metricAssignmentIdToLatestAnalyses}
           />
         </div>
@@ -352,18 +326,12 @@ export default function AnalysisSummary({
     )
   }
 
-  // TODO:
-  // - Add more warnings? seems unnecessary and better handled elsewhere
-  //   - If the observed variation split is very different from the requested split?
-  //   - If a metric assignment hasn’t been analysed? May be completely missing? Iterate over the metric assignments
-  // - Handle Python warnings better? Or at a later stage.
-
   return (
     <div className='analysis-latest-results'>
       <h3>Latest results by metric</h3>
       <LatestResults
         experiment={experiment}
-        metrics={metrics}
+        metricsById={metricsById}
         metricAssignmentIdToLatestAnalyses={metricAssignmentIdToLatestAnalyses}
       />
     </div>
