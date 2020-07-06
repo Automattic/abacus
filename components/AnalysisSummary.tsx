@@ -4,11 +4,11 @@ import MaterialTable from 'material-table'
 import React, { useMemo } from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
+import Label from '@/components/Label'
 import {
   Analysis,
   AnalysisStrategy,
   AnalysisStrategyToHuman,
-  AttributionWindowSeconds,
   AttributionWindowSecondsToHuman,
   ExperimentFull,
   MetricAssignment,
@@ -18,7 +18,6 @@ import {
   Variation,
 } from '@/models'
 import { createStaticTableOptions } from '@/utils/material-table'
-import Label from '@/components/Label'
 
 /**
  * Convert a recommendation's endExperiment and chosenVariationId fields to a human-friendly description.
@@ -96,7 +95,7 @@ function LatestResultsDebug({
         latestAnalyses: metricAssignmentIdToLatestAnalyses[metricAssignment.metricAssignmentId as number] || [],
       }
     })
-  }, [experiment.metricAssignments, metricsById, metricAssignmentIdToLatestAnalyses])
+  }, [experiment, metricsById, metricAssignmentIdToLatestAnalyses])
   const tableColumns = [
     { title: 'Strategy', render: ({ analysisStrategy }: Analysis) => AnalysisStrategyToHuman[analysisStrategy] },
     {
@@ -220,7 +219,7 @@ function LatestResults({
         recommendationConflict: uniqueRecommendations.length > 1,
       }
     })
-  }, [experiment.metricAssignments, metricsById, metricAssignmentIdToLatestAnalyses])
+  }, [experiment, metricsById, metricAssignmentIdToLatestAnalyses])
   const tableColumns = [
     {
       title: 'Metric',

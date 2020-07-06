@@ -6,7 +6,6 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Typography from '@material-ui/core/Typography'
-import _ from 'lodash'
 import React, { useMemo } from 'react'
 
 import Label from '@/components/Label'
@@ -61,7 +60,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
   const classes = useStyles()
   const resolvedMetricAssignments = useMemo(
     () => resolveMetricAssignments(experiment.getSortedMetricAssignments(), metrics),
-    [experiment.metricAssignments, metrics],
+    [experiment, metrics],
   )
 
   return (
