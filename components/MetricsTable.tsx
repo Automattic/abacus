@@ -63,9 +63,6 @@ const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
       .finally(() => setIsLoading(false))
   }, [metricBare.metricId])
 
-  const params = metricFull?.eventParams || metricFull?.revenueParams
-  const paramsStringified = params && JSON.stringify(params, null, 4)
-
   return (
     <>
       <Snackbar open={!!error} message='Oops! Something went wrong while trying to load a Metric.' />
@@ -81,7 +78,13 @@ const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
               <TableRow>
                 <TableCell className={classes.headerCell}>Parameters:</TableCell>
                 <TableCell className={classes.dataCell}>
-                  <div className={classes.pre}>{paramsStringified}</div>
+                  <div className={classes.pre}>
+                    {JSON.stringify(
+                      metricFull.parameterType === 'conversion' ? metricFull.eventParams : metricFull.revenueParams,
+                      null,
+                      4,
+                    )}
+                  </div>
                 </TableCell>
               </TableRow>
             </TableBody>
