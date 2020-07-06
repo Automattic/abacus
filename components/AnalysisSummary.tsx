@@ -89,12 +89,11 @@ function LatestResultsDebug({
 }) {
   // Sort the assignments for consistency and collect the data we need to render the component.
   const resultSummaries = useMemo(() => {
-    return experiment.getSortedMetricAssignments().map(({ metricAssignmentId, attributionWindowSeconds, metricId }) => {
+    return experiment.getSortedMetricAssignments().map((metricAssignment) => {
       return {
-        metricAssignmentId,
-        attributionWindowSeconds,
-        metricName: metricsById[metricId].name,
-        latestAnalyses: metricAssignmentIdToLatestAnalyses[metricAssignmentId as number] || [],
+        metricAssignment,
+        metric: metricsById[metricAssignment.metricId],
+        latestAnalyses: metricAssignmentIdToLatestAnalyses[metricAssignment.metricAssignmentId as number] || [],
       }
     })
   }, [experiment.metricAssignments, metricsById, metricAssignmentIdToLatestAnalyses])
@@ -134,13 +133,14 @@ function LatestResultsDebug({
   ]
   return (
     <>
-      {resultSummaries.map(({ metricAssignmentId, metricName, attributionWindowSeconds, latestAnalyses }) => (
-        <div key={metricAssignmentId}>
+      {resultSummaries.map(({ metricAssignment, metric, latestAnalyses }) => (
+        <div key={metricAssignment.metricAssignmentId}>
           <Typography variant={'subtitle1'}>
             <strong>
-              <code>{metricName}</code>
+              <code>{metric.name}</code>
             </strong>{' '}
-            with {AttributionWindowSecondsToHuman[attributionWindowSeconds]} attribution, last analyzed on{' '}
+            with {AttributionWindowSecondsToHuman[metricAssignment.attributionWindowSeconds]} attribution, last analyzed
+            on{' '}
             {latestAnalyses.length > 0
               ? DatetimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true })
               : 'N/A'}
