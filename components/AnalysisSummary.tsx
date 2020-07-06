@@ -11,12 +11,14 @@ import {
   AttributionWindowSeconds,
   AttributionWindowSecondsToHuman,
   ExperimentFull,
+  MetricAssignment,
   MetricBare,
   Recommendation,
   RecommendationWarningToHuman,
   Variation,
 } from '@/models'
 import { createStaticTableOptions } from '@/utils/material-table'
+import Label from '@/components/Label'
 
 /**
  * Convert a recommendation's endExperiment and chosenVariationId fields to a human-friendly description.
@@ -82,21 +84,19 @@ function LatestResultsDebug({
   metricAssignmentIdToLatestAnalyses,
 }: {
   experiment: ExperimentFull
-  metricsById: { [key: number]: MetricBare },
+  metricsById: { [key: number]: MetricBare }
   metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
 }) {
   // Sort the assignments for consistency and collect the data we need to render the component.
   const resultSummaries = useMemo(() => {
-    return experiment.getSortedMetricAssignments().map(
-      ({ metricAssignmentId, attributionWindowSeconds, metricId }) => {
-        return {
-          metricAssignmentId,
-          attributionWindowSeconds,
-          metricName: metricsById[metricId].name,
-          latestAnalyses: metricAssignmentIdToLatestAnalyses[metricAssignmentId as number] || [],
-        }
-      },
-    )
+    return experiment.getSortedMetricAssignments().map(({ metricAssignmentId, attributionWindowSeconds, metricId }) => {
+      return {
+        metricAssignmentId,
+        attributionWindowSeconds,
+        metricName: metricsById[metricId].name,
+        latestAnalyses: metricAssignmentIdToLatestAnalyses[metricAssignmentId as number] || [],
+      }
+    })
   }, [experiment.metricAssignments, metricsById, metricAssignmentIdToLatestAnalyses])
   const tableColumns = [
     { title: 'Strategy', render: ({ analysisStrategy }: Analysis) => AnalysisStrategyToHuman[analysisStrategy] },
@@ -202,7 +202,7 @@ function LatestResults({
   metricAssignmentIdToLatestAnalyses,
 }: {
   experiment: ExperimentFull
-  metricsById: { [key: number]: MetricBare },
+  metricsById: { [key: number]: MetricBare }
   metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
 }) {
   // Sort the assignments for consistency and collect the data we need to render the component.
@@ -210,27 +210,30 @@ function LatestResults({
     const defaultAnalysisStrategy = experiment.exposureEvents
       ? AnalysisStrategy.PpNaive
       : AnalysisStrategy.MittNoSpammersNoCrossovers
-    return experiment.getSortedMetricAssignments().map(
-      ({ metricAssignmentId, attributionWindowSeconds, metricId }) => {
-        const latestAnalyses = metricAssignmentIdToLatestAnalyses[metricAssignmentId as number] || []
-        const uniqueRecommendations = _.uniq(latestAnalyses.map(({ recommendation }) => JSON.stringify(recommendation)))
-        return {
-          metricAssignmentId,
-          attributionWindowSeconds,
-          metricName: metricsById[metricId].name,
-          analysis: latestAnalyses.find((analysis) => analysis.analysisStrategy === defaultAnalysisStrategy),
-          recommendationConflict: uniqueRecommendations.length > 1,
-        }
-      },
-    )
+    return experiment.getSortedMetricAssignments().map((metricAssignment) => {
+      const latestAnalyses = metricAssignmentIdToLatestAnalyses[metricAssignment.metricAssignmentId as number] || []
+      const uniqueRecommendations = _.uniq(latestAnalyses.map(({ recommendation }) => JSON.stringify(recommendation)))
+      return {
+        metricAssignment,
+        metric: metricsById[metricAssignment.metricId],
+        analysis: latestAnalyses.find((analysis) => analysis.analysisStrategy === defaultAnalysisStrategy),
+        recommendationConflict: uniqueRecommendations.length > 1,
+      }
+    })
   }, [experiment.metricAssignments, metricsById, metricAssignmentIdToLatestAnalyses])
-  // TODO: mark primary
   const tableColumns = [
-    { title: 'Metric', field: 'metricName' },
+    {
+      title: 'Metric',
+      render: ({ metric, metricAssignment }: { metric: MetricBare; metricAssignment: MetricAssignment }) => (
+        <>
+          {metric.name} {metricAssignment.isPrimary && <Label text='Primary' />}
+        </>
+      ),
+    },
     {
       title: 'Attribution window',
-      render: ({ attributionWindowSeconds }: { attributionWindowSeconds: AttributionWindowSeconds }) =>
-        AttributionWindowSecondsToHuman[attributionWindowSeconds],
+      render: ({ metricAssignment }: { metricAssignment: MetricAssignment }) =>
+        AttributionWindowSecondsToHuman[metricAssignment.attributionWindowSeconds],
     },
     {
       title: 'Recommendation',
