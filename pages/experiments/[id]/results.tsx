@@ -1,3 +1,4 @@
+import { LinearProgress } from '@material-ui/core'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
 import { toIntOrNull } from 'qc-to_int'
@@ -18,22 +19,14 @@ export default function ResultsPage() {
   const experimentId = toIntOrNull(router.query.id)
   debug(`ResultPage#render ${experimentId}`)
 
-  const [fetchError, setFetchError] = useState<Error | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [error, setError] = useState<Error | null>(null)
   const [analyses, setAnalyses] = useState<Analysis[] | null>(null)
   const [experiment, setExperiment] = useState<ExperimentFull | null>(null)
   const [metrics, setMetrics] = useState<MetricBare[] | null>(null)
 
   useEffect(() => {
-    if (experimentId === null) {
-      setFetchError({ name: 'nullExperimentId', message: 'Experiment not found' })
-      return
-    }
-
-    setFetchError(null)
-    setAnalyses(null)
-    setExperiment(null)
-    setMetrics(null)
-
+    setIsLoading(true)
     Promise.all([
       AnalysesApi.findByExperimentId(experimentId),
       ExperimentsApi.findById(experimentId),
@@ -45,21 +38,28 @@ export default function ResultsPage() {
         setMetrics(metrics)
         return
       })
-      .catch(setFetchError)
+      .catch(setError)
+      .finally(() => setIsLoading(false))
   }, [experimentId])
 
   return (
-    <Layout title={`Experiment results: ${experiment ? experiment.name : 'Not Found'}`} error={fetchError}>
-      {experiment && analyses && metrics && (
-        <>
-          <ExperimentTabs experiment={experiment} tab='results' />
-          <AnalysisSummary
-            analyses={analyses}
-            experiment={experiment}
-            metrics={metrics}
-            debugMode={router.query.debug === 'true'}
-          />
-        </>
+    <Layout title={`Experiment: ${experiment?.name || ''}`} error={error}>
+      {isLoading ? (
+        <LinearProgress />
+      ) : (
+        experiment &&
+        analyses &&
+        metrics && (
+          <>
+            <ExperimentTabs experiment={experiment} tab='results' />
+            <AnalysisSummary
+              analyses={analyses}
+              experiment={experiment}
+              metrics={metrics}
+              debugMode={router.query.debug === 'true'}
+            />
+          </>
+        )
       )}
     </Layout>
   )
