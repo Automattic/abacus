@@ -7,7 +7,6 @@
 import React from 'react'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
-/* istanbul ignore next */
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
