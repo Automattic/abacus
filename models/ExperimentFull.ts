@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 import { ApiData } from '@/api/ApiData'
 import { ApiDataSource } from '@/api/ApiDataSource'
 import { ExcludeMethods } from '@/types/ExcludeMethods'
@@ -216,6 +218,20 @@ export class ExperimentFull implements ApiDataSource {
    */
   hasConclusionData(): boolean {
     return !!this.endReason || !!this.conclusionUrl || typeof this.deployedVariationId === 'number'
+  }
+
+  /**
+   * Return the experiment's variations sorted in the canonical order: Default first, then by name.
+   */
+  getSortedVariations(): Variation[] {
+    return _.orderBy(this.variations, ['isDefault', 'name'], ['desc', 'asc'])
+  }
+
+  /**
+   * Return the experiment's variations sorted in the canonical order: Primary first, then by ID.
+   */
+  getSortedMetricAssignments() {
+    return _.orderBy(this.metricAssignments, ['isPrimary', 'metricAssignmentId'], ['desc', 'asc'])
   }
 }
 

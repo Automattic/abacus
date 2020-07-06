@@ -52,12 +52,11 @@ function ParticipantCounts({
   experiment: ExperimentFull
   latestPrimaryMetricAnalyses: Analysis[]
 }) {
-  const sortedVariations = _.orderBy(experiment.variations, ['isDefault', 'name'], ['desc', 'asc'])
   const tableColumns = [
     { title: 'Strategy', render: ({ analysisStrategy }: Analysis) => AnalysisStrategyToHuman[analysisStrategy] },
     { title: 'Total', render: ({ participantStats }: Analysis) => participantStats.total },
   ]
-  sortedVariations.forEach(({ variationId, name }) => {
+  experiment.getSortedVariations().forEach(({ variationId, name }) => {
     tableColumns.push({
       title: name,
       render: ({ participantStats }: Analysis) => participantStats[`variation_${variationId}`] || 0,
@@ -79,30 +78,23 @@ function ParticipantCounts({
  */
 function LatestResults({
   experiment,
-  metrics,
+  metricsById,
   metricAssignmentIdToLatestAnalyses,
 }: {
   experiment: ExperimentFull
-  metrics: MetricBare[]
+  metricsById: { [key: number]: MetricBare }
   metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
 }) {
-  // TODO: It'd be better to move some mappings to model methods once things are more stable. We should be able to make
-  // TODO: calls like metricAssignment.getMetric().name and experiment.getMetricAssignmentById(123).getMetric().name
-  // TODO: rather than construct mappings in the components.
-  const metricsById = useMemo(() => _.zipObject(_.map(metrics, 'metricId'), metrics), [metrics])
   // Sort the assignments for consistency and collect the data we need to render the component.
   const resultSummaries = useMemo(() => {
-    return _.orderBy(experiment.metricAssignments, ['isPrimary', 'metricAssignmentId'], ['desc', 'asc']).map(
-      ({ metricAssignmentId, attributionWindowSeconds, metricId }) => {
-        return {
-          metricAssignmentId,
-          attributionWindowSeconds,
-          metricName: metricsById[metricId].name,
-          latestAnalyses: metricAssignmentIdToLatestAnalyses[metricAssignmentId as number],
-        }
-      },
-    )
-  }, [experiment.metricAssignments, metricsById, metricAssignmentIdToLatestAnalyses])
+    return experiment.getSortedMetricAssignments().map((metricAssignment) => {
+      return {
+        metricAssignment,
+        metric: metricsById[metricAssignment.metricId],
+        latestAnalyses: metricAssignmentIdToLatestAnalyses[metricAssignment.metricAssignmentId as number],
+      }
+    })
+  }, [experiment, metricsById, metricAssignmentIdToLatestAnalyses])
   const tableColumns = [
     { title: 'Strategy', render: ({ analysisStrategy }: Analysis) => AnalysisStrategyToHuman[analysisStrategy] },
     {
@@ -139,14 +131,14 @@ function LatestResults({
   ]
   return (
     <>
-      {resultSummaries.map(({ metricAssignmentId, metricName, attributionWindowSeconds, latestAnalyses }) => (
-        <div key={metricAssignmentId}>
+      {resultSummaries.map(({ metricAssignment, metric, latestAnalyses }) => (
+        <div key={metricAssignment.metricAssignmentId}>
           <Typography variant={'subtitle1'}>
             <strong>
-              <code>{metricName}</code>
+              <code>{metric.name}</code>
             </strong>{' '}
-            with {AttributionWindowSecondsToHuman[attributionWindowSeconds]} attribution, last analyzed on{' '}
-            <DatetimeText datetime={latestAnalyses[0].analysisDatetime} excludeTime={true} />
+            with {AttributionWindowSecondsToHuman[metricAssignment.attributionWindowSeconds]} attribution, last analyzed
+            on <DatetimeText datetime={latestAnalyses[0].analysisDatetime} excludeTime={true} />
           </Typography>
           <MaterialTable
             columns={tableColumns}
@@ -174,6 +166,7 @@ export default function AnalysisSummary({
   metrics: MetricBare[]
   debugMode?: boolean
 }) {
+  const metricsById = useMemo(() => _.zipObject(_.map(metrics, 'metricId'), metrics), [metrics])
   const metricAssignmentIdToLatestAnalyses = useMemo(
     () =>
       _.mapValues(_.groupBy(analyses, 'metricAssignmentId'), (metricAnalyses) => {
@@ -209,7 +202,7 @@ export default function AnalysisSummary({
         <h3>Latest results by metric</h3>
         <LatestResults
           experiment={experiment}
-          metrics={metrics}
+          metricsById={metricsById}
           metricAssignmentIdToLatestAnalyses={metricAssignmentIdToLatestAnalyses}
         />
       </div>

@@ -275,8 +275,7 @@ test('renders the full tables with some analyses', () => {
            
           with 
           1 week
-           attribution, last analyzed on
-           
+           attribution, last analyzed on 
           <span
             class="makeStyles-root-7"
             title="09/05/2020, 20:00:00"
@@ -578,8 +577,7 @@ test('renders the full tables with some analyses', () => {
            
           with 
           4 weeks
-           attribution, last analyzed on
-           
+           attribution, last analyzed on 
           <span
             class="makeStyles-root-7"
             title="09/05/2020, 20:00:00"

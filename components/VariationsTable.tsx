@@ -4,7 +4,6 @@ import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import _ from 'lodash'
 import React from 'react'
 
 import Label from '@/components/Label'
@@ -19,13 +18,12 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 /**
- * Renders the variations in tabular formation.
+ * Renders the variations in tabular formation, in the order that they're given.
  *
  * @param props.variations - The variations to render.
  */
 function VariationsTable({ variations }: { variations: Variation[] }) {
   const classes = useStyles()
-  const sortedVariations = _.orderBy(variations, ['isDefault', 'name'], ['desc', 'asc'])
   return (
     <Table>
       <TableHead>
@@ -39,7 +37,7 @@ function VariationsTable({ variations }: { variations: Variation[] }) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {sortedVariations.map((variation) => {
+        {variations.map((variation) => {
           return (
             <TableRow key={variation.variationId}>
               <TableCell>
