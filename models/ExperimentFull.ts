@@ -227,7 +227,7 @@ export class ExperimentFull implements ApiDataSource {
 // Placing these here for now, but they should go in a schema.ts file
 //
 
-const idSchema = yup.number().integer().positive()
+const idSchema = yup.number().integer().min(0)
 
 export const metricAssignmentSchema = yup
   .object({
