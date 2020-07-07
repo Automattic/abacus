@@ -16,9 +16,7 @@ import {
 import { createStaticTableOptions } from '@/utils/material-table'
 
 /**
- * Render the latest results for the experiment for each metric assignment.
- *
- * Note: This is likely to change a lot as part of https://github.com/Automattic/abacus/issues/96.
+ * Render the latest analyses for the experiment for each metric assignment.
  */
 export default function FullLatestAnalyses({
   experiment,

@@ -7,7 +7,7 @@ import FullLatestAnalyses from './FullLatestAnalyses'
 import ParticipantCounts from './ParticipantCounts'
 
 /**
- * Main component for summarizing experiment analyses.
+ * Main component for summarizing experiment results.
  */
 export default function ExperimentResults({
   analyses,
