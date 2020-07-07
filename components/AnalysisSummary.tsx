@@ -3,15 +3,15 @@ import _ from 'lodash'
 import React, { useMemo } from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
+import * as Experiments from '@/lib/experiments'
+import { ExperimentFull, Variation } from '@/lib/schemas'
 import {
   Analysis,
   AnalysisStrategyToHuman,
   AttributionWindowSecondsToHuman,
-  ExperimentFull,
   MetricBare,
   Recommendation,
   RecommendationWarningToHuman,
-  Variation,
 } from '@/models'
 
 /**
@@ -107,7 +107,7 @@ function LatestResults({
           metricAssignmentId,
           attributionWindowSeconds,
           metricName: metricsById[metricId].name,
-          latestAnalyses: metricAssignmentIdToLatestAnalyses[metricAssignmentId as number],
+          latestAnalyses: metricAssignmentIdToLatestAnalyses[metricAssignmentId],
         }
       },
     )
@@ -218,7 +218,7 @@ export default function AnalysisSummary({
         <ParticipantCounts
           experiment={experiment}
           latestPrimaryMetricAnalyses={
-            metricAssignmentIdToLatestAnalyses[experiment.getPrimaryMetricAssignmentId() as number]
+            metricAssignmentIdToLatestAnalyses[Experiments.getPrimaryMetricAssignmentId(experiment) as number]
           }
         />
       </div>
