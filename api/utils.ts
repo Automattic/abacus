@@ -1,6 +1,8 @@
+/* eslint-disable */
+// This is temporary for the WIP,
+
 import { getExperimentsAuthInfo } from '@/utils/auth'
 
-import { ApiDataSource } from './ApiDataSource'
 import NotFoundError from './NotFoundError'
 import UnauthorizedError from './UnauthorizedError'
 
@@ -16,7 +18,7 @@ const PRODUCTION_API_URL_ROOT = 'https://public-api.wordpress.com/wpcom/v2/exper
  *
  * @throws UnauthorizedError
  */
-async function fetchApi(method: string, path: string, body: ApiDataSource | null = null) {
+async function fetchApi(method: string, path: string, body: any | null = null) {
   /* istanbul ignore next; code branch not reachable in integration tests -- we don't hit production */
   const apiUrlRoot = window.location.host === 'experiments.a8c.com' ? PRODUCTION_API_URL_ROOT : DEVELOPMENT_API_URL_ROOT
 
@@ -37,7 +39,7 @@ async function fetchApi(method: string, path: string, body: ApiDataSource | null
   const response = await fetch(`${apiUrlRoot}${path}`, {
     method,
     headers,
-    body: body === null ? null : JSON.stringify(body.toApiData()),
+    body: body === null ? null : JSON.stringify(body),
   })
 
   // istanbul ignore next; branch can't be reached with the current tests.
