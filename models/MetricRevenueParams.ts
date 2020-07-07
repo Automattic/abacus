@@ -5,6 +5,11 @@ import { ApiData } from '@/api/ApiData'
  */
 export class MetricRevenueParams {
   /**
+   * Description
+   */
+  public readonly description?: string
+
+  /**
    * Number of days to use for the refund window.
    */
   public readonly refundDays?: number
