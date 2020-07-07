@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 // This is temporary for the WIP,
 
-import { ExperimentBare, ExperimentFull, experimentFullSchema } from '@/models'
+import * as yup from 'yup'
 
-import { ApiData } from './ApiData'
+import { ExperimentBare, experimentBareSchema, ExperimentFull, experimentFullSchema } from '@/lib/schemas'
+
 import { fetchApi } from './utils'
 
 /**
@@ -12,7 +13,10 @@ import { fetchApi } from './utils'
  * Note: Be sure to handle any errors that may be thrown.
  */
 async function create(experiment: ExperimentFull) {
-  return ExperimentFull.fromApiData(await fetchApi('POST', '/experiments', experiment))
+  // TODO: Add a create schema
+  return await experimentFullSchema.validate(
+    await fetchApi('POST', '/experiments', await experimentCreateSchema.validate(experiment)),
+  )
 }
 
 /**
@@ -23,9 +27,8 @@ async function create(experiment: ExperimentFull) {
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<ExperimentBare[]> {
-  return (await fetchApi('GET', '/experiments')).experiments.map((apiData: ApiData) =>
-    ExperimentBare.fromApiData(apiData),
-  )
+  const { experiments } = await fetchApi('GET', '/experiments')
+  return await yup.array(experimentBareSchema).defined().validate(experiments)
 }
 
 /**
