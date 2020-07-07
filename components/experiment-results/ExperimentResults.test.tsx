@@ -1,21 +1,20 @@
 import React from 'react'
 
+import ExperimentResults from '@/components/experiment-results/ExperimentResults'
 import Fixtures from '@/helpers/fixtures'
 import { render } from '@/helpers/test-utils'
-
-import AnalysisSummary from './AnalysisSummary'
 
 const experiment = Fixtures.createExperimentFull()
 const metrics = Fixtures.createMetricBares()
 const analyses = Fixtures.createAnalyses()
 
 test('renders an appropriate message with no analyses', () => {
-  const { container } = render(<AnalysisSummary analyses={[]} experiment={experiment} metrics={metrics} />)
+  const { container } = render(<ExperimentResults analyses={[]} experiment={experiment} metrics={metrics} />)
   expect(container).toHaveTextContent('No analyses yet for experiment_1.')
 })
 
 test('renders the full tables with some analyses', () => {
-  const { container } = render(<AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} />)
+  const { container } = render(<ExperimentResults analyses={analyses} experiment={experiment} metrics={metrics} />)
 
   expect(container).toHaveTextContent(`Found ${analyses.length} analysis objects in total.`)
   // In non-debug mode, we shouldn't have a <pre> element with the JSON.
@@ -705,7 +704,7 @@ test('renders the full tables with some analyses and a different primary metric'
     ],
   })
   const { container } = render(
-    <AnalysisSummary analyses={analyses} experiment={diffPrimaryExperiment} metrics={metrics} />,
+    <ExperimentResults analyses={analyses} experiment={diffPrimaryExperiment} metrics={metrics} />,
   )
   expect(container).toHaveTextContent(`Found ${analyses.length} analysis objects in total.`)
 
@@ -818,7 +817,7 @@ test('renders the full tables with some analyses and a different primary metric'
 
 test('shows the analyses JSON in debug mode', () => {
   const { container } = render(
-    <AnalysisSummary analyses={analyses} experiment={experiment} metrics={metrics} debugMode={true} />,
+    <ExperimentResults analyses={analyses} experiment={experiment} metrics={metrics} debugMode={true} />,
   )
   expect(container.querySelector('pre.debug-json')).toMatchSnapshot()
 })
