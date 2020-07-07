@@ -1,4 +1,5 @@
 import { ApiData } from '@/api/ApiData'
+import { ExcludeMethods } from '@/types/ExcludeMethods'
 
 /**
  * Parameters for a revenue query. If `null`, then `event_params` must be given.
@@ -27,8 +28,17 @@ export class MetricRevenueParams {
   /**
    * Constructs a new instance.
    */
-  constructor(data: Readonly<MetricRevenueParams>) {
+  constructor(data: Readonly<ExcludeMethods<MetricRevenueParams>>) {
     Object.assign(this, data)
+  }
+
+  toApiData() {
+    return {
+      description: this.description,
+      refund_days: this.refundDays,
+      produce_slugs: this.productSlugs,
+      transaction_types: this.transactionTypes,
+    }
   }
 
   /**
