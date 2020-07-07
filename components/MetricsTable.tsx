@@ -22,7 +22,6 @@ import { defaultTableOptions } from '@/utils/material-table'
 
 const debug = debugFactory('abacus:components/MetricsTable.tsx')
 
-/* istanbul ignore next */
 const useMetricDetailStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -50,7 +49,6 @@ const useMetricDetailStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-/* istanbul ignore next; e2e is covering this for now */
 const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
   const classes = useMetricDetailStyles()
 
@@ -64,9 +62,6 @@ const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
       .catch(setError)
       .finally(() => setIsLoading(false))
   }, [metricBare.metricId])
-
-  const params = metricFull?.eventParams || metricFull?.revenueParams
-  const paramsStringified = params && JSON.stringify(params, null, 4)
 
   return (
     <>
@@ -83,7 +78,13 @@ const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
               <TableRow>
                 <TableCell className={classes.headerCell}>Parameters:</TableCell>
                 <TableCell className={classes.dataCell}>
-                  <div className={classes.pre}>{paramsStringified}</div>
+                  <div className={classes.pre}>
+                    {JSON.stringify(
+                      metricFull.parameterType === 'conversion' ? metricFull.eventParams : metricFull.revenueParams,
+                      null,
+                      4,
+                    )}
+                  </div>
                 </TableCell>
               </TableRow>
             </TableBody>
@@ -126,7 +127,6 @@ const MetricsTable = ({ metrics }: { metrics: MetricBare[] }) => {
     },
   ]
 
-  /* istanbul ignore next; e2e tests the metric details */
   return (
     <MaterialTable
       columns={tableColumns}

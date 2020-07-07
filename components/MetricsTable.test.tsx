@@ -1,4 +1,4 @@
-import { getByText } from '@testing-library/react'
+import { fireEvent, getByText, screen, waitFor } from '@testing-library/react'
 import React from 'react'
 
 import Fixtures from '@/helpers/fixtures'
@@ -18,7 +18,7 @@ test('with no metrics, renders an empty table', () => {
   expect(tBodyElmt).toHaveTextContent('')
 })
 
-test('with some metrics, renders a table', () => {
+test('with some metrics, renders a table', async () => {
   const { container } = render(<MetricsTable metrics={Fixtures.createMetricBares(2)} />)
 
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
@@ -27,4 +27,7 @@ test('with some metrics, renders a table', () => {
   expect(getByText(tBodyElmt, 'This is metric 1', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getByText(tBodyElmt, 'revenue', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getByText(tBodyElmt, 'conversion', { selector: 'tr > td' })).toBeInTheDocument()
+
+  fireEvent.click(screen.getByText('metric_1'))
+  await waitFor(() => screen.getByText('Oops! Something went wrong while trying to load a Metric.'))
 })
