@@ -6,21 +6,18 @@
  */
 import _ from 'lodash'
 
+import { ExperimentFull, MetricAssignment, SegmentAssignment } from '@/lib/schemas'
 import {
   Analysis,
   AnalysisStrategy,
   AttributionWindowSeconds,
-  ExperimentFull,
-  MetricAssignment,
   MetricBare,
   Platform,
   RecommendationReason,
   RecommendationWarning,
   Segment,
-  SegmentAssignment,
   SegmentType,
   Status,
-  Variation,
 } from '@/models'
 
 function createAnalysis(fieldOverrides: Partial<Analysis>) {
@@ -189,8 +186,8 @@ function createAnalyses() {
   ]
 }
 
-function createMetricAssignment(fieldOverrides: Partial<MetricAssignment>) {
-  return new MetricAssignment({
+function createMetricAssignment(fieldOverrides: Partial<MetricAssignment>): MetricAssignment {
+  return {
     metricAssignmentId: 123,
     metricId: 1,
     experimentId: 1,
@@ -199,11 +196,11 @@ function createMetricAssignment(fieldOverrides: Partial<MetricAssignment>) {
     isPrimary: true,
     minDifference: 0.1,
     ...fieldOverrides,
-  })
+  }
 }
 
-function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}) {
-  return new ExperimentFull({
+function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): ExperimentFull {
+  return {
     experimentId: 1,
     name: 'experiment_1',
     startDatetime: new Date(Date.UTC(2020, 5, 4)),
@@ -214,20 +211,24 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}) {
     description: 'Experiment with things. Change stuff. Profit.',
     existingUsersAllowed: false,
     p2Url: 'https://wordpress.com/experiment_1',
-    exposureEvents: null,
+    endReason: null,
+    conclusionUrl: null,
+    deployedVariationId: null,
     variations: [
-      new Variation({
+      {
         variationId: 2,
+        experimentId: 1,
         name: 'test',
         isDefault: false,
         allocatedPercentage: 40,
-      }),
-      new Variation({
+      },
+      {
         variationId: 1,
+        experimentId: 1,
         name: 'control',
         isDefault: true,
         allocatedPercentage: 60,
-      }),
+      },
     ],
     metricAssignments: [
       createMetricAssignment({
@@ -249,7 +250,7 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}) {
     ],
     segmentAssignments: [],
     ...fieldOverrides,
-  })
+  }
 }
 
 function createMetricBare(id: number) {
@@ -280,14 +281,14 @@ function createSegments(numSegments: number) {
   return _.range(numSegments).map(createSegment)
 }
 
-function createSegmentAssignment(fieldOverrides: Partial<SegmentAssignment>) {
-  return new SegmentAssignment({
+function createSegmentAssignment(fieldOverrides: Partial<SegmentAssignment>): SegmentAssignment {
+  return {
     segmentAssignmentId: 123,
     experimentId: 1,
     segmentId: 1,
     isExcluded: false,
     ...fieldOverrides,
-  })
+  }
 }
 
 const Fixtures = {
