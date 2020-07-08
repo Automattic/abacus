@@ -3,7 +3,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
 import { toIntOrNull } from 'qc-to_int'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 import MetricsApi from '@/api/MetricsApi'
@@ -11,7 +11,7 @@ import SegmentsApi from '@/api/SegmentsApi'
 import ExperimentDetails from '@/components/ExperimentDetails'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
-import { ExperimentFull, MetricBare, Segment } from '@/models'
+import { combineIsLoading, useDataSource } from '@/utils/data-loading'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 
@@ -29,24 +29,22 @@ export default function ExperimentPage() {
   const experimentId = toIntOrNull(router.query.id)
   debug(`ExperimentPage#render ${experimentId}`)
 
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [error, setError] = useState<Error | null>(null)
-  const [experiment, setExperiment] = useState<ExperimentFull | null>(null)
-  const [metrics, setMetrics] = useState<MetricBare[] | null>(null)
-  const [segments, setSegments] = useState<Segment[] | null>(null)
+  const { isLoading: experimentIsLoading, data: experiment, error: experimentError } = useDataSource(
+    () => ExperimentsApi.findById(experimentId),
+    [experimentId],
+  )
+  const { isLoading: metricsIsLoading, data: metrics, error: metricsError } = useDataSource(
+    () => MetricsApi.findAll(),
+    [],
+  )
+  const { isLoading: segmentsIsLoading, data: segments, error: segmentsError } = useDataSource(
+    () => SegmentsApi.findAll(),
+    [],
+  )
 
-  useEffect(() => {
-    setIsLoading(true)
-    Promise.all([ExperimentsApi.findById(experimentId), MetricsApi.findAll(), SegmentsApi.findAll()])
-      .then(([experiment, metrics, segments]) => {
-        setExperiment(experiment)
-        setMetrics(metrics)
-        setSegments(segments)
-        return
-      })
-      .catch(setError)
-      .finally(() => setIsLoading(false))
-  }, [experimentId])
+  const isLoading = combineIsLoading([experimentIsLoading, metricsIsLoading, segmentsIsLoading])
+
+  const error = [experimentError, metricsError, segmentsError].filter((x) => !!x)[0]
 
   return (
     <Layout title={`Experiment: ${experiment?.name || ''}`} error={error}>
