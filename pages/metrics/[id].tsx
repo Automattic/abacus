@@ -15,7 +15,10 @@ const MetricsDetailPage = () => {
   const metricId = toIntOrNull(router.query.id)
   debug('MetricsDetailPage#render')
 
-  const { isLoading, data: metric, error } = useDataSource(() => MetricsApi.findById(metricId), [metricId])
+  const { isLoading, data: metric, error } = useDataSource(
+    () => (metricId ? MetricsApi.findById(metricId) : new Promise(() => null)),
+    [metricId],
+  )
 
   return (
     <Layout title='Metrics' error={error}>

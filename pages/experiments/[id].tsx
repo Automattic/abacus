@@ -11,6 +11,7 @@ import SegmentsApi from '@/api/SegmentsApi'
 import ExperimentDetails from '@/components/ExperimentDetails'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
+import { ExperimentFull } from '@/models'
 import { combineIsLoading, useDataSource } from '@/utils/data-loading'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
@@ -30,7 +31,10 @@ export default function ExperimentPage() {
   debug(`ExperimentPage#render ${experimentId}`)
 
   const { isLoading: experimentIsLoading, data: experiment, error: experimentError } = useDataSource(
-    () => ExperimentsApi.findById(experimentId),
+    () =>
+      experimentId
+        ? ExperimentsApi.findById(experimentId)
+        : ((new Promise(() => null) as unknown) as Promise<ExperimentFull>),
     [experimentId],
   )
   const { isLoading: metricsIsLoading, data: metrics, error: metricsError } = useDataSource(

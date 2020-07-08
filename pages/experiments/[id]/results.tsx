@@ -10,6 +10,7 @@ import MetricsApi from '@/api/MetricsApi'
 import ExperimentResults from '@/components/experiment-results/ExperimentResults'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
+import { Analysis, ExperimentFull } from '@/models'
 import { combineIsLoading, useDataSource } from '@/utils/data-loading'
 
 const debug = debugFactory('abacus:pages/experiments/[id]/results.tsx')
@@ -20,7 +21,10 @@ export default function ResultsPage() {
   debug(`ResultPage#render ${experimentId}`)
 
   const { isLoading: experimentIsLoading, data: experiment, error: experimentError } = useDataSource(
-    () => ExperimentsApi.findById(experimentId),
+    () =>
+      experimentId
+        ? ExperimentsApi.findById(experimentId)
+        : ((new Promise(() => null) as unknown) as Promise<ExperimentFull>),
     [experimentId],
   )
   const { isLoading: metricsIsLoading, data: metrics, error: metricsError } = useDataSource(
@@ -28,8 +32,11 @@ export default function ResultsPage() {
     [],
   )
   const { isLoading: analysesIsLoading, data: analyses, error: analysesError } = useDataSource(
-    () => AnalysesApi.findByExperimentId(experimentId),
-    [],
+    () =>
+      experimentId
+        ? AnalysesApi.findByExperimentId(experimentId)
+        : ((new Promise(() => null) as unknown) as Promise<Analysis[]>),
+    [experimentId],
   )
 
   const isLoading = combineIsLoading([experimentIsLoading, metricsIsLoading, analysesIsLoading])
