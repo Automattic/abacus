@@ -351,7 +351,7 @@ function createMetricFull(id: number) {
     name: `metric_${id}`,
     description: `This is metric ${id}`,
     parameterType,
-    higherIsBetter: id % 3 === 0 ? true : false,
+    higherIsBetter: id % 3 === 0,
     eventParams: parameterType === 'conversion' ? eventParams : null,
     revenueParams: parameterType === 'revenue' ? revenueParams : null,
   })

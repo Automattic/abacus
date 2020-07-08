@@ -79,11 +79,14 @@ export default function FullLatestAnalyses({
             <strong>
               <code>{metric.name}</code>
             </strong>{' '}
-            with {AttributionWindowSecondsToHuman[metricAssignment.attributionWindowSeconds]} attribution, last analyzed
-            on{' '}
-            {latestAnalyses.length > 0
-              ? DatetimeText({ datetime: latestAnalyses[0].analysisDatetime, excludeTime: true })
-              : 'N/A'}
+            with {AttributionWindowSecondsToHuman[metricAssignment.attributionWindowSeconds]} attribution,{' '}
+            {latestAnalyses.length > 0 ? (
+              <>
+                last analyzed on <DatetimeText datetime={latestAnalyses[0].analysisDatetime} excludeTime={true} />
+              </>
+            ) : (
+              <strong>not analyzed yet</strong>
+            )}
           </Typography>
           <MaterialTable
             columns={tableColumns}

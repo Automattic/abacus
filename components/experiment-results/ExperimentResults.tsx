@@ -41,8 +41,6 @@ export default function ExperimentResults({
   if (debugMode) {
     return (
       <>
-        <p>Found {analyses.length} analysis objects in total.</p>
-
         <div className='analysis-participant-counts'>
           <h3>Participant counts for the primary metric</h3>
           <ParticipantCounts
@@ -62,6 +60,7 @@ export default function ExperimentResults({
           />
         </div>
 
+        <p>Found {analyses.length} analysis objects in total.</p>
         <pre className='debug-json'>{JSON.stringify(analyses, null, 2)}</pre>
       </>
     )
