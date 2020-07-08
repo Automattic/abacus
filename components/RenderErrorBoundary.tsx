@@ -13,7 +13,6 @@ type ChildrenParam0 = {
 type Props = {
   children: (arg0: ChildrenParam0) => React.ReactNode
   onClear?: () => void
-  onError?: (renderError: RenderError) => void
 }
 
 type State = {
@@ -82,14 +81,7 @@ class RenderErrorBoundary extends React.PureComponent<Props, State> {
 
   componentDidCatch(error: Error, info: React.ErrorInfo) {
     this.setState({ error, info })
-    if (this.props.onError) {
-      const renderError = {
-        clear: this.clear,
-        error,
-        info,
-      }
-      this.props.onError(renderError)
-    }
+    console.error('Render Error:\n\n', error, info)
   }
 
   render() {
