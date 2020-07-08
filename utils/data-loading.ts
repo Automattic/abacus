@@ -9,7 +9,7 @@ export function useDataLoadingError<E extends Error | null>(error: E, dataName?:
       const userErrorMessage = dataName
         ? `Oops! There was a problem loading some data: ${dataName}`
         : 'Oops! There was a problem loading data'
-      enqueueSnackbar(userErrorMessage)
+      enqueueSnackbar(userErrorMessage, { variant: 'error' })
     }
   }, [error])
 }
