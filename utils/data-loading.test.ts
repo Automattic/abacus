@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
-import notistack from 'notistack'
+import * as notistack from 'notistack'
 
 import { useDataLoadingError } from './data-loading'
 
@@ -36,7 +36,10 @@ describe('utils/data-loading.ts module', () => {
 
       expect(mockedEnqueueSnackbar.mock.calls.length).toBe(1)
 
-      expect(mockedEnqueueSnackbar.mock.calls[0]).toEqual(['Oops! There was a problem loading some data.'])
+      expect(mockedEnqueueSnackbar.mock.calls[0]).toEqual([
+        'Oops! There was a problem loading some data.',
+        { variant: 'error' },
+      ])
     })
 
     it('should display a specific error for truthy error value with a specified dataName', () => {
@@ -54,6 +57,7 @@ describe('utils/data-loading.ts module', () => {
 
       expect(mockedEnqueueSnackbar.mock.calls[0]).toEqual([
         `Oops! There was a problem loading some data of type: DataName.`,
+        { variant: 'error' },
       ])
     })
   })
