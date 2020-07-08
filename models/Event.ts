@@ -1,5 +1,4 @@
 import { ApiData } from '@/api/ApiData'
-import { ExcludeMethods } from '@/types/ExcludeMethods'
 
 /**
  * A Tracks event, typically used to define exposure to an experiment or conversion metrics.
@@ -18,15 +17,8 @@ export class Event {
   /**
    * Construct a new event.
    */
-  constructor(data: Readonly<ExcludeMethods<Event>>) {
+  constructor(data: Readonly<Event>) {
     Object.assign(this, data)
-  }
-
-  toApiData() {
-    return {
-      event: this.event,
-      props: this.props,
-    }
   }
 
   /**
