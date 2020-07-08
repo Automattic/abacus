@@ -189,6 +189,58 @@ function createAnalyses() {
       metricEstimates: null,
       recommendation: null,
     }),
+
+    // Similar to the set of "latest" analyses for the default metric assignment, but with consistent recommendations.
+    createAnalysis({
+      metricAssignmentId: 126,
+      analysisStrategy: AnalysisStrategy.IttPure,
+      participantStats: {
+        total: 2000,
+        not_final: 200,
+        variation_1: 1200,
+        variation_2: 800,
+      },
+    }),
+    createAnalysis({
+      metricAssignmentId: 126,
+      analysisStrategy: AnalysisStrategy.MittNoCrossovers,
+      participantStats: {
+        total: 1800,
+        not_final: 180,
+        variation_1: 1080,
+        variation_2: 720,
+      },
+    }),
+    createAnalysis({
+      metricAssignmentId: 126,
+      analysisStrategy: AnalysisStrategy.MittNoSpammers,
+      participantStats: {
+        total: 1700,
+        not_final: 170,
+        variation_1: 920,
+        variation_2: 780,
+      },
+    }),
+    createAnalysis({
+      metricAssignmentId: 126,
+      analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
+      participantStats: {
+        total: 1600,
+        not_final: 160,
+        variation_1: 960,
+        variation_2: 640,
+      },
+    }),
+    createAnalysis({
+      metricAssignmentId: 126,
+      analysisStrategy: AnalysisStrategy.PpNaive,
+      participantStats: {
+        total: 1400,
+        not_final: 140,
+        variation_1: 840,
+        variation_2: 560,
+      },
+    }),
   ]
 }
 
@@ -249,6 +301,22 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}) {
         isPrimary: false,
         minDifference: 10.5,
       }),
+      createMetricAssignment({
+        metricAssignmentId: 125,
+        metricId: 2,
+        attributionWindowSeconds: AttributionWindowSeconds.OneHour,
+        changeExpected: true,
+        isPrimary: false,
+        minDifference: 0.5,
+      }),
+      createMetricAssignment({
+        metricAssignmentId: 126,
+        metricId: 3,
+        attributionWindowSeconds: AttributionWindowSeconds.SixHours,
+        changeExpected: true,
+        isPrimary: false,
+        minDifference: 12,
+      }),
     ],
     segmentAssignments: [],
     ...fieldOverrides,
@@ -265,7 +333,7 @@ function createMetricBare(id: number) {
 }
 
 function createMetricBares(numMetrics = 3) {
-  return _.range(numMetrics).map(createMetricBare)
+  return _.range(1, numMetrics + 1).map(createMetricBare)
 }
 
 function createMetricFull(id: number) {
@@ -283,7 +351,7 @@ function createMetricFull(id: number) {
     name: `metric_${id}`,
     description: `This is metric ${id}`,
     parameterType,
-    higherIsBetter: id % 3 === 0 ? true : false,
+    higherIsBetter: id % 3 === 0,
     eventParams: parameterType === 'conversion' ? eventParams : null,
     revenueParams: parameterType === 'revenue' ? revenueParams : null,
   })

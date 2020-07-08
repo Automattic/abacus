@@ -51,12 +51,12 @@ test('with some metrics, loads and opens metric details', async () => {
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
 
-  for (let i = 0; i < 6; i++) {
+  for (let i = 1; i < 7; i++) {
     const metricFull = Fixtures.createMetricFull(i)
     mockedMetricsApi.findById.mockResolvedValueOnce(metricFull)
 
     // Open metric details
-    fireEvent.click(getByText(container, /metric_0/))
+    fireEvent.click(getByText(container, /metric_1/))
 
     await waitFor(() => getByText(container, /Higher is Better/), { container })
     metricFull.higherIsBetter ? getByText(container, /Yes/) : getByText(container, /No/)
@@ -72,6 +72,6 @@ test('with some metrics, loads and opens metric details', async () => {
     )
 
     // Close metric details
-    fireEvent.click(getByText(container, /metric_0/))
+    fireEvent.click(getByText(container, /metric_1/))
   }
 })

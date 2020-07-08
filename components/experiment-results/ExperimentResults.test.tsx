@@ -16,7 +16,6 @@ test('renders an appropriate message with no analyses', () => {
 test('renders the full tables with some analyses', () => {
   const { container } = render(<ExperimentResults analyses={analyses} experiment={experiment} metrics={metrics} />)
 
-  expect(container).toHaveTextContent(`Found ${analyses.length} analysis objects in total.`)
   // In non-debug mode, we shouldn't have a <pre> element with the JSON.
   expect(container.querySelector('pre')).toBeNull()
 
@@ -274,7 +273,9 @@ test('renders the full tables with some analyses', () => {
            
           with 
           1 week
-           attribution, last analyzed on 
+           attribution,
+           
+          last analyzed on 
           <span
             class="makeStyles-root-7"
             title="09/05/2020, 20:00:00"
@@ -374,7 +375,7 @@ test('renders the full tables with some analyses', () => {
                           class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                           style="box-sizing: border-box;"
                         >
-                          End experiment; deploy 
+                          Deploy 
                           <code>
                             test
                           </code>
@@ -420,7 +421,7 @@ test('renders the full tables with some analyses', () => {
                           class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                           style="box-sizing: border-box;"
                         >
-                          Keep running
+                          Inconclusive
                         </td>
                         <td
                           class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -456,7 +457,7 @@ test('renders the full tables with some analyses', () => {
                           class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                           style="box-sizing: border-box;"
                         >
-                          End experiment; deploy either variation
+                          Deploy either variation
                         </td>
                         <td
                           class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -492,7 +493,7 @@ test('renders the full tables with some analyses', () => {
                           class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                           style="box-sizing: border-box;"
                         >
-                          End experiment; deploy 
+                          Deploy 
                           <code>
                             test
                           </code>
@@ -538,7 +539,7 @@ test('renders the full tables with some analyses', () => {
                           class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                           style="box-sizing: border-box;"
                         >
-                          End experiment; deploy 
+                          Deploy 
                           <code>
                             test
                           </code>
@@ -576,7 +577,9 @@ test('renders the full tables with some analyses', () => {
            
           with 
           4 weeks
-           attribution, last analyzed on 
+           attribution,
+           
+          last analyzed on 
           <span
             class="makeStyles-root-7"
             title="09/05/2020, 20:00:00"
@@ -692,6 +695,419 @@ test('renders the full tables with some analyses', () => {
         </div>
         <br />
       </div>
+      <div>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1"
+        >
+          <strong>
+            <code>
+              metric_2
+            </code>
+          </strong>
+           
+          with 
+          1 hour
+           attribution,
+           
+          <strong>
+            not analyzed yet
+          </strong>
+        </h6>
+        <div
+          class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+          style="position: relative;"
+        >
+          <div
+            class="Component-horizontalScrollContainer-5"
+            style="overflow-x: auto; position: relative;"
+          >
+            <div>
+              <div
+                style="overflow-y: auto;"
+              >
+                <div>
+                  <table
+                    class="MuiTable-root"
+                    style="table-layout: auto;"
+                  >
+                    <thead
+                      class="MuiTableHead-root"
+                    >
+                      <tr
+                        class="MuiTableRow-root MuiTableRow-head"
+                      >
+                        <th
+                          class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                          scope="col"
+                          style="font-weight: 700; box-sizing: border-box;"
+                        >
+                          Strategy
+                        </th>
+                        <th
+                          class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                          scope="col"
+                          style="font-weight: 700; box-sizing: border-box;"
+                        >
+                          Participants (not final)
+                        </th>
+                        <th
+                          class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                          scope="col"
+                          style="font-weight: 700; box-sizing: border-box;"
+                        >
+                          Difference interval
+                        </th>
+                        <th
+                          class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                          scope="col"
+                          style="font-weight: 700; box-sizing: border-box;"
+                        >
+                          Recommendation
+                        </th>
+                        <th
+                          class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                          scope="col"
+                          style="font-weight: 700; box-sizing: border-box;"
+                        >
+                          Warnings
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      class="MuiTableBody-root"
+                    />
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+      <div>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1"
+        >
+          <strong>
+            <code>
+              metric_3
+            </code>
+          </strong>
+           
+          with 
+          6 hours
+           attribution,
+           
+          last analyzed on 
+          <span
+            class="makeStyles-root-7"
+            title="09/05/2020, 20:00:00"
+          >
+            2020-05-10
+          </span>
+        </h6>
+        <div
+          class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+          style="position: relative;"
+        >
+          <div
+            class="Component-horizontalScrollContainer-5"
+            style="overflow-x: auto; position: relative;"
+          >
+            <div>
+              <div
+                style="overflow-y: auto;"
+              >
+                <div>
+                  <table
+                    class="MuiTable-root"
+                    style="table-layout: auto;"
+                  >
+                    <thead
+                      class="MuiTableHead-root"
+                    >
+                      <tr
+                        class="MuiTableRow-root MuiTableRow-head"
+                      >
+                        <th
+                          class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                          scope="col"
+                          style="font-weight: 700; box-sizing: border-box;"
+                        >
+                          Strategy
+                        </th>
+                        <th
+                          class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                          scope="col"
+                          style="font-weight: 700; box-sizing: border-box;"
+                        >
+                          Participants (not final)
+                        </th>
+                        <th
+                          class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                          scope="col"
+                          style="font-weight: 700; box-sizing: border-box;"
+                        >
+                          Difference interval
+                        </th>
+                        <th
+                          class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                          scope="col"
+                          style="font-weight: 700; box-sizing: border-box;"
+                        >
+                          Recommendation
+                        </th>
+                        <th
+                          class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                          scope="col"
+                          style="font-weight: 700; box-sizing: border-box;"
+                        >
+                          Warnings
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      class="MuiTableBody-root"
+                    >
+                      <tr
+                        class="MuiTableRow-root"
+                        index="0"
+                        level="0"
+                        path="0"
+                        style="transition: all ease 300ms; opacity: 0.8;"
+                      >
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          All participants
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          2000 (200)
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          [-0.01, 0.01]
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          Deploy 
+                          <code>
+                            test
+                          </code>
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          <div>
+                            Experiment period is too short. Wait a few days to be safer.
+                          </div>
+                          <div>
+                            The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                          </div>
+                        </td>
+                      </tr>
+                      <tr
+                        class="MuiTableRow-root"
+                        index="1"
+                        level="0"
+                        path="1"
+                        style="transition: all ease 300ms; opacity: 0.8;"
+                      >
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          Without crossovers
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          1800 (180)
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          [-0.01, 0.01]
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          Deploy 
+                          <code>
+                            test
+                          </code>
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          <div>
+                            Experiment period is too short. Wait a few days to be safer.
+                          </div>
+                          <div>
+                            The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                          </div>
+                        </td>
+                      </tr>
+                      <tr
+                        class="MuiTableRow-root"
+                        index="2"
+                        level="0"
+                        path="2"
+                        style="transition: all ease 300ms; opacity: 0.8;"
+                      >
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          Without spammers
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          1700 (170)
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          [-0.01, 0.01]
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          Deploy 
+                          <code>
+                            test
+                          </code>
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          <div>
+                            Experiment period is too short. Wait a few days to be safer.
+                          </div>
+                          <div>
+                            The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                          </div>
+                        </td>
+                      </tr>
+                      <tr
+                        class="MuiTableRow-root"
+                        index="3"
+                        level="0"
+                        path="3"
+                        style="transition: all ease 300ms; opacity: 0.8;"
+                      >
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          Without crossovers and spammers
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          1600 (160)
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          [-0.01, 0.01]
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          Deploy 
+                          <code>
+                            test
+                          </code>
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          <div>
+                            Experiment period is too short. Wait a few days to be safer.
+                          </div>
+                          <div>
+                            The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                          </div>
+                        </td>
+                      </tr>
+                      <tr
+                        class="MuiTableRow-root"
+                        index="4"
+                        level="0"
+                        path="4"
+                        style="transition: all ease 300ms; opacity: 0.8;"
+                      >
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          Exposed without crossovers and spammers
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          1400 (140)
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          [-0.01, 0.01]
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          Deploy 
+                          <code>
+                            test
+                          </code>
+                        </td>
+                        <td
+                          class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                          style="box-sizing: border-box;"
+                        >
+                          <div>
+                            Experiment period is too short. Wait a few days to be safer.
+                          </div>
+                          <div>
+                            The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
     </div>
   `)
 })
@@ -706,7 +1122,6 @@ test('renders the full tables with some analyses and a different primary metric'
   const { container } = render(
     <ExperimentResults analyses={analyses} experiment={diffPrimaryExperiment} metrics={metrics} />,
   )
-  expect(container).toHaveTextContent(`Found ${analyses.length} analysis objects in total.`)
 
   // Only looking at the participant counts for this test: They should match the primary metric.
   expect(container.querySelector('.analysis-participant-counts')).toMatchInlineSnapshot(`
@@ -819,5 +1234,6 @@ test('shows the analyses JSON in debug mode', () => {
   const { container } = render(
     <ExperimentResults analyses={analyses} experiment={experiment} metrics={metrics} debugMode={true} />,
   )
+  expect(container).toHaveTextContent(`Found ${analyses.length} analysis objects in total.`)
   expect(container.querySelector('pre.debug-json')).toMatchSnapshot()
 })

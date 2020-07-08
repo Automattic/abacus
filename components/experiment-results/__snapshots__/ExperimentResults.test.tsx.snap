@@ -392,6 +392,206 @@ exports[`shows the analyses JSON in debug mode 1`] = `
     "tableData": {
       "id": 0
     }
+  },
+  {
+    "metricAssignmentId": 126,
+    "analysisStrategy": "itt_pure",
+    "participantStats": {
+      "total": 2000,
+      "not_final": 200,
+      "variation_1": 1200,
+      "variation_2": 800
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": true,
+      "chosenVariationId": 2,
+      "reason": "ci_in_rope",
+      "warnings": [
+        "short_period",
+        "wide_ci"
+      ]
+    },
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 0
+    }
+  },
+  {
+    "metricAssignmentId": 126,
+    "analysisStrategy": "mitt_no_crossovers",
+    "participantStats": {
+      "total": 1800,
+      "not_final": 180,
+      "variation_1": 1080,
+      "variation_2": 720
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": true,
+      "chosenVariationId": 2,
+      "reason": "ci_in_rope",
+      "warnings": [
+        "short_period",
+        "wide_ci"
+      ]
+    },
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 1
+    }
+  },
+  {
+    "metricAssignmentId": 126,
+    "analysisStrategy": "mitt_no_spammers",
+    "participantStats": {
+      "total": 1700,
+      "not_final": 170,
+      "variation_1": 920,
+      "variation_2": 780
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": true,
+      "chosenVariationId": 2,
+      "reason": "ci_in_rope",
+      "warnings": [
+        "short_period",
+        "wide_ci"
+      ]
+    },
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 2
+    }
+  },
+  {
+    "metricAssignmentId": 126,
+    "analysisStrategy": "mitt_no_spammers_no_crossovers",
+    "participantStats": {
+      "total": 1600,
+      "not_final": 160,
+      "variation_1": 960,
+      "variation_2": 640
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": true,
+      "chosenVariationId": 2,
+      "reason": "ci_in_rope",
+      "warnings": [
+        "short_period",
+        "wide_ci"
+      ]
+    },
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 3
+    }
+  },
+  {
+    "metricAssignmentId": 126,
+    "analysisStrategy": "pp_naive",
+    "participantStats": {
+      "total": 1400,
+      "not_final": 140,
+      "variation_1": 840,
+      "variation_2": 560
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": true,
+      "chosenVariationId": 2,
+      "reason": "ci_in_rope",
+      "warnings": [
+        "short_period",
+        "wide_ci"
+      ]
+    },
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 4
+    }
   }
 ]
 </pre>
