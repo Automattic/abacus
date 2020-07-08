@@ -1,4 +1,3 @@
-import Chip from '@material-ui/core/Chip'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -8,6 +7,7 @@ import TableRow from '@material-ui/core/TableRow'
 import _ from 'lodash'
 import React, { useMemo } from 'react'
 
+import Label from '@/components/Label'
 import { Segment, SegmentType } from '@/models'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -69,7 +69,7 @@ function SegmentsTable({
                 <TableRow key={resolvedSegmentAssignment.segment.segmentId}>
                   <TableCell>
                     {resolvedSegmentAssignment.segment.name}
-                    {resolvedSegmentAssignment.isExcluded && <Chip className={classes.excluded} label='Excluded' />}
+                    {resolvedSegmentAssignment.isExcluded && <Label className={classes.excluded} text='Excluded' />}
                   </TableCell>
                 </TableRow>
               ),

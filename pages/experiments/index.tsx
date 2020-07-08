@@ -18,7 +18,7 @@ const ExperimentsIndexPage = function () {
   useEffect(() => {
     setIsLoading(true)
     ExperimentsApi.findAll()
-      .then((experiments) => setExperiments(experiments))
+      .then(setExperiments)
       .catch(setError)
       .finally(() => setIsLoading(false))
   }, [])
