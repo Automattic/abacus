@@ -7,8 +7,8 @@ export function useDataLoadingError<E extends Error | null>(error: E, dataName?:
   useEffect(() => {
     if (error) {
       const userErrorMessage = dataName
-        ? `Oops! There was a problem loading some data: ${dataName}`
-        : 'Oops! There was a problem loading data'
+        ? `Oops! There was a problem loading some data of type ${dataName}.`
+        : 'Oops! There was a problem loading some data.'
       enqueueSnackbar(userErrorMessage, { variant: 'error' })
     }
   }, [error])
