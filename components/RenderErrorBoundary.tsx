@@ -12,7 +12,6 @@ type ChildrenParam0 = {
 
 type Props = {
   children: (arg0: ChildrenParam0) => React.ReactNode
-  onClear?: () => void
 }
 
 type State = {
@@ -66,17 +65,10 @@ class RenderErrorBoundary extends React.PureComponent<Props, State> {
   state = { error: null, info: null }
 
   clear = () => {
-    this.setState(
-      {
-        error: null,
-        info: null,
-      },
-      () => {
-        if (this.props.onClear) {
-          this.props.onClear()
-        }
-      },
-    )
+    this.setState({
+      error: null,
+      info: null,
+    })
   }
 
   componentDidCatch(error: Error, info: React.ErrorInfo) {
