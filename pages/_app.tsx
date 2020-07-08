@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles'
 import debugFactory from 'debug'
 import { AppProps } from 'next/app'
+import { SnackbarProvider } from 'notistack'
 import qs from 'querystring'
 import React from 'react'
 
@@ -67,9 +68,11 @@ const App = React.memo(function App(props: AppProps) {
           {renderError ? (
             <RenderErrorView renderError={renderError} />
           ) : (
-            <div className={classes.app}>
-              <Route {...routeProps} />
-            </div>
+            <SnackbarProvider>
+              <div className={classes.app}>
+                <Route {...routeProps} />
+              </div>
+            </SnackbarProvider>
           )}
         </ThemeProvider>
       )}
