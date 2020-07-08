@@ -27,7 +27,7 @@ const ExperimentsIndexPage = function () {
   useDataLoadingError(error)
 
   return (
-    <Layout title='Experiments' error={error}>
+    <Layout title='Experiments'>
       {isLoading ? <LinearProgress /> : <ExperimentsTable experiments={experiments || []} />}
     </Layout>
   )

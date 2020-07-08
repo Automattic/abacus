@@ -36,7 +36,7 @@ const ExperimentsNewPage = function () {
   useDataLoadingError(error)
 
   return (
-    <Layout title='Create an Experiment' error={error}>
+    <Layout title='Create an Experiment'>
       <Paper>
         <Typography variant='h5'>initialExperiment</Typography>
         <pre>{JSON.stringify(initialExperiment, null, 2)}</pre>

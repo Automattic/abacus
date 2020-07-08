@@ -26,11 +26,7 @@ const MetricsIndexPage = () => {
 
   useDataLoadingError(error)
 
-  return (
-    <Layout title='Metrics' error={error}>
-      {isLoading ? <LinearProgress /> : <MetricsTable metrics={metrics || []} />}
-    </Layout>
-  )
+  return <Layout title='Metrics'>{isLoading ? <LinearProgress /> : <MetricsTable metrics={metrics || []} />}</Layout>
 }
 
 export default MetricsIndexPage

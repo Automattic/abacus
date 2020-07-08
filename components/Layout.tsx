@@ -4,7 +4,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import React, { ReactNode } from 'react'
 
-import ErrorsBox from '@/components/ErrorsBox'
 import { onRenderError } from '@/event-handlers'
 
 import RenderErrorBoundary from './RenderErrorBoundary'
@@ -69,7 +68,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const Layout = ({ title, error, children }: { title: string; error?: Error | null; children?: ReactNode }) => {
+const Layout = ({ title, children }: { title: string; children?: ReactNode }) => {
   const classes = useStyles()
   return (
     <RenderErrorBoundary onError={onRenderError}>
@@ -110,7 +109,6 @@ const Layout = ({ title, error, children }: { title: string; error?: Error | nul
               <Typography variant='h1' className={classes.contentTitle}>
                 {title}
               </Typography>
-              {error && <ErrorsBox errors={[error]} />}
               {children}
             </Container>
             <footer className={classes.footer}>

@@ -52,7 +52,7 @@ export default function ExperimentPage() {
   useDataLoadingError(error)
 
   return (
-    <Layout title={`Experiment: ${experiment?.name || ''}`} error={error}>
+    <Layout title={`Experiment: ${experiment?.name || ''}`}>
       {isLoading ? (
         <LinearProgress />
       ) : (

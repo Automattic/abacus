@@ -31,9 +31,7 @@ const MetricsDetailPage = () => {
   useDataLoadingError(error)
 
   return (
-    <Layout title='Metrics' error={error}>
-      {isLoading ? <LinearProgress /> : <pre> {JSON.stringify(metric, null, 2)} </pre>}
-    </Layout>
+    <Layout title='Metrics'>{isLoading ? <LinearProgress /> : <pre> {JSON.stringify(metric, null, 2)} </pre>}</Layout>
   )
 }
 
