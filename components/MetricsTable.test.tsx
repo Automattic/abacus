@@ -1,4 +1,4 @@
-import { fireEvent, getByText, screen, waitFor } from '@testing-library/react'
+import { fireEvent, getByText, getDefaultNormalizer, screen, waitFor } from '@testing-library/react'
 import React from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
@@ -47,13 +47,31 @@ test('with some metrics, displays an error on trouble loading metric details', a
 })
 
 test('with some metrics, loads and opens metric details', async () => {
-  mockedMetricsApi.findById.mockResolvedValue(Fixtures.createMetricFull(0))
-
   const { container } = render(<MetricsTable metrics={Fixtures.createMetricBares(2)} />)
-
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
 
-  fireEvent.click(screen.getByText('metric_1'))
-  await waitFor(() => screen.getByText('Higher is Better'))
+  for (let i = 0; i < 6; i++) {
+    const metricFull = Fixtures.createMetricFull(i)
+    mockedMetricsApi.findById.mockResolvedValueOnce(metricFull)
+
+    // Open metric details
+    fireEvent.click(getByText(container, /metric_0/))
+
+    await waitFor(() => getByText(container, /Higher is Better/), { container })
+    metricFull.higherIsBetter ? getByText(container, /Yes/) : getByText(container, /No/)
+    getByText(container, /Parameters/)
+    getByText(
+      container,
+      JSON.stringify(
+        metricFull.parameterType === 'conversion' ? metricFull.eventParams : metricFull.revenueParams,
+        null,
+        4,
+      ),
+      { normalizer: getDefaultNormalizer({ trim: true, collapseWhitespace: false }) },
+    )
+
+    // Close metric details
+    fireEvent.click(getByText(container, /metric_0/))
+  }
 })
