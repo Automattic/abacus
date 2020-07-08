@@ -272,9 +272,8 @@ function createMetricFull(id: number) {
   // Note: It is hard to reuse createMetricBare here as it is boxed
   //       Currently we only unbox it into an ApiData format which is different from this
   const parameterType = id % 2 === 0 ? 'revenue' : 'conversion'
-  const eventParams = [{ event: 'event_name', props: { has_blocks: true } }]
+  const eventParams = [{ event: 'event_name', props: { has_blocks: 'true' } }]
   const revenueParams = new MetricRevenueParams({
-    description: 'description',
     refundDays: id * 2,
     productSlugs: ['xx-bundles'],
     transactionTypes: [TransactionTypes.NewPurchase],
