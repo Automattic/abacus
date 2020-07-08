@@ -13,6 +13,8 @@ import {
   ExperimentFull,
   MetricAssignment,
   MetricBare,
+  MetricFull,
+  MetricRevenueParams,
   Platform,
   RecommendationReason,
   RecommendationWarning,
@@ -20,6 +22,7 @@ import {
   SegmentAssignment,
   SegmentType,
   Status,
+  TransactionTypes,
   Variation,
 } from '@/models'
 
@@ -265,6 +268,27 @@ function createMetricBares(numMetrics = 3) {
   return _.range(numMetrics).map(createMetricBare)
 }
 
+function createMetricFull(id: number) {
+  // Note: It is hard to reuse createMetricBare here as it is boxed
+  //       Currently we only unbox it into an ApiData format which is different from this
+  const parameterType = id % 2 === 0 ? 'revenue' : 'conversion'
+  const eventParams = [{ event: 'event_name', props: { has_blocks: 'true' } }]
+  const revenueParams = new MetricRevenueParams({
+    refundDays: id * 2,
+    productSlugs: ['xx-bundles'],
+    transactionTypes: [TransactionTypes.NewPurchase],
+  })
+  return new MetricFull({
+    metricId: id,
+    name: `metric_${id}`,
+    description: `This is metric ${id}`,
+    parameterType,
+    higherIsBetter: id % 3 === 0 ? true : false,
+    eventParams: parameterType === 'conversion' ? eventParams : null,
+    revenueParams: parameterType === 'revenue' ? revenueParams : null,
+  })
+}
+
 function createSegment(id: number) {
   return new Segment({
     segmentId: id,
@@ -295,6 +319,7 @@ const Fixtures = {
   createExperimentFull,
   createMetricAssignment,
   createMetricBares,
+  createMetricFull,
   createSegmentAssignment,
   createSegments,
 }
