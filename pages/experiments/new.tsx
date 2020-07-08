@@ -6,6 +6,7 @@ import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
 import Layout from '@/components/Layout'
 import { createNewExperiment, MetricBare, Segment } from '@/models'
+import { useDataLoadingError } from '@/utils/data-loading'
 
 const debug = debugFactory('abacus:pages/experiments/new.tsx')
 
@@ -32,8 +33,10 @@ const ExperimentsNewPage = function () {
       .finally(() => setIsLoading(false))
   }, [])
 
+  useDataLoadingError(error)
+
   return (
-    <Layout title='Create an Experiment' error={error}>
+    <Layout title='Create an Experiment'>
       <Paper>
         <Typography variant='h5'>initialExperiment</Typography>
         <pre>{JSON.stringify(initialExperiment, null, 2)}</pre>
