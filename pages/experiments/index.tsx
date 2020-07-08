@@ -6,6 +6,7 @@ import ExperimentsApi from '@/api/ExperimentsApi'
 import ExperimentsTable from '@/components/ExperimentsTable'
 import Layout from '@/components/Layout'
 import { ExperimentBare } from '@/models'
+import { useDataLoadingError } from '@/utils/data-loading'
 
 const debug = debugFactory('abacus:pages/experiments/index.tsx')
 
@@ -22,6 +23,8 @@ const ExperimentsIndexPage = function () {
       .catch(setError)
       .finally(() => setIsLoading(false))
   }, [])
+
+  useDataLoadingError(error)
 
   return (
     <Layout title='Experiments' error={error}>

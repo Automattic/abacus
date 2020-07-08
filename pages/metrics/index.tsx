@@ -6,6 +6,7 @@ import MetricsApi from '@/api/MetricsApi'
 import Layout from '@/components/Layout'
 import MetricsTable from '@/components/MetricsTable'
 import { MetricBare } from '@/models'
+import { useDataLoadingError } from '@/utils/data-loading'
 
 const debug = debugFactory('abacus:pages/metrics/index.tsx')
 
@@ -22,6 +23,8 @@ const MetricsIndexPage = () => {
       .catch(setError)
       .finally(() => setIsLoading(false))
   }, [])
+
+  useDataLoadingError(error)
 
   return (
     <Layout title='Metrics' error={error}>

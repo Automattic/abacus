@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react'
 import MetricsApi from '@/api/MetricsApi'
 import Layout from '@/components/Layout'
 import { MetricFull } from '@/models'
+import { useDataLoadingError } from '@/utils/data-loading'
 
 const debug = debugFactory('abacus:pages/metrics/[id].tsx')
 
@@ -26,6 +27,8 @@ const MetricsDetailPage = () => {
       .catch(setError)
       .finally(() => setIsLoading(false))
   }, [metricId])
+
+  useDataLoadingError(error)
 
   return (
     <Layout title='Metrics' error={error}>
