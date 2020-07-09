@@ -1,12 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles'
 import debugFactory from 'debug'
 import { AppProps } from 'next/app'
+import { SnackbarProvider } from 'notistack'
 import qs from 'querystring'
 import React from 'react'
 
 import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import RenderErrorView from '@/components/RenderErrorView'
-import { onRenderError } from '@/event-handlers/index'
 import ThemeProvider from '@/styles/ThemeProvider'
 import { getAuthClientId, getExperimentsAuthInfo, saveExperimentsAuthInfo } from '@/utils/auth'
 
@@ -61,15 +61,17 @@ const App = React.memo(function App(props: AppProps) {
   }
 
   return (
-    <RenderErrorBoundary onError={onRenderError}>
+    <RenderErrorBoundary>
       {({ renderError }) => (
         <ThemeProvider>
           {renderError ? (
             <RenderErrorView renderError={renderError} />
           ) : (
-            <div className={classes.app}>
-              <Route {...routeProps} />
-            </div>
+            <SnackbarProvider preventDuplicate>
+              <div className={classes.app}>
+                <Route {...routeProps} />
+              </div>
+            </SnackbarProvider>
           )}
         </ThemeProvider>
       )}

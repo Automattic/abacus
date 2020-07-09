@@ -33,7 +33,7 @@ export default function FullLatestAnalyses({
       return {
         metricAssignment,
         metric: metricsById[metricAssignment.metricId],
-        latestAnalyses: metricAssignmentIdToLatestAnalyses[metricAssignment.metricAssignmentId as number],
+        latestAnalyses: metricAssignmentIdToLatestAnalyses[metricAssignment.metricAssignmentId as number] || [],
       }
     })
   }, [experiment, metricsById, metricAssignmentIdToLatestAnalyses])
@@ -79,8 +79,14 @@ export default function FullLatestAnalyses({
             <strong>
               <code>{metric.name}</code>
             </strong>{' '}
-            with {AttributionWindowSecondsToHuman[metricAssignment.attributionWindowSeconds]} attribution, last analyzed
-            on <DatetimeText datetime={latestAnalyses[0].analysisDatetime} excludeTime={true} />
+            with {AttributionWindowSecondsToHuman[metricAssignment.attributionWindowSeconds]} attribution,{' '}
+            {latestAnalyses.length > 0 ? (
+              <>
+                last analyzed on <DatetimeText datetime={latestAnalyses[0].analysisDatetime} excludeTime={true} />
+              </>
+            ) : (
+              <strong>not analyzed yet</strong>
+            )}
           </Typography>
           <MaterialTable
             columns={tableColumns}

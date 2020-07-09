@@ -6,7 +6,7 @@ import React from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
 import Layout from '@/components/Layout'
-import { useDataSource } from '@/utils/data-loading'
+import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { createUnresolvingPromise } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/metrics/[id].tsx')
@@ -20,11 +20,10 @@ const MetricsDetailPage = () => {
     () => (metricId ? MetricsApi.findById(metricId) : createUnresolvingPromise()),
     [metricId],
   )
+  useDataLoadingError(error, 'Metric')
 
   return (
-    <Layout title='Metrics' error={error}>
-      {isLoading ? <LinearProgress /> : <pre> {JSON.stringify(metric, null, 2)} </pre>}
-    </Layout>
+    <Layout title='Metrics'>{isLoading ? <LinearProgress /> : <pre> {JSON.stringify(metric, null, 2)} </pre>}</Layout>
   )
 }
 

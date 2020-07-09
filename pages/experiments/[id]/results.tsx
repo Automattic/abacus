@@ -11,8 +11,8 @@ import ExperimentResults from '@/components/experiment-results/ExperimentResults
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
 import { Analysis, ExperimentFull } from '@/models'
-import { combineIsLoading, useDataSource } from '@/utils/data-loading'
-import { createUnresolvingPromise } from '@/utils/general'
+import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
+import { createUnresolvingPromise, or } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/experiments/[id]/results.tsx')
 
@@ -26,22 +26,25 @@ export default function ResultsPage() {
       experimentId ? ExperimentsApi.findById(experimentId) : (createUnresolvingPromise() as Promise<ExperimentFull>),
     [experimentId],
   )
+  useDataLoadingError(experimentError, 'Experiment')
+
   const { isLoading: metricsIsLoading, data: metrics, error: metricsError } = useDataSource(
     () => MetricsApi.findAll(),
     [],
   )
+  useDataLoadingError(metricsError, 'Metrics')
+
   const { isLoading: analysesIsLoading, data: analyses, error: analysesError } = useDataSource(
     () =>
       experimentId ? AnalysesApi.findByExperimentId(experimentId) : (createUnresolvingPromise() as Promise<Analysis[]>),
     [experimentId],
   )
+  useDataLoadingError(analysesError, 'Analyses')
 
-  const isLoading = combineIsLoading([experimentIsLoading, metricsIsLoading, analysesIsLoading])
-
-  const error = [experimentError, metricsError, analysesError].filter((x) => !!x)[0]
+  const isLoading = or(experimentIsLoading, metricsIsLoading, analysesIsLoading)
 
   return (
-    <Layout title={`Experiment: ${experiment?.name || ''}`} error={error}>
+    <Layout title={`Experiment: ${experiment?.name || ''}`}>
       {isLoading ? (
         <LinearProgress />
       ) : (
