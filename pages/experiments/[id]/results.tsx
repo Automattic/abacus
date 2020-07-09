@@ -29,7 +29,7 @@ export default function ResultsPage() {
   )
   const { isLoading: analysesIsLoading, data: analyses, error: analysesError } = useDataSource(
     () => AnalysesApi.findByExperimentId(experimentId),
-    [],
+    [experimentId],
   )
 
   const isLoading = combineIsLoading([experimentIsLoading, metricsIsLoading, analysesIsLoading])
