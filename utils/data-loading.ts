@@ -1,6 +1,13 @@
 import { useSnackbar } from 'notistack'
 import { DependencyList, useEffect, useState } from 'react'
 
+/**
+ * Declarative data loader.
+ * Takes care of data, loading, and error state.
+ *
+ * @param createDataPromise A function that returns a promise to the data
+ * @param deps The hook dependencies for `createDataPromise`
+ */
 export function useDataSource<Data, Deps extends DependencyList | undefined, E extends Error>(
   createDataPromise: () => Promise<Data>,
   deps: Deps,
@@ -25,10 +32,19 @@ export function useDataSource<Data, Deps extends DependencyList | undefined, E e
   }
 }
 
+/**
+ * Combines isLoading booleans
+ */
 export function combineIsLoading(isLoadings: boolean[]) {
   return isLoadings.reduce((acc, isLoading) => acc || isLoading, false)
 }
 
+/**
+ * Declaratively handles data loading errors.
+ *
+ * @param error
+ * @param dataName (Optional) Name of the data to be included in the message
+ */
 export function useDataLoadingError<E extends Error | null>(error: E, dataName?: string) {
   const { enqueueSnackbar } = useSnackbar()
 
