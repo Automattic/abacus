@@ -34,20 +34,21 @@ export default function ExperimentPage() {
     () => ExperimentsApi.findById(experimentId),
     [experimentId],
   )
+  useDataLoadingError(experimentError, 'Experiment')
+
   const { isLoading: metricsIsLoading, data: metrics, error: metricsError } = useDataSource(
     () => MetricsApi.findAll(),
     [],
   )
+  useDataLoadingError(metricsError, 'Metrics')
+
   const { isLoading: segmentsIsLoading, data: segments, error: segmentsError } = useDataSource(
     () => SegmentsApi.findAll(),
     [],
   )
+  useDataLoadingError(segmentsError, 'Segments')
 
   const isLoading = or(experimentIsLoading, metricsIsLoading, segmentsIsLoading)
-
-  const error = [experimentError, metricsError, segmentsError].filter((x) => !!x)[0]
-
-  useDataLoadingError(error)
 
   return (
     <Layout title={`Experiment: ${experiment?.name || ''}`}>

@@ -17,7 +17,7 @@ const MetricsDetailPage = () => {
 
   const { isLoading, data: metric, error } = useDataSource(() => MetricsApi.findById(metricId), [metricId])
 
-  useDataLoadingError(error)
+  useDataLoadingError(error, 'Metric')
 
   return (
     <Layout title='Metrics'>{isLoading ? <LinearProgress /> : <pre> {JSON.stringify(metric, null, 2)} </pre>}</Layout>

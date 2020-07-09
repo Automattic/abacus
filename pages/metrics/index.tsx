@@ -13,7 +13,7 @@ const MetricsIndexPage = () => {
   debug('MetricsIndexPage#render')
   const { isLoading, data: metrics, error } = useDataSource(() => MetricsApi.findAll(), [])
 
-  useDataLoadingError(error)
+  useDataLoadingError(error, 'Metrics')
 
   return <Layout title='Metrics'>{isLoading ? <LinearProgress /> : <MetricsTable metrics={metrics || []} />}</Layout>
 }

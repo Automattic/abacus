@@ -21,16 +21,15 @@ const ExperimentsNewPage = function () {
     () => MetricsApi.findAll(),
     [],
   )
+  useDataLoadingError(metricsError, 'Metrics')
+
   const { isLoading: segmentsIsLoading, data: segments, error: segmentsError } = useDataSource(
     () => SegmentsApi.findAll(),
     [],
   )
+  useDataLoadingError(segmentsError, 'Segments')
 
   const isLoading = or(metricsIsLoading, segmentsIsLoading)
-
-  const error = [metricsError, segmentsError].filter((x) => !!x)[0]
-
-  useDataLoadingError(error)
 
   return (
     <Layout title='Create an Experiment'>

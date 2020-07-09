@@ -14,7 +14,7 @@ const ExperimentsIndexPage = function () {
 
   const { isLoading, data: experiments, error } = useDataSource(() => ExperimentsApi.findAll(), [])
 
-  useDataLoadingError(error)
+  useDataLoadingError(error, 'Experiment')
 
   return (
     <Layout title='Experiments'>
