@@ -237,19 +237,6 @@ export class ExperimentFull implements ApiDataSource {
 
 export function createNewExperiment(): Partial<ExperimentFull> {
   return ({
-    experimentId: null,
-    name: null,
-    description: null,
-    startDatetime: null,
-    endDatetime: null,
-    status: null,
-    platform: null,
-    ownerLogin: null,
-    conclusionUrl: null,
-    deployedVariationId: null,
-    endReason: null,
-    existingUsersAllowed: null,
-    p2Url: null,
     metricAssignments: [],
     segmentAssignments: [],
     variations: [],
