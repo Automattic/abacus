@@ -1,4 +1,4 @@
-import { TextField, Typography } from '@material-ui/core'
+import { InputAdornment, TextField, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React from 'react'
 
@@ -15,10 +15,12 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
     },
     through: {
+      flex: 0,
       margin: theme.spacing(0, 2),
       color: theme.palette.text.hint,
     },
     datePicker: {
+      flex: 1,
       '& input:invalid': {
         // Fix the native date-picker placeholder text colour
         color: theme.palette.text.hint,
@@ -41,10 +43,11 @@ const BasicInfo = () => {
       <div className={classes.row}>
         <TextField
           name='experiment.name'
-          label='Experiment Name'
+          label='Experiment name'
           placeholder='experiment_name'
-          helperText='Please use snake_case, all lowercase.'
+          helperText='Use snake_case.'
           variant='outlined'
+          fullWidth
           required
           InputLabelProps={{
             shrink: true,
@@ -55,13 +58,14 @@ const BasicInfo = () => {
       <div className={classes.row}>
         <TextField
           name='experiment.description'
-          label='Experiment Description'
+          label='Experiment description'
           placeholder='Monthly vs. yearly pricing'
-          helperText='State your hypothesis. It will show up in the list view.'
+          helperText='State your hypothesis.'
           variant='outlined'
+          fullWidth
           required
           multiline
-          rows={2}
+          rows={4}
           InputLabelProps={{
             shrink: true,
           }}
@@ -98,10 +102,14 @@ const BasicInfo = () => {
         <TextField
           name='experiment.ownerLogin'
           label='Owner'
-          placeholder='@scjr'
+          placeholder='scjr'
           helperText=''
           variant='outlined'
+          fullWidth
           required
+          InputProps={{
+            startAdornment: <InputAdornment position='start'>@</InputAdornment>,
+          }}
           InputLabelProps={{
             shrink: true,
           }}
