@@ -32,8 +32,7 @@ export default function ExperimentPage() {
   debug(`ExperimentPage#render ${experimentId}`)
 
   const { isLoading: experimentIsLoading, data: experiment, error: experimentError } = useDataSource(
-    () =>
-      experimentId ? ExperimentsApi.findById(experimentId) : (createUnresolvingPromise() as Promise<ExperimentFull>),
+    () => (experimentId ? ExperimentsApi.findById(experimentId) : createUnresolvingPromise<ExperimentFull>()),
     [experimentId],
   )
   useDataLoadingError(experimentError, 'Experiment')

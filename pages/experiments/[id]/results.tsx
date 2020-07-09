@@ -22,8 +22,7 @@ export default function ResultsPage() {
   debug(`ResultPage#render ${experimentId}`)
 
   const { isLoading: experimentIsLoading, data: experiment, error: experimentError } = useDataSource(
-    () =>
-      experimentId ? ExperimentsApi.findById(experimentId) : (createUnresolvingPromise() as Promise<ExperimentFull>),
+    () => (experimentId ? ExperimentsApi.findById(experimentId) : createUnresolvingPromise<ExperimentFull>()),
     [experimentId],
   )
   useDataLoadingError(experimentError, 'Experiment')
@@ -35,8 +34,7 @@ export default function ResultsPage() {
   useDataLoadingError(metricsError, 'Metrics')
 
   const { isLoading: analysesIsLoading, data: analyses, error: analysesError } = useDataSource(
-    () =>
-      experimentId ? AnalysesApi.findByExperimentId(experimentId) : (createUnresolvingPromise() as Promise<Analysis[]>),
+    () => (experimentId ? AnalysesApi.findByExperimentId(experimentId) : createUnresolvingPromise<Analysis[]>()),
     [experimentId],
   )
   useDataLoadingError(analysesError, 'Analyses')

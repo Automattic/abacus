@@ -11,6 +11,6 @@ export function or(...xs: unknown[]) {
  * Returns a promise that never resolves.
  * Useful as an empty data-loading data-promise.
  */
-export function createUnresolvingPromise() {
-  return new Promise(() => null)
+export function createUnresolvingPromise<T>() {
+  return new Promise<T>(() => null)
 }
