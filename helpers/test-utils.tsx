@@ -47,7 +47,14 @@ export function createMatchMedia(width: number) {
  */
 export const MockFormik = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Formik initialValues={{}} onSubmit={() => undefined}>
+    <Formik
+      initialValues={{}}
+      onSubmit={
+        // This isn't meant to be used so it won't be tested
+        /* istanbul ignore next */
+        () => undefined
+      }
+    >
       {children}
     </Formik>
   )

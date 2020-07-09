@@ -1,5 +1,6 @@
 // Temporarily ignore until more parts are in place
 /* eslint-disable */
+/* istanbul ignore file */
 import React from 'react'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { MetricBare, Segment, ExperimentFull } from '@/models'
@@ -13,6 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
+/* istanbul-ignore next */
 const ExperimentForm = ({
   metrics,
   segments,
