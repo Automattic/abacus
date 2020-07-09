@@ -1,6 +1,12 @@
-import { or } from './general'
+import { createUnresolvingPromise, or } from './general'
 
 describe('utils/general.ts module', () => {
+  describe('createUnresolvingPromise', () => {
+    it('returns a promise', () => {
+      expect(createUnresolvingPromise() instanceof Promise).toBe(true)
+    })
+  })
+
   describe('or', () => {
     it('should work as expected', () => {
       expect(or(true)).toBe(true)

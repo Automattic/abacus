@@ -10,8 +10,9 @@ import MetricsApi from '@/api/MetricsApi'
 import ExperimentResults from '@/components/experiment-results/ExperimentResults'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
+import { Analysis, ExperimentFull } from '@/models'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
-import { or } from '@/utils/general'
+import { createUnresolvingPromise, or } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/experiments/[id]/results.tsx')
 
@@ -21,7 +22,7 @@ export default function ResultsPage() {
   debug(`ResultPage#render ${experimentId}`)
 
   const { isLoading: experimentIsLoading, data: experiment, error: experimentError } = useDataSource(
-    () => ExperimentsApi.findById(experimentId),
+    () => (experimentId ? ExperimentsApi.findById(experimentId) : createUnresolvingPromise<ExperimentFull>()),
     [experimentId],
   )
   useDataLoadingError(experimentError, 'Experiment')
@@ -33,7 +34,7 @@ export default function ResultsPage() {
   useDataLoadingError(metricsError, 'Metrics')
 
   const { isLoading: analysesIsLoading, data: analyses, error: analysesError } = useDataSource(
-    () => AnalysesApi.findByExperimentId(experimentId),
+    () => (experimentId ? AnalysesApi.findByExperimentId(experimentId) : createUnresolvingPromise<Analysis[]>()),
     [experimentId],
   )
   useDataLoadingError(analysesError, 'Analyses')
