@@ -13,6 +13,7 @@ import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
 import { ExperimentFull } from '@/models'
 import { combineIsLoading, useDataSource } from '@/utils/data-loading'
+import { createUnresolvingPromise } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 
@@ -32,9 +33,7 @@ export default function ExperimentPage() {
 
   const { isLoading: experimentIsLoading, data: experiment, error: experimentError } = useDataSource(
     () =>
-      experimentId
-        ? ExperimentsApi.findById(experimentId)
-        : ((new Promise(() => null) as unknown) as Promise<ExperimentFull>),
+      experimentId ? ExperimentsApi.findById(experimentId) : (createUnresolvingPromise() as Promise<ExperimentFull>),
     [experimentId],
   )
   const { isLoading: metricsIsLoading, data: metrics, error: metricsError } = useDataSource(
