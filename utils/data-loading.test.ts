@@ -10,25 +10,25 @@ const mockedNotistack = notistack as jest.Mocked<typeof notistack>
 function createControllablePromise() {
   let resOuter, rejOuter
 
-  const p = new Promise((resolve, reject) => {
+  const promise = new Promise((resolve, reject) => {
     resOuter = resolve
     rejOuter = reject
   })
 
   return {
-    res: (resOuter as unknown) as (...x: unknown[]) => void,
-    rej: (rejOuter as unknown) as (...x: unknown[]) => void,
-    p,
+    resolve: (resOuter as unknown) as (...x: unknown[]) => void,
+    reject: (rejOuter as unknown) as (...x: unknown[]) => void,
+    promise,
   }
 }
 
 describe('utils/data-loading.ts module', () => {
   describe('useDataSource', () => {
     it('should have expected state without error', async () => {
-      const { res, p } = createControllablePromise()
+      const { resolve, promise } = createControllablePromise()
 
       const renderResult = renderHook(() => {
-        return useDataSource(() => p, [])
+        return useDataSource(() => promise, [])
       })
 
       expect(renderResult.result.current).toEqual({
@@ -38,7 +38,7 @@ describe('utils/data-loading.ts module', () => {
       })
 
       act(() => {
-        res(123)
+        resolve(123)
       })
 
       await renderResult.waitForNextUpdate()
@@ -51,10 +51,10 @@ describe('utils/data-loading.ts module', () => {
     })
 
     it('should have expected state with error', async () => {
-      const { rej, p } = createControllablePromise()
+      const { reject, promise } = createControllablePromise()
 
       const renderResult = renderHook(() => {
-        return useDataSource(() => p, [])
+        return useDataSource(() => promise, [])
       })
 
       expect(renderResult.result.current).toEqual({
@@ -64,7 +64,7 @@ describe('utils/data-loading.ts module', () => {
       })
 
       act(() => {
-        rej(123)
+        reject(123)
       })
 
       await renderResult.waitForNextUpdate()
