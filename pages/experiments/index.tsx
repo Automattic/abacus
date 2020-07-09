@@ -5,7 +5,7 @@ import React from 'react'
 import ExperimentsApi from '@/api/ExperimentsApi'
 import ExperimentsTable from '@/components/ExperimentsTable'
 import Layout from '@/components/Layout'
-import { useDataSource } from '@/utils/data-loading'
+import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 
 const debug = debugFactory('abacus:pages/experiments/index.tsx')
 
@@ -14,8 +14,10 @@ const ExperimentsIndexPage = function () {
 
   const { isLoading, data: experiments, error } = useDataSource(() => ExperimentsApi.findAll(), [])
 
+  useDataLoadingError(error)
+
   return (
-    <Layout title='Experiments' error={error}>
+    <Layout title='Experiments'>
       {isLoading ? <LinearProgress /> : <ExperimentsTable experiments={experiments || []} />}
     </Layout>
   )

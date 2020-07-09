@@ -11,7 +11,7 @@ import SegmentsApi from '@/api/SegmentsApi'
 import ExperimentDetails from '@/components/ExperimentDetails'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
-import { combineIsLoading, useDataSource } from '@/utils/data-loading'
+import { combineIsLoading, useDataLoadingError, useDataSource } from '@/utils/data-loading'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 
@@ -46,8 +46,10 @@ export default function ExperimentPage() {
 
   const error = [experimentError, metricsError, segmentsError].filter((x) => !!x)[0]
 
+  useDataLoadingError(error)
+
   return (
-    <Layout title={`Experiment: ${experiment?.name || ''}`} error={error}>
+    <Layout title={`Experiment: ${experiment?.name || ''}`}>
       {isLoading ? (
         <LinearProgress />
       ) : (

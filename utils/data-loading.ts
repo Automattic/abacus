@@ -1,3 +1,4 @@
+import { useSnackbar } from 'notistack'
 import { DependencyList, useEffect, useState } from 'react'
 
 export function useDataSource<Data, Deps extends DependencyList | undefined, E extends Error>(
@@ -26,4 +27,17 @@ export function useDataSource<Data, Deps extends DependencyList | undefined, E e
 
 export function combineIsLoading(isLoadings: boolean[]) {
   return isLoadings.reduce((acc, isLoading) => acc || isLoading, false)
+}
+
+export function useDataLoadingError<E extends Error | null>(error: E, dataName?: string) {
+  const { enqueueSnackbar } = useSnackbar()
+
+  useEffect(() => {
+    if (error) {
+      const userErrorMessage = dataName
+        ? `Oops! There was a problem loading some data of type: ${dataName}.`
+        : 'Oops! There was a problem loading some data.'
+      enqueueSnackbar(userErrorMessage, { variant: 'error', persist: true })
+    }
+  }, [error, enqueueSnackbar, dataName])
 }
