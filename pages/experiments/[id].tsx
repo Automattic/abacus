@@ -11,7 +11,8 @@ import SegmentsApi from '@/api/SegmentsApi'
 import ExperimentDetails from '@/components/ExperimentDetails'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
-import { combineIsLoading, useDataLoadingError, useDataSource } from '@/utils/data-loading'
+import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
+import { or } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 
@@ -42,7 +43,7 @@ export default function ExperimentPage() {
     [],
   )
 
-  const isLoading = combineIsLoading([experimentIsLoading, metricsIsLoading, segmentsIsLoading])
+  const isLoading = or(experimentIsLoading, metricsIsLoading, segmentsIsLoading)
 
   const error = [experimentError, metricsError, segmentsError].filter((x) => !!x)[0]
 

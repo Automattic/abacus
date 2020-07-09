@@ -33,13 +33,6 @@ export function useDataSource<Data, Deps extends DependencyList | undefined, E e
 }
 
 /**
- * Combines isLoading booleans
- */
-export function combineIsLoading(isLoadings: boolean[]) {
-  return isLoadings.reduce((acc, isLoading) => acc || isLoading, false)
-}
-
-/**
  * Declaratively handles data loading errors.
  *
  * @param error

@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks'
 import * as notistack from 'notistack'
 import { act } from 'react-dom/test-utils'
 
-import { combineIsLoading, useDataLoadingError, useDataSource } from './data-loading'
+import { useDataLoadingError, useDataSource } from './data-loading'
 
 jest.mock('notistack')
 const mockedNotistack = notistack as jest.Mocked<typeof notistack>
@@ -74,17 +74,6 @@ describe('utils/data-loading.ts module', () => {
         data: null,
         error: 123,
       })
-    })
-  })
-
-  describe('combineIsLoading', () => {
-    it('should work as expected', () => {
-      expect(combineIsLoading([true])).toBe(true)
-      expect(combineIsLoading([false])).toBe(false)
-      expect(combineIsLoading([true, false])).toBe(true)
-      expect(combineIsLoading([false, true])).toBe(true)
-      expect(combineIsLoading([true, true])).toBe(true)
-      expect(combineIsLoading([false, false])).toBe(false)
     })
   })
 
