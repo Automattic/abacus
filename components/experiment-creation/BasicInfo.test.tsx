@@ -20,13 +20,13 @@ test('renders as expected', () => {
           class="makeStyles-row-2"
         >
           <div
-            class="MuiFormControl-root MuiTextField-root"
+            class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
           >
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
               data-shrink="true"
             >
-              Experiment Name
+              Experiment name
               <span
                 aria-hidden="true"
                 class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -36,7 +36,7 @@ test('renders as expected', () => {
               </span>
             </label>
             <div
-              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
             >
               <input
                 aria-invalid="false"
@@ -55,7 +55,7 @@ test('renders as expected', () => {
                   class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
                 >
                   <span>
-                    Experiment Name
+                    Experiment name
                      *
                   </span>
                 </legend>
@@ -64,7 +64,7 @@ test('renders as expected', () => {
             <p
               class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
             >
-              Please use snake_case, all lowercase.
+              Use snake_case.
             </p>
           </div>
         </div>
@@ -72,13 +72,13 @@ test('renders as expected', () => {
           class="makeStyles-row-2"
         >
           <div
-            class="MuiFormControl-root MuiTextField-root"
+            class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
           >
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
               data-shrink="true"
             >
-              Experiment Description
+              Experiment description
               <span
                 aria-hidden="true"
                 class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -88,7 +88,7 @@ test('renders as expected', () => {
               </span>
             </label>
             <div
-              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
             >
               <textarea
                 aria-invalid="false"
@@ -96,7 +96,7 @@ test('renders as expected', () => {
                 name="experiment.description"
                 placeholder="Monthly vs. yearly pricing"
                 required=""
-                rows="2"
+                rows="4"
               />
               <fieldset
                 aria-hidden="true"
@@ -106,7 +106,7 @@ test('renders as expected', () => {
                   class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
                 >
                   <span>
-                    Experiment Description
+                    Experiment description
                      *
                   </span>
                 </legend>
@@ -115,7 +115,7 @@ test('renders as expected', () => {
             <p
               class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
             >
-              State your hypothesis. It will show up in the list view.
+              State your hypothesis.
             </p>
           </div>
         </div>
@@ -216,7 +216,7 @@ test('renders as expected', () => {
           class="makeStyles-row-2"
         >
           <div
-            class="MuiFormControl-root MuiTextField-root"
+            class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
           >
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
@@ -232,13 +232,22 @@ test('renders as expected', () => {
               </span>
             </label>
             <div
-              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
             >
+              <div
+                class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+                >
+                  @
+                </p>
+              </div>
               <input
                 aria-invalid="false"
-                class="MuiInputBase-input MuiOutlinedInput-input"
+                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
                 name="experiment.ownerLogin"
-                placeholder="@scjr"
+                placeholder="scjr"
                 required=""
                 type="text"
                 value=""
