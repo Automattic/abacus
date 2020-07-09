@@ -7,6 +7,10 @@ export function or(...xs: unknown[]) {
   return xs.reduce((acc, x) => acc || !!x, false) as boolean
 }
 
+/**
+ * Returns a promise that never resolves.
+ * Useful as an empty data-loading data-promise.
+ */
 export function createUnresolvingPromise() {
   return new Promise(() => null)
 }
