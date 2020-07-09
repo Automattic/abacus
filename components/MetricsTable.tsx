@@ -2,7 +2,6 @@ import {
   createStyles,
   LinearProgress,
   makeStyles,
-  Snackbar,
   Table,
   TableBody,
   TableCell,
@@ -17,7 +16,7 @@ import React from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
 import { MetricBare } from '@/models'
-import { useDataSource } from '@/utils/data-loading'
+import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { formatBoolean } from '@/utils/formatters'
 import { defaultTableOptions } from '@/utils/material-table'
 
@@ -56,12 +55,14 @@ const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
   const { isLoading, data: metricFull, error } = useDataSource(() => MetricsApi.findById(metricBare.metricId), [
     metricBare.metricId,
   ])
+  useDataLoadingError(error)
+
+  const isReady = !isLoading && !error
 
   return (
     <>
-      <Snackbar open={!!error} message='Oops! Something went wrong while trying to load a Metric.' />
-      {isLoading && <LinearProgress />}
-      {!isLoading && !error && metricFull && (
+      {!isReady && <LinearProgress />}
+      {isReady && metricFull && (
         <TableContainer className={classes.root}>
           <Table>
             <TableBody>
