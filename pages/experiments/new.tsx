@@ -4,6 +4,7 @@ import React from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
+import ExperimentForm from '@/components/experiment-creation/ExperimentForm'
 import Layout from '@/components/Layout'
 import { createNewExperiment } from '@/models'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
@@ -35,10 +36,12 @@ const ExperimentsNewPage = function () {
     <Layout title='Create an Experiment'>
       <Paper>
         <Typography variant='h5'>initialExperiment</Typography>
+        {isLoading && <LinearProgress />}
+        {!isLoading && metrics && segments && (
+          <ExperimentForm metrics={metrics} segments={segments} initialExperiment={initialExperiment} />
+        )}
         <pre>{JSON.stringify(initialExperiment, null, 2)}</pre>
-        {isLoading ? (
-          <LinearProgress />
-        ) : (
+        {!isLoading && (
           <>
             <Typography variant='h5'>metrics</Typography>
             <pre>{JSON.stringify(metrics, null, 2)}</pre>
