@@ -13,6 +13,8 @@ export function useDataSource<Data, Deps extends DependencyList | undefined, E e
       .then(setData)
       .catch(setError)
       .finally(() => setIsLoading(false))
+    // Dep checking here is not needed as we are using the additionalHooks option to check useDataSource
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps)
 
   return {
