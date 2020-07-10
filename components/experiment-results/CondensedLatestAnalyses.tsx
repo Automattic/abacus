@@ -93,7 +93,7 @@ export default function CondensedLatestAnalyses({
 
 function AnalysisDetailPanel({ analysis, experiment }: { analysis: Analysis; experiment: ExperimentFull }) {
   return (
-    <dl>
+    <dl className='analysis-detail-panel'>
       <dt>Last analyzed</dt>
       <dd>{DatetimeText({ datetime: analysis.analysisDatetime, excludeTime: true })}</dd>
       <dt>Analysis strategy</dt>
