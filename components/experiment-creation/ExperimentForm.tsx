@@ -1,11 +1,13 @@
 // Temporarily ignore until more parts are in place
-/* eslint-disable */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* istanbul ignore file */
-import React from 'react'
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
-import { MetricBare, Segment, ExperimentFull } from '@/models'
+import { Button, Paper } from '@material-ui/core'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Formik } from 'formik'
-import { Paper, Button } from '@material-ui/core'
+import React from 'react'
+
+import { ExperimentFull, MetricBare, Segment } from '@/models'
+
 import Beginning from './Beginning'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -14,7 +16,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-/* istanbul-ignore next */
 const ExperimentForm = ({
   metrics,
   segments,

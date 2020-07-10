@@ -50,8 +50,7 @@ export const MockFormik = ({ children }: { children: React.ReactNode }) => {
     <Formik
       initialValues={{}}
       onSubmit={
-        // This isn't meant to be used so it won't be tested
-        /* istanbul ignore next */
+        /* istanbul ignore next; This is unused */
         () => undefined
       }
     >
