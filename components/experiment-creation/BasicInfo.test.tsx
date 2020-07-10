@@ -266,7 +266,11 @@ test('renders as expected', () => {
                 </legend>
               </fieldset>
             </div>
-            
+            <p
+              class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+            >
+              Use WordPress.com username.
+            </p>
           </div>
         </div>
       </div>

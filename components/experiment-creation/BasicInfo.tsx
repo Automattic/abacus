@@ -103,7 +103,7 @@ const BasicInfo = () => {
           name='experiment.ownerLogin'
           label='Owner'
           placeholder='scjr'
-          helperText=''
+          helperText='Use WordPress.com username.'
           variant='outlined'
           fullWidth
           required
