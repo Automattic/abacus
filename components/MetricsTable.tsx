@@ -2,7 +2,6 @@ import {
   createStyles,
   LinearProgress,
   makeStyles,
-  Snackbar,
   Table,
   TableBody,
   TableCell,
@@ -13,10 +12,11 @@ import {
 } from '@material-ui/core'
 import debugFactory from 'debug'
 import MaterialTable from 'material-table'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
-import { MetricBare, MetricFull } from '@/models'
+import { MetricBare } from '@/models'
+import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { formatBoolean } from '@/utils/formatters'
 import { defaultTableOptions } from '@/utils/material-table'
 
@@ -52,22 +52,17 @@ const useMetricDetailStyles = makeStyles((theme: Theme) =>
 const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
   const classes = useMetricDetailStyles()
 
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [error, setError] = useState<Error | null>(null)
-  const [metricFull, setMetricFull] = useState<MetricFull | null>(null)
-  useEffect(() => {
-    setIsLoading(true)
-    MetricsApi.findById(metricBare.metricId)
-      .then(setMetricFull)
-      .catch(setError)
-      .finally(() => setIsLoading(false))
-  }, [metricBare.metricId])
+  const { isLoading, data: metricFull, error } = useDataSource(() => MetricsApi.findById(metricBare.metricId), [
+    metricBare.metricId,
+  ])
+  useDataLoadingError(error)
+
+  const isReady = !isLoading && !error
 
   return (
     <>
-      <Snackbar open={!!error} message='Oops! Something went wrong while trying to load a Metric.' />
-      {isLoading && <LinearProgress />}
-      {!isLoading && !error && metricFull && (
+      {!isReady && <LinearProgress />}
+      {isReady && metricFull && (
         <TableContainer className={classes.root}>
           <Table>
             <TableBody>

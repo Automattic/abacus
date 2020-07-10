@@ -2,7 +2,7 @@ import { LinearProgress } from '@material-ui/core'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
 import { toIntOrNull } from 'qc-to_int'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import AnalysesApi from '@/api/AnalysesApi'
 import ExperimentsApi from '@/api/ExperimentsApi'
@@ -10,8 +10,9 @@ import MetricsApi from '@/api/MetricsApi'
 import ExperimentResults from '@/components/experiment-results/ExperimentResults'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
-import { Analysis, ExperimentFull, MetricBare } from '@/models'
-import { useDataLoadingError } from '@/utils/data-loading'
+import { Analysis, ExperimentFull } from '@/models'
+import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
+import { createUnresolvingPromise, or } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/experiments/[id]/results.tsx')
 
@@ -20,30 +21,25 @@ export default function ResultsPage() {
   const experimentId = toIntOrNull(router.query.id)
   debug(`ResultPage#render ${experimentId}`)
 
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [error, setError] = useState<Error | null>(null)
-  const [analyses, setAnalyses] = useState<Analysis[] | null>(null)
-  const [experiment, setExperiment] = useState<ExperimentFull | null>(null)
-  const [metrics, setMetrics] = useState<MetricBare[] | null>(null)
+  const { isLoading: experimentIsLoading, data: experiment, error: experimentError } = useDataSource(
+    () => (experimentId ? ExperimentsApi.findById(experimentId) : createUnresolvingPromise<ExperimentFull>()),
+    [experimentId],
+  )
+  useDataLoadingError(experimentError, 'Experiment')
 
-  useEffect(() => {
-    setIsLoading(true)
-    Promise.all([
-      AnalysesApi.findByExperimentId(experimentId),
-      ExperimentsApi.findById(experimentId),
-      MetricsApi.findAll(),
-    ])
-      .then(([analyses, experiment, metrics]) => {
-        setAnalyses(analyses)
-        setExperiment(experiment)
-        setMetrics(metrics)
-        return
-      })
-      .catch(setError)
-      .finally(() => setIsLoading(false))
-  }, [experimentId])
+  const { isLoading: metricsIsLoading, data: metrics, error: metricsError } = useDataSource(
+    () => MetricsApi.findAll(),
+    [],
+  )
+  useDataLoadingError(metricsError, 'Metrics')
 
-  useDataLoadingError(error)
+  const { isLoading: analysesIsLoading, data: analyses, error: analysesError } = useDataSource(
+    () => (experimentId ? AnalysesApi.findByExperimentId(experimentId) : createUnresolvingPromise<Analysis[]>()),
+    [experimentId],
+  )
+  useDataLoadingError(analysesError, 'Analyses')
+
+  const isLoading = or(experimentIsLoading, metricsIsLoading, analysesIsLoading)
 
   return (
     <Layout title={`Experiment: ${experiment?.name || ''}`}>

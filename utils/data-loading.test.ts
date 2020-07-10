@@ -1,13 +1,82 @@
 import { renderHook } from '@testing-library/react-hooks'
 import * as notistack from 'notistack'
+import { act } from 'react-dom/test-utils'
 
-import { useDataLoadingError } from './data-loading'
+import { useDataLoadingError, useDataSource } from './data-loading'
 
 jest.mock('notistack')
-
 const mockedNotistack = notistack as jest.Mocked<typeof notistack>
 
+function createControllablePromise() {
+  let resOuter, rejOuter
+
+  const promise = new Promise((resolve, reject) => {
+    resOuter = resolve
+    rejOuter = reject
+  })
+
+  return {
+    resolve: (resOuter as unknown) as (...x: unknown[]) => void,
+    reject: (rejOuter as unknown) as (...x: unknown[]) => void,
+    promise,
+  }
+}
+
 describe('utils/data-loading.ts module', () => {
+  describe('useDataSource', () => {
+    it('should have expected state without error', async () => {
+      const { resolve, promise } = createControllablePromise()
+
+      const renderResult = renderHook(() => {
+        return useDataSource(() => promise, [])
+      })
+
+      expect(renderResult.result.current).toEqual({
+        isLoading: true,
+        data: null,
+        error: null,
+      })
+
+      act(() => {
+        resolve(123)
+      })
+
+      await renderResult.waitForNextUpdate()
+
+      expect(renderResult.result.current).toEqual({
+        isLoading: false,
+        data: 123,
+        error: null,
+      })
+    })
+
+    it('should have expected state with error', async () => {
+      const { reject, promise } = createControllablePromise()
+
+      const renderResult = renderHook(() => {
+        return useDataSource(() => promise, [])
+      })
+
+      expect(renderResult.result.current).toEqual({
+        isLoading: true,
+        data: null,
+        error: null,
+      })
+
+      act(() => {
+        reject(123)
+      })
+
+      await renderResult.waitForNextUpdate()
+
+      expect(renderResult.result.current).toEqual({
+        isLoading: false,
+        data: null,
+        error: 123,
+      })
+    })
+  })
+
   describe('useDataLoadingError(error)', () => {
     it('should not display any errors for an error value of null', () => {
       const mockedEnqueueSnackbar = jest.fn()

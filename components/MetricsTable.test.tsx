@@ -1,4 +1,5 @@
-import { fireEvent, getByText, getDefaultNormalizer, screen, waitFor } from '@testing-library/react'
+import { fireEvent, getByText, getDefaultNormalizer, waitFor } from '@testing-library/react'
+import * as notistack from 'notistack'
 import React from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
@@ -8,8 +9,14 @@ import { render } from '@/helpers/test-utils'
 import MetricsTable from './MetricsTable'
 
 jest.mock('@/api/MetricsApi')
-
 const mockedMetricsApi = (MetricsApi as unknown) as jest.Mocked<typeof MetricsApi>
+
+jest.mock('notistack')
+const mockedNotistack = notistack as jest.Mocked<typeof notistack>
+mockedNotistack.useSnackbar.mockImplementation(() => ({
+  enqueueSnackbar: jest.fn(),
+  closeSnackbar: jest.fn(),
+}))
 
 test('with no metrics, renders an empty table', () => {
   const { container, getByText } = render(<MetricsTable metrics={[]} />)
@@ -32,18 +39,6 @@ test('with some metrics, renders a table', () => {
   expect(getByText(tBodyElmt, 'This is metric 1', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getByText(tBodyElmt, 'revenue', { selector: 'tr > td' })).toBeInTheDocument()
   expect(getByText(tBodyElmt, 'conversion', { selector: 'tr > td' })).toBeInTheDocument()
-})
-
-test('with some metrics, displays an error on trouble loading metric details', async () => {
-  mockedMetricsApi.findById.mockRejectedValue(new Error())
-
-  const { container } = render(<MetricsTable metrics={Fixtures.createMetricBares(2)} />)
-
-  const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
-  expect(tBodyElmt).not.toBeNull()
-
-  fireEvent.click(screen.getByText('metric_1'))
-  await waitFor(() => screen.getByText('Oops! Something went wrong while trying to load a Metric.'))
 })
 
 test('with some metrics, loads and opens metric details', async () => {

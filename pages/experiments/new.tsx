@@ -1,12 +1,13 @@
 import { LinearProgress, Paper, Typography } from '@material-ui/core'
 import debugFactory from 'debug'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
 import Layout from '@/components/Layout'
-import { createNewExperiment, MetricBare, Segment } from '@/models'
-import { useDataLoadingError } from '@/utils/data-loading'
+import { createNewExperiment } from '@/models'
+import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
+import { or } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/experiments/new.tsx')
 
@@ -16,24 +17,19 @@ const ExperimentsNewPage = function () {
 
   // TODO: Create a component from this point to allow editing as
   //       well as creation.
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [error, setError] = useState<Error | null>(null)
-  const [metrics, setMetrics] = useState<MetricBare[] | null>(null)
-  const [segments, setSegments] = useState<Segment[] | null>(null)
+  const { isLoading: metricsIsLoading, data: metrics, error: metricsError } = useDataSource(
+    () => MetricsApi.findAll(),
+    [],
+  )
+  useDataLoadingError(metricsError, 'Metrics')
 
-  useEffect(() => {
-    setIsLoading(true)
-    Promise.all([MetricsApi.findAll(), SegmentsApi.findAll()])
-      .then(([metrics, segments]) => {
-        setMetrics(metrics)
-        setSegments(segments)
-        return
-      })
-      .catch(setError)
-      .finally(() => setIsLoading(false))
-  }, [])
+  const { isLoading: segmentsIsLoading, data: segments, error: segmentsError } = useDataSource(
+    () => SegmentsApi.findAll(),
+    [],
+  )
+  useDataLoadingError(segmentsError, 'Segments')
 
-  useDataLoadingError(error)
+  const isLoading = or(metricsIsLoading, segmentsIsLoading)
 
   return (
     <Layout title='Create an Experiment'>
