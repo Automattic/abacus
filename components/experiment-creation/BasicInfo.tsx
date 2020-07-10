@@ -1,5 +1,7 @@
-import { InputAdornment, TextField, Typography } from '@material-ui/core'
+import { InputAdornment, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { Field } from 'formik'
+import { TextField } from 'formik-material-ui'
 import React from 'react'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -41,7 +43,8 @@ const BasicInfo = () => {
       </Typography>
 
       <div className={classes.row}>
-        <TextField
+        <Field
+          component={TextField}
           name='experiment.name'
           label='Experiment name'
           placeholder='experiment_name'
@@ -56,7 +59,8 @@ const BasicInfo = () => {
       </div>
 
       <div className={classes.row}>
-        <TextField
+        <Field
+          component={TextField}
           name='experiment.description'
           label='Experiment description'
           placeholder='Monthly vs. yearly pricing'
@@ -73,7 +77,8 @@ const BasicInfo = () => {
       </div>
 
       <div className={classes.row}>
-        <TextField
+        <Field
+          component={TextField}
           className={classes.datePicker}
           name='experiment.start_date'
           label='Start date'
@@ -85,7 +90,8 @@ const BasicInfo = () => {
           }}
         />
         <span className={classes.through}> through </span>
-        <TextField
+        <Field
+          component={TextField}
           className={classes.datePicker}
           name='experiment.end_date'
           label='End date'
@@ -99,7 +105,8 @@ const BasicInfo = () => {
       </div>
 
       <div className={classes.row}>
-        <TextField
+        <Field
+          component={TextField}
           name='experiment.ownerLogin'
           label='Owner'
           placeholder='scjr'
