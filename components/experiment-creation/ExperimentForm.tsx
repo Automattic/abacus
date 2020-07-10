@@ -8,6 +8,7 @@ import React from 'react'
 
 import { ExperimentFull, MetricBare, Segment } from '@/models'
 
+import BasicInfo from './BasicInfo'
 import Beginning from './Beginning'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -40,6 +41,9 @@ const ExperimentForm = ({
           <form onSubmit={handleSubmit}>
             <Paper className={classes.formPart}>
               <Beginning />
+            </Paper>
+            <Paper className={classes.formPart}>
+              <BasicInfo />
             </Paper>
             <Button type='submit' variant='contained'>
               Submit
