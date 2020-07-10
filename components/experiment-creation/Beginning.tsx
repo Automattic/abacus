@@ -1,5 +1,7 @@
-import { Button, TextField, Typography } from '@material-ui/core'
+import { Button, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { Field } from 'formik'
+import { TextField } from 'formik-material-ui'
 import React from 'react'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -41,10 +43,11 @@ const Beginning = () => {
         <Typography variant='body1' gutterBottom>
           Once you&apos;ve designed and documented your experiment, enter the P2 post URL:
         </Typography>
-        <TextField
+        <Field
           className={classes.p2EntryField}
-          placeholder='https://your-p2-post-here'
+          component={TextField}
           name='p2Url'
+          placeholder='https://your-p2-post-here'
           variant='outlined'
         />
       </div>

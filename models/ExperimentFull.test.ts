@@ -462,19 +462,6 @@ describe('models/ExperimentFull.ts module', () => {
   describe('createNewExperiment', () => {
     it('should return a new experiment', () => {
       expect(createNewExperiment()).toEqual({
-        experimentId: null,
-        name: null,
-        description: null,
-        startDatetime: null,
-        endDatetime: null,
-        status: null,
-        platform: null,
-        ownerLogin: null,
-        conclusionUrl: null,
-        deployedVariationId: null,
-        endReason: null,
-        existingUsersAllowed: null,
-        p2Url: null,
         metricAssignments: [],
         segmentAssignments: [],
         variations: [],

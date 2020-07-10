@@ -19,11 +19,11 @@ export default function RecommendationString({
       ) as Variation
       return (
         <>
-          End experiment; deploy <code>{chosenVariation.name}</code>
+          Deploy <code>{chosenVariation.name}</code>
         </>
       )
     }
-    return <>End experiment; deploy either variation</>
+    return <>Deploy either variation</>
   }
-  return <>Keep running</>
+  return <>Inconclusive</>
 }

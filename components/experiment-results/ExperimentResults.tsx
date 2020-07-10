@@ -34,14 +34,11 @@ export default function ExperimentResults({
   )
 
   if (analyses.length === 0) {
-    return <h2>No analyses yet for {experiment.name}.</h2>
+    return <p>No analyses yet for {experiment.name}.</p>
   }
 
   return (
     <>
-      <h2>Analysis summary</h2>
-      <p>Found {analyses.length} analysis objects in total.</p>
-
       <div className='analysis-participant-counts'>
         <h3>Participant counts for the primary metric</h3>
         <ParticipantCounts
@@ -61,7 +58,14 @@ export default function ExperimentResults({
         />
       </div>
 
-      {debugMode ? <pre className='debug-json'>{JSON.stringify(analyses, null, 2)}</pre> : ''}
+      {debugMode ? (
+        <>
+          <p>Found {analyses.length} analysis objects in total.</p>
+          <pre className='debug-json'>{JSON.stringify(analyses, null, 2)}</pre>
+        </>
+      ) : (
+        ''
+      )}
     </>
   )
 }

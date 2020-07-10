@@ -2,10 +2,16 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
+import { MockFormik } from '@/helpers/test-utils'
+
 import Beginning from './Beginning'
 
 test('renders as expected', () => {
-  const { container } = render(<Beginning />)
+  const { container } = render(
+    <MockFormik>
+      <Beginning />
+    </MockFormik>,
+  )
   expect(container).toMatchInlineSnapshot(`
     <div>
       <div
