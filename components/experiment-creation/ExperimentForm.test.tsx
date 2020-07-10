@@ -21,10 +21,10 @@ test('renders as expected', () => {
       >
         <form>
           <div
-            class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+            class="MuiPaper-root makeStyles-formPart-2 MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              class="makeStyles-root-2"
+              class="makeStyles-root-3"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1"
@@ -32,7 +32,7 @@ test('renders as expected', () => {
                 We think one of the best ways to prevent a failed experiment is by documenting what you hope to learn.
               </p>
               <div
-                class="makeStyles-p2Entry-4"
+                class="makeStyles-p2Entry-5"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom"
@@ -45,7 +45,7 @@ test('renders as expected', () => {
                   Once you've designed and documented your experiment, enter the P2 post URL:
                 </p>
                 <div
-                  class="MuiFormControl-root MuiTextField-root makeStyles-p2EntryField-5"
+                  class="MuiFormControl-root MuiTextField-root makeStyles-p2EntryField-6"
                 >
                   <div
                     class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
@@ -60,11 +60,11 @@ test('renders as expected', () => {
                     />
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-8 MuiOutlinedInput-notchedOutline"
                       style="padding-left: 8px;"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legend-8"
+                        class="PrivateNotchedOutline-legend-9"
                         style="width: 0.01px;"
                       >
                         <span>
@@ -76,7 +76,7 @@ test('renders as expected', () => {
                 </div>
               </div>
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-beginButton-6 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+                class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-beginButton-7 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
                 tabindex="0"
                 type="button"
               >
@@ -92,7 +92,7 @@ test('renders as expected', () => {
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text"
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained"
             tabindex="0"
             type="submit"
           >
