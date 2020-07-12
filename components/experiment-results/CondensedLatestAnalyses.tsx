@@ -6,7 +6,6 @@ import DatetimeText from '@/components/DatetimeText'
 import Label from '@/components/Label'
 import {
   Analysis,
-  AnalysisStrategy,
   AnalysisStrategyToHuman,
   AttributionWindowSecondsToHuman,
   ExperimentFull,
@@ -18,6 +17,10 @@ import { createStaticTableOptions } from '@/utils/material-table'
 
 import RecommendationString from './RecommendationString'
 
+/**
+ * Render the latest analyses for the experiment for each metric assignment as a single condensed table, using only
+ * the experiment's default analysis strategy.
+ */
 export default function CondensedLatestAnalyses({
   experiment,
   metricsById,
@@ -29,9 +32,7 @@ export default function CondensedLatestAnalyses({
 }) {
   // Sort the assignments for consistency and collect the data we need to render the component.
   const resultSummaries = useMemo(() => {
-    const defaultAnalysisStrategy = experiment.exposureEvents
-      ? AnalysisStrategy.PpNaive
-      : AnalysisStrategy.MittNoSpammersNoCrossovers
+    const defaultAnalysisStrategy = experiment.getDefaultAnalysisStrategy()
     return experiment.getSortedMetricAssignments().map((metricAssignment) => {
       const latestAnalyses = metricAssignmentIdToLatestAnalyses[metricAssignment.metricAssignmentId as number] || []
       const uniqueRecommendations = _.uniq(latestAnalyses.map(({ recommendation }) => JSON.stringify(recommendation)))
@@ -84,7 +85,13 @@ export default function CondensedLatestAnalyses({
       data={resultSummaries}
       options={createStaticTableOptions(resultSummaries.length)}
       onRowClick={(_event, rowData, togglePanel) => {
-        togglePanel && rowData?.analysis && !rowData?.recommendationConflict && togglePanel()
+        const { analysis, recommendationConflict } = rowData as {
+          analysis?: Analysis
+          recommendationConflict?: boolean
+        }
+        if (togglePanel && analysis && !recommendationConflict) {
+          togglePanel()
+        }
       }}
       detailPanel={detailPanel}
     />
@@ -95,7 +102,9 @@ function AnalysisDetailPanel({ analysis, experiment }: { analysis: Analysis; exp
   return (
     <dl className='analysis-detail-panel'>
       <dt>Last analyzed</dt>
-      <dd>{DatetimeText({ datetime: analysis.analysisDatetime, excludeTime: true })}</dd>
+      <dd>
+        <DatetimeText datetime={analysis.analysisDatetime} excludeTime={true} />
+      </dd>
       <dt>Analysis strategy</dt>
       <dd>{AnalysisStrategyToHuman[analysis.analysisStrategy]}</dd>
       <dt>Analyzed participants</dt>
@@ -103,7 +112,7 @@ function AnalysisDetailPanel({ analysis, experiment }: { analysis: Analysis; exp
         {analysis.participantStats.total} ({analysis.participantStats.not_final} not final
         {experiment.getSortedVariations().map(({ variationId, name }) => (
           <span key={variationId}>
-            ; {analysis.participantStats[`variation_${variationId}`] || 0} in {name}
+            ; {analysis.participantStats[`variation_${variationId}`]} in {name}
           </span>
         ))}
         )
