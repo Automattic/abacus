@@ -1238,7 +1238,7 @@ test('renders the condensed table with some analyses in non-debug mode', async (
   const { container } = render(<ExperimentResults analyses={analyses} experiment={experiment} metrics={metrics} />)
 
   // In non-debug mode, we shouldn't have a <pre> element with the JSON.
-  expect(container.querySelector('pre')).toBeNull()
+  expect(container.querySelector('pre.debug-json')).toBeNull()
 
   // Check the table snapshot before expanding any metric.
   expect(container.querySelector('.analysis-latest-results')).toMatchSnapshot()

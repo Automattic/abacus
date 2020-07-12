@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import MaterialTable from 'material-table'
-import React, { useMemo } from 'react'
+import React from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
 import Label from '@/components/Label'
@@ -31,19 +31,17 @@ export default function CondensedLatestAnalyses({
   metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
 }) {
   // Sort the assignments for consistency and collect the data we need to render the component.
-  const resultSummaries = useMemo(() => {
-    const defaultAnalysisStrategy = experiment.getDefaultAnalysisStrategy()
-    return experiment.getSortedMetricAssignments().map((metricAssignment) => {
-      const latestAnalyses = metricAssignmentIdToLatestAnalyses[metricAssignment.metricAssignmentId as number] || []
-      const uniqueRecommendations = _.uniq(latestAnalyses.map(({ recommendation }) => JSON.stringify(recommendation)))
-      return {
-        metricAssignment,
-        metric: metricsById[metricAssignment.metricId],
-        analysis: latestAnalyses.find((analysis) => analysis.analysisStrategy === defaultAnalysisStrategy),
-        recommendationConflict: uniqueRecommendations.length > 1,
-      }
-    })
-  }, [experiment, metricsById, metricAssignmentIdToLatestAnalyses])
+  const defaultAnalysisStrategy = experiment.getDefaultAnalysisStrategy()
+  const resultSummaries = experiment.getSortedMetricAssignments().map((metricAssignment) => {
+    const latestAnalyses = metricAssignmentIdToLatestAnalyses[metricAssignment.metricAssignmentId as number] || []
+    const uniqueRecommendations = _.uniq(latestAnalyses.map(({ recommendation }) => JSON.stringify(recommendation)))
+    return {
+      metricAssignment,
+      metric: metricsById[metricAssignment.metricId],
+      analysis: latestAnalyses.find((analysis) => analysis.analysisStrategy === defaultAnalysisStrategy),
+      recommendationConflict: uniqueRecommendations.length > 1,
+    }
+  })
   const tableColumns = [
     {
       title: 'Metric',
