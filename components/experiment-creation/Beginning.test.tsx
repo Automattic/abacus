@@ -44,7 +44,7 @@ test('renders as expected', () => {
               <input
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input"
-                name="p2Url"
+                name="experiment.p2Url"
                 placeholder="https://your-p2-post-here"
                 type="text"
                 value=""
