@@ -10,7 +10,9 @@ import Typography from '@material-ui/core/Typography'
 import _ from 'lodash'
 import React, { useMemo } from 'react'
 
-import { AttributionWindowSecondsToHuman, ExperimentFull, MetricAssignment, MetricBare } from '@/models'
+import { attributionWindowSecondsToHuman } from '@/lib/metricAssignment'
+import { ExperimentFull, MetricAssignment } from '@/lib/schemas'
+import { MetricBare } from '@/models'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
 
 /**
@@ -106,7 +108,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                 </span>
               </TableCell>
               <TableCell>
-                {AttributionWindowSecondsToHuman[resolvedMetricAssignment.attributionWindowSeconds]}
+                {attributionWindowSecondsToHuman(resolvedMetricAssignment.attributionWindowSeconds)}
               </TableCell>
               <TableCell>{formatBoolean(resolvedMetricAssignment.changeExpected)}</TableCell>
             </TableRow>

@@ -4,15 +4,9 @@ import React, { useMemo } from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
 import * as Experiments from '@/lib/experiments'
+import { attributionWindowSecondsToHuman } from '@/lib/metricAssignment'
 import { ExperimentFull, Variation } from '@/lib/schemas'
-import {
-  Analysis,
-  AnalysisStrategyToHuman,
-  AttributionWindowSecondsToHuman,
-  MetricBare,
-  Recommendation,
-  RecommendationWarningToHuman,
-} from '@/models'
+import { Analysis, AnalysisStrategyToHuman, MetricBare, Recommendation, RecommendationWarningToHuman } from '@/models'
 
 /**
  * Convert a recommendation's endExperiment and chosenVariationId fields to a human-friendly description.
@@ -122,7 +116,7 @@ function LatestResults({
           </div>
           <div>
             <strong>Attribution window: </strong>
-            {AttributionWindowSecondsToHuman[attributionWindowSeconds]}
+            {attributionWindowSecondsToHuman(attributionWindowSeconds)}
           </div>
           <div>
             <strong>Last analyzed: </strong>

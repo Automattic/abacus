@@ -7,6 +7,7 @@
 import _ from 'lodash'
 
 import {
+  AttributionWindowSeconds,
   ExperimentFull,
   MetricAssignment,
   Platform,
@@ -15,14 +16,7 @@ import {
   SegmentType,
   Status,
 } from '@/lib/schemas'
-import {
-  Analysis,
-  AnalysisStrategy,
-  AttributionWindowSeconds,
-  MetricBare,
-  RecommendationReason,
-  RecommendationWarning,
-} from '@/models'
+import { Analysis, AnalysisStrategy, MetricBare, RecommendationReason, RecommendationWarning } from '@/models'
 
 function createAnalysis(fieldOverrides: Partial<Analysis>) {
   return new Analysis({

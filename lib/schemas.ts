@@ -6,10 +6,27 @@ import * as yup from 'yup'
 const idSchema = yup.number().integer().positive()
 const nameSchema = yup.string().max(128)
 
+export enum AttributionWindowSeconds {
+  OneHour = 3600,
+  SixHours = 21600,
+  TwelveHours = 43200,
+  TwentyFourHours = 86400,
+  ThreeDays = 259200,
+  OneWeek = 604800,
+  TwoWeeks = 1209600,
+  ThreeWeeks = 1814400,
+  FourWeeks = 2419200,
+}
+
 export const metricAssignmentSchema = yup
   .object({
     metricAssignmentId: idSchema.defined(),
-    attributionWindowSeconds: yup.number().integer().positive().defined(),
+    attributionWindowSeconds: yup
+      .number()
+      .integer()
+      .positive()
+      .oneOf(Object.values(AttributionWindowSeconds) as number[])
+      .defined(),
     changeExpected: yup.bool().defined(),
     experimentId: idSchema.defined(),
     isPrimary: yup.bool().defined(),
