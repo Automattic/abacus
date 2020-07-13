@@ -11,8 +11,7 @@ import _ from 'lodash'
 import React, { useMemo } from 'react'
 
 import { attributionWindowSecondsToHuman } from '@/lib/metricAssignment'
-import { ExperimentFull, MetricAssignment } from '@/lib/schemas'
-import { MetricBare } from '@/models'
+import { ExperimentFull, MetricAssignment, MetricBare } from '@/lib/schemas'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
 
 /**

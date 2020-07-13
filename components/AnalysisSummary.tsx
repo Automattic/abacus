@@ -5,8 +5,8 @@ import React, { useMemo } from 'react'
 import DatetimeText from '@/components/DatetimeText'
 import * as Experiments from '@/lib/experiments'
 import { attributionWindowSecondsToHuman } from '@/lib/metricAssignment'
-import { ExperimentFull, Variation } from '@/lib/schemas'
-import { Analysis, AnalysisStrategyToHuman, MetricBare, Recommendation, RecommendationWarningToHuman } from '@/models'
+import { ExperimentFull, MetricBare, Variation } from '@/lib/schemas'
+import { Analysis, AnalysisStrategyToHuman, Recommendation, RecommendationWarningToHuman } from '@/models'
 
 /**
  * Convert a recommendation's endExperiment and chosenVariationId fields to a human-friendly description.

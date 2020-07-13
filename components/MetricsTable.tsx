@@ -3,7 +3,7 @@ import MaterialTable from 'material-table'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-import { MetricBare } from '@/models'
+import { MetricBare } from '@/lib/schemas'
 import { defaultTableOptions } from '@/utils/material-table'
 
 const debug = debugFactory('abacus:components/MetricsTable.tsx')

@@ -1,6 +1,7 @@
-import { MetricBare, MetricFull } from '@/models'
+import * as yup from 'yup'
 
-import { ApiData } from './ApiData'
+import { MetricBare, metricBareSchema, MetricFull, metricFullSchema } from '@/lib/schemas'
+
 import { fetchApi } from './utils'
 
 /**
@@ -11,7 +12,8 @@ import { fetchApi } from './utils'
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<MetricBare[]> {
-  return (await fetchApi('GET', '/metrics')).metrics.map((apiData: ApiData) => MetricBare.fromApiData(apiData))
+  const metrics = (await fetchApi('GET', '/metrics')).metrics
+  return await yup.array(metricBareSchema).defined().validate(metrics)
 }
 
 /**
@@ -22,7 +24,8 @@ async function findAll(): Promise<MetricBare[]> {
  * @throws UnauthorizedError
  */
 async function findById(metricId: number): Promise<MetricFull> {
-  return MetricFull.fromApiData(await fetchApi('GET', `/metrics/${metricId}`))
+  const metric = await fetchApi('GET', `/metrics/${metricId}`)
+  return await metricFullSchema.validate(metric)
 }
 
 const MetricsApi = {

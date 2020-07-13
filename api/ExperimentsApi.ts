@@ -37,7 +37,6 @@ async function findAll(): Promise<ExperimentBare[]> {
  * @param id - The ID of the experiment to fetch.
  */
 async function findById(id: number): Promise<ExperimentFull> {
-  // @ts-ignore: Temporary for the WIP PR, the inferred type perfectly matches the Interface except for the methods
   return await experimentFullSchema.validate(await fetchApi('GET', `/experiments/${id}`))
 }
 

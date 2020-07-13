@@ -6,6 +6,69 @@ import * as yup from 'yup'
 const idSchema = yup.number().integer().positive()
 const nameSchema = yup.string().max(128)
 
+export const eventSchema = yup
+  .object({
+    event: yup.string().defined(),
+    props: yup.mixed(),
+  })
+  .defined()
+  .camelCase()
+
+export type Event = yup.InferType<typeof eventSchema>
+
+export enum TransactionTypes {
+  NewPurchase = 'new purchase',
+  Recurring = 'recurring',
+  Cancellation = 'cancellation',
+  StopRecurring = 'stop recurring',
+  UpdateCard = 'update card',
+  Refund = 'refund',
+  StartTrial = 'start trial',
+  StartRecurring = 'start recurring',
+  TransferOut = 'transfer out',
+  TransferIn = 'transfer in',
+  Reactivation = 'reactivation',
+}
+
+export const metricRevenueParamsSchema = yup
+  .object({
+    refundDays: yup.number().integer().positive().defined(),
+    productSlugs: yup.array(yup.string().defined()).defined(),
+    transactionTypes: yup.array(yup.string().oneOf(Object.values(TransactionTypes)).defined()),
+  })
+  .defined()
+  .camelCase()
+
+export type MetricRevenueParams = yup.InferType<typeof metricRevenueParamsSchema>
+
+export enum MetricParameterTypes {
+  Conversion = 'conversion',
+  Revenue = 'revenue',
+}
+
+export const metricBareSchema = yup
+  .object({
+    metricId: idSchema.defined(),
+    name: nameSchema.defined(),
+    description: yup.string().defined(),
+    parameterType: yup.string().oneOf(Object.values(MetricParameterTypes)).defined(),
+  })
+  .defined()
+  .camelCase()
+
+export type MetricBare = yup.InferType<typeof metricBareSchema>
+
+export const metricFullSchema = metricBareSchema
+  .shape({
+    higherIsBetter: yup.boolean().defined(),
+    eventParams: yup.array(eventSchema),
+    revenueParams: metricRevenueParamsSchema,
+  })
+  .defined()
+  .camelCase()
+
+export type MetricFull = yup.InferType<typeof metricFullSchema>
+
 export enum AttributionWindowSeconds {
   OneHour = 3600,
   SixHours = 21600,
@@ -43,11 +106,14 @@ export enum SegmentType {
   Locale = 'locale',
 }
 
-export const segmentSchema = yup.object({
-  segmentId: idSchema.defined(),
-  name: nameSchema.defined(),
-  type: yup.string().oneOf(Object.values(SegmentType)).defined(),
-})
+export const segmentSchema = yup
+  .object({
+    segmentId: idSchema.defined(),
+    name: nameSchema.defined(),
+    type: yup.string().oneOf(Object.values(SegmentType)).defined(),
+  })
+  .defined()
+  .camelCase()
 
 export type Segment = yup.InferType<typeof segmentSchema>
 

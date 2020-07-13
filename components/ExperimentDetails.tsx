@@ -9,8 +9,7 @@ import ConclusionsPanel from '@/components/ConclusionsPanel'
 import GeneralPanel from '@/components/GeneralPanel'
 import MetricAssignmentsPanel from '@/components/MetricAssignmentsPanel'
 import * as Experiments from '@/lib/experiments'
-import { ExperimentFull } from '@/lib/schemas'
-import { MetricBare, Segment } from '@/models'
+import { ExperimentFull, MetricBare, Segment } from '@/lib/schemas'
 
 const debug = debugFactory('abacus:components/ExperimentDetails.tsx')
 

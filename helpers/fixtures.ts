@@ -10,13 +10,15 @@ import {
   AttributionWindowSeconds,
   ExperimentFull,
   MetricAssignment,
+  MetricBare,
+  MetricParameterTypes,
   Platform,
   Segment,
   SegmentAssignment,
   SegmentType,
   Status,
 } from '@/lib/schemas'
-import { Analysis, AnalysisStrategy, MetricBare, RecommendationReason, RecommendationWarning } from '@/models'
+import { Analysis, AnalysisStrategy, RecommendationReason, RecommendationWarning } from '@/models'
 
 function createAnalysis(fieldOverrides: Partial<Analysis>) {
   return new Analysis({
@@ -251,13 +253,13 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
   }
 }
 
-function createMetricBare(id: number) {
-  return new MetricBare({
+function createMetricBare(id: number): MetricBare {
+  return {
     metricId: id,
     name: `metric_${id}`,
     description: `This is metric ${id}`,
-    parameterType: id % 2 === 0 ? 'revenue' : 'conversion',
-  })
+    parameterType: id % 2 === 0 ? MetricParameterTypes.Revenue : MetricParameterTypes.Conversion,
+  }
 }
 
 function createMetricBares(numMetrics = 3) {
