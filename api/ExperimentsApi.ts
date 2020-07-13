@@ -1,9 +1,12 @@
-/* eslint-disable @typescript-eslint/ban-ts-ignore */
-// This is temporary for the WIP,
-
 import * as yup from 'yup'
 
-import { ExperimentBare, experimentBareSchema, ExperimentFull, experimentFullSchema } from '@/lib/schemas'
+import {
+  ExperimentBare,
+  experimentBareSchema,
+  experimentCreateSchema,
+  ExperimentFull,
+  experimentFullSchema,
+} from '@/lib/schemas'
 
 import { fetchApi } from './utils'
 
@@ -13,7 +16,6 @@ import { fetchApi } from './utils'
  * Note: Be sure to handle any errors that may be thrown.
  */
 async function create(experiment: ExperimentFull) {
-  // TODO: Add a create schema
   return await experimentFullSchema.validate(
     await fetchApi('POST', '/experiments', await experimentCreateSchema.validate(experiment)),
   )

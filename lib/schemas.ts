@@ -196,3 +196,6 @@ export const experimentFullSchema = experimentBareSchema
   .camelCase()
 
 export type ExperimentFull = yup.InferType<typeof experimentFullSchema>
+
+// Just a stub for now
+export const experimentCreateSchema = experimentFullSchema
