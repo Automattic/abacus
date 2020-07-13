@@ -8,7 +8,7 @@ import TableRow from '@material-ui/core/TableRow'
 import _ from 'lodash'
 import React from 'react'
 
-import { Variation } from '@/models'
+import { Variation } from '@/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
