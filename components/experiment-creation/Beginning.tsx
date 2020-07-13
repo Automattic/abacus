@@ -46,7 +46,7 @@ const Beginning = () => {
         <Field
           className={classes.p2EntryField}
           component={TextField}
-          name='p2Url'
+          name='experiment.p2Url'
           placeholder='https://your-p2-post-here'
           variant='outlined'
         />

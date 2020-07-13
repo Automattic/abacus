@@ -36,7 +36,7 @@ const ExperimentForm = ({
 
   return (
     <div className={classes.root}>
-      <Formik initialValues={initialExperiment} onSubmit={(v) => alert(JSON.stringify(v, null, 2))}>
+      <Formik initialValues={{ experiment: initialExperiment }} onSubmit={(v) => alert(JSON.stringify(v, null, 2))}>
         {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Paper className={classes.formPart}>
