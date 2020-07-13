@@ -6,18 +6,22 @@
  */
 import _ from 'lodash'
 
-import { ExperimentFull, MetricAssignment, SegmentAssignment } from '@/lib/schemas'
+import {
+  ExperimentFull,
+  MetricAssignment,
+  Platform,
+  Segment,
+  SegmentAssignment,
+  SegmentType,
+  Status,
+} from '@/lib/schemas'
 import {
   Analysis,
   AnalysisStrategy,
   AttributionWindowSeconds,
   MetricBare,
-  Platform,
   RecommendationReason,
   RecommendationWarning,
-  Segment,
-  SegmentType,
-  Status,
 } from '@/models'
 
 function createAnalysis(fieldOverrides: Partial<Analysis>) {
@@ -266,12 +270,12 @@ function createMetricBares(numMetrics = 3) {
   return _.range(numMetrics).map(createMetricBare)
 }
 
-function createSegment(id: number) {
-  return new Segment({
+function createSegment(id: number): Segment {
+  return {
     segmentId: id,
     name: `segment_${id}`,
     type: id % 2 === 0 ? SegmentType.Country : SegmentType.Locale,
-  })
+  }
 }
 
 /**

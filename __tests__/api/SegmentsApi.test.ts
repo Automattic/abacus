@@ -1,5 +1,5 @@
 import SegmentsApi from '@/api/SegmentsApi'
-import { SegmentType } from '@/models'
+import { SegmentType } from '@/lib/schemas'
 
 const SEGMENT_TYPES = Object.values(SegmentType)
 

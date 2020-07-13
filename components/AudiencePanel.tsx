@@ -5,7 +5,7 @@ import React, { useMemo } from 'react'
 import LabelValuePanel from '@/components/LabelValuePanel'
 import SegmentsTable from '@/components/SegmentsTable'
 import VariationsTable from '@/components/VariationsTable'
-import { ExperimentFull, Segment, SegmentAssignment, SegmentType } from '@/models'
+import { ExperimentFull, Segment, SegmentAssignment, SegmentType } from '@/lib/schemas'
 
 /**
  * Resolves the segment ID of the segment assignment with the actual segment.

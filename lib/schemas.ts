@@ -4,6 +4,7 @@
 import * as yup from 'yup'
 
 const idSchema = yup.number().integer().positive()
+const nameSchema = yup.string().max(128)
 
 export const metricAssignmentSchema = yup
   .object({
@@ -19,6 +20,19 @@ export const metricAssignmentSchema = yup
   .camelCase()
 
 export type MetricAssignment = yup.InferType<typeof metricAssignmentSchema>
+
+export enum SegmentType {
+  Country = 'country',
+  Locale = 'locale',
+}
+
+export const segmentSchema = yup.object({
+  segmentId: idSchema.defined(),
+  name: nameSchema.defined(),
+  type: yup.string().oneOf(Object.values(SegmentType)).defined(),
+})
+
+export type Segment = yup.InferType<typeof segmentSchema>
 
 export const segmentAssignmentSchema = yup
   .object({
@@ -36,7 +50,7 @@ export const variationSchema = yup
   .object({
     variationId: idSchema.defined(),
     experimentId: idSchema.defined(),
-    name: yup.string().max(128).defined(),
+    name: nameSchema.defined(),
     isDefault: yup.bool().defined(),
     allocatedPercentage: yup.number().integer().min(1).max(99).defined(),
   })
@@ -71,7 +85,7 @@ export enum Status {
 export const experimentBareSchema = yup
   .object({
     experimentId: idSchema.defined(),
-    name: yup.string().max(128).defined(),
+    name: nameSchema.defined(),
     startDatetime: yup.date().defined(),
     endDatetime: yup.date().defined(),
     status: yup.string().oneOf(Object.values(Status)).defined(),
