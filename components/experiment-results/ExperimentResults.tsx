@@ -3,6 +3,7 @@ import React, { useMemo } from 'react'
 
 import { Analysis, ExperimentFull, MetricBare } from '@/models'
 
+import CondensedLatestAnalyses from './CondensedLatestAnalyses'
 import FullLatestAnalyses from './FullLatestAnalyses'
 import ParticipantCounts from './ParticipantCounts'
 
@@ -37,35 +38,42 @@ export default function ExperimentResults({
     return <p>No analyses yet for {experiment.name}.</p>
   }
 
+  if (debugMode) {
+    return (
+      <>
+        <div className='analysis-participant-counts'>
+          <h3>Participant counts for the primary metric</h3>
+          <ParticipantCounts
+            experiment={experiment}
+            latestPrimaryMetricAnalyses={
+              metricAssignmentIdToLatestAnalyses[experiment.getPrimaryMetricAssignmentId() as number]
+            }
+          />
+        </div>
+
+        <div className='analysis-latest-results'>
+          <h3>Latest results by metric</h3>
+          <FullLatestAnalyses
+            experiment={experiment}
+            metricsById={metricsById}
+            metricAssignmentIdToLatestAnalyses={metricAssignmentIdToLatestAnalyses}
+          />
+        </div>
+
+        <p>Found {analyses.length} analysis objects in total.</p>
+        <pre className='debug-json'>{JSON.stringify(analyses, null, 2)}</pre>
+      </>
+    )
+  }
+
   return (
-    <>
-      <div className='analysis-participant-counts'>
-        <h3>Participant counts for the primary metric</h3>
-        <ParticipantCounts
-          experiment={experiment}
-          latestPrimaryMetricAnalyses={
-            metricAssignmentIdToLatestAnalyses[experiment.getPrimaryMetricAssignmentId() as number]
-          }
-        />
-      </div>
-
-      <div className='analysis-latest-results'>
-        <h3>Latest results by metric</h3>
-        <FullLatestAnalyses
-          experiment={experiment}
-          metricsById={metricsById}
-          metricAssignmentIdToLatestAnalyses={metricAssignmentIdToLatestAnalyses}
-        />
-      </div>
-
-      {debugMode ? (
-        <>
-          <p>Found {analyses.length} analysis objects in total.</p>
-          <pre className='debug-json'>{JSON.stringify(analyses, null, 2)}</pre>
-        </>
-      ) : (
-        ''
-      )}
-    </>
+    <div className='analysis-latest-results'>
+      <h3>Latest results by metric</h3>
+      <CondensedLatestAnalyses
+        experiment={experiment}
+        metricsById={metricsById}
+        metricAssignmentIdToLatestAnalyses={metricAssignmentIdToLatestAnalyses}
+      />
+    </div>
   )
 }

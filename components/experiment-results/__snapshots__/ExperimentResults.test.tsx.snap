@@ -1,6 +1,471 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`shows the analyses JSON in debug mode 1`] = `
+exports[`renders the condensed table with some analyses in non-debug mode 1`] = `
+<div
+  class="analysis-latest-results"
+>
+  <h3>
+    Latest results by metric
+  </h3>
+  <div
+    class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+    style="position: relative;"
+  >
+    <div
+      class="Component-horizontalScrollContainer-19"
+      style="overflow-x: auto; position: relative;"
+    >
+      <div>
+        <div
+          style="overflow-y: auto;"
+        >
+          <div>
+            <table
+              class="MuiTable-root"
+              style="table-layout: auto;"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-20 MuiTableCell-paddingNone"
+                    scope="col"
+                    style="font-weight: 700;"
+                  />
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-20 MuiTableCell-alignLeft"
+                    scope="col"
+                    style="font-weight: 700; box-sizing: border-box;"
+                  >
+                    Metric
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-20 MuiTableCell-alignLeft"
+                    scope="col"
+                    style="font-weight: 700; box-sizing: border-box;"
+                  >
+                    Attribution window
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-20 MuiTableCell-alignLeft"
+                    scope="col"
+                    style="font-weight: 700; box-sizing: border-box;"
+                  >
+                    Recommendation
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-hover"
+                  index="0"
+                  level="0"
+                  path="0"
+                  style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                  >
+                    <div
+                      style="width: 42px; text-align: center; display: flex;"
+                    >
+                      <button
+                        class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                        disabled=""
+                        style="transition: all ease 200ms; transform: none;"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <span
+                            aria-hidden="true"
+                            class="material-icons MuiIcon-root"
+                          >
+                            chevron_right
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    metric_1
+                     
+                    <span
+                      class="makeStyles-root-21"
+                    >
+                      Primary
+                    </span>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    1 week
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    Manual analysis required
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root MuiTableRow-hover"
+                  index="1"
+                  level="0"
+                  path="1"
+                  style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                  >
+                    <div
+                      style="width: 42px; text-align: center; display: flex;"
+                    >
+                      <button
+                        class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                        disabled=""
+                        style="transition: all ease 200ms; transform: none;"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <span
+                            aria-hidden="true"
+                            class="material-icons MuiIcon-root"
+                          >
+                            chevron_right
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    metric_2
+                     
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    4 weeks
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    Not analyzed yet
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root MuiTableRow-hover"
+                  index="2"
+                  level="0"
+                  path="2"
+                  style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                  >
+                    <div
+                      style="width: 42px; text-align: center; display: flex;"
+                    >
+                      <button
+                        class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                        disabled=""
+                        style="transition: all ease 200ms; transform: none;"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <span
+                            aria-hidden="true"
+                            class="material-icons MuiIcon-root"
+                          >
+                            chevron_right
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    metric_2
+                     
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    1 hour
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    Not analyzed yet
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root MuiTableRow-hover"
+                  index="3"
+                  level="0"
+                  path="3"
+                  style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                  >
+                    <div
+                      style="width: 42px; text-align: center; display: flex;"
+                    >
+                      <button
+                        class="MuiButtonBase-root MuiIconButton-root"
+                        style="transition: all ease 200ms; transform: none;"
+                        tabindex="0"
+                        type="button"
+                      >
+                        <span
+                          class="MuiIconButton-label"
+                        >
+                          <span
+                            aria-hidden="true"
+                            class="material-icons MuiIcon-root"
+                          >
+                            chevron_right
+                          </span>
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root"
+                        />
+                      </button>
+                    </div>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    metric_3
+                     
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    6 hours
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    Deploy 
+                    <code>
+                      test
+                    </code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders the condensed table with some analyses in non-debug mode 2`] = `
+<dl
+  class="analysis-detail-panel"
+>
+  <dt>
+    Last analyzed
+  </dt>
+  <dd>
+    <span
+      class="makeStyles-root-22"
+      title="09/05/2020, 20:00:00"
+    >
+      2020-05-10
+    </span>
+  </dd>
+  <dt>
+    Analysis strategy
+  </dt>
+  <dd>
+    Without crossovers and spammers
+  </dd>
+  <dt>
+    Analyzed participants
+  </dt>
+  <dd>
+    1600
+     (
+    160
+     not final
+    <span>
+      ; 
+      960
+       in 
+      control
+    </span>
+    <span>
+      ; 
+      640
+       in 
+      test
+    </span>
+    )
+  </dd>
+  <dt>
+    Difference interval
+  </dt>
+  <dd>
+    [
+    -0.01
+    , 
+    0.01
+    ]
+  </dd>
+  <dt>
+    Warnings
+  </dt>
+  <dd>
+    <div>
+      Experiment period is too short. Wait a few days to be safer.
+    </div>
+    <div>
+      The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+    </div>
+  </dd>
+</dl>
+`;
+
+exports[`renders the full tables with some analyses and a different primary metric in debug mode 1`] = `
+<div
+  class="analysis-participant-counts"
+>
+  <h3>
+    Participant counts for the primary metric
+  </h3>
+  <div
+    class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+    style="position: relative;"
+  >
+    <div
+      class="Component-horizontalScrollContainer-12"
+      style="overflow-x: auto; position: relative;"
+    >
+      <div>
+        <div
+          style="overflow-y: auto;"
+        >
+          <div>
+            <table
+              class="MuiTable-root"
+              style="table-layout: auto;"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignLeft"
+                    scope="col"
+                    style="font-weight: 700; box-sizing: border-box;"
+                  >
+                    Strategy
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignLeft"
+                    scope="col"
+                    style="font-weight: 700; box-sizing: border-box;"
+                  >
+                    Total
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignLeft"
+                    scope="col"
+                    style="font-weight: 700; box-sizing: border-box;"
+                  >
+                    control
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignLeft"
+                    scope="col"
+                    style="font-weight: 700; box-sizing: border-box;"
+                  >
+                    test
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                  index="0"
+                  level="0"
+                  path="0"
+                  style="transition: all ease 300ms; opacity: 0.8;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    All participants
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    10
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    10
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    0
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders the full tables with some analyses in debug mode 1`] = `
 <pre
   class="debug-json"
 >
@@ -40,10 +505,7 @@ exports[`shows the analyses JSON in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z",
-    "tableData": {
-      "id": 0
-    }
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
   },
   {
     "metricAssignmentId": 123,
@@ -77,10 +539,7 @@ exports[`shows the analyses JSON in debug mode 1`] = `
       "reason": "rope_in_ci",
       "warnings": []
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z",
-    "tableData": {
-      "id": 1
-    }
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
   },
   {
     "metricAssignmentId": 123,
@@ -114,10 +573,7 @@ exports[`shows the analyses JSON in debug mode 1`] = `
       "reason": "ci_in_rope",
       "warnings": []
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z",
-    "tableData": {
-      "id": 2
-    }
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
   },
   {
     "metricAssignmentId": 123,
@@ -154,10 +610,7 @@ exports[`shows the analyses JSON in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z",
-    "tableData": {
-      "id": 3
-    }
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
   },
   {
     "metricAssignmentId": 123,
@@ -194,10 +647,7 @@ exports[`shows the analyses JSON in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z",
-    "tableData": {
-      "id": 4
-    }
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
   },
   {
     "metricAssignmentId": 123,
@@ -388,10 +838,7 @@ exports[`shows the analyses JSON in debug mode 1`] = `
     },
     "metricEstimates": null,
     "recommendation": null,
-    "analysisDatetime": "2020-05-10T00:00:00.000Z",
-    "tableData": {
-      "id": 0
-    }
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
   },
   {
     "metricAssignmentId": 126,
@@ -428,10 +875,7 @@ exports[`shows the analyses JSON in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z",
-    "tableData": {
-      "id": 0
-    }
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
   },
   {
     "metricAssignmentId": 126,
@@ -468,10 +912,7 @@ exports[`shows the analyses JSON in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z",
-    "tableData": {
-      "id": 1
-    }
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
   },
   {
     "metricAssignmentId": 126,
@@ -508,10 +949,7 @@ exports[`shows the analyses JSON in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z",
-    "tableData": {
-      "id": 2
-    }
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
   },
   {
     "metricAssignmentId": 126,
@@ -548,10 +986,7 @@ exports[`shows the analyses JSON in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z",
-    "tableData": {
-      "id": 3
-    }
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
   },
   {
     "metricAssignmentId": 126,
@@ -588,11 +1023,1098 @@ exports[`shows the analyses JSON in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z",
-    "tableData": {
-      "id": 4
-    }
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
   }
 ]
 </pre>
+`;
+
+exports[`renders the full tables with some analyses in debug mode 2`] = `
+<div
+  class="analysis-participant-counts"
+>
+  <h3>
+    Participant counts for the primary metric
+  </h3>
+  <div
+    class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+    style="position: relative;"
+  >
+    <div
+      class="Component-horizontalScrollContainer-5"
+      style="overflow-x: auto; position: relative;"
+    >
+      <div>
+        <div
+          style="overflow-y: auto;"
+        >
+          <div>
+            <table
+              class="MuiTable-root"
+              style="table-layout: auto;"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                    scope="col"
+                    style="font-weight: 700; box-sizing: border-box;"
+                  >
+                    Strategy
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                    scope="col"
+                    style="font-weight: 700; box-sizing: border-box;"
+                  >
+                    Total
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                    scope="col"
+                    style="font-weight: 700; box-sizing: border-box;"
+                  >
+                    control
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                    scope="col"
+                    style="font-weight: 700; box-sizing: border-box;"
+                  >
+                    test
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                  index="0"
+                  level="0"
+                  path="0"
+                  style="transition: all ease 300ms; opacity: 0.8;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    All participants
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    1000
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    600
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    400
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                  index="1"
+                  level="0"
+                  path="1"
+                  style="transition: all ease 300ms; opacity: 0.8;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    Without crossovers
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    900
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    540
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    360
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                  index="2"
+                  level="0"
+                  path="2"
+                  style="transition: all ease 300ms; opacity: 0.8;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    Without spammers
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    850
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    510
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    340
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                  index="3"
+                  level="0"
+                  path="3"
+                  style="transition: all ease 300ms; opacity: 0.8;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    Without crossovers and spammers
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    800
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    480
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    320
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                  index="4"
+                  level="0"
+                  path="4"
+                  style="transition: all ease 300ms; opacity: 0.8;"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    Exposed without crossovers and spammers
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    700
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    420
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                    style="box-sizing: border-box;"
+                  >
+                    280
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders the full tables with some analyses in debug mode 3`] = `
+<div
+  class="analysis-latest-results"
+>
+  <h3>
+    Latest results by metric
+  </h3>
+  <div>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle1"
+    >
+      <strong>
+        <code>
+          metric_1
+        </code>
+      </strong>
+       
+      with 
+      1 week
+       attribution,
+       
+      last analyzed on 
+      <span
+        class="makeStyles-root-7"
+        title="09/05/2020, 20:00:00"
+      >
+        2020-05-10
+      </span>
+    </h6>
+    <div
+      class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+      style="position: relative;"
+    >
+      <div
+        class="Component-horizontalScrollContainer-5"
+        style="overflow-x: auto; position: relative;"
+      >
+        <div>
+          <div
+            style="overflow-y: auto;"
+          >
+            <div>
+              <table
+                class="MuiTable-root"
+                style="table-layout: auto;"
+              >
+                <thead
+                  class="MuiTableHead-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-head"
+                  >
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Strategy
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Participants (not final)
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Difference interval
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Recommendation
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Warnings
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="MuiTableBody-root"
+                >
+                  <tr
+                    class="MuiTableRow-root"
+                    index="0"
+                    level="0"
+                    path="0"
+                    style="transition: all ease 300ms; opacity: 0.8;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      All participants
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      1000 (100)
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      [-0.01, 0.01]
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Deploy 
+                      <code>
+                        test
+                      </code>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      <div>
+                        Experiment period is too short. Wait a few days to be safer.
+                      </div>
+                      <div>
+                        The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                    index="1"
+                    level="0"
+                    path="1"
+                    style="transition: all ease 300ms; opacity: 0.8;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Without crossovers
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      900 (90)
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      [-0.01, 0.01]
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Inconclusive
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    />
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                    index="2"
+                    level="0"
+                    path="2"
+                    style="transition: all ease 300ms; opacity: 0.8;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Without spammers
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      850 (85)
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      [-0.01, 0.01]
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Deploy either variation
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    />
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                    index="3"
+                    level="0"
+                    path="3"
+                    style="transition: all ease 300ms; opacity: 0.8;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Without crossovers and spammers
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      800 (80)
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      [-0.01, 0.01]
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Deploy 
+                      <code>
+                        test
+                      </code>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      <div>
+                        Experiment period is too short. Wait a few days to be safer.
+                      </div>
+                      <div>
+                        The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                    index="4"
+                    level="0"
+                    path="4"
+                    style="transition: all ease 300ms; opacity: 0.8;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Exposed without crossovers and spammers
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      700 (70)
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      [-0.01, 0.01]
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Deploy 
+                      <code>
+                        test
+                      </code>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      <div>
+                        Experiment period is too short. Wait a few days to be safer.
+                      </div>
+                      <div>
+                        The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+  </div>
+  <div>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle1"
+    >
+      <strong>
+        <code>
+          metric_2
+        </code>
+      </strong>
+       
+      with 
+      4 weeks
+       attribution,
+       
+      last analyzed on 
+      <span
+        class="makeStyles-root-7"
+        title="09/05/2020, 20:00:00"
+      >
+        2020-05-10
+      </span>
+    </h6>
+    <div
+      class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+      style="position: relative;"
+    >
+      <div
+        class="Component-horizontalScrollContainer-5"
+        style="overflow-x: auto; position: relative;"
+      >
+        <div>
+          <div
+            style="overflow-y: auto;"
+          >
+            <div>
+              <table
+                class="MuiTable-root"
+                style="table-layout: auto;"
+              >
+                <thead
+                  class="MuiTableHead-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-head"
+                  >
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Strategy
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Participants (not final)
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Difference interval
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Recommendation
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Warnings
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="MuiTableBody-root"
+                >
+                  <tr
+                    class="MuiTableRow-root"
+                    index="0"
+                    level="0"
+                    path="0"
+                    style="transition: all ease 300ms; opacity: 0.8;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      All participants
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      10 (10)
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      N/A
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    />
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+  </div>
+  <div>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle1"
+    >
+      <strong>
+        <code>
+          metric_2
+        </code>
+      </strong>
+       
+      with 
+      1 hour
+       attribution,
+       
+      <strong>
+        not analyzed yet
+      </strong>
+    </h6>
+    <div
+      class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+      style="position: relative;"
+    >
+      <div
+        class="Component-horizontalScrollContainer-5"
+        style="overflow-x: auto; position: relative;"
+      >
+        <div>
+          <div
+            style="overflow-y: auto;"
+          >
+            <div>
+              <table
+                class="MuiTable-root"
+                style="table-layout: auto;"
+              >
+                <thead
+                  class="MuiTableHead-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-head"
+                  >
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Strategy
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Participants (not final)
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Difference interval
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Recommendation
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Warnings
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="MuiTableBody-root"
+                />
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+  </div>
+  <div>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle1"
+    >
+      <strong>
+        <code>
+          metric_3
+        </code>
+      </strong>
+       
+      with 
+      6 hours
+       attribution,
+       
+      last analyzed on 
+      <span
+        class="makeStyles-root-7"
+        title="09/05/2020, 20:00:00"
+      >
+        2020-05-10
+      </span>
+    </h6>
+    <div
+      class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+      style="position: relative;"
+    >
+      <div
+        class="Component-horizontalScrollContainer-5"
+        style="overflow-x: auto; position: relative;"
+      >
+        <div>
+          <div
+            style="overflow-y: auto;"
+          >
+            <div>
+              <table
+                class="MuiTable-root"
+                style="table-layout: auto;"
+              >
+                <thead
+                  class="MuiTableHead-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-head"
+                  >
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Strategy
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Participants (not final)
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Difference interval
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Recommendation
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Warnings
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="MuiTableBody-root"
+                >
+                  <tr
+                    class="MuiTableRow-root"
+                    index="0"
+                    level="0"
+                    path="0"
+                    style="transition: all ease 300ms; opacity: 0.8;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      All participants
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      2000 (200)
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      [-0.01, 0.01]
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Deploy 
+                      <code>
+                        test
+                      </code>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      <div>
+                        Experiment period is too short. Wait a few days to be safer.
+                      </div>
+                      <div>
+                        The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                    index="1"
+                    level="0"
+                    path="1"
+                    style="transition: all ease 300ms; opacity: 0.8;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Without crossovers
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      1800 (180)
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      [-0.01, 0.01]
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Deploy 
+                      <code>
+                        test
+                      </code>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      <div>
+                        Experiment period is too short. Wait a few days to be safer.
+                      </div>
+                      <div>
+                        The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                    index="2"
+                    level="0"
+                    path="2"
+                    style="transition: all ease 300ms; opacity: 0.8;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Without spammers
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      1700 (170)
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      [-0.01, 0.01]
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Deploy 
+                      <code>
+                        test
+                      </code>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      <div>
+                        Experiment period is too short. Wait a few days to be safer.
+                      </div>
+                      <div>
+                        The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                    index="3"
+                    level="0"
+                    path="3"
+                    style="transition: all ease 300ms; opacity: 0.8;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Without crossovers and spammers
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      1600 (160)
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      [-0.01, 0.01]
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Deploy 
+                      <code>
+                        test
+                      </code>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      <div>
+                        Experiment period is too short. Wait a few days to be safer.
+                      </div>
+                      <div>
+                        The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root"
+                    index="4"
+                    level="0"
+                    path="4"
+                    style="transition: all ease 300ms; opacity: 0.8;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Exposed without crossovers and spammers
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      1400 (140)
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      [-0.01, 0.01]
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      Deploy 
+                      <code>
+                        test
+                      </code>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box;"
+                    >
+                      <div>
+                        Experiment period is too short. Wait a few days to be safer.
+                      </div>
+                      <div>
+                        The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+  </div>
+</div>
 `;

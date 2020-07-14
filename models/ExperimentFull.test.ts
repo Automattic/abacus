@@ -1,5 +1,5 @@
 import Fixtures from '@/helpers/fixtures'
-import { AttributionWindowSeconds, Platform, Status, Variation } from '@/models'
+import { AnalysisStrategy, AttributionWindowSeconds, Platform, Status, Variation } from '@/models'
 
 import { createNewExperiment, ExperimentFull } from './ExperimentFull'
 
@@ -455,6 +455,17 @@ describe('models/ExperimentFull.ts module', () => {
             metricAssignments: [sortedMetricAssignments[2], sortedMetricAssignments[1], sortedMetricAssignments[0]],
           }).getSortedMetricAssignments(),
         ).toEqual(sortedMetricAssignments)
+      })
+    })
+
+    describe('getDefaultAnalysisStrategy', () => {
+      it('returns the correct strategy based on the exposureEvents', () => {
+        expect(Fixtures.createExperimentFull({ exposureEvents: null }).getDefaultAnalysisStrategy()).toBe(
+          AnalysisStrategy.MittNoSpammersNoCrossovers,
+        )
+        expect(Fixtures.createExperimentFull({ exposureEvents: [{ event: 'ev1' }] }).getDefaultAnalysisStrategy()).toBe(
+          AnalysisStrategy.PpNaive,
+        )
       })
     })
   })

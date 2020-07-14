@@ -5,7 +5,16 @@ import { ApiDataSource } from '@/api/ApiDataSource'
 import { ExcludeMethods } from '@/types/ExcludeMethods'
 import { formatIsoUtcOffset } from '@/utils/formatters'
 
-import { Event, ExperimentBare, MetricAssignment, Platform, SegmentAssignment, Status, Variation } from './index'
+import {
+  AnalysisStrategy,
+  Event,
+  ExperimentBare,
+  MetricAssignment,
+  Platform,
+  SegmentAssignment,
+  Status,
+  Variation,
+} from './index'
 
 /**
  * An experiment with full data.
@@ -232,6 +241,13 @@ export class ExperimentFull implements ApiDataSource {
    */
   getSortedMetricAssignments() {
     return _.orderBy(this.metricAssignments, ['isPrimary', 'metricAssignmentId'], ['desc', 'asc'])
+  }
+
+  /**
+   * Return this experiment's default analysis strategy, which depends on the existence of exposureEvents.
+   */
+  getDefaultAnalysisStrategy() {
+    return this.exposureEvents ? AnalysisStrategy.PpNaive : AnalysisStrategy.MittNoSpammersNoCrossovers
   }
 }
 
