@@ -12,18 +12,25 @@ export default function RecommendationString({
   recommendation: Recommendation
   experiment: ExperimentFull
 }) {
-  if (recommendation.endExperiment) {
-    if (recommendation.chosenVariationId) {
-      const chosenVariation = experiment.variations.find(
-        (variation) => variation.variationId === recommendation.chosenVariationId,
-      ) as Variation
-      return (
-        <>
-          Deploy <code>{chosenVariation.name}</code>
-        </>
-      )
-    }
+  if (!recommendation.endExperiment) {
+    return <>Inconclusive</>
+  }
+
+  if (!recommendation.chosenVariationId) {
     return <>Deploy either variation</>
   }
-  return <>Inconclusive</>
+
+  const chosenVariation = experiment.variations.find(
+    (variation) => variation.variationId === recommendation.chosenVariationId,
+  )
+  /* istanbul ignore next; Typeguard */
+  if (!chosenVariation) {
+    throw new Error('No match for chosenVariationId among variations in experiment.')
+  }
+
+  return (
+    <>
+      Deploy <code>{chosenVariation.name}</code>
+    </>
+  )
 }

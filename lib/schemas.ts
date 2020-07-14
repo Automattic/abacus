@@ -179,7 +179,7 @@ export const experimentFullSchema = experimentBareSchema
     endReason: yup.string().nullable(),
     conclusionUrl: yup.string().url().nullable(),
     deployedVariationId: idSchema.nullable().notRequired(),
-    exposureEvents: yup.array(eventSchema).nullable(),
+    exposureEvents: yup.array<Event>(eventSchema).nullable(),
     metricAssignments: yup.array(metricAssignmentSchema).defined(),
     segmentAssignments: yup.array(segmentAssignmentSchema).defined(),
     variations: yup.array(variationSchema).defined(),
