@@ -34,8 +34,6 @@ const useStyles = makeStyles((theme: Theme) =>
 const BasicInfo = () => {
   const classes = useStyles()
 
-  // TODO: COMPONENT
-
   return (
     <div className={classes.root}>
       <Typography variant='h2' gutterBottom>
