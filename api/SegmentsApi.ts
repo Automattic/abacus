@@ -1,6 +1,7 @@
-import { Segment } from '@/models'
+import * as yup from 'yup'
 
-import { ApiData } from './ApiData'
+import { Segment, segmentSchema } from '@/lib/schemas'
+
 import { fetchApi } from './utils'
 
 /**
@@ -11,7 +12,8 @@ import { fetchApi } from './utils'
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<Segment[]> {
-  return (await fetchApi('GET', '/segments')).segments.map((apiData: ApiData) => Segment.fromApiData(apiData))
+  const { segments } = await fetchApi('GET', '/segments')
+  return await yup.array(segmentSchema).defined().validate(segments)
 }
 
 const SegmentsApi = {
