@@ -1,13 +1,10 @@
 import ExperimentsApi from '@/api/ExperimentsApi'
 import { Platform, Status } from '@/lib/schemas'
 
-const PLATFORMS = Object.values(Platform)
-const STATUSES = Object.values(Status)
-
 describe('ExperimentsApi.ts module', () => {
   describe('create', () => {
     it('should create a new experiment', async () => {
-      const newExperiment = await ExperimentsApi.create({
+      await ExperimentsApi.create({
         name: 'my_experiment',
         startDatetime: new Date(Date.UTC(2020, 4, 1)),
         endDatetime: new Date(Date.UTC(2020, 4, 4)),
@@ -21,37 +18,17 @@ describe('ExperimentsApi.ts module', () => {
         segmentAssignments: [],
         metricAssignments: [],
       })
-      // We expect that the response will return the new experiment with its newly
-      // assigned ID. These integration tests test against the "development" API which
-      // only returns mock data. So, instead of trying to keep in sync with the actual
-      // mock values, the fact that we are using TypeScript and we get a defined
-      // instance should be pretty sufficient.
-      expect(newExperiment).toBeDefined()
-      expect(typeof newExperiment.experimentId).toBe('number')
     })
   })
 
   describe('findAll', () => {
     it('should return a set of experiments with the expected experiment shape', async () => {
-      const experiments = await ExperimentsApi.findAll()
-      expect(experiments).toBeDefined()
-      expect(Array.isArray(experiments)).toBe(true)
-      expect(experiments.length).toBeGreaterThan(0)
-      experiments.forEach((experiment) => {
-        expect(typeof experiment.experimentId).toBe('number')
-        expect(typeof experiment.name).toBe('string')
-        expect(experiment.startDatetime).toBeInstanceOf(Date)
-        expect(experiment.endDatetime).toBeInstanceOf(Date)
-        expect(PLATFORMS.includes(experiment.platform)).toBe(true)
-        expect(STATUSES.includes(experiment.status)).toBe(true)
-        expect(typeof experiment.ownerLogin).toBe('string')
-      })
+      await ExperimentsApi.findAll()
     })
   })
 
   describe('findById', () => {
     it('should return an experiment with the expected experiment shape', async () => {
-      // The implicit schema validation will verify the experiment shape
       await ExperimentsApi.findById(123)
     })
   })
