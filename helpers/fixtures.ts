@@ -13,6 +13,7 @@ import {
   ExperimentFull,
   MetricAssignment,
   MetricBare,
+  MetricFull,
   MetricParameterTypes,
   Platform,
   RecommendationReason,
@@ -21,6 +22,7 @@ import {
   SegmentAssignment,
   SegmentType,
   Status,
+  TransactionTypes,
 } from '@/lib/schemas'
 
 function createAnalysis(fieldOverrides: Partial<Analysis>): Analysis {
@@ -186,6 +188,58 @@ function createAnalyses() {
       metricEstimates: null,
       recommendation: null,
     }),
+
+    // Similar to the set of "latest" analyses for the default metric assignment, but with consistent recommendations.
+    createAnalysis({
+      metricAssignmentId: 126,
+      analysisStrategy: AnalysisStrategy.IttPure,
+      participantStats: {
+        total: 2000,
+        not_final: 200,
+        variation_1: 1200,
+        variation_2: 800,
+      },
+    }),
+    createAnalysis({
+      metricAssignmentId: 126,
+      analysisStrategy: AnalysisStrategy.MittNoCrossovers,
+      participantStats: {
+        total: 1800,
+        not_final: 180,
+        variation_1: 1080,
+        variation_2: 720,
+      },
+    }),
+    createAnalysis({
+      metricAssignmentId: 126,
+      analysisStrategy: AnalysisStrategy.MittNoSpammers,
+      participantStats: {
+        total: 1700,
+        not_final: 170,
+        variation_1: 920,
+        variation_2: 780,
+      },
+    }),
+    createAnalysis({
+      metricAssignmentId: 126,
+      analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
+      participantStats: {
+        total: 1600,
+        not_final: 160,
+        variation_1: 960,
+        variation_2: 640,
+      },
+    }),
+    createAnalysis({
+      metricAssignmentId: 126,
+      analysisStrategy: AnalysisStrategy.PpNaive,
+      participantStats: {
+        total: 1400,
+        not_final: 140,
+        variation_1: 840,
+        variation_2: 560,
+      },
+    }),
   ]
 }
 
@@ -248,6 +302,22 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
         isPrimary: false,
         minDifference: 10.5,
       }),
+      createMetricAssignment({
+        metricAssignmentId: 125,
+        metricId: 2,
+        attributionWindowSeconds: AttributionWindowSeconds.OneHour,
+        changeExpected: true,
+        isPrimary: false,
+        minDifference: 0.5,
+      }),
+      createMetricAssignment({
+        metricAssignmentId: 126,
+        metricId: 3,
+        attributionWindowSeconds: AttributionWindowSeconds.SixHours,
+        changeExpected: true,
+        isPrimary: false,
+        minDifference: 12,
+      }),
     ],
     segmentAssignments: [],
     ...fieldOverrides,
@@ -264,7 +334,28 @@ function createMetricBare(id: number): MetricBare {
 }
 
 function createMetricBares(numMetrics = 3) {
-  return _.range(numMetrics).map(createMetricBare)
+  return _.range(1, numMetrics + 1).map(createMetricBare)
+}
+
+function createMetricFull(id: number): MetricFull {
+  // Note: It is hard to reuse createMetricBare here as it is boxed
+  //       Currently we only unbox it into an ApiData format which is different from this
+  const parameterType = id % 2 === 0 ? MetricParameterTypes.Revenue : MetricParameterTypes.Conversion
+  const eventParams = [{ event: 'event_name', props: { has_blocks: 'true' } }]
+  const revenueParams = {
+    refundDays: id * 2,
+    productSlugs: ['xx-bundles'],
+    transactionTypes: [TransactionTypes.NewPurchase],
+  }
+  return {
+    metricId: id,
+    name: `metric_${id}`,
+    description: `This is metric ${id}`,
+    parameterType,
+    higherIsBetter: id % 3 === 0,
+    eventParams: parameterType === MetricParameterTypes.Conversion ? eventParams : undefined,
+    revenueParams: parameterType === MetricParameterTypes.Revenue ? revenueParams : undefined,
+  }
 }
 
 function createSegment(id: number): Segment {
@@ -297,6 +388,7 @@ const Fixtures = {
   createExperimentFull,
   createMetricAssignment,
   createMetricBares,
+  createMetricFull,
   createSegmentAssignment,
   createSegments,
 }

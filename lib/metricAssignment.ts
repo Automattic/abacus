@@ -1,4 +1,6 @@
-import { AttributionWindowSeconds } from './schemas'
+import _ from 'lodash'
+
+import { AttributionWindowSeconds, MetricAssignment } from './schemas'
 
 const AttributionWindowSecondsToHuman = {
   [AttributionWindowSeconds.OneHour]: '1 hour',
@@ -14,4 +16,11 @@ const AttributionWindowSecondsToHuman = {
 
 export const attributionWindowSecondsToHuman = (seconds: AttributionWindowSeconds): string => {
   return AttributionWindowSecondsToHuman[seconds]
+}
+
+/**
+ * Return the experiment's variations sorted in the canonical order: Primary first, then by ID.
+ */
+export function getSortedMetricAssignments(metricAssignments: MetricAssignment[]) {
+  return _.orderBy(metricAssignments, ['isPrimary', 'metricAssignmentId'], ['desc', 'asc'])
 }

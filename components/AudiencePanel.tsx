@@ -6,6 +6,7 @@ import LabelValuePanel from '@/components/LabelValuePanel'
 import SegmentsTable from '@/components/SegmentsTable'
 import VariationsTable from '@/components/VariationsTable'
 import { ExperimentFull, Segment, SegmentAssignment, SegmentType } from '@/lib/schemas'
+import * as Variations from '@/lib/variations'
 
 /**
  * Resolves the segment ID of the segment assignment with the actual segment.
@@ -61,7 +62,7 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
     {
       label: 'Variations',
       padding: 'none' as TableCellProps['padding'],
-      value: <VariationsTable variations={experiment.variations} />,
+      value: <VariationsTable variations={Variations.getSortedVariations(experiment.variations)} />,
     },
     {
       label: 'Segments',

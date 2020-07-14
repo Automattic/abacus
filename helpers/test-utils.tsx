@@ -1,5 +1,6 @@
 import { Queries, render as actualRender, RenderOptions } from '@testing-library/react'
 import mediaQuery from 'css-mediaquery'
+import { Formik } from 'formik'
 import React from 'react'
 
 import ThemeProvider from '@/styles/ThemeProvider'
@@ -39,4 +40,21 @@ export function createMatchMedia(width: number) {
     removeEventListener: jest.fn(),
     removeListener: jest.fn(),
   })
+}
+
+/**
+ * Mock Formik for rendering Formik components when you don't care about the formik connection.
+ */
+export const MockFormik = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Formik
+      initialValues={{}}
+      onSubmit={
+        /* istanbul ignore next; This is unused */
+        () => undefined
+      }
+    >
+      {children}
+    </Formik>
+  )
 }

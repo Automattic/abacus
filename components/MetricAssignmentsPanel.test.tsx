@@ -69,15 +69,11 @@ test('renders as expected with all metrics resolvable', () => {
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 metric_1
-                <div
-                  class="MuiChip-root makeStyles-primary-1"
+                <span
+                  class="makeStyles-primary-1 makeStyles-root-3"
                 >
-                  <span
-                    class="MuiChip-label"
-                  >
-                    Primary
-                  </span>
-                </div>
+                  Primary
+                </span>
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body"
@@ -121,6 +117,58 @@ test('renders as expected with all metrics resolvable', () => {
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 No
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                metric_2
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <span>
+                  $0.50
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                1 hour
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                Yes
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                metric_3
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <span>
+                  12 pp
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                6 hours
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                Yes
               </td>
             </tr>
           </tbody>

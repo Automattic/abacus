@@ -1,4 +1,3 @@
-import Chip from '@material-ui/core/Chip'
 import Paper from '@material-ui/core/Paper'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
@@ -7,10 +6,11 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Typography from '@material-ui/core/Typography'
-import _ from 'lodash'
 import React, { useMemo } from 'react'
 
+import Label from '@/components/Label'
 import { attributionWindowSecondsToHuman } from '@/lib/metricAssignment'
+import * as MetricAssignments from '@/lib/metricAssignment'
 import { ExperimentFull, MetricAssignment, MetricBare } from '@/lib/schemas'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
 
@@ -61,13 +61,8 @@ const useStyles = makeStyles((theme: Theme) =>
 function MetricAssignmentsPanel({ experiment, metrics }: { experiment: ExperimentFull; metrics: MetricBare[] }) {
   const classes = useStyles()
   const resolvedMetricAssignments = useMemo(
-    () =>
-      _.orderBy(
-        resolveMetricAssignments(experiment.metricAssignments, metrics),
-        ['isPrimary', _.property('metric.name')],
-        ['desc', 'asc'],
-      ),
-    [experiment.metricAssignments, metrics],
+    () => resolveMetricAssignments(MetricAssignments.getSortedMetricAssignments(experiment.metricAssignments), metrics),
+    [experiment, metrics],
   )
 
   return (
@@ -97,7 +92,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
             <TableRow key={resolvedMetricAssignment.metricAssignmentId}>
               <TableCell>
                 {resolvedMetricAssignment.metric.name}
-                {resolvedMetricAssignment.isPrimary && <Chip className={classes.primary} label='Primary' />}
+                {resolvedMetricAssignment.isPrimary && <Label className={classes.primary} text='Primary' />}
               </TableCell>
               <TableCell>
                 <span>

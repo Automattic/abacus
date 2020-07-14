@@ -1,4 +1,4 @@
-import { ExperimentFull, Variation } from './schemas'
+import { AnalysisStrategy, ExperimentFull, Variation } from './schemas'
 
 /**
  * Return the deployed variation if one has been selected, otherwise `null`.
@@ -36,4 +36,19 @@ export function getPrimaryMetricAssignmentId(experiment: ExperimentFull): number
  */
 export function hasConclusionData(experiment: ExperimentFull): boolean {
   return !!experiment.endReason || !!experiment.conclusionUrl || typeof experiment.deployedVariationId === 'number'
+}
+
+/**
+ * Return this experiment's default analysis strategy, which depends on the existence of exposureEvents.
+ */
+export function getDefaultAnalysisStrategy(experiment: ExperimentFull) {
+  return experiment.exposureEvents ? AnalysisStrategy.PpNaive : AnalysisStrategy.MittNoSpammersNoCrossovers
+}
+
+export function createNewExperiment(): Partial<ExperimentFull> {
+  return {
+    metricAssignments: [],
+    segmentAssignments: [],
+    variations: [],
+  }
 }

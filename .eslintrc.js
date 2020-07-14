@@ -110,6 +110,13 @@ module.exports = {
     // Off because we are using TypeScript which expects us to declare the props.
     'react/prop-types': 'off',
 
+    'react-hooks/exhaustive-deps': [
+      'error',
+      {
+        additionalHooks: 'useDataSource',
+      },
+    ],
+
     'simple-import-sort/sort': 'error',
 
     // Off because it is deprecated and favoring @typescript-eslint/naming-convention

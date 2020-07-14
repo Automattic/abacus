@@ -44,15 +44,11 @@ test('renders as expected with segment names not in order', () => {
               class="MuiTableCell-root MuiTableCell-body"
             >
               bar
-              <div
-                class="MuiChip-root makeStyles-excluded-1"
+              <span
+                class="makeStyles-excluded-1 makeStyles-root-2"
               >
-                <span
-                  class="MuiChip-label"
-                >
-                  Excluded
-                </span>
-              </div>
+                Excluded
+              </span>
             </td>
           </tr>
           <tr

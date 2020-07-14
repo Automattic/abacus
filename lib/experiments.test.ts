@@ -1,6 +1,7 @@
 import Fixtures from '@/helpers/fixtures'
 
 import * as Experiments from './experiments'
+import { AnalysisStrategy } from './schemas'
 
 describe('lib/experiments.ts module', () => {
   describe('getDeployedVariation', () => {
@@ -51,6 +52,27 @@ describe('lib/experiments.ts module', () => {
 
     it('should return false if no conclusion data is set', () => {
       expect(Experiments.hasConclusionData(Fixtures.createExperimentFull())).toBe(false)
+    })
+  })
+
+  describe('getDefaultAnalysisSummary', () => {
+    it('returns the correct strategy based on the exposureEvents', () => {
+      expect(Experiments.getDefaultAnalysisStrategy(Fixtures.createExperimentFull({ exposureEvents: null }))).toBe(
+        AnalysisStrategy.MittNoSpammersNoCrossovers,
+      )
+      expect(
+        Experiments.getDefaultAnalysisStrategy(Fixtures.createExperimentFull({ exposureEvents: [{ event: 'ev1' }] })),
+      ).toBe(AnalysisStrategy.PpNaive)
+    })
+  })
+
+  describe('createNewExperiment', () => {
+    it('should return a new experiment', () => {
+      expect(Experiments.createNewExperiment()).toEqual({
+        metricAssignments: [],
+        segmentAssignments: [],
+        variations: [],
+      })
     })
   })
 })

@@ -9,7 +9,7 @@ const nameSchema = yup.string().max(128)
 export const eventSchema = yup
   .object({
     event: yup.string().defined(),
-    props: yup.mixed(),
+    props: yup.mixed().notRequired(),
   })
   .defined()
   .camelCase()
@@ -60,7 +60,7 @@ export const metricFullSchema = metricBareSchema
   .shape({
     higherIsBetter: yup.boolean().defined(),
     eventParams: yup.array(eventSchema),
-    revenueParams: metricRevenueParamsSchema,
+    revenueParams: metricRevenueParamsSchema.notRequired(),
   })
   .defined()
   .camelCase()
@@ -179,6 +179,7 @@ export const experimentFullSchema = experimentBareSchema
     endReason: yup.string().nullable(),
     conclusionUrl: yup.string().url().nullable(),
     deployedVariationId: idSchema.nullable().notRequired(),
+    exposureEvents: yup.array(eventSchema).nullable(),
     metricAssignments: yup.array(metricAssignmentSchema).defined(),
     segmentAssignments: yup.array(segmentAssignmentSchema).defined(),
     variations: yup.array(variationSchema).defined(),
