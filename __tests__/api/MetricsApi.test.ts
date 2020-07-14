@@ -1,10 +1,19 @@
+import { ValidationError } from 'yup'
+
 import MetricsApi from '@/api/MetricsApi'
 import NotFoundError from '@/api/NotFoundError'
 
 describe('MetricsApi.ts module', () => {
   describe('findAll', () => {
     it('should return a set of metrics with the expected metric shape', async () => {
-      await MetricsApi.findAll()
+      try {
+        await MetricsApi.findAll()
+      } catch (e) {
+        if (e instanceof ValidationError) {
+          expect(e.errors).toEqual([])
+        }
+        throw e
+      }
     })
   })
 
@@ -12,7 +21,14 @@ describe('MetricsApi.ts module', () => {
     it('should return the metric with the expected metric shape', async () => {
       // TODO: Test different metrics with different parameter types (conversion and
       // revenue). Can't do it now because only one metric is available to test.
-      await MetricsApi.findById(31)
+      try {
+        await MetricsApi.findById(31)
+      } catch (e) {
+        if (e instanceof ValidationError) {
+          expect(e.errors).toEqual([])
+        }
+        throw e
+      }
     })
 
     // TODO: Unskip this once the mock API stops returning the mock metric regardless

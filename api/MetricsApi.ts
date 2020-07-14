@@ -13,7 +13,7 @@ import { fetchApi } from './utils'
  */
 async function findAll(): Promise<MetricBare[]> {
   const metrics = (await fetchApi('GET', '/metrics')).metrics
-  return await yup.array(metricBareSchema).defined().validate(metrics)
+  return await yup.array(metricBareSchema).defined().validate(metrics, { abortEarly: false })
 }
 
 /**
@@ -25,7 +25,7 @@ async function findAll(): Promise<MetricBare[]> {
  */
 async function findById(metricId: number): Promise<MetricFull> {
   const metric = await fetchApi('GET', `/metrics/${metricId}`)
-  return await metricFullSchema.validate(metric)
+  return await metricFullSchema.validate(metric, { abortEarly: false })
 }
 
 const MetricsApi = {

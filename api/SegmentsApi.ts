@@ -13,7 +13,7 @@ import { fetchApi } from './utils'
  */
 async function findAll(): Promise<Segment[]> {
   const { segments } = await fetchApi('GET', '/segments')
-  return await yup.array(segmentSchema).defined().validate(segments)
+  return await yup.array(segmentSchema).defined().validate(segments, { abortEarly: false })
 }
 
 const SegmentsApi = {

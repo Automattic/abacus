@@ -13,7 +13,7 @@ import { fetchApi } from './utils'
  */
 async function findByExperimentId(experimentId: number): Promise<Analysis[]> {
   const { analyses } = await fetchApi('GET', `/analyses/${experimentId}`)
-  return await yup.array(analysisSchema).defined().validate(analyses)
+  return await yup.array(analysisSchema).defined().validate(analyses, { abortEarly: false })
 }
 
 const AnalysesApi = {
