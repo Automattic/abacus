@@ -3,7 +3,7 @@ import addToDate from 'date-fns/add'
 import React from 'react'
 
 import { render } from '@/helpers/test-utils'
-import { ExperimentBare, Platform, Status } from '@/models'
+import { ExperimentBare, Platform, Status } from '@/lib/schemas'
 
 import ExperimentsTable from './ExperimentsTable'
 

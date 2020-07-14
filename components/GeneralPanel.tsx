@@ -3,7 +3,7 @@ import React from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
 import LabelValuePanel from '@/components/LabelValuePanel'
-import { ExperimentFull } from '@/models'
+import { ExperimentFull } from '@/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

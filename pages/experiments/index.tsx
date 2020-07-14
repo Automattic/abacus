@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import ExperimentsApi from '@/api/ExperimentsApi'
 import ExperimentsTable from '@/components/ExperimentsTable'
 import Layout from '@/components/Layout'
-import { ExperimentBare } from '@/models'
+import { ExperimentBare } from '@/lib/schemas'
 
 const debug = debugFactory('abacus:pages/experiments/index.tsx')
 

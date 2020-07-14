@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
-import { ExperimentBare } from '@/models'
+import { ExperimentBare } from '@/lib/schemas'
 import { defaultTableOptions } from '@/utils/material-table'
 
 import ExperimentStatus from './ExperimentStatus'

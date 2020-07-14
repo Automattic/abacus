@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import MetricsApi from '@/api/MetricsApi'
 import Layout from '@/components/Layout'
 import MetricsTable from '@/components/MetricsTable'
-import { MetricBare } from '@/models'
+import { MetricBare } from '@/lib/schemas'
 
 const debug = debugFactory('abacus:pages/metrics/index.tsx')
 

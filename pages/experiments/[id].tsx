@@ -9,7 +9,7 @@ import SegmentsApi from '@/api/SegmentsApi'
 import ExperimentDetails from '@/components/ExperimentDetails'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
-import { ExperimentFull, MetricBare, Segment } from '@/models'
+import { ExperimentFull, MetricBare, Segment } from '@/lib/schemas'
 
 const debug = debugFactory('abacus:pages/experiments/[id].tsx')
 

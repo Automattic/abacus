@@ -3,7 +3,7 @@ import { createStyles, makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import React from 'react'
 
-import { Status } from '@/models'
+import { Status } from '@/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

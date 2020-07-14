@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-import { ExperimentFull } from '@/models'
+import { ExperimentFull } from '@/lib/schemas'
 
 /**
  * Experiment tab component. Used to switch between experiment details and results.

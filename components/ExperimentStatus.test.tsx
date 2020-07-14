@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { render } from '@/helpers/test-utils'
-import { Status } from '@/models'
+import { Status } from '@/lib/schemas'
 
 import ExperimentStatus from './ExperimentStatus'
 
