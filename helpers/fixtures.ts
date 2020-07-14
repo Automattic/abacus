@@ -220,14 +220,12 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
     variations: [
       {
         variationId: 2,
-        experimentId: 1,
         name: 'test',
         isDefault: false,
         allocatedPercentage: 40,
       },
       {
         variationId: 1,
-        experimentId: 1,
         name: 'control',
         isDefault: true,
         allocatedPercentage: 60,

@@ -126,7 +126,6 @@ export type SegmentAssignment = yup.InferType<typeof segmentAssignmentSchema>
 export const variationSchema = yup
   .object({
     variationId: idSchema.defined(),
-    experimentId: idSchema.defined(),
     name: nameSchema.defined(),
     isDefault: yup.bool().defined(),
     allocatedPercentage: yup.number().integer().min(1).max(99).defined(),
@@ -177,9 +176,9 @@ export const experimentFullSchema = experimentBareSchema
     description: yup.string().defined(),
     existingUsersAllowed: yup.boolean().defined(),
     p2Url: yup.string().url().defined(),
-    endReason: yup.string().defined().nullable(),
-    conclusionUrl: yup.string().url().defined().nullable(),
-    deployedVariationId: idSchema.defined().nullable(),
+    endReason: yup.string().nullable(),
+    conclusionUrl: yup.string().url().nullable(),
+    deployedVariationId: idSchema.nullable().notRequired(),
     metricAssignments: yup.array(metricAssignmentSchema).defined(),
     segmentAssignments: yup.array(segmentAssignmentSchema).defined(),
     variations: yup.array(variationSchema).defined(),

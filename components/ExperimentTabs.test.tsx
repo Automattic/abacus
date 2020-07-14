@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { render } from '@/helpers/test-utils'
-import { ExperimentFull, Platform, Status, Variation } from '@/lib/schemas'
+import { Platform, Status } from '@/lib/schemas'
 
 import ExperimentTabs from './ExperimentTabs'
 
@@ -13,7 +13,7 @@ test('renders nothing when experiment prop is `null`', () => {
 
 test('renders expected links', () => {
   // TODO: Get from fixtures.
-  const experiment = new ExperimentFull({
+  const experiment = {
     experimentId: 1,
     name: 'experiment_1',
     startDatetime: new Date(Date.UTC(2020, 5, 4)),
@@ -26,22 +26,22 @@ test('renders expected links', () => {
     p2Url: 'https://wordpress.com/experiment_1',
     exposureEvents: null,
     variations: [
-      new Variation({
+      {
         variationId: 2,
         name: 'test',
         isDefault: false,
         allocatedPercentage: 40,
-      }),
-      new Variation({
+      },
+      {
         variationId: 1,
         name: 'control',
         isDefault: true,
         allocatedPercentage: 60,
-      }),
+      },
     ],
     metricAssignments: [],
     segmentAssignments: [],
-  })
+  }
   const { getByText } = render(<ExperimentTabs experiment={experiment} />)
 
   expect(getByText('Details', { selector: 'a' })).toBeInTheDocument()
