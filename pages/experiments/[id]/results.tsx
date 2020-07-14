@@ -9,7 +9,7 @@ import MetricsApi from '@/api/MetricsApi'
 import AnalysisSummary from '@/components/AnalysisSummary'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
-import { Analysis, ExperimentFull, MetricBare } from '@/models'
+import { Analysis, ExperimentFull, MetricBare } from '@/lib/schemas'
 
 const debug = debugFactory('abacus:pages/experiments/[id]/results.tsx')
 

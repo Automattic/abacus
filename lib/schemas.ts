@@ -13,7 +13,6 @@ export const eventSchema = yup
   })
   .defined()
   .camelCase()
-
 export type Event = yup.InferType<typeof eventSchema>
 
 export enum TransactionTypes {
@@ -55,7 +54,6 @@ export const metricBareSchema = yup
   })
   .defined()
   .camelCase()
-
 export type MetricBare = yup.InferType<typeof metricBareSchema>
 
 export const metricFullSchema = metricBareSchema
@@ -66,7 +64,6 @@ export const metricFullSchema = metricBareSchema
   })
   .defined()
   .camelCase()
-
 export type MetricFull = yup.InferType<typeof metricFullSchema>
 
 export enum AttributionWindowSeconds {
@@ -98,7 +95,6 @@ export const metricAssignmentSchema = yup
   })
   .defined()
   .camelCase()
-
 export type MetricAssignment = yup.InferType<typeof metricAssignmentSchema>
 
 export enum SegmentType {
@@ -114,7 +110,6 @@ export const segmentSchema = yup
   })
   .defined()
   .camelCase()
-
 export type Segment = yup.InferType<typeof segmentSchema>
 
 export const segmentAssignmentSchema = yup
@@ -126,7 +121,6 @@ export const segmentAssignmentSchema = yup
   })
   .defined()
   .camelCase()
-
 export type SegmentAssignment = yup.InferType<typeof segmentAssignmentSchema>
 
 export const variationSchema = yup
@@ -139,7 +133,6 @@ export const variationSchema = yup
   })
   .defined()
   .camelCase()
-
 export type Variation = yup.InferType<typeof variationSchema>
 
 /**
@@ -177,7 +170,6 @@ export const experimentBareSchema = yup
   })
   .defined()
   .camelCase()
-
 export type ExperimentBare = yup.InferType<typeof experimentBareSchema>
 
 export const experimentFullSchema = experimentBareSchema
@@ -194,8 +186,64 @@ export const experimentFullSchema = experimentBareSchema
   })
   .defined()
   .camelCase()
-
 export type ExperimentFull = yup.InferType<typeof experimentFullSchema>
 
 // Just a stub for now
 export const experimentCreateSchema = experimentFullSchema
+
+export enum RecommendationReason {
+  CiInRope = 'ci_in_rope',
+  CiGreaterThanRope = 'ci_greater_than_rope',
+  CiLessThanRope = 'ci_less_than_rope',
+  CiRopePartlyOverlap = 'ci_rope_partly_overlap',
+  RopeInCi = 'rope_in_ci',
+}
+
+export enum RecommendationWarning {
+  ShortPeriod = 'short_period',
+  LongPeriod = 'long_period',
+  WideCi = 'wide_ci',
+}
+
+export const recommendationSchema = yup
+  .object({
+    endExperiment: yup.boolean().defined(),
+    chosenVariationId: yup.number().nullable().defined(),
+    reason: yup.string().oneOf(Object.values(RecommendationReason)).defined(),
+    warnings: yup.array(yup.string().oneOf(Object.values(RecommendationWarning)).defined()).defined(),
+  })
+  .defined()
+  .camelCase()
+export type Recommendation = yup.InferType<typeof recommendationSchema>
+
+export const metricEstimateSchema = yup
+  .object({
+    estimate: yup.number().defined(),
+    top: yup.number().defined(),
+    bottom: yup.number().defined(),
+  })
+  .defined()
+  .camelCase()
+export type MetricEstimate = yup.InferType<typeof metricEstimateSchema>
+
+export enum AnalysisStrategy {
+  IttPure = 'itt_pure',
+  MittNoSpammers = 'mitt_no_spammers',
+  MittNoCrossovers = 'mitt_no_crossovers',
+  MittNoSpammersNoCrossovers = 'mitt_no_spammers_no_crossovers',
+  PpNaive = 'pp_naive',
+}
+
+export const analysisSchema = yup
+  .object({
+    metricAssignmentId: idSchema.defined(),
+    analysisDatetime: yup.date().defined(),
+    analysisStrategy: yup.string().oneOf(Object.values(AnalysisStrategy)).defined(),
+    // TODO: Provide better validation for these
+    participantStats: yup.object().defined() as yup.Schema<Record<string, number>>,
+    metricEstimates: yup.object().nullable().defined() as yup.Schema<Record<string, MetricEstimate> | null>,
+    recommendation: recommendationSchema.nullable().defined(),
+  })
+  .defined()
+  .camelCase()
+export type Analysis = yup.InferType<typeof analysisSchema>

@@ -7,21 +7,24 @@
 import _ from 'lodash'
 
 import {
+  Analysis,
+  AnalysisStrategy,
   AttributionWindowSeconds,
   ExperimentFull,
   MetricAssignment,
   MetricBare,
   MetricParameterTypes,
   Platform,
+  RecommendationReason,
+  RecommendationWarning,
   Segment,
   SegmentAssignment,
   SegmentType,
   Status,
 } from '@/lib/schemas'
-import { Analysis, AnalysisStrategy, RecommendationReason, RecommendationWarning } from '@/models'
 
-function createAnalysis(fieldOverrides: Partial<Analysis>) {
-  return new Analysis({
+function createAnalysis(fieldOverrides: Partial<Analysis>): Analysis {
+  return {
     metricAssignmentId: 123,
     analysisStrategy: AnalysisStrategy.IttPure,
     participantStats: {
@@ -43,7 +46,7 @@ function createAnalysis(fieldOverrides: Partial<Analysis>) {
     },
     analysisDatetime: new Date(Date.UTC(2020, 4, 10)),
     ...fieldOverrides,
-  })
+  }
 }
 
 function createAnalyses() {

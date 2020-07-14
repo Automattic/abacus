@@ -1,5 +1,5 @@
 import AnalysesApi from '@/api/AnalysesApi'
-import { AnalysisStrategy, RecommendationReason, RecommendationWarning } from '@/models'
+import { AnalysisStrategy, RecommendationReason, RecommendationWarning } from '@/lib/schemas'
 
 describe('AnalysesApi.ts module', () => {
   describe('findByExperimentId', () => {

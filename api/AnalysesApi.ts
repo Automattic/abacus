@@ -1,6 +1,7 @@
-import { Analysis } from '@/models'
+import * as yup from 'yup'
 
-import { ApiData } from './ApiData'
+import { Analysis, analysisSchema } from '@/lib/schemas'
+
 import { fetchApi } from './utils'
 
 /**
@@ -11,9 +12,8 @@ import { fetchApi } from './utils'
  * @throws UnauthorizedError
  */
 async function findByExperimentId(experimentId: number): Promise<Analysis[]> {
-  return (await fetchApi('GET', '/analyses/' + experimentId)).analyses.map((apiData: ApiData) =>
-    Analysis.fromApiData(apiData),
-  )
+  const { analyses } = await fetchApi('GET', `/analyses/${experimentId}`)
+  return await yup.array(analysisSchema).defined().validate(analyses)
 }
 
 const AnalysesApi = {
