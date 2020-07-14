@@ -189,7 +189,10 @@ export const experimentFullSchema = experimentBareSchema
 export type ExperimentFull = yup.InferType<typeof experimentFullSchema>
 
 // Just a stub for now
-export const experimentCreateSchema = experimentFullSchema
+export const experimentCreateSchema = experimentFullSchema.shape({
+  experimentId: idSchema.nullable(),
+})
+export type ExperimentFullCreate = yup.InferType<typeof experimentFullSchema>
 
 export enum RecommendationReason {
   CiInRope = 'ci_in_rope',

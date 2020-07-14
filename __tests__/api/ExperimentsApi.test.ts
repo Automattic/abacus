@@ -1,5 +1,5 @@
 import ExperimentsApi from '@/api/ExperimentsApi'
-import { ExperimentFull, Platform, Status } from '@/models'
+import { Platform, Status } from '@/lib/schemas'
 
 const PLATFORMS = Object.values(Platform)
 const STATUSES = Object.values(Status)
@@ -7,23 +7,20 @@ const STATUSES = Object.values(Status)
 describe('ExperimentsApi.ts module', () => {
   describe('create', () => {
     it('should create a new experiment', async () => {
-      const newExperiment = await ExperimentsApi.create(
-        new ExperimentFull({
-          experimentId: null,
-          name: 'my_experiment',
-          startDatetime: new Date(Date.UTC(2020, 4, 1)),
-          endDatetime: new Date(Date.UTC(2020, 4, 4)),
-          status: Status.Staging,
-          platform: Platform.Wpcom,
-          ownerLogin: 'wp_johnsmith',
-          description: 'My first experiment.',
-          existingUsersAllowed: true,
-          p2Url: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
-          variations: [],
-          segmentAssignments: [],
-          metricAssignments: [],
-        }),
-      )
+      const newExperiment = await ExperimentsApi.create({
+        name: 'my_experiment',
+        startDatetime: new Date(Date.UTC(2020, 4, 1)),
+        endDatetime: new Date(Date.UTC(2020, 4, 4)),
+        status: Status.Staging,
+        platform: Platform.Wpcom,
+        ownerLogin: 'wp_johnsmith',
+        description: 'My first experiment.',
+        existingUsersAllowed: true,
+        p2Url: 'https://betterexperiments.a8c.com/2020-04-28/my-experiment',
+        variations: [],
+        segmentAssignments: [],
+        metricAssignments: [],
+      })
       // We expect that the response will return the new experiment with its newly
       // assigned ID. These integration tests test against the "development" API which
       // only returns mock data. So, instead of trying to keep in sync with the actual

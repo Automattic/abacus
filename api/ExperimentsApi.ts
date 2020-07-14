@@ -15,7 +15,7 @@ import { fetchApi } from './utils'
  *
  * Note: Be sure to handle any errors that may be thrown.
  */
-async function create(experiment: ExperimentFull) {
+async function create(experiment: Partial<ExperimentFull>) {
   return await experimentFullSchema.validate(
     await fetchApi('POST', '/experiments', await experimentCreateSchema.validate(experiment)),
   )
