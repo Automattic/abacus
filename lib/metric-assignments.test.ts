@@ -1,9 +1,9 @@
 import Fixtures from '@/helpers/fixtures'
 
-import * as MetricAssignments from './metricAssignment'
+import * as MetricAssignments from './metric-assignments'
 import { AttributionWindowSeconds } from './schemas'
 
-describe('lib/metricAssignment.ts module', () => {
+describe('lib/metric-assignments.ts module', () => {
   describe('getSortedMetricAssignments', () => {
     it('returns the metric assignments sorted in the canonical order', () => {
       const sortedMetricAssignments = [

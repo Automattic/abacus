@@ -9,8 +9,8 @@ import Typography from '@material-ui/core/Typography'
 import React, { useMemo } from 'react'
 
 import Label from '@/components/Label'
-import { attributionWindowSecondsToHuman } from '@/lib/metricAssignment'
-import * as MetricAssignments from '@/lib/metricAssignment'
+import { attributionWindowSecondsToHuman } from '@/lib/metric-assignments'
+import * as MetricAssignments from '@/lib/metric-assignments'
 import { ExperimentFull, MetricAssignment, MetricBare } from '@/lib/schemas'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
 
