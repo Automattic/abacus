@@ -7,7 +7,7 @@ import Label from '@/components/Label'
 import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from '@/lib/analyses'
 import * as Experiments from '@/lib/experiments'
 import * as MetricAssignments from '@/lib/metric-assignments'
-import { attributionWindowSecondsToHuman } from '@/lib/metric-assignments'
+import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import { Analysis, ExperimentFull, MetricAssignment, MetricBare } from '@/lib/schemas'
 import * as Variations from '@/lib/variations'
 import { createStaticTableOptions } from '@/utils/material-table'
@@ -53,7 +53,7 @@ export default function CondensedLatestAnalyses({
     {
       title: 'Attribution window',
       render: ({ metricAssignment }: { metricAssignment: MetricAssignment }) =>
-        attributionWindowSecondsToHuman(metricAssignment.attributionWindowSeconds),
+        AttributionWindowSecondsToHuman[metricAssignment.attributionWindowSeconds],
     },
     {
       title: 'Recommendation',

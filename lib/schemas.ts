@@ -86,7 +86,7 @@ export const metricAssignmentSchema = yup
       .integer()
       .positive()
       .oneOf(Object.values(AttributionWindowSeconds) as number[])
-      .defined(),
+      .defined() as yup.Schema<AttributionWindowSeconds>,
     changeExpected: yup.bool().defined(),
     experimentId: idSchema.defined(),
     isPrimary: yup.bool().defined(),

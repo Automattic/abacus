@@ -7,7 +7,7 @@ import DatetimeText from '@/components/DatetimeText'
 import RecommendationString from '@/components/experiment-results/RecommendationString'
 import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from '@/lib/analyses'
 import * as MetricAssignments from '@/lib/metric-assignments'
-import { attributionWindowSecondsToHuman } from '@/lib/metric-assignments'
+import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import { Analysis, ExperimentFull, MetricBare } from '@/lib/schemas'
 import { createStaticTableOptions } from '@/utils/material-table'
 
@@ -75,7 +75,7 @@ export default function FullLatestAnalyses({
             <strong>
               <code>{metric.name}</code>
             </strong>{' '}
-            with {attributionWindowSecondsToHuman(metricAssignment.attributionWindowSeconds)} attribution,{' '}
+            with {AttributionWindowSecondsToHuman[metricAssignment.attributionWindowSeconds]} attribution,{' '}
             {latestAnalyses.length > 0 ? (
               <>
                 last analyzed on <DatetimeText datetime={latestAnalyses[0].analysisDatetime} excludeTime={true} />

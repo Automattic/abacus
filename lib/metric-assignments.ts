@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 import { AttributionWindowSeconds, MetricAssignment } from './schemas'
 
-const AttributionWindowSecondsToHuman = {
+export const AttributionWindowSecondsToHuman: Record<AttributionWindowSeconds, string> = {
   [AttributionWindowSeconds.OneHour]: '1 hour',
   [AttributionWindowSeconds.SixHours]: '6 hours',
   [AttributionWindowSeconds.TwelveHours]: '12 hours',
@@ -12,10 +12,6 @@ const AttributionWindowSecondsToHuman = {
   [AttributionWindowSeconds.TwoWeeks]: '2 weeks',
   [AttributionWindowSeconds.ThreeWeeks]: '3 weeks',
   [AttributionWindowSeconds.FourWeeks]: '4 weeks',
-}
-
-export const attributionWindowSecondsToHuman = (seconds: AttributionWindowSeconds): string => {
-  return AttributionWindowSecondsToHuman[seconds]
 }
 
 /**
