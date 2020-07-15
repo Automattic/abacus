@@ -1,6 +1,3 @@
-/* eslint-disable */
-// This is temporary for the WIP,
-
 import { getExperimentsAuthInfo } from '@/utils/auth'
 
 import NotFoundError from './NotFoundError'
@@ -18,7 +15,7 @@ const PRODUCTION_API_URL_ROOT = 'https://public-api.wordpress.com/wpcom/v2/exper
  *
  * @throws UnauthorizedError
  */
-async function fetchApi(method: string, path: string, body: any | null = null) {
+async function fetchApi(method: string, path: string, body: unknown | null = null) {
   /* istanbul ignore next; code branch not reachable in integration tests -- we don't hit production */
   const apiUrlRoot = window.location.host === 'experiments.a8c.com' ? PRODUCTION_API_URL_ROOT : DEVELOPMENT_API_URL_ROOT
 
