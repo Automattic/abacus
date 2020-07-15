@@ -62,7 +62,7 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
     {
       label: 'Variations',
       padding: 'none' as TableCellProps['padding'],
-      value: <VariationsTable variations={Variations.getSortedVariations(experiment.variations)} />,
+      value: <VariationsTable variations={Variations.sort(experiment.variations)} />,
     },
     {
       label: 'Segments',

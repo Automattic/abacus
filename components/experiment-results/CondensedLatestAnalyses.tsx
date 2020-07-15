@@ -107,7 +107,7 @@ function AnalysisDetailPanel({ analysis, experiment }: { analysis: Analysis; exp
       <dt>Analyzed participants</dt>
       <dd>
         {analysis.participantStats.total} ({analysis.participantStats.not_final} not final
-        {Variations.getSortedVariations(experiment.variations).map(({ variationId, name }) => (
+        {Variations.sort(experiment.variations).map(({ variationId, name }) => (
           <span key={variationId}>
             ; {analysis.participantStats[`variation_${variationId}`]} in {name}
           </span>

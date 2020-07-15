@@ -1,7 +1,7 @@
 import * as Variations from './variations'
 
 describe('lib/variations.ts module', () => {
-  describe('getSortedVariations', () => {
+  describe('sort', () => {
     it('returns the variations sorted in the canonical order', () => {
       const sortedVariations = [
         {
@@ -24,13 +24,9 @@ describe('lib/variations.ts module', () => {
         },
       ]
 
-      expect(Variations.getSortedVariations(sortedVariations)).toEqual(sortedVariations)
-      expect(Variations.getSortedVariations([sortedVariations[1], sortedVariations[0], sortedVariations[2]])).toEqual(
-        sortedVariations,
-      )
-      expect(Variations.getSortedVariations([sortedVariations[2], sortedVariations[1], sortedVariations[0]])).toEqual(
-        sortedVariations,
-      )
+      expect(Variations.sort(sortedVariations)).toEqual(sortedVariations)
+      expect(Variations.sort([sortedVariations[1], sortedVariations[0], sortedVariations[2]])).toEqual(sortedVariations)
+      expect(Variations.sort([sortedVariations[2], sortedVariations[1], sortedVariations[0]])).toEqual(sortedVariations)
     })
   })
 })

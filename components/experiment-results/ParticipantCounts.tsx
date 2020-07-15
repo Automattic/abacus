@@ -20,7 +20,7 @@ export default function ParticipantCounts({
     { title: 'Strategy', render: ({ analysisStrategy }: Analysis) => AnalysisStrategyToHuman[analysisStrategy] },
     { title: 'Total', render: ({ participantStats }: Analysis) => participantStats.total },
   ]
-  Variations.getSortedVariations(experiment.variations).forEach(({ variationId, name }) => {
+  Variations.sort(experiment.variations).forEach(({ variationId, name }) => {
     tableColumns.push({
       title: name,
       render: ({ participantStats }: Analysis) => participantStats[`variation_${variationId}`] || 0,
