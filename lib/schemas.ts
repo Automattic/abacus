@@ -40,7 +40,7 @@ export const metricRevenueParamsSchema = yup
 
 export type MetricRevenueParams = yup.InferType<typeof metricRevenueParamsSchema>
 
-export enum MetricParameterTypes {
+export enum MetricParameterType {
   Conversion = 'conversion',
   Revenue = 'revenue',
 }
@@ -50,7 +50,7 @@ export const metricBareSchema = yup
     metricId: idSchema.defined(),
     name: nameSchema.defined(),
     description: yup.string().defined(),
-    parameterType: yup.string().oneOf(Object.values(MetricParameterTypes)).defined(),
+    parameterType: yup.string().oneOf(Object.values(MetricParameterType)).defined(),
   })
   .defined()
   .camelCase()

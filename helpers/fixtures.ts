@@ -14,7 +14,7 @@ import {
   MetricAssignment,
   MetricBare,
   MetricFull,
-  MetricParameterTypes,
+  MetricParameterType,
   Platform,
   RecommendationReason,
   RecommendationWarning,
@@ -329,7 +329,7 @@ function createMetricBare(id: number): MetricBare {
     metricId: id,
     name: `metric_${id}`,
     description: `This is metric ${id}`,
-    parameterType: id % 2 === 0 ? MetricParameterTypes.Revenue : MetricParameterTypes.Conversion,
+    parameterType: id % 2 === 0 ? MetricParameterType.Revenue : MetricParameterType.Conversion,
   }
 }
 
@@ -340,7 +340,7 @@ function createMetricBares(numMetrics = 3) {
 function createMetricFull(id: number): MetricFull {
   // Note: It is hard to reuse createMetricBare here as it is boxed
   //       Currently we only unbox it into an ApiData format which is different from this
-  const parameterType = id % 2 === 0 ? MetricParameterTypes.Revenue : MetricParameterTypes.Conversion
+  const parameterType = id % 2 === 0 ? MetricParameterType.Revenue : MetricParameterType.Conversion
   const eventParams = [{ event: 'event_name', props: { has_blocks: 'true' } }]
   const revenueParams = {
     refundDays: id * 2,
@@ -353,8 +353,8 @@ function createMetricFull(id: number): MetricFull {
     description: `This is metric ${id}`,
     parameterType,
     higherIsBetter: id % 3 === 0,
-    eventParams: parameterType === MetricParameterTypes.Conversion ? eventParams : undefined,
-    revenueParams: parameterType === MetricParameterTypes.Revenue ? revenueParams : undefined,
+    eventParams: parameterType === MetricParameterType.Conversion ? eventParams : undefined,
+    revenueParams: parameterType === MetricParameterType.Revenue ? revenueParams : undefined,
   }
 }
 
