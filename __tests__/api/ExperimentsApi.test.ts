@@ -7,7 +7,7 @@ describe('ExperimentsApi.ts module', () => {
   describe('create', () => {
     it('should create a new experiment', async () => {
       try {
-        await ExperimentsApi.create({
+        const experiment = await ExperimentsApi.create({
           name: 'my_experiment',
           startDatetime: new Date(Date.UTC(2020, 4, 1)),
           endDatetime: new Date(Date.UTC(2020, 4, 4)),
@@ -21,6 +21,7 @@ describe('ExperimentsApi.ts module', () => {
           segmentAssignments: [],
           metricAssignments: [],
         })
+        expect(experiment.experimentId).toBeGreaterThan(0)
       } catch (e) {
         if (e instanceof ValidationError) {
           expect(e.errors).toEqual([])
@@ -33,7 +34,8 @@ describe('ExperimentsApi.ts module', () => {
   describe('findAll', () => {
     it('should return a set of experiments with the expected experiment shape', async () => {
       try {
-        await ExperimentsApi.findAll()
+        const experiments = await ExperimentsApi.findAll()
+        expect(experiments.length).toBeGreaterThan(0)
       } catch (e) {
         if (e instanceof ValidationError) {
           expect(e.errors).toEqual([])
@@ -46,7 +48,8 @@ describe('ExperimentsApi.ts module', () => {
   describe('findById', () => {
     it('should return an experiment with the expected experiment shape', async () => {
       try {
-        await ExperimentsApi.findById(123)
+        const experiment = await ExperimentsApi.findById(123)
+        expect(experiment.experimentId).toBeGreaterThan(0)
       } catch (e) {
         if (e instanceof ValidationError) {
           expect(e.errors).toEqual([])

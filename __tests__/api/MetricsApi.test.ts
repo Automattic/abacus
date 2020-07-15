@@ -7,7 +7,8 @@ describe('MetricsApi.ts module', () => {
   describe('findAll', () => {
     it('should return a set of metrics with the expected metric shape', async () => {
       try {
-        await MetricsApi.findAll()
+        const metrics = await MetricsApi.findAll()
+        expect(metrics.length).toBeGreaterThan(0)
       } catch (e) {
         if (e instanceof ValidationError) {
           expect(e.errors).toEqual([])
@@ -22,7 +23,8 @@ describe('MetricsApi.ts module', () => {
       // TODO: Test different metrics with different parameter types (conversion and
       // revenue). Can't do it now because only one metric is available to test.
       try {
-        await MetricsApi.findById(31)
+        const metric = await MetricsApi.findById(31)
+        expect(metric.metricId).toBeGreaterThan(0)
       } catch (e) {
         if (e instanceof ValidationError) {
           expect(e.errors).toEqual([])
