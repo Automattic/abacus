@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme: Theme) =>
 function MetricAssignmentsPanel({ experiment, metrics }: { experiment: ExperimentFull; metrics: MetricBare[] }) {
   const classes = useStyles()
   const resolvedMetricAssignments = useMemo(
-    () => resolveMetricAssignments(MetricAssignments.getSortedMetricAssignments(experiment.metricAssignments), metrics),
+    () => resolveMetricAssignments(MetricAssignments.sort(experiment.metricAssignments), metrics),
     [experiment, metrics],
   )
 

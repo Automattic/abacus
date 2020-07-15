@@ -25,7 +25,7 @@ export default function FullLatestAnalyses({
 }) {
   // Sort the assignments for consistency and collect the data we need to render the component.
   const resultSummaries = useMemo(() => {
-    return MetricAssignments.getSortedMetricAssignments(experiment.metricAssignments).map((metricAssignment) => {
+    return MetricAssignments.sort(experiment.metricAssignments).map((metricAssignment) => {
       return {
         metricAssignment,
         metric: metricsById[metricAssignment.metricId],

@@ -17,6 +17,6 @@ export const AttributionWindowSecondsToHuman: Record<AttributionWindowSeconds, s
 /**
  * Return the experiment's variations sorted in the canonical order: Primary first, then by ID.
  */
-export function getSortedMetricAssignments(metricAssignments: MetricAssignment[]) {
+export function sort(metricAssignments: MetricAssignment[]) {
   return _.orderBy(metricAssignments, ['isPrimary', 'metricAssignmentId'], ['desc', 'asc'])
 }

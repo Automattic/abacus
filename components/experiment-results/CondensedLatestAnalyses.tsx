@@ -29,18 +29,16 @@ export default function CondensedLatestAnalyses({
 }) {
   // Sort the assignments for consistency and collect the data we need to render the component.
   const defaultAnalysisStrategy = Experiments.getDefaultAnalysisStrategy(experiment)
-  const resultSummaries = MetricAssignments.getSortedMetricAssignments(experiment.metricAssignments).map(
-    (metricAssignment) => {
-      const latestAnalyses = metricAssignmentIdToLatestAnalyses[metricAssignment.metricAssignmentId] || []
-      const uniqueRecommendations = _.uniq(latestAnalyses.map(({ recommendation }) => JSON.stringify(recommendation)))
-      return {
-        metricAssignment,
-        metric: metricsById[metricAssignment.metricId],
-        analysis: latestAnalyses.find((analysis) => analysis.analysisStrategy === defaultAnalysisStrategy),
-        recommendationConflict: uniqueRecommendations.length > 1,
-      }
-    },
-  )
+  const resultSummaries = MetricAssignments.sort(experiment.metricAssignments).map((metricAssignment) => {
+    const latestAnalyses = metricAssignmentIdToLatestAnalyses[metricAssignment.metricAssignmentId] || []
+    const uniqueRecommendations = _.uniq(latestAnalyses.map(({ recommendation }) => JSON.stringify(recommendation)))
+    return {
+      metricAssignment,
+      metric: metricsById[metricAssignment.metricId],
+      analysis: latestAnalyses.find((analysis) => analysis.analysisStrategy === defaultAnalysisStrategy),
+      recommendationConflict: uniqueRecommendations.length > 1,
+    }
+  })
   const tableColumns = [
     {
       title: 'Metric',

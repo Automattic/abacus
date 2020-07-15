@@ -4,7 +4,7 @@ import * as MetricAssignments from './metric-assignments'
 import { AttributionWindowSeconds } from './schemas'
 
 describe('lib/metric-assignments.ts module', () => {
-  describe('getSortedMetricAssignments', () => {
+  describe('sort', () => {
     it('returns the metric assignments sorted in the canonical order', () => {
       const sortedMetricAssignments = [
         Fixtures.createMetricAssignment({
@@ -33,20 +33,12 @@ describe('lib/metric-assignments.ts module', () => {
         }),
       ]
 
-      expect(MetricAssignments.getSortedMetricAssignments(sortedMetricAssignments)).toEqual(sortedMetricAssignments)
+      expect(MetricAssignments.sort(sortedMetricAssignments)).toEqual(sortedMetricAssignments)
       expect(
-        MetricAssignments.getSortedMetricAssignments([
-          sortedMetricAssignments[1],
-          sortedMetricAssignments[0],
-          sortedMetricAssignments[2],
-        ]),
+        MetricAssignments.sort([sortedMetricAssignments[1], sortedMetricAssignments[0], sortedMetricAssignments[2]]),
       ).toEqual(sortedMetricAssignments)
       expect(
-        MetricAssignments.getSortedMetricAssignments([
-          sortedMetricAssignments[2],
-          sortedMetricAssignments[1],
-          sortedMetricAssignments[0],
-        ]),
+        MetricAssignments.sort([sortedMetricAssignments[2], sortedMetricAssignments[1], sortedMetricAssignments[0]]),
       ).toEqual(sortedMetricAssignments)
     })
   })
