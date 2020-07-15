@@ -15,10 +15,10 @@ import { fetchApi } from './utils'
  *
  * Note: Be sure to handle any errors that may be thrown.
  */
-async function create(experiment: Partial<ExperimentFull>) {
-  return await experimentFullSchema.validate(
-    await fetchApi('POST', '/experiments', await experimentCreateSchema.validate(experiment, { abortEarly: false })),
-  )
+async function create(newExperiment: Partial<ExperimentFull>) {
+  const validatedNewExperiment = await experimentCreateSchema.validate(newExperiment, { abortEarly: false })
+  const experiment = await fetchApi('POST', '/experiments', validatedNewExperiment)
+  return await experimentFullSchema.validate(experiment)
 }
 
 /**
@@ -39,7 +39,8 @@ async function findAll(): Promise<ExperimentBare[]> {
  * @param id - The ID of the experiment to fetch.
  */
 async function findById(id: number): Promise<ExperimentFull> {
-  return await experimentFullSchema.validate(await fetchApi('GET', `/experiments/${id}`), { abortEarly: false })
+  const experiment = await fetchApi('GET', `/experiments/${id}`)
+  return await experimentFullSchema.validate(experiment, { abortEarly: false })
 }
 
 const ExperimentsApi = {

@@ -12,7 +12,7 @@ import { fetchApi } from './utils'
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<MetricBare[]> {
-  const metrics = (await fetchApi('GET', '/metrics')).metrics
+  const { metrics } = await fetchApi('GET', '/metrics')
   return await yup.array(metricBareSchema).defined().validate(metrics, { abortEarly: false })
 }
 
