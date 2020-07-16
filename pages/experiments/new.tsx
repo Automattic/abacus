@@ -1,4 +1,4 @@
-import { LinearProgress, Paper, Typography } from '@material-ui/core'
+import { LinearProgress, Typography } from '@material-ui/core'
 import debugFactory from 'debug'
 import React from 'react'
 
@@ -34,22 +34,20 @@ const ExperimentsNewPage = function () {
 
   return (
     <Layout title='Create an Experiment'>
-      <Paper>
-        <Typography variant='h5'>initialExperiment</Typography>
-        {isLoading && <LinearProgress />}
-        {!isLoading && metrics && segments && (
-          <ExperimentForm metrics={metrics} segments={segments} initialExperiment={initialExperiment} />
-        )}
-        <pre>{JSON.stringify(initialExperiment, null, 2)}</pre>
-        {!isLoading && (
-          <>
-            <Typography variant='h5'>metrics</Typography>
-            <pre>{JSON.stringify(metrics, null, 2)}</pre>
-            <Typography variant='h5'>segments</Typography>
-            <pre>{JSON.stringify(segments, null, 2)}</pre>
-          </>
-        )}
-      </Paper>
+      {isLoading && <LinearProgress />}
+      {!isLoading && metrics && segments && (
+        <ExperimentForm metrics={metrics} segments={segments} initialExperiment={initialExperiment} />
+      )}
+      <Typography variant='h5'>initialExperiment</Typography>
+      <pre>{JSON.stringify(initialExperiment, null, 2)}</pre>
+      {!isLoading && (
+        <>
+          <Typography variant='h5'>metrics</Typography>
+          <pre>{JSON.stringify(metrics, null, 2)}</pre>
+          <Typography variant='h5'>segments</Typography>
+          <pre>{JSON.stringify(segments, null, 2)}</pre>
+        </>
+      )}
     </Layout>
   )
 }

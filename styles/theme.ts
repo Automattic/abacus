@@ -26,6 +26,8 @@ const headingDefaults = {
   lineHeight: 1.2,
 }
 
+const monospaceFontStack = `'Roboto Mono', monospace`
+
 // The base theme is used to provide defaults for other themes to depend on.
 // Idea came from
 // https://stackoverflow.com/questions/47977618/accessing-previous-theme-variables-in-createmuitheme.
@@ -33,6 +35,19 @@ const baseTheme = createMuiTheme()
 
 const theme = createMuiTheme({
   overrides: {
+    MuiInputBase: {
+      root: {
+        fontFamily: monospaceFontStack,
+      },
+    },
+    MuiInputLabel: {
+      root: {
+        textTransform: 'lowercase',
+        '&::first-letter': {
+          textTransform: 'uppercase',
+        },
+      },
+    },
     MuiCssBaseline: {
       '@global': {
         // Remove the last table cell border of a top-level MuiTable when in MuiPaper.
@@ -112,7 +127,7 @@ const theme = createMuiTheme({
   },
   custom: {
     fonts: {
-      monospace: `'Roboto Mono', monospace`,
+      monospace: monospaceFontStack,
     },
     fontWeights: {
       monospaceBold: 700,
