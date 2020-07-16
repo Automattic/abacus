@@ -63,6 +63,7 @@ export const MockFormik = ({ children }: { children: React.ReactNode }) => {
 /**
  * Validation Error Displayer
  */
+/* istanbul ignore next; Minor display helper */
 export async function validationErrorDisplayer<T>(promise: Promise<T>): Promise<T> {
   try {
     return await promise
