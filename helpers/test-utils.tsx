@@ -48,13 +48,7 @@ export function createMatchMedia(width: number) {
  */
 export const MockFormik = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Formik
-      initialValues={{}}
-      onSubmit={
-        /* istanbul ignore next; This is unused */
-        () => undefined
-      }
-    >
+    <Formik initialValues={{}} onSubmit={() => undefined}>
       {children}
     </Formik>
   )
@@ -63,7 +57,6 @@ export const MockFormik = ({ children }: { children: React.ReactNode }) => {
 /**
  * Validation Error Displayer
  */
-/* istanbul ignore next; Minor display helper */
 export async function validationErrorDisplayer<T>(promise: Promise<T>): Promise<T> {
   try {
     return await promise
