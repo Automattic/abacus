@@ -2,6 +2,7 @@ import { Queries, render as actualRender, RenderOptions } from '@testing-library
 import mediaQuery from 'css-mediaquery'
 import { Formik } from 'formik'
 import React from 'react'
+import { ValidationError } from 'yup'
 
 import ThemeProvider from '@/styles/ThemeProvider'
 
@@ -57,4 +58,18 @@ export const MockFormik = ({ children }: { children: React.ReactNode }) => {
       {children}
     </Formik>
   )
+}
+
+/**
+ * Validation Error Displayer
+ */
+export async function validationErrorDisplayer<T>(promise: Promise<T>): Promise<T> {
+  try {
+    return await promise
+  } catch (err) {
+    if (err instanceof ValidationError) {
+      expect(err.errors).toEqual([])
+    }
+    throw err
+  }
 }
