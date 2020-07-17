@@ -7,10 +7,13 @@ import React from 'react'
 
 import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import RenderErrorView from '@/components/RenderErrorView'
+import { setupYupUiValidationMessages } from '@/lib/validation'
 import ThemeProvider from '@/styles/ThemeProvider'
 import { getAuthClientId, getExperimentsAuthInfo, saveExperimentsAuthInfo } from '@/utils/auth'
 
 const debug = debugFactory('abacus:pages/_app.tsx')
+
+setupYupUiValidationMessages()
 
 const useStyles = makeStyles({
   app: {
