@@ -64,6 +64,8 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
+      // for now
+      height: '100vh',
     },
     navigation: {
       flexShrink: 0,
@@ -71,6 +73,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     form: {
       flex: 1,
+      display: 'flex',
+      height: '100%',
+      overflow: 'hidden',
     },
     // TODO: Subject to change when we get to polishing overall form UX
     formPaper: {
@@ -113,9 +118,7 @@ const ExperimentForm = ({
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <FormPart>
-                <Paper className={classes.formPaper}>
-                  <Beginning />
-                </Paper>
+                <Beginning />
               </FormPart>
               <FormPart>
                 <Paper className={classes.formPaper}>
