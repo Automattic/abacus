@@ -23,289 +23,285 @@ test('renders as expected', () => {
           class="makeStyles-navigation-2"
         >
           <div
-            class="MuiPaper-root makeStyles-paper-6 MuiPaper-elevation1 MuiPaper-rounded"
+            class="MuiPaper-root MuiStepper-root MuiStepper-vertical MuiPaper-elevation0"
           >
             <div
-              class="MuiPaper-root MuiStepper-root MuiStepper-vertical MuiPaper-elevation0"
+              class="MuiStep-root MuiStep-vertical"
             >
-              <div
-                class="MuiStep-root MuiStep-vertical"
-              >
-                <button
-                  class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
-                  tabindex="0"
-                  type="button"
-                >
-                  <span
-                    class="MuiStepLabel-root MuiStepLabel-vertical"
-                  >
-                    <span
-                      class="MuiStepLabel-iconContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="MuiSvgIcon-root MuiStepIcon-root MuiStepIcon-active"
-                        focusable="false"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="12"
-                        />
-                        <text
-                          class="MuiStepIcon-text"
-                          text-anchor="middle"
-                          x="12"
-                          y="16"
-                        >
-                          1
-                        </text>
-                      </svg>
-                    </span>
-                    <span
-                      class="MuiStepLabel-labelContainer"
-                    >
-                      <span
-                        class="MuiTypography-root MuiStepLabel-label MuiStepLabel-active MuiTypography-body2 MuiTypography-displayBlock"
-                      >
-                        Start
-                      </span>
-                    </span>
-                  </span>
-                  <span
-                    class="MuiTouchRipple-root MuiStepButton-touchRipple"
-                  />
-                </button>
-              </div>
-              <div
-                class="MuiStepConnector-root MuiStepConnector-vertical"
+              <button
+                class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+                tabindex="0"
+                type="button"
               >
                 <span
-                  class="MuiStepConnector-line MuiStepConnector-lineVertical"
-                />
-              </div>
-              <div
-                class="MuiStep-root MuiStep-vertical"
-              >
-                <button
-                  class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
-                  tabindex="0"
-                  type="button"
+                  class="MuiStepLabel-root MuiStepLabel-vertical"
                 >
                   <span
-                    class="MuiStepLabel-root MuiStepLabel-vertical"
+                    class="MuiStepLabel-iconContainer"
                   >
-                    <span
-                      class="MuiStepLabel-iconContainer"
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiStepIcon-root MuiStepIcon-active"
+                      focusable="false"
+                      viewBox="0 0 24 24"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="MuiSvgIcon-root MuiStepIcon-root"
-                        focusable="false"
-                        viewBox="0 0 24 24"
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="12"
+                      />
+                      <text
+                        class="MuiStepIcon-text"
+                        text-anchor="middle"
+                        x="12"
+                        y="16"
                       >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="12"
-                        />
-                        <text
-                          class="MuiStepIcon-text"
-                          text-anchor="middle"
-                          x="12"
-                          y="16"
-                        >
-                          2
-                        </text>
-                      </svg>
-                    </span>
-                    <span
-                      class="MuiStepLabel-labelContainer"
-                    >
-                      <span
-                        class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
-                      >
-                        Basic Info
-                      </span>
-                    </span>
+                        1
+                      </text>
+                    </svg>
                   </span>
                   <span
-                    class="MuiTouchRipple-root MuiStepButton-touchRipple"
-                  />
-                </button>
-              </div>
-              <div
-                class="MuiStepConnector-root MuiStepConnector-vertical"
+                    class="MuiStepLabel-labelContainer"
+                  >
+                    <span
+                      class="MuiTypography-root MuiStepLabel-label MuiStepLabel-active MuiTypography-body2 MuiTypography-displayBlock"
+                    >
+                      Start
+                    </span>
+                  </span>
+                </span>
+                <span
+                  class="MuiTouchRipple-root MuiStepButton-touchRipple"
+                />
+              </button>
+            </div>
+            <div
+              class="MuiStepConnector-root MuiStepConnector-vertical"
+            >
+              <span
+                class="MuiStepConnector-line MuiStepConnector-lineVertical"
+              />
+            </div>
+            <div
+              class="MuiStep-root MuiStep-vertical"
+            >
+              <button
+                class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+                tabindex="0"
+                type="button"
               >
                 <span
-                  class="MuiStepConnector-line MuiStepConnector-lineVertical"
-                />
-              </div>
-              <div
-                class="MuiStep-root MuiStep-vertical"
-              >
-                <button
-                  class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
-                  tabindex="0"
-                  type="button"
+                  class="MuiStepLabel-root MuiStepLabel-vertical"
                 >
                   <span
-                    class="MuiStepLabel-root MuiStepLabel-vertical"
+                    class="MuiStepLabel-iconContainer"
                   >
-                    <span
-                      class="MuiStepLabel-iconContainer"
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiStepIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="MuiSvgIcon-root MuiStepIcon-root"
-                        focusable="false"
-                        viewBox="0 0 24 24"
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="12"
+                      />
+                      <text
+                        class="MuiStepIcon-text"
+                        text-anchor="middle"
+                        x="12"
+                        y="16"
                       >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="12"
-                        />
-                        <text
-                          class="MuiStepIcon-text"
-                          text-anchor="middle"
-                          x="12"
-                          y="16"
-                        >
-                          3
-                        </text>
-                      </svg>
-                    </span>
-                    <span
-                      class="MuiStepLabel-labelContainer"
-                    >
-                      <span
-                        class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
-                      >
-                        Audience
-                      </span>
-                    </span>
+                        2
+                      </text>
+                    </svg>
                   </span>
                   <span
-                    class="MuiTouchRipple-root MuiStepButton-touchRipple"
-                  />
-                </button>
-              </div>
-              <div
-                class="MuiStepConnector-root MuiStepConnector-vertical"
+                    class="MuiStepLabel-labelContainer"
+                  >
+                    <span
+                      class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
+                    >
+                      Basic Info
+                    </span>
+                  </span>
+                </span>
+                <span
+                  class="MuiTouchRipple-root MuiStepButton-touchRipple"
+                />
+              </button>
+            </div>
+            <div
+              class="MuiStepConnector-root MuiStepConnector-vertical"
+            >
+              <span
+                class="MuiStepConnector-line MuiStepConnector-lineVertical"
+              />
+            </div>
+            <div
+              class="MuiStep-root MuiStep-vertical"
+            >
+              <button
+                class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+                tabindex="0"
+                type="button"
               >
                 <span
-                  class="MuiStepConnector-line MuiStepConnector-lineVertical"
-                />
-              </div>
-              <div
-                class="MuiStep-root MuiStep-vertical"
-              >
-                <button
-                  class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
-                  tabindex="0"
-                  type="button"
+                  class="MuiStepLabel-root MuiStepLabel-vertical"
                 >
                   <span
-                    class="MuiStepLabel-root MuiStepLabel-vertical"
+                    class="MuiStepLabel-iconContainer"
                   >
-                    <span
-                      class="MuiStepLabel-iconContainer"
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiStepIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="MuiSvgIcon-root MuiStepIcon-root"
-                        focusable="false"
-                        viewBox="0 0 24 24"
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="12"
+                      />
+                      <text
+                        class="MuiStepIcon-text"
+                        text-anchor="middle"
+                        x="12"
+                        y="16"
                       >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="12"
-                        />
-                        <text
-                          class="MuiStepIcon-text"
-                          text-anchor="middle"
-                          x="12"
-                          y="16"
-                        >
-                          4
-                        </text>
-                      </svg>
-                    </span>
-                    <span
-                      class="MuiStepLabel-labelContainer"
-                    >
-                      <span
-                        class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
-                      >
-                        Metrics
-                      </span>
-                    </span>
+                        3
+                      </text>
+                    </svg>
                   </span>
                   <span
-                    class="MuiTouchRipple-root MuiStepButton-touchRipple"
-                  />
-                </button>
-              </div>
-              <div
-                class="MuiStepConnector-root MuiStepConnector-vertical"
+                    class="MuiStepLabel-labelContainer"
+                  >
+                    <span
+                      class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
+                    >
+                      Audience
+                    </span>
+                  </span>
+                </span>
+                <span
+                  class="MuiTouchRipple-root MuiStepButton-touchRipple"
+                />
+              </button>
+            </div>
+            <div
+              class="MuiStepConnector-root MuiStepConnector-vertical"
+            >
+              <span
+                class="MuiStepConnector-line MuiStepConnector-lineVertical"
+              />
+            </div>
+            <div
+              class="MuiStep-root MuiStep-vertical"
+            >
+              <button
+                class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+                tabindex="0"
+                type="button"
               >
                 <span
-                  class="MuiStepConnector-line MuiStepConnector-lineVertical"
-                />
-              </div>
-              <div
-                class="MuiStep-root MuiStep-vertical"
-              >
-                <button
-                  class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
-                  tabindex="0"
-                  type="button"
+                  class="MuiStepLabel-root MuiStepLabel-vertical"
                 >
                   <span
-                    class="MuiStepLabel-root MuiStepLabel-vertical"
+                    class="MuiStepLabel-iconContainer"
                   >
-                    <span
-                      class="MuiStepLabel-iconContainer"
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiStepIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
                     >
-                      <svg
-                        aria-hidden="true"
-                        class="MuiSvgIcon-root MuiStepIcon-root"
-                        focusable="false"
-                        viewBox="0 0 24 24"
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="12"
+                      />
+                      <text
+                        class="MuiStepIcon-text"
+                        text-anchor="middle"
+                        x="12"
+                        y="16"
                       >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="12"
-                        />
-                        <text
-                          class="MuiStepIcon-text"
-                          text-anchor="middle"
-                          x="12"
-                          y="16"
-                        >
-                          5
-                        </text>
-                      </svg>
-                    </span>
-                    <span
-                      class="MuiStepLabel-labelContainer"
-                    >
-                      <span
-                        class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
-                      >
-                        Submit
-                      </span>
-                    </span>
+                        4
+                      </text>
+                    </svg>
                   </span>
                   <span
-                    class="MuiTouchRipple-root MuiStepButton-touchRipple"
-                  />
-                </button>
-              </div>
+                    class="MuiStepLabel-labelContainer"
+                  >
+                    <span
+                      class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
+                    >
+                      Metrics
+                    </span>
+                  </span>
+                </span>
+                <span
+                  class="MuiTouchRipple-root MuiStepButton-touchRipple"
+                />
+              </button>
+            </div>
+            <div
+              class="MuiStepConnector-root MuiStepConnector-vertical"
+            >
+              <span
+                class="MuiStepConnector-line MuiStepConnector-lineVertical"
+              />
+            </div>
+            <div
+              class="MuiStep-root MuiStep-vertical"
+            >
+              <button
+                class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiStepLabel-root MuiStepLabel-vertical"
+                >
+                  <span
+                    class="MuiStepLabel-iconContainer"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiStepIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="12"
+                      />
+                      <text
+                        class="MuiStepIcon-text"
+                        text-anchor="middle"
+                        x="12"
+                        y="16"
+                      >
+                        5
+                      </text>
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiStepLabel-labelContainer"
+                  >
+                    <span
+                      class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
+                    >
+                      Submit
+                    </span>
+                  </span>
+                </span>
+                <span
+                  class="MuiTouchRipple-root MuiStepButton-touchRipple"
+                />
+              </button>
             </div>
           </div>
         </div>

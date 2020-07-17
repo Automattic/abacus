@@ -151,15 +151,13 @@ const ExperimentForm = ({
   return (
     <div className={classes.root}>
       <div className={classes.navigation}>
-        <Paper className={classes.paper}>
-          <Stepper nonLinear activeStep={currentStageId} orientation='vertical'>
-            {stages.map((stage) => (
-              <Step key={stage.id} completed={completeStages.includes(stage.id)}>
-                <StepButton onClick={() => changeStage(stage.id)}>{stage.title}</StepButton>
-              </Step>
-            ))}
-          </Stepper>
-        </Paper>
+        <Stepper nonLinear activeStep={currentStageId} orientation='vertical'>
+          {stages.map((stage) => (
+            <Step key={stage.id} completed={completeStages.includes(stage.id)}>
+              <StepButton onClick={() => changeStage(stage.id)}>{stage.title}</StepButton>
+            </Step>
+          ))}
+        </Stepper>
       </div>
       <div className={classes.form}>
         <Formik initialValues={{ experiment: initialExperiment }} onSubmit={(v) => alert(JSON.stringify(v, null, 2))}>
