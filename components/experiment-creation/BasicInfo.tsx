@@ -78,7 +78,7 @@ const BasicInfo = () => {
         <Field
           component={TextField}
           className={classes.datePicker}
-          name='experiment.start_date'
+          name='experiment.startDatetime'
           label='Start date'
           type='date'
           variant='outlined'
@@ -91,7 +91,7 @@ const BasicInfo = () => {
         <Field
           component={TextField}
           className={classes.datePicker}
-          name='experiment.end_date'
+          name='experiment.endDatetime'
           label='End date'
           type='date'
           variant='outlined'
