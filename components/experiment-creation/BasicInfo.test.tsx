@@ -150,7 +150,7 @@ test('renders as expected', () => {
               <input
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input"
-                name="experiment.start_date"
+                name="experiment.startDatetime"
                 required=""
                 type="date"
                 value=""
@@ -197,7 +197,7 @@ test('renders as expected', () => {
               <input
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input"
-                name="experiment.end_date"
+                name="experiment.endDatetime"
                 required=""
                 type="date"
                 value=""

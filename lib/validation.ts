@@ -1,3 +1,5 @@
+/* istanbul ignore file; this is just config, will be tested through integration */
+/* (istanbul wouldn't let me just ignore the function) */
 import * as yup from 'yup'
 
 /**

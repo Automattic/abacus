@@ -162,6 +162,7 @@ export const experimentBareSchema = yup
       .defined()
       .when(
         'startDatetime',
+        /* istanbul ignore next; should be e2e tested */
         (startDatetime: Date, schema: yup.DateSchema) =>
           startDatetime && schema.min(startDatetime, 'End date must be after Start date.'),
       ),
