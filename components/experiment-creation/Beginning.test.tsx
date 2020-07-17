@@ -66,20 +66,6 @@ test('renders as expected', () => {
             </div>
           </div>
         </div>
-        <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-beginButton-5 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
-          tabindex="0"
-          type="button"
-        >
-          <span
-            class="MuiButton-label"
-          >
-            Begin
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
       </div>
     </div>
   `)
