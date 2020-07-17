@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
     p2EntryField: {
       marginTop: theme.spacing(1),
       width: '100%',
+      background: '#fff',
     },
     beginButton: {
       display: 'block',
