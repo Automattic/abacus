@@ -51,7 +51,6 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
-      marginTop: theme.spacing(2),
       // For WIP until I fix the rest of the layout
       height: 'calc(100vh - 110px - 43px)',
     },
@@ -68,6 +67,10 @@ const useStyles = makeStyles((theme: Theme) =>
     formPart: {
       height: '100%',
       overflow: 'auto',
+    },
+    formPartActions: {
+      display: 'flex',
+      justifyContent: 'flex-end',
     },
     // TODO: Subject to change when we get to polishing overall form UX
     formPaper: {
@@ -102,9 +105,19 @@ const ExperimentForm = ({
     [StageId.Submit]: formPartSubmitRef,
   }
 
-  const [activeStageId, setActiveStageId] = useState<StageId>(StageId.Beginning)
-  const activeStageIndex = stages.findIndex((stage) => stage.id === activeStageId)
+  const [currentStageId, setActiveStageId] = useState<StageId>(StageId.Beginning)
+  const currentStageIndex = stages.findIndex((stage) => stage.id === currentStageId)
+  const [completeStages, setCompleteStages] = useState<StageId[]>([])
+  const markStageComplete = (stageId: StageId) => {
+    completeStages.includes(currentStageId) || setCompleteStages([...completeStages, currentStageId])
+  }
+  const markStageIncomplete = (stageId: StageId) => {
+    const index = completeStages.findIndex((stageIdCur) => stageIdCur === stageId)
+    index && setCompleteStages(completeStages.splice(index, 1))
+  }
+  const [errorStages, setErrorStages] = useState<StageId[]>([])
   const changeStage = (stageId: StageId) => {
+    // TODO: Update current stage error and complete state
     setActiveStageId(stageId)
     if (stageFormPartRefs[stageId].current) {
       // Not sure why typescript is complaining about needing the '?'
@@ -112,12 +125,33 @@ const ExperimentForm = ({
     }
   }
 
+  const prevStage = () => {
+    if (currentStageIndex === 0) {
+      return
+    }
+    const prevStageIndex = currentStageIndex - 1
+
+    // Just to Demo: This will actually go on changeState
+    markStageIncomplete(currentStageId)
+    changeStage(stages[prevStageIndex].id)
+  }
+  const nextStage = () => {
+    if (stages.length <= currentStageIndex) {
+      return
+    }
+    const nextStageIndex = currentStageIndex + 1
+
+    // Just to Demo: This will actually go on changeState
+    markStageComplete(currentStageId)
+    changeStage(stages[nextStageIndex].id)
+  }
+
   return (
     <div className={classes.root}>
       <div className={classes.navigation}>
-        <Stepper nonLinear activeStep={activeStageId} orientation='vertical'>
+        <Stepper nonLinear activeStep={currentStageId} orientation='vertical'>
           {stages.map((stage) => (
-            <Step key={stage.id}>
+            <Step key={stage.id} completed={completeStages.includes(stage.id)}>
               <StepButton onClick={() => changeStage(stage.id)}>{stage.title}</StepButton>
             </Step>
           ))}
@@ -129,31 +163,54 @@ const ExperimentForm = ({
             <form onSubmit={handleSubmit}>
               <div className={classes.formPart} ref={formPartBeginningRef}>
                 <Beginning />
+                <div className={classes.formPartActions}>
+                  <Button onClick={nextStage} variant='contained' color='primary'>
+                    Begin
+                  </Button>
+                </div>
               </div>
               <div className={classes.formPart} ref={formPartBasicInfoRef}>
                 <Paper className={classes.formPaper}>
                   <BasicInfo />
                 </Paper>
+                <div className={classes.formPartActions}>
+                  <Button onClick={prevStage}>Previous</Button>
+                  <Button onClick={nextStage} variant='contained' color='primary'>
+                    Next
+                  </Button>
+                </div>
               </div>
               <div className={classes.formPart} ref={formPartAudienceRef}>
                 <Paper className={classes.formPaper}>
                   <Typography variant='body1'>Audience Form Part</Typography>
                 </Paper>
+                <div className={classes.formPartActions}>
+                  <Button onClick={prevStage}>Previous</Button>
+                  <Button onClick={nextStage} variant='contained' color='primary'>
+                    Next
+                  </Button>
+                </div>
               </div>
               <div className={classes.formPart} ref={formPartMetricsRef}>
                 <Paper className={classes.formPaper}>
                   <Typography variant='body1'>Metrics Form Part</Typography>
                 </Paper>
+                <div className={classes.formPartActions}>
+                  <Button onClick={prevStage}>Previous</Button>
+                  <Button onClick={nextStage} variant='contained' color='primary'>
+                    Next
+                  </Button>
+                </div>
               </div>
               <div className={classes.formPart} ref={formPartSubmitRef}>
                 <Paper className={classes.formPaper}>
                   <Typography variant='body1' gutterBottom>
                     Paragraph about confirming a user is ready to submit. With a handy:
                   </Typography>
-                  <Button type='submit' variant='contained'>
-                    Submit
-                  </Button>
                 </Paper>
+                <Button type='submit' variant='contained' color='secondary'>
+                  Submit
+                </Button>
               </div>
             </form>
           )}

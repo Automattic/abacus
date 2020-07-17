@@ -1,4 +1,4 @@
-import { Button, Typography } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Field } from 'formik'
 import { TextField } from 'formik-material-ui'
@@ -51,10 +51,6 @@ const Beginning = () => {
           variant='outlined'
         />
       </div>
-
-      <Button className={classes.beginButton} variant='contained' color='primary' size='large'>
-        Begin
-      </Button>
     </div>
   )
 }
