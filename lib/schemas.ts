@@ -4,7 +4,10 @@
 import * as yup from 'yup'
 
 const idSchema = yup.number().integer().positive()
-const nameSchema = yup.string().max(128)
+const nameSchema = yup
+  .string()
+  .max(128)
+  .matches(/^[a-z][a-z0-9_]*[a-z0-9]$/, 'This field must use a basic snake_case.')
 
 export const eventSchema = yup
   .object({
@@ -146,12 +149,22 @@ export enum Status {
   Disabled = 'disabled',
 }
 
+const lengthOfDayInMilliseconds = 24 * 60 * 60 * 1000
+const yesterday = new Date(new Date().getTime() - lengthOfDayInMilliseconds)
+
 export const experimentBareSchema = yup
   .object({
     experimentId: idSchema.defined(),
     name: nameSchema.defined(),
     startDatetime: yup.date().defined(),
-    endDatetime: yup.date().defined(),
+    endDatetime: yup
+      .date()
+      .defined()
+      .when(
+        'startDatetime',
+        (startDatetime: Date, schema: yup.DateSchema) =>
+          startDatetime && schema.min(startDatetime, 'End date must be after Start date.'),
+      ),
     status: yup.string().oneOf(Object.values(Status)).defined(),
     platform: yup.string().oneOf(Object.values(Platform)).defined(),
     ownerLogin: yup.string().defined(),
@@ -169,17 +182,18 @@ export const experimentFullSchema = experimentBareSchema
     conclusionUrl: yup.string().url().nullable(),
     deployedVariationId: idSchema.nullable().notRequired(),
     exposureEvents: yup.array<Event>(eventSchema).nullable(),
-    metricAssignments: yup.array(metricAssignmentSchema).defined(),
+    metricAssignments: yup.array(metricAssignmentSchema).defined().min(1),
     segmentAssignments: yup.array(segmentAssignmentSchema).defined(),
-    variations: yup.array(variationSchema).defined(),
+    variations: yup.array(variationSchema).defined().min(2),
   })
   .defined()
   .camelCase()
 export type ExperimentFull = yup.InferType<typeof experimentFullSchema>
 
-// Just a stub for now
 export const experimentCreateSchema = experimentFullSchema.shape({
   experimentId: idSchema.nullable(),
+  // Using yesterday here to avoid timezone issues
+  startDatetime: yup.date().defined().min(yesterday, 'Start date must be in the future.'),
 })
 export type ExperimentFullCreate = yup.InferType<typeof experimentCreateSchema>
 

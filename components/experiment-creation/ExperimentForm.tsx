@@ -7,7 +7,7 @@ import { Formik } from 'formik'
 import React from 'react'
 import * as yup from 'yup'
 
-import { ExperimentFull, experimentFullSchema, MetricBare, Segment } from '@/lib/schemas'
+import { experimentCreateSchema, ExperimentFull, MetricBare, Segment } from '@/lib/schemas'
 
 import BasicInfo from './BasicInfo'
 import Beginning from './Beginning'
@@ -40,7 +40,7 @@ const ExperimentForm = ({
       <Formik
         initialValues={{ experiment: initialExperiment }}
         onSubmit={(v) => alert(JSON.stringify(v, null, 2))}
-        validationSchema={yup.object({ experiment: experimentFullSchema })}
+        validationSchema={yup.object({ experiment: experimentCreateSchema })}
       >
         {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
