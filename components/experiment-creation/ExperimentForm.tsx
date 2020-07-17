@@ -71,12 +71,14 @@ const useStyles = makeStyles((theme: Theme) =>
     formPartActions: {
       display: 'flex',
       justifyContent: 'flex-end',
+      '& .MuiButton-root': {
+        marginLeft: theme.spacing(2),
+      },
     },
     // TODO: Subject to change when we get to polishing overall form UX
-    formPaper: {
-      maxWidth: '36rem',
+    paper: {
       padding: theme.spacing(2, 6),
-      margin: theme.spacing(2, 0),
+      marginBottom: theme.spacing(2),
     },
   }),
 )
@@ -149,13 +151,15 @@ const ExperimentForm = ({
   return (
     <div className={classes.root}>
       <div className={classes.navigation}>
-        <Stepper nonLinear activeStep={currentStageId} orientation='vertical'>
-          {stages.map((stage) => (
-            <Step key={stage.id} completed={completeStages.includes(stage.id)}>
-              <StepButton onClick={() => changeStage(stage.id)}>{stage.title}</StepButton>
-            </Step>
-          ))}
-        </Stepper>
+        <Paper className={classes.paper}>
+          <Stepper nonLinear activeStep={currentStageId} orientation='vertical'>
+            {stages.map((stage) => (
+              <Step key={stage.id} completed={completeStages.includes(stage.id)}>
+                <StepButton onClick={() => changeStage(stage.id)}>{stage.title}</StepButton>
+              </Step>
+            ))}
+          </Stepper>
+        </Paper>
       </div>
       <div className={classes.form}>
         <Formik initialValues={{ experiment: initialExperiment }} onSubmit={(v) => alert(JSON.stringify(v, null, 2))}>
@@ -170,7 +174,7 @@ const ExperimentForm = ({
                 </div>
               </div>
               <div className={classes.formPart} ref={formPartBasicInfoRef}>
-                <Paper className={classes.formPaper}>
+                <Paper className={classes.paper}>
                   <BasicInfo />
                 </Paper>
                 <div className={classes.formPartActions}>
@@ -181,7 +185,7 @@ const ExperimentForm = ({
                 </div>
               </div>
               <div className={classes.formPart} ref={formPartAudienceRef}>
-                <Paper className={classes.formPaper}>
+                <Paper className={classes.paper}>
                   <Typography variant='body1'>Audience Form Part</Typography>
                 </Paper>
                 <div className={classes.formPartActions}>
@@ -192,7 +196,7 @@ const ExperimentForm = ({
                 </div>
               </div>
               <div className={classes.formPart} ref={formPartMetricsRef}>
-                <Paper className={classes.formPaper}>
+                <Paper className={classes.paper}>
                   <Typography variant='body1'>Metrics Form Part</Typography>
                 </Paper>
                 <div className={classes.formPartActions}>
@@ -203,14 +207,26 @@ const ExperimentForm = ({
                 </div>
               </div>
               <div className={classes.formPart} ref={formPartSubmitRef}>
-                <Paper className={classes.formPaper}>
+                <Paper className={classes.paper}>
                   <Typography variant='body1' gutterBottom>
-                    Paragraph about confirming a user is ready to submit. With a handy:
+                    This last form-part gives the users a chance to pause and consider.
+                    <br />
+                    <br />
+                    It is good to have a mini-checklist here.
+                    <br />
+                    <br />
+                    Maybe a pre-submission summary.
+                    <br />
+                    <br />
+                    It is also good for the users to know the consequences of submitting so they aren&apos;t afraid of
+                    pressing the button.
                   </Typography>
                 </Paper>
-                <Button type='submit' variant='contained' color='secondary'>
-                  Submit
-                </Button>
+                <div className={classes.formPartActions}>
+                  <Button type='submit' variant='contained' color='secondary'>
+                    Submit
+                  </Button>
+                </div>
               </div>
             </form>
           )}

@@ -6,11 +6,7 @@ import React from 'react'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      maxWidth: '36rem',
-      // TODO: Remove, this is just for the storybook.
-      margin: '2rem auto',
-    },
+    root: {},
     p2LinkLine: {
       margin: theme.spacing(6, 0),
     },
