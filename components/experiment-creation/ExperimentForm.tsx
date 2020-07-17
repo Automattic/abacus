@@ -1,10 +1,10 @@
 // Temporarily ignore until more parts are in place
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* istanbul ignore file */
-import { Button, Paper, Step, StepButton, Stepper } from '@material-ui/core'
+import { Button, Paper, Step, StepButton, Stepper, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Formik } from 'formik'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import { ExperimentFull, MetricBare, Segment } from '@/lib/schemas'
 
@@ -47,25 +47,13 @@ const stages: Stage[] = [
   },
 ]
 
-const useFormPartStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      height: '100%',
-    },
-  }),
-)
-
-const FormPart = ({ children }: { children: React.ReactNode }) => {
-  const classes = useFormPartStyles()
-  return <div className={classes.root}>{children}</div>
-}
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
-      // for now
-      height: '100vh',
+      marginTop: theme.spacing(2),
+      // For WIP until I fix the rest of the layout
+      height: 'calc(100vh - 110px - 43px)',
     },
     navigation: {
       flexShrink: 0,
@@ -76,6 +64,10 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       height: '100%',
       overflow: 'hidden',
+    },
+    formPart: {
+      height: '100%',
+      overflow: 'auto',
     },
     // TODO: Subject to change when we get to polishing overall form UX
     formPaper: {
@@ -97,9 +89,27 @@ const ExperimentForm = ({
 }) => {
   const classes = useStyles()
 
+  const formPartBeginningRef = useRef<HTMLDivElement>(null)
+  const formPartBasicInfoRef = useRef<HTMLDivElement>(null)
+  const formPartAudienceRef = useRef<HTMLDivElement>(null)
+  const formPartMetricsRef = useRef<HTMLDivElement>(null)
+  const formPartSubmitRef = useRef<HTMLDivElement>(null)
+  const stageFormPartRefs: Record<StageId, React.RefObject<HTMLDivElement>> = {
+    [StageId.Beginning]: formPartBeginningRef,
+    [StageId.BasicInfo]: formPartBasicInfoRef,
+    [StageId.Audience]: formPartAudienceRef,
+    [StageId.Metrics]: formPartMetricsRef,
+    [StageId.Submit]: formPartSubmitRef,
+  }
+
   const [activeStageId, setActiveStageId] = useState<StageId>(StageId.Beginning)
+  const activeStageIndex = stages.findIndex((stage) => stage.id === activeStageId)
   const changeStage = (stageId: StageId) => {
     setActiveStageId(stageId)
+    if (stageFormPartRefs[stageId].current) {
+      // Not sure why typescript is complaining about needing the '?'
+      stageFormPartRefs[stageId].current?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' })
+    }
   }
 
   return (
@@ -117,19 +127,34 @@ const ExperimentForm = ({
         <Formik initialValues={{ experiment: initialExperiment }} onSubmit={(v) => alert(JSON.stringify(v, null, 2))}>
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <FormPart>
+              <div className={classes.formPart} ref={formPartBeginningRef}>
                 <Beginning />
-              </FormPart>
-              <FormPart>
+              </div>
+              <div className={classes.formPart} ref={formPartBasicInfoRef}>
                 <Paper className={classes.formPaper}>
                   <BasicInfo />
                 </Paper>
-              </FormPart>
-              <FormPart>
-                <Button type='submit' variant='contained'>
-                  Submit
-                </Button>
-              </FormPart>
+              </div>
+              <div className={classes.formPart} ref={formPartAudienceRef}>
+                <Paper className={classes.formPaper}>
+                  <Typography variant='body1'>Audience Form Part</Typography>
+                </Paper>
+              </div>
+              <div className={classes.formPart} ref={formPartMetricsRef}>
+                <Paper className={classes.formPaper}>
+                  <Typography variant='body1'>Metrics Form Part</Typography>
+                </Paper>
+              </div>
+              <div className={classes.formPart} ref={formPartSubmitRef}>
+                <Paper className={classes.formPaper}>
+                  <Typography variant='body1' gutterBottom>
+                    Paragraph about confirming a user is ready to submit. With a handy:
+                  </Typography>
+                  <Button type='submit' variant='contained'>
+                    Submit
+                  </Button>
+                </Paper>
+              </div>
             </form>
           )}
         </Formik>
