@@ -11,11 +11,24 @@ import { ExperimentFull, MetricBare, Segment } from '@/lib/schemas'
 import BasicInfo from './BasicInfo'
 import Beginning from './Beginning'
 
+const useFormPartStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      height: '100%',
+    },
+  }),
+)
+
+const FormPart = ({ children }: { children: React.ReactNode }) => {
+  const classes = useFormPartStyles()
+  return <div className={classes.root}>{children}</div>
+}
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
     // TODO: Subject to change when we get to polishing overall form UX
-    formPart: {
+    formPaper: {
       maxWidth: '36rem',
       padding: theme.spacing(2, 6),
       margin: theme.spacing(2, 0),
@@ -39,15 +52,21 @@ const ExperimentForm = ({
       <Formik initialValues={{ experiment: initialExperiment }} onSubmit={(v) => alert(JSON.stringify(v, null, 2))}>
         {({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <Paper className={classes.formPart}>
-              <Beginning />
-            </Paper>
-            <Paper className={classes.formPart}>
-              <BasicInfo />
-            </Paper>
-            <Button type='submit' variant='contained'>
-              Submit
-            </Button>
+            <FormPart>
+              <Paper className={classes.formPaper}>
+                <Beginning />
+              </Paper>
+            </FormPart>
+            <FormPart>
+              <Paper className={classes.formPaper}>
+                <BasicInfo />
+              </Paper>
+            </FormPart>
+            <FormPart>
+              <Button type='submit' variant='contained'>
+                Submit
+              </Button>
+            </FormPart>
           </form>
         )}
       </Formik>
