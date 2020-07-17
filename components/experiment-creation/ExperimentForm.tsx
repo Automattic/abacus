@@ -1,15 +1,51 @@
 // Temporarily ignore until more parts are in place
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* istanbul ignore file */
-import { Button, Paper } from '@material-ui/core'
+import { Button, Paper, Step, StepButton, Stepper } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Formik } from 'formik'
-import React from 'react'
+import React, { useState } from 'react'
 
 import { ExperimentFull, MetricBare, Segment } from '@/lib/schemas'
 
 import BasicInfo from './BasicInfo'
 import Beginning from './Beginning'
+
+enum StageId {
+  Beginning,
+  BasicInfo,
+  Audience,
+  Metrics,
+  Submit,
+}
+
+interface Stage {
+  id: StageId
+  title: string
+}
+
+const stages: Stage[] = [
+  {
+    id: StageId.Beginning,
+    title: 'Start',
+  },
+  {
+    id: StageId.BasicInfo,
+    title: 'Basic Info',
+  },
+  {
+    id: StageId.Audience,
+    title: 'Audience',
+  },
+  {
+    id: StageId.Metrics,
+    title: 'Metrics',
+  },
+  {
+    id: StageId.Submit,
+    title: 'Submit',
+  },
+]
 
 const useFormPartStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,6 +67,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     navigation: {
       flexShrink: 0,
+      marginRight: theme.spacing(6),
     },
     form: {
       flex: 1,
@@ -55,9 +92,22 @@ const ExperimentForm = ({
 }) => {
   const classes = useStyles()
 
+  const [activeStageId, setActiveStageId] = useState<StageId>(StageId.Beginning)
+  const changeStage = (stageId: StageId) => {
+    setActiveStageId(stageId)
+  }
+
   return (
     <div className={classes.root}>
-      <div className={classes.navigation}></div>
+      <div className={classes.navigation}>
+        <Stepper nonLinear activeStep={activeStageId} orientation='vertical'>
+          {stages.map((stage) => (
+            <Step key={stage.id}>
+              <StepButton onClick={() => changeStage(stage.id)}>{stage.title}</StepButton>
+            </Step>
+          ))}
+        </Stepper>
+      </div>
       <div className={classes.form}>
         <Formik initialValues={{ experiment: initialExperiment }} onSubmit={(v) => alert(JSON.stringify(v, null, 2))}>
           {({ handleSubmit }) => (
