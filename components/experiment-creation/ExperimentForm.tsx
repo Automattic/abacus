@@ -26,7 +26,15 @@ const FormPart = ({ children }: { children: React.ReactNode }) => {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {},
+    root: {
+      display: 'flex',
+    },
+    navigation: {
+      flexShrink: 0,
+    },
+    form: {
+      flex: 1,
+    },
     // TODO: Subject to change when we get to polishing overall form UX
     formPaper: {
       maxWidth: '36rem',
@@ -49,27 +57,30 @@ const ExperimentForm = ({
 
   return (
     <div className={classes.root}>
-      <Formik initialValues={{ experiment: initialExperiment }} onSubmit={(v) => alert(JSON.stringify(v, null, 2))}>
-        {({ handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <FormPart>
-              <Paper className={classes.formPaper}>
-                <Beginning />
-              </Paper>
-            </FormPart>
-            <FormPart>
-              <Paper className={classes.formPaper}>
-                <BasicInfo />
-              </Paper>
-            </FormPart>
-            <FormPart>
-              <Button type='submit' variant='contained'>
-                Submit
-              </Button>
-            </FormPart>
-          </form>
-        )}
-      </Formik>
+      <div className={classes.navigation}></div>
+      <div className={classes.form}>
+        <Formik initialValues={{ experiment: initialExperiment }} onSubmit={(v) => alert(JSON.stringify(v, null, 2))}>
+          {({ handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
+              <FormPart>
+                <Paper className={classes.formPaper}>
+                  <Beginning />
+                </Paper>
+              </FormPart>
+              <FormPart>
+                <Paper className={classes.formPaper}>
+                  <BasicInfo />
+                </Paper>
+              </FormPart>
+              <FormPart>
+                <Button type='submit' variant='contained'>
+                  Submit
+                </Button>
+              </FormPart>
+            </form>
+          )}
+        </Formik>
+      </div>
     </div>
   )
 }
