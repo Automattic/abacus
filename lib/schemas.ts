@@ -1,6 +1,7 @@
 // Schema documentation lives at:
 // https://app.swaggerhub.com/apis/yanir/experiments/0.1.0
 
+import * as dateFns from 'date-fns'
 import * as yup from 'yup'
 
 const idSchema = yup.number().integer().positive()
@@ -149,20 +150,14 @@ export enum Status {
   Disabled = 'disabled',
 }
 
+export const MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS = 12
+export const MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS = 12
 export const experimentBareSchema = yup
   .object({
     experimentId: idSchema.defined(),
     name: nameSchema.defined(),
     startDatetime: yup.date().defined(),
-    endDatetime: yup
-      .date()
-      .defined()
-      .when(
-        'startDatetime',
-        /* istanbul ignore next; should be e2e tested */
-        (startDatetime: Date, schema: yup.DateSchema) =>
-          startDatetime && schema.min(startDatetime, 'End date must be after start date.'),
-      ),
+    endDatetime: yup.date().defined(),
     status: yup.string().oneOf(Object.values(Status)).defined(),
     platform: yup.string().oneOf(Object.values(Platform)).defined(),
     ownerLogin: yup.string().defined(),
@@ -192,7 +187,29 @@ const now = new Date()
 export const experimentCreateSchema = experimentFullSchema.shape({
   experimentId: idSchema.nullable(),
   // Using yesterday here to avoid timezone issues
-  startDatetime: yup.date().defined().min(now, 'Start date (UTC) must be in the future.'),
+  startDatetime: yup
+    .date()
+    .defined()
+    .min(now, 'Start date (UTC) must be in the future.')
+    .max(
+      dateFns.addMonths(now, MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS),
+      `Start date must be within ${MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS} months from now.`,
+    ),
+  endDatetime: yup
+    .date()
+    .defined()
+    .when(
+      'startDatetime',
+      /* istanbul ignore next; should be e2e tested */
+      (startDatetime: Date, schema: yup.DateSchema) =>
+        startDatetime &&
+        schema
+          .min(startDatetime, 'End date must be after start date.')
+          .max(
+            dateFns.addMonths(startDatetime, MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS),
+            `End date must be within ${MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS} months of start date.`,
+          ),
+    ),
 })
 export type ExperimentFullCreate = yup.InferType<typeof experimentCreateSchema>
 
