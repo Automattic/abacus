@@ -164,7 +164,7 @@ export const experimentBareSchema = yup
         'startDatetime',
         /* istanbul ignore next; should be e2e tested */
         (startDatetime: Date, schema: yup.DateSchema) =>
-          startDatetime && schema.min(startDatetime, 'End date must be after Start date.'),
+          startDatetime && schema.min(startDatetime, 'End date must be after start date.'),
       ),
     status: yup.string().oneOf(Object.values(Status)).defined(),
     platform: yup.string().oneOf(Object.values(Platform)).defined(),
