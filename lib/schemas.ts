@@ -149,9 +149,6 @@ export enum Status {
   Disabled = 'disabled',
 }
 
-const lengthOfDayInMilliseconds = 24 * 60 * 60 * 1000
-const yesterday = new Date(new Date().getTime() - lengthOfDayInMilliseconds)
-
 export const experimentBareSchema = yup
   .object({
     experimentId: idSchema.defined(),
@@ -191,10 +188,11 @@ export const experimentFullSchema = experimentBareSchema
   .camelCase()
 export type ExperimentFull = yup.InferType<typeof experimentFullSchema>
 
+const now = new Date()
 export const experimentCreateSchema = experimentFullSchema.shape({
   experimentId: idSchema.nullable(),
   // Using yesterday here to avoid timezone issues
-  startDatetime: yup.date().defined().min(yesterday, 'Start date must be in the future.'),
+  startDatetime: yup.date().defined().min(now, 'Start date must be in the future.'),
 })
 export type ExperimentFullCreate = yup.InferType<typeof experimentCreateSchema>
 
