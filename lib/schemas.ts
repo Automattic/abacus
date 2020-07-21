@@ -192,7 +192,7 @@ const now = new Date()
 export const experimentCreateSchema = experimentFullSchema.shape({
   experimentId: idSchema.nullable(),
   // Using yesterday here to avoid timezone issues
-  startDatetime: yup.date().defined().min(now, 'Start date must be in the future.'),
+  startDatetime: yup.date().defined().min(now, 'Start date (UTC) must be in the future.'),
 })
 export type ExperimentFullCreate = yup.InferType<typeof experimentCreateSchema>
 

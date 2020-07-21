@@ -80,6 +80,7 @@ const BasicInfo = () => {
           className={classes.datePicker}
           name='experiment.startDatetime'
           label='Start date'
+          helperText='Use the UTC timezone.'
           type='date'
           variant='outlined'
           required
@@ -93,6 +94,7 @@ const BasicInfo = () => {
           className={classes.datePicker}
           name='experiment.endDatetime'
           label='End date'
+          helperText='Use the UTC timezone.'
           type='date'
           variant='outlined'
           required
