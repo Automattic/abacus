@@ -48,9 +48,7 @@ const BasicInfo = () => {
   const maxEndDate =
     startDateField.value &&
     dateFns.addMonths(parseDateFromInput(startDateField.value), MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS)
-  const formatDateForInput = (date: Date) => (
-    console.log('formatDate', date), date && dateFns.format(date, 'yyyy-MM-dd')
-  )
+  const formatDateForInput = (date: Date) => date && dateFns.format(date, 'yyyy-MM-dd')
 
   return (
     <div className={classes.root}>
