@@ -48,7 +48,7 @@ const BasicInfo = () => {
   const maxEndDate =
     startDateField.value &&
     dateFns.addMonths(parseDateFromInput(startDateField.value), MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS)
-  const formatDateForInput = (date: Date) => date && dateFns.format(date, 'yyyy-MM-dd')
+  const formatDateForInput = (date: Date) => (date ? dateFns.format(date, 'yyyy-MM-dd') : undefined)
 
   return (
     <div className={classes.root}>
@@ -95,6 +95,7 @@ const BasicInfo = () => {
           component={TextField}
           className={classes.datePicker}
           name='experiment.startDatetime'
+          id='experiment.startDatetime'
           label='Start date'
           helperText='Use the UTC timezone.'
           type='date'
@@ -113,6 +114,7 @@ const BasicInfo = () => {
           component={TextField}
           className={classes.datePicker}
           name='experiment.endDatetime'
+          id='experiment.startDatetime'
           label='End date'
           helperText='Use the UTC timezone.'
           type='date'
