@@ -63,11 +63,20 @@ export type MetricBare = yup.InferType<typeof metricBareSchema>
 export const metricFullSchema = metricBareSchema
   .shape({
     higherIsBetter: yup.boolean().defined(),
-    eventParams: yup.array(eventSchema),
-    revenueParams: metricRevenueParamsSchema.notRequired(),
+    eventParams: yup.array(eventSchema).nullable(),
+    revenueParams: metricRevenueParamsSchema.notRequired().nullable(),
   })
   .defined()
   .camelCase()
+  .test(
+    'exactly-one-params',
+    'Exactly one of eventParams or revenueParams must be defined.',
+    /* istanbul ignore next; This is a test itself */
+    (metricFull) => {
+      // (Logical XOR)
+      return !!metricFull.eventParams !== !!metricFull.revenueParams
+    },
+  )
 export type MetricFull = yup.InferType<typeof metricFullSchema>
 
 export enum AttributionWindowSeconds {
@@ -92,7 +101,6 @@ export const metricAssignmentSchema = yup
       .oneOf(Object.values(AttributionWindowSeconds) as number[])
       .defined() as yup.Schema<AttributionWindowSeconds>,
     changeExpected: yup.bool().defined(),
-    experimentId: idSchema.defined(),
     isPrimary: yup.bool().defined(),
     metricId: idSchema.defined(),
     minDifference: yup.number().defined(),
@@ -119,7 +127,6 @@ export type Segment = yup.InferType<typeof segmentSchema>
 export const segmentAssignmentSchema = yup
   .object({
     segmentAssignmentId: idSchema.defined(),
-    experimentId: idSchema.defined(),
     segmentId: idSchema.defined(),
     isExcluded: yup.bool().defined(),
   })

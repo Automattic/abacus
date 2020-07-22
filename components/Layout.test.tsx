@@ -82,7 +82,7 @@ test('renders layout with declared title and children', () => {
         <p
           class="MuiTypography-root MuiTypography-body1"
         >
-          The Abacus footer, brought to you by Automattic.
+          The Abacus footer. Brought to you by Automattic.
         </p>
       </div>
     </footer>
