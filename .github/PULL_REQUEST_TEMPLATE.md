@@ -8,7 +8,8 @@
 <!-- Include details of your testing environment, and the tests you ran to -->
 <!-- see how your change affects other areas of the code, etc. -->
 <!-- Delete any bullet points that don't apply and add more details if needed. -->
-* Automated tests that cover added/changed functionality
-* Manual testing with production data (locally)
-* Manual testing with mock data (locally or on Vercel)
-* Additional manual testing instructions (please specify):
+
+- Automated tests that cover added/changed functionality
+- Manual testing with production data (locally)
+- Manual testing with mock data (locally or on Vercel)
+- Additional manual testing instructions (please specify):
