@@ -323,7 +323,13 @@ function createExperimentFullNew(fieldOverrides: Partial<ExperimentFullCreate> =
 }
 
 function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): ExperimentFull {
-  const fieldsOnlyForExistingExperiments = ['experimentId', 'endReason', 'conclusion', 'deployedVariationId', 'status']
+  const fieldsOnlyForExistingExperiments = [
+    'experimentId',
+    'endReason',
+    'conclusionUrl',
+    'deployedVariationId',
+    'status',
+  ]
   const newExperimentFieldOverrides = _.omit(fieldOverrides, fieldsOnlyForExistingExperiments)
   const existingExperimentFieldOverrides = _.pick(fieldOverrides, fieldsOnlyForExistingExperiments)
 

@@ -81,9 +81,9 @@ exports[`renders as expected at large width 1`] = `
                   >
                     <span
                       class="makeStyles-root-3"
-                      title="03/06/2020, 20:00:00"
+                      title="20/09/2020, 20:00:00"
                     >
-                      2020-06-04
+                      2020-09-21
                     </span>
                     <span
                       class="makeStyles-to-1"
@@ -92,9 +92,9 @@ exports[`renders as expected at large width 1`] = `
                     </span>
                     <span
                       class="makeStyles-root-3"
-                      title="03/07/2020, 20:00:00"
+                      title="20/11/2020, 20:00:00"
                     >
-                      2020-07-04
+                      2020-11-21
                     </span>
                   </td>
                 </tr>
@@ -588,9 +588,9 @@ exports[`renders as expected at small width 1`] = `
                   >
                     <span
                       class="makeStyles-root-11"
-                      title="03/06/2020, 20:00:00"
+                      title="20/09/2020, 20:00:00"
                     >
-                      2020-06-04
+                      2020-09-21
                     </span>
                     <span
                       class="makeStyles-to-9"
@@ -599,9 +599,9 @@ exports[`renders as expected at small width 1`] = `
                     </span>
                     <span
                       class="makeStyles-root-11"
-                      title="03/07/2020, 20:00:00"
+                      title="20/11/2020, 20:00:00"
                     >
-                      2020-07-04
+                      2020-11-21
                     </span>
                   </td>
                 </tr>
@@ -1095,9 +1095,9 @@ exports[`renders as expected with conclusion data 1`] = `
                   >
                     <span
                       class="makeStyles-root-19"
-                      title="03/06/2020, 20:00:00"
+                      title="20/09/2020, 20:00:00"
                     >
-                      2020-06-04
+                      2020-09-21
                     </span>
                     <span
                       class="makeStyles-to-17"
@@ -1106,9 +1106,9 @@ exports[`renders as expected with conclusion data 1`] = `
                     </span>
                     <span
                       class="makeStyles-root-19"
-                      title="03/07/2020, 20:00:00"
+                      title="20/11/2020, 20:00:00"
                     >
-                      2020-07-04
+                      2020-11-21
                     </span>
                   </td>
                 </tr>
@@ -1677,9 +1677,9 @@ exports[`renders as expected without conclusion data 1`] = `
                   >
                     <span
                       class="makeStyles-root-27"
-                      title="03/06/2020, 20:00:00"
+                      title="20/09/2020, 20:00:00"
                     >
-                      2020-06-04
+                      2020-09-21
                     </span>
                     <span
                       class="makeStyles-to-25"
@@ -1688,9 +1688,9 @@ exports[`renders as expected without conclusion data 1`] = `
                     </span>
                     <span
                       class="makeStyles-root-27"
-                      title="03/07/2020, 20:00:00"
+                      title="20/11/2020, 20:00:00"
                     >
-                      2020-07-04
+                      2020-11-21
                     </span>
                   </td>
                 </tr>

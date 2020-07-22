@@ -1,9 +1,12 @@
+import MockDate from 'mockdate'
 import React from 'react'
 
 import Fixtures from '@/helpers/fixtures'
 import { render } from '@/helpers/test-utils'
 
 import GeneralPanel from './GeneralPanel'
+
+MockDate.set('2020-07-21')
 
 test('renders as expected', () => {
   const experiment = Fixtures.createExperimentFull()
@@ -78,9 +81,9 @@ test('renders as expected', () => {
               >
                 <span
                   class="makeStyles-root-3"
-                  title="03/06/2020, 20:00:00"
+                  title="20/09/2020, 20:00:00"
                 >
-                  2020-06-04
+                  2020-09-21
                 </span>
                 <span
                   class="makeStyles-to-1"
@@ -89,9 +92,9 @@ test('renders as expected', () => {
                 </span>
                 <span
                   class="makeStyles-root-3"
-                  title="03/07/2020, 20:00:00"
+                  title="20/11/2020, 20:00:00"
                 >
-                  2020-07-04
+                  2020-11-21
                 </span>
               </td>
             </tr>

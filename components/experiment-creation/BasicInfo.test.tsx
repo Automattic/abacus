@@ -7,8 +7,9 @@ import { MockFormik } from '@/helpers/test-utils'
 
 import BasicInfo from './BasicInfo'
 
+MockDate.set('2020-07-21')
+
 test('renders as expected', () => {
-  MockDate.set('2020-07-21')
   const { container } = render(
     <MockFormik>
       <BasicInfo />
