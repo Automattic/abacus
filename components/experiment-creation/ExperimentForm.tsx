@@ -12,6 +12,7 @@ import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment } from 
 import Audience from './Audience'
 import BasicInfo from './BasicInfo'
 import Beginning from './Beginning'
+import Metrics from './Metrics'
 
 enum StageId {
   Beginning,
@@ -201,7 +202,7 @@ const ExperimentForm = ({
               </div>
               <div className={classes.formPart} ref={formPartMetricsRef}>
                 <Paper className={classes.paper}>
-                  <Typography variant='body1'>Metrics Form Part</Typography>
+                  <Metrics />
                 </Paper>
                 <div className={classes.formPartActions}>
                   <Button onClick={prevStage}>Previous</Button>
