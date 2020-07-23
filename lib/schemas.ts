@@ -117,7 +117,7 @@ export enum SegmentType {
 export const segmentSchema = yup
   .object({
     segmentId: idSchema.defined(),
-    name: nameSchema.defined(),
+    name: yup.string().defined(),
     type: yup.string().oneOf(Object.values(SegmentType)).defined(),
   })
   .defined()
