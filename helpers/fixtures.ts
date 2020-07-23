@@ -257,7 +257,7 @@ function createMetricAssignment(fieldOverrides: Partial<MetricAssignment>): Metr
   }
 }
 
-function createExperimentFullNew(fieldOverrides: Partial<ExperimentFullCreate> = {}): ExperimentFullCreate {
+function createExperimentFullNew(fieldOverrides: Partial<ExperimentFullCreate>): ExperimentFullCreate {
   const now = new Date()
   return {
     name: 'experiment_1',

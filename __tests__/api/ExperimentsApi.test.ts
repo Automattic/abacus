@@ -5,7 +5,7 @@ import { validationErrorDisplayer } from '@/helpers/test-utils'
 describe('ExperimentsApi.ts module', () => {
   describe('create', () => {
     it('should create a new experiment', async () => {
-      const experiment = await validationErrorDisplayer(ExperimentsApi.create(Fixtures.createExperimentFullNew()))
+      const experiment = await validationErrorDisplayer(ExperimentsApi.create(Fixtures.createExperimentFullNew({})))
       expect(experiment.experimentId).toBeGreaterThan(0)
     })
   })
