@@ -257,6 +257,7 @@ function createMetricAssignment(fieldOverrides: Partial<MetricAssignment>): Metr
   }
 }
 
+/* istanbul ignore next; All coverage to be removed, see https://github.com/Automattic/abacus/issues/231 */
 function createExperimentFullNew(fieldOverrides: Partial<ExperimentFullNew> = {}): ExperimentFullNew {
   const now = new Date()
   return {
