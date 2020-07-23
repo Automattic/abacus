@@ -247,7 +247,6 @@ function createMetricAssignment(fieldOverrides: Partial<MetricAssignment>): Metr
   return {
     metricAssignmentId: 123,
     metricId: 1,
-    experimentId: 1,
     attributionWindowSeconds: AttributionWindowSeconds.OneWeek,
     changeExpected: true,
     isPrimary: true,
@@ -376,7 +375,6 @@ function createSegments(numSegments: number) {
 function createSegmentAssignment(fieldOverrides: Partial<SegmentAssignment>): SegmentAssignment {
   return {
     segmentAssignmentId: 123,
-    experimentId: 1,
     segmentId: 1,
     isExcluded: false,
     ...fieldOverrides,

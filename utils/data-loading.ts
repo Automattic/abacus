@@ -43,6 +43,7 @@ export function useDataLoadingError<E extends Error | null>(error: E, dataName?:
 
   useEffect(() => {
     if (error) {
+      console.error('DataLoadingError', dataName, error)
       const userErrorMessage = dataName
         ? `Oops! There was a problem loading some data of type: ${dataName}.`
         : 'Oops! There was a problem loading some data.'
