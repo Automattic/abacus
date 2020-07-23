@@ -12,7 +12,7 @@ module.exports = {
     '!<rootDir>/public/**',
     '!<rootDir>/styles/**',
     '!<rootDir>/templates/**',
-    '!<rootDir>/test-helpers/test-utils.tsx',
+    '!<rootDir>/test-helpers/**',
     '!<rootDir>/__tests__/**',
   ],
   coverageThreshold: {
