@@ -1,9 +1,10 @@
-import { LinearProgress, Typography } from '@material-ui/core'
+import { LinearProgress } from '@material-ui/core'
 import debugFactory from 'debug'
 import React from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
+import DebugOutput from '@/components/DebugOutput'
 import ExperimentForm from '@/components/experiment-creation/ExperimentForm'
 import Layout from '@/components/Layout'
 import { createNewExperiment } from '@/lib/experiments'
@@ -38,16 +39,9 @@ const ExperimentsNewPage = function () {
       {!isLoading && metrics && segments && (
         <ExperimentForm metrics={metrics} segments={segments} initialExperiment={initialExperiment} />
       )}
-      <Typography variant='h5'>initialExperiment</Typography>
-      <pre>{JSON.stringify(initialExperiment, null, 2)}</pre>
-      {!isLoading && (
-        <>
-          <Typography variant='h5'>metrics</Typography>
-          <pre>{JSON.stringify(metrics, null, 2)}</pre>
-          <Typography variant='h5'>segments</Typography>
-          <pre>{JSON.stringify(segments, null, 2)}</pre>
-        </>
-      )}
+      <DebugOutput label='Initial Experiment' content={initialExperiment} />
+      <DebugOutput label='Metrics' content={metrics} />
+      <DebugOutput label='Segments' content={segments} />
     </Layout>
   )
 }

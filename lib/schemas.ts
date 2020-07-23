@@ -1,10 +1,14 @@
 // Schema documentation lives at:
 // https://app.swaggerhub.com/apis/yanir/experiments/0.1.0
 
+import * as dateFns from 'date-fns'
 import * as yup from 'yup'
 
 const idSchema = yup.number().integer().positive()
-const nameSchema = yup.string().max(128)
+const nameSchema = yup
+  .string()
+  .max(128)
+  .matches(/^[a-z][a-z0-9_]*[a-z0-9]$/, 'This field must use a basic snake_case.')
 
 export const eventSchema = yup
   .object({
@@ -153,6 +157,8 @@ export enum Status {
   Disabled = 'disabled',
 }
 
+export const MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS = 12
+export const MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS = 12
 export const experimentBareSchema = yup
   .object({
     experimentId: idSchema.defined(),
@@ -176,19 +182,43 @@ export const experimentFullSchema = experimentBareSchema
     conclusionUrl: yup.string().url().nullable(),
     deployedVariationId: idSchema.nullable().notRequired(),
     exposureEvents: yup.array<Event>(eventSchema).nullable(),
-    metricAssignments: yup.array(metricAssignmentSchema).defined(),
+    metricAssignments: yup.array(metricAssignmentSchema).defined().min(1),
     segmentAssignments: yup.array(segmentAssignmentSchema).defined(),
-    variations: yup.array(variationSchema).defined(),
+    variations: yup.array(variationSchema).defined().min(2),
   })
   .defined()
   .camelCase()
 export type ExperimentFull = yup.InferType<typeof experimentFullSchema>
 
-// Just a stub for now
+const now = new Date()
 export const experimentCreateSchema = experimentFullSchema.shape({
   experimentId: idSchema.nullable(),
+  // Using yesterday here to avoid timezone issues
+  startDatetime: yup
+    .date()
+    .defined()
+    .min(now, 'Start date (UTC) must be in the future.')
+    .max(
+      dateFns.addMonths(now, MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS),
+      `Start date must be within ${MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS} months from now.`,
+    ),
+  endDatetime: yup
+    .date()
+    .defined()
+    .when(
+      'startDatetime',
+      /* istanbul ignore next; should be e2e tested */
+      (startDatetime: Date, schema: yup.DateSchema) =>
+        startDatetime &&
+        schema
+          .min(startDatetime, 'End date must be after start date.')
+          .max(
+            dateFns.addMonths(startDatetime, MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS),
+            `End date must be within ${MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS} months of start date.`,
+          ),
+    ),
 })
-export type ExperimentFullCreate = yup.InferType<typeof experimentCreateSchema>
+export type ExperimentFullNew = yup.InferType<typeof experimentCreateSchema>
 
 export enum RecommendationReason {
   CiInRope = 'ci_in_rope',
