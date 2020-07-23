@@ -1,7 +1,7 @@
 import React from 'react'
 
 import ExperimentResults from '@/components/experiment-results/ExperimentResults'
-import Fixtures from '@/helpers/fixtures'
+import Fixtures from '@/test-helpers/fixtures'
 
 export default { title: 'Experiment results' }
 

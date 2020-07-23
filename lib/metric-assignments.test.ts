@@ -1,4 +1,4 @@
-import Fixtures from '@/helpers/fixtures'
+import Fixtures from '@/test-helpers/fixtures'
 
 import * as MetricAssignments from './metric-assignments'
 import { AttributionWindowSeconds } from './schemas'

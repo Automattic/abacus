@@ -2,8 +2,8 @@ import { fireEvent, getAllByText, getByText, waitFor } from '@testing-library/re
 import React from 'react'
 
 import ExperimentResults from '@/components/experiment-results/ExperimentResults'
-import Fixtures from '@/helpers/fixtures'
-import { render } from '@/helpers/test-utils'
+import Fixtures from '@/test-helpers/fixtures'
+import { render } from '@/test-helpers/test-utils'
 
 const experiment = Fixtures.createExperimentFull()
 const metrics = Fixtures.createMetricBares()

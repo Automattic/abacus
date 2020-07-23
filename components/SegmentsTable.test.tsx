@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { render } from '@/helpers/test-utils'
 import { Segment, SegmentType } from '@/lib/schemas'
+import { render } from '@/test-helpers/test-utils'
 
 import SegmentsTable from './SegmentsTable'
 

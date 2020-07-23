@@ -1,6 +1,6 @@
 import ExperimentsApi from '@/api/ExperimentsApi'
-import { validationErrorDisplayer } from '@/helpers/test-utils'
 import { Platform, Status } from '@/lib/schemas'
+import { validationErrorDisplayer } from '@/test-helpers/test-utils'
 
 describe('ExperimentsApi.ts module', () => {
   describe('create', () => {

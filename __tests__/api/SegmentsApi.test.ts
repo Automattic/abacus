@@ -1,5 +1,5 @@
 import SegmentsApi from '@/api/SegmentsApi'
-import { validationErrorDisplayer } from '@/helpers/test-utils'
+import { validationErrorDisplayer } from '@/test-helpers/test-utils'
 
 describe('SegmentsApi.ts module', () => {
   describe('findAll', () => {

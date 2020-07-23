@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Fixtures from '@/helpers/fixtures'
-import { render } from '@/helpers/test-utils'
+import Fixtures from '@/test-helpers/fixtures'
+import { render } from '@/test-helpers/test-utils'
 
 import ExperimentTabs from './ExperimentTabs'
 

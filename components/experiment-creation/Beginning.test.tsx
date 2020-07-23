@@ -2,7 +2,7 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import { MockFormik } from '@/helpers/test-utils'
+import { MockFormik } from '@/test-helpers/test-utils'
 
 import Beginning from './Beginning'
 

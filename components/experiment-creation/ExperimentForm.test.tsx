@@ -2,7 +2,7 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import Fixtures from '@/helpers/fixtures'
+import Fixtures from '@/test-helpers/fixtures'
 
 import ExperimentForm from './ExperimentForm'
 

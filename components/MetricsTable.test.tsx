@@ -3,8 +3,8 @@ import * as notistack from 'notistack'
 import React from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
-import Fixtures from '@/helpers/fixtures'
-import { render } from '@/helpers/test-utils'
+import Fixtures from '@/test-helpers/fixtures'
+import { render } from '@/test-helpers/test-utils'
 
 import MetricsTable from './MetricsTable'
 
