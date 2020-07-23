@@ -132,8 +132,6 @@ export const segmentAssignmentSchema = segmentAssignmentNewSchema
   .shape({
     segmentAssignmentId: idSchema.defined(),
     experimentId: idSchema.defined(),
-    segmentId: idSchema.defined(),
-    isExcluded: yup.bool().defined(),
   })
   .defined()
   .camelCase()
