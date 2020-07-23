@@ -191,8 +191,18 @@ const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Part
             value={segmentExclusionState}
             onChange={onChangeSegmentExclusionState}
           >
-            <FormControlLabel value={SegmentExclusionState.Include} control={<Radio />} label='Include' />
-            <FormControlLabel value={SegmentExclusionState.Exclude} control={<Radio />} label='Exclude' />
+            <FormControlLabel
+              value={SegmentExclusionState.Include}
+              control={<Radio />}
+              label='Include'
+              name='non-formik-segment-exclusion-state-include'
+            />
+            <FormControlLabel
+              value={SegmentExclusionState.Exclude}
+              control={<Radio />}
+              label='Exclude'
+              name='non-formik-segment-exclusion-state-exclude'
+            />
           </MuiRadioGroup>
           <Field
             name='experiment.segmentAssignments'
