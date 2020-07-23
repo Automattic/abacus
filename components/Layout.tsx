@@ -103,7 +103,7 @@ const Layout = ({ title, children }: { title: string; children?: ReactNode }) =>
       </Container>
       <footer className={classes.footer}>
         <Container>
-          <Typography variant='body1'>The Abacus footer, brought to you by Automattic.</Typography>
+          <Typography variant='body1'>The Abacus footer. Brought to you by Automattic.</Typography>
         </Container>
       </footer>
     </div>

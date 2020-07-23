@@ -5,8 +5,9 @@ import { Button, Paper, Step, StepButton, Stepper, Typography } from '@material-
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Formik } from 'formik'
 import React, { useRef, useState } from 'react'
+import * as yup from 'yup'
 
-import { ExperimentFull, MetricBare, Segment } from '@/lib/schemas'
+import { experimentCreateSchema, ExperimentFull, MetricBare, Segment } from '@/lib/schemas'
 
 import BasicInfo from './BasicInfo'
 import Beginning from './Beginning'
@@ -160,7 +161,11 @@ const ExperimentForm = ({
         </Stepper>
       </div>
       <div className={classes.form}>
-        <Formik initialValues={{ experiment: initialExperiment }} onSubmit={(v) => alert(JSON.stringify(v, null, 2))}>
+        <Formik
+          initialValues={{ experiment: initialExperiment }}
+          onSubmit={(v) => alert(JSON.stringify(v, null, 2))}
+          validationSchema={yup.object({ experiment: experimentCreateSchema })}
+        >
           {({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <div className={classes.formPart} ref={formPartBeginningRef}>

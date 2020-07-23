@@ -1,10 +1,13 @@
 /* eslint-disable no-irregular-whitespace */
-import { render } from '@testing-library/react'
+import { act, fireEvent, getByLabelText, render } from '@testing-library/react'
+import MockDate from 'mockdate'
 import React from 'react'
 
 import { MockFormik } from '@/helpers/test-utils'
 
 import BasicInfo from './BasicInfo'
+
+MockDate.set('2020-07-21')
 
 test('renders as expected', () => {
   const { container } = render(
@@ -12,274 +15,58 @@ test('renders as expected', () => {
       <BasicInfo />
     </MockFormik>,
   )
-  expect(container).toMatchInlineSnapshot(`
-    <div>
-      <div
-        class="makeStyles-root-1"
-      >
-        <h2
-          class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
-        >
-          Basic Info
-        </h2>
-        <div
-          class="makeStyles-row-2"
-        >
-          <div
-            class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
-          >
-            <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
-              data-shrink="true"
-            >
-              Experiment name
-              <span
-                aria-hidden="true"
-                class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-              >
-                 
-                *
-              </span>
-            </label>
-            <div
-              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-            >
-              <input
-                aria-invalid="false"
-                class="MuiInputBase-input MuiOutlinedInput-input"
-                name="experiment.name"
-                placeholder="experiment_name"
-                required=""
-                type="text"
-                value=""
-              />
-              <fieldset
-                aria-hidden="true"
-                class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
-                >
-                  <span>
-                    Experiment name
-                     *
-                  </span>
-                </legend>
-              </fieldset>
-            </div>
-            <p
-              class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-            >
-              Use snake_case.
-            </p>
-          </div>
-        </div>
-        <div
-          class="makeStyles-row-2"
-        >
-          <div
-            class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
-          >
-            <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
-              data-shrink="true"
-            >
-              Experiment description
-              <span
-                aria-hidden="true"
-                class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-              >
-                 
-                *
-              </span>
-            </label>
-            <div
-              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
-            >
-              <textarea
-                aria-invalid="false"
-                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
-                name="experiment.description"
-                placeholder="Monthly vs. yearly pricing"
-                required=""
-                rows="4"
-              />
-              <fieldset
-                aria-hidden="true"
-                class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
-                >
-                  <span>
-                    Experiment description
-                     *
-                  </span>
-                </legend>
-              </fieldset>
-            </div>
-            <p
-              class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-            >
-              State your hypothesis.
-            </p>
-          </div>
-        </div>
-        <div
-          class="makeStyles-row-2"
-        >
-          <div
-            class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-4"
-          >
-            <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
-              data-shrink="true"
-            >
-              Start date
-              <span
-                aria-hidden="true"
-                class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-              >
-                 
-                *
-              </span>
-            </label>
-            <div
-              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-            >
-              <input
-                aria-invalid="false"
-                class="MuiInputBase-input MuiOutlinedInput-input"
-                name="experiment.start_date"
-                required=""
-                type="date"
-                value=""
-              />
-              <fieldset
-                aria-hidden="true"
-                class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
-                >
-                  <span>
-                    Start date
-                     *
-                  </span>
-                </legend>
-              </fieldset>
-            </div>
-          </div>
-          <span
-            class="makeStyles-through-3"
-          >
-             through 
-          </span>
-          <div
-            class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-4"
-          >
-            <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
-              data-shrink="true"
-            >
-              End date
-              <span
-                aria-hidden="true"
-                class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-              >
-                 
-                *
-              </span>
-            </label>
-            <div
-              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-            >
-              <input
-                aria-invalid="false"
-                class="MuiInputBase-input MuiOutlinedInput-input"
-                name="experiment.end_date"
-                required=""
-                type="date"
-                value=""
-              />
-              <fieldset
-                aria-hidden="true"
-                class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
-                >
-                  <span>
-                    End date
-                     *
-                  </span>
-                </legend>
-              </fieldset>
-            </div>
-          </div>
-        </div>
-        <div
-          class="makeStyles-row-2"
-        >
-          <div
-            class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
-          >
-            <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
-              data-shrink="true"
-            >
-              Owner
-              <span
-                aria-hidden="true"
-                class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-              >
-                 
-                *
-              </span>
-            </label>
-            <div
-              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
-            >
-              <div
-                class="MuiInputAdornment-root MuiInputAdornment-positionStart"
-              >
-                <p
-                  class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
-                >
-                  @
-                </p>
-              </div>
-              <input
-                aria-invalid="false"
-                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
-                name="experiment.ownerLogin"
-                placeholder="scjr"
-                required=""
-                type="text"
-                value=""
-              />
-              <fieldset
-                aria-hidden="true"
-                class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
-                >
-                  <span>
-                    Owner
-                     *
-                  </span>
-                </legend>
-              </fieldset>
-            </div>
-            <p
-              class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-            >
-              Use WordPress.com username.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  `)
+  expect(container).toMatchSnapshot()
+})
+
+test('renders sensible dates as expected', () => {
+  MockDate.set('2020-07-21')
+  const { container } = render(
+    <MockFormik>
+      <BasicInfo />
+    </MockFormik>,
+  )
+  const startDateInput = getByLabelText(container, /Start date/)
+  const endDateInput = getByLabelText(container, /End date/)
+
+  act(() => {
+    fireEvent.change(startDateInput, { target: { value: '2020-07-28' } })
+    fireEvent.change(endDateInput, { target: { value: '2020-10-28' } })
+  })
+  expect(container).toMatchSnapshot()
+})
+
+test('renders date validation errors as expected', () => {
+  MockDate.set('2020-07-21')
+  const { container } = render(
+    <MockFormik>
+      <BasicInfo />
+    </MockFormik>,
+  )
+  const startDateInput = getByLabelText(container, /Start date/)
+  const endDateInput = getByLabelText(container, /End date/)
+
+  // Start date before today
+  act(() => {
+    fireEvent.change(startDateInput, { target: { value: '2020-07-20' } })
+  })
+  expect(container).toMatchSnapshot()
+
+  // Start date too far into the future
+  act(() => {
+    fireEvent.change(startDateInput, { target: { value: '2025-07-20' } })
+  })
+  expect(container).toMatchSnapshot()
+
+  // End date before start date
+  act(() => {
+    fireEvent.change(startDateInput, { target: { value: '2020-07-28' } })
+    fireEvent.change(endDateInput, { target: { value: '2020-07-20' } })
+  })
+  expect(container).toMatchSnapshot()
+
+  // End date too far into the future
+  act(() => {
+    fireEvent.change(endDateInput, { target: { value: '2025-07-21' } })
+  })
+  expect(container).toMatchSnapshot()
 })
