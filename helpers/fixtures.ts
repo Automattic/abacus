@@ -272,13 +272,11 @@ function createExperimentFullNew(fieldOverrides: Partial<ExperimentFullNew> = {}
     p2Url: 'https://wordpress.com/experiment_1',
     variations: [
       {
-        variationId: 2,
         name: 'test',
         isDefault: false,
         allocatedPercentage: 40,
       },
       {
-        variationId: 1,
         name: 'control',
         isDefault: true,
         allocatedPercentage: 60,
@@ -330,6 +328,9 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
     'conclusionUrl',
     'deployedVariationId',
     'status',
+    'variations',
+    'metricAssignments',
+    'segmentAssignments',
   ]
   const newExperimentFieldOverrides = _.omit(fieldOverrides, fieldsOnlyForExistingExperiments)
   const existingExperimentFieldOverrides = _.pick(fieldOverrides, fieldsOnlyForExistingExperiments)
@@ -340,6 +341,55 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
     endReason: null,
     conclusionUrl: null,
     deployedVariationId: null,
+    variations: [
+      {
+        variationId: 2,
+        name: 'test',
+        isDefault: false,
+        allocatedPercentage: 40,
+      },
+      {
+        variationId: 1,
+        name: 'control',
+        isDefault: true,
+        allocatedPercentage: 60,
+      },
+    ],
+    metricAssignments: [
+      createMetricAssignment({
+        metricAssignmentId: 123,
+        metricId: 1,
+        attributionWindowSeconds: AttributionWindowSeconds.OneWeek,
+        changeExpected: true,
+        isPrimary: true,
+        minDifference: 0.1,
+      }),
+      createMetricAssignment({
+        metricAssignmentId: 124,
+        metricId: 2,
+        attributionWindowSeconds: AttributionWindowSeconds.FourWeeks,
+        changeExpected: false,
+        isPrimary: false,
+        minDifference: 10.5,
+      }),
+      createMetricAssignment({
+        metricAssignmentId: 125,
+        metricId: 2,
+        attributionWindowSeconds: AttributionWindowSeconds.OneHour,
+        changeExpected: true,
+        isPrimary: false,
+        minDifference: 0.5,
+      }),
+      createMetricAssignment({
+        metricAssignmentId: 126,
+        metricId: 3,
+        attributionWindowSeconds: AttributionWindowSeconds.SixHours,
+        changeExpected: true,
+        isPrimary: false,
+        minDifference: 12,
+      }),
+    ],
+    segmentAssignments: [],
     ...existingExperimentFieldOverrides,
   }
 }
