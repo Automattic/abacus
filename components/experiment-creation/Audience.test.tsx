@@ -1,5 +1,5 @@
 /* eslint-disable no-irregular-whitespace,@typescript-eslint/ban-ts-ignore */
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { Formik, FormikProps } from 'formik'
 import React from 'react'
 
@@ -33,21 +33,14 @@ test('renders as expected', async () => {
   )
   expect(container).toMatchSnapshot()
 
-  const segmentCombobox = screen.getByRole('combobox')
-  fireEvent.click(segmentCombobox)
-
-  const segmentComboboxInput = segmentCombobox.querySelector('input')
-
-  // Typeguard
-  if (!segmentComboboxInput) {
-    throw new Error(`Can't find the segmentCombobox input`)
-  }
+  const segmentComboboxInput = screen.getByPlaceholderText(/Search and select to customize/)
 
   fireEvent.change(segmentComboboxInput, { target: { value: 'AU' } })
 
-  await waitFor(() => screen.debug(screen.getByText(/AU/)))
-
-  fireEvent.click(screen.getByText(/AU/))
+  const segmentOption = await screen.findByRole('option', { name: /Locale: en-AU/ })
+  fireEvent.click(segmentOption)
 
   fireEvent.click(screen.getByLabelText(/Exclude/))
+
+  expect(container).toMatchSnapshot()
 })

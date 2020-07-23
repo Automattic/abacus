@@ -593,7 +593,7 @@ test('renders as expected', () => {
                           <input
                             checked=""
                             class="PrivateSwitchBase-input-25"
-                            name="mui-55145"
+                            name="non-formik-segment-exclusion-state-include"
                             type="radio"
                             value="include"
                           />
@@ -644,7 +644,7 @@ test('renders as expected', () => {
                         >
                           <input
                             class="PrivateSwitchBase-input-25"
-                            name="mui-55145"
+                            name="non-formik-segment-exclusion-state-exclude"
                             type="radio"
                             value="exclude"
                           />
