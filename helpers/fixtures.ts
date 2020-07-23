@@ -4,6 +4,7 @@
  * Functions in this file return new objects populated with dummy values, which may potentially be overridden in
  * functions that accept Partial<T> as an argument.
  */
+import * as dateFns from 'date-fns'
 import _ from 'lodash'
 
 import {
@@ -11,6 +12,7 @@ import {
   AnalysisStrategy,
   AttributionWindowSeconds,
   ExperimentFull,
+  ExperimentFullNew,
   MetricAssignment,
   MetricBare,
   MetricFull,
@@ -255,21 +257,19 @@ function createMetricAssignment(fieldOverrides: Partial<MetricAssignment>): Metr
   }
 }
 
-function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): ExperimentFull {
+/* istanbul ignore next; All coverage to be removed, see https://github.com/Automattic/abacus/issues/231 */
+function createExperimentFullNew(fieldOverrides: Partial<ExperimentFullNew> = {}): ExperimentFullNew {
+  const now = new Date()
   return {
-    experimentId: 1,
     name: 'experiment_1',
-    startDatetime: new Date(Date.UTC(2020, 5, 4)),
-    endDatetime: new Date(Date.UTC(2020, 6, 4)),
-    status: Status.Completed,
+    startDatetime: dateFns.addMonths(now, 2),
+    endDatetime: dateFns.addMonths(now, 4),
+    status: Status.Staging,
     platform: Platform.Calypso,
     ownerLogin: 'test_a11n',
     description: 'Experiment with things. Change stuff. Profit.',
     existingUsersAllowed: false,
     p2Url: 'https://wordpress.com/experiment_1',
-    endReason: null,
-    conclusionUrl: null,
-    deployedVariationId: null,
     variations: [
       {
         variationId: 2,
@@ -320,6 +320,27 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
     ],
     segmentAssignments: [],
     ...fieldOverrides,
+  }
+}
+
+function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): ExperimentFull {
+  const fieldsOnlyForExistingExperiments = [
+    'experimentId',
+    'endReason',
+    'conclusionUrl',
+    'deployedVariationId',
+    'status',
+  ]
+  const newExperimentFieldOverrides = _.omit(fieldOverrides, fieldsOnlyForExistingExperiments)
+  const existingExperimentFieldOverrides = _.pick(fieldOverrides, fieldsOnlyForExistingExperiments)
+
+  return {
+    ...createExperimentFullNew(newExperimentFieldOverrides),
+    experimentId: 1,
+    endReason: null,
+    conclusionUrl: null,
+    deployedVariationId: null,
+    ...existingExperimentFieldOverrides,
   }
 }
 
@@ -384,6 +405,7 @@ function createSegmentAssignment(fieldOverrides: Partial<SegmentAssignment>): Se
 const Fixtures = {
   createAnalyses,
   createExperimentFull,
+  createExperimentFullNew,
   createMetricAssignment,
   createMetricBares,
   createMetricFull,

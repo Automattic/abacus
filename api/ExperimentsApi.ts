@@ -4,6 +4,7 @@ import {
   ExperimentBare,
   experimentBareSchema,
   ExperimentFull,
+  ExperimentFullNew,
   experimentFullNewSchema,
   experimentFullSchema,
 } from '@/lib/schemas'
@@ -15,7 +16,7 @@ import { fetchApi } from './utils'
  *
  * Note: Be sure to handle any errors that may be thrown.
  */
-async function create(newExperiment: Partial<ExperimentFull>) {
+async function create(newExperiment: ExperimentFullNew) {
   const validatedNewExperiment = await experimentFullNewSchema.validate(newExperiment, { abortEarly: false })
   const experiment = await fetchApi('POST', '/experiments', validatedNewExperiment)
   return await experimentFullSchema.validate(experiment)

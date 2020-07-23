@@ -1,9 +1,12 @@
+import MockDate from 'mockdate'
 import React from 'react'
 
 import Fixtures from '@/helpers/fixtures'
 import { createMatchMedia, render } from '@/helpers/test-utils'
 
 import ExperimentDetails from './ExperimentDetails'
+
+MockDate.set('2020-07-21')
 
 const initialJsDomWindowInnerWidth = window.innerWidth
 afterEach(() => {

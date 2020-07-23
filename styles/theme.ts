@@ -40,14 +40,6 @@ const theme = createMuiTheme({
         fontFamily: monospaceFontStack,
       },
     },
-    MuiInputLabel: {
-      root: {
-        textTransform: 'lowercase',
-        '&::first-letter': {
-          textTransform: 'uppercase',
-        },
-      },
-    },
     MuiCssBaseline: {
       '@global': {
         // Remove the last table cell border of a top-level MuiTable when in MuiPaper.

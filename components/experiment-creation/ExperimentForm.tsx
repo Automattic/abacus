@@ -5,8 +5,9 @@ import { Button, Paper } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Formik } from 'formik'
 import React from 'react'
+import * as yup from 'yup'
 
-import { ExperimentFullNew, MetricBare, Segment } from '@/lib/schemas'
+import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
 
 import Audience from './Audience'
 import BasicInfo from './BasicInfo'
@@ -37,7 +38,11 @@ const ExperimentForm = ({
 
   return (
     <div className={classes.root}>
-      <Formik initialValues={{ experiment: initialExperiment }} onSubmit={(v) => alert(JSON.stringify(v, null, 2))}>
+      <Formik
+        initialValues={{ experiment: initialExperiment }}
+        onSubmit={(v) => alert(JSON.stringify(v, null, 2))}
+        validationSchema={yup.object({ experiment: experimentFullNewSchema })}
+      >
         {(formikProps) => (
           <form onSubmit={formikProps.handleSubmit}>
             <Paper className={classes.formPart}>
