@@ -1,7 +1,7 @@
 import Fixtures from '@/helpers/fixtures'
 
 import * as Experiments from './experiments'
-import { AnalysisStrategy, DefaultVariationKey } from './schemas'
+import { AnalysisStrategy } from './schemas'
 
 describe('lib/experiments.ts module', () => {
   describe('getDeployedVariation', () => {
@@ -73,8 +73,8 @@ describe('lib/experiments.ts module', () => {
         metricAssignments: [],
         segmentAssignments: [],
         variations: [
-          { name: 'control', isDefault: true, allocatedPercentage: 50, key_: DefaultVariationKey.Control },
-          { name: 'treatment', isDefault: false, allocatedPercentage: 50, key_: DefaultVariationKey.Treatment },
+          { name: 'control', isDefault: true, allocatedPercentage: 50 },
+          { name: 'treatment', isDefault: false, allocatedPercentage: 50 },
         ],
       })
     })

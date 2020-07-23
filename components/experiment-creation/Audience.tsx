@@ -1,5 +1,4 @@
 import {
-  Button,
   FormControl,
   FormControlLabel,
   FormHelperText,
@@ -19,25 +18,14 @@ import {
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Autocomplete from '@material-ui/lab/Autocomplete'
-import { Field, FieldArray, FormikProps, useField } from 'formik'
+import { Field, FormikProps, useField } from 'formik'
 import { RadioGroup as FormikMuiRadioGroup, Select, TextField as FormikMuiTextField } from 'formik-material-ui'
 import { AutocompleteProps, AutocompleteRenderInputParams, fieldToAutocomplete } from 'formik-material-ui-lab'
 import React, { useCallback, useState } from 'react'
 
 import { PlatformToHuman } from '@/lib/experiments'
-import {
-  DefaultVariationKey,
-  ExperimentFullNew,
-  Platform,
-  Segment,
-  SegmentAssignmentNew,
-  SegmentType,
-  VariationNew,
-} from '@/lib/schemas'
+import { ExperimentFullNew, Platform, Segment, SegmentAssignmentNew, SegmentType, VariationNew } from '@/lib/schemas'
 import { SegmentTypeToHuman } from '@/lib/segments'
-
-// TODO: Add to feature flag object
-const ALLOW_ADDITIONAL_VARIATIONS = false
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -120,16 +108,6 @@ const SegmentsAutocomplete = (
       getOptionLabel={({ name, type }: Segment) => `${SegmentTypeToHuman[type]}: ${name}`}
     />
   )
-}
-
-const newVariation = (): VariationNew => {
-  const time = new Date().getTime()
-  return {
-    name: `treatment_${time}`,
-    isDefault: false,
-    allocatedPercentage: 0,
-    key_: time,
-  }
 }
 
 const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Partial<ExperimentFullNew> }> }) => {
@@ -242,73 +220,41 @@ const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Part
             <br />
             Use &ldquo;control&rdquo; for the default (fallback) experience.
           </FormHelperText>
-          <FieldArray
-            name='experiment.variations'
-            render={(arrayHelpers) => {
-              if (!formikProps.values.experiment.variations) {
-                throw new Error('New experiment must have a variations array.')
-              }
-
-              return (
-                <TableContainer>
-                  <Table>
-                    <TableHead>
-                      <TableRow>
-                        <TableCell> Name </TableCell>
-                        <TableCell> Allocated Percentage </TableCell>
-                        {ALLOW_ADDITIONAL_VARIATIONS && <TableCell></TableCell>}
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {formikProps.values.experiment.variations.map((variation, idx) => {
-                        const isControl = DefaultVariationKey.Control === variation.key_
-                        return (
-                          <TableRow key={variation.key_}>
-                            <TableCell>
-                              {!isControl && ALLOW_ADDITIONAL_VARIATIONS ? (
-                                <Field
-                                  component={FormikMuiTextField}
-                                  name={`experiment.variations[${idx}].name`}
-                                  size='small'
-                                  variant='outlined'
-                                  required
-                                />
-                              ) : (
-                                variation.name
-                              )}
-                            </TableCell>
-                            <TableCell>
-                              <Field
-                                className={classes.variationAllocatedPercentage}
-                                component={FormikMuiTextField}
-                                name={`experiment.variations[${idx}].allocatedPercentage`}
-                                type='number'
-                                size='small'
-                                variant='outlined'
-                                inputProps={{ min: 1, max: 99 }}
-                                required
-                                InputProps={{
-                                  endAdornment: <InputAdornment position='end'>%</InputAdornment>,
-                                }}
-                              />
-                            </TableCell>
-                            {ALLOW_ADDITIONAL_VARIATIONS && (
-                              <TableCell>
-                                {isControl && <Button onClick={() => arrayHelpers.remove(idx)}>Remove</Button>}
-                              </TableCell>
-                            )}
-                          </TableRow>
-                        )
-                      })}
-                    </TableBody>
-                  </Table>
-                  {ALLOW_ADDITIONAL_VARIATIONS && (
-                    <Button onClick={() => arrayHelpers.push(newVariation())}>Add Variation</Button>
-                  )}
-                </TableContainer>
-              )
-            }}
-          />
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell> Name </TableCell>
+                  <TableCell> Allocated Percentage </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {(formikProps.values.experiment.variations as VariationNew[]).map((variation, idx) => {
+                  return (
+                    // The key here needs to be changed for variable variations
+                    <TableRow key={variation.name}>
+                      <TableCell>{variation.name}</TableCell>
+                      <TableCell>
+                        <Field
+                          className={classes.variationAllocatedPercentage}
+                          component={FormikMuiTextField}
+                          name={`experiment.variations[${idx}].allocatedPercentage`}
+                          type='number'
+                          size='small'
+                          variant='outlined'
+                          inputProps={{ min: 1, max: 99 }}
+                          required
+                          InputProps={{
+                            endAdornment: <InputAdornment position='end'>%</InputAdornment>,
+                          }}
+                        />
+                      </TableCell>
+                    </TableRow>
+                  )
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </FormControl>
       </div>
     </div>

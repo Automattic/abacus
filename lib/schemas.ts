@@ -152,7 +152,7 @@ export const variationNewSchema = yup
   })
   .defined()
   .camelCase()
-export type VariationNew = yup.InferType<typeof variationNewSchema> & { key_?: DefaultVariationKey | number } // For client use only
+export type VariationNew = yup.InferType<typeof variationNewSchema>
 
 export const variationSchema = variationNewSchema
   .shape({

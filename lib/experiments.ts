@@ -1,11 +1,4 @@
-import {
-  AnalysisStrategy,
-  DefaultVariationKey,
-  ExperimentFull,
-  ExperimentFullNew,
-  Platform,
-  Variation,
-} from './schemas'
+import { AnalysisStrategy, ExperimentFull, ExperimentFullNew, Platform, Variation } from './schemas'
 
 /**
  * Return the deployed variation if one has been selected, otherwise `null`.
@@ -58,8 +51,8 @@ export function createNewExperiment(): Partial<ExperimentFullNew> {
     metricAssignments: [],
     segmentAssignments: [],
     variations: [
-      { name: 'control', isDefault: true, allocatedPercentage: 50, key_: DefaultVariationKey.Control },
-      { name: 'treatment', isDefault: false, allocatedPercentage: 50, key_: DefaultVariationKey.Treatment },
+      { name: 'control', isDefault: true, allocatedPercentage: 50 },
+      { name: 'treatment', isDefault: false, allocatedPercentage: 50 },
     ],
   }
 }
