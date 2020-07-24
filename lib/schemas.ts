@@ -148,11 +148,6 @@ export const segmentAssignmentSchema = segmentAssignmentNewSchema
   .camelCase()
 export type SegmentAssignment = yup.InferType<typeof segmentAssignmentSchema>
 
-export enum DefaultVariationKey {
-  Control = 'control',
-  Treatment = 'treatment',
-}
-
 export const variationNewSchema = yup
   .object({
     name: nameSchema.defined(),
