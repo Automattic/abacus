@@ -181,9 +181,8 @@ const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Part
         <FormControl component='fieldset' className={classes.segmentationFieldSet}>
           <FormLabel htmlFor='segments-select'>Targeting</FormLabel>
           <FormHelperText className={classes.segmentationHelperText}>
-            Who should see this experiment?
-            <br />
-            Add optional filters to include or exclude specific target audience segments.
+            Who should see this experiment? <br /> Add optional filters to include or exclude specific target audience
+            segments.
           </FormHelperText>
           <MuiRadioGroup
             aria-label='include-or-exclude-segments'
@@ -222,9 +221,8 @@ const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Part
         <FormControl component='fieldset' className={classes.segmentationFieldSet}>
           <FormLabel htmlFor='variations-select'>Variations</FormLabel>
           <FormHelperText className={classes.segmentationHelperText}>
-            Define the percentages to include in the experiment.
-            <br />
-            Use &ldquo;control&rdquo; for the default (fallback) experience.
+            Define the percentages to include in the experiment. <br /> Use &ldquo;control&rdquo; for the default
+            (fallback) experience.
           </FormHelperText>
           <TableContainer>
             <Table>
