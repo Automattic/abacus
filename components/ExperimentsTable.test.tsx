@@ -2,8 +2,8 @@ import { getByText } from '@testing-library/react'
 import addToDate from 'date-fns/add'
 import React from 'react'
 
-import { render } from '@/helpers/test-utils'
 import { ExperimentBare, Platform, Status } from '@/lib/schemas'
+import { render } from '@/test-helpers/test-utils'
 
 import ExperimentsTable from './ExperimentsTable'
 

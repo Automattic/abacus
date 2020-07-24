@@ -3,8 +3,8 @@ import { render } from '@testing-library/react'
 import MockDate from 'mockdate'
 import React from 'react'
 
-import Fixtures from '@/helpers/fixtures'
 import { createNewExperiment } from '@/lib/experiments'
+import Fixtures from '@/test-helpers/fixtures'
 
 import ExperimentForm from './ExperimentForm'
 

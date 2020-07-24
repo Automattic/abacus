@@ -1,6 +1,6 @@
 import ExperimentsApi from '@/api/ExperimentsApi'
-import Fixtures from '@/helpers/fixtures'
-import { validationErrorDisplayer } from '@/helpers/test-utils'
+import Fixtures from '@/test-helpers/fixtures'
+import { validationErrorDisplayer } from '@/test-helpers/test-utils'
 
 describe('ExperimentsApi.ts module', () => {
   describe('create', () => {

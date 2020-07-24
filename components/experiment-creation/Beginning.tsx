@@ -1,4 +1,4 @@
-import { Button, Typography } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Field } from 'formik'
 import { TextField } from 'formik-material-ui'
@@ -6,11 +6,7 @@ import React from 'react'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      maxWidth: '36rem',
-      // TODO: Remove, this is just for the storybook.
-      margin: '2rem auto',
-    },
+    root: {},
     p2LinkLine: {
       margin: theme.spacing(6, 0),
     },
@@ -20,6 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
     p2EntryField: {
       marginTop: theme.spacing(1),
       width: '100%',
+      background: '#fff',
     },
     beginButton: {
       display: 'block',
@@ -51,10 +48,6 @@ const Beginning = () => {
           variant='outlined'
         />
       </div>
-
-      <Button className={classes.beginButton} variant='contained' color='primary' size='large'>
-        Begin
-      </Button>
     </div>
   )
 }

@@ -1,8 +1,8 @@
 import MockDate from 'mockdate'
 import React from 'react'
 
-import Fixtures from '@/helpers/fixtures'
-import { createMatchMedia, render } from '@/helpers/test-utils'
+import Fixtures from '@/test-helpers/fixtures'
+import { createMatchMedia, render } from '@/test-helpers/test-utils'
 
 import ExperimentDetails from './ExperimentDetails'
 

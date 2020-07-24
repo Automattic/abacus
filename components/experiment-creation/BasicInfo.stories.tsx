@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { MockFormik } from '@/helpers/test-utils'
+import { MockFormik } from '@/test-helpers/test-utils'
 
 import BasicInfo from './BasicInfo'
 

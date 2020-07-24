@@ -2,7 +2,7 @@ import React from 'react'
 
 import MetricsTable from '@/components/MetricsTable'
 
-import Fixtures from '../helpers/fixtures'
+import Fixtures from '../test-helpers/fixtures'
 
 export default { title: 'MetricsTable' }
 export const withNoMetrics = () => <MetricsTable metrics={[]} />

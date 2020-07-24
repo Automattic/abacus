@@ -8,6 +8,7 @@ module.exports = {
     // code branch that leads to this error being thrown. If we test against the
     // production API or a more sophisticated mock, then we may be able.
     '!<rootDir>/api/UnauthorizedError.ts',
+    '!<rootDir>/test-helpers/**',
   ],
   coverageThreshold: {
     global: {

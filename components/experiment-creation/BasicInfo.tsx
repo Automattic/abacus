@@ -12,11 +12,7 @@ import {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      maxWidth: '36rem',
-      // TODO: Remove, this is just for the storybook.
-      margin: '2rem auto',
-    },
+    root: {},
     row: {
       margin: theme.spacing(6, 0),
       display: 'flex',
