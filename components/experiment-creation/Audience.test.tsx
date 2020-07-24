@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
 import { Formik, FormikProps } from 'formik'
 import React from 'react'
 
@@ -40,7 +40,10 @@ test('renders as expected', async () => {
   const segmentOption = await screen.findByRole('option', { name: /Locale: en-AU/ })
   fireEvent.click(segmentOption)
 
-  fireEvent.click(screen.getByLabelText(/Exclude/))
+  // eslint-disable-next-line @typescript-eslint/require-await
+  await act(async () => {
+    fireEvent.click(screen.getByLabelText(/Exclude/))
+  })
 
   expect(container).toMatchSnapshot()
 })

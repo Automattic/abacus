@@ -578,9 +578,9 @@ exports[`renders as expected 1`] = `
               <p
                 class="MuiFormHelperText-root makeStyles-segmentationHelperText-18"
               >
-                Who should see this experiment?
+                Who should see this experiment? 
                 <br />
-                Add optional filters to include or exclude specific target audience segments.
+                 Add optional filters to include or exclude specific target audience segments.
               </p>
               <div
                 aria-label="include-or-exclude-segments"
@@ -804,9 +804,9 @@ exports[`renders as expected 1`] = `
               <p
                 class="MuiFormHelperText-root makeStyles-segmentationHelperText-18"
               >
-                Define the percentages to include in the experiment.
+                Define the percentages to include in the experiment. 
                 <br />
-                Use “control” for the default (fallback) experience.
+                 Use “control” for the default (fallback) experience.
               </p>
               <div
                 class="MuiTableContainer-root"
