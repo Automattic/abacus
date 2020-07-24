@@ -1,7 +1,7 @@
 import Fixtures from '@/helpers/fixtures'
 
 import * as Experiments from './experiments'
-import { AnalysisStrategy } from './schemas'
+import { AnalysisStrategy, Platform } from './schemas'
 
 describe('lib/experiments.ts module', () => {
   describe('getDeployedVariation', () => {
@@ -69,7 +69,7 @@ describe('lib/experiments.ts module', () => {
   describe('createNewExperiment', () => {
     it('should return a new experiment', () => {
       expect(Experiments.createNewExperiment()).toEqual({
-        platform: 'wpcom',
+        platform: Platform.Wpcom,
         metricAssignments: [],
         segmentAssignments: [],
         variations: [
