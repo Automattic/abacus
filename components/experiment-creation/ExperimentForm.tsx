@@ -12,13 +12,13 @@ import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment } from 
 import Audience from './Audience'
 import BasicInfo from './BasicInfo'
 import Beginning from './Beginning'
-import Metrics from './Metrics'
+import Goals from './Goals'
 
 enum StageId {
   Beginning,
   BasicInfo,
   Audience,
-  Metrics,
+  Goals,
   Submit,
 }
 
@@ -41,8 +41,8 @@ const stages: Stage[] = [
     title: 'Audience',
   },
   {
-    id: StageId.Metrics,
-    title: 'Metrics',
+    id: StageId.Goals,
+    title: 'Goals',
   },
   {
     id: StageId.Submit,
@@ -100,13 +100,13 @@ const ExperimentForm = ({
   const formPartBeginningRef = useRef<HTMLDivElement>(null)
   const formPartBasicInfoRef = useRef<HTMLDivElement>(null)
   const formPartAudienceRef = useRef<HTMLDivElement>(null)
-  const formPartMetricsRef = useRef<HTMLDivElement>(null)
+  const formPartGoalsRef = useRef<HTMLDivElement>(null)
   const formPartSubmitRef = useRef<HTMLDivElement>(null)
   const stageFormPartRefs: Record<StageId, React.RefObject<HTMLDivElement>> = {
     [StageId.Beginning]: formPartBeginningRef,
     [StageId.BasicInfo]: formPartBasicInfoRef,
     [StageId.Audience]: formPartAudienceRef,
-    [StageId.Metrics]: formPartMetricsRef,
+    [StageId.Goals]: formPartGoalsRef,
     [StageId.Submit]: formPartSubmitRef,
   }
 
@@ -200,9 +200,9 @@ const ExperimentForm = ({
                   </Button>
                 </div>
               </div>
-              <div className={classes.formPart} ref={formPartMetricsRef}>
+              <div className={classes.formPart} ref={formPartGoalsRef}>
                 <Paper className={classes.paper}>
-                  <Metrics />
+                  <Goals />
                 </Paper>
                 <div className={classes.formPartActions}>
                   <Button onClick={prevStage}>Previous</Button>

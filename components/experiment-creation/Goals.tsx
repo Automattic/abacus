@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const Metrics = () => {
+const Goals = () => {
   const classes = useStyles()
 
   const [metricAssignmentsField] = useField<MetricAssignment[]>('experiment.metricAssignments')
@@ -62,7 +62,7 @@ const Metrics = () => {
   return (
     <div className={classes.root}>
       <Typography variant='h2' gutterBottom>
-        Metrics
+        Goals
       </Typography>
 
       <div className={classes.addMetric}>
@@ -144,4 +144,4 @@ const Metrics = () => {
   )
 }
 
-export default Metrics
+export default Goals
