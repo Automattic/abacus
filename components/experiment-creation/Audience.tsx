@@ -21,6 +21,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete'
 import { Field, FormikProps, useField } from 'formik'
 import { RadioGroup as FormikMuiRadioGroup, Select, TextField as FormikMuiTextField } from 'formik-material-ui'
 import { AutocompleteProps, AutocompleteRenderInputParams, fieldToAutocomplete } from 'formik-material-ui-lab'
+import _ from 'lodash'
 import React, { useCallback, useState } from 'react'
 
 import { PlatformToHuman } from '@/lib/experiments'
@@ -97,7 +98,7 @@ const SegmentsAutocomplete = (
 
   return (
     <Autocomplete
-      {...fieldToAutocomplete(props)}
+      {...fieldToAutocomplete(_.omit(props, 'segmentExclusionState'))}
       multiple={true}
       onChange={onChange}
       value={value}
@@ -154,14 +155,7 @@ const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Part
           <FormLabel required>User types</FormLabel>
           <FormHelperText>Types of users to include in experiment</FormHelperText>
 
-          <Field
-            component={FormikMuiRadioGroup}
-            name='experiment.existingUsersAllowed'
-            required
-            InputLabelProps={{
-              shrink: true,
-            }}
-          >
+          <Field component={FormikMuiRadioGroup} name='experiment.existingUsersAllowed' required>
             <FormControlLabel
               value='false'
               label='New users only'

@@ -84,7 +84,6 @@ exports[`renders as expected 1`] = `
         </p>
         <div
           class="MuiFormGroup-root"
-          inputlabelprops="[object Object]"
           required=""
           role="radiogroup"
         >
@@ -326,7 +325,6 @@ exports[`renders as expected 1`] = `
           class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
           name="experiment.segmentAssignments"
           role="combobox"
-          segmentexclusionstate="include"
         >
           <div
             class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -668,7 +666,6 @@ exports[`renders as expected 2`] = `
         </p>
         <div
           class="MuiFormGroup-root"
-          inputlabelprops="[object Object]"
           required=""
           role="radiogroup"
         >
@@ -910,7 +907,6 @@ exports[`renders as expected 2`] = `
           class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
           name="experiment.segmentAssignments"
           role="combobox"
-          segmentexclusionstate="exclude"
         >
           <div
             class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
