@@ -1,6 +1,5 @@
 /* eslint-disable */
 import {
-  InputAdornment,
   Typography,
   TableContainer,
   Table,
@@ -8,19 +7,41 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Select,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Button,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import React from 'react'
-import { FieldArray, useField, Field } from 'formik'
+import React, { useState } from 'react'
+import { FieldArray, useField } from 'formik'
 import { MetricAssignment } from '@/lib/schemas'
-import { TextField } from 'formik-material-ui'
+
+const normalizedMetrics = {
+  1: {
+    metricId: 1,
+    name: 'string',
+    description: 'string',
+    parameterType: 'revenue',
+  },
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      maxWidth: '36rem',
-      // TODO: Remove, this is just for the storybook.
-      margin: '2rem auto',
+    root: {},
+    addMetric: {
+      display: 'flex',
+      flexDirection: 'column',
+      margin: theme.spacing(5, 0),
+    },
+    addMetricSelect: {
+      minWidth: '10rem',
+      marginRight: theme.spacing(2),
+    },
+    addMetricControls: {
+      display: 'flex',
+      alignItems: 'flex-end',
     },
   }),
 )
@@ -30,13 +51,56 @@ const Metrics = () => {
 
   const [metricAssignmentsField] = useField<MetricAssignment[]>('experiment.metricAssignments')
 
+  const [selectedMetricId, setSelectedMetricId] = useState<string>('')
+  const onSelectedMetricChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setSelectedMetricId(event.target.value as string)
+  }
+  const onAddMetric = () => {
+    setSelectedMetricId('')
+  }
+
   return (
     <div className={classes.root}>
       <Typography variant='h2' gutterBottom>
         Metrics
       </Typography>
-      <Typography variant='body2'>Quantify the impact you're trying to measure.</Typography>
 
+      <div className={classes.addMetric}>
+        <Typography variant='h5' gutterBottom>
+          Assign a Metric
+        </Typography>
+        <Typography variant='subtitle2' gutterBottom>
+          Quantify the impact you're trying to measure
+        </Typography>
+        <div className={classes.addMetricControls}>
+          <FormControl className={classes.addMetricSelect}>
+            <InputLabel id='add-metric-label'>Search Metrics</InputLabel>
+            <Select
+              labelId='add-metric-label'
+              id='add-metric-select'
+              value={selectedMetricId}
+              onChange={onSelectedMetricChange}
+              displayEmpty
+            >
+              {Object.values(normalizedMetrics).map((metric) => (
+                <MenuItem value={metric.metricId} key={metric.metricId}>
+                  {metric.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <Button variant='outlined' size='small' onClick={onAddMetric}>
+            Add
+          </Button>
+        </div>
+      </div>
+
+      <Typography variant='h5' gutterBottom>
+        Assigned Metrics
+      </Typography>
+      <Typography variant='subtitle2' gutterBottom>
+        Configure your metrics
+      </Typography>
       <TableContainer>
         <Table>
           <TableHead>
@@ -48,12 +112,6 @@ const Metrics = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow>
-              <TableCell>~Metric Name~</TableCell>
-              <TableCell>60</TableCell>
-              <TableCell>Yes</TableCell>
-              <TableCell>10%</TableCell>
-            </TableRow>
             <FieldArray
               name='experiment.metricAssignments'
               render={(arrayHelpers) => (
@@ -69,6 +127,16 @@ const Metrics = () => {
                 </>
               )}
             />
+            <TableRow>
+              <TableCell colSpan={4}>
+                {metricAssignmentsField.value.length === 0 && (
+                  <Typography variant='body1' align='center'>
+                    {' '}
+                    You don't have any metrics yet.
+                  </Typography>
+                )}
+              </TableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </TableContainer>
