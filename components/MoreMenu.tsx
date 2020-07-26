@@ -19,7 +19,7 @@ export default function MoreMenu({ children }: { children: React.ReactNode }) {
       <IconButton aria-label='more' aria-controls='menu' aria-haspopup='true' onClick={handleClick}>
         <MoreVertIcon />
       </IconButton>
-      <Menu id='menu' anchorEl={anchorEl} keepMounted open={open} onClose={handleClose}>
+      <Menu id='menu' anchorEl={anchorEl} keepMounted open={open} onClose={handleClose} onClick={handleClose}>
         {children}
       </Menu>
     </div>

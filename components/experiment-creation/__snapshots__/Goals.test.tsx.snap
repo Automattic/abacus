@@ -1,0 +1,1628 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allows adding, editing and removing a Metric Assignment 1`] = `
+<div>
+  <div
+    class="makeStyles-root-10"
+  >
+    <h2
+      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    >
+      Goals
+    </h2>
+    <div
+      class="makeStyles-addMetric-11"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+        Assign a Metric
+      </h5>
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom"
+      >
+        Quantify the impact you're trying to measure
+      </h6>
+      <div
+        class="makeStyles-addMetricControls-13"
+      >
+        <div
+          class="MuiFormControl-root makeStyles-addMetricSelect-12"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+            data-shrink="false"
+            id="add-metric-label"
+          >
+            Select a Metric
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="add-metric-label add-metric-select"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="add-metric-select"
+              role="button"
+              tabindex="0"
+            >
+              <span>
+                ​
+              </span>
+            </div>
+            <input
+              type="hidden"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSelect-icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+        <button
+          aria-label="Add metric"
+          class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Add
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+    <h5
+      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+    >
+      Assigned Metrics
+    </h5>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom"
+    >
+      Configure your metrics
+    </h6>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <thead
+          class="MuiTableHead-root"
+        >
+          <tr
+            class="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Metric
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Change Expected?
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Minimum Difference
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Attribution Window
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            />
+          </tr>
+        </thead>
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+              colspan="5"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+              >
+                 
+                You don't have any metrics yet.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`allows adding, editing and removing a Metric Assignment 2`] = `
+<div>
+  <div
+    class="makeStyles-root-10"
+  >
+    <h2
+      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    >
+      Goals
+    </h2>
+    <div
+      class="makeStyles-addMetric-11"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+        Assign a Metric
+      </h5>
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom"
+      >
+        Quantify the impact you're trying to measure
+      </h6>
+      <div
+        class="makeStyles-addMetricControls-13"
+      >
+        <div
+          class="MuiFormControl-root makeStyles-addMetricSelect-12"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+            data-shrink="false"
+            id="add-metric-label"
+          >
+            Select a Metric
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="add-metric-label add-metric-select"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="add-metric-select"
+              role="button"
+              tabindex="0"
+            >
+              <span>
+                ​
+              </span>
+            </div>
+            <input
+              type="hidden"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSelect-icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+        <button
+          aria-label="Add metric"
+          class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Add
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+    <h5
+      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+    >
+      Assigned Metrics
+    </h5>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom"
+    >
+      Configure your metrics
+    </h6>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <thead
+          class="MuiTableHead-root"
+        >
+          <tr
+            class="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Metric
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Change Expected?
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Minimum Difference
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Attribution Window
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            />
+          </tr>
+        </thead>
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+              colspan="5"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+              >
+                 
+                You don't have any metrics yet.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`allows adding, editing and removing a Metric Assignment 3`] = `
+<div>
+  <div
+    class="makeStyles-root-10"
+  >
+    <h2
+      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    >
+      Goals
+    </h2>
+    <div
+      class="makeStyles-addMetric-11"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+        Assign a Metric
+      </h5>
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom"
+      >
+        Quantify the impact you're trying to measure
+      </h6>
+      <div
+        class="makeStyles-addMetricControls-13"
+      >
+        <div
+          class="MuiFormControl-root makeStyles-addMetricSelect-12"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+            data-shrink="false"
+            id="add-metric-label"
+          >
+            Select a Metric
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="add-metric-label add-metric-select"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="add-metric-select"
+              role="button"
+              tabindex="0"
+            >
+              <span>
+                ​
+              </span>
+            </div>
+            <input
+              type="hidden"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSelect-icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+        <button
+          aria-label="Add metric"
+          class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Add
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+    <h5
+      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+    >
+      Assigned Metrics
+    </h5>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom"
+    >
+      Configure your metrics
+    </h6>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <thead
+          class="MuiTableHead-root"
+        >
+          <tr
+            class="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Metric
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Change Expected?
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Minimum Difference
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Attribution Window
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            />
+          </tr>
+        </thead>
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+               
+              <span
+                class="makeStyles-metricName-15"
+              >
+                asdf_7d_refund
+              </span>
+              <br />
+              <span
+                class="makeStyles-primary-16"
+              >
+                Primary
+              </span>
+               
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body makeStyles-changeExpected-18"
+            >
+              <span
+                class="MuiSwitch-root"
+              >
+                <span
+                  aria-disabled="false"
+                  aria-label="Change Expected"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-19 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+                  variant="outlined"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <input
+                      class="PrivateSwitchBase-input-22 MuiSwitch-input"
+                      id="experiment.metricAssignments[0].changeExpected"
+                      name="experiment.metricAssignments[0].changeExpected"
+                      type="checkbox"
+                      value="false"
+                    />
+                    <span
+                      class="MuiSwitch-thumb"
+                    />
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </span>
+                <span
+                  class="MuiSwitch-track"
+                />
+              </span>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <div
+                aria-label="Min difference"
+                class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-17"
+              >
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root Mui-disabled Mui-disabled MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                    disabled=""
+                    name="experiment.metricAssignments[0].minDifference"
+                    type="number"
+                    value="0"
+                  />
+                  <div
+                    class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+                    >
+                      %
+                    </p>
+                  </div>
+                  <fieldset
+                    aria-hidden="true"
+                    class="PrivateNotchedOutline-root-23 MuiOutlinedInput-notchedOutline"
+                    style="padding-left: 8px;"
+                  >
+                    <legend
+                      class="PrivateNotchedOutline-legend-24"
+                      style="width: 0.01px;"
+                    >
+                      <span>
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <div
+                aria-label="Attribution Window"
+                class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-14"
+              >
+                <div
+                  aria-haspopup="listbox"
+                  aria-labelledby="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
+                  class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+                  id="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
+                  role="button"
+                  tabindex="0"
+                >
+                  -
+                </div>
+                <input
+                  name="experiment.metricAssignments[0].attributionWindowSeconds"
+                  placeholder="1 week"
+                  type="hidden"
+                  value=""
+                />
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+                <fieldset
+                  aria-hidden="true"
+                  class="PrivateNotchedOutline-root-23 MuiOutlinedInput-notchedOutline"
+                  style="padding-left: 8px;"
+                >
+                  <legend
+                    class="PrivateNotchedOutline-legend-24"
+                    style="width: 0.01px;"
+                  >
+                    <span>
+                      ​
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <div>
+                <button
+                  aria-controls="menu"
+                  aria-haspopup="true"
+                  aria-label="more"
+                  class="MuiButtonBase-root MuiIconButton-root"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`allows adding, editing and removing a Metric Assignment 4`] = `
+<div
+  aria-hidden="true"
+>
+  <div
+    class="makeStyles-root-10"
+  >
+    <h2
+      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    >
+      Goals
+    </h2>
+    <div
+      class="makeStyles-addMetric-11"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+        Assign a Metric
+      </h5>
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom"
+      >
+        Quantify the impact you're trying to measure
+      </h6>
+      <div
+        class="makeStyles-addMetricControls-13"
+      >
+        <div
+          class="MuiFormControl-root makeStyles-addMetricSelect-12"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+            data-shrink="false"
+            id="add-metric-label"
+          >
+            Select a Metric
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="add-metric-label add-metric-select"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="add-metric-select"
+              role="button"
+              tabindex="0"
+            >
+              <span>
+                ​
+              </span>
+            </div>
+            <input
+              type="hidden"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSelect-icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+        <button
+          aria-label="Add metric"
+          class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Add
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+    <h5
+      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+    >
+      Assigned Metrics
+    </h5>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom"
+    >
+      Configure your metrics
+    </h6>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <thead
+          class="MuiTableHead-root"
+        >
+          <tr
+            class="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Metric
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Change Expected?
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Minimum Difference
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Attribution Window
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            />
+          </tr>
+        </thead>
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+               
+              <span
+                class="makeStyles-metricName-15"
+              >
+                asdf_7d_refund
+              </span>
+              <br />
+              <span
+                class="makeStyles-primary-16"
+              >
+                Primary
+              </span>
+               
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body makeStyles-changeExpected-18"
+            >
+              <span
+                class="MuiSwitch-root"
+              >
+                <span
+                  aria-disabled="false"
+                  aria-label="Change Expected"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-19 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+                  variant="outlined"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <input
+                      class="PrivateSwitchBase-input-22 MuiSwitch-input"
+                      id="experiment.metricAssignments[0].changeExpected"
+                      name="experiment.metricAssignments[0].changeExpected"
+                      type="checkbox"
+                      value="false"
+                    />
+                    <span
+                      class="MuiSwitch-thumb"
+                    />
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </span>
+                <span
+                  class="MuiSwitch-track"
+                />
+              </span>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <div
+                aria-label="Min difference"
+                class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-17"
+              >
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root Mui-disabled Mui-disabled MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                    disabled=""
+                    name="experiment.metricAssignments[0].minDifference"
+                    type="number"
+                    value="0"
+                  />
+                  <div
+                    class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+                    >
+                      %
+                    </p>
+                  </div>
+                  <fieldset
+                    aria-hidden="true"
+                    class="PrivateNotchedOutline-root-23 MuiOutlinedInput-notchedOutline"
+                    style="padding-left: 8px;"
+                  >
+                    <legend
+                      class="PrivateNotchedOutline-legend-24"
+                      style="width: 0.01px;"
+                    >
+                      <span>
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <div
+                aria-label="Attribution Window"
+                class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-14"
+              >
+                <div
+                  aria-haspopup="listbox"
+                  aria-labelledby="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
+                  class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+                  id="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
+                  role="button"
+                  tabindex="0"
+                >
+                  -
+                </div>
+                <input
+                  name="experiment.metricAssignments[0].attributionWindowSeconds"
+                  placeholder="1 week"
+                  type="hidden"
+                  value=""
+                />
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+                <fieldset
+                  aria-hidden="true"
+                  class="PrivateNotchedOutline-root-23 MuiOutlinedInput-notchedOutline"
+                  style="padding-left: 8px;"
+                >
+                  <legend
+                    class="PrivateNotchedOutline-legend-24"
+                    style="width: 0.01px;"
+                  >
+                    <span>
+                      ​
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <div>
+                <button
+                  aria-controls="menu"
+                  aria-haspopup="true"
+                  aria-label="more"
+                  class="MuiButtonBase-root MuiIconButton-root"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`allows adding, editing and removing a Metric Assignment 5`] = `
+<div>
+  <div
+    class="makeStyles-root-10"
+  >
+    <h2
+      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    >
+      Goals
+    </h2>
+    <div
+      class="makeStyles-addMetric-11"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+        Assign a Metric
+      </h5>
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom"
+      >
+        Quantify the impact you're trying to measure
+      </h6>
+      <div
+        class="makeStyles-addMetricControls-13"
+      >
+        <div
+          class="MuiFormControl-root makeStyles-addMetricSelect-12"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+            data-shrink="false"
+            id="add-metric-label"
+          >
+            Select a Metric
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="add-metric-label add-metric-select"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="add-metric-select"
+              role="button"
+              tabindex="0"
+            >
+              <span>
+                ​
+              </span>
+            </div>
+            <input
+              type="hidden"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSelect-icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+        <button
+          aria-label="Add metric"
+          class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Add
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+    <h5
+      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+    >
+      Assigned Metrics
+    </h5>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom"
+    >
+      Configure your metrics
+    </h6>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <thead
+          class="MuiTableHead-root"
+        >
+          <tr
+            class="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Metric
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Change Expected?
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Minimum Difference
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Attribution Window
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            />
+          </tr>
+        </thead>
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+               
+              <span
+                class="makeStyles-metricName-15"
+              >
+                asdf_7d_refund
+              </span>
+              <br />
+              <span
+                class="makeStyles-primary-16"
+              >
+                Primary
+              </span>
+               
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body makeStyles-changeExpected-18"
+            >
+              <span
+                class="MuiSwitch-root"
+              >
+                <span
+                  aria-disabled="false"
+                  aria-label="Change Expected"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-19 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+                  variant="outlined"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <input
+                      class="PrivateSwitchBase-input-22 MuiSwitch-input"
+                      id="experiment.metricAssignments[0].changeExpected"
+                      name="experiment.metricAssignments[0].changeExpected"
+                      type="checkbox"
+                      value="false"
+                    />
+                    <span
+                      class="MuiSwitch-thumb"
+                    />
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </span>
+                <span
+                  class="MuiSwitch-track"
+                />
+              </span>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <div
+                aria-label="Min difference"
+                class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-17"
+              >
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root Mui-disabled Mui-disabled MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                    disabled=""
+                    name="experiment.metricAssignments[0].minDifference"
+                    type="number"
+                    value="0"
+                  />
+                  <div
+                    class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+                    >
+                      %
+                    </p>
+                  </div>
+                  <fieldset
+                    aria-hidden="true"
+                    class="PrivateNotchedOutline-root-23 MuiOutlinedInput-notchedOutline"
+                    style="padding-left: 8px;"
+                  >
+                    <legend
+                      class="PrivateNotchedOutline-legend-24"
+                      style="width: 0.01px;"
+                    >
+                      <span>
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <div
+                aria-label="Attribution Window"
+                class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-14"
+              >
+                <div
+                  aria-haspopup="listbox"
+                  aria-labelledby="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
+                  class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+                  id="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
+                  role="button"
+                  tabindex="0"
+                >
+                  -
+                </div>
+                <input
+                  name="experiment.metricAssignments[0].attributionWindowSeconds"
+                  placeholder="1 week"
+                  type="hidden"
+                  value=""
+                />
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+                <fieldset
+                  aria-hidden="true"
+                  class="PrivateNotchedOutline-root-23 MuiOutlinedInput-notchedOutline"
+                  style="padding-left: 8px;"
+                >
+                  <legend
+                    class="PrivateNotchedOutline-legend-24"
+                    style="width: 0.01px;"
+                  >
+                    <span>
+                      ​
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+            >
+              <div>
+                <button
+                  aria-controls="menu"
+                  aria-haspopup="true"
+                  aria-label="more"
+                  class="MuiButtonBase-root MuiIconButton-root"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`allows adding, editing and removing a Metric Assignment 6`] = `
+<div>
+  <div
+    class="makeStyles-root-10"
+  >
+    <h2
+      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    >
+      Goals
+    </h2>
+    <div
+      class="makeStyles-addMetric-11"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+        Assign a Metric
+      </h5>
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom"
+      >
+        Quantify the impact you're trying to measure
+      </h6>
+      <div
+        class="makeStyles-addMetricControls-13"
+      >
+        <div
+          class="MuiFormControl-root makeStyles-addMetricSelect-12"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+            data-shrink="false"
+            id="add-metric-label"
+          >
+            Select a Metric
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="add-metric-label add-metric-select"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="add-metric-select"
+              role="button"
+              tabindex="0"
+            >
+              <span>
+                ​
+              </span>
+            </div>
+            <input
+              type="hidden"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSelect-icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+        <button
+          aria-label="Add metric"
+          class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Add
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+    <h5
+      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+    >
+      Assigned Metrics
+    </h5>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom"
+    >
+      Configure your metrics
+    </h6>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <thead
+          class="MuiTableHead-root"
+        >
+          <tr
+            class="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Metric
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Change Expected?
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Minimum Difference
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Attribution Window
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            />
+          </tr>
+        </thead>
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+              colspan="5"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+              >
+                 
+                You don't have any metrics yet.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders as expected 1`] = `
+<div>
+  <div
+    class="makeStyles-root-1"
+  >
+    <h2
+      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    >
+      Goals
+    </h2>
+    <div
+      class="makeStyles-addMetric-2"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+        Assign a Metric
+      </h5>
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom"
+      >
+        Quantify the impact you're trying to measure
+      </h6>
+      <div
+        class="makeStyles-addMetricControls-4"
+      >
+        <div
+          class="MuiFormControl-root makeStyles-addMetricSelect-3"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+            data-shrink="false"
+            id="add-metric-label"
+          >
+            Select a Metric
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="add-metric-label add-metric-select"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="add-metric-select"
+              role="button"
+              tabindex="0"
+            >
+              <span>
+                ​
+              </span>
+            </div>
+            <input
+              type="hidden"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSelect-icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+        <button
+          aria-label="Add metric"
+          class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSizeSmall MuiButton-sizeSmall"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Add
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+    <h5
+      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+    >
+      Assigned Metrics
+    </h5>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom"
+    >
+      Configure your metrics
+    </h6>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <thead
+          class="MuiTableHead-root"
+        >
+          <tr
+            class="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Metric
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Change Expected?
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Minimum Difference
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Attribution Window
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            />
+          </tr>
+        </thead>
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+              colspan="5"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+              >
+                 
+                You don't have any metrics yet.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;

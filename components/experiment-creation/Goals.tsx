@@ -143,7 +143,7 @@ const Goals = () => {
                 </Typography>
                 <div className={classes.addMetricControls}>
                   <FormControl className={classes.addMetricSelect}>
-                    <InputLabel id='add-metric-label'>Search Metrics</InputLabel>
+                    <InputLabel id='add-metric-label'>Select a Metric</InputLabel>
                     <MuiSelect
                       labelId='add-metric-label'
                       id='add-metric-select'
@@ -160,7 +160,7 @@ const Goals = () => {
                         ))}
                     </MuiSelect>
                   </FormControl>
-                  <Button variant='outlined' size='small' onClick={onAddMetric}>
+                  <Button variant='outlined' size='small' onClick={onAddMetric} aria-label='Add metric'>
                     Add
                   </Button>
                 </div>
@@ -208,6 +208,7 @@ const Goals = () => {
                               component={Switch}
                               name={`experiment.metricAssignments[${index}].changeExpected`}
                               id={`experiment.metricAssignments[${index}].changeExpected`}
+                              type='checkbox'
                               aria-label='Change Expected'
                               variant='outlined'
                             />
@@ -232,15 +233,11 @@ const Goals = () => {
                               component={Select}
                               name={`experiment.metricAssignments[${index}].attributionWindowSeconds`}
                               aria-label='Attribution Window'
-                              type='number'
                               size='small'
                               variant='outlined'
                               placeholder='1 week'
                               autoWidth
                               displayEmpty
-                              InputProps={{
-                                endAdornment: <InputAdornment position='end'>seconds</InputAdornment>,
-                              }}
                             >
                               <MenuItem value=''>-</MenuItem>
                               {Object.keys(AttributionWindowSecondsToHuman).map((attributionWindowSeconds) => (
