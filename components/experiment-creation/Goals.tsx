@@ -21,6 +21,7 @@ import { FieldArray, useField, Field } from 'formik'
 import { MetricAssignment, MetricBare, MetricParameterType, AttributionWindowSeconds } from '@/lib/schemas'
 import { TextField, Select, Switch } from 'formik-material-ui'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
+import MoreMenu from '../MoreMenu'
 
 const normalizedMetrics: Record<number, MetricBare> = {
   1: {
@@ -62,6 +63,13 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     primary: {
       fontFamily: theme.custom.fonts.monospace,
+      opacity: 0.5,
+    },
+    minDifferenceField: {
+      maxWidth: '8rem',
+    },
+    changeExpected: {
+      textAlign: 'center',
     },
   }),
 )
@@ -79,7 +87,9 @@ const createMetricAssignment = (metric: MetricBare) => {
 const Goals = () => {
   const classes = useStyles()
 
-  const [metricAssignmentsField] = useField<MetricAssignment[]>('experiment.metricAssignments')
+  const [metricAssignmentsField, _metricAssignmentsFieldMetaProps, metricAssignmentsFieldHelperProps] = useField<
+    MetricAssignment[]
+  >('experiment.metricAssignments')
   const [selectedMetricId, setSelectedMetricId] = useState<string>('')
   const onSelectedMetricChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setSelectedMetricId(event.target.value as string)
@@ -90,6 +100,15 @@ const Goals = () => {
     Object.keys(normalizedMetrics).map((id) => parseInt(id, 10)),
     usedMetricIds,
   )
+
+  const makeMetricAssignmentPrimary = (metricId: number) => {
+    metricAssignmentsFieldHelperProps.setValue(
+      metricAssignmentsField.value.map((metricAssignment) => ({
+        ...metricAssignment,
+        isPrimary: metricAssignment.metricId === metricId,
+      })),
+    )
+  }
 
   return (
     <div className={classes.root}>
@@ -170,6 +189,10 @@ const Goals = () => {
                         arrayHelpers.remove(index)
                       }
 
+                      const onMakePrimary = () => {
+                        makeMetricAssignmentPrimary(metricAssignment.metricId)
+                      }
+
                       return (
                         <TableRow key={metricAssignment.metricId}>
                           <TableCell>
@@ -180,7 +203,7 @@ const Goals = () => {
                             <br />
                             {metricAssignment.isPrimary && <span className={classes.primary}>Primary</span>}{' '}
                           </TableCell>
-                          <TableCell>
+                          <TableCell className={classes.changeExpected}>
                             <Field
                               component={Switch}
                               name={`experiment.metricAssignments[${index}].changeExpected`}
@@ -191,6 +214,7 @@ const Goals = () => {
                           </TableCell>
                           <TableCell>
                             <Field
+                              className={classes.minDifferenceField}
                               aria-label='Min difference'
                               disabled={!metricAssignment.changeExpected}
                               component={TextField}
@@ -231,7 +255,10 @@ const Goals = () => {
                             </Field>
                           </TableCell>
                           <TableCell>
-                            <Button onClick={onRemoveMetricAssignment}>Remove</Button>
+                            <MoreMenu>
+                              <MenuItem onClick={onMakePrimary}>Set as Primary</MenuItem>
+                              <MenuItem onClick={onRemoveMetricAssignment}>Remove</MenuItem>
+                            </MoreMenu>
                           </TableCell>
                         </TableRow>
                       )
