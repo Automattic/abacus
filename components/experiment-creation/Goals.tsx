@@ -16,14 +16,20 @@ import {
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React, { useState } from 'react'
 import { FieldArray, useField } from 'formik'
-import { MetricAssignment } from '@/lib/schemas'
+import { MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
 
-const normalizedMetrics = {
+const normalizedMetrics: Record<number, MetricBare> = {
   1: {
     metricId: 1,
-    name: 'string',
+    name: 'asdf_7d_refund',
     description: 'string',
-    parameterType: 'revenue',
+    parameterType: MetricParameterType.Revenue,
+  },
+  2: {
+    metricId: 1,
+    name: 'registration_start',
+    description: 'string',
+    parameterType: MetricParameterType.Conversion,
   },
 }
 
@@ -118,7 +124,7 @@ const Goals = () => {
                 <>
                   {metricAssignmentsField.value.map((metricAssignment, index) => (
                     <TableRow>
-                      <TableCell>~Metric Name~</TableCell>
+                      <TableCell>{normalizedMetrics[metricAssignment.metricId]}</TableCell>
                       <TableCell>60</TableCell>
                       <TableCell>Yes</TableCell>
                       <TableCell>10%</TableCell>
