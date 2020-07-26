@@ -19,7 +19,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React, { useState } from 'react'
 import { FieldArray, useField, Field } from 'formik'
 import { MetricAssignment, MetricBare, MetricParameterType, AttributionWindowSeconds } from '@/lib/schemas'
-import { TextField, Select } from 'formik-material-ui'
+import { TextField, Select, Switch } from 'formik-material-ui'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 
 const normalizedMetrics: Record<number, MetricBare> = {
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'flex-end',
     },
     attributionWindowSelect: {
-      minWidth: '7rem',
+      minWidth: '8rem',
     },
   }),
 )
@@ -161,6 +161,7 @@ const Goals = () => {
                             className={classes.attributionWindowSelect}
                             component={Select}
                             name={`experiment.metricAssignments[${index}].attributionWindowSeconds`}
+                            ariaLabel='Attribution Window'
                             type='number'
                             size='small'
                             variant='outlined'
@@ -183,9 +184,19 @@ const Goals = () => {
                             ))}
                           </Field>
                         </TableCell>
-                        <TableCell>Yes</TableCell>
                         <TableCell>
                           <Field
+                            component={Switch}
+                            name={`experiment.metricAssignments[${index}].changeExpected`}
+                            id={`experiment.metricAssignments[${index}].changeExpected`}
+                            ariaLabel='Change Expected'
+                            type='number'
+                            variant='outlined'
+                          />
+                        </TableCell>
+                        <TableCell>
+                          <Field
+                            ariaLabel='Min difference'
                             component={TextField}
                             name={`experiment.metricAssignments[${index}].minDifference`}
                             type='number'
