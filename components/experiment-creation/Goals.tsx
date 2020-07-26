@@ -147,70 +147,79 @@ const Goals = () => {
                   <TableHead>
                     <TableRow>
                       <TableCell>Metric</TableCell>
-                      <TableCell>Attribution Window</TableCell>
-                      <TableCell>Change Expected</TableCell>
+                      <TableCell>Is Change Expected</TableCell>
                       <TableCell>Minimum Difference</TableCell>
+                      <TableCell>Attribution Window</TableCell>
+                      <TableCell></TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {metricAssignmentsField.value.map((metricAssignment, index) => (
-                      <TableRow key={metricAssignment.metricId}>
-                        <TableCell>{normalizedMetrics[metricAssignment.metricId].name}</TableCell>
-                        <TableCell>
-                          <Field
-                            className={classes.attributionWindowSelect}
-                            component={Select}
-                            name={`experiment.metricAssignments[${index}].attributionWindowSeconds`}
-                            ariaLabel='Attribution Window'
-                            type='number'
-                            size='small'
-                            variant='outlined'
-                            placeholder='1 week'
-                            autoWidth
-                            displayEmpty
-                            InputProps={{
-                              endAdornment: <InputAdornment position='end'>seconds</InputAdornment>,
-                            }}
-                          >
-                            <MenuItem value=''>-</MenuItem>
-                            {Object.keys(AttributionWindowSecondsToHuman).map((attributionWindowSeconds) => (
-                              <MenuItem value={attributionWindowSeconds} key={attributionWindowSeconds}>
-                                {
-                                  AttributionWindowSecondsToHuman[
-                                    (attributionWindowSeconds as unknown) as AttributionWindowSeconds
-                                  ]
-                                }
-                              </MenuItem>
-                            ))}
-                          </Field>
-                        </TableCell>
-                        <TableCell>
-                          <Field
-                            component={Switch}
-                            name={`experiment.metricAssignments[${index}].changeExpected`}
-                            id={`experiment.metricAssignments[${index}].changeExpected`}
-                            ariaLabel='Change Expected'
-                            type='number'
-                            variant='outlined'
-                          />
-                        </TableCell>
-                        <TableCell>
-                          <Field
-                            ariaLabel='Min difference'
-                            component={TextField}
-                            name={`experiment.metricAssignments[${index}].minDifference`}
-                            type='number'
-                            variant='outlined'
-                            InputProps={{
-                              endAdornment: <InputAdornment position='end'>%</InputAdornment>,
-                            }}
-                          />
-                        </TableCell>
-                      </TableRow>
-                    ))}
+                    {metricAssignmentsField.value.map((metricAssignment, index) => {
+                      const onRemoveMetricAssignment = () => {
+                        arrayHelpers.remove(index)
+                      }
+
+                      return (
+                        <TableRow key={metricAssignment.metricId}>
+                          <TableCell>{normalizedMetrics[metricAssignment.metricId].name}</TableCell>
+                          <TableCell>
+                            <Field
+                              component={Switch}
+                              name={`experiment.metricAssignments[${index}].changeExpected`}
+                              id={`experiment.metricAssignments[${index}].changeExpected`}
+                              aria-label='Change Expected'
+                              variant='outlined'
+                            />
+                          </TableCell>
+                          <TableCell>
+                            <Field
+                              aria-label='Min difference'
+                              component={TextField}
+                              name={`experiment.metricAssignments[${index}].minDifference`}
+                              type='number'
+                              variant='outlined'
+                              InputProps={{
+                                endAdornment: <InputAdornment position='end'>%</InputAdornment>,
+                              }}
+                            />
+                          </TableCell>
+                          <TableCell>
+                            <Field
+                              className={classes.attributionWindowSelect}
+                              component={Select}
+                              name={`experiment.metricAssignments[${index}].attributionWindowSeconds`}
+                              aria-label='Attribution Window'
+                              type='number'
+                              size='small'
+                              variant='outlined'
+                              placeholder='1 week'
+                              autoWidth
+                              displayEmpty
+                              InputProps={{
+                                endAdornment: <InputAdornment position='end'>seconds</InputAdornment>,
+                              }}
+                            >
+                              <MenuItem value=''>-</MenuItem>
+                              {Object.keys(AttributionWindowSecondsToHuman).map((attributionWindowSeconds) => (
+                                <MenuItem value={attributionWindowSeconds} key={attributionWindowSeconds}>
+                                  {
+                                    AttributionWindowSecondsToHuman[
+                                      (attributionWindowSeconds as unknown) as AttributionWindowSeconds
+                                    ]
+                                  }
+                                </MenuItem>
+                              ))}
+                            </Field>
+                          </TableCell>
+                          <TableCell>
+                            <Button onClick={onRemoveMetricAssignment}>Remove</Button>
+                          </TableCell>
+                        </TableRow>
+                      )
+                    })}
                     {metricAssignmentsField.value.length === 0 && (
                       <TableRow>
-                        <TableCell colSpan={4}>
+                        <TableCell colSpan={5}>
                           <Typography variant='body1' align='center'>
                             {' '}
                             You don't have any metrics yet.
