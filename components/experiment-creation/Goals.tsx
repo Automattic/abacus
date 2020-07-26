@@ -8,23 +8,18 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  Select,
+  Select as MuiSelect,
   FormControl,
   InputLabel,
   MenuItem,
   Button,
+  InputAdornment,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React, { useState } from 'react'
-import { FieldArray, useField } from 'formik'
-import {
-  MetricAssignment,
-  MetricBare,
-  MetricParameterType,
-  MetricAssignmentNew,
-  AttributionWindowSeconds,
-} from '@/lib/schemas'
-import { toIntOrNull } from 'qc-to_int'
+import { FieldArray, useField, Field } from 'formik'
+import { MetricAssignment, MetricBare, MetricParameterType, AttributionWindowSeconds } from '@/lib/schemas'
+import { TextField } from 'formik-material-ui'
 
 const normalizedMetrics: Record<number, MetricBare> = {
   1: {
@@ -115,7 +110,7 @@ const Goals = () => {
                 <div className={classes.addMetricControls}>
                   <FormControl className={classes.addMetricSelect}>
                     <InputLabel id='add-metric-label'>Search Metrics</InputLabel>
-                    <Select
+                    <MuiSelect
                       labelId='add-metric-label'
                       id='add-metric-select'
                       value={selectedMetricId}
@@ -129,7 +124,7 @@ const Goals = () => {
                             {metric.name}
                           </MenuItem>
                         ))}
-                    </Select>
+                    </MuiSelect>
                   </FormControl>
                   <Button variant='outlined' size='small' onClick={onAddMetric}>
                     Add
@@ -157,9 +152,20 @@ const Goals = () => {
                     {metricAssignmentsField.value.map((metricAssignment, index) => (
                       <TableRow key={metricAssignment.metricId}>
                         <TableCell>{normalizedMetrics[metricAssignment.metricId].name}</TableCell>
-                        <TableCell>60</TableCell>
+                        <TableCell></TableCell>
                         <TableCell>Yes</TableCell>
-                        <TableCell>10%</TableCell>
+                        <TableCell>
+                          <Field
+                            component={TextField}
+                            name={`experiment.metricAssigments[${index}].minDifference`}
+                            type='number'
+                            size='small'
+                            variant='outlined'
+                            InputProps={{
+                              endAdornment: <InputAdornment position='end'>%</InputAdornment>,
+                            }}
+                          />
+                        </TableCell>
                       </TableRow>
                     ))}
                     {metricAssignmentsField.value.length === 0 && (
