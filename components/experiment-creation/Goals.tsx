@@ -56,6 +56,13 @@ const useStyles = makeStyles((theme: Theme) =>
     attributionWindowSelect: {
       minWidth: '8rem',
     },
+    metricName: {
+      fontFamily: theme.custom.fonts.monospace,
+      fontWeight: theme.custom.fontWeights.monospaceBold,
+    },
+    primary: {
+      fontFamily: theme.custom.fonts.monospace,
+    },
   }),
 )
 
@@ -97,7 +104,11 @@ const Goals = () => {
             const metricId = parseInt(selectedMetricId, 10)
             const metric = normalizedMetrics[metricId]
             if (metricId) {
-              arrayHelpers.push(createMetricAssignment(metric))
+              const metricAssignment = createMetricAssignment(metric)
+              arrayHelpers.push({
+                ...metricAssignment,
+                isPrimary: metricAssignmentsField.value.length === 0,
+              })
             }
             setSelectedMetricId('')
           }
@@ -147,7 +158,7 @@ const Goals = () => {
                   <TableHead>
                     <TableRow>
                       <TableCell>Metric</TableCell>
-                      <TableCell>Is Change Expected</TableCell>
+                      <TableCell>Change Expected?</TableCell>
                       <TableCell>Minimum Difference</TableCell>
                       <TableCell>Attribution Window</TableCell>
                       <TableCell></TableCell>
@@ -161,7 +172,14 @@ const Goals = () => {
 
                       return (
                         <TableRow key={metricAssignment.metricId}>
-                          <TableCell>{normalizedMetrics[metricAssignment.metricId].name}</TableCell>
+                          <TableCell>
+                            {' '}
+                            <span className={classes.metricName}>
+                              {normalizedMetrics[metricAssignment.metricId].name}
+                            </span>
+                            <br />
+                            {metricAssignment.isPrimary && <span className={classes.primary}>Primary</span>}{' '}
+                          </TableCell>
                           <TableCell>
                             <Field
                               component={Switch}
@@ -174,6 +192,7 @@ const Goals = () => {
                           <TableCell>
                             <Field
                               aria-label='Min difference'
+                              disabled={!metricAssignment.changeExpected}
                               component={TextField}
                               name={`experiment.metricAssignments[${index}].minDifference`}
                               type='number'
