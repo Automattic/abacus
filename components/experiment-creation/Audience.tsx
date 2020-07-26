@@ -203,7 +203,11 @@ const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Part
             options={Object.values(segments)}
             // TODO: Error state, see https://stackworx.github.io/formik-material-ui/docs/api/material-ui-lab
             renderInput={(params: AutocompleteRenderInputParams) => (
-              <MuiTextField {...params} variant='outlined' placeholder='Search and select to customize' />
+              <MuiTextField
+                {...params}
+                variant='outlined'
+                placeholder={segmentAssignmentsField.value.length === 0 ? 'Search and select to customize' : undefined}
+              />
             )}
             segmentExclusionState={segmentExclusionState}
             fullWidth
