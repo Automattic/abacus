@@ -19,7 +19,8 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React, { useState } from 'react'
 import { FieldArray, useField, Field } from 'formik'
 import { MetricAssignment, MetricBare, MetricParameterType, AttributionWindowSeconds } from '@/lib/schemas'
-import { TextField } from 'formik-material-ui'
+import { TextField, Select } from 'formik-material-ui'
+import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 
 const normalizedMetrics: Record<number, MetricBare> = {
   1: {
@@ -52,16 +53,19 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       alignItems: 'flex-end',
     },
+    attributionWindowSelect: {
+      minWidth: '7rem',
+    },
   }),
 )
 
 const createMetricAssignment = (metric: MetricBare) => {
   return {
     metricId: metric.metricId,
-    attributionWindowSeconds: AttributionWindowSeconds.TwentyFourHours,
+    attributionWindowSeconds: '',
     isPrimary: false,
-    changeExpected: null,
-    minDifference: null,
+    changeExpected: false,
+    minDifference: 0,
   }
 }
 
@@ -143,7 +147,7 @@ const Goals = () => {
                   <TableHead>
                     <TableRow>
                       <TableCell>Metric</TableCell>
-                      <TableCell>Attribution Window (Seconds)</TableCell>
+                      <TableCell>Attribution Window</TableCell>
                       <TableCell>Change Expected</TableCell>
                       <TableCell>Minimum Difference</TableCell>
                     </TableRow>
@@ -152,14 +156,39 @@ const Goals = () => {
                     {metricAssignmentsField.value.map((metricAssignment, index) => (
                       <TableRow key={metricAssignment.metricId}>
                         <TableCell>{normalizedMetrics[metricAssignment.metricId].name}</TableCell>
-                        <TableCell></TableCell>
+                        <TableCell>
+                          <Field
+                            className={classes.attributionWindowSelect}
+                            component={Select}
+                            name={`experiment.metricAssignments[${index}].attributionWindowSeconds`}
+                            type='number'
+                            size='small'
+                            variant='outlined'
+                            placeholder='1 week'
+                            autoWidth
+                            displayEmpty
+                            InputProps={{
+                              endAdornment: <InputAdornment position='end'>seconds</InputAdornment>,
+                            }}
+                          >
+                            <MenuItem value=''>-</MenuItem>
+                            {Object.keys(AttributionWindowSecondsToHuman).map((attributionWindowSeconds) => (
+                              <MenuItem value={attributionWindowSeconds} key={attributionWindowSeconds}>
+                                {
+                                  AttributionWindowSecondsToHuman[
+                                    (attributionWindowSeconds as unknown) as AttributionWindowSeconds
+                                  ]
+                                }
+                              </MenuItem>
+                            ))}
+                          </Field>
+                        </TableCell>
                         <TableCell>Yes</TableCell>
                         <TableCell>
                           <Field
                             component={TextField}
-                            name={`experiment.metricAssigments[${index}].minDifference`}
+                            name={`experiment.metricAssignments[${index}].minDifference`}
                             type='number'
-                            size='small'
                             variant='outlined'
                             InputProps={{
                               endAdornment: <InputAdornment position='end'>%</InputAdornment>,
