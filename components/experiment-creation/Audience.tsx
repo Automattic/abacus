@@ -48,6 +48,9 @@ const useStyles = makeStyles((theme: Theme) =>
     variationAllocatedPercentage: {
       width: '7rem',
     },
+    variants: {
+      width: 'auto',
+    },
   }),
 )
 
@@ -219,7 +222,7 @@ const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Part
             (fallback) experience.
           </FormHelperText>
           <TableContainer>
-            <Table>
+            <Table className={classes.variants}>
               <TableHead>
                 <TableRow>
                   <TableCell> Name </TableCell>
