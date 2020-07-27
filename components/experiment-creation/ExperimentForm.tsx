@@ -69,6 +69,7 @@ const useStyles = makeStyles((theme: Theme) =>
     formPart: {
       height: '100%',
       overflow: 'auto',
+      maxWidth: 600,
     },
     formPartActions: {
       display: 'flex',
