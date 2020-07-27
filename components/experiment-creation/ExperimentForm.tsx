@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     // TODO: Subject to change when we get to polishing overall form UX
     paper: {
-      padding: theme.spacing(2, 6),
+      padding: theme.spacing(3, 4),
       marginBottom: theme.spacing(2),
     },
   }),
@@ -171,7 +171,9 @@ const ExperimentForm = ({
           {(formikProps) => (
             <form onSubmit={formikProps.handleSubmit}>
               <div className={classes.formPart} ref={formPartBeginningRef}>
-                <Beginning />
+                <Paper className={classes.paper}>
+                  <Beginning />
+                </Paper>
                 <div className={classes.formPartActions}>
                   <Button onClick={nextStage} variant='contained' color='primary'>
                     Begin
