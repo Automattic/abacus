@@ -30,24 +30,22 @@ const Beginning = () => {
 
   return (
     <div className={classes.root}>
-      <Typography variant='body1'>
-        We think one of the best ways to prevent a failed experiment is by documenting what you hope to learn.
+      <Typography variant='h5' gutterBottom>
+        <strong>Start by designing and documenting your experiment.</strong>
       </Typography>
-      <div className={classes.p2Entry}>
-        <Typography variant='h6' gutterBottom>
-          P2 Link
-        </Typography>
-        <Typography variant='body1' gutterBottom>
-          Once you&apos;ve designed and documented your experiment, enter the P2 post URL:
-        </Typography>
-        <Field
-          className={classes.p2EntryField}
-          component={TextField}
-          name='experiment.p2Url'
-          placeholder='https://your-p2-post-here'
-          variant='outlined'
-        />
-      </div>
+      <Typography variant='body2' gutterBottom>
+        Without a well documented design, an experiment could be invalid and unsafe for making important decisions.
+        <br />
+        <br />
+        Get help from our Field Guide and enter your P2 Post&apos;s URL when you are ready:
+      </Typography>
+      <Field
+        className={classes.p2EntryField}
+        component={TextField}
+        name='experiment.p2Url'
+        placeholder='https://your-p2-post-here'
+        variant='outlined'
+      />
     </div>
   )
 }
