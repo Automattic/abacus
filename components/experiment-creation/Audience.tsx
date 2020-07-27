@@ -32,9 +32,12 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
     row: {
-      margin: theme.spacing(6, 0),
+      margin: theme.spacing(5, 0),
       display: 'flex',
       alignItems: 'center',
+      '&:first-of-type': {
+        marginTop: theme.spacing(2),
+      },
     },
     segmentationHelperText: {},
     segmentationFieldSet: {
