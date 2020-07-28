@@ -24,6 +24,7 @@ import { TextField, Select, Switch } from 'formik-material-ui'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import MoreMenu from '@/components/MoreMenu'
 import * as MetricsLib from '@/lib/metrics'
+import { Add } from '@material-ui/icons'
 
 const normalizedMetrics: Record<number, MetricBare> = {
   1: {
@@ -45,16 +46,22 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {},
     addMetric: {
       display: 'flex',
-      flexDirection: 'column',
-      margin: theme.spacing(5, 0),
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+      margin: theme.spacing(1, 0),
+    },
+    addMetricAddSymbol: {
+      position: 'relative',
+      top: -3,
+      marginRight: theme.spacing(2),
+      color: theme.palette.text.disabled,
+    },
+    addMetricPlaceholder: {
+      fontFamily: theme.typography.fontFamily,
     },
     addMetricSelect: {
       minWidth: '10rem',
-      marginRight: theme.spacing(2),
-    },
-    addMetricControls: {
-      display: 'flex',
-      alignItems: 'flex-end',
+      marginRight: theme.spacing(1),
     },
     attributionWindowSelect: {
       minWidth: '8rem',
@@ -136,44 +143,6 @@ const Metrics = () => {
 
           return (
             <>
-              <div className={classes.addMetric}>
-                <Typography variant='h5' gutterBottom>
-                  Assign a Metric
-                </Typography>
-                <Typography variant='subtitle2' gutterBottom>
-                  Quantify the impact you're trying to measure
-                </Typography>
-                <div className={classes.addMetricControls}>
-                  <FormControl className={classes.addMetricSelect}>
-                    <InputLabel id='add-metric-label'>Select a Metric</InputLabel>
-                    <MuiSelect
-                      labelId='add-metric-label'
-                      id='add-metric-select'
-                      value={selectedMetricId}
-                      onChange={onSelectedMetricChange}
-                      displayEmpty
-                    >
-                      {avaliableMetricIds
-                        .map((metricId) => normalizedMetrics[metricId])
-                        .map((metric) => (
-                          <MenuItem value={metric.metricId} key={metric.metricId}>
-                            {metric.name}
-                          </MenuItem>
-                        ))}
-                    </MuiSelect>
-                  </FormControl>
-                  <Button variant='outlined' size='small' onClick={onAddMetric} aria-label='Add metric'>
-                    Add
-                  </Button>
-                </div>
-              </div>
-
-              <Typography variant='h5' gutterBottom>
-                Assigned Metrics
-              </Typography>
-              <Typography variant='subtitle2' gutterBottom>
-                Configure your metrics
-              </Typography>
               <TableContainer>
                 <Table>
                   <TableHead>
@@ -275,6 +244,43 @@ const Metrics = () => {
                         </TableCell>
                       </TableRow>
                     )}
+                    <TableRow>
+                      <TableCell colSpan={5}>
+                        <div className={classes.addMetric} style={{ display: 'flex' }}>
+                          <Add className={classes.addMetricAddSymbol} />
+                          <FormControl className={classes.addMetricSelect}>
+                            {/* <InputLabel id='add-metric-label'>Select a Metric</InputLabel> */}
+                            <MuiSelect
+                              labelId='add-metric-label'
+                              id='add-metric-select'
+                              value={selectedMetricId}
+                              onChange={onSelectedMetricChange}
+                              displayEmpty
+                            >
+                              <MenuItem value=''>
+                                <span className={classes.addMetricPlaceholder}>Select a Metric</span>
+                              </MenuItem>
+                              {avaliableMetricIds
+                                .map((metricId) => normalizedMetrics[metricId])
+                                .map((metric) => (
+                                  <MenuItem value={metric.metricId} key={metric.metricId}>
+                                    {metric.name}
+                                  </MenuItem>
+                                ))}
+                            </MuiSelect>
+                          </FormControl>
+                          <Button
+                            variant='contained'
+                            disableElevation
+                            size='small'
+                            onClick={onAddMetric}
+                            aria-label='Add metric'
+                          >
+                            Assign
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
                   </TableBody>
                 </Table>
               </TableContainer>
