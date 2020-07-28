@@ -204,6 +204,9 @@ const ExperimentForm = ({
               </div>
               <div className={classes.formPart} ref={formPartMetricsRef}>
                 <Paper className={classes.paper}>
+                  <Typography variant='h4' gutterBottom>
+                    What Are You Measuring
+                  </Typography>
                   <Typography variant='body1'>Metrics Form Part</Typography>
                 </Paper>
                 <div className={classes.formPartActions}>
