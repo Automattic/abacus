@@ -7,14 +7,8 @@ import React from 'react'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
-    p2LinkLine: {
-      margin: theme.spacing(6, 0),
-    },
-    p2Entry: {
-      margin: theme.spacing(6, 0),
-    },
     p2EntryField: {
-      marginTop: theme.spacing(1),
+      marginTop: theme.spacing(2),
       width: '100%',
       background: '#fff',
     },
