@@ -21,7 +21,7 @@ import { FieldArray, useField, Field } from 'formik'
 import { MetricAssignment, MetricBare, MetricParameterType, AttributionWindowSeconds } from '@/lib/schemas'
 import { TextField, Select, Switch } from 'formik-material-ui'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
-import MoreMenu from '../MoreMenu'
+import MoreMenu from '@/components/MoreMenu'
 
 const normalizedMetrics: Record<number, MetricBare> = {
   1: {
