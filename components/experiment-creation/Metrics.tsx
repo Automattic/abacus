@@ -14,6 +14,7 @@ import {
   MenuItem,
   Button,
   InputAdornment,
+  Tooltip,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React, { useState } from 'react'
@@ -162,12 +163,11 @@ const Metrics = () => {
                         <TableRow key={index}>
                           <TableCell>
                             {' '}
-                            <span
-                              className={classes.metricName}
-                              title={normalizedMetrics[metricAssignment.metricId].description}
-                            >
-                              {normalizedMetrics[metricAssignment.metricId].name}
-                            </span>
+                            <Tooltip arrow title={normalizedMetrics[metricAssignment.metricId].description}>
+                              <span className={classes.metricName}>
+                                {normalizedMetrics[metricAssignment.metricId].name}
+                              </span>
+                            </Tooltip>
                             <br />
                             {metricAssignment.isPrimary && <span className={classes.primary}>Primary</span>}{' '}
                           </TableCell>
@@ -259,7 +259,7 @@ const Metrics = () => {
                       <span className={classes.addMetricPlaceholder}>Select a Metric</span>
                     </MenuItem>
                     {Object.values(normalizedMetrics).map((metric) => (
-                      <MenuItem value={metric.metricId} key={metric.metricId} title={metric.description}>
+                      <MenuItem value={metric.metricId} key={metric.metricId}>
                         {metric.name}
                       </MenuItem>
                     ))}
