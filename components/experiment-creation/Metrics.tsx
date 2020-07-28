@@ -162,7 +162,10 @@ const Metrics = () => {
                         <TableRow key={index}>
                           <TableCell>
                             {' '}
-                            <span className={classes.metricName}>
+                            <span
+                              className={classes.metricName}
+                              title={normalizedMetrics[metricAssignment.metricId].description}
+                            >
                               {normalizedMetrics[metricAssignment.metricId].name}
                             </span>
                             <br />
@@ -256,7 +259,7 @@ const Metrics = () => {
                       <span className={classes.addMetricPlaceholder}>Select a Metric</span>
                     </MenuItem>
                     {Object.values(normalizedMetrics).map((metric) => (
-                      <MenuItem value={metric.metricId} key={metric.metricId}>
+                      <MenuItem value={metric.metricId} key={metric.metricId} title={metric.description}>
                         {metric.name}
                       </MenuItem>
                     ))}
