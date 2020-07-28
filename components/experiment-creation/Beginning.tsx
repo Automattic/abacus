@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
     p2EntryField: {
-      marginTop: theme.spacing(2),
+      marginTop: theme.spacing(4),
       width: '100%',
       background: '#fff',
     },
@@ -24,21 +24,25 @@ const Beginning = () => {
 
   return (
     <div className={classes.root}>
-      <Typography variant='h5' gutterBottom>
-        <strong>Start by designing and documenting your experiment.</strong>
+      <Typography variant='h4' gutterBottom>
+        Design and Document Your Experiment
       </Typography>
-      <Typography variant='body2' gutterBottom>
+      <Typography variant='body2'>
         Without a well documented design, an experiment could be invalid and unsafe for making important decisions.
         <br />
         <br />
-        Get help from our Field Guide and enter your P2 Post&apos;s URL when you are ready:
+        <strong>Start by looking up our Field Guide, it will instruct you on creating a P2 post.</strong>
       </Typography>
       <Field
         className={classes.p2EntryField}
         component={TextField}
         name='experiment.p2Url'
         placeholder='https://your-p2-post-here'
+        label={`Your Post's URL`}
         variant='outlined'
+        InputLabelProps={{
+          shrink: true,
+        }}
       />
     </div>
   )
