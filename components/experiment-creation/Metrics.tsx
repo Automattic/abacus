@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'flex-end',
-      margin: theme.spacing(1, 0),
+      margin: theme.spacing(3, 0, 2),
     },
     addMetricAddSymbol: {
       position: 'relative',
