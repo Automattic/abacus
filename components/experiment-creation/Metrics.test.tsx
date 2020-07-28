@@ -78,8 +78,11 @@ test('allows adding, editing and removing a Metric Assignment', async () => {
   })
 
   expect(container).toMatchSnapshot()
+
   fireEvent.click(metricSearchField)
   fireEvent.keyDown(metricSearchField, { key: 'Enter' })
-  fireEvent.click(await screen.findByRole('option', { name: /asdf_7d_refund/ }))
+  fireEvent.click(await screen.findByRole('option', { name: /registration_start/ }))
   fireEvent.click(metricAddButton)
+
+  expect(container).toMatchSnapshot()
 })
