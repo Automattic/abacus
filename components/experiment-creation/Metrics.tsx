@@ -104,17 +104,11 @@ const Metrics = () => {
     setSelectedMetricId(event.target.value as string)
   }
 
-  const usedMetricIds = metricAssignmentsField.value.map((metricAssignment) => metricAssignment.metricId)
-  const avaliableMetricIds = _.difference(
-    Object.keys(normalizedMetrics).map((id) => parseInt(id, 10)),
-    usedMetricIds,
-  )
-
-  const makeMetricAssignmentPrimary = (metricId: number) => {
+  const makeMetricAssignmentPrimary = (indexToSet: number) => {
     metricAssignmentsFieldHelperProps.setValue(
-      metricAssignmentsField.value.map((metricAssignment) => ({
+      metricAssignmentsField.value.map((metricAssignment, index) => ({
         ...metricAssignment,
-        isPrimary: metricAssignment.metricId === metricId,
+        isPrimary: index === indexToSet,
       })),
     )
   }
@@ -161,11 +155,11 @@ const Metrics = () => {
                       }
 
                       const onMakePrimary = () => {
-                        makeMetricAssignmentPrimary(metricAssignment.metricId)
+                        makeMetricAssignmentPrimary(index)
                       }
 
                       return (
-                        <TableRow key={metricAssignment.metricId}>
+                        <TableRow key={index}>
                           <TableCell>
                             {' '}
                             <span className={classes.metricName}>
@@ -260,13 +254,11 @@ const Metrics = () => {
                               <MenuItem value=''>
                                 <span className={classes.addMetricPlaceholder}>Select a Metric</span>
                               </MenuItem>
-                              {avaliableMetricIds
-                                .map((metricId) => normalizedMetrics[metricId])
-                                .map((metric) => (
-                                  <MenuItem value={metric.metricId} key={metric.metricId}>
-                                    {metric.name}
-                                  </MenuItem>
-                                ))}
+                              {Object.values(normalizedMetrics).map((metric) => (
+                                <MenuItem value={metric.metricId} key={metric.metricId}>
+                                  {metric.name}
+                                </MenuItem>
+                              ))}
                             </MuiSelect>
                           </FormControl>
                           <Button
