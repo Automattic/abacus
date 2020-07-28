@@ -215,21 +215,19 @@ const ExperimentForm = ({
               </div>
               <div className={classes.formPart} ref={formPartSubmitRef}>
                 <Paper className={classes.paper}>
-                  <Typography variant='body1' gutterBottom>
-                    This last form-part gives the users a chance to pause and consider.
-                    <br />
-                    <br />
-                    It is good to have a mini-checklist here.
-                    <br />
-                    <br />
-                    Maybe a pre-submission summary.
-                    <br />
-                    <br />
-                    It is also good for the users to know the consequences of submitting so they aren&apos;t afraid of
-                    pressing the button.
+                  <Typography variant='h4' gutterBottom>
+                    Confirm and Submit Your Experiment
+                  </Typography>
+                  <Typography variant='body2' gutterBottom>
+                    Now is a good time to look over the Field Guide&apos;s experiment creation checklist and confirm
+                    everything is in place.
+                  </Typography>
+                  <Typography variant='body2' gutterBottom>
+                    <strong> When you are ready, click the Submit button below.</strong>
                   </Typography>
                 </Paper>
                 <div className={classes.formPartActions}>
+                  <Button onClick={prevStage}>Previous</Button>
                   <Button type='submit' variant='contained' color='secondary'>
                     Submit
                   </Button>
