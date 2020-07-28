@@ -20,8 +20,10 @@ import React, { useState } from 'react'
 import { FieldArray, useField, Field } from 'formik'
 import { MetricAssignment, MetricBare, MetricParameterType, AttributionWindowSeconds } from '@/lib/schemas'
 import { TextField, Select, Switch } from 'formik-material-ui'
+
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import MoreMenu from '@/components/MoreMenu'
+import * as MetricsLib from '@/lib/metrics'
 
 const normalizedMetrics: Record<number, MetricBare> = {
   1: {
@@ -66,7 +68,7 @@ const useStyles = makeStyles((theme: Theme) =>
       opacity: 0.5,
     },
     minDifferenceField: {
-      maxWidth: '8rem',
+      maxWidth: '14rem',
     },
     changeExpected: {
       textAlign: 'center',
@@ -80,7 +82,7 @@ const createMetricAssignment = (metric: MetricBare) => {
     attributionWindowSeconds: '',
     isPrimary: false,
     changeExpected: false,
-    minDifference: 0,
+    minDifference: '',
   }
 }
 
@@ -221,8 +223,13 @@ const Metrics = () => {
                               name={`experiment.metricAssignments[${index}].minDifference`}
                               type='number'
                               variant='outlined'
+                              placeholder='-'
                               InputProps={{
-                                endAdornment: <InputAdornment position='end'>%</InputAdornment>,
+                                endAdornment: (
+                                  <InputAdornment position='end'>
+                                    {MetricsLib.getUnit(normalizedMetrics[metricAssignment.metricId])}
+                                  </InputAdornment>
+                                ),
                               }}
                             />
                           </TableCell>
@@ -234,7 +241,6 @@ const Metrics = () => {
                               aria-label='Attribution Window'
                               size='small'
                               variant='outlined'
-                              placeholder='1 week'
                               autoWidth
                               displayEmpty
                             >
