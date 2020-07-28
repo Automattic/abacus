@@ -223,7 +223,7 @@ exports[`renders as expected 1`] = `
                 <span
                   class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
                 >
-                  Goals
+                  Metrics
                 </span>
               </span>
             </span>
@@ -1327,7 +1327,7 @@ exports[`renders as expected 1`] = `
               <h2
                 class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
               >
-                Goals
+                Metrics
               </h2>
               <div
                 class="makeStyles-addMetric-34"

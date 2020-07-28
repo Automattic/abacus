@@ -5,7 +5,7 @@ import React from 'react'
 import { createNewExperiment } from '@/lib/experiments'
 import { render } from '@/test-helpers/test-utils'
 
-import Goals from './Goals'
+import Metrics from './Metrics'
 
 test('renders as expected', () => {
   const { container } = render(
@@ -16,7 +16,7 @@ test('renders as expected', () => {
         () => undefined
       }
     >
-      {() => <Goals />}
+      {() => <Metrics />}
     </Formik>,
   )
   expect(container).toMatchSnapshot()
@@ -31,7 +31,7 @@ test('allows adding, editing and removing a Metric Assignment', async () => {
         () => undefined
       }
     >
-      {() => <Goals />}
+      {() => <Metrics />}
     </Formik>,
   )
   expect(container).toMatchSnapshot()

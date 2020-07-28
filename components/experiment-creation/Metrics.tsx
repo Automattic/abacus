@@ -84,7 +84,7 @@ const createMetricAssignment = (metric: MetricBare) => {
   }
 }
 
-const Goals = () => {
+const Metrics = () => {
   const classes = useStyles()
 
   const [metricAssignmentsField, _metricAssignmentsFieldMetaProps, metricAssignmentsFieldHelperProps] = useField<
@@ -113,7 +113,7 @@ const Goals = () => {
   return (
     <div className={classes.root}>
       <Typography variant='h2' gutterBottom>
-        Goals
+        Metrics
       </Typography>
 
       <FieldArray
@@ -281,4 +281,4 @@ const Goals = () => {
   )
 }
 
-export default Goals
+export default Metrics

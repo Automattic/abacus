@@ -8,7 +8,7 @@ exports[`allows adding, editing and removing a Metric Assignment 1`] = `
     <h2
       class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
     >
-      Goals
+      Metrics
     </h2>
     <div
       class="makeStyles-addMetric-11"
@@ -169,7 +169,7 @@ exports[`allows adding, editing and removing a Metric Assignment 2`] = `
     <h2
       class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
     >
-      Goals
+      Metrics
     </h2>
     <div
       class="makeStyles-addMetric-11"
@@ -330,7 +330,7 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
     <h2
       class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
     >
-      Goals
+      Metrics
     </h2>
     <div
       class="makeStyles-addMetric-11"
@@ -659,7 +659,7 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
     <h2
       class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
     >
-      Goals
+      Metrics
     </h2>
     <div
       class="makeStyles-addMetric-11"
@@ -986,7 +986,7 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
     <h2
       class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
     >
-      Goals
+      Metrics
     </h2>
     <div
       class="makeStyles-addMetric-11"
@@ -1313,7 +1313,7 @@ exports[`allows adding, editing and removing a Metric Assignment 6`] = `
     <h2
       class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
     >
-      Goals
+      Metrics
     </h2>
     <div
       class="makeStyles-addMetric-11"
@@ -1474,7 +1474,7 @@ exports[`renders as expected 1`] = `
     <h2
       class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
     >
-      Goals
+      Metrics
     </h2>
     <div
       class="makeStyles-addMetric-2"
