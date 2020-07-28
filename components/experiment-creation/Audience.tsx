@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       alignItems: 'center',
       '&:first-of-type': {
-        marginTop: theme.spacing(2),
+        marginTop: theme.spacing(3),
       },
     },
     segmentationHelperText: {},
@@ -139,8 +139,8 @@ const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Part
 
   return (
     <div className={classes.root}>
-      <Typography variant='h2' gutterBottom>
-        Audience
+      <Typography variant='h4' gutterBottom>
+        Who is your Audience
       </Typography>
 
       <div className={classes.row}>
