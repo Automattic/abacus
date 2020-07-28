@@ -3,8 +3,10 @@
 /* istanbul ignore file */
 import { Button, Paper, Step, StepButton, Stepper, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import useComponentSize from '@rehooks/component-size'
 import { Formik } from 'formik'
-import React, { useRef, useState } from 'react'
+import _ from 'lodash'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as yup from 'yup'
 
 import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
@@ -53,22 +55,23 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
-      // For WIP until I fix the rest of the layout
-      height: 'calc(100vh - 110px - 43px)',
     },
     navigation: {
       flexShrink: 0,
       marginRight: theme.spacing(6),
+      marginTop: theme.spacing(2),
+    },
+    formConstrictor: {
+      width: '100%',
+      overflow: 'hidden',
     },
     form: {
       flex: 1,
       display: 'flex',
-      height: '100%',
-      overflow: 'hidden',
     },
     formPart: {
-      height: '100%',
-      overflow: 'auto',
+      flexShrink: 0,
+      padding: theme.spacing(2, 1),
     },
     formPartActions: {
       display: 'flex',
@@ -96,18 +99,25 @@ const ExperimentForm = ({
 }) => {
   const classes = useStyles()
 
+  const constrictorRef = useRef<HTMLDivElement>(null)
+  const constrictorSizes = useComponentSize(constrictorRef)
+
+  const rootRef = useRef<HTMLDivElement>(null)
   const formPartBeginningRef = useRef<HTMLDivElement>(null)
   const formPartBasicInfoRef = useRef<HTMLDivElement>(null)
   const formPartAudienceRef = useRef<HTMLDivElement>(null)
   const formPartMetricsRef = useRef<HTMLDivElement>(null)
   const formPartSubmitRef = useRef<HTMLDivElement>(null)
-  const stageFormPartRefs: Record<StageId, React.RefObject<HTMLDivElement>> = {
-    [StageId.Beginning]: formPartBeginningRef,
-    [StageId.BasicInfo]: formPartBasicInfoRef,
-    [StageId.Audience]: formPartAudienceRef,
-    [StageId.Metrics]: formPartMetricsRef,
-    [StageId.Submit]: formPartSubmitRef,
-  }
+  const stageFormPartRefs: Record<StageId, React.RefObject<HTMLDivElement>> = useMemo(
+    () => ({
+      [StageId.Beginning]: formPartBeginningRef,
+      [StageId.BasicInfo]: formPartBasicInfoRef,
+      [StageId.Audience]: formPartAudienceRef,
+      [StageId.Metrics]: formPartMetricsRef,
+      [StageId.Submit]: formPartSubmitRef,
+    }),
+    [],
+  )
 
   const [currentStageId, setActiveStageId] = useState<StageId>(StageId.Beginning)
   const currentStageIndex = stages.findIndex((stage) => stage.id === currentStageId)
@@ -120,14 +130,27 @@ const ExperimentForm = ({
     index && setCompleteStages(completeStages.splice(index, 1))
   }
   const [errorStages, setErrorStages] = useState<StageId[]>([])
-  const changeStage = (stageId: StageId) => {
-    // TODO: Update current stage error and complete state
-    setActiveStageId(stageId)
-    if (stageFormPartRefs[stageId].current) {
-      // Not sure why typescript is complaining about needing the '?'
-      stageFormPartRefs[stageId].current?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' })
+  const changeStage = useCallback(
+    (stageId: StageId) => {
+      // TODO: Update current stage error and complete state
+      setActiveStageId(stageId)
+      if (stageFormPartRefs[stageId].current && rootRef.current) {
+        stageFormPartRefs[stageId].current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
+      }
+    },
+    [stageFormPartRefs, setActiveStageId],
+  )
+  useEffect(() => {
+    const onResize = _.debounce(() => {
+      changeStage(currentStageId)
+    }, 100)
+
+    window.addEventListener('resize', onResize)
+
+    return () => {
+      window.removeEventListener('resize', onResize)
     }
-  }
+  }, [changeStage, currentStageId])
 
   const prevStage = () => {
     if (currentStageIndex === 0) {
@@ -151,7 +174,7 @@ const ExperimentForm = ({
   }
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} ref={rootRef}>
       <div className={classes.navigation}>
         <Stepper nonLinear activeStep={currentStageId} orientation='vertical'>
           {stages.map((stage) => (
@@ -161,15 +184,15 @@ const ExperimentForm = ({
           ))}
         </Stepper>
       </div>
-      <div className={classes.form}>
+      <div className={classes.formConstrictor} ref={constrictorRef}>
         <Formik
           initialValues={{ experiment: initialExperiment }}
           onSubmit={(v) => alert(JSON.stringify(v, null, 2))}
           validationSchema={yup.object({ experiment: experimentFullNewSchema })}
         >
           {(formikProps) => (
-            <form onSubmit={formikProps.handleSubmit}>
-              <div className={classes.formPart} ref={formPartBeginningRef}>
+            <form className={classes.form} onSubmit={formikProps.handleSubmit}>
+              <div className={classes.formPart} ref={formPartBeginningRef} style={{ width: constrictorSizes.width }}>
                 <Beginning />
                 <div className={classes.formPartActions}>
                   <Button onClick={nextStage} variant='contained' color='primary'>
@@ -177,7 +200,7 @@ const ExperimentForm = ({
                   </Button>
                 </div>
               </div>
-              <div className={classes.formPart} ref={formPartBasicInfoRef}>
+              <div className={classes.formPart} ref={formPartBasicInfoRef} style={{ width: constrictorSizes.width }}>
                 <Paper className={classes.paper}>
                   <BasicInfo />
                 </Paper>
@@ -188,7 +211,7 @@ const ExperimentForm = ({
                   </Button>
                 </div>
               </div>
-              <div className={classes.formPart} ref={formPartAudienceRef}>
+              <div className={classes.formPart} ref={formPartAudienceRef} style={{ width: constrictorSizes.width }}>
                 <Paper className={classes.paper}>
                   <Audience formikProps={formikProps} />
                 </Paper>
@@ -199,7 +222,7 @@ const ExperimentForm = ({
                   </Button>
                 </div>
               </div>
-              <div className={classes.formPart} ref={formPartMetricsRef}>
+              <div className={classes.formPart} ref={formPartMetricsRef} style={{ width: constrictorSizes.width }}>
                 <Paper className={classes.paper}>
                   <Typography variant='body1'>Metrics Form Part</Typography>
                 </Paper>
@@ -210,7 +233,7 @@ const ExperimentForm = ({
                   </Button>
                 </div>
               </div>
-              <div className={classes.formPart} ref={formPartSubmitRef}>
+              <div className={classes.formPart} ref={formPartSubmitRef} style={{ width: constrictorSizes.width }}>
                 <Paper className={classes.paper}>
                   <Typography variant='body1' gutterBottom>
                     This last form-part gives the users a chance to pause and consider.
