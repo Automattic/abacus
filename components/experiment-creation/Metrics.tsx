@@ -115,7 +115,7 @@ const Metrics = () => {
 
   return (
     <div className={classes.root}>
-      <Typography variant='h2' gutterBottom>
+      <Typography variant='h4' gutterBottom>
         Metrics
       </Typography>
 
@@ -142,9 +142,9 @@ const Metrics = () => {
                   <TableHead>
                     <TableRow>
                       <TableCell>Metric</TableCell>
+                      <TableCell>Attribution Window</TableCell>
                       <TableCell>Change Expected?</TableCell>
                       <TableCell>Minimum Difference</TableCell>
-                      <TableCell>Attribution Window</TableCell>
                       <TableCell></TableCell>
                     </TableRow>
                   </TableHead>
@@ -167,6 +167,29 @@ const Metrics = () => {
                             </span>
                             <br />
                             {metricAssignment.isPrimary && <span className={classes.primary}>Primary</span>}{' '}
+                          </TableCell>
+                          <TableCell>
+                            <Field
+                              className={classes.attributionWindowSelect}
+                              component={Select}
+                              name={`experiment.metricAssignments[${index}].attributionWindowSeconds`}
+                              aria-label='Attribution Window'
+                              size='small'
+                              variant='outlined'
+                              autoWidth
+                              displayEmpty
+                            >
+                              <MenuItem value=''>-</MenuItem>
+                              {Object.keys(AttributionWindowSecondsToHuman).map((attributionWindowSeconds) => (
+                                <MenuItem value={attributionWindowSeconds} key={attributionWindowSeconds}>
+                                  {
+                                    AttributionWindowSecondsToHuman[
+                                      (attributionWindowSeconds as unknown) as AttributionWindowSeconds
+                                    ]
+                                  }
+                                </MenuItem>
+                              ))}
+                            </Field>
                           </TableCell>
                           <TableCell className={classes.changeExpected}>
                             <Field
@@ -197,29 +220,6 @@ const Metrics = () => {
                             />
                           </TableCell>
                           <TableCell>
-                            <Field
-                              className={classes.attributionWindowSelect}
-                              component={Select}
-                              name={`experiment.metricAssignments[${index}].attributionWindowSeconds`}
-                              aria-label='Attribution Window'
-                              size='small'
-                              variant='outlined'
-                              autoWidth
-                              displayEmpty
-                            >
-                              <MenuItem value=''>-</MenuItem>
-                              {Object.keys(AttributionWindowSecondsToHuman).map((attributionWindowSeconds) => (
-                                <MenuItem value={attributionWindowSeconds} key={attributionWindowSeconds}>
-                                  {
-                                    AttributionWindowSecondsToHuman[
-                                      (attributionWindowSeconds as unknown) as AttributionWindowSeconds
-                                    ]
-                                  }
-                                </MenuItem>
-                              ))}
-                            </Field>
-                          </TableCell>
-                          <TableCell>
                             <MoreMenu>
                               <MenuItem onClick={onMakePrimary}>Set as Primary</MenuItem>
                               <MenuItem onClick={onRemoveMetricAssignment}>Remove</MenuItem>
@@ -238,44 +238,34 @@ const Metrics = () => {
                         </TableCell>
                       </TableRow>
                     )}
-                    <TableRow>
-                      <TableCell colSpan={5}>
-                        <div className={classes.addMetric} style={{ display: 'flex' }}>
-                          <Add className={classes.addMetricAddSymbol} />
-                          <FormControl className={classes.addMetricSelect}>
-                            {/* <InputLabel id='add-metric-label'>Select a Metric</InputLabel> */}
-                            <MuiSelect
-                              labelId='add-metric-label'
-                              id='add-metric-select'
-                              value={selectedMetricId}
-                              onChange={onSelectedMetricChange}
-                              displayEmpty
-                            >
-                              <MenuItem value=''>
-                                <span className={classes.addMetricPlaceholder}>Select a Metric</span>
-                              </MenuItem>
-                              {Object.values(normalizedMetrics).map((metric) => (
-                                <MenuItem value={metric.metricId} key={metric.metricId}>
-                                  {metric.name}
-                                </MenuItem>
-                              ))}
-                            </MuiSelect>
-                          </FormControl>
-                          <Button
-                            variant='contained'
-                            disableElevation
-                            size='small'
-                            onClick={onAddMetric}
-                            aria-label='Add metric'
-                          >
-                            Assign
-                          </Button>
-                        </div>
-                      </TableCell>
-                    </TableRow>
                   </TableBody>
                 </Table>
               </TableContainer>
+              <div className={classes.addMetric}>
+                <Add className={classes.addMetricAddSymbol} />
+                <FormControl className={classes.addMetricSelect}>
+                  {/* <InputLabel id='add-metric-label'>Select a Metric</InputLabel> */}
+                  <MuiSelect
+                    labelId='add-metric-label'
+                    id='add-metric-select'
+                    value={selectedMetricId}
+                    onChange={onSelectedMetricChange}
+                    displayEmpty
+                  >
+                    <MenuItem value=''>
+                      <span className={classes.addMetricPlaceholder}>Select a Metric</span>
+                    </MenuItem>
+                    {Object.values(normalizedMetrics).map((metric) => (
+                      <MenuItem value={metric.metricId} key={metric.metricId}>
+                        {metric.name}
+                      </MenuItem>
+                    ))}
+                  </MuiSelect>
+                </FormControl>
+                <Button variant='contained' disableElevation size='small' onClick={onAddMetric} aria-label='Add metric'>
+                  Assign
+                </Button>
+              </div>
             </>
           )
         }}
