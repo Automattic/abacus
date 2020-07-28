@@ -217,7 +217,6 @@ const Metrics = () => {
                             <Field
                               className={classes.minDifferenceField}
                               aria-label='Min difference'
-                              disabled={!metricAssignment.changeExpected}
                               component={TextField}
                               name={`experiment.metricAssignments[${index}].minDifference`}
                               type='number'
