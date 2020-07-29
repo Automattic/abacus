@@ -25,7 +25,7 @@ test('renders as expected', () => {
         <p
           class="MuiTypography-root MuiTypography-body2"
         >
-          Without a well documented design, an experiment could be invalid and unsafe for making important decisions.
+          We think one of the best ways to prevent a failed experiment is by documenting what you hope to learn.
           <br />
           <br />
           <strong>
