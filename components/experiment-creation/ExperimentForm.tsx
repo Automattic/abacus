@@ -28,24 +28,40 @@ enum StageId {
 interface Stage {
   id: StageId
   title: string
+  validatableFields?: string[]
 }
 
 const stages: Stage[] = [
   {
     id: StageId.Beginning,
     title: 'Start',
+    validatableFields: ['experiment.p2Url'],
   },
   {
     id: StageId.BasicInfo,
     title: 'Basic Info',
+    validatableFields: [
+      'experiment.name',
+      'experiment.description',
+      'experiment.startDatetime',
+      'experiment.endDatetime',
+      'experiment.ownerLogin',
+    ],
   },
   {
     id: StageId.Audience,
     title: 'Audience',
+    validatableFields: [
+      'experiment.platform',
+      'experiment.existingUsersAllowed',
+      'experiment.segments',
+      'experiment.variations',
+    ],
   },
   {
     id: StageId.Metrics,
     title: 'Metrics',
+    validatableFields: ['experiment.metrics'],
   },
   {
     id: StageId.Submit,
