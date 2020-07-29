@@ -1388,6 +1388,11 @@ exports[`renders as expected 1`] = `
             <p
               class="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
             >
+              Once you submit your experiment it will be set to staging, where it can be edited up until you set it to running.
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
+            >
               <strong>
                  When you are ready, click the Submit button below.
               </strong>

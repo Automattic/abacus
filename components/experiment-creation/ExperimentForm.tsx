@@ -7,7 +7,8 @@ import { Formik } from 'formik'
 import React, { useRef, useState } from 'react'
 import * as yup from 'yup'
 
-import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
+import ExperimentStatus from '@/components/ExperimentStatus'
+import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment, Status } from '@/lib/schemas'
 
 import Audience from './Audience'
 import BasicInfo from './BasicInfo'
@@ -224,6 +225,11 @@ const ExperimentForm = ({
                   <Typography variant='body2' gutterBottom>
                     Now is a good time to look over the Field Guide&apos;s experiment creation checklist and confirm
                     everything is in place.
+                  </Typography>
+
+                  <Typography variant='body2' gutterBottom>
+                    Once you submit your experiment it will be set to staging, where it can be edited up until you set
+                    it to running.
                   </Typography>
                   <Typography variant='body2' gutterBottom>
                     <strong> When you are ready, click the Submit button below.</strong>
