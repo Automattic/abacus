@@ -77,13 +77,13 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
               Name
             </TableCell>
             <TableCell component='th' variant='head'>
-              Minimum Difference
-            </TableCell>
-            <TableCell component='th' variant='head'>
               Attribution Window
             </TableCell>
             <TableCell component='th' variant='head'>
               Changes Expected
+            </TableCell>
+            <TableCell component='th' variant='head'>
+              Minimum Difference
             </TableCell>
           </TableRow>
         </TableHead>
@@ -95,16 +95,16 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                 {resolvedMetricAssignment.isPrimary && <Label className={classes.primary} text='Primary' />}
               </TableCell>
               <TableCell>
+                {AttributionWindowSecondsToHuman[resolvedMetricAssignment.attributionWindowSeconds]}
+              </TableCell>
+              <TableCell>{formatBoolean(resolvedMetricAssignment.changeExpected)}</TableCell>
+              <TableCell>
                 <span>
                   {resolvedMetricAssignment.metric.parameterType === MetricParameterType.Revenue
                     ? formatUsCurrencyDollar(resolvedMetricAssignment.minDifference)
                     : `${resolvedMetricAssignment.minDifference} pp`}
                 </span>
               </TableCell>
-              <TableCell>
-                {AttributionWindowSecondsToHuman[resolvedMetricAssignment.attributionWindowSeconds]}
-              </TableCell>
-              <TableCell>{formatBoolean(resolvedMetricAssignment.changeExpected)}</TableCell>
             </TableRow>
           ))}
         </TableBody>
