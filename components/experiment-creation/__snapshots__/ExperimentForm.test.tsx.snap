@@ -386,7 +386,7 @@ exports[`renders as expected 1`] = `
               <h4
                 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
               >
-                Tell Us the Basics
+                Basic Info
               </h4>
               <div
                 class="makeStyles-row-15"
@@ -714,7 +714,7 @@ exports[`renders as expected 1`] = `
               <h4
                 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
               >
-                Who Is Your Audience
+                Define Your Audience
               </h4>
               <div
                 class="makeStyles-row-19"
@@ -1328,7 +1328,7 @@ exports[`renders as expected 1`] = `
             <h4
               class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
             >
-              What Are You Measuring
+              Assign Metrics
             </h4>
             <p
               class="MuiTypography-root MuiTypography-body1"

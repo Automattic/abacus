@@ -8,7 +8,7 @@ exports[`renders as expected 1`] = `
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
-      Who Is Your Audience
+      Define Your Audience
     </h4>
     <div
       class="makeStyles-row-2"
@@ -590,7 +590,7 @@ exports[`renders as expected 2`] = `
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
-      Who Is Your Audience
+      Define Your Audience
     </h4>
     <div
       class="makeStyles-row-2"

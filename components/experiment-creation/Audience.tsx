@@ -140,7 +140,7 @@ const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Part
   return (
     <div className={classes.root}>
       <Typography variant='h4' gutterBottom>
-        Who Is Your Audience
+        Define Your Audience
       </Typography>
 
       <div className={classes.row}>

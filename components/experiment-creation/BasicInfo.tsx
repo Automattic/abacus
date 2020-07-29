@@ -52,7 +52,7 @@ const BasicInfo = () => {
   return (
     <div className={classes.root}>
       <Typography variant='h4' gutterBottom>
-        Tell Us the Basics
+        Basic Info
       </Typography>
 
       <div className={classes.row}>
