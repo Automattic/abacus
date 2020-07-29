@@ -24,7 +24,6 @@ import { TextField, Select, Switch } from 'formik-material-ui'
 
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import MoreMenu from '@/components/MoreMenu'
-import * as MetricsLib from '@/lib/metrics'
 import { Add } from '@material-ui/icons'
 
 const normalizedMetrics: Record<number, MetricBare> = {
@@ -213,13 +212,24 @@ const Metrics = () => {
                               type='number'
                               variant='outlined'
                               placeholder='-'
-                              InputProps={{
-                                endAdornment: (
-                                  <InputAdornment position='end'>
-                                    {MetricsLib.getUnit(normalizedMetrics[metricAssignment.metricId])}
-                                  </InputAdornment>
-                                ),
-                              }}
+                              InputProps={
+                                normalizedMetrics[metricAssignment.metricId].parameterType ===
+                                MetricParameterType.Revenue
+                                  ? {
+                                      endAdornment: (
+                                        <InputAdornment position='end'>
+                                          <Tooltip title='Percentage Points'>
+                                            <Typography variant='body1' color='textSecondary'>
+                                              pp
+                                            </Typography>
+                                          </Tooltip>
+                                        </InputAdornment>
+                                      ),
+                                    }
+                                  : {
+                                      startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+                                    }
+                              }
                             />
                           </TableCell>
                           <TableCell>
