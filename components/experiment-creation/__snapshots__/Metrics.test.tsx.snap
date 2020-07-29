@@ -466,8 +466,9 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
                   >
                     <p
                       class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+                      title="Percentage Points"
                     >
-                      USD
+                      pp
                     </p>
                   </div>
                   <fieldset
@@ -776,8 +777,9 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
                   >
                     <p
                       class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+                      title="Percentage Points"
                     >
-                      USD
+                      pp
                     </p>
                   </div>
                   <fieldset
@@ -1084,8 +1086,9 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
                   >
                     <p
                       class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+                      title="Percentage Points"
                     >
-                      USD
+                      pp
                     </p>
                   </div>
                   <fieldset
@@ -1519,25 +1522,25 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
                 class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-19"
               >
                 <div
-                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
                 >
+                  <div
+                    class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+                    >
+                      $
+                    </p>
+                  </div>
                   <input
                     aria-invalid="false"
-                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
                     name="experiment.metricAssignments[0].minDifference"
                     placeholder="-"
                     type="number"
                     value=""
                   />
-                  <div
-                    class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
-                    >
-                      conversions
-                    </p>
-                  </div>
                   <fieldset
                     aria-hidden="true"
                     class="PrivateNotchedOutline-root-29 MuiOutlinedInput-notchedOutline"
