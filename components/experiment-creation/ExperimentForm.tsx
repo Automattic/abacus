@@ -177,12 +177,20 @@ const ExperimentForm = ({
           }
         }
 
+        const changeStage = (stageId: StageId) => {
+          setActiveStageId(stageId)
+          updateStageState(stages[currentStageIndex])
+
+          if (stageId === StageId.Submit) {
+            stages.map(updateStageState)
+          }
+        }
+
         const prevStage = () => {
           if (currentStageIndex === 0) {
             return
           }
 
-          updateStageState(stages[currentStageIndex])
           const prevStageIndex = currentStageIndex - 1
           changeStage(stages[prevStageIndex].id)
         }
@@ -191,15 +199,8 @@ const ExperimentForm = ({
             return
           }
 
-          updateStageState(stages[currentStageIndex])
           const nextStageIndex = currentStageIndex + 1
           changeStage(stages[nextStageIndex].id)
-        }
-
-        const onSubmit = (event: React.SyntheticEvent<HTMLButtonElement>) => {
-          event.preventDefault()
-          stages.map(updateStageState)
-          formikProps.handleSubmit()
         }
 
         return (
@@ -297,7 +298,6 @@ const ExperimentForm = ({
                         variant='contained'
                         color='secondary'
                         disabled={formikProps.isSubmitting || errorStages.length > 0}
-                        onSubmit={onSubmit}
                       >
                         Submit
                       </Button>
