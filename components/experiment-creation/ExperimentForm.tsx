@@ -6,9 +6,11 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import useComponentSize from '@rehooks/component-size'
 import { Formik } from 'formik'
 import _ from 'lodash'
+import { useSnackbar } from 'notistack'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as yup from 'yup'
 
+import ExperimentsApi from '@/api/ExperimentsApi'
 import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
 
 import Audience from './Audience'
@@ -175,6 +177,19 @@ const ExperimentForm = ({
     changeStage(stages[nextStageIndex].id)
   }
 
+  const { enqueueSnackbar } = useSnackbar()
+  const onSubmit = async (formData: unknown) => {
+    try {
+      const { experiment } = formData as { experiment: ExperimentFullNew }
+      const receivedExperiment = await ExperimentsApi.create(experiment)
+      enqueueSnackbar('Experiment Created!', { variant: 'success' })
+    } catch (error) {
+      enqueueSnackbar('Failed to create experiment 😨 (Form data logged to console.)', { variant: 'error' })
+      console.error(error)
+      console.info('Form data:', formData)
+    }
+  }
+
   return (
     <div className={classes.root} ref={rootRef}>
       <div className={classes.navigation}>
@@ -189,7 +204,7 @@ const ExperimentForm = ({
       <div className={classes.formConstrictor} ref={constrictorRef}>
         <Formik
           initialValues={{ experiment: initialExperiment }}
-          onSubmit={(v) => alert(JSON.stringify(v, null, 2))}
+          onSubmit={onSubmit}
           validationSchema={yup.object({ experiment: experimentFullNewSchema })}
         >
           {(formikProps) => (
