@@ -161,14 +161,13 @@ const Metrics = () => {
                       return (
                         <TableRow key={index}>
                           <TableCell>
-                            {' '}
                             <Tooltip arrow title={normalizedMetrics[metricAssignment.metricId].description}>
                               <span className={classes.metricName}>
                                 {normalizedMetrics[metricAssignment.metricId].name}
                               </span>
                             </Tooltip>
                             <br />
-                            {metricAssignment.isPrimary && <span className={classes.primary}>Primary</span>}{' '}
+                            {metricAssignment.isPrimary && <span className={classes.primary}>Primary</span>}
                           </TableCell>
                           <TableCell>
                             <Field
@@ -182,15 +181,13 @@ const Metrics = () => {
                               displayEmpty
                             >
                               <MenuItem value=''>-</MenuItem>
-                              {Object.keys(AttributionWindowSecondsToHuman).map((attributionWindowSeconds) => (
-                                <MenuItem value={attributionWindowSeconds} key={attributionWindowSeconds}>
-                                  {
-                                    AttributionWindowSecondsToHuman[
-                                      (attributionWindowSeconds as unknown) as AttributionWindowSeconds
-                                    ]
-                                  }
-                                </MenuItem>
-                              ))}
+                              {Object.entries(AttributionWindowSecondsToHuman).map(
+                                ([attributionWindowSeconds, attributionWindowSecondsHuman]) => (
+                                  <MenuItem value={attributionWindowSeconds} key={attributionWindowSeconds}>
+                                    {attributionWindowSecondsHuman}
+                                  </MenuItem>
+                                ),
+                              )}
                             </Field>
                           </TableCell>
                           <TableCell className={classes.changeExpected}>
@@ -245,7 +242,6 @@ const Metrics = () => {
                       <TableRow>
                         <TableCell colSpan={5}>
                           <Typography variant='body1' align='center'>
-                            {' '}
                             You don't have any metrics yet.
                           </Typography>
                         </TableCell>
