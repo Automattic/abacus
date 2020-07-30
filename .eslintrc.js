@@ -96,7 +96,7 @@ module.exports = {
     ],
 
     'react/display-name': 'off',
-    'react/jsx-child-element-spacing': 'warn',
+    'react/jsx-child-element-spacing': 'error',
     'react/jsx-closing-bracket-location': 'error',
     'react/jsx-closing-tag-location': 'error',
     'react/jsx-curly-newline': 'error',
