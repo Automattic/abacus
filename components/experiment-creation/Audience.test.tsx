@@ -3,7 +3,7 @@ import { Formik, FormikProps } from 'formik'
 import React from 'react'
 
 import { createNewExperiment } from '@/lib/experiments'
-import { ExperimentFullNew } from '@/lib/schemas'
+import { ExperimentFullNew, Segment, SegmentType } from '@/lib/schemas'
 
 import Audience from './Audience'
 
@@ -20,6 +20,13 @@ document.createRange = () => ({
 })
 
 test('renders as expected', async () => {
+  const indexedSegments: Record<number, Segment> = {
+    1: { segmentId: 1, name: 'us', type: SegmentType.Country },
+    2: { segmentId: 2, name: 'au', type: SegmentType.Country },
+    3: { segmentId: 3, name: 'en-US', type: SegmentType.Locale },
+    4: { segmentId: 4, name: 'en-AU', type: SegmentType.Locale },
+  }
+
   const { container } = render(
     <Formik
       initialValues={{ experiment: createNewExperiment() }}
@@ -28,7 +35,9 @@ test('renders as expected', async () => {
         () => undefined
       }
     >
-      {(formikProps: FormikProps<{ experiment: Partial<ExperimentFullNew> }>) => <Audience formikProps={formikProps} />}
+      {(formikProps: FormikProps<{ experiment: Partial<ExperimentFullNew> }>) => (
+        <Audience indexedSegments={indexedSegments} formikProps={formikProps} />
+      )}
     </Formik>,
   )
   expect(container).toMatchSnapshot()

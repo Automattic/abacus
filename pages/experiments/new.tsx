@@ -7,6 +7,7 @@ import SegmentsApi from '@/api/SegmentsApi'
 import ExperimentForm from '@/components/experiment-creation/ExperimentForm'
 import Layout from '@/components/Layout'
 import { createNewExperiment } from '@/lib/experiments'
+import * as Normalizers from '@/lib/normalizers'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { or } from '@/utils/general'
 
@@ -16,14 +17,14 @@ const ExperimentsNewPage = function () {
   debug('ExperimentsNewPage#render')
   const initialExperiment = createNewExperiment()
 
-  const { isLoading: metricsIsLoading, data: metrics, error: metricsError } = useDataSource(
-    () => MetricsApi.findAll(),
+  const { isLoading: metricsIsLoading, data: indexedMetrics, error: metricsError } = useDataSource(
+    async () => Normalizers.indexMetrics(await MetricsApi.findAll()),
     [],
   )
   useDataLoadingError(metricsError, 'Metrics')
 
-  const { isLoading: segmentsIsLoading, data: segments, error: segmentsError } = useDataSource(
-    () => SegmentsApi.findAll(),
+  const { isLoading: segmentsIsLoading, data: indexedSegments, error: segmentsError } = useDataSource(
+    async () => Normalizers.indexSegments(await SegmentsApi.findAll()),
     [],
   )
   useDataLoadingError(segmentsError, 'Segments')
@@ -33,8 +34,12 @@ const ExperimentsNewPage = function () {
   return (
     <Layout title='Create an Experiment'>
       {isLoading && <LinearProgress />}
-      {!isLoading && metrics && segments && (
-        <ExperimentForm metrics={metrics} segments={segments} initialExperiment={initialExperiment} />
+      {!isLoading && indexedMetrics && indexedSegments && (
+        <ExperimentForm
+          indexedMetrics={indexedMetrics}
+          indexedSegments={indexedSegments}
+          initialExperiment={initialExperiment}
+        />
       )}
     </Layout>
   )
