@@ -90,8 +90,8 @@ const ExperimentForm = ({
   indexedSegments,
   initialExperiment,
 }: {
-  indexedMetrics: Record<string, MetricBare>
-  indexedSegments: Record<string, Segment>
+  indexedMetrics: Record<number, MetricBare>
+  indexedSegments: Record<number, Segment>
   initialExperiment: Partial<ExperimentFullNew>
 }) => {
   const classes = useStyles()
