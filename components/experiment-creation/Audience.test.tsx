@@ -3,7 +3,7 @@ import { Formik, FormikProps } from 'formik'
 import React from 'react'
 
 import { createNewExperiment } from '@/lib/experiments'
-import { ExperimentFullNew, Segment, SegmentType } from '@/lib/schemas'
+import { Segment, SegmentType } from '@/lib/schemas'
 
 import Audience from './Audience'
 
@@ -35,7 +35,7 @@ test('renders as expected', async () => {
         () => undefined
       }
     >
-      {(formikProps: FormikProps<{ experiment: Partial<ExperimentFullNew> }>) => (
+      {(formikProps: FormikProps<{ experiment: ReturnType<typeof createNewExperiment> }>) => (
         <Audience indexedSegments={indexedSegments} formikProps={formikProps} />
       )}
     </Formik>,
