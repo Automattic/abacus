@@ -4,6 +4,7 @@ import MockDate from 'mockdate'
 import React from 'react'
 
 import { createNewExperiment } from '@/lib/experiments'
+import * as Normalizers from '@/lib/normalizers'
 import Fixtures from '@/test-helpers/fixtures'
 
 import ExperimentForm from './ExperimentForm'
@@ -12,8 +13,8 @@ test('renders as expected', () => {
   MockDate.set('2020-07-21')
   const { container } = render(
     <ExperimentForm
-      metrics={Fixtures.createMetricBares(20)}
-      segments={Fixtures.createSegments(20)}
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={createNewExperiment()}
     />,
   )

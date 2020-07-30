@@ -439,8 +439,8 @@ function createSegment(id: number): Segment {
 /**
  * Creates an array of segments.
  */
-function createSegments(numSegments: number) {
-  return _.range(numSegments).map(createSegment)
+function createSegments(numSegments = 2) {
+  return _.range(1, numSegments + 1).map(createSegment)
 }
 
 function createSegmentAssignment(fieldOverrides: Partial<SegmentAssignment>): SegmentAssignment {

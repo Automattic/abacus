@@ -27,6 +27,7 @@
     "lodash": "^4.17.19",
     "material-table": "^1.59.0",
     "next": "^9.3.5",
+    "normalizr": "^3.6.0",
     "notistack": "^0.9.17",
     "qc-to_bool": "^1.1.2",
     "qc-to_int": "^1.0.1",

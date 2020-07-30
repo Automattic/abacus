@@ -25,7 +25,7 @@ import _ from 'lodash'
 import React, { useCallback, useState } from 'react'
 
 import { PlatformToHuman } from '@/lib/experiments'
-import { ExperimentFullNew, Platform, Segment, SegmentAssignmentNew, SegmentType, VariationNew } from '@/lib/schemas'
+import { ExperimentFullNew, Platform, Segment, SegmentAssignmentNew, VariationNew } from '@/lib/schemas'
 import { SegmentTypeToHuman } from '@/lib/segments'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -62,15 +62,11 @@ enum SegmentExclusionState {
   Include = 'include',
 }
 
-const segments: Record<number, Segment> = {
-  1: { segmentId: 1, name: 'us', type: SegmentType.Country },
-  2: { segmentId: 2, name: 'au', type: SegmentType.Country },
-  3: { segmentId: 3, name: 'en-US', type: SegmentType.Locale },
-  4: { segmentId: 4, name: 'en-AU', type: SegmentType.Locale },
-}
-
 const SegmentsAutocomplete = (
-  props: AutocompleteProps<Segment, true, false, false> & { segmentExclusionState: SegmentExclusionState },
+  props: AutocompleteProps<Segment, true, false, false> & {
+    indexedSegments: Record<number, Segment>
+    segmentExclusionState: SegmentExclusionState
+  },
 ) => {
   const {
     form: { setFieldValue },
@@ -80,7 +76,7 @@ const SegmentsAutocomplete = (
 
   // Here we translate SegmentAssignment (outside) <-> Segment (inside)
   const segmentAssignmentToSegment = (segmentAssignment: SegmentAssignmentNew) => {
-    const segment = segments[segmentAssignment.segmentId]
+    const segment = props.indexedSegments[segmentAssignment.segmentId]
     /* istanbul ignore next; Should never happen */
     if (!segment) {
       throw new Error('Could not find segment with specified segmentId.')
@@ -104,7 +100,7 @@ const SegmentsAutocomplete = (
 
   return (
     <Autocomplete
-      {...fieldToAutocomplete(_.omit(props, 'segmentExclusionState'))}
+      {...fieldToAutocomplete(_.omit(props, 'segmentExclusionState', 'indexedSegments'))}
       multiple={true}
       onChange={onChange}
       value={value}
@@ -113,7 +109,13 @@ const SegmentsAutocomplete = (
   )
 }
 
-const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Partial<ExperimentFullNew> }> }) => {
+const Audience = ({
+  indexedSegments,
+  formikProps,
+}: {
+  indexedSegments: Record<number, Segment>
+  formikProps: FormikProps<{ experiment: Partial<ExperimentFullNew> }>
+}) => {
   const classes = useStyles()
 
   // The segmentExclusion code is currently split between here and SegmentAutocomplete
@@ -206,7 +208,7 @@ const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Part
           <Field
             name='experiment.segmentAssignments'
             component={SegmentsAutocomplete}
-            options={Object.values(segments)}
+            options={Object.values(indexedSegments)}
             // TODO: Error state, see https://stackworx.github.io/formik-material-ui/docs/api/material-ui-lab
             renderInput={(params: AutocompleteRenderInputParams) => (
               <MuiTextField
@@ -216,6 +218,7 @@ const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Part
               />
             )}
             segmentExclusionState={segmentExclusionState}
+            indexedSegments={indexedSegments}
             fullWidth
             id='segments-select'
           />
