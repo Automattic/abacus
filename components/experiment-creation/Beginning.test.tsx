@@ -29,7 +29,13 @@ test('renders as expected', () => {
           <br />
           <br />
           <strong>
-            Start by looking up our Field Guide, it will instruct you on creating a P2 post.
+            <a
+              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+              href="https://github.com/Automattic/abacus/wiki"
+            >
+              Our wiki is a great place to start
+            </a>
+            , it will instruct you on creating a P2 post.
           </strong>
         </p>
         <div

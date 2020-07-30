@@ -292,17 +292,20 @@ exports[`renders as expected 1`] = `
       </div>
     </div>
     <div
-      class="makeStyles-form-3"
+      class="makeStyles-formConstrictor-3"
     >
-      <form>
+      <form
+        class="makeStyles-form-4"
+      >
         <div
-          class="makeStyles-formPart-4"
+          class="makeStyles-formPart-5"
+          style="width: 0px;"
         >
           <div
-            class="MuiPaper-root makeStyles-paper-6 MuiPaper-elevation1 MuiPaper-rounded"
+            class="MuiPaper-root makeStyles-paper-7 MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              class="makeStyles-root-7"
+              class="makeStyles-root-8"
             >
               <h4
                 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -316,11 +319,17 @@ exports[`renders as expected 1`] = `
                 <br />
                 <br />
                 <strong>
-                  Start by looking up our Field Guide, it will instruct you on creating a P2 post.
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/abacus/wiki"
+                  >
+                    Our wiki is a great place to start
+                  </a>
+                  , it will instruct you on creating a P2 post.
                 </strong>
               </p>
               <div
-                class="MuiFormControl-root MuiTextField-root makeStyles-p2EntryField-8"
+                class="MuiFormControl-root MuiTextField-root makeStyles-p2EntryField-9"
               >
                 <label
                   class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
@@ -341,10 +350,10 @@ exports[`renders as expected 1`] = `
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                    class="PrivateNotchedOutline-root-11 MuiOutlinedInput-notchedOutline"
                   >
                     <legend
-                      class="PrivateNotchedOutline-legendLabelled-12 PrivateNotchedOutline-legendNotched-13"
+                      class="PrivateNotchedOutline-legendLabelled-13 PrivateNotchedOutline-legendNotched-14"
                     >
                       <span>
                         Your Post's URL
@@ -356,7 +365,7 @@ exports[`renders as expected 1`] = `
             </div>
           </div>
           <div
-            class="makeStyles-formPartActions-5"
+            class="makeStyles-formPartActions-6"
           >
             <button
               class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
@@ -375,13 +384,14 @@ exports[`renders as expected 1`] = `
           </div>
         </div>
         <div
-          class="makeStyles-formPart-4"
+          class="makeStyles-formPart-5"
+          style="width: 0px;"
         >
           <div
-            class="MuiPaper-root makeStyles-paper-6 MuiPaper-elevation1 MuiPaper-rounded"
+            class="MuiPaper-root makeStyles-paper-7 MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              class="makeStyles-root-14"
+              class="makeStyles-root-15"
             >
               <h4
                 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -389,7 +399,7 @@ exports[`renders as expected 1`] = `
                 Basic Info
               </h4>
               <div
-                class="makeStyles-row-15"
+                class="makeStyles-row-16"
               >
                 <div
                   class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -421,10 +431,10 @@ exports[`renders as expected 1`] = `
                     />
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-11 MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legendLabelled-12 PrivateNotchedOutline-legendNotched-13"
+                        class="PrivateNotchedOutline-legendLabelled-13 PrivateNotchedOutline-legendNotched-14"
                       >
                         <span>
                           Experiment name
@@ -441,7 +451,7 @@ exports[`renders as expected 1`] = `
                 </div>
               </div>
               <div
-                class="makeStyles-row-15"
+                class="makeStyles-row-16"
               >
                 <div
                   class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -472,10 +482,10 @@ exports[`renders as expected 1`] = `
                     />
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-11 MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legendLabelled-12 PrivateNotchedOutline-legendNotched-13"
+                        class="PrivateNotchedOutline-legendLabelled-13 PrivateNotchedOutline-legendNotched-14"
                       >
                         <span>
                           Experiment description
@@ -492,10 +502,10 @@ exports[`renders as expected 1`] = `
                 </div>
               </div>
               <div
-                class="makeStyles-row-15"
+                class="makeStyles-row-16"
               >
                 <div
-                  class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-17"
+                  class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-18"
                 >
                   <label
                     class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
@@ -529,10 +539,10 @@ exports[`renders as expected 1`] = `
                     />
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-11 MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legendLabelled-12 PrivateNotchedOutline-legendNotched-13"
+                        class="PrivateNotchedOutline-legendLabelled-13 PrivateNotchedOutline-legendNotched-14"
                       >
                         <span>
                           Start date
@@ -549,12 +559,12 @@ exports[`renders as expected 1`] = `
                   </p>
                 </div>
                 <span
-                  class="makeStyles-through-16"
+                  class="makeStyles-through-17"
                 >
                    through 
                 </span>
                 <div
-                  class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-17"
+                  class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-18"
                 >
                   <label
                     class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
@@ -586,10 +596,10 @@ exports[`renders as expected 1`] = `
                     />
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-11 MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legendLabelled-12 PrivateNotchedOutline-legendNotched-13"
+                        class="PrivateNotchedOutline-legendLabelled-13 PrivateNotchedOutline-legendNotched-14"
                       >
                         <span>
                           End date
@@ -607,7 +617,7 @@ exports[`renders as expected 1`] = `
                 </div>
               </div>
               <div
-                class="makeStyles-row-15"
+                class="makeStyles-row-16"
               >
                 <div
                   class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -648,10 +658,10 @@ exports[`renders as expected 1`] = `
                     />
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-11 MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legendLabelled-12 PrivateNotchedOutline-legendNotched-13"
+                        class="PrivateNotchedOutline-legendLabelled-13 PrivateNotchedOutline-legendNotched-14"
                       >
                         <span>
                           Owner
@@ -670,7 +680,7 @@ exports[`renders as expected 1`] = `
             </div>
           </div>
           <div
-            class="makeStyles-formPartActions-5"
+            class="makeStyles-formPartActions-6"
           >
             <button
               class="MuiButtonBase-root MuiButton-root MuiButton-text"
@@ -703,13 +713,14 @@ exports[`renders as expected 1`] = `
           </div>
         </div>
         <div
-          class="makeStyles-formPart-4"
+          class="makeStyles-formPart-5"
+          style="width: 0px;"
         >
           <div
-            class="MuiPaper-root makeStyles-paper-6 MuiPaper-elevation1 MuiPaper-rounded"
+            class="MuiPaper-root makeStyles-paper-7 MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              class="makeStyles-root-18"
+              class="makeStyles-root-19"
             >
               <h4
                 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -717,7 +728,7 @@ exports[`renders as expected 1`] = `
                 Define Your Audience
               </h4>
               <div
-                class="makeStyles-row-19"
+                class="makeStyles-row-20"
               >
                 <fieldset
                   class="MuiFormControl-root"
@@ -766,7 +777,7 @@ exports[`renders as expected 1`] = `
                 </fieldset>
               </div>
               <div
-                class="makeStyles-row-19"
+                class="makeStyles-row-20"
               >
                 <fieldset
                   class="MuiFormControl-root"
@@ -798,19 +809,19 @@ exports[`renders as expected 1`] = `
                     >
                       <span
                         aria-disabled="false"
-                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-25 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-26 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
                       >
                         <span
                           class="MuiIconButton-label"
                         >
                           <input
-                            class="PrivateSwitchBase-input-28"
+                            class="PrivateSwitchBase-input-29"
                             name="experiment.existingUsersAllowed"
                             type="radio"
                             value="false"
                           />
                           <div
-                            class="PrivateRadioButtonIcon-root-29"
+                            class="PrivateRadioButtonIcon-root-30"
                           >
                             <svg
                               aria-hidden="true"
@@ -824,7 +835,7 @@ exports[`renders as expected 1`] = `
                             </svg>
                             <svg
                               aria-hidden="true"
-                              class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-30"
+                              class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-31"
                               focusable="false"
                               viewBox="0 0 24 24"
                             >
@@ -849,19 +860,19 @@ exports[`renders as expected 1`] = `
                     >
                       <span
                         aria-disabled="false"
-                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-25 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-26 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
                       >
                         <span
                           class="MuiIconButton-label"
                         >
                           <input
-                            class="PrivateSwitchBase-input-28"
+                            class="PrivateSwitchBase-input-29"
                             name="experiment.existingUsersAllowed"
                             type="radio"
                             value="true"
                           />
                           <div
-                            class="PrivateRadioButtonIcon-root-29"
+                            class="PrivateRadioButtonIcon-root-30"
                           >
                             <svg
                               aria-hidden="true"
@@ -875,7 +886,7 @@ exports[`renders as expected 1`] = `
                             </svg>
                             <svg
                               aria-hidden="true"
-                              class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-30"
+                              class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-31"
                               focusable="false"
                               viewBox="0 0 24 24"
                             >
@@ -899,10 +910,10 @@ exports[`renders as expected 1`] = `
                 </fieldset>
               </div>
               <div
-                class="makeStyles-row-19"
+                class="makeStyles-row-20"
               >
                 <fieldset
-                  class="MuiFormControl-root makeStyles-segmentationFieldSet-21"
+                  class="MuiFormControl-root makeStyles-segmentationFieldSet-22"
                 >
                   <label
                     class="MuiFormLabel-root"
@@ -911,7 +922,7 @@ exports[`renders as expected 1`] = `
                     Targeting
                   </label>
                   <p
-                    class="MuiFormHelperText-root makeStyles-segmentationHelperText-20"
+                    class="MuiFormHelperText-root makeStyles-segmentationHelperText-21"
                   >
                     Who should see this experiment? 
                     <br />
@@ -919,7 +930,7 @@ exports[`renders as expected 1`] = `
                   </p>
                   <div
                     aria-label="include-or-exclude-segments"
-                    class="MuiFormGroup-root makeStyles-segmentationExclusionState-22"
+                    class="MuiFormGroup-root makeStyles-segmentationExclusionState-23"
                     role="radiogroup"
                   >
                     <label
@@ -927,20 +938,20 @@ exports[`renders as expected 1`] = `
                     >
                       <span
                         aria-disabled="false"
-                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-25 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-26 Mui-checked MuiIconButton-colorSecondary"
+                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-26 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-27 Mui-checked MuiIconButton-colorSecondary"
                       >
                         <span
                           class="MuiIconButton-label"
                         >
                           <input
                             checked=""
-                            class="PrivateSwitchBase-input-28"
+                            class="PrivateSwitchBase-input-29"
                             name="non-formik-segment-exclusion-state-include"
                             type="radio"
                             value="include"
                           />
                           <div
-                            class="PrivateRadioButtonIcon-root-29 PrivateRadioButtonIcon-checked-31"
+                            class="PrivateRadioButtonIcon-root-30 PrivateRadioButtonIcon-checked-32"
                           >
                             <svg
                               aria-hidden="true"
@@ -954,7 +965,7 @@ exports[`renders as expected 1`] = `
                             </svg>
                             <svg
                               aria-hidden="true"
-                              class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-30"
+                              class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-31"
                               focusable="false"
                               viewBox="0 0 24 24"
                             >
@@ -979,19 +990,19 @@ exports[`renders as expected 1`] = `
                     >
                       <span
                         aria-disabled="false"
-                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-25 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-26 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
                       >
                         <span
                           class="MuiIconButton-label"
                         >
                           <input
-                            class="PrivateSwitchBase-input-28"
+                            class="PrivateSwitchBase-input-29"
                             name="non-formik-segment-exclusion-state-exclude"
                             type="radio"
                             value="exclude"
                           />
                           <div
-                            class="PrivateRadioButtonIcon-root-29"
+                            class="PrivateRadioButtonIcon-root-30"
                           >
                             <svg
                               aria-hidden="true"
@@ -1005,7 +1016,7 @@ exports[`renders as expected 1`] = `
                             </svg>
                             <svg
                               aria-hidden="true"
-                              class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-30"
+                              class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-31"
                               focusable="false"
                               viewBox="0 0 24 24"
                             >
@@ -1106,11 +1117,11 @@ exports[`renders as expected 1`] = `
                         </div>
                         <fieldset
                           aria-hidden="true"
-                          class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                          class="PrivateNotchedOutline-root-11 MuiOutlinedInput-notchedOutline"
                           style="padding-left: 8px;"
                         >
                           <legend
-                            class="PrivateNotchedOutline-legend-11"
+                            class="PrivateNotchedOutline-legend-12"
                             style="width: 0.01px;"
                           >
                             <span>
@@ -1124,10 +1135,10 @@ exports[`renders as expected 1`] = `
                 </fieldset>
               </div>
               <div
-                class="makeStyles-row-19"
+                class="makeStyles-row-20"
               >
                 <fieldset
-                  class="MuiFormControl-root makeStyles-segmentationFieldSet-21"
+                  class="MuiFormControl-root makeStyles-segmentationFieldSet-22"
                 >
                   <label
                     class="MuiFormLabel-root"
@@ -1136,7 +1147,7 @@ exports[`renders as expected 1`] = `
                     Variations
                   </label>
                   <p
-                    class="MuiFormHelperText-root makeStyles-segmentationHelperText-20"
+                    class="MuiFormHelperText-root makeStyles-segmentationHelperText-21"
                   >
                     Define the percentages to include in the experiment. 
                     <br />
@@ -1146,7 +1157,7 @@ exports[`renders as expected 1`] = `
                     class="MuiTableContainer-root"
                   >
                     <table
-                      class="MuiTable-root makeStyles-variants-24"
+                      class="MuiTable-root makeStyles-variants-25"
                     >
                       <thead
                         class="MuiTableHead-root"
@@ -1183,7 +1194,7 @@ exports[`renders as expected 1`] = `
                             class="MuiTableCell-root MuiTableCell-body"
                           >
                             <div
-                              class="MuiFormControl-root MuiTextField-root makeStyles-variationAllocatedPercentage-23"
+                              class="MuiFormControl-root MuiTextField-root makeStyles-variationAllocatedPercentage-24"
                             >
                               <div
                                 class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd MuiInputBase-marginDense MuiOutlinedInput-marginDense"
@@ -1209,11 +1220,11 @@ exports[`renders as expected 1`] = `
                                 </div>
                                 <fieldset
                                   aria-hidden="true"
-                                  class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                                  class="PrivateNotchedOutline-root-11 MuiOutlinedInput-notchedOutline"
                                   style="padding-left: 8px;"
                                 >
                                   <legend
-                                    class="PrivateNotchedOutline-legend-11"
+                                    class="PrivateNotchedOutline-legend-12"
                                     style="width: 0.01px;"
                                   >
                                     <span>
@@ -1237,7 +1248,7 @@ exports[`renders as expected 1`] = `
                             class="MuiTableCell-root MuiTableCell-body"
                           >
                             <div
-                              class="MuiFormControl-root MuiTextField-root makeStyles-variationAllocatedPercentage-23"
+                              class="MuiFormControl-root MuiTextField-root makeStyles-variationAllocatedPercentage-24"
                             >
                               <div
                                 class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd MuiInputBase-marginDense MuiOutlinedInput-marginDense"
@@ -1263,11 +1274,11 @@ exports[`renders as expected 1`] = `
                                 </div>
                                 <fieldset
                                   aria-hidden="true"
-                                  class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                                  class="PrivateNotchedOutline-root-11 MuiOutlinedInput-notchedOutline"
                                   style="padding-left: 8px;"
                                 >
                                   <legend
-                                    class="PrivateNotchedOutline-legend-11"
+                                    class="PrivateNotchedOutline-legend-12"
                                     style="width: 0.01px;"
                                   >
                                     <span>
@@ -1287,7 +1298,7 @@ exports[`renders as expected 1`] = `
             </div>
           </div>
           <div
-            class="makeStyles-formPartActions-5"
+            class="makeStyles-formPartActions-6"
           >
             <button
               class="MuiButtonBase-root MuiButton-root MuiButton-text"
@@ -1320,10 +1331,11 @@ exports[`renders as expected 1`] = `
           </div>
         </div>
         <div
-          class="makeStyles-formPart-4"
+          class="makeStyles-formPart-5"
+          style="width: 0px;"
         >
           <div
-            class="MuiPaper-root makeStyles-paper-6 MuiPaper-elevation1 MuiPaper-rounded"
+            class="MuiPaper-root makeStyles-paper-7 MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h4
               class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -1337,7 +1349,7 @@ exports[`renders as expected 1`] = `
             </p>
           </div>
           <div
-            class="makeStyles-formPartActions-5"
+            class="makeStyles-formPartActions-6"
           >
             <button
               class="MuiButtonBase-root MuiButton-root MuiButton-text"
@@ -1370,10 +1382,11 @@ exports[`renders as expected 1`] = `
           </div>
         </div>
         <div
-          class="makeStyles-formPart-4"
+          class="makeStyles-formPart-5"
+          style="width: 0px;"
         >
           <div
-            class="MuiPaper-root makeStyles-paper-6 MuiPaper-elevation1 MuiPaper-rounded"
+            class="MuiPaper-root makeStyles-paper-7 MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h4
               class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -1383,7 +1396,16 @@ exports[`renders as expected 1`] = `
             <p
               class="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
             >
-              Now is a good time to look over the Field Guide's experiment creation checklist and confirm everything is in place.
+              Now is a good time to
+               
+              <a
+                class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                href="https://github.com/Automattic/abacus/wiki"
+              >
+                check our wiki's experiment creation checklist
+              </a>
+               
+              and confirm everything is in place.
             </p>
             <p
               class="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
@@ -1399,7 +1421,7 @@ exports[`renders as expected 1`] = `
             </p>
           </div>
           <div
-            class="makeStyles-formPartActions-5"
+            class="makeStyles-formPartActions-6"
           >
             <button
               class="MuiButtonBase-root MuiButton-root MuiButton-text"
