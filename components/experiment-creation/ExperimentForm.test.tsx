@@ -1,4 +1,5 @@
 import MockDate from 'mockdate'
+import * as notistack from 'notistack'
 import React from 'react'
 
 import { createNewExperiment } from '@/lib/experiments'
@@ -7,6 +8,13 @@ import Fixtures from '@/test-helpers/fixtures'
 import { render } from '@/test-helpers/test-utils'
 
 import ExperimentForm from './ExperimentForm'
+
+jest.mock('notistack')
+const mockedNotistack = notistack as jest.Mocked<typeof notistack>
+mockedNotistack.useSnackbar.mockImplementation(() => ({
+  enqueueSnackbar: jest.fn(),
+  closeSnackbar: jest.fn(),
+}))
 
 test('renders as expected', () => {
   MockDate.set('2020-07-21')
