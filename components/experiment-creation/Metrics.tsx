@@ -214,7 +214,7 @@ const Metrics = () => {
                               placeholder='-'
                               InputProps={
                                 normalizedMetrics[metricAssignment.metricId].parameterType ===
-                                MetricParameterType.Revenue
+                                MetricParameterType.Conversion
                                   ? {
                                       endAdornment: (
                                         <InputAdornment position='end'>
