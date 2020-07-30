@@ -203,7 +203,7 @@ const ExperimentForm = ({
         }
 
         return (
-          <div className={classes.root} ref={rootRef}>
+          <div className={classes.root}>
             <div className={classes.navigation}>
               <Stepper nonLinear activeStep={currentStageId} orientation='vertical'>
                 {stages.map((stage) => (
@@ -225,7 +225,7 @@ const ExperimentForm = ({
                     <div className={classes.formPartActions}>
                       <Button onClick={nextStage} variant='contained' color='primary'>
                         Begin
-                    </Button>
+                      </Button>
                     </div>
                   </div>
                 )}
@@ -238,7 +238,7 @@ const ExperimentForm = ({
                       <Button onClick={prevStage}>Previous</Button>
                       <Button onClick={nextStage} variant='contained' color='primary'>
                         Next
-                    </Button>
+                      </Button>
                     </div>
                   </div>
                 )}
@@ -251,7 +251,7 @@ const ExperimentForm = ({
                       <Button onClick={prevStage}>Previous</Button>
                       <Button onClick={nextStage} variant='contained' color='primary'>
                         Next
-                    </Button>
+                      </Button>
                     </div>
                   </div>
                 )}
@@ -264,7 +264,7 @@ const ExperimentForm = ({
                       <Button onClick={prevStage}>Previous</Button>
                       <Button onClick={nextStage} variant='contained' color='primary'>
                         Next
-                    </Button>
+                      </Button>
                     </div>
                   </div>
                 )}
@@ -273,19 +273,19 @@ const ExperimentForm = ({
                     <Paper className={classes.paper}>
                       <Typography variant='h4' gutterBottom>
                         Confirm and Submit Your Experiment
-                    </Typography>
+                      </Typography>
                       <Typography variant='body2' gutterBottom>
                         Now is a good time to{' '}
                         <Link href='https://github.com/Automattic/abacus/wiki'>
                           check our wiki&apos;s experiment creation checklist
-                      </Link>{' '}
-                      and confirm everything is in place.
-                    </Typography>
+                        </Link>{' '}
+                        and confirm everything is in place.
+                      </Typography>
 
                       <Typography variant='body2' gutterBottom>
                         Once you submit your experiment it will be set to staging, where it can be edited up until you set
                         it to running.
-                    </Typography>
+                      </Typography>
                       <Typography variant='body2' gutterBottom>
                         <strong> When you are ready, click the Submit button below.</strong>
                       </Typography>
@@ -300,7 +300,7 @@ const ExperimentForm = ({
                         onSubmit={onSubmit}
                       >
                         Submit
-                    </Button>
+                      </Button>
                     </div>
                   </div>
                 )}
