@@ -47,6 +47,13 @@ export function getDefaultAnalysisStrategy(experiment: ExperimentFull) {
 
 export function createNewExperiment(): Partial<ExperimentFullNew> {
   return {
+    p2Url: '',
+    name: '',
+    description: '',
+    startDatetime: undefined,
+    endDatetime: undefined,
+    ownerLogin: '',
+    existingUsersAllowed: undefined,
     platform: Platform.Wpcom,
     metricAssignments: [],
     segmentAssignments: [],
