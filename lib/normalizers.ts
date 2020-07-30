@@ -7,7 +7,7 @@ export const metricNormalizrSchema = new schema.Entity<MetricBare | MetricFull>(
   {},
   { idAttribute: 'metricId' },
 )
-export function indexMetrics<Metric extends MetricBare | MetricFull>(metrics: Metric[]) {
+export function indexMetrics<Metric extends MetricBare | MetricFull>(metrics: Metric[]): Record<number, Metric> {
   const {
     entities: { metrics: indexedMetrics },
   } = normalize<Metric>(metrics, [metricNormalizrSchema])
@@ -19,7 +19,7 @@ export function indexMetrics<Metric extends MetricBare | MetricFull>(metrics: Me
 }
 
 export const segmentNormalizrSchema = new schema.Entity<Segment>('segments', {}, { idAttribute: 'segmentId' })
-export function indexSegments(segments: Segment[]) {
+export function indexSegments(segments: Segment[]): Record<number, Segment> {
   const {
     entities: { segments: indexedSegments },
   } = normalize<Segment>(segments, [segmentNormalizrSchema])
