@@ -11,9 +11,8 @@ export function indexMetrics<Metric extends MetricBare | MetricFull>(metrics: Me
   const {
     entities: { metrics: indexedMetrics },
   } = normalize<Metric>(metrics, [metricNormalizrSchema])
-  /* istanbul ignore next */
   if (!indexedMetrics) {
-    throw new Error(`No metrics produced after normalisation, this should never happen.`)
+    return {}
   }
   return indexedMetrics
 }
@@ -23,9 +22,8 @@ export function indexSegments(segments: Segment[]): Record<number, Segment> {
   const {
     entities: { segments: indexedSegments },
   } = normalize<Segment>(segments, [segmentNormalizrSchema])
-  /* istanbul ignore next */
   if (!indexedSegments) {
-    throw new Error(`No segments produced after normalisation, this should never happen.`)
+    return {}
   }
   return indexedSegments
 }
