@@ -62,7 +62,7 @@ const stages: Stage[] = [
   {
     id: StageId.Metrics,
     title: 'Metrics',
-    validatableFields: ['experiment.metrics'],
+    validatableFields: ['experiment.metricAssignments'],
   },
   {
     id: StageId.Submit,
