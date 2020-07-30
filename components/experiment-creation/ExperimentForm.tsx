@@ -172,7 +172,7 @@ const ExperimentForm = ({
           validationSchema={yup.object({ experiment: experimentFullNewSchema })}
         >
           {(formikProps) => (
-            <form className={classes.form} onSubmit={formikProps.handleSubmit}>
+            <form className={classes.form} onSubmit={formikProps.handleSubmit} noValidate>
               {currentStageId === StageId.Beginning && (
                 <div className={classes.formPart}>
                   <Paper className={classes.paper}>
