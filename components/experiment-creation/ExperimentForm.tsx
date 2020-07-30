@@ -156,23 +156,24 @@ const ExperimentForm = ({
       validationSchema={yup.object({ experiment: experimentFullNewSchema })}
     >
       {(formikProps) => {
-        const isStageValid = async (stageId: StageId): Promise<boolean> => {
-          const stage = stages.find((stage) => stage.id === stageId)
-          if (!stage) {
-            throw new Error('Typeguard: This should never occur')
+        const isStageValid = async (stage: Stage): Promise<boolean> => {
+          const errors = await formikProps.validateForm()
+
+          // If a stage doesn't have validatable fields eg. submit we don't validate it
+          if (!stage.validatableFields) {
+            return false
           }
 
-          const errors = await formikProps.validateForm()
           return !!stage.validatableFields?.some((field) => _.get(errors, field))
         }
 
-        const updateStageState = async (stageId: StageId) => {
-          if (await isStageValid(stageId)) {
-            markStageError(stageId)
-            markStageIncomplete(stageId)
+        const updateStageState = async (stage: Stage) => {
+          if (await isStageValid(stage)) {
+            markStageError(stage.id)
+            markStageIncomplete(stage.id)
           } else {
-            markStageNoError(stageId)
-            markStageComplete(stageId)
+            markStageNoError(stage.id)
+            markStageComplete(stage.id)
           }
         }
 
@@ -181,7 +182,7 @@ const ExperimentForm = ({
             return
           }
 
-          updateStageState(currentStageId)
+          updateStageState(stages[currentStageIndex])
           const prevStageIndex = currentStageIndex - 1
           changeStage(stages[prevStageIndex].id)
         }
@@ -190,9 +191,15 @@ const ExperimentForm = ({
             return
           }
 
-          updateStageState(currentStageId)
+          updateStageState(stages[currentStageIndex])
           const nextStageIndex = currentStageIndex + 1
           changeStage(stages[nextStageIndex].id)
+        }
+
+        const onSubmit = (event: React.SyntheticEvent<HTMLButtonElement>) => {
+          event.preventDefault()
+          stages.map(updateStageState)
+          formikProps.handleSubmit()
         }
 
         return (
@@ -285,7 +292,13 @@ const ExperimentForm = ({
                     </Paper>
                     <div className={classes.formPartActions}>
                       <Button onClick={prevStage}>Previous</Button>
-                      <Button type='submit' variant='contained' color='secondary'>
+                      <Button
+                        type='submit'
+                        variant='contained'
+                        color='secondary'
+                        disabled={formikProps.isSubmitting || errorStages.length > 0}
+                        onSubmit={onSubmit}
+                      >
                         Submit
                     </Button>
                     </div>
