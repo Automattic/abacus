@@ -158,22 +158,20 @@ const ExperimentForm = ({
       {(formikProps) => {
         const isStageValid = async (stage: Stage): Promise<boolean> => {
           const errors = await formikProps.validateForm()
-
-          // If a stage doesn't have validatable fields eg. submit we don't validate it
-          if (!stage.validatableFields) {
-            return false
-          }
-
-          return !!stage.validatableFields?.some((field) => _.get(errors, field))
+          return !stage.validatableFields?.some((field) => _.get(errors, field))
         }
 
         const updateStageState = async (stage: Stage) => {
+          if (stage.id === StageId.Submit) {
+            return
+          }
+
           if (await isStageValid(stage)) {
-            markStageError(stage.id)
-            markStageIncomplete(stage.id)
-          } else {
             markStageNoError(stage.id)
             markStageComplete(stage.id)
+          } else {
+            markStageError(stage.id)
+            markStageIncomplete(stage.id)
           }
         }
 
