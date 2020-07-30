@@ -338,6 +338,7 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
   return {
     ...createExperimentFullNew(newExperimentFieldOverrides),
     experimentId: 1,
+    status: Status.Staging,
     endReason: null,
     conclusionUrl: null,
     deployedVariationId: null,
