@@ -116,7 +116,7 @@ const Metrics = () => {
   return (
     <div className={classes.root}>
       <Typography variant='h4' gutterBottom>
-        Metrics
+        Assign Metrics
       </Typography>
 
       <FieldArray

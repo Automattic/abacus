@@ -1,7 +1,7 @@
 // Temporarily ignore until more parts are in place
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* istanbul ignore file */
-import { Button, Paper, Step, StepButton, Stepper, Typography } from '@material-ui/core'
+import { Button, Link, Paper, Step, StepButton, Stepper, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import useComponentSize from '@rehooks/component-size'
 import { Formik } from 'formik'
@@ -71,6 +71,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
     },
     formPart: {
+      maxWidth: 600,
       flexShrink: 0,
       padding: theme.spacing(2, 1),
     },
@@ -83,7 +84,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     // TODO: Subject to change when we get to polishing overall form UX
     paper: {
-      padding: theme.spacing(2, 6),
+      padding: theme.spacing(3, 4),
       marginBottom: theme.spacing(2),
     },
   }),
@@ -194,7 +195,9 @@ const ExperimentForm = ({
           {(formikProps) => (
             <form className={classes.form} onSubmit={formikProps.handleSubmit}>
               <div className={classes.formPart} ref={formPartBeginningRef} style={{ width: constrictorSizes.width }}>
-                <Beginning />
+                <Paper className={classes.paper}>
+                  <Beginning />
+                </Paper>
                 <div className={classes.formPartActions}>
                   <Button onClick={nextStage} variant='contained' color='primary'>
                     Begin
@@ -236,21 +239,27 @@ const ExperimentForm = ({
               </div>
               <div className={classes.formPart} ref={formPartSubmitRef} style={{ width: constrictorSizes.width }}>
                 <Paper className={classes.paper}>
-                  <Typography variant='body1' gutterBottom>
-                    This last form-part gives the users a chance to pause and consider.
-                    <br />
-                    <br />
-                    It is good to have a mini-checklist here.
-                    <br />
-                    <br />
-                    Maybe a pre-submission summary.
-                    <br />
-                    <br />
-                    It is also good for the users to know the consequences of submitting so they aren&apos;t afraid of
-                    pressing the button.
+                  <Typography variant='h4' gutterBottom>
+                    Confirm and Submit Your Experiment
+                  </Typography>
+                  <Typography variant='body2' gutterBottom>
+                    Now is a good time to{' '}
+                    <Link href='https://github.com/Automattic/abacus/wiki'>
+                      check our wiki&apos;s experiment creation checklist
+                    </Link>{' '}
+                    and confirm everything is in place.
+                  </Typography>
+
+                  <Typography variant='body2' gutterBottom>
+                    Once you submit your experiment it will be set to staging, where it can be edited up until you set
+                    it to running.
+                  </Typography>
+                  <Typography variant='body2' gutterBottom>
+                    <strong> When you are ready, click the Submit button below.</strong>
                   </Typography>
                 </Paper>
                 <div className={classes.formPartActions}>
+                  <Button onClick={prevStage}>Previous</Button>
                   <Button type='submit' variant='contained' color='secondary'>
                     Submit
                   </Button>

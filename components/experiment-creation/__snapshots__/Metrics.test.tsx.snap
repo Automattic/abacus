@@ -8,7 +8,7 @@ exports[`allows adding, editing and removing a Metric Assignment 1`] = `
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
-      Metrics
+      Assign Metrics
     </h4>
     <div
       class="MuiTableContainer-root"
@@ -150,7 +150,7 @@ exports[`allows adding, editing and removing a Metric Assignment 2`] = `
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
-      Metrics
+      Assign Metrics
     </h4>
     <div
       class="MuiTableContainer-root"
@@ -292,7 +292,7 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
-      Metrics
+      Assign Metrics
     </h4>
     <div
       class="MuiTableContainer-root"
@@ -602,7 +602,7 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
-      Metrics
+      Assign Metrics
     </h4>
     <div
       class="MuiTableContainer-root"
@@ -910,7 +910,7 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
-      Metrics
+      Assign Metrics
     </h4>
     <div
       class="MuiTableContainer-root"
@@ -1218,7 +1218,7 @@ exports[`allows adding, editing and removing a Metric Assignment 6`] = `
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
-      Metrics
+      Assign Metrics
     </h4>
     <div
       class="MuiTableContainer-root"
@@ -1360,7 +1360,7 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
-      Metrics
+      Assign Metrics
     </h4>
     <div
       class="MuiTableContainer-root"
@@ -1669,7 +1669,7 @@ exports[`renders as expected 1`] = `
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
-      Metrics
+      Assign Metrics
     </h4>
     <div
       class="MuiTableContainer-root"

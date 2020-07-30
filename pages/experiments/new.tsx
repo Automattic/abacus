@@ -4,7 +4,6 @@ import React from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
-import DebugOutput from '@/components/DebugOutput'
 import ExperimentForm from '@/components/experiment-creation/ExperimentForm'
 import Layout from '@/components/Layout'
 import { createNewExperiment } from '@/lib/experiments'
@@ -37,9 +36,6 @@ const ExperimentsNewPage = function () {
       {!isLoading && metrics && segments && (
         <ExperimentForm metrics={metrics} segments={segments} initialExperiment={initialExperiment} />
       )}
-      <DebugOutput label='Initial Experiment' content={initialExperiment} />
-      <DebugOutput label='Metrics' content={metrics} />
-      <DebugOutput label='Segments' content={segments} />
     </Layout>
   )
 }

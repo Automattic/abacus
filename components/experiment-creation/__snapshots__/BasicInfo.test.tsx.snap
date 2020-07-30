@@ -5,11 +5,11 @@ exports[`renders as expected 1`] = `
   <div
     class="makeStyles-root-1"
   >
-    <h2
-      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    <h4
+      class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
       Basic Info
-    </h2>
+    </h4>
     <div
       class="makeStyles-row-2"
     >
@@ -298,11 +298,11 @@ exports[`renders date validation errors as expected 1`] = `
   <div
     class="makeStyles-root-17"
   >
-    <h2
-      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    <h4
+      class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
       Basic Info
-    </h2>
+    </h4>
     <div
       class="makeStyles-row-18"
     >
@@ -593,11 +593,11 @@ exports[`renders date validation errors as expected 2`] = `
   <div
     class="makeStyles-root-17"
   >
-    <h2
-      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    <h4
+      class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
       Basic Info
-    </h2>
+    </h4>
     <div
       class="makeStyles-row-18"
     >
@@ -888,11 +888,11 @@ exports[`renders date validation errors as expected 3`] = `
   <div
     class="makeStyles-root-17"
   >
-    <h2
-      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    <h4
+      class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
       Basic Info
-    </h2>
+    </h4>
     <div
       class="makeStyles-row-18"
     >
@@ -1183,11 +1183,11 @@ exports[`renders date validation errors as expected 4`] = `
   <div
     class="makeStyles-root-17"
   >
-    <h2
-      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    <h4
+      class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
       Basic Info
-    </h2>
+    </h4>
     <div
       class="makeStyles-row-18"
     >
@@ -1478,11 +1478,11 @@ exports[`renders sensible dates as expected 1`] = `
   <div
     class="makeStyles-root-9"
   >
-    <h2
-      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    <h4
+      class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
       Basic Info
-    </h2>
+    </h4>
     <div
       class="makeStyles-row-10"
     >

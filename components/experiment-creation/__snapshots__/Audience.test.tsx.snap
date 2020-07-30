@@ -5,11 +5,11 @@ exports[`renders as expected 1`] = `
   <div
     class="makeStyles-root-1"
   >
-    <h2
-      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    <h4
+      class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
-      Audience
-    </h2>
+      Define Your Audience
+    </h4>
     <div
       class="makeStyles-row-2"
     >
@@ -92,19 +92,19 @@ exports[`renders as expected 1`] = `
           >
             <span
               aria-disabled="false"
-              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-7 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-8 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
             >
               <span
                 class="MuiIconButton-label"
               >
                 <input
-                  class="PrivateSwitchBase-input-10"
+                  class="PrivateSwitchBase-input-11"
                   name="experiment.existingUsersAllowed"
                   type="radio"
                   value="false"
                 />
                 <div
-                  class="PrivateRadioButtonIcon-root-11"
+                  class="PrivateRadioButtonIcon-root-12"
                 >
                   <svg
                     aria-hidden="true"
@@ -118,7 +118,7 @@ exports[`renders as expected 1`] = `
                   </svg>
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-12"
+                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-13"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -143,19 +143,19 @@ exports[`renders as expected 1`] = `
           >
             <span
               aria-disabled="false"
-              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-7 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-8 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
             >
               <span
                 class="MuiIconButton-label"
               >
                 <input
-                  class="PrivateSwitchBase-input-10"
+                  class="PrivateSwitchBase-input-11"
                   name="experiment.existingUsersAllowed"
                   type="radio"
                   value="true"
                 />
                 <div
-                  class="PrivateRadioButtonIcon-root-11"
+                  class="PrivateRadioButtonIcon-root-12"
                 >
                   <svg
                     aria-hidden="true"
@@ -169,7 +169,7 @@ exports[`renders as expected 1`] = `
                   </svg>
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-12"
+                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-13"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -221,20 +221,20 @@ exports[`renders as expected 1`] = `
           >
             <span
               aria-disabled="false"
-              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-7 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-8 Mui-checked MuiIconButton-colorSecondary"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-8 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-9 Mui-checked MuiIconButton-colorSecondary"
             >
               <span
                 class="MuiIconButton-label"
               >
                 <input
                   checked=""
-                  class="PrivateSwitchBase-input-10"
+                  class="PrivateSwitchBase-input-11"
                   name="non-formik-segment-exclusion-state-include"
                   type="radio"
                   value="include"
                 />
                 <div
-                  class="PrivateRadioButtonIcon-root-11 PrivateRadioButtonIcon-checked-13"
+                  class="PrivateRadioButtonIcon-root-12 PrivateRadioButtonIcon-checked-14"
                 >
                   <svg
                     aria-hidden="true"
@@ -248,7 +248,7 @@ exports[`renders as expected 1`] = `
                   </svg>
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-12"
+                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-13"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -273,19 +273,19 @@ exports[`renders as expected 1`] = `
           >
             <span
               aria-disabled="false"
-              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-7 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-8 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
             >
               <span
                 class="MuiIconButton-label"
               >
                 <input
-                  class="PrivateSwitchBase-input-10"
+                  class="PrivateSwitchBase-input-11"
                   name="non-formik-segment-exclusion-state-exclude"
                   type="radio"
                   value="exclude"
                 />
                 <div
-                  class="PrivateRadioButtonIcon-root-11"
+                  class="PrivateRadioButtonIcon-root-12"
                 >
                   <svg
                     aria-hidden="true"
@@ -299,7 +299,7 @@ exports[`renders as expected 1`] = `
                   </svg>
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-12"
+                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-13"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -400,11 +400,11 @@ exports[`renders as expected 1`] = `
               </div>
               <fieldset
                 aria-hidden="true"
-                class="PrivateNotchedOutline-root-14 MuiOutlinedInput-notchedOutline"
+                class="PrivateNotchedOutline-root-15 MuiOutlinedInput-notchedOutline"
                 style="padding-left: 8px;"
               >
                 <legend
-                  class="PrivateNotchedOutline-legend-15"
+                  class="PrivateNotchedOutline-legend-16"
                   style="width: 0.01px;"
                 >
                   <span>
@@ -440,7 +440,7 @@ exports[`renders as expected 1`] = `
           class="MuiTableContainer-root"
         >
           <table
-            class="MuiTable-root"
+            class="MuiTable-root makeStyles-variants-7"
           >
             <thead
               class="MuiTableHead-root"
@@ -503,11 +503,11 @@ exports[`renders as expected 1`] = `
                       </div>
                       <fieldset
                         aria-hidden="true"
-                        class="PrivateNotchedOutline-root-14 MuiOutlinedInput-notchedOutline"
+                        class="PrivateNotchedOutline-root-15 MuiOutlinedInput-notchedOutline"
                         style="padding-left: 8px;"
                       >
                         <legend
-                          class="PrivateNotchedOutline-legend-15"
+                          class="PrivateNotchedOutline-legend-16"
                           style="width: 0.01px;"
                         >
                           <span>
@@ -557,11 +557,11 @@ exports[`renders as expected 1`] = `
                       </div>
                       <fieldset
                         aria-hidden="true"
-                        class="PrivateNotchedOutline-root-14 MuiOutlinedInput-notchedOutline"
+                        class="PrivateNotchedOutline-root-15 MuiOutlinedInput-notchedOutline"
                         style="padding-left: 8px;"
                       >
                         <legend
-                          class="PrivateNotchedOutline-legend-15"
+                          class="PrivateNotchedOutline-legend-16"
                           style="width: 0.01px;"
                         >
                           <span>
@@ -587,11 +587,11 @@ exports[`renders as expected 2`] = `
   <div
     class="makeStyles-root-1"
   >
-    <h2
-      class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom"
+    <h4
+      class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
     >
-      Audience
-    </h2>
+      Define Your Audience
+    </h4>
     <div
       class="makeStyles-row-2"
     >
@@ -674,19 +674,19 @@ exports[`renders as expected 2`] = `
           >
             <span
               aria-disabled="false"
-              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-7 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-8 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
             >
               <span
                 class="MuiIconButton-label"
               >
                 <input
-                  class="PrivateSwitchBase-input-10"
+                  class="PrivateSwitchBase-input-11"
                   name="experiment.existingUsersAllowed"
                   type="radio"
                   value="false"
                 />
                 <div
-                  class="PrivateRadioButtonIcon-root-11"
+                  class="PrivateRadioButtonIcon-root-12"
                 >
                   <svg
                     aria-hidden="true"
@@ -700,7 +700,7 @@ exports[`renders as expected 2`] = `
                   </svg>
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-12"
+                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-13"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -725,19 +725,19 @@ exports[`renders as expected 2`] = `
           >
             <span
               aria-disabled="false"
-              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-7 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-8 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
             >
               <span
                 class="MuiIconButton-label"
               >
                 <input
-                  class="PrivateSwitchBase-input-10"
+                  class="PrivateSwitchBase-input-11"
                   name="experiment.existingUsersAllowed"
                   type="radio"
                   value="true"
                 />
                 <div
-                  class="PrivateRadioButtonIcon-root-11"
+                  class="PrivateRadioButtonIcon-root-12"
                 >
                   <svg
                     aria-hidden="true"
@@ -751,7 +751,7 @@ exports[`renders as expected 2`] = `
                   </svg>
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-12"
+                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-13"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -803,20 +803,20 @@ exports[`renders as expected 2`] = `
           >
             <span
               aria-disabled="false"
-              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-7 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-8 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
             >
               <span
                 class="MuiIconButton-label"
               >
                 <input
                   checked=""
-                  class="PrivateSwitchBase-input-10"
+                  class="PrivateSwitchBase-input-11"
                   name="non-formik-segment-exclusion-state-include"
                   type="radio"
                   value="include"
                 />
                 <div
-                  class="PrivateRadioButtonIcon-root-11"
+                  class="PrivateRadioButtonIcon-root-12"
                 >
                   <svg
                     aria-hidden="true"
@@ -830,7 +830,7 @@ exports[`renders as expected 2`] = `
                   </svg>
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-12"
+                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-13"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -855,19 +855,19 @@ exports[`renders as expected 2`] = `
           >
             <span
               aria-disabled="false"
-              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-7 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-8 Mui-checked MuiIconButton-colorSecondary"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-8 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-9 Mui-checked MuiIconButton-colorSecondary"
             >
               <span
                 class="MuiIconButton-label"
               >
                 <input
-                  class="PrivateSwitchBase-input-10"
+                  class="PrivateSwitchBase-input-11"
                   name="non-formik-segment-exclusion-state-exclude"
                   type="radio"
                   value="exclude"
                 />
                 <div
-                  class="PrivateRadioButtonIcon-root-11 PrivateRadioButtonIcon-checked-13"
+                  class="PrivateRadioButtonIcon-root-12 PrivateRadioButtonIcon-checked-14"
                 >
                   <svg
                     aria-hidden="true"
@@ -881,7 +881,7 @@ exports[`renders as expected 2`] = `
                   </svg>
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-12"
+                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-13"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
@@ -1003,11 +1003,11 @@ exports[`renders as expected 2`] = `
               </div>
               <fieldset
                 aria-hidden="true"
-                class="PrivateNotchedOutline-root-14 MuiOutlinedInput-notchedOutline"
+                class="PrivateNotchedOutline-root-15 MuiOutlinedInput-notchedOutline"
                 style="padding-left: 8px;"
               >
                 <legend
-                  class="PrivateNotchedOutline-legend-15"
+                  class="PrivateNotchedOutline-legend-16"
                   style="width: 0.01px;"
                 >
                   <span>
@@ -1043,7 +1043,7 @@ exports[`renders as expected 2`] = `
           class="MuiTableContainer-root"
         >
           <table
-            class="MuiTable-root"
+            class="MuiTable-root makeStyles-variants-7"
           >
             <thead
               class="MuiTableHead-root"
@@ -1106,11 +1106,11 @@ exports[`renders as expected 2`] = `
                       </div>
                       <fieldset
                         aria-hidden="true"
-                        class="PrivateNotchedOutline-root-14 MuiOutlinedInput-notchedOutline"
+                        class="PrivateNotchedOutline-root-15 MuiOutlinedInput-notchedOutline"
                         style="padding-left: 8px;"
                       >
                         <legend
-                          class="PrivateNotchedOutline-legend-15"
+                          class="PrivateNotchedOutline-legend-16"
                           style="width: 0.01px;"
                         >
                           <span>
@@ -1160,11 +1160,11 @@ exports[`renders as expected 2`] = `
                       </div>
                       <fieldset
                         aria-hidden="true"
-                        class="PrivateNotchedOutline-root-14 MuiOutlinedInput-notchedOutline"
+                        class="PrivateNotchedOutline-root-15 MuiOutlinedInput-notchedOutline"
                         style="padding-left: 8px;"
                       >
                         <legend
-                          class="PrivateNotchedOutline-legend-15"
+                          class="PrivateNotchedOutline-legend-16"
                           style="width: 0.01px;"
                         >
                           <span>

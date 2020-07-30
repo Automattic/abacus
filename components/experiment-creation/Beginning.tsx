@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core'
+import { Link, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Field } from 'formik'
 import { TextField } from 'formik-material-ui'
@@ -7,14 +7,8 @@ import React from 'react'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
-    p2LinkLine: {
-      margin: theme.spacing(6, 0),
-    },
-    p2Entry: {
-      margin: theme.spacing(6, 0),
-    },
     p2EntryField: {
-      marginTop: theme.spacing(1),
+      marginTop: theme.spacing(4),
       width: '100%',
       background: '#fff',
     },
@@ -30,24 +24,29 @@ const Beginning = () => {
 
   return (
     <div className={classes.root}>
-      <Typography variant='body1'>
-        We think one of the best ways to prevent a failed experiment is by documenting what you hope to learn.
+      <Typography variant='h4' gutterBottom>
+        Design and Document Your Experiment
       </Typography>
-      <div className={classes.p2Entry}>
-        <Typography variant='h6' gutterBottom>
-          P2 Link
-        </Typography>
-        <Typography variant='body1' gutterBottom>
-          Once you&apos;ve designed and documented your experiment, enter the P2 post URL:
-        </Typography>
-        <Field
-          className={classes.p2EntryField}
-          component={TextField}
-          name='experiment.p2Url'
-          placeholder='https://your-p2-post-here'
-          variant='outlined'
-        />
-      </div>
+      <Typography variant='body2'>
+        We think one of the best ways to prevent a failed experiment is by documenting what you hope to learn.
+        <br />
+        <br />
+        <strong>
+          <Link href='https://github.com/Automattic/abacus/wiki'>Our wiki is a great place to start</Link>, it will
+          instruct you on creating a P2 post.
+        </strong>
+      </Typography>
+      <Field
+        className={classes.p2EntryField}
+        component={TextField}
+        name='experiment.p2Url'
+        placeholder='https://your-p2-post-here'
+        label={`Your Post's URL`}
+        variant='outlined'
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
     </div>
   )
 }

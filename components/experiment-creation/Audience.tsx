@@ -32,9 +32,12 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
     row: {
-      margin: theme.spacing(6, 0),
+      margin: theme.spacing(5, 0),
       display: 'flex',
       alignItems: 'center',
+      '&:first-of-type': {
+        marginTop: theme.spacing(3),
+      },
     },
     segmentationHelperText: {},
     segmentationFieldSet: {
@@ -47,6 +50,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     variationAllocatedPercentage: {
       width: '7rem',
+    },
+    variants: {
+      width: 'auto',
     },
   }),
 )
@@ -133,8 +139,8 @@ const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Part
 
   return (
     <div className={classes.root}>
-      <Typography variant='h2' gutterBottom>
-        Audience
+      <Typography variant='h4' gutterBottom>
+        Define Your Audience
       </Typography>
 
       <div className={classes.row}>
@@ -223,7 +229,7 @@ const Audience = ({ formikProps }: { formikProps: FormikProps<{ experiment: Part
             (fallback) experience.
           </FormHelperText>
           <TableContainer>
-            <Table>
+            <Table className={classes.variants}>
               <TableHead>
                 <TableRow>
                   <TableCell> Name </TableCell>
