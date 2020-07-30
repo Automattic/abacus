@@ -1,7 +1,7 @@
 // Temporarily ignore until more parts are in place
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* istanbul ignore file */
-import { Button, Link, Paper, Step, StepButton, Stepper, Typography } from '@material-ui/core'
+import { Button, CircularProgress, Link, Paper, Step, StepButton, Stepper, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import useComponentSize from '@rehooks/component-size'
 import { Formik } from 'formik'
@@ -88,6 +88,21 @@ const useStyles = makeStyles((theme: Theme) =>
       maxWidth: 660,
       padding: theme.spacing(3, 4),
       marginBottom: theme.spacing(2),
+    },
+    submitContainer: {
+      marginLeft: theme.spacing(2),
+      '& .MuiButton-root': {
+        marginLeft: 0,
+      },
+      position: 'relative',
+    },
+    submitProgress: {
+      color: theme.palette.secondary.main,
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      marginTop: -12,
+      marginLeft: -12,
     },
   }),
 )
@@ -190,6 +205,8 @@ const ExperimentForm = ({
     }
   }
 
+  let x = false
+
   return (
     <div className={classes.root} ref={rootRef}>
       <div className={classes.navigation}>
@@ -209,6 +226,7 @@ const ExperimentForm = ({
         >
           {(formikProps) => (
             <form className={classes.form} onSubmit={formikProps.handleSubmit}>
+              {x || (formikProps.setSubmitting(true), (x = true))}
               <div className={classes.formPart} ref={formPartBeginningRef} style={{ width: constrictorSizes.width }}>
                 <Paper className={classes.paper}>
                   <Beginning />
@@ -275,9 +293,12 @@ const ExperimentForm = ({
                 </Paper>
                 <div className={classes.formPartActions}>
                   <Button onClick={prevStage}>Previous</Button>
-                  <Button type='submit' variant='contained' color='secondary'>
-                    Submit
-                  </Button>
+                  <div className={classes.submitContainer}>
+                    <Button type='submit' variant='contained' color='secondary' disabled={formikProps.isSubmitting}>
+                      Submit
+                    </Button>
+                    {formikProps.isSubmitting && <CircularProgress size={24} className={classes.submitProgress} />}
+                  </div>
                 </div>
               </div>
             </form>
