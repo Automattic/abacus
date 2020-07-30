@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(2, 1),
     },
     formPartActions: {
-      maxWidth: 600,
+      maxWidth: 660,
       display: 'flex',
       justifyContent: 'flex-end',
       '& .MuiButton-root': {
@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     paper: {
-      maxWidth: 600,
+      maxWidth: 660,
       padding: theme.spacing(3, 4),
       marginBottom: theme.spacing(2),
     },
