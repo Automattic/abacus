@@ -1,6 +1,5 @@
 import { LinearProgress } from '@material-ui/core'
 import debugFactory from 'debug'
-import { normalize } from 'normalizr'
 import React from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
@@ -9,7 +8,7 @@ import DebugOutput from '@/components/DebugOutput'
 import ExperimentForm from '@/components/experiment-creation/ExperimentForm'
 import Layout from '@/components/Layout'
 import { createNewExperiment } from '@/lib/experiments'
-import { MetricBare, metricBareNormalizrSchema, Segment, segmentNormalizrSchema } from '@/lib/schemas'
+import * as Normalizr from '@/lib/normalizr'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { or } from '@/utils/general'
 
@@ -21,19 +20,13 @@ const ExperimentsNewPage = function () {
 
   const { isLoading: metricsIsLoading, data: indexedMetrics, error: metricsError } = useDataSource(async () => {
     const metrics = await MetricsApi.findAll()
-    const {
-      entities: { metrics: indexedMetrics },
-    } = normalize<MetricBare>(metrics, [metricBareNormalizrSchema])
-    return indexedMetrics
+    return Normalizr.indexMetrics(metrics)
   }, [])
   useDataLoadingError(metricsError, 'Metrics')
 
   const { isLoading: segmentsIsLoading, data: indexedSegments, error: segmentsError } = useDataSource(async () => {
     const segments = await SegmentsApi.findAll()
-    const {
-      entities: { segments: indexedSegments },
-    } = normalize<Segment>(segments, [segmentNormalizrSchema])
-    return indexedSegments
+    return Normalizr.indexSegments(segments)
   }, [])
   useDataLoadingError(segmentsError, 'Segments')
 
