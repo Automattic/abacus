@@ -207,9 +207,11 @@ const ExperimentForm = ({
             <div className={classes.navigation}>
               <Stepper nonLinear activeStep={currentStageId} orientation='vertical'>
                 {stages.map((stage) => (
-                  <Step key={stage.id} completed={completeStages.includes(stage.id)}>
+                  <Step key={stage.id} completed={stage.id !== currentStageId && completeStages.includes(stage.id)}>
                     <StepButton onClick={() => changeStage(stage.id)}>
-                      <StepLabel error={errorStages.includes(stage.id)}>{stage.title}</StepLabel>
+                      <StepLabel error={stage.id !== currentStageId && errorStages.includes(stage.id)}>
+                        {stage.title}
+                      </StepLabel>
                     </StepButton>
                   </Step>
                 ))}
