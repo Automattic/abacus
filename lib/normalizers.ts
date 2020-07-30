@@ -2,11 +2,15 @@ import { normalize, schema } from 'normalizr'
 
 import { MetricBare, MetricFull, Segment } from './schemas'
 
-export const metricBareNormalizrSchema = new schema.Entity<MetricBare>('metrics', {}, { idAttribute: 'metricId' })
+export const metricNormalizrSchema = new schema.Entity<MetricBare | MetricFull>(
+  'metrics',
+  {},
+  { idAttribute: 'metricId' },
+)
 export function indexMetrics<Metric extends MetricBare | MetricFull>(metrics: Metric[]) {
   const {
     entities: { metrics: indexedMetrics },
-  } = normalize<Metric>(metrics, [metricBareNormalizrSchema])
+  } = normalize<Metric>(metrics, [metricNormalizrSchema])
   /* istanbul ignore next */
   if (!indexedMetrics) {
     throw new Error(`No metrics produced after normalisation, this should never happen.`)
