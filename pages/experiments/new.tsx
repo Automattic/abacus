@@ -17,14 +17,16 @@ const ExperimentsNewPage = function () {
   debug('ExperimentsNewPage#render')
   const initialExperiment = createNewExperiment()
 
-  const { isLoading: metricsIsLoading, data: indexedMetrics, error: metricsError } = useDataSource(async () => {
-    return Normalizers.indexMetrics(await MetricsApi.findAll())
-  }, [])
+  const { isLoading: metricsIsLoading, data: indexedMetrics, error: metricsError } = useDataSource(
+    async () => Normalizers.indexMetrics(await MetricsApi.findAll()),
+    [],
+  )
   useDataLoadingError(metricsError, 'Metrics')
 
-  const { isLoading: segmentsIsLoading, data: indexedSegments, error: segmentsError } = useDataSource(async () => {
-    return Normalizers.indexSegments(await SegmentsApi.findAll())
-  }, [])
+  const { isLoading: segmentsIsLoading, data: indexedSegments, error: segmentsError } = useDataSource(
+    async () => Normalizers.indexSegments(await SegmentsApi.findAll()),
+    [],
+  )
   useDataLoadingError(segmentsError, 'Segments')
 
   const isLoading = or(metricsIsLoading, segmentsIsLoading)

@@ -2,7 +2,6 @@
 // https://app.swaggerhub.com/apis/yanir/experiments/0.1.0
 
 import * as dateFns from 'date-fns'
-import * as normalizr from 'normalizr'
 import * as yup from 'yup'
 
 const idSchema = yup.number().integer().positive()
@@ -60,11 +59,6 @@ export const metricBareSchema = yup
   .defined()
   .camelCase()
 export type MetricBare = yup.InferType<typeof metricBareSchema>
-export const metricBareNormalizrSchema = new normalizr.schema.Entity<MetricBare>(
-  'metrics',
-  {},
-  { idAttribute: 'metricId' },
-)
 
 export const metricFullSchema = metricBareSchema
   .shape({

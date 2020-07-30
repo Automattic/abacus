@@ -1,25 +1,27 @@
+import Fixtures from '@/test-helpers/fixtures'
+
 import * as Normalizers from './normalizers'
 
 describe('lib/normalizers.ts module', () => {
   describe('indexSegments', () => {
     it('indexes an empty array', () => {
-      expect(Normalizers.indexMetrics([])).toMatchObject({})
+      expect(Normalizers.indexMetrics([])).toEqual({})
     })
+
     it('indexes an non-empty array', () => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-      // @ts-ignore
-      expect(Normalizers.indexMetrics([{ metricId: 1 }])).toMatchObject({ 1: { metricId: 1 } })
+      const metrics = Fixtures.createMetricBares()
+      expect(Normalizers.indexMetrics(metrics)).toEqual({ 1: metrics[0], 2: metrics[1], 3: metrics[2] })
     })
   })
 
   describe('indexSegments', () => {
     it('indexes an empty array', () => {
-      expect(Normalizers.indexSegments([])).toMatchObject({})
+      expect(Normalizers.indexSegments([])).toEqual({})
     })
+
     it('indexes an non-empty array', () => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-      // @ts-ignore
-      expect(Normalizers.indexSegments([{ segmentId: 1 }])).toMatchObject({ 1: { segmentId: 1 } })
+      const segments = Fixtures.createSegments(2)
+      expect(Normalizers.indexSegments(segments)).toEqual({ 1: segments[0], 2: segments[1] })
     })
   })
 })

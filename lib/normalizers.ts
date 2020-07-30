@@ -2,28 +2,20 @@ import { normalize, schema } from 'normalizr'
 
 import { MetricBare, MetricFull, Segment } from './schemas'
 
-export const metricNormalizrSchema = new schema.Entity<MetricBare | MetricFull>(
-  'metrics',
-  {},
-  { idAttribute: 'metricId' },
-)
+const metricNormalizrSchema = new schema.Entity<MetricBare | MetricFull>('metrics', {}, { idAttribute: 'metricId' })
+
+/**
+ * Return a mapping from metric ID to the metric object.
+ */
 export function indexMetrics<Metric extends MetricBare | MetricFull>(metrics: Metric[]): Record<number, Metric> {
-  const {
-    entities: { metrics: indexedMetrics },
-  } = normalize<Metric>(metrics, [metricNormalizrSchema])
-  if (!indexedMetrics) {
-    return {}
-  }
-  return indexedMetrics
+  return normalize<Metric>(metrics, [metricNormalizrSchema]).entities.metrics || {}
 }
 
-export const segmentNormalizrSchema = new schema.Entity<Segment>('segments', {}, { idAttribute: 'segmentId' })
+const segmentNormalizrSchema = new schema.Entity<Segment>('segments', {}, { idAttribute: 'segmentId' })
+
+/**
+ * Return a mapping from segment ID to the segment object.
+ */
 export function indexSegments(segments: Segment[]): Record<number, Segment> {
-  const {
-    entities: { segments: indexedSegments },
-  } = normalize<Segment>(segments, [segmentNormalizrSchema])
-  if (!indexedSegments) {
-    return {}
-  }
-  return indexedSegments
+  return normalize<Segment>(segments, [segmentNormalizrSchema]).entities.segments || {}
 }
