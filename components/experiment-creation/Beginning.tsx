@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core'
+import { Link, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Field } from 'formik'
 import { TextField } from 'formik-material-ui'
@@ -31,7 +31,10 @@ const Beginning = () => {
         We think one of the best ways to prevent a failed experiment is by documenting what you hope to learn.
         <br />
         <br />
-        <strong>Start by looking up our Field Guide, it will instruct you on creating a P2 post.</strong>
+        <strong>
+          <Link href='https://github.com/Automattic/abacus/wiki'>Our wiki is a great place to start</Link>, it will
+          instruct you on creating a P2 post.
+        </strong>
       </Typography>
       <Field
         className={classes.p2EntryField}

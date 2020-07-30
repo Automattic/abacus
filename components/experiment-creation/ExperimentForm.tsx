@@ -1,7 +1,7 @@
 // Temporarily ignore until more parts are in place
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* istanbul ignore file */
-import { Button, Paper, Step, StepButton, Stepper, Typography } from '@material-ui/core'
+import { Button, Link, Paper, Step, StepButton, Stepper, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Formik } from 'formik'
 import React, { useRef, useState } from 'react'
@@ -223,8 +223,11 @@ const ExperimentForm = ({
                     Confirm and Submit Your Experiment
                   </Typography>
                   <Typography variant='body2' gutterBottom>
-                    Now is a good time to look over the Field Guide&apos;s experiment creation checklist and confirm
-                    everything is in place.
+                    Now is a good time to{' '}
+                    <Link href='https://github.com/Automattic/abacus/wiki'>
+                      check our wiki&apos;s experiment creation checklist
+                    </Link>{' '}
+                    and confirm everything is in place.
                   </Typography>
 
                   <Typography variant='body2' gutterBottom>
