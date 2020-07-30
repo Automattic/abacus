@@ -19,14 +19,12 @@ const ExperimentsNewPage = function () {
   const initialExperiment = createNewExperiment()
 
   const { isLoading: metricsIsLoading, data: indexedMetrics, error: metricsError } = useDataSource(async () => {
-    const metrics = await MetricsApi.findAll()
-    return Normalizers.indexMetrics(metrics)
+    return Normalizers.indexMetrics(await MetricsApi.findAll())
   }, [])
   useDataLoadingError(metricsError, 'Metrics')
 
   const { isLoading: segmentsIsLoading, data: indexedSegments, error: segmentsError } = useDataSource(async () => {
-    const segments = await SegmentsApi.findAll()
-    return Normalizers.indexSegments(segments)
+    return Normalizers.indexSegments(await SegmentsApi.findAll())
   }, [])
   useDataLoadingError(segmentsError, 'Segments')
 
