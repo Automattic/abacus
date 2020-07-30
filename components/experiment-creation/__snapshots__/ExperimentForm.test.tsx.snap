@@ -1328,7 +1328,7 @@ exports[`renders as expected 1`] = `
             class="MuiPaper-root makeStyles-paper-7 MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              class="makeStyles-root-33"
+              class="makeStyles-root-34"
             >
               <h4
                 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -1399,11 +1399,11 @@ exports[`renders as expected 1`] = `
                 </table>
               </div>
               <div
-                class="makeStyles-addMetric-34"
+                class="makeStyles-addMetric-35"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-35"
+                  class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-36"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -1412,7 +1412,7 @@ exports[`renders as expected 1`] = `
                   />
                 </svg>
                 <div
-                  class="MuiFormControl-root makeStyles-addMetricSelect-37"
+                  class="MuiFormControl-root makeStyles-addMetricSelect-38"
                 >
                   <div
                     class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -1426,7 +1426,7 @@ exports[`renders as expected 1`] = `
                       tabindex="0"
                     >
                       <span
-                        class="makeStyles-addMetricPlaceholder-36"
+                        class="makeStyles-addMetricPlaceholder-37"
                       >
                         Select a Metric
                       </span>
