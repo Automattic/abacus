@@ -41,13 +41,6 @@ test('renders as expected with all metrics resolvable', () => {
                 role="columnheader"
                 scope="col"
               >
-                Minimum Difference
-              </th>
-              <th
-                class="MuiTableCell-root MuiTableCell-head"
-                role="columnheader"
-                scope="col"
-              >
                 Attribution Window
               </th>
               <th
@@ -56,6 +49,13 @@ test('renders as expected with all metrics resolvable', () => {
                 scope="col"
               >
                 Changes Expected
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Minimum Difference
               </th>
             </tr>
           </thead>
@@ -78,19 +78,19 @@ test('renders as expected with all metrics resolvable', () => {
               <td
                 class="MuiTableCell-root MuiTableCell-body"
               >
-                <span>
-                  0.1 pp
-                </span>
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body"
-              >
                 1 week
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 Yes
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <span>
+                  0.1 pp
+                </span>
               </td>
             </tr>
             <tr
@@ -100,13 +100,6 @@ test('renders as expected with all metrics resolvable', () => {
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 metric_2
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body"
-              >
-                <span>
-                  $10.50
-                </span>
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body"
@@ -118,6 +111,13 @@ test('renders as expected with all metrics resolvable', () => {
               >
                 No
               </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <span>
+                  $10.50
+                </span>
+              </td>
             </tr>
             <tr
               class="MuiTableRow-root"
@@ -130,19 +130,19 @@ test('renders as expected with all metrics resolvable', () => {
               <td
                 class="MuiTableCell-root MuiTableCell-body"
               >
-                <span>
-                  $0.50
-                </span>
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body"
-              >
                 1 hour
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 Yes
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <span>
+                  $0.50
+                </span>
               </td>
             </tr>
             <tr
@@ -156,19 +156,19 @@ test('renders as expected with all metrics resolvable', () => {
               <td
                 class="MuiTableCell-root MuiTableCell-body"
               >
-                <span>
-                  12 pp
-                </span>
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body"
-              >
                 6 hours
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 Yes
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <span>
+                  12 pp
+                </span>
               </td>
             </tr>
           </tbody>

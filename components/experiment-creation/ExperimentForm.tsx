@@ -14,6 +14,7 @@ import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment } from 
 import Audience from './Audience'
 import BasicInfo from './BasicInfo'
 import Beginning from './Beginning'
+import Metrics from './Metrics'
 
 enum StageId {
   Beginning,
@@ -74,7 +75,7 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(2, 1),
     },
     formPartActions: {
-      maxWidth: 600,
+      maxWidth: 660,
       display: 'flex',
       justifyContent: 'flex-end',
       '& .MuiButton-root': {
@@ -82,7 +83,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     paper: {
-      maxWidth: 600,
+      maxWidth: 660,
       padding: theme.spacing(3, 4),
       marginBottom: theme.spacing(2),
     },
@@ -227,10 +228,7 @@ const ExperimentForm = ({
               </div>
               <div className={classes.formPart} ref={formPartMetricsRef} style={{ width: constrictorSizes.width }}>
                 <Paper className={classes.paper}>
-                  <Typography variant='h4' gutterBottom>
-                    Assign Metrics
-                  </Typography>
-                  <Typography variant='body1'>Metrics Form Part</Typography>
+                  <Metrics />
                 </Paper>
                 <div className={classes.formPartActions}>
                   <Button onClick={prevStage}>Previous</Button>

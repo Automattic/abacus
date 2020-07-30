@@ -150,13 +150,6 @@ exports[`renders as expected at large width 1`] = `
                     role="columnheader"
                     scope="col"
                   >
-                    Minimum Difference
-                  </th>
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head"
-                    role="columnheader"
-                    scope="col"
-                  >
                     Attribution Window
                   </th>
                   <th
@@ -165,6 +158,13 @@ exports[`renders as expected at large width 1`] = `
                     scope="col"
                   >
                     Changes Expected
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Minimum Difference
                   </th>
                 </tr>
               </thead>
@@ -187,19 +187,19 @@ exports[`renders as expected at large width 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <span>
-                      0.1 pp
-                    </span>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     1 week
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      0.1 pp
+                    </span>
                   </td>
                 </tr>
                 <tr
@@ -209,13 +209,6 @@ exports[`renders as expected at large width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     metric_2
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    <span>
-                      $10.50
-                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -227,6 +220,13 @@ exports[`renders as expected at large width 1`] = `
                   >
                     No
                   </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      $10.50
+                    </span>
+                  </td>
                 </tr>
                 <tr
                   class="MuiTableRow-root"
@@ -239,19 +239,19 @@ exports[`renders as expected at large width 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <span>
-                      $0.50
-                    </span>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     1 hour
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      $0.50
+                    </span>
                   </td>
                 </tr>
                 <tr
@@ -265,19 +265,19 @@ exports[`renders as expected at large width 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <span>
-                      12 pp
-                    </span>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     6 hours
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      12 pp
+                    </span>
                   </td>
                 </tr>
               </tbody>
@@ -874,13 +874,6 @@ exports[`renders as expected at small width 1`] = `
                     role="columnheader"
                     scope="col"
                   >
-                    Minimum Difference
-                  </th>
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head"
-                    role="columnheader"
-                    scope="col"
-                  >
                     Attribution Window
                   </th>
                   <th
@@ -889,6 +882,13 @@ exports[`renders as expected at small width 1`] = `
                     scope="col"
                   >
                     Changes Expected
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Minimum Difference
                   </th>
                 </tr>
               </thead>
@@ -911,19 +911,19 @@ exports[`renders as expected at small width 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <span>
-                      0.1 pp
-                    </span>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     1 week
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      0.1 pp
+                    </span>
                   </td>
                 </tr>
                 <tr
@@ -933,13 +933,6 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     metric_2
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    <span>
-                      $10.50
-                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -951,6 +944,13 @@ exports[`renders as expected at small width 1`] = `
                   >
                     No
                   </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      $10.50
+                    </span>
+                  </td>
                 </tr>
                 <tr
                   class="MuiTableRow-root"
@@ -963,19 +963,19 @@ exports[`renders as expected at small width 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <span>
-                      $0.50
-                    </span>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     1 hour
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      $0.50
+                    </span>
                   </td>
                 </tr>
                 <tr
@@ -989,19 +989,19 @@ exports[`renders as expected at small width 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <span>
-                      12 pp
-                    </span>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     6 hours
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      12 pp
+                    </span>
                   </td>
                 </tr>
               </tbody>
@@ -1381,13 +1381,6 @@ exports[`renders as expected with conclusion data 1`] = `
                     role="columnheader"
                     scope="col"
                   >
-                    Minimum Difference
-                  </th>
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head"
-                    role="columnheader"
-                    scope="col"
-                  >
                     Attribution Window
                   </th>
                   <th
@@ -1396,6 +1389,13 @@ exports[`renders as expected with conclusion data 1`] = `
                     scope="col"
                   >
                     Changes Expected
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Minimum Difference
                   </th>
                 </tr>
               </thead>
@@ -1418,19 +1418,19 @@ exports[`renders as expected with conclusion data 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <span>
-                      0.1 pp
-                    </span>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     1 week
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      0.1 pp
+                    </span>
                   </td>
                 </tr>
                 <tr
@@ -1440,13 +1440,6 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     metric_2
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    <span>
-                      $10.50
-                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -1458,6 +1451,13 @@ exports[`renders as expected with conclusion data 1`] = `
                   >
                     No
                   </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      $10.50
+                    </span>
+                  </td>
                 </tr>
                 <tr
                   class="MuiTableRow-root"
@@ -1470,19 +1470,19 @@ exports[`renders as expected with conclusion data 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <span>
-                      $0.50
-                    </span>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     1 hour
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      $0.50
+                    </span>
                   </td>
                 </tr>
                 <tr
@@ -1496,19 +1496,19 @@ exports[`renders as expected with conclusion data 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <span>
-                      12 pp
-                    </span>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     6 hours
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      12 pp
+                    </span>
                   </td>
                 </tr>
               </tbody>
@@ -1963,13 +1963,6 @@ exports[`renders as expected without conclusion data 1`] = `
                     role="columnheader"
                     scope="col"
                   >
-                    Minimum Difference
-                  </th>
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head"
-                    role="columnheader"
-                    scope="col"
-                  >
                     Attribution Window
                   </th>
                   <th
@@ -1978,6 +1971,13 @@ exports[`renders as expected without conclusion data 1`] = `
                     scope="col"
                   >
                     Changes Expected
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Minimum Difference
                   </th>
                 </tr>
               </thead>
@@ -2000,19 +2000,19 @@ exports[`renders as expected without conclusion data 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <span>
-                      0.1 pp
-                    </span>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     1 week
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      0.1 pp
+                    </span>
                   </td>
                 </tr>
                 <tr
@@ -2022,13 +2022,6 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     metric_2
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    <span>
-                      $10.50
-                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -2040,6 +2033,13 @@ exports[`renders as expected without conclusion data 1`] = `
                   >
                     No
                   </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      $10.50
+                    </span>
+                  </td>
                 </tr>
                 <tr
                   class="MuiTableRow-root"
@@ -2052,19 +2052,19 @@ exports[`renders as expected without conclusion data 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <span>
-                      $0.50
-                    </span>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     1 hour
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      $0.50
+                    </span>
                   </td>
                 </tr>
                 <tr
@@ -2078,19 +2078,19 @@ exports[`renders as expected without conclusion data 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <span>
-                      12 pp
-                    </span>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
                     6 hours
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span>
+                      12 pp
+                    </span>
                   </td>
                 </tr>
               </tbody>

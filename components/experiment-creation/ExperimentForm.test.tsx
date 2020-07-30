@@ -1,11 +1,10 @@
-/* eslint-disable no-irregular-whitespace */
-import { render } from '@testing-library/react'
 import MockDate from 'mockdate'
 import React from 'react'
 
 import { createNewExperiment } from '@/lib/experiments'
 import * as Normalizers from '@/lib/normalizers'
 import Fixtures from '@/test-helpers/fixtures'
+import { render } from '@/test-helpers/test-utils'
 
 import ExperimentForm from './ExperimentForm'
 

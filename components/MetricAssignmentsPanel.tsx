@@ -11,7 +11,7 @@ import React, { useMemo } from 'react'
 import Label from '@/components/Label'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import * as MetricAssignments from '@/lib/metric-assignments'
-import { ExperimentFull, MetricAssignment, MetricBare } from '@/lib/schemas'
+import { ExperimentFull, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
 
 /**
@@ -77,13 +77,13 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
               Name
             </TableCell>
             <TableCell component='th' variant='head'>
-              Minimum Difference
-            </TableCell>
-            <TableCell component='th' variant='head'>
               Attribution Window
             </TableCell>
             <TableCell component='th' variant='head'>
               Changes Expected
+            </TableCell>
+            <TableCell component='th' variant='head'>
+              Minimum Difference
             </TableCell>
           </TableRow>
         </TableHead>
@@ -95,16 +95,16 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                 {resolvedMetricAssignment.isPrimary && <Label className={classes.primary} text='Primary' />}
               </TableCell>
               <TableCell>
+                {AttributionWindowSecondsToHuman[resolvedMetricAssignment.attributionWindowSeconds]}
+              </TableCell>
+              <TableCell>{formatBoolean(resolvedMetricAssignment.changeExpected)}</TableCell>
+              <TableCell>
                 <span>
-                  {resolvedMetricAssignment.metric.parameterType === 'revenue'
+                  {resolvedMetricAssignment.metric.parameterType === MetricParameterType.Revenue
                     ? formatUsCurrencyDollar(resolvedMetricAssignment.minDifference)
                     : `${resolvedMetricAssignment.minDifference} pp`}
                 </span>
               </TableCell>
-              <TableCell>
-                {AttributionWindowSecondsToHuman[resolvedMetricAssignment.attributionWindowSeconds]}
-              </TableCell>
-              <TableCell>{formatBoolean(resolvedMetricAssignment.changeExpected)}</TableCell>
             </TableRow>
           ))}
         </TableBody>

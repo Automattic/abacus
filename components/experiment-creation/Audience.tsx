@@ -240,7 +240,7 @@ const Audience = ({
                 </TableRow>
               </TableHead>
               <TableBody>
-                {(formikProps.values.experiment.variations as VariationNew[]).map((variation, idx) => {
+                {(formikProps.values.experiment.variations as VariationNew[]).map((variation, index) => {
                   return (
                     // The key here needs to be changed for variable variations
                     <TableRow key={variation.name}>
@@ -249,7 +249,7 @@ const Audience = ({
                         <Field
                           className={classes.variationAllocatedPercentage}
                           component={FormikMuiTextField}
-                          name={`experiment.variations[${idx}].allocatedPercentage`}
+                          name={`experiment.variations[${index}].allocatedPercentage`}
                           type='number'
                           size='small'
                           variant='outlined'
