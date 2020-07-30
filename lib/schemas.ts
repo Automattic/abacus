@@ -84,7 +84,7 @@ export enum AttributionWindowSeconds {
   SixHours = 21600,
   TwelveHours = 43200,
   TwentyFourHours = 86400,
-  ThreeDays = 259200,
+  SeventyTwoHours = 259200,
   OneWeek = 604800,
   TwoWeeks = 1209600,
   ThreeWeeks = 1814400,
