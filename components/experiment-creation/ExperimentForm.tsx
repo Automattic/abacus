@@ -6,6 +6,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import useComponentSize from '@rehooks/component-size'
 import { Formik } from 'formik'
 import _ from 'lodash'
+import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as yup from 'yup'
@@ -192,20 +193,23 @@ const ExperimentForm = ({
     changeStage(stages[nextStageIndex].id)
   }
 
+  const router = useRouter()
   const { enqueueSnackbar } = useSnackbar()
   const onSubmit = async (formData: unknown) => {
     try {
       const { experiment } = formData as { experiment: ExperimentFullNew }
       const receivedExperiment = await ExperimentsApi.create(experiment)
       enqueueSnackbar('Experiment Created!', { variant: 'success' })
+      router.push(
+        '/experiments/[id]/snippets?freshly_created',
+        `/experiments/${receivedExperiment.experimentId}/snippets?freshly_created`,
+      )
     } catch (error) {
       enqueueSnackbar('Failed to create experiment 😨 (Form data logged to console.)', { variant: 'error' })
       console.error(error)
       console.info('Form data:', formData)
     }
   }
-
-  let x = false
 
   return (
     <div className={classes.root} ref={rootRef}>
@@ -226,7 +230,6 @@ const ExperimentForm = ({
         >
           {(formikProps) => (
             <form className={classes.form} onSubmit={formikProps.handleSubmit}>
-              {x || (formikProps.setSubmitting(true), (x = true))}
               <div className={classes.formPart} ref={formPartBeginningRef} style={{ width: constrictorSizes.width }}>
                 <Paper className={classes.paper}>
                   <Beginning />
