@@ -136,7 +136,7 @@ const ExperimentForm = ({
       // TODO: Update current stage error and complete state
       setActiveStageId(stageId)
       if (stageFormPartRefs[stageId].current && rootRef.current) {
-        stageFormPartRefs[stageId].current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
+        stageFormPartRefs[stageId].current?.scrollIntoView({ behavior: 'auto', block: 'start', inline: 'start' })
       }
     },
     [stageFormPartRefs, setActiveStageId],
