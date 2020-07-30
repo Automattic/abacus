@@ -10,6 +10,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as yup from 'yup'
 
 import { indexMetrics } from '@/lib/normalizers'
+import { createNewExperiment } from '@/lib/experiments'
 import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
 
 import Audience from './Audience'
@@ -110,7 +111,7 @@ const ExperimentForm = ({
 }: {
   indexedMetrics: Record<number, MetricBare>
   indexedSegments: Record<number, Segment>
-  initialExperiment: Partial<ExperimentFullNew>
+  initialExperiment: ReturnType<typeof createNewExperiment>
 }) => {
   const classes = useStyles()
 
