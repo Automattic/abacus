@@ -91,12 +91,12 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 const ExperimentForm = ({
-  metrics,
-  segments,
+  indexedMetrics,
+  indexedSegments,
   initialExperiment,
 }: {
-  metrics: MetricBare[]
-  segments: Segment[]
+  indexedMetrics: Record<number, MetricBare>
+  indexedSegments: Record<number, Segment>
   initialExperiment: Partial<ExperimentFullNew>
 }) => {
   const classes = useStyles()
@@ -217,7 +217,7 @@ const ExperimentForm = ({
               </div>
               <div className={classes.formPart} ref={formPartAudienceRef} style={{ width: constrictorSizes.width }}>
                 <Paper className={classes.paper}>
-                  <Audience formikProps={formikProps} />
+                  <Audience formikProps={formikProps} indexedSegments={indexedSegments} />
                 </Paper>
                 <div className={classes.formPartActions}>
                   <Button onClick={prevStage}>Previous</Button>
