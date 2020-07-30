@@ -32,9 +32,12 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
     row: {
-      margin: theme.spacing(6, 0),
+      margin: theme.spacing(5, 0),
       display: 'flex',
       alignItems: 'center',
+      '&:first-of-type': {
+        marginTop: theme.spacing(3),
+      },
     },
     segmentationHelperText: {},
     segmentationFieldSet: {
@@ -47,6 +50,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     variationAllocatedPercentage: {
       width: '7rem',
+    },
+    variants: {
+      width: 'auto',
     },
   }),
 )
@@ -135,8 +141,8 @@ const Audience = ({
 
   return (
     <div className={classes.root}>
-      <Typography variant='h2' gutterBottom>
-        Audience
+      <Typography variant='h4' gutterBottom>
+        Define Your Audience
       </Typography>
 
       <div className={classes.row}>
@@ -205,7 +211,11 @@ const Audience = ({
             options={Object.values(indexedSegments)}
             // TODO: Error state, see https://stackworx.github.io/formik-material-ui/docs/api/material-ui-lab
             renderInput={(params: AutocompleteRenderInputParams) => (
-              <MuiTextField {...params} variant='outlined' placeholder='Search and select to customize' />
+              <MuiTextField
+                {...params}
+                variant='outlined'
+                placeholder={segmentAssignmentsField.value.length === 0 ? 'Search and select to customize' : undefined}
+              />
             )}
             segmentExclusionState={segmentExclusionState}
             indexedSegments={indexedSegments}
@@ -222,7 +232,7 @@ const Audience = ({
             (fallback) experience.
           </FormHelperText>
           <TableContainer>
-            <Table>
+            <Table className={classes.variants}>
               <TableHead>
                 <TableRow>
                   <TableCell> Name </TableCell>

@@ -4,7 +4,6 @@ import React from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
-import DebugOutput from '@/components/DebugOutput'
 import ExperimentForm from '@/components/experiment-creation/ExperimentForm'
 import Layout from '@/components/Layout'
 import { createNewExperiment } from '@/lib/experiments'
@@ -40,9 +39,6 @@ const ExperimentsNewPage = function () {
           initialExperiment={initialExperiment}
         />
       )}
-      <DebugOutput label='Initial Experiment' content={initialExperiment} />
-      <DebugOutput label='Metrics' content={indexedMetrics} />
-      <DebugOutput label='Segments' content={indexedSegments} />
     </Layout>
   )
 }
