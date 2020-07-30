@@ -143,19 +143,20 @@ exports[`renders as expected 1`] = `
           >
             <span
               aria-disabled="false"
-              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-8 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-8 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-9 Mui-checked MuiIconButton-colorSecondary"
             >
               <span
                 class="MuiIconButton-label"
               >
                 <input
+                  checked=""
                   class="PrivateSwitchBase-input-11"
                   name="experiment.existingUsersAllowed"
                   type="radio"
                   value="true"
                 />
                 <div
-                  class="PrivateRadioButtonIcon-root-12"
+                  class="PrivateRadioButtonIcon-root-12 PrivateRadioButtonIcon-checked-14"
                 >
                   <svg
                     aria-hidden="true"
@@ -725,19 +726,20 @@ exports[`renders as expected 2`] = `
           >
             <span
               aria-disabled="false"
-              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-8 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-8 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-9 Mui-checked MuiIconButton-colorSecondary"
             >
               <span
                 class="MuiIconButton-label"
               >
                 <input
+                  checked=""
                   class="PrivateSwitchBase-input-11"
                   name="experiment.existingUsersAllowed"
                   type="radio"
                   value="true"
                 />
                 <div
-                  class="PrivateRadioButtonIcon-root-12"
+                  class="PrivateRadioButtonIcon-root-12 PrivateRadioButtonIcon-checked-14"
                 >
                   <svg
                     aria-hidden="true"

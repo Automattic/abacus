@@ -294,6 +294,7 @@ exports[`renders as expected 1`] = `
     <div>
       <form
         class="makeStyles-form-3"
+        novalidate=""
       >
         <div
           class="makeStyles-formPart-4"

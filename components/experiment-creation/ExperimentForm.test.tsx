@@ -15,6 +15,7 @@ window.HTMLElement.prototype.scrollIntoView = _.noop
 
 test('renders as expected', () => {
   MockDate.set('2020-07-21')
+
   const { container } = render(
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
