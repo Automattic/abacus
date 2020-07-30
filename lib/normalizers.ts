@@ -1,7 +1,8 @@
-import { normalize } from 'normalizr'
+import { normalize, schema } from 'normalizr'
 
-import { MetricBare, metricBareNormalizrSchema, MetricFull, Segment, segmentNormalizrSchema } from './schemas'
+import { MetricBare, MetricFull, Segment } from './schemas'
 
+export const metricBareNormalizrSchema = new schema.Entity<MetricBare>('metrics', {}, { idAttribute: 'metricId' })
 export function indexMetrics<Metric extends MetricBare | MetricFull>(metrics: Metric[]) {
   const {
     entities: { metrics: indexedMetrics },
@@ -13,6 +14,7 @@ export function indexMetrics<Metric extends MetricBare | MetricFull>(metrics: Me
   return indexedMetrics
 }
 
+export const segmentNormalizrSchema = new schema.Entity<Segment>('segments', {}, { idAttribute: 'segmentId' })
 export function indexSegments(segments: Segment[]) {
   const {
     entities: { segments: indexedSegments },

@@ -136,7 +136,6 @@ export const segmentSchema = yup
   .defined()
   .camelCase()
 export type Segment = yup.InferType<typeof segmentSchema>
-export const segmentNormalizrSchema = new normalizr.schema.Entity<Segment>('segments', {}, { idAttribute: 'segmentId' })
 
 export const segmentAssignmentNewSchema = yup
   .object({
