@@ -253,7 +253,6 @@ const Metrics = () => {
               <div className={classes.addMetric}>
                 <Add className={classes.addMetricAddSymbol} />
                 <FormControl className={classes.addMetricSelect}>
-                  {/* <InputLabel id='add-metric-label'>Select a Metric</InputLabel> */}
                   <MuiSelect
                     labelId='add-metric-label'
                     id='add-metric-select'
