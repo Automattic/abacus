@@ -65,7 +65,6 @@ exports[`allows adding, editing and removing a Metric Assignment 1`] = `
               <p
                 class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
               >
-                 
                 You don't have any metrics yet.
               </p>
             </td>
@@ -207,7 +206,6 @@ exports[`allows adding, editing and removing a Metric Assignment 2`] = `
               <p
                 class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
               >
-                 
                 You don't have any metrics yet.
               </p>
             </td>
@@ -345,7 +343,6 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
             <td
               class="MuiTableCell-root MuiTableCell-body"
             >
-               
               <span
                 class="makeStyles-metricName-17"
                 title="string"
@@ -358,7 +355,6 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
               >
                 Primary
               </span>
-               
             </td>
             <td
               class="MuiTableCell-root MuiTableCell-body"
@@ -655,7 +651,6 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
             <td
               class="MuiTableCell-root MuiTableCell-body"
             >
-               
               <span
                 class="makeStyles-metricName-17"
                 title="string"
@@ -668,7 +663,6 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
               >
                 Primary
               </span>
-               
             </td>
             <td
               class="MuiTableCell-root MuiTableCell-body"
@@ -963,7 +957,6 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
             <td
               class="MuiTableCell-root MuiTableCell-body"
             >
-               
               <span
                 class="makeStyles-metricName-17"
                 title="string"
@@ -976,7 +969,6 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
               >
                 Primary
               </span>
-               
             </td>
             <td
               class="MuiTableCell-root MuiTableCell-body"
@@ -1275,7 +1267,6 @@ exports[`allows adding, editing and removing a Metric Assignment 6`] = `
               <p
                 class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
               >
-                 
                 You don't have any metrics yet.
               </p>
             </td>
@@ -1413,7 +1404,6 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
             <td
               class="MuiTableCell-root MuiTableCell-body"
             >
-               
               <span
                 class="makeStyles-metricName-17"
                 title="string"
@@ -1426,7 +1416,6 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
               >
                 Primary
               </span>
-               
             </td>
             <td
               class="MuiTableCell-root MuiTableCell-body"
@@ -1726,7 +1715,6 @@ exports[`renders as expected 1`] = `
               <p
                 class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
               >
-                 
                 You don't have any metrics yet.
               </p>
             </td>

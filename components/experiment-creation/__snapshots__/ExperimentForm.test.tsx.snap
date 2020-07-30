@@ -1400,7 +1400,6 @@ exports[`renders as expected 1`] = `
                         <p
                           class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
                         >
-                           
                           You don't have any metrics yet.
                         </p>
                       </td>
