@@ -8,7 +8,7 @@ import DebugOutput from '@/components/DebugOutput'
 import ExperimentForm from '@/components/experiment-creation/ExperimentForm'
 import Layout from '@/components/Layout'
 import { createNewExperiment } from '@/lib/experiments'
-import * as Normalizr from '@/lib/normalizr'
+import * as Normalize from '@/lib/normalize'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { or } from '@/utils/general'
 
@@ -20,13 +20,13 @@ const ExperimentsNewPage = function () {
 
   const { isLoading: metricsIsLoading, data: indexedMetrics, error: metricsError } = useDataSource(async () => {
     const metrics = await MetricsApi.findAll()
-    return Normalizr.indexMetrics(metrics)
+    return Normalize.indexMetrics(metrics)
   }, [])
   useDataLoadingError(metricsError, 'Metrics')
 
   const { isLoading: segmentsIsLoading, data: indexedSegments, error: segmentsError } = useDataSource(async () => {
     const segments = await SegmentsApi.findAll()
-    return Normalizr.indexSegments(segments)
+    return Normalize.indexSegments(segments)
   }, [])
   useDataLoadingError(segmentsError, 'Segments')
 
