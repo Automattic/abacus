@@ -71,19 +71,19 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
     },
     formPart: {
-      maxWidth: 600,
       flexShrink: 0,
       padding: theme.spacing(2, 1),
     },
     formPartActions: {
+      maxWidth: 600,
       display: 'flex',
       justifyContent: 'flex-end',
       '& .MuiButton-root': {
         marginLeft: theme.spacing(2),
       },
     },
-    // TODO: Subject to change when we get to polishing overall form UX
     paper: {
+      maxWidth: 600,
       padding: theme.spacing(3, 4),
       marginBottom: theme.spacing(2),
     },
@@ -137,7 +137,7 @@ const ExperimentForm = ({
       // TODO: Update current stage error and complete state
       setActiveStageId(stageId)
       if (stageFormPartRefs[stageId].current && rootRef.current) {
-        stageFormPartRefs[stageId].current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
+        stageFormPartRefs[stageId].current?.scrollIntoView({ behavior: 'auto', block: 'start', inline: 'start' })
       }
     },
     [stageFormPartRefs, setActiveStageId],
