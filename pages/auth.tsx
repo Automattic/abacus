@@ -1,3 +1,4 @@
+import { CircularProgress, Container, createStyles, makeStyles, Theme, Typography } from '@material-ui/core'
 import debugFactory from 'debug'
 import React, { useEffect, useState } from 'react'
 
@@ -5,14 +6,35 @@ import { AuthError, onExperimentAuthCallbackUrl } from '@/utils/auth'
 
 const debug = debugFactory('abacus:pages/auth.tsx')
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignContent: 'center',
+      alignItems: 'center',
+      textAlign: 'center',
+      height: '100vh',
+    },
+    progress: {
+      marginTop: theme.spacing(3),
+    },
+  }),
+)
+
 /**
  * The authorization page.
+ *
+ * TODO: It is better to have this at /auth-callback
  *
  * Note: This relies upon the fact that `pages/_app.tsx` will redirect the user to
  * the OAuth authorize page.
  */
 const AuthPage = function AuthPage() {
   debug('AuthPage#render')
+  const classes = useStyles()
+
   const [error, setError] = useState<null | string>(null)
   useEffect(() => {
     const error = onExperimentAuthCallbackUrl()
@@ -32,21 +54,17 @@ const AuthPage = function AuthPage() {
   }, [])
 
   return (
-    <>
-      {/*
-      Note: This error message will only be shown briefly as the user is automatically
-      redirected to the OAuth authorize page.
-      */}
-      {error ? (
-        <>
-          <div>{error}</div>
-          <div>Redirecting...</div>
-          <div>TODO: Replace with nicer UI once auth foundation is in place.</div>
-        </>
-      ) : (
-        <div>TODO: Replace with a loading component.</div>
+    <Container className={classes.root}>
+      <Typography variant='h4' gutterBottom>
+        Authorizing
+      </Typography>
+      {error && (
+        <Typography variant='body1' gutterBottom>
+          <strong>Oops! Something went wrong:</strong> {error}
+        </Typography>
       )}
-    </>
+      <CircularProgress className={classes.progress} />
+    </Container>
   )
 }
 
