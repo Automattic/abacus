@@ -1,4 +1,5 @@
 import qs from 'querystring'
+
 import { config } from '../config'
 
 /**
@@ -41,21 +42,33 @@ export const saveExperimentsAuthInfo = (experimentsAuthInfo: ExperimentsAuthInfo
   }
 }
 
-export function initializeExperimentsAuthentication() {
-  if (typeof window !== 'undefined') {
-    // Prompt user for authorization if we don't have auth info.
-    const experimentsAuthInfo = getExperimentsAuthInfo()
-    if (!experimentsAuthInfo) {
-      const authQuery = {
-        client_id: config.experimentApi.authClientId,
-        redirect_uri: `${window.location.origin}/auth`,
-        response_type: 'token',
-        scope: 'global',
-      }
-
-
-      const authUrl = `${config.experimentApi.authPath}?${qs.stringify(authQuery)}`
-      window.location.replace(authUrl)
-    }
+/* istanbul ignore next; TODO: e2e test authorization */
+export function initializeExperimentsAuth() {
+  // This is needed because of server-side rendering
+  if (typeof window === 'undefined') {
+    console.warn('InitializeExperimentAuth: Could not find `window`')
+    return
   }
+
+  if (!config.experimentApi.needsAuth) {
+    console.warn('InitializeExperimentAuth: Proceeding uninitialized as needsAuth = false')
+    return
+  }
+
+  const experimentsAuthInfo = getExperimentsAuthInfo()
+  if (experimentsAuthInfo) {
+    console.info('InitializeExperimentAuth: Found existing auth info.')
+    return
+  }
+
+
+  console.info('InitializeExperimentAuth: Could not find existing auth info, re-authing.')
+  const authQuery = {
+    client_id: config.experimentApi.authClientId,
+    redirect_uri: `${window.location.origin}/auth`,
+    response_type: 'token',
+    scope: 'global',
+  }
+  const authUrl = `${config.experimentApi.authPath}?${qs.stringify(authQuery)}`
+  window.location.replace(authUrl)
 }

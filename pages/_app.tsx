@@ -8,7 +8,7 @@ import * as yup from 'yup'
 import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import RenderErrorView from '@/components/RenderErrorView'
 import ThemeProvider from '@/styles/ThemeProvider'
-import { initializeExperimentsAuthentication } from '@/utils/auth'
+import { initializeExperimentsAuth } from '@/utils/auth'
 
 const debug = debugFactory('abacus:pages/_app.tsx')
 
@@ -91,7 +91,7 @@ const App = React.memo(function App(props: AppProps) {
     }
   }, [])
 
-  initializeExperimentsAuthentication()
+  initializeExperimentsAuth()
 
   return (
     <RenderErrorBoundary>
