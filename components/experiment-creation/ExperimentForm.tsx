@@ -9,6 +9,7 @@ import _ from 'lodash'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as yup from 'yup'
 
+import { indexMetrics } from '@/lib/normalizers'
 import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
 
 import Audience from './Audience'
@@ -228,7 +229,7 @@ const ExperimentForm = ({
               </div>
               <div className={classes.formPart} ref={formPartMetricsRef} style={{ width: constrictorSizes.width }}>
                 <Paper className={classes.paper}>
-                  <Metrics />
+                  <Metrics indexedMetrics={indexedMetrics} />
                 </Paper>
                 <div className={classes.formPartActions}>
                   <Button onClick={prevStage}>Previous</Button>
