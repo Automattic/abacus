@@ -16,8 +16,18 @@ const AuthPage = function AuthPage() {
   const [error, setError] = useState<null | string>(null)
   useEffect(() => {
     const error = onExperimentAuthCallbackUrl()
-    if (error === AuthError.AccessDenied) {
-      setError('Please log into WordPress.com and authorize Abacus - Testing to have access.')
+    switch (error) {
+      case AuthError.AccessDenied: {
+        setError('Please log into WordPress.com and authorize Abacus - Testing to have access.')
+        break
+      }
+      case AuthError.UnknownError: {
+        setError('An unknown error has occured. Check the console for more information.')
+        break
+      }
+      default: {
+        return
+      }
     }
   }, [])
 
