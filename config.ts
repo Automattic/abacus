@@ -18,6 +18,6 @@ const developmentConfig = {
 
 export const isTestingProductionConfigInDevelopment = false
 
-const isProduction = false
+const isProduction = process.env.NODE_ENV === 'production'
 
 export const config = isProduction || isTestingProductionConfigInDevelopment ? productionConfig : developmentConfig
