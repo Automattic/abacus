@@ -43,8 +43,7 @@ export const saveExperimentsAuthInfo = (experimentsAuthInfo: ExperimentsAuthInfo
   }
 }
 
-/* istanbul ignore next; TODO: e2e test authorization */
-export function initializeExperimentsAuth() {
+export /* istanbul ignore next; TODO: e2e test authorization */ function initializeExperimentsAuth() {
   // This is needed because of server-side rendering
   if (typeof window === 'undefined') {
     console.warn('InitializeExperimentAuth: Could not find `window`')
@@ -79,8 +78,7 @@ export enum AuthError {
   UnknownError,
 }
 
-/* istanbul ignore next; TODO: e2e test authorization */
-export function onExperimentAuthCallbackUrl(): void | AuthError {
+export /* istanbul ignore next; TODO: e2e test authorization */ function onExperimentAuthCallbackUrl(): void | AuthError {
   if (typeof window === 'undefined') {
     console.warn('onExperimentAuthCallbackUrl: Could not find `window`')
     return
