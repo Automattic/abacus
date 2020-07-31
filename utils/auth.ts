@@ -1,3 +1,6 @@
+import qs from 'querystring'
+import { config } from '../config'
+
 /**
  * Experiments authorization info, as returned from OAuth call. See
  * https://developer.wordpress.com/docs/oauth2/.
@@ -35,5 +38,24 @@ export const saveExperimentsAuthInfo = (experimentsAuthInfo: ExperimentsAuthInfo
     localStorage.removeItem('experiments_auth_info')
   } else {
     localStorage.setItem('experiments_auth_info', JSON.stringify(experimentsAuthInfo))
+  }
+}
+
+export function initializeExperimentsAuthentication() {
+  if (typeof window !== 'undefined') {
+    // Prompt user for authorization if we don't have auth info.
+    const experimentsAuthInfo = getExperimentsAuthInfo()
+    if (!experimentsAuthInfo) {
+      const authQuery = {
+        client_id: config.experimentApi.authClientId,
+        redirect_uri: `${window.location.origin}/auth`,
+        response_type: 'token',
+        scope: 'global',
+      }
+
+
+      const authUrl = `${config.experimentApi.authPath}?${qs.stringify(authQuery)}`
+      window.location.replace(authUrl)
+    }
   }
 }

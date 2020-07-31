@@ -2,16 +2,13 @@ import { makeStyles } from '@material-ui/core/styles'
 import debugFactory from 'debug'
 import { AppProps } from 'next/app'
 import { SnackbarProvider } from 'notistack'
-import qs from 'querystring'
 import React from 'react'
 import * as yup from 'yup'
 
 import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import RenderErrorView from '@/components/RenderErrorView'
 import ThemeProvider from '@/styles/ThemeProvider'
-import { getExperimentsAuthInfo } from '@/utils/auth'
-
-import { config } from '../config'
+import { initializeExperimentsAuthentication } from '@/utils/auth'
 
 const debug = debugFactory('abacus:pages/_app.tsx')
 
@@ -94,21 +91,7 @@ const App = React.memo(function App(props: AppProps) {
     }
   }, [])
 
-  if (typeof window !== 'undefined') {
-    // Prompt user for authorization if we don't have auth info.
-    const experimentsAuthInfo = getExperimentsAuthInfo()
-    if (!experimentsAuthInfo) {
-      const authQuery = {
-        client_id: config.experimentApi.authClientId,
-        redirect_uri: `${window.location.origin}/auth`,
-        response_type: 'token',
-        scope: 'global',
-      }
-
-      const authUrl = `${config.experimentApi.authPath}?${qs.stringify(authQuery)}`
-      window.location.replace(authUrl)
-    }
-  }
+  initializeExperimentsAuthentication()
 
   return (
     <RenderErrorBoundary>
@@ -117,12 +100,12 @@ const App = React.memo(function App(props: AppProps) {
           {renderError ? (
             <RenderErrorView renderError={renderError} />
           ) : (
-            <SnackbarProvider preventDuplicate>
-              <div className={classes.app}>
-                <Route {...routeProps} />
-              </div>
-            </SnackbarProvider>
-          )}
+              <SnackbarProvider preventDuplicate>
+                <div className={classes.app}>
+                  <Route {...routeProps} />
+                </div>
+              </SnackbarProvider>
+            )}
         </ThemeProvider>
       )}
     </RenderErrorBoundary>
