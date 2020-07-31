@@ -9,7 +9,8 @@ import * as yup from 'yup'
 import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import RenderErrorView from '@/components/RenderErrorView'
 import ThemeProvider from '@/styles/ThemeProvider'
-import { getAuthClientId, getExperimentsAuthInfo, saveExperimentsAuthInfo } from '@/utils/auth'
+import { config } from '../config'
+import { getExperimentsAuthInfo, saveExperimentsAuthInfo } from '@/utils/auth'
 
 const debug = debugFactory('abacus:pages/_app.tsx')
 
@@ -107,15 +108,15 @@ const App = React.memo(function App(props: AppProps) {
     // Prompt user for authorization if we don't have auth info.
     const experimentsAuthInfo = getExperimentsAuthInfo()
     if (!experimentsAuthInfo) {
-      const authPath = 'https://public-api.wordpress.com/oauth2/authorize'
       const authQuery = {
-        client_id: getAuthClientId(window.location.host),
+        client_id: config.experimentApi.authClientId,
         redirect_uri: `${window.location.origin}/auth`,
         response_type: 'token',
         scope: 'global',
       }
 
-      const authUrl = `${authPath}?${qs.stringify(authQuery)}`
+
+      const authUrl = `${config.experimentApi.authPath}?${qs.stringify(authQuery)}`
       window.location.replace(authUrl)
     }
   }
@@ -127,12 +128,12 @@ const App = React.memo(function App(props: AppProps) {
           {renderError ? (
             <RenderErrorView renderError={renderError} />
           ) : (
-            <SnackbarProvider preventDuplicate>
-              <div className={classes.app}>
-                <Route {...routeProps} />
-              </div>
-            </SnackbarProvider>
-          )}
+              <SnackbarProvider preventDuplicate>
+                <div className={classes.app}>
+                  <Route {...routeProps} />
+                </div>
+              </SnackbarProvider>
+            )}
         </ThemeProvider>
       )}
     </RenderErrorBoundary>

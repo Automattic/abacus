@@ -1,13 +1,4 @@
 /**
- * Resolves the OAuth client ID based on the host.
- *
- * @param host
- */
-const getAuthClientId = (host: string) => {
-  return host === 'experiments.a8c.com' ? 68795 : 68797
-}
-
-/**
  * Experiments authorization info, as returned from OAuth call. See
  * https://developer.wordpress.com/docs/oauth2/.
  */
