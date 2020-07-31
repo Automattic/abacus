@@ -79,6 +79,9 @@ describe('utils/data-loading.ts module', () => {
 
   describe('useDataLoadingError(error)', () => {
     it('should not display any errors for an error value of null', () => {
+      const originalConsoleError = console.error
+      console.error = jest.fn()
+
       const mockedEnqueueSnackbar = jest.fn()
       mockedNotistack.useSnackbar.mockImplementation(() => ({
         enqueueSnackbar: mockedEnqueueSnackbar,
@@ -90,9 +93,16 @@ describe('utils/data-loading.ts module', () => {
       })
 
       expect(mockedEnqueueSnackbar.mock.calls.length).toBe(0)
+
+      expect((console.error as jest.Mock).mock.calls.length).toBe(0)
+
+      console.error = originalConsoleError
     })
 
     it('should display a general error for truthy error value without a specified dataName', () => {
+      const originalConsoleError = console.error
+      console.error = jest.fn()
+
       const mockedEnqueueSnackbar = jest.fn()
       mockedNotistack.useSnackbar.mockImplementation(() => ({
         enqueueSnackbar: mockedEnqueueSnackbar,
@@ -109,9 +119,16 @@ describe('utils/data-loading.ts module', () => {
         'Oops! There was a problem loading some data.',
         { variant: 'error', persist: true },
       ])
+
+      expect((console.error as jest.Mock).mock.calls.length).toBe(1)
+
+      console.error = originalConsoleError
     })
 
     it('should display a specific error for truthy error value with a specified dataName', () => {
+      const originalConsoleError = console.error
+      console.error = jest.fn()
+
       const mockedEnqueueSnackbar = jest.fn()
       mockedNotistack.useSnackbar.mockImplementation(() => ({
         enqueueSnackbar: mockedEnqueueSnackbar,
@@ -128,6 +145,10 @@ describe('utils/data-loading.ts module', () => {
         `Oops! There was a problem loading some data of type: DataName.`,
         { variant: 'error', persist: true },
       ])
+
+      expect((console.error as jest.Mock).mock.calls.length).toBe(1)
+
+      console.error = originalConsoleError
     })
   })
 })
