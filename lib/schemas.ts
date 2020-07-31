@@ -214,8 +214,7 @@ export type ExperimentFull = yup.InferType<typeof experimentFullSchema>
 const now = new Date()
 export const experimentFullNewSchema = experimentFullSchema.shape({
   experimentId: idSchema.nullable(),
-  status: yup.string().oneOf(Object.values(Status)),
-  // Using yesterday here to avoid timezone issues
+  status: yup.mixed().oneOf([]).notRequired(),
   startDatetime: yup
     .date()
     .defined()
