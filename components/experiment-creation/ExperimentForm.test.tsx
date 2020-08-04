@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import MockDate from 'mockdate'
 import React from 'react'
 
@@ -7,6 +8,10 @@ import Fixtures from '@/test-helpers/fixtures'
 import { render } from '@/test-helpers/test-utils'
 
 import ExperimentForm from './ExperimentForm'
+
+// As jest doesn't include scrollIntoView
+// eslint-disable-next-line @typescript-eslint/unbound-method
+window.HTMLElement.prototype.scrollIntoView = _.noop
 
 test('renders as expected', () => {
   MockDate.set('2020-07-21')
