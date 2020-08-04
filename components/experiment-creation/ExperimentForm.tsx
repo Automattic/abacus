@@ -144,8 +144,6 @@ const ExperimentForm = ({
     })
   }
 
-  const changeStage = (stageId: StageId) => setActiveStageId(stageId)
-
   useEffect(() => {
     rootRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
   }, [currentStageId])
@@ -186,20 +184,14 @@ const ExperimentForm = ({
         }
 
         const prevStage = () => {
-          if (currentStageIndex === 0) {
-            return
+          if (0 < currentStageIndex) {
+            changeStage(stages[currentStageIndex - 1].id)
           }
-
-          const prevStageIndex = currentStageIndex - 1
-          changeStage(stages[prevStageIndex].id)
         }
         const nextStage = () => {
-          if (stages.length <= currentStageIndex) {
-            return
+          if (currentStageIndex < stages.length) {
+            changeStage(stages[currentStageIndex + 1].id)
           }
-
-          const nextStageIndex = currentStageIndex + 1
-          changeStage(stages[nextStageIndex].id)
         }
 
         return (
