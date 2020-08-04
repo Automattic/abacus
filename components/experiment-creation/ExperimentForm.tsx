@@ -121,28 +121,7 @@ const ExperimentForm = ({
   const currentStageIndex = stages.findIndex((stage) => stage.id === currentStageId)
 
   const [completeStages, setCompleteStages] = useState<StageId[]>([])
-  const markStageComplete = (stageId: StageId) => {
-    setCompleteStages((prevValue) => {
-      return prevValue.includes(stageId) ? prevValue : [...prevValue, stageId]
-    })
-  }
-  const markStageIncomplete = (stageId: StageId) => {
-    setCompleteStages((prevValue) => {
-      return prevValue.filter((id) => id !== stageId)
-    })
-  }
-
   const [errorStages, setErrorStages] = useState<StageId[]>([])
-  const markStageError = (stageId: StageId) => {
-    setErrorStages((prevValue) => {
-      return prevValue.includes(stageId) ? prevValue : [...prevValue, stageId]
-    })
-  }
-  const markStageNoError = (stageId: StageId) => {
-    setErrorStages((prevValue) => {
-      return prevValue.filter((id) => id !== stageId)
-    })
-  }
 
   useEffect(() => {
     rootRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
@@ -166,11 +145,11 @@ const ExperimentForm = ({
           }
 
           if (await isStageValid(stage)) {
-            markStageNoError(stage.id)
-            markStageComplete(stage.id)
+            setErrorStages((prevValue) => _.difference(prevValue, [stage.id]))
+            setCompleteStages((prevValue) => _.union(prevValue, [stage.id]))
           } else {
-            markStageError(stage.id)
-            markStageIncomplete(stage.id)
+            setErrorStages((prevValue) => _.union(prevValue, [stage.id]))
+            setCompleteStages((prevValue) => _.difference(prevValue, [stage.id]))
           }
         }
 
