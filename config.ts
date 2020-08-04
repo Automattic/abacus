@@ -28,7 +28,8 @@ const developmentConfig = {
  */
 export const NODE_ENV = process.env.NEXT_PUBLIC_NODE_ENV_OVERRIDE ?? process.env.NODE_ENV ?? 'development'
 
-export const isTestingProductionConfigInDevelopment = false
+export const isTestingProductionConfigInDevelopment =
+  process.env.NEXT_PUBLIC_PRODUCTION_CONFIG_IN_DEVELOPMENT === 'true'
 
 // istanbul ignore next
 export const config =
