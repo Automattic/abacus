@@ -28,6 +28,13 @@ const developmentConfig = {
  */
 export const NODE_ENV = process.env.NEXT_PUBLIC_NODE_ENV_OVERRIDE ?? process.env.NODE_ENV ?? 'development'
 
+/**
+ * Allows us to test out the production API locally while developing.
+ *
+ * Simply set `NEXT_PUBLIC_PRODUCTION_CONFIG_IN_DEVELOPMENT=true` before spinning up the app.
+ *
+ * You may need to clear your localstorage to get the app to reauth.
+ */
 export const isTestingProductionConfigInDevelopment =
   process.env.NEXT_PUBLIC_PRODUCTION_CONFIG_IN_DEVELOPMENT === 'true'
 
