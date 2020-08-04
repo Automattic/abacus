@@ -9,7 +9,7 @@ import * as yup from 'yup'
 import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import RenderErrorView from '@/components/RenderErrorView'
 import ThemeProvider from '@/styles/ThemeProvider'
-import { getExperimentsAuthInfo, saveExperimentsAuthInfo } from '@/utils/auth'
+import { getExperimentsAuthInfo } from '@/utils/auth'
 
 import { config } from '../config'
 
@@ -95,17 +95,6 @@ const App = React.memo(function App(props: AppProps) {
   }, [])
 
   if (typeof window !== 'undefined') {
-    // Inject a fake auth token to skip authentication in non-production contexts.
-    // This is a temporary solution. Ideally, we should test the full authentication flow in every environment.
-    if (window.location.host !== 'experiments.a8c.com') {
-      saveExperimentsAuthInfo({
-        accessToken: 'fake_token',
-        expiresAt: Date.parse('2100-01-01'),
-        scope: 'global',
-        type: 'bearer',
-      })
-    }
-
     // Prompt user for authorization if we don't have auth info.
     const experimentsAuthInfo = getExperimentsAuthInfo()
     if (!experimentsAuthInfo) {
