@@ -61,7 +61,6 @@ export /* istanbul ignore next; TODO: e2e test authorization */ function initial
     return
   }
 
-
   console.info('InitializeExperimentAuth: Could not find existing auth info, re-authing.')
   const authQuery = {
     client_id: config.experimentApi.authClientId,
