@@ -26,6 +26,7 @@ const developmentConfig = {
  * This is needed as NextJS under some circumstances doesn't allow applying a different NODE_ENV.
  * Particularly for `next build` where we need to pass in `NODE_ENV=test` for E2E testing
  */
+// istanbul ignore next; Development only
 export const NODE_ENV = process.env.NEXT_PUBLIC_NODE_ENV_OVERRIDE ?? process.env.NODE_ENV ?? 'development'
 
 /**
@@ -35,9 +36,10 @@ export const NODE_ENV = process.env.NEXT_PUBLIC_NODE_ENV_OVERRIDE ?? process.env
  *
  * You may need to clear your localstorage to get the app to reauth.
  */
+// istanbul ignore next; Development only
 export const isTestingProductionConfigInDevelopment =
   process.env.NEXT_PUBLIC_PRODUCTION_CONFIG_IN_DEVELOPMENT === 'true'
 
-// istanbul ignore next
+// istanbul ignore next; Development only
 export const config =
   NODE_ENV === 'production' || isTestingProductionConfigInDevelopment ? productionConfig : developmentConfig
