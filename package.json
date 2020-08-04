@@ -27,7 +27,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "lodash": "^4.17.19",
     "material-table": "^1.59.0",
-    "next": "^9.3.5",
+    "next": "^9.3.6",
     "normalizr": "^3.6.0",
     "notistack": "^0.9.17",
     "qc-to_bool": "^1.1.2",
@@ -43,7 +43,7 @@
     "@package @storebook/react": "Requires `babel-loader`."
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^9.3.5",
+    "@next/bundle-analyzer": "^9.3.6",
     "@storybook/preset-scss": "^1.0.2",
     "@storybook/preset-typescript": "^3.0.0",
     "@storybook/react": "^5.3.18",

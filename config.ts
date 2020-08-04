@@ -16,9 +16,20 @@ const developmentConfig = {
   },
 }
 
+/**
+ * Our own NODE_ENV.
+ *
+ * We should be using this throughout our codebase rather than process.env.NODE_ENV
+ *
+ * Not guaranteed to match process.env.NODE_ENV
+ *
+ * This is needed as NextJS under some circumstances doesn't allow applying a different NODE_ENV.
+ * Particularly for `next build` where we need to pass in `NODE_ENV=test` for E2E testing
+ */
+export const NODE_ENV = process.env.NEXT_PUBLIC_NODE_ENV_OVERRIDE ?? process.env.NODE_ENV ?? 'development'
+
 export const isTestingProductionConfigInDevelopment = false
 
-const isProduction = process.env.NODE_ENV === 'production'
-
 // istanbul ignore next
-export const config = isProduction || isTestingProductionConfigInDevelopment ? productionConfig : developmentConfig
+export const config =
+  NODE_ENV === 'production' || isTestingProductionConfigInDevelopment ? productionConfig : developmentConfig
