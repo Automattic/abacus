@@ -9,7 +9,7 @@ import _ from 'lodash'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as yup from 'yup'
 
-import { createNewExperiment } from '@/lib/experiments'
+import { createInitialExperiment } from '@/lib/experiments'
 import { indexMetrics } from '@/lib/normalizers'
 import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
 
@@ -111,7 +111,7 @@ const ExperimentForm = ({
 }: {
   indexedMetrics: Record<number, MetricBare>
   indexedSegments: Record<number, Segment>
-  initialExperiment: ReturnType<typeof createNewExperiment>
+  initialExperiment: ReturnType<typeof createInitialExperiment>
 }) => {
   const classes = useStyles()
 

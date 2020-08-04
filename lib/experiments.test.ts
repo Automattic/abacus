@@ -68,7 +68,7 @@ describe('lib/experiments.ts module', () => {
 
   describe('createNewExperiment', () => {
     it('should return a new experiment', () => {
-      expect(Experiments.createNewExperiment()).toMatchInlineSnapshot(`
+      expect(Experiments.createInitialExperiment()).toMatchInlineSnapshot(`
         Object {
           "description": "",
           "endDatetime": "",

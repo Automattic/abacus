@@ -45,7 +45,7 @@ export function getDefaultAnalysisStrategy(experiment: ExperimentFull) {
   return experiment.exposureEvents ? AnalysisStrategy.PpNaive : AnalysisStrategy.MittNoSpammersNoCrossovers
 }
 
-export function createNewExperiment() {
+export function createInitialExperiment() {
   return {
     p2Url: '',
     name: '',
