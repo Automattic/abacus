@@ -9,8 +9,8 @@ import _ from 'lodash'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as yup from 'yup'
 
-import { indexMetrics } from '@/lib/normalizers'
 import { createNewExperiment } from '@/lib/experiments'
+import { indexMetrics } from '@/lib/normalizers'
 import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
 
 import Audience from './Audience'
@@ -285,8 +285,8 @@ const ExperimentForm = ({
                       </Typography>
 
                       <Typography variant='body2' gutterBottom>
-                        Once you submit your experiment it will be set to staging, where it can be edited up until you set
-                        it to running.
+                        Once you submit your experiment it will be set to staging, where it can be edited up until you
+                        set it to running.
                       </Typography>
                       <Typography variant='body2' gutterBottom>
                         <strong> When you are ready, click the Submit button below.</strong>
