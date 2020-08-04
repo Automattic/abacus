@@ -253,14 +253,17 @@ export const experimentFullNewOutboundSchema = experimentFullNewSchema
     variations: yup.array<VariationNew>(variationNewOutboundSchema).defined().min(2),
   })
   .snakeCase()
-  .transform((currentValue) => ({
-    ...currentValue,
-    // The P2 field gets incorrectly snake_cased so we fix it here
-    p_2_url: undefined,
-    p2_url: currentValue.p_2_url,
-    // Not sure why but metric_assignments isn't working either so we fix it here.
-    metric_assignments: yup.array(metricAssignmentNewOutboundSchema).defined().cast(currentValue.metric_assignments),
-  }))
+  .transform(
+    // istanbul ignore next; This will be tested by e2e tests
+    (currentValue) => ({
+      ...currentValue,
+      // The P2 field gets incorrectly snake_cased so we fix it here
+      p_2_url: undefined,
+      p2_url: currentValue.p_2_url,
+      // Not sure why but metric_assignments isn't working either so we fix it here.
+      metric_assignments: yup.array(metricAssignmentNewOutboundSchema).defined().cast(currentValue.metric_assignments),
+    }),
+  )
 
 export enum RecommendationReason {
   CiInRope = 'ci_in_rope',
