@@ -1,3 +1,4 @@
+import noop from 'lodash/noop'
 import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
@@ -15,6 +16,9 @@ mockedNotistack.useSnackbar.mockImplementation(() => ({
   enqueueSnackbar: jest.fn(),
   closeSnackbar: jest.fn(),
 }))
+
+// As jest doesn't include scrollIntoView
+window.HTMLElement.prototype.scrollIntoView = noop
 
 test('renders as expected', () => {
   MockDate.set('2020-07-21')
