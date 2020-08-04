@@ -107,6 +107,7 @@ export const metricAssignmentNewSchema = yup
   .defined()
   .camelCase()
 export type MetricAssignmentNew = yup.InferType<typeof metricAssignmentNewSchema>
+export const metricAssignmentNewOutboundSchema = metricAssignmentNewSchema.snakeCase()
 
 export const metricAssignmentSchema = metricAssignmentNewSchema
   .shape({
@@ -139,6 +140,7 @@ export const segmentAssignmentNewSchema = yup
   .defined()
   .camelCase()
 export type SegmentAssignmentNew = yup.InferType<typeof segmentAssignmentNewSchema>
+export const segmentAssignmentNewOutboundSchema = segmentAssignmentNewSchema.snakeCase()
 
 export const segmentAssignmentSchema = segmentAssignmentNewSchema
   .shape({
@@ -157,6 +159,7 @@ export const variationNewSchema = yup
   .defined()
   .camelCase()
 export type VariationNew = yup.InferType<typeof variationNewSchema>
+export const variationNewOutboundSchema = variationNewSchema.snakeCase()
 
 export const variationSchema = variationNewSchema
   .shape({
@@ -243,6 +246,21 @@ export const experimentFullNewSchema = experimentFullSchema.shape({
   variations: yup.array<VariationNew>(variationNewSchema).defined().min(2),
 })
 export type ExperimentFullNew = yup.InferType<typeof experimentFullNewSchema>
+export const experimentFullNewOutboundSchema = experimentFullNewSchema
+  .shape({
+    metricAssignments: yup.array(metricAssignmentNewOutboundSchema).defined(),
+    segmentAssignments: yup.array(segmentAssignmentNewOutboundSchema).defined(),
+    variations: yup.array<VariationNew>(variationNewOutboundSchema).defined().min(2),
+  })
+  .snakeCase()
+  .transform((currentValue) => ({
+    ...currentValue,
+    // The P2 field gets incorrectly snake_cased so we fix it here
+    p_2_url: undefined,
+    p2_url: currentValue.p_2_url,
+    // Not sure why but metric_assignments isn't working either so we fix it here.
+    metric_assignments: yup.array(metricAssignmentNewOutboundSchema).defined().cast(currentValue.metric_assignments),
+  }))
 
 export enum RecommendationReason {
   CiInRope = 'ci_in_rope',
