@@ -63,10 +63,6 @@ const useStyles = makeStyles((theme: Theme) =>
       marginRight: theme.spacing(6),
       marginTop: theme.spacing(2),
     },
-    formConstrictor: {
-      width: '100%',
-      overflow: 'hidden',
-    },
     form: {
       flex: 1,
       display: 'flex',
@@ -102,25 +98,7 @@ const ExperimentForm = ({
 }) => {
   const classes = useStyles()
 
-  const constrictorRef = useRef<HTMLDivElement>(null)
-  const constrictorSizes = useComponentSize(constrictorRef)
-
   const rootRef = useRef<HTMLDivElement>(null)
-  const formPartBeginningRef = useRef<HTMLDivElement>(null)
-  const formPartBasicInfoRef = useRef<HTMLDivElement>(null)
-  const formPartAudienceRef = useRef<HTMLDivElement>(null)
-  const formPartMetricsRef = useRef<HTMLDivElement>(null)
-  const formPartSubmitRef = useRef<HTMLDivElement>(null)
-  const stageFormPartRefs: Record<StageId, React.RefObject<HTMLDivElement>> = useMemo(
-    () => ({
-      [StageId.Beginning]: formPartBeginningRef,
-      [StageId.BasicInfo]: formPartBasicInfoRef,
-      [StageId.Audience]: formPartAudienceRef,
-      [StageId.Metrics]: formPartMetricsRef,
-      [StageId.Submit]: formPartSubmitRef,
-    }),
-    [],
-  )
 
   const [currentStageId, setActiveStageId] = useState<StageId>(StageId.Beginning)
   const currentStageIndex = stages.findIndex((stage) => stage.id === currentStageId)
@@ -133,27 +111,11 @@ const ExperimentForm = ({
     index && setCompleteStages(completeStages.splice(index, 1))
   }
   const [errorStages, setErrorStages] = useState<StageId[]>([])
-  const changeStage = useCallback(
-    (stageId: StageId) => {
-      // TODO: Update current stage error and complete state
-      setActiveStageId(stageId)
-      if (stageFormPartRefs[stageId].current && rootRef.current) {
-        stageFormPartRefs[stageId].current?.scrollIntoView({ behavior: 'auto', block: 'start', inline: 'start' })
-      }
-    },
-    [stageFormPartRefs, setActiveStageId],
-  )
+  const changeStage = (stageId: StageId) => setActiveStageId(stageId)
+
   useEffect(() => {
-    const onResize = _.debounce(() => {
-      changeStage(currentStageId)
-    }, 100)
-
-    window.addEventListener('resize', onResize)
-
-    return () => {
-      window.removeEventListener('resize', onResize)
-    }
-  }, [changeStage, currentStageId])
+    rootRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
+  }, [currentStageId])
 
   const prevStage = () => {
     if (currentStageIndex === 0) {
@@ -177,7 +139,7 @@ const ExperimentForm = ({
   }
 
   return (
-    <div className={classes.root} ref={rootRef}>
+    <div className={classes.root}>
       <div className={classes.navigation}>
         <Stepper nonLinear activeStep={currentStageId} orientation='vertical'>
           {stages.map((stage) => (
@@ -187,7 +149,7 @@ const ExperimentForm = ({
           ))}
         </Stepper>
       </div>
-      <div className={classes.formConstrictor} ref={constrictorRef}>
+      <div ref={rootRef}>
         <Formik
           initialValues={{ experiment: initialExperiment }}
           onSubmit={(v) => alert(JSON.stringify(v, null, 2))}
@@ -195,77 +157,87 @@ const ExperimentForm = ({
         >
           {(formikProps) => (
             <form className={classes.form} onSubmit={formikProps.handleSubmit}>
-              <div className={classes.formPart} ref={formPartBeginningRef} style={{ width: constrictorSizes.width }}>
-                <Paper className={classes.paper}>
-                  <Beginning />
-                </Paper>
-                <div className={classes.formPartActions}>
-                  <Button onClick={nextStage} variant='contained' color='primary'>
-                    Begin
-                  </Button>
+              {currentStageId === StageId.Beginning && (
+                <div className={classes.formPart}>
+                  <Paper className={classes.paper}>
+                    <Beginning />
+                  </Paper>
+                  <div className={classes.formPartActions}>
+                    <Button onClick={nextStage} variant='contained' color='primary'>
+                      Begin
+                    </Button>
+                  </div>
                 </div>
-              </div>
-              <div className={classes.formPart} ref={formPartBasicInfoRef} style={{ width: constrictorSizes.width }}>
-                <Paper className={classes.paper}>
-                  <BasicInfo />
-                </Paper>
-                <div className={classes.formPartActions}>
-                  <Button onClick={prevStage}>Previous</Button>
-                  <Button onClick={nextStage} variant='contained' color='primary'>
-                    Next
-                  </Button>
+              )}
+              {currentStageId === StageId.BasicInfo && (
+                <div className={classes.formPart}>
+                  <Paper className={classes.paper}>
+                    <BasicInfo />
+                  </Paper>
+                  <div className={classes.formPartActions}>
+                    <Button onClick={prevStage}>Previous</Button>
+                    <Button onClick={nextStage} variant='contained' color='primary'>
+                      Next
+                    </Button>
+                  </div>
                 </div>
-              </div>
-              <div className={classes.formPart} ref={formPartAudienceRef} style={{ width: constrictorSizes.width }}>
-                <Paper className={classes.paper}>
-                  <Audience formikProps={formikProps} indexedSegments={indexedSegments} />
-                </Paper>
-                <div className={classes.formPartActions}>
-                  <Button onClick={prevStage}>Previous</Button>
-                  <Button onClick={nextStage} variant='contained' color='primary'>
-                    Next
-                  </Button>
+              )}
+              {currentStageId === StageId.Audience && (
+                <div className={classes.formPart}>
+                  <Paper className={classes.paper}>
+                    <Audience formikProps={formikProps} indexedSegments={indexedSegments} />
+                  </Paper>
+                  <div className={classes.formPartActions}>
+                    <Button onClick={prevStage}>Previous</Button>
+                    <Button onClick={nextStage} variant='contained' color='primary'>
+                      Next
+                    </Button>
+                  </div>
                 </div>
-              </div>
-              <div className={classes.formPart} ref={formPartMetricsRef} style={{ width: constrictorSizes.width }}>
-                <Paper className={classes.paper}>
-                  <Metrics indexedMetrics={indexedMetrics} />
-                </Paper>
-                <div className={classes.formPartActions}>
-                  <Button onClick={prevStage}>Previous</Button>
-                  <Button onClick={nextStage} variant='contained' color='primary'>
-                    Next
-                  </Button>
+              )}
+              {currentStageId === StageId.Metrics && (
+                <div className={classes.formPart}>
+                  <Paper className={classes.paper}>
+                    <Metrics indexedMetrics={indexedMetrics} />
+                  </Paper>
+                  <div className={classes.formPartActions}>
+                    <Button onClick={prevStage}>Previous</Button>
+                    <Button onClick={nextStage} variant='contained' color='primary'>
+                      Next
+                    </Button>
+                  </div>
                 </div>
-              </div>
-              <div className={classes.formPart} ref={formPartSubmitRef} style={{ width: constrictorSizes.width }}>
-                <Paper className={classes.paper}>
-                  <Typography variant='h4' gutterBottom>
-                    Confirm and Submit Your Experiment
-                  </Typography>
-                  <Typography variant='body2' gutterBottom>
-                    Now is a good time to{' '}
-                    <Link href='https://github.com/Automattic/abacus/wiki'>
-                      check our wiki&apos;s experiment creation checklist
-                    </Link>{' '}
-                    and confirm everything is in place.
-                  </Typography>
+              )}
+              {currentStageId === StageId.Submit && (
+                <div className={classes.formPart}>
+                  <Paper className={classes.paper}>
+                    <Typography variant='h4' gutterBottom>
+                      Confirm and Submit Your Experiment
+                    </Typography>
+                    <Typography variant='body2' gutterBottom>
+                      Now is a good time to{' '}
+                      <Link href='https://github.com/Automattic/abacus/wiki'>
+                        check our wiki&apos;s experiment creation checklist
+                      </Link>{' '}
+                      and confirm everything is in place.
+                    </Typography>
 
-                  <Typography variant='body2' gutterBottom>
-                    Once you submit your experiment it will be set to staging, where it can be edited up until you set
-                    it to running.
-                  </Typography>
-                  <Typography variant='body2' gutterBottom>
-                    <strong> When you are ready, click the Submit button below.</strong>
-                  </Typography>
-                </Paper>
-                <div className={classes.formPartActions}>
-                  <Button onClick={prevStage}>Previous</Button>
-                  <Button type='submit' variant='contained' color='secondary'>
-                    Submit
-                  </Button>
+                    <Typography variant='body2' gutterBottom>
+                      Once you submit your experiment it will be set to staging, where it can be edited up until you set
+                      it to running.
+                    </Typography>
+                    <Typography variant='body2' gutterBottom>
+                      <strong> When you are ready, click the Submit button below.</strong>
+                    </Typography>
+                  </Paper>
+                  <div className={classes.formPartActions}>
+                    <Button onClick={prevStage}>Previous</Button>
+                    <Button type='submit' variant='contained' color='secondary'>
+                      Submit
+                    </Button>
+                  </div>
                 </div>
-              </div>
+              )}
             </form>
           )}
         </Formik>
