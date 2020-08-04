@@ -84,11 +84,14 @@ const Layout = ({ title, children }: { title: string; children?: ReactNode }) =>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <AppBar position='relative' className={classes.appBar}>
-        {isTestingProductionConfigInDevelopment && (
-          <div className={classes.productionConfigInDevelopmentBar}>
-            <Typography variant='body1'> Using production config in development </Typography>
-          </div>
-        )}
+        {
+          /* istanbul ignore next; Development mode only */
+          isTestingProductionConfigInDevelopment && (
+            <div className={classes.productionConfigInDevelopmentBar}>
+              <Typography variant='body1'> Using production config in development </Typography>
+            </div>
+          )
+        }
         <div className={classes.appBarTop}>
           <Container maxWidth='xl' component='a' className={classes.appLogotype} href='/'>
             <img alt='logo' className={classes.appLogo} src='/img/logo.png' />

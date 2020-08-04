@@ -20,4 +20,5 @@ export const isTestingProductionConfigInDevelopment = false
 
 const isProduction = process.env.NODE_ENV === 'production'
 
+// istanbul ignore next
 export const config = isProduction || isTestingProductionConfigInDevelopment ? productionConfig : developmentConfig

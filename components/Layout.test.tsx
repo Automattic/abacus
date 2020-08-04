@@ -19,35 +19,35 @@ test('renders layout with declared title and children', () => {
   // new links, are being tested.
   expect(headerElmt).toMatchInlineSnapshot(`
     <header
-      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary makeStyles-appBar-2 MuiPaper-elevation4"
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary makeStyles-appBar-3 MuiPaper-elevation4"
     >
       <div
-        class="makeStyles-appBarTop-4"
+        class="makeStyles-appBarTop-5"
       >
         <a
-          class="MuiContainer-root makeStyles-appLogotype-6 MuiContainer-maxWidthXl"
+          class="MuiContainer-root makeStyles-appLogotype-7 MuiContainer-maxWidthXl"
           href="/"
         >
           <img
             alt="logo"
-            class="makeStyles-appLogo-5"
+            class="makeStyles-appLogo-6"
             src="/img/logo.png"
           />
           <span
-            class="makeStyles-appName-7"
+            class="makeStyles-appName-8"
           >
             Abacus
           </span>
         </a>
       </div>
       <div
-        class="makeStyles-appBarBottom-3"
+        class="makeStyles-appBarBottom-4"
       >
         <div
           class="MuiContainer-root MuiContainer-maxWidthXl"
         >
           <nav
-            class="makeStyles-appNav-8"
+            class="makeStyles-appNav-9"
           >
             <a
               href="/experiments"
@@ -74,7 +74,7 @@ test('renders layout with declared title and children', () => {
   expect(footerElmt).not.toBeNull()
   expect(footerElmt).toMatchInlineSnapshot(`
     <footer
-      class="makeStyles-footer-11"
+      class="makeStyles-footer-12"
     >
       <div
         class="MuiContainer-root MuiContainer-maxWidthLg"

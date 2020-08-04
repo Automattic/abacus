@@ -38,4 +38,4 @@ const saveExperimentsAuthInfo = (experimentsAuthInfo: ExperimentsAuthInfo | null
   }
 }
 
-export { getAuthClientId, getExperimentsAuthInfo, saveExperimentsAuthInfo }
+export { getExperimentsAuthInfo, saveExperimentsAuthInfo }
