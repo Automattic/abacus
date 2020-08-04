@@ -5,6 +5,7 @@ import {
   experimentBareSchema,
   ExperimentFull,
   ExperimentFullNew,
+  experimentFullNewOutboundSchema,
   experimentFullNewSchema,
   experimentFullSchema,
 } from '@/lib/schemas'
@@ -18,7 +19,8 @@ import { fetchApi } from './utils'
  */
 async function create(newExperiment: ExperimentFullNew) {
   const validatedNewExperiment = await experimentFullNewSchema.validate(newExperiment, { abortEarly: false })
-  const experiment = await fetchApi('POST', '/experiments', validatedNewExperiment)
+  const outboundNewExperiment = experimentFullNewOutboundSchema.cast(validatedNewExperiment)
+  const experiment = await fetchApi('POST', '/experiments', outboundNewExperiment)
   return await experimentFullSchema.validate(experiment)
 }
 
