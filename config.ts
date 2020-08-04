@@ -36,10 +36,9 @@ export const NODE_ENV = process.env.NEXT_PUBLIC_NODE_ENV_OVERRIDE ?? process.env
  *
  * You may need to clear your localstorage to get the app to reauth.
  */
-// istanbul ignore next; Development only
 export const isTestingProductionConfigInDevelopment =
+  // istanbul ignore next; Development only
   process.env.NEXT_PUBLIC_PRODUCTION_CONFIG_IN_DEVELOPMENT === 'true'
 
-// istanbul ignore next; Development only
-export const config =
+export /* istanbul ignore next; Development only */ const config =
   NODE_ENV === 'production' || isTestingProductionConfigInDevelopment ? productionConfig : developmentConfig
