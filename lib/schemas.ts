@@ -252,9 +252,8 @@ export type ExperimentFullNew = yup.InferType<typeof experimentFullNewSchema>
  */
 export const experimentFullNewOutboundSchema = experimentFullNewSchema
   .shape({
-    metricAssignments: yup.array(metricAssignmentNewOutboundSchema).defined(),
-    segmentAssignments: yup.array(segmentAssignmentNewOutboundSchema).defined(),
-    variations: yup.array<VariationNew>(variationNewOutboundSchema).defined().min(2),
+    // Seems to work here but not below?
+    variations: yup.array<VariationNew>(variationNewOutboundSchema).defined(),
   })
   .snakeCase()
   .transform(
@@ -264,8 +263,12 @@ export const experimentFullNewOutboundSchema = experimentFullNewSchema
       // The P2 field gets incorrectly snake_cased so we fix it here
       p_2_url: undefined,
       p2_url: currentValue.p_2_url,
-      // Not sure why but metric_assignments isn't working either so we fix it here.
+      // These two only seem to work down here rather then above?
       metric_assignments: yup.array(metricAssignmentNewOutboundSchema).defined().cast(currentValue.metric_assignments),
+      segment_assignments: yup
+        .array(segmentAssignmentNewOutboundSchema)
+        .defined()
+        .cast(currentValue.segment_assignments),
     }),
   )
 
