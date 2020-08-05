@@ -247,6 +247,9 @@ export const experimentFullNewSchema = experimentFullSchema.shape({
   variations: yup.array<VariationNew>(variationNewSchema).defined().min(2),
 })
 export type ExperimentFullNew = yup.InferType<typeof experimentFullNewSchema>
+/**
+ * For casting use only.
+ */
 export const experimentFullNewOutboundSchema = experimentFullNewSchema
   .shape({
     metricAssignments: yup.array(metricAssignmentNewOutboundSchema).defined(),
