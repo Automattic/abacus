@@ -20,8 +20,8 @@ import { fetchApi } from './utils'
 async function create(newExperiment: ExperimentFullNew) {
   const validatedNewExperiment = await experimentFullNewSchema.validate(newExperiment, { abortEarly: false })
   const outboundNewExperiment = experimentFullNewOutboundSchema.cast(validatedNewExperiment)
-  const experiment = await fetchApi('POST', '/experiments', outboundNewExperiment)
-  return await experimentFullSchema.validate(experiment)
+  const returnedExperiment = await fetchApi('POST', '/experiments', outboundNewExperiment)
+  return await experimentFullSchema.validate(returnedExperiment)
 }
 
 /**
