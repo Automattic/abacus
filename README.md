@@ -2,6 +2,27 @@
 
 [![CircleCI](https://circleci.com/gh/Automattic/abacus.svg?style=svg)](https://circleci.com/gh/Automattic/abacus)
 
+## Getting Started
+
+### Requirements
+
+- `npm`
+
+### Update Your System Host File
+
+In order for our OAuth authorization to work, it needs to be given a redirect URI that has been declared as acceptable. In order to aid with using the site locally, add the following DNS mapping to your system's host file.
+
+```
+127.0.0.1 a8c-abacus-local
+```
+
+### Spin up your Development server
+
+```bash
+npm install
+npm run dev
+```
+
 ## Getting started
 
 Run `npm install` to install dependencies, then run one of the following commands:
@@ -9,14 +30,6 @@ Run `npm install` to install dependencies, then run one of the following command
 - `npm run dev`: Starts the development server.
 - `npm run build`: Builds the app for production.
 - `npm start`: Runs the built app in production mode.
-
-### Update System Host File
-
-In order for our OAuth authorization to work, it needs to be given a redirect URI that has been declared as acceptable. In order to aid with using the site locally, add the following DNS mapping to your system's host file.
-
-```
-127.0.0.1 a8c-abacus-local
-```
 
 ## Scripts
 
