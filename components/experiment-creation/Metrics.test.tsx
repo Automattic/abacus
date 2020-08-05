@@ -2,21 +2,37 @@ import { act, fireEvent, screen } from '@testing-library/react'
 import { Formik } from 'formik'
 import React from 'react'
 
-import { createNewExperiment } from '@/lib/experiments'
+import { createInitialExperiment } from '@/lib/experiments'
+import { MetricBare, MetricParameterType } from '@/lib/schemas'
 import { render } from '@/test-helpers/test-utils'
 
 import Metrics from './Metrics'
 
+const indexedMetrics: Record<number, MetricBare> = {
+  1: {
+    metricId: 1,
+    name: 'asdf_7d_refund',
+    description: 'string',
+    parameterType: MetricParameterType.Revenue,
+  },
+  2: {
+    metricId: 2,
+    name: 'registration_start',
+    description: 'string',
+    parameterType: MetricParameterType.Conversion,
+  },
+}
+
 test('renders as expected', () => {
   const { container } = render(
     <Formik
-      initialValues={{ experiment: createNewExperiment() }}
+      initialValues={{ experiment: createInitialExperiment() }}
       onSubmit={
         /* istanbul ignore next; This is unused */
         () => undefined
       }
     >
-      {() => <Metrics />}
+      {() => <Metrics indexedMetrics={indexedMetrics} />}
     </Formik>,
   )
   expect(container).toMatchSnapshot()
@@ -25,13 +41,13 @@ test('renders as expected', () => {
 test('allows adding, editing and removing a Metric Assignment', async () => {
   const { container } = render(
     <Formik
-      initialValues={{ experiment: createNewExperiment() }}
+      initialValues={{ experiment: createInitialExperiment() }}
       onSubmit={
         /* istanbul ignore next; This is unused */
         () => undefined
       }
     >
-      {() => <Metrics />}
+      {() => <Metrics indexedMetrics={indexedMetrics} />}
     </Formik>,
   )
   expect(container).toMatchSnapshot()
@@ -82,7 +98,10 @@ test('allows adding, editing and removing a Metric Assignment', async () => {
   fireEvent.click(metricSearchField)
   fireEvent.keyDown(metricSearchField, { key: 'Enter' })
   fireEvent.click(await screen.findByRole('option', { name: /registration_start/ }))
-  fireEvent.click(metricAddButton)
+  // eslint-disable-next-line @typescript-eslint/require-await
+  await act(async () => {
+    fireEvent.click(metricAddButton)
+  })
 
   expect(container).toMatchSnapshot()
 })

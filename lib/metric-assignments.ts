@@ -7,7 +7,7 @@ export const AttributionWindowSecondsToHuman: Record<AttributionWindowSeconds, s
   [AttributionWindowSeconds.SixHours]: '6 hours',
   [AttributionWindowSeconds.TwelveHours]: '12 hours',
   [AttributionWindowSeconds.TwentyFourHours]: '24 hours',
-  [AttributionWindowSeconds.ThreeDays]: '3 days',
+  [AttributionWindowSeconds.SeventyTwoHours]: '72 hours',
   [AttributionWindowSeconds.OneWeek]: '1 week',
   [AttributionWindowSeconds.TwoWeeks]: '2 weeks',
   [AttributionWindowSeconds.ThreeWeeks]: '3 weeks',

@@ -84,7 +84,7 @@ export enum AttributionWindowSeconds {
   SixHours = 21600,
   TwelveHours = 43200,
   TwentyFourHours = 86400,
-  ThreeDays = 259200,
+  SeventyTwoHours = 259200,
   OneWeek = 604800,
   TwoWeeks = 1209600,
   ThreeWeeks = 1814400,
@@ -238,7 +238,7 @@ export const experimentFullNewSchema = experimentFullSchema.shape({
             `End date must be within ${MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS} months of start date.`,
           ),
     ),
-  metricAssignments: yup.array(metricAssignmentNewSchema).defined(),
+  metricAssignments: yup.array(metricAssignmentNewSchema).defined().min(1),
   segmentAssignments: yup.array(segmentAssignmentNewSchema).defined(),
   variations: yup.array<VariationNew>(variationNewSchema).defined().min(2),
 })
