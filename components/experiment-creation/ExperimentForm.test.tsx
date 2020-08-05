@@ -3,7 +3,7 @@ import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
 
-import { createNewExperiment } from '@/lib/experiments'
+import { createInitialExperiment } from '@/lib/experiments'
 import * as Normalizers from '@/lib/normalizers'
 import Fixtures from '@/test-helpers/fixtures'
 import { render } from '@/test-helpers/test-utils'
@@ -22,11 +22,12 @@ window.HTMLElement.prototype.scrollIntoView = noop
 
 test('renders as expected', () => {
   MockDate.set('2020-07-21')
+
   const { container } = render(
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
-      initialExperiment={createNewExperiment()}
+      initialExperiment={createInitialExperiment()}
     />,
   )
   expect(container).toMatchSnapshot()

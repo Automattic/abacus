@@ -1,10 +1,8 @@
+import { config } from '@/config'
 import { getExperimentsAuthInfo } from '@/utils/auth'
 
 import NotFoundError from './NotFoundError'
 import UnauthorizedError from './UnauthorizedError'
-
-const DEVELOPMENT_API_URL_ROOT = 'https://virtserver.swaggerhub.com/yanir/experiments/0.1.0'
-const PRODUCTION_API_URL_ROOT = 'https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0'
 
 /**
  * Makes a request to the Experiment Platform's API with any necessary
@@ -17,11 +15,11 @@ const PRODUCTION_API_URL_ROOT = 'https://public-api.wordpress.com/wpcom/v2/exper
  */
 async function fetchApi(method: string, path: string, body: unknown | null = null) {
   /* istanbul ignore next; code branch not reachable in integration tests -- we don't hit production */
-  const apiUrlRoot = window.location.host === 'experiments.a8c.com' ? PRODUCTION_API_URL_ROOT : DEVELOPMENT_API_URL_ROOT
+  const apiUrlRoot = config.experimentApi.rootUrl
 
   const headers = new Headers()
   /* istanbul ignore next; code branch not reachable in integration tests -- we don't hit production */
-  if (apiUrlRoot === PRODUCTION_API_URL_ROOT) {
+  if (config.experimentApi.needsAuth) {
     const accessToken = getExperimentsAuthInfo()?.accessToken
     if (!accessToken) {
       throw new UnauthorizedError()

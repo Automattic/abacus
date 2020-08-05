@@ -2,7 +2,7 @@ import { act, fireEvent, screen } from '@testing-library/react'
 import { Formik } from 'formik'
 import React from 'react'
 
-import { createNewExperiment } from '@/lib/experiments'
+import { createInitialExperiment } from '@/lib/experiments'
 import { MetricBare, MetricParameterType } from '@/lib/schemas'
 import { render } from '@/test-helpers/test-utils'
 
@@ -26,7 +26,7 @@ const indexedMetrics: Record<number, MetricBare> = {
 test('renders as expected', () => {
   const { container } = render(
     <Formik
-      initialValues={{ experiment: createNewExperiment() }}
+      initialValues={{ experiment: createInitialExperiment() }}
       onSubmit={
         /* istanbul ignore next; This is unused */
         () => undefined
@@ -41,7 +41,7 @@ test('renders as expected', () => {
 test('allows adding, editing and removing a Metric Assignment', async () => {
   const { container } = render(
     <Formik
-      initialValues={{ experiment: createNewExperiment() }}
+      initialValues={{ experiment: createInitialExperiment() }}
       onSubmit={
         /* istanbul ignore next; This is unused */
         () => undefined

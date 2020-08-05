@@ -1,4 +1,4 @@
-import { AnalysisStrategy, ExperimentFull, ExperimentFullNew, Platform, Variation } from './schemas'
+import { AnalysisStrategy, ExperimentFull, Platform, Variation } from './schemas'
 
 /**
  * Return the deployed variation if one has been selected, otherwise `null`.
@@ -45,8 +45,18 @@ export function getDefaultAnalysisStrategy(experiment: ExperimentFull) {
   return experiment.exposureEvents ? AnalysisStrategy.PpNaive : AnalysisStrategy.MittNoSpammersNoCrossovers
 }
 
-export function createNewExperiment(): Partial<ExperimentFullNew> {
+/**
+ * Initial Experiment data for use in the ExperimentForm
+ */
+export function createInitialExperiment() {
   return {
+    p2Url: '',
+    name: '',
+    description: '',
+    startDatetime: '',
+    endDatetime: '',
+    ownerLogin: '',
+    existingUsersAllowed: 'true',
     platform: Platform.Wpcom,
     metricAssignments: [],
     segmentAssignments: [],
