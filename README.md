@@ -60,7 +60,7 @@ npm run lint:ts:fix # Fixes lint issues
 npm run build
 ```
 
-## Testing Notes
+## Testing Tips/Notes
 
 ### Where to find tests
 
@@ -103,7 +103,7 @@ NEXT_PUBLIC_PRODUCTION_CONFIG_IN_DEVELOPMENT=true npm run dev
 
 See `/config.ts` for more info.
 
-### Testing Auth Flow
+### Auth Flow
 
 We don't currently have a log-out feature but it can be necessary to log a user out for testing, this is how to do so manually:
 
