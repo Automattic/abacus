@@ -217,6 +217,7 @@ export type ExperimentFull = yup.InferType<typeof experimentFullSchema>
 const now = new Date()
 export const experimentFullNewSchema = experimentFullSchema.shape({
   experimentId: idSchema.nullable(),
+  // This effectively makes status undefined (best I could do in yup)                                  
   status: yup.mixed().oneOf([]).notRequired(),
   startDatetime: yup
     .date()
