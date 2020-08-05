@@ -23,7 +23,28 @@ npm install
 npm run dev
 ```
 
-## Getting started
+### Check your code
+
+```bash
+# Run all tests and checks
+npm run verify
+
+# Code testing
+npm run test:all
+npm run test:e2e
+npm run test:integration
+npm run test:unit
+
+# Code formatting
+npm run format:check
+npm run format # Fixes formatting
+
+# Code linting
+npm run lint
+npm run lint:ts:fix # Fixes lint issues
+```
+
+## Getting Started
 
 Run `npm install` to install dependencies, then run one of the following commands:
 
@@ -152,6 +173,7 @@ npm run test:e2e:smoke
 ```
 
 For debugging, you'll likely want to run with a full visual browser. To do that:
+check-
 
 1. Create a `.env` file at the project's root if it does not already exist. You can copy the `.env.example` file as an initial template.
 2. Add `PUPPETEER_HEADLESS=false`
