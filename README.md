@@ -66,7 +66,7 @@ npm run build
 
 - Integration: `/__tests__`
 - E2E: `/e2e`
-- Unit tests: Rest of the codebase alongside in the same directory of the file it is testing.
+- Unit tests: Rest of the codebase, alongside file it is testing.
 
 ### E2E Testing tips
 
