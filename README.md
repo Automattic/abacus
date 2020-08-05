@@ -91,6 +91,18 @@ For debugging, you'll likely want to run with a full visual browser. To do that:
 
 See https://developers.google.com/web/tools/puppeteer/debugging for more debugging tips.
 
+### Use Production Config/APIs
+
+Since we don't have a mock server it is important to test on the Production config/APIs.
+
+To do so, spin up your dev server like this:
+
+```bash
+NEXT_PUBLIC_PRODUCTION_CONFIG_IN_DEVELOPMENT=true npm run dev
+```
+
+See `/config.ts` for more info.
+
 ### Testing Auth Flow
 
 We don't currently have a log-out feature but it can be necessary to log a user out for testing, this is how to do so manually:
