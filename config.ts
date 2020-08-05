@@ -26,8 +26,8 @@ const mockConfig = {
  * This is needed as NextJS under some circumstances doesn't allow applying a different NODE_ENV.
  * Particularly for `next build` where we need to pass in `NODE_ENV=test` for E2E testing
  */
-// istanbul ignore next; Development only
-export const NODE_ENV = process.env.NEXT_PUBLIC_NODE_ENV_OVERRIDE ?? process.env.NODE_ENV ?? 'development'
+export /* istanbul ignore next; Development only */ const NODE_ENV =
+  process.env.NEXT_PUBLIC_NODE_ENV_OVERRIDE ?? process.env.NODE_ENV ?? 'development'
 
 /**
  * Allows us to test out the production API locally while developing.
