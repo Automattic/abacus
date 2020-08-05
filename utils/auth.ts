@@ -110,16 +110,19 @@ export /* istanbul ignore next; TODO: e2e test authorization */ function onExper
     }
   }
 
-  if (authInfo.access_token && authInfo.scope === 'global' && authInfo.token_type === 'bearer') {
-    const expiresInSeconds = toInt(authInfo.expires_in)
-    const experimentsAuthInfo = {
-      accessToken: authInfo.access_token as string,
-      expiresAt: typeof expiresInSeconds === 'number' ? Date.now() + expiresInSeconds * 1000 : null,
-      scope: 'global',
-      type: 'bearer',
-    }
-    saveExperimentsAuthInfo(experimentsAuthInfo)
-
-    window.location.replace(window.location.origin)
+  if (!(authInfo.access_token && authInfo.scope === 'global' && authInfo.token_type === 'bearer')) {
+    console.error('Authentication Error: Invalid AuthInfo Received:', authInfo)
+    return AuthError.UnknownError
   }
+
+  const expiresInSeconds = toInt(authInfo.expires_in)
+  const experimentsAuthInfo = {
+    accessToken: authInfo.access_token as string,
+    expiresAt: typeof expiresInSeconds === 'number' ? Date.now() + expiresInSeconds * 1000 : null,
+    scope: 'global',
+    type: 'bearer',
+  }
+  saveExperimentsAuthInfo(experimentsAuthInfo)
+
+  window.location.replace(window.location.origin)
 }
