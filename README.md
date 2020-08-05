@@ -31,9 +31,19 @@ npm run verify
 
 # Code testing
 npm run test:all
+
 npm run test:e2e
+npm run test:e2e -- --watch
+npm run test:e2e -- --updateSnapshot
+
 npm run test:integration
+npm run test:integration -- --watch
+npm run test:integration -- --updateSnapshot
+
 npm run test:unit
+npm run test:unit -- -- --watch
+npm run test:unit -- -- --updateSnapshot
+
 
 # Code formatting
 npm run format:check
@@ -44,86 +54,48 @@ npm run lint
 npm run lint:ts:fix # Fixes lint issues
 ```
 
-### Build for deployment
+### Build for Deployment
 
 ```bash
 npm run build
 ```
 
-## Getting Started
+## Testing Notes
 
-Run `npm install` to install dependencies, then run one of the following commands:
+### Where to find tests
 
-- `npm run dev`: Starts the development server.
-- `npm run build`: Builds the app for production.
-- `npm start`: Runs the built app in production mode.
+- Integration: `/__tests__`
+- E2E: `/e2e`
+- Unit tests: Rest of the codebase alongside in the same directory of the file it is testing.
 
-## Scripts
+### E2E Testing tips
 
-All the scripts for this project are initiated via npm scripts. Please see the `"scripts"` section in `package.json`.
+Our e2e tests use Jest and Puppeteer in a headless Chrome browser.
 
-### Docker
+#### Smoke Tests:
 
-You can use the following commands to run the server in a Docker container:
+We have smoke tests that are inteded to be used in development for quick iterations.
 
-- `npm run docker-build`: Build a docker image that runs a production Abacus server at port 3000.
-- `npm run docker-start`: Run the above docker image, mapping port 3000 from the image to port 8888 on your local machine.
-
-### Bundle Analysis
-
-The Next.js build creates two bundles of files. One for the client and one for the server.
-
-Running the following will build, analyze, and open two browser windows with a report on the client and server bundles.
-
-```sh
-npm run analyze
+```
+npm run test:e2e:smoke
 ```
 
-### Component Building
+#### Debugging
 
-See the Storybook section below.
+For debugging, you'll likely want to run with a full visual browser. To do that:
 
-### Linting
+1. Create a .env file at the project's root if it does not already exist.
+   You can copy the .env.example file as an initial template.
+1. Add `PUPPETEER_HEADLESS=false`.
+   This will cause the E2E tests to run in a browser that can be visually seen.
 
-**lint**
+See https://developers.google.com/web/tools/puppeteer/debugging for more debugging tips.
 
-Runs all the linters.
+### Testing Auth Flow
 
-```sh
-npm run lint
-```
+Besides the automated unit tests and E2E tests, there is sometimes a need for manual intervention due to factors not acceptable in during automation, e.g., waiting for an access token to naturally expire to ensure the user is re-prompted to authenticate and authorize.
 
-**lint:css**
-
-Runs a linter on all the styling code.
-
-```sh
-npm run lint:css
-```
-
-**lint:css:fix**
-
-Runs a linter on all the styling code and fixes issues that are fixable.
-
-```sh
-npm run lint:css:fix
-```
-
-**lint:js**
-
-Runs a linter on all the JavaScript and TypeScript code including those with JSX.
-
-```sh
-npm run lint:js
-```
-
-**lint:js:fix**
-
-Runs a linter on all the JavaScript and TypeScript code and fixes any found issues that are fixable.
-
-```sh
-npm run lint:js:fix
-```
+Once a user is authenticated and they authorize Abacus to have access, we save the authorization info in local storage under the key `experiments_auth_info`. To simulate using Abacus on a new browser or the access token expiring, you can remove this item from local storage using the Chrome devtools > Application tab.
 
 ### Pre-Commit Hooks
 
@@ -145,59 +117,23 @@ npm run storybook
 
 This will open a browser window of the Storybook webapp.
 
-### Testing
+## Advanced Tools
 
-**test:unit**
+### Docker (_Not Recommended_)
 
-Runs the unit tests with Jest.
+You can use the following commands to run the server in a Docker container:
 
-The unit tests are found throughout the project excluding tests in the `__tests__` directory which is being reserved for integration tests and the `e2e` directory which is being reserved for e2e tests.
+- `npm run docker-build`: Build a docker image that runs a production Abacus server at port 3000.
+- `npm run docker-start`: Run the above docker image, mapping port 3000 from the image to port 8888 on your local machine.
 
-```sh
-npm run test:unit
-npm run test:unit -- --watch
-```
+### Bundle Analysis (_Not Recommended_)
 
-**test:integration**
+_Shouldn't be a concern for this App_
 
-Runs the integration tests with Jest. These are in the `__tests__` directory.
+The Next.js build creates two bundles of files. One for the client and one for the server.
 
-```sh
-npm run test:integration
-npm run test:integration -- --watch
-```
-
-**test:e2e**
-
-Runs the end-to-end tests with Jest and Puppeteer in a headless Chrome browser. These are in the `e2e` directory.
+Running the following will build, analyze, and open two browser windows with a report on the client and server bundles.
 
 ```sh
-# Run all the E2E tests
-npm run test:e2e
-# Run just the E2E smoke tests (intended to be used in development for quick iterations)
-npm run test:e2e:smoke
-```
-
-For debugging, you'll likely want to run with a full visual browser. To do that:
-check-
-
-1. Create a `.env` file at the project's root if it does not already exist. You can copy the `.env.example` file as an initial template.
-2. Add `PUPPETEER_HEADLESS=false`
-
-This will cause the E2E tests to run in a browser that can be visually seen.
-
-See https://developers.google.com/web/tools/puppeteer/debugging for more debugging tips.
-
-## Testing Auth Flow
-
-Besides the automated unit tests and E2E tests, there is sometimes a need for manual intervention due to factors not acceptable in during automation, e.g., waiting for an access token to naturally expire to ensure the user is re-prompted to authenticate and authorize.
-
-Once a user is authenticated and they authorize Abacus to have access, we save the authorization info in local storage under the key `experiments_auth_info`. To simulate using Abacus on a new browser or the access token expiring, you can remove this item from local storage using the Chrome devtools > Application tab.
-
-### Verification
-
-Format checks, linting, and testing are all forms of verification. As a convenience, we have the `verify` NPM script that will run all the checks.
-
-```sh
-npm run verify
+npm run analyze
 ```
