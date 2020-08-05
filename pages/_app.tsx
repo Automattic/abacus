@@ -7,7 +7,6 @@ import * as yup from 'yup'
 
 import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import RenderErrorView from '@/components/RenderErrorView'
-import { config } from '@/config'
 import ThemeProvider from '@/styles/ThemeProvider'
 import { initializeExperimentsAuth } from '@/utils/auth'
 
