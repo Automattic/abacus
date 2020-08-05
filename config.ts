@@ -37,7 +37,6 @@ export /* istanbul ignore next; Development only */ const NODE_ENV =
  * You may need to clear your localstorage to get the app to reauth.
  */
 export const isTestingProductionConfigInDevelopment =
-  // istanbul ignore next; Development only
   process.env.NEXT_PUBLIC_PRODUCTION_CONFIG_IN_DEVELOPMENT === 'true'
 
 export /* istanbul ignore next; Development only */ const config =

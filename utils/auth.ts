@@ -1,7 +1,7 @@
 import { toInt } from 'qc-to_int'
 import qs from 'querystring'
 
-import { config } from '../config'
+import { config } from '@/config'
 
 /**
  * Experiments authorization info, as returned from OAuth call. See
