@@ -303,7 +303,7 @@ exports[`renders as expected 1`] = `
             class="MuiPaper-root makeStyles-paper-6 MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              class="makeStyles-root-7"
+              class="makeStyles-root-9"
             >
               <h4
                 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -327,7 +327,7 @@ exports[`renders as expected 1`] = `
                 </strong>
               </p>
               <div
-                class="MuiFormControl-root MuiTextField-root makeStyles-p2EntryField-8"
+                class="MuiFormControl-root MuiTextField-root makeStyles-p2EntryField-10"
               >
                 <label
                   class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
@@ -348,10 +348,10 @@ exports[`renders as expected 1`] = `
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="PrivateNotchedOutline-root-10 MuiOutlinedInput-notchedOutline"
+                    class="PrivateNotchedOutline-root-12 MuiOutlinedInput-notchedOutline"
                   >
                     <legend
-                      class="PrivateNotchedOutline-legendLabelled-12 PrivateNotchedOutline-legendNotched-13"
+                      class="PrivateNotchedOutline-legendLabelled-14 PrivateNotchedOutline-legendNotched-15"
                     >
                       <span>
                         Your Post's URL

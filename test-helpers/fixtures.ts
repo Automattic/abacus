@@ -264,7 +264,6 @@ function createExperimentFullNew(fieldOverrides: Partial<ExperimentFullNew> = {}
     name: 'experiment_1',
     startDatetime: dateFns.addMonths(now, 2),
     endDatetime: dateFns.addMonths(now, 4),
-    status: Status.Staging,
     platform: Platform.Calypso,
     ownerLogin: 'test_a11n',
     description: 'Experiment with things. Change stuff. Profit.',
@@ -332,12 +331,16 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
     'metricAssignments',
     'segmentAssignments',
   ]
-  const newExperimentFieldOverrides = _.omit(fieldOverrides, fieldsOnlyForExistingExperiments)
+  const newExperimentFieldOverrides = {
+    ..._.omit(fieldOverrides, fieldsOnlyForExistingExperiments),
+    status: undefined,
+  }
   const existingExperimentFieldOverrides = _.pick(fieldOverrides, fieldsOnlyForExistingExperiments)
 
   return {
     ...createExperimentFullNew(newExperimentFieldOverrides),
     experimentId: 1,
+    status: Status.Staging,
     endReason: null,
     conclusionUrl: null,
     deployedVariationId: null,
