@@ -7,7 +7,7 @@ const productionConfig = {
   },
 }
 
-const developmentConfig = {
+const mockConfig = {
   experimentApi: {
     needsAuth: false,
     authPath: null,
@@ -41,4 +41,4 @@ export const isTestingProductionConfigInDevelopment =
   process.env.NEXT_PUBLIC_PRODUCTION_CONFIG_IN_DEVELOPMENT === 'true'
 
 export /* istanbul ignore next; Development only */ const config =
-  NODE_ENV === 'production' || isTestingProductionConfigInDevelopment ? productionConfig : developmentConfig
+  NODE_ENV === 'production' || isTestingProductionConfigInDevelopment ? productionConfig : mockConfig
