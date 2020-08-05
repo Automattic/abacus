@@ -26,21 +26,6 @@ import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import MoreMenu from '@/components/MoreMenu'
 import { Add } from '@material-ui/icons'
 
-const normalizedMetrics: Record<number, MetricBare> = {
-  1: {
-    metricId: 1,
-    name: 'asdf_7d_refund',
-    description: 'string',
-    parameterType: MetricParameterType.Revenue,
-  },
-  2: {
-    metricId: 2,
-    name: 'registration_start',
-    description: 'string',
-    parameterType: MetricParameterType.Conversion,
-  },
-}
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
@@ -93,7 +78,7 @@ const createMetricAssignment = (metric: MetricBare) => {
   }
 }
 
-const Metrics = () => {
+const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare> }) => {
   const classes = useStyles()
 
   const [metricAssignmentsField, _metricAssignmentsFieldMetaProps, metricAssignmentsFieldHelperProps] = useField<
@@ -124,7 +109,7 @@ const Metrics = () => {
         render={(arrayHelpers) => {
           const onAddMetric = () => {
             const metricId = parseInt(selectedMetricId, 10)
-            const metric = normalizedMetrics[metricId]
+            const metric = indexedMetrics[metricId]
             if (metricId) {
               const metricAssignment = createMetricAssignment(metric)
               arrayHelpers.push({
@@ -161,9 +146,9 @@ const Metrics = () => {
                       return (
                         <TableRow key={index}>
                           <TableCell>
-                            <Tooltip arrow title={normalizedMetrics[metricAssignment.metricId].description}>
+                            <Tooltip arrow title={indexedMetrics[metricAssignment.metricId].description}>
                               <span className={classes.metricName}>
-                                {normalizedMetrics[metricAssignment.metricId].name}
+                                {indexedMetrics[metricAssignment.metricId].name}
                               </span>
                             </Tooltip>
                             <br />
@@ -210,7 +195,7 @@ const Metrics = () => {
                               variant='outlined'
                               placeholder='-'
                               InputProps={
-                                normalizedMetrics[metricAssignment.metricId].parameterType ===
+                                indexedMetrics[metricAssignment.metricId].parameterType ===
                                 MetricParameterType.Conversion
                                   ? {
                                       endAdornment: (
@@ -263,7 +248,7 @@ const Metrics = () => {
                     <MenuItem value=''>
                       <span className={classes.addMetricPlaceholder}>Select a Metric</span>
                     </MenuItem>
-                    {Object.values(normalizedMetrics).map((metric) => (
+                    {Object.values(indexedMetrics).map((metric) => (
                       <MenuItem value={metric.metricId} key={metric.metricId}>
                         {metric.name}
                       </MenuItem>

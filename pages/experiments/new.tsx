@@ -6,7 +6,7 @@ import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
 import ExperimentForm from '@/components/experiment-creation/ExperimentForm'
 import Layout from '@/components/Layout'
-import { createNewExperiment } from '@/lib/experiments'
+import { createInitialExperiment } from '@/lib/experiments'
 import * as Normalizers from '@/lib/normalizers'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { or } from '@/utils/general'
@@ -15,7 +15,7 @@ const debug = debugFactory('abacus:pages/experiments/new.tsx')
 
 const ExperimentsNewPage = function () {
   debug('ExperimentsNewPage#render')
-  const initialExperiment = createNewExperiment()
+  const initialExperiment = createInitialExperiment()
 
   const { isLoading: metricsIsLoading, data: indexedMetrics, error: metricsError } = useDataSource(
     async () => Normalizers.indexMetrics(await MetricsApi.findAll()),

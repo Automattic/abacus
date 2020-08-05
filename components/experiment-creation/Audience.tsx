@@ -24,8 +24,8 @@ import { AutocompleteProps, AutocompleteRenderInputParams, fieldToAutocomplete }
 import _ from 'lodash'
 import React, { useCallback, useState } from 'react'
 
-import { PlatformToHuman } from '@/lib/experiments'
-import { ExperimentFullNew, Platform, Segment, SegmentAssignmentNew, VariationNew } from '@/lib/schemas'
+import { createInitialExperiment, PlatformToHuman } from '@/lib/experiments'
+import { Platform, Segment, SegmentAssignmentNew, VariationNew } from '@/lib/schemas'
 import { SegmentTypeToHuman } from '@/lib/segments'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -114,7 +114,7 @@ const Audience = ({
   formikProps,
 }: {
   indexedSegments: Record<number, Segment>
-  formikProps: FormikProps<{ experiment: Partial<ExperimentFullNew> }>
+  formikProps: FormikProps<{ experiment: ReturnType<typeof createInitialExperiment> }>
 }) => {
   const classes = useStyles()
 
