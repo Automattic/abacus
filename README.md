@@ -44,6 +44,12 @@ npm run lint
 npm run lint:ts:fix # Fixes lint issues
 ```
 
+### Build for deployment
+
+```bash
+npm run build
+```
+
 ## Getting Started
 
 Run `npm install` to install dependencies, then run one of the following commands:
