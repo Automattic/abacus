@@ -1,14 +1,26 @@
 // Temporarily ignore until more parts are in place
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* istanbul ignore file */
-import { Button, Link, Paper, Step, StepButton, StepLabel, Stepper, Typography } from '@material-ui/core'
+import {
+  Button,
+  CircularProgress,
+  Link,
+  Paper,
+  Step,
+  StepButton,
+  StepLabel,
+  Stepper,
+  Typography,
+} from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import useComponentSize from '@rehooks/component-size'
 import { Formik } from 'formik'
 import _ from 'lodash'
+import { useRouter } from 'next/router'
+import { useSnackbar } from 'notistack'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as yup from 'yup'
 
+import ExperimentsApi from '@/api/ExperimentsApi'
 import { createInitialExperiment } from '@/lib/experiments'
 import { indexMetrics } from '@/lib/normalizers'
 import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
@@ -101,6 +113,21 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(3, 4),
       marginBottom: theme.spacing(2),
     },
+    submitContainer: {
+      marginLeft: theme.spacing(2),
+      '& .MuiButton-root': {
+        marginLeft: 0,
+      },
+      position: 'relative',
+    },
+    submitProgress: {
+      color: theme.palette.secondary.main,
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      marginTop: -12,
+      marginLeft: -12,
+    },
   }),
 )
 
@@ -127,10 +154,28 @@ const ExperimentForm = ({
     rootRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
   }, [currentStageId])
 
+  const router = useRouter()
+  const { enqueueSnackbar } = useSnackbar()
+  const onSubmit = async (formData: unknown) => {
+    try {
+      const { experiment } = formData as { experiment: ExperimentFullNew }
+      const receivedExperiment = await ExperimentsApi.create(experiment)
+      enqueueSnackbar('Experiment Created!', { variant: 'success' })
+      router.push(
+        '/experiments/[id]/snippets?freshly_created',
+        `/experiments/${receivedExperiment.experimentId}/snippets?freshly_created`,
+      )
+    } catch (error) {
+      enqueueSnackbar('Failed to create experiment 😨 (Form data logged to console.)', { variant: 'error' })
+      console.error(error)
+      console.info('Form data:', formData)
+    }
+  }
+
   return (
     <Formik
       initialValues={{ experiment: initialExperiment }}
-      onSubmit={(v) => alert(JSON.stringify(v, null, 2))}
+      onSubmit={onSubmit}
       validationSchema={yup.object({ experiment: experimentFullNewSchema })}
     >
       {(formikProps) => {
@@ -265,14 +310,17 @@ const ExperimentForm = ({
                     </Paper>
                     <div className={classes.formPartActions}>
                       <Button onClick={prevStage}>Previous</Button>
-                      <Button
-                        type='submit'
-                        variant='contained'
-                        color='secondary'
-                        disabled={formikProps.isSubmitting || errorStages.length > 0}
-                      >
-                        Submit
-                      </Button>
+                      <div className={classes.submitContainer}>
+                        <Button
+                          type='submit'
+                          variant='contained'
+                          color='secondary'
+                          disabled={formikProps.isSubmitting || errorStages.length > 0}
+                        >
+                          Submit
+                        </Button>
+                        {formikProps.isSubmitting && <CircularProgress size={24} className={classes.submitProgress} />}
+                      </div>
                     </div>
                   </div>
                 )}

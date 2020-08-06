@@ -6,7 +6,8 @@ module.exports = {
     headless: toBool(process.env.PUPPETEER_HEADLESS, true),
   },
   server: {
-    command: 'echo "Building app..." && npm run build && echo "Starting app..." && npm run start -- -p 3001',
+    command:
+      'echo "Building app..." && NEXT_PUBLIC_NODE_ENV_OVERRIDE=test npm run build && echo "Starting app..." && npm run start -- -p 3001',
     debug: true, // Allows us to see the output of the above commands.
     launchTimeout: 60 * 1000,
     port: 3001,

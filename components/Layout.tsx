@@ -4,12 +4,23 @@ import Head from 'next/head'
 import Link from 'next/link'
 import React, { ReactNode } from 'react'
 
+import { isTestingProductionConfigInDevelopment } from '@/config'
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
       flexDirection: 'column',
       minHeight: '100vh',
+    },
+
+    productionConfigInDevelopmentBar: {
+      flexStretch: 0,
+      padding: theme.spacing(1, 0),
+      background: theme.palette.error.light,
+      color: theme.palette.error.contrastText,
+      textTransform: 'uppercase',
+      textAlign: 'center',
     },
 
     // AppBar
@@ -73,6 +84,14 @@ const Layout = ({ title, children }: { title: string; children?: ReactNode }) =>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <AppBar position='relative' className={classes.appBar}>
+        {
+          /* istanbul ignore next; Development mode only */
+          isTestingProductionConfigInDevelopment && (
+            <div className={classes.productionConfigInDevelopmentBar}>
+              <Typography variant='body1'> Using production config in development </Typography>
+            </div>
+          )
+        }
         <div className={classes.appBarTop}>
           <Container maxWidth='xl' component='a' className={classes.appLogotype} href='/'>
             <img alt='logo' className={classes.appLogo} src='/img/logo.png' />
