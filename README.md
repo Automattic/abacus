@@ -2,15 +2,13 @@
 
 [![CircleCI](https://circleci.com/gh/Automattic/abacus.svg?style=svg)](https://circleci.com/gh/Automattic/abacus)
 
-## Getting started
+## Getting Started
 
-Run `npm install` to install dependencies, then run one of the following commands:
+### Requirements
 
-- `npm run dev`: Starts the development server.
-- `npm run build`: Builds the app for production.
-- `npm start`: Runs the built app in production mode.
+- `npm`
 
-### Update System Host File
+### Update Your System Host File
 
 In order for our OAuth authorization to work, it needs to be given a redirect URI that has been declared as acceptable. In order to aid with using the site locally, add the following DNS mapping to your system's host file.
 
@@ -18,72 +16,98 @@ In order for our OAuth authorization to work, it needs to be given a redirect UR
 127.0.0.1 a8c-abacus-local
 ```
 
-## Scripts
+### Spin up your Development server
 
-All the scripts for this project are initiated via npm scripts. Please see the `"scripts"` section in `package.json`.
-
-### Docker
-
-You can use the following commands to run the server in a Docker container:
-
-- `npm run docker-build`: Build a docker image that runs a production Abacus server at port 3000.
-- `npm run docker-start`: Run the above docker image, mapping port 3000 from the image to port 8888 on your local machine.
-
-### Bundle Analysis
-
-The Next.js build creates two bundles of files. One for the client and one for the server.
-
-Running the following will build, analyze, and open two browser windows with a report on the client and server bundles.
-
-```sh
-npm run analyze
+```bash
+npm install
+npm run dev
 ```
 
-### Component Building
+### Check your code
 
-See the Storybook section below.
+```bash
+# Run all tests and checks
+npm run verify
 
-### Linting
+# Code testing
+npm run test:all
 
-**lint**
+npm run test:e2e
+npm run test:e2e -- --watch
+npm run test:e2e -- --updateSnapshot
 
-Runs all the linters.
+npm run test:integration
+npm run test:integration -- --watch
+npm run test:integration -- --updateSnapshot
 
-```sh
+npm run test:unit
+npm run test:unit -- -- --watch
+npm run test:unit -- -- --updateSnapshot
+
+
+# Code formatting
+npm run format:check
+npm run format # Fixes formatting
+
+# Code linting
 npm run lint
+npm run lint:ts:fix # Fixes lint issues
 ```
 
-**lint:css**
+### Build for Deployment
 
-Runs a linter on all the styling code.
-
-```sh
-npm run lint:css
+```bash
+npm run build
 ```
 
-**lint:css:fix**
+## Testing Tips/Notes
 
-Runs a linter on all the styling code and fixes issues that are fixable.
+### Where to find tests
 
-```sh
-npm run lint:css:fix
+- Integration: `/__tests__`
+- E2E: `/e2e`
+- Unit tests: Rest of the codebase, alongside file it is testing.
+
+### E2E Testing tips
+
+Our e2e tests use Jest and Puppeteer in a headless Chrome browser.
+
+#### Smoke Tests:
+
+We have smoke tests that are inteded to be used in development for quick iterations.
+
+```
+npm run test:e2e:smoke
 ```
 
-**lint:js**
+#### Debugging
 
-Runs a linter on all the JavaScript and TypeScript code including those with JSX.
+For debugging, you'll likely want to run with a full visual browser. To do that:
 
-```sh
-npm run lint:js
+1. Create a .env file at the project's root if it does not already exist.
+   You can copy the .env.example file as an initial template.
+1. Add `PUPPETEER_HEADLESS=false`.
+   This will cause the E2E tests to run in a browser that can be visually seen.
+
+See https://developers.google.com/web/tools/puppeteer/debugging for more debugging tips.
+
+### Use Production Config/APIs
+
+Since we don't have a mock server it is important to test on the Production config/APIs.
+
+To do so, spin up your dev server like this:
+
+```bash
+NEXT_PUBLIC_PRODUCTION_CONFIG_IN_DEVELOPMENT=true npm run dev
 ```
 
-**lint:js:fix**
+See `/config.ts` for more info.
 
-Runs a linter on all the JavaScript and TypeScript code and fixes any found issues that are fixable.
+### Auth Flow
 
-```sh
-npm run lint:js:fix
-```
+We don't currently have a log-out feature but it can be necessary to log a user out for testing, this is how to do so manually:
+
+Once a user is authenticated and they authorize Abacus to have access, we save the authorization info in local storage under the key `experiments_auth_info`. To simulate using Abacus on a new browser or the access token expiring, you can remove this item from local storage using the Chrome devtools > Application tab.
 
 ### Pre-Commit Hooks
 
@@ -105,58 +129,23 @@ npm run storybook
 
 This will open a browser window of the Storybook webapp.
 
-### Testing
+## Advanced Tools
 
-**test:unit**
+### Docker (_Not Recommended_)
 
-Runs the unit tests with Jest.
+You can use the following commands to run the server in a Docker container:
 
-The unit tests are found throughout the project excluding tests in the `__tests__` directory which is being reserved for integration tests and the `e2e` directory which is being reserved for e2e tests.
+- `npm run docker-build`: Build a docker image that runs a production Abacus server at port 3000.
+- `npm run docker-start`: Run the above docker image, mapping port 3000 from the image to port 8888 on your local machine.
 
-```sh
-npm run test:unit
-npm run test:unit -- --watch
-```
+### Bundle Analysis (_Not Recommended_)
 
-**test:integration**
+_Shouldn't be a concern for this App_
 
-Runs the integration tests with Jest. These are in the `__tests__` directory.
+The Next.js build creates two bundles of files. One for the client and one for the server.
 
-```sh
-npm run test:integration
-npm run test:integration -- --watch
-```
-
-**test:e2e**
-
-Runs the end-to-end tests with Jest and Puppeteer in a headless Chrome browser. These are in the `e2e` directory.
+Running the following will build, analyze, and open two browser windows with a report on the client and server bundles.
 
 ```sh
-# Run all the E2E tests
-npm run test:e2e
-# Run just the E2E smoke tests (intended to be used in development for quick iterations)
-npm run test:e2e:smoke
-```
-
-For debugging, you'll likely want to run with a full visual browser. To do that:
-
-1. Create a `.env` file at the project's root if it does not already exist. You can copy the `.env.example` file as an initial template.
-2. Add `PUPPETEER_HEADLESS=false`
-
-This will cause the E2E tests to run in a browser that can be visually seen.
-
-See https://developers.google.com/web/tools/puppeteer/debugging for more debugging tips.
-
-## Testing Auth Flow
-
-Besides the automated unit tests and E2E tests, there is sometimes a need for manual intervention due to factors not acceptable in during automation, e.g., waiting for an access token to naturally expire to ensure the user is re-prompted to authenticate and authorize.
-
-Once a user is authenticated and they authorize Abacus to have access, we save the authorization info in local storage under the key `experiments_auth_info`. To simulate using Abacus on a new browser or the access token expiring, you can remove this item from local storage using the Chrome devtools > Application tab.
-
-### Verification
-
-Format checks, linting, and testing are all forms of verification. As a convenience, we have the `verify` NPM script that will run all the checks.
-
-```sh
-npm run verify
+npm run analyze
 ```
