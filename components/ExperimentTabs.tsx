@@ -48,8 +48,8 @@ export default function ExperimentTabs({
   return (
     <Tabs className={className} value={tab}>
       <LinkTab
-        label='Details'
-        value={ExperimentView.Details}
+        label='Overview'
+        value={ExperimentView.Overview}
         url='/experiments/[id]'
         as={`/experiments/${experimentId}`}
       />

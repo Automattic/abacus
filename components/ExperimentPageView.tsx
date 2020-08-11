@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 export enum ExperimentView {
-  Details = 'details',
+  Overview = 'overview',
   Results = 'results',
   CodeSetup = 'code-setup',
 }
@@ -81,7 +81,7 @@ export default function ExperimentPageView({
           segments &&
           analyses && (
             <>
-              {view === ExperimentView.Details && <ExperimentDetails {...{ experiment, metrics, segments }} />}
+              {view === ExperimentView.Overview && <ExperimentDetails {...{ experiment, metrics, segments }} />}
               {view === ExperimentView.Results && (
                 <ExperimentResults {...{ experiment, metrics, analyses, debugMode }} />
               )}
