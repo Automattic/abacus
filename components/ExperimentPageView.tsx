@@ -15,6 +15,8 @@ import { Analysis, ExperimentFull } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { createUnresolvingPromise, or } from '@/utils/general'
 
+import ExperimentCodeSetup from './ExperimentCodeSetup'
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     viewTabs: {
@@ -26,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export enum ExperimentView {
   Details = 'details',
   Results = 'results',
-  Snippets = 'snippets',
+  CodeSetup = 'code-setup',
 }
 
 export default function ExperimentPageView({
@@ -83,6 +85,7 @@ export default function ExperimentPageView({
               {view === ExperimentView.Results && (
                 <ExperimentResults {...{ experiment, metrics, analyses, debugMode }} />
               )}
+              {view === ExperimentView.CodeSetup && <ExperimentCodeSetup />}
             </>
           )
         )}

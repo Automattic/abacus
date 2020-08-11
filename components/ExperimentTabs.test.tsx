@@ -14,5 +14,5 @@ test('renders expected links', () => {
 
   expect(getByText('Details', { selector: '.MuiTab-wrapper' })).toBeInTheDocument()
   expect(getByText('Results', { selector: '.MuiTab-wrapper' })).toBeInTheDocument()
-  expect(getByText('Snippets', { selector: '.MuiTab-wrapper' })).toBeInTheDocument()
+  expect(getByText('Code Setup', { selector: '.MuiTab-wrapper' })).toBeInTheDocument()
 })
