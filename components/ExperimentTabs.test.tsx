@@ -10,7 +10,7 @@ test('renders expected links', () => {
     metricAssignments: [],
     segmentAssignments: [],
   })
-  const { getByText } = render(<ExperimentTabs experiment={experiment} tab='details' />)
+  const { getByText } = render(<ExperimentTabs experimentId={experiment.experimentId} tab='details' />)
 
   expect(getByText('Details', { selector: '.MuiTab-wrapper' })).toBeInTheDocument()
   expect(getByText('Results', { selector: '.MuiTab-wrapper' })).toBeInTheDocument()
