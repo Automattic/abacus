@@ -23,11 +23,15 @@ window.HTMLElement.prototype.scrollIntoView = noop
 test('renders as expected', () => {
   MockDate.set('2020-07-21')
 
+  // eslint-disable-next-line @typescript-eslint/require-await
+  const onSubmit = async () => undefined
+
   const { container } = render(
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={createInitialExperiment()}
+      onSubmit={onSubmit}
     />,
   )
   expect(container).toMatchSnapshot()
