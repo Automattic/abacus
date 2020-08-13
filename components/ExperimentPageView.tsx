@@ -10,12 +10,12 @@ import SegmentsApi from '@/api/SegmentsApi'
 import ExperimentResults from '@/components/experiment-results/ExperimentResults'
 import ExperimentDetails from '@/components/ExperimentDetails'
 import ExperimentTabs from '@/components/ExperimentTabs'
+import ExperimentCodeSetup from '@/components/ExperimentCodeSetup'
 import Layout from '@/components/Layout'
 import { Analysis, ExperimentFull } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { createUnresolvingPromise, or } from '@/utils/general'
 
-import ExperimentCodeSetup from './ExperimentCodeSetup'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
