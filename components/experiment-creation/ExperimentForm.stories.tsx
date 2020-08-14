@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/require-await */
+
 import React from 'react'
 
 import { createInitialExperiment } from '@/lib/experiments'
@@ -13,5 +15,6 @@ export const Form = () => (
     indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
     indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
     initialExperiment={createInitialExperiment()}
+    onSubmit={async (formData: unknown) => alert(JSON.stringify(formData, null, 2))}
   />
 )
