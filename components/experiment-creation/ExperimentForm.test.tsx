@@ -3,6 +3,7 @@
 import { act, fireEvent, screen, waitFor } from '@testing-library/react'
 import { format } from 'date-fns'
 import noop from 'lodash/noop'
+import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
 
@@ -25,6 +26,18 @@ mockedNotistack.useSnackbar.mockImplementation(() => ({
 // As jest doesn't include scrollIntoView
 window.HTMLElement.prototype.scrollIntoView = noop
 
+// Needed for testing the MuiCombobox
+document.createRange = () => ({
+  setStart: () => undefined,
+  setEnd: () => undefined,
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore; This is just for mocking
+  commonAncestorContainer: {
+    nodeName: 'BODY',
+    ownerDocument: document,
+  },
+})
+
 // TODO: Make this more accessible
 function isSectionError(sectionButton: HTMLElement) {
   return !!sectionButton.querySelector('.Mui-error')
@@ -42,6 +55,8 @@ async function changeFieldByRole(role: string, name: RegExp, value: string) {
 }
 
 test('renders as expected', () => {
+  MockDate.set('2020-08-13')
+
   const onSubmit = async () => undefined
 
   const { container } = render(
@@ -56,6 +71,8 @@ test('renders as expected', () => {
 })
 
 test('sections should be browsable by the next and prev buttons', async () => {
+  MockDate.set('2020-08-13')
+
   const onSubmit = async () => undefined
 
   const { container: _container } = render(
@@ -95,6 +112,8 @@ test('sections should be browsable by the next and prev buttons', async () => {
 })
 
 test('sections should be browsable by the section buttons', async () => {
+  MockDate.set('2020-08-13')
+
   const onSubmit = async () => undefined
 
   const { container } = render(
@@ -138,6 +157,8 @@ test('sections should be browsable by the section buttons', async () => {
 })
 
 test('section should be validated after change', async () => {
+  MockDate.set('2020-08-13')
+
   const onSubmit = async () => undefined
 
   const { container: _container } = render(
@@ -213,6 +234,8 @@ test('section should be validated after change', async () => {
 })
 
 test('skipping to submit should check all sections', async () => {
+  MockDate.set('2020-08-13')
+
   const onSubmit = async () => undefined
 
   const { container } = render(
@@ -250,6 +273,9 @@ test('skipping to submit should check all sections', async () => {
 })
 
 test('form submits with valid fields', async () => {
+  // As I couldn't mock the date in the /lib/schemas...
+  MockDate.reset()
+
   let submittedData: unknown = null
   const onSubmit = async (formData: unknown): Promise<undefined> => {
     // We need to add a timeout here so the loading indicator renders
@@ -296,6 +322,12 @@ test('form submits with valid fields', async () => {
 
   // ### Audience
   screen.getByText(/Define Your Audience/)
+  const targetingField = screen.getByRole('textbox', { name: /Targeting/ })
+  fireEvent.change(targetingField, { target: { value: 'segment_3' } })
+  const targetingOption = await screen.findByRole('option', { name: /Locale: segment_3/ })
+  await act(async () => {
+    fireEvent.click(targetingOption)
+  })
   await act(async () => {
     fireEvent.click(screen.getByRole('button', { name: /Next/ }))
   })
@@ -361,7 +393,12 @@ test('form submits with valid fields', async () => {
       ownerLogin: 'owner-nickname',
       platform: 'wpcom',
       existingUsersAllowed: 'true',
-      segmentAssignments: [],
+      segmentAssignments: [
+        {
+          isExcluded: false,
+          segmentId: 3,
+        },
+      ],
       variations: [
         {
           allocatedPercentage: 50,
