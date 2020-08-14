@@ -289,7 +289,7 @@ test('form submits with valid fields', async () => {
   await act(async () => {
     fireEvent.change(screen.getByLabelText(/End date/), { target: { value: format(nextWeek, 'yyyy-MM-d') } })
   })
-  await changeFieldByRole('textbox', /Owner/, 'scjr')
+  await changeFieldByRole('textbox', /Owner/, 'owner-nickname')
   await act(async () => {
     fireEvent.click(screen.getByRole('button', { name: /Next/ }))
   })
@@ -346,10 +346,43 @@ test('form submits with valid fields', async () => {
     if (!submit) {
       throw new Error(`Can't find submit button.`)
     }
-    // const submits = screen.getAllByRole('button', { name: /Submit/ })
-    // // fireEvent.click(submits[0])
     fireEvent.click(submit)
   })
 
   await waitFor(() => expect(submittedData).not.toBeNull())
+
+  expect(submittedData).toEqual({
+    experiment: {
+      p2Url: 'http://example.com/',
+      name: 'test_experiment_name',
+      description: 'experiment description',
+      startDatetime: format(now, 'yyyy-MM-d'),
+      endDatetime: format(nextWeek, 'yyyy-MM-d'),
+      ownerLogin: 'owner-nickname',
+      platform: 'wpcom',
+      existingUsersAllowed: 'true',
+      segmentAssignments: [],
+      variations: [
+        {
+          allocatedPercentage: 50,
+          isDefault: true,
+          name: 'control',
+        },
+        {
+          allocatedPercentage: 50,
+          isDefault: false,
+          name: 'treatment',
+        },
+      ],
+      metricAssignments: [
+        {
+          attributionWindowSeconds: '86400',
+          changeExpected: false,
+          isPrimary: true,
+          metricId: 10,
+          minDifference: 0.01,
+        },
+      ],
+    },
+  })
 })
