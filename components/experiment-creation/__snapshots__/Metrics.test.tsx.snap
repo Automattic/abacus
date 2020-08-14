@@ -360,12 +360,12 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Attribution Window"
                 class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-16"
               >
                 <div
                   aria-haspopup="listbox"
-                  aria-labelledby="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
+                  aria-label="Attribution Window"
+                  aria-labelledby="experiment.metricAssignments[0].attributionWindowSeconds mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
                   id="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   role="button"
@@ -443,7 +443,6 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Min difference"
                 class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-19"
               >
                 <div
@@ -460,7 +459,9 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
                   </div>
                   <input
                     aria-invalid="false"
+                    aria-label="Min difference"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+                    id="experiment.metricAssignments[0].minDifference"
                     name="experiment.metricAssignments[0].minDifference"
                     placeholder="-"
                     type="number"
@@ -668,12 +669,12 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Attribution Window"
                 class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-16"
               >
                 <div
                   aria-haspopup="listbox"
-                  aria-labelledby="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
+                  aria-label="Attribution Window"
+                  aria-labelledby="experiment.metricAssignments[0].attributionWindowSeconds mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
                   id="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   role="button"
@@ -751,7 +752,6 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Min difference"
                 class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-19"
               >
                 <div
@@ -768,7 +768,9 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
                   </div>
                   <input
                     aria-invalid="false"
+                    aria-label="Min difference"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+                    id="experiment.metricAssignments[0].minDifference"
                     name="experiment.metricAssignments[0].minDifference"
                     placeholder="-"
                     type="number"
@@ -974,12 +976,12 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Attribution Window"
                 class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-16"
               >
                 <div
                   aria-haspopup="listbox"
-                  aria-labelledby="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
+                  aria-label="Attribution Window"
+                  aria-labelledby="experiment.metricAssignments[0].attributionWindowSeconds mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
                   id="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   role="button"
@@ -1057,7 +1059,6 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Min difference"
                 class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-19"
               >
                 <div
@@ -1074,7 +1075,9 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
                   </div>
                   <input
                     aria-invalid="false"
+                    aria-label="Min difference"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+                    id="experiment.metricAssignments[0].minDifference"
                     name="experiment.metricAssignments[0].minDifference"
                     placeholder="-"
                     type="number"
@@ -1421,12 +1424,12 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Attribution Window"
                 class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-16"
               >
                 <div
                   aria-haspopup="listbox"
-                  aria-labelledby="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
+                  aria-label="Attribution Window"
+                  aria-labelledby="experiment.metricAssignments[0].attributionWindowSeconds mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
                   id="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   role="button"
@@ -1504,7 +1507,6 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Min difference"
                 class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-19"
               >
                 <div
@@ -1512,7 +1514,9 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
                 >
                   <input
                     aria-invalid="false"
+                    aria-label="Min difference"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                    id="experiment.metricAssignments[0].minDifference"
                     name="experiment.metricAssignments[0].minDifference"
                     placeholder="-"
                     type="number"

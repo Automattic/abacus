@@ -19,6 +19,8 @@ exports[`renders as expected 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.name"
+          id="experiment.name-label"
         >
           Experiment name
           <span
@@ -33,8 +35,10 @@ exports[`renders as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
         >
           <input
+            aria-describedby="experiment.name-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
+            id="experiment.name"
             name="experiment.name"
             placeholder="experiment_name"
             required=""
@@ -57,6 +61,7 @@ exports[`renders as expected 1`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.name-helper-text"
         >
           Use snake_case.
         </p>
@@ -71,6 +76,8 @@ exports[`renders as expected 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.description"
+          id="experiment.description-label"
         >
           Experiment description
           <span
@@ -85,8 +92,10 @@ exports[`renders as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
         >
           <textarea
+            aria-describedby="experiment.description-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+            id="experiment.description"
             name="experiment.description"
             placeholder="Monthly vs. yearly pricing"
             required=""
@@ -108,6 +117,7 @@ exports[`renders as expected 1`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.description-helper-text"
         >
           State your hypothesis.
         </p>
@@ -181,8 +191,8 @@ exports[`renders as expected 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
-          for="experiment.startDatetime"
-          id="experiment.startDatetime-label"
+          for="experiment.endDatetime"
+          id="experiment.endDatetime-label"
         >
           End date
           <span
@@ -197,10 +207,10 @@ exports[`renders as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.startDatetime-helper-text"
+            aria-describedby="experiment.endDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
-            id="experiment.startDatetime"
+            id="experiment.endDatetime"
             name="experiment.endDatetime"
             required=""
             type="date"
@@ -222,7 +232,7 @@ exports[`renders as expected 1`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-          id="experiment.startDatetime-helper-text"
+          id="experiment.endDatetime-helper-text"
         >
           Use the UTC timezone.
         </p>
@@ -237,6 +247,8 @@ exports[`renders as expected 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.ownerLogin"
+          id="experiment.ownerLogin-label"
         >
           Owner
           <span
@@ -260,8 +272,10 @@ exports[`renders as expected 1`] = `
             </p>
           </div>
           <input
+            aria-describedby="experiment.ownerLogin-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+            id="experiment.ownerLogin"
             name="experiment.ownerLogin"
             placeholder="scjr"
             required=""
@@ -284,6 +298,7 @@ exports[`renders as expected 1`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.ownerLogin-helper-text"
         >
           Use WordPress.com username.
         </p>
@@ -312,6 +327,8 @@ exports[`renders date validation errors as expected 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.name"
+          id="experiment.name-label"
         >
           Experiment name
           <span
@@ -326,8 +343,10 @@ exports[`renders date validation errors as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
         >
           <input
+            aria-describedby="experiment.name-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
+            id="experiment.name"
             name="experiment.name"
             placeholder="experiment_name"
             required=""
@@ -350,6 +369,7 @@ exports[`renders date validation errors as expected 1`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.name-helper-text"
         >
           Use snake_case.
         </p>
@@ -364,6 +384,8 @@ exports[`renders date validation errors as expected 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.description"
+          id="experiment.description-label"
         >
           Experiment description
           <span
@@ -378,8 +400,10 @@ exports[`renders date validation errors as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
         >
           <textarea
+            aria-describedby="experiment.description-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+            id="experiment.description"
             name="experiment.description"
             placeholder="Monthly vs. yearly pricing"
             required=""
@@ -401,6 +425,7 @@ exports[`renders date validation errors as expected 1`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.description-helper-text"
         >
           State your hypothesis.
         </p>
@@ -474,8 +499,8 @@ exports[`renders date validation errors as expected 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
-          for="experiment.startDatetime"
-          id="experiment.startDatetime-label"
+          for="experiment.endDatetime"
+          id="experiment.endDatetime-label"
         >
           End date
           <span
@@ -490,10 +515,10 @@ exports[`renders date validation errors as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.startDatetime-helper-text"
+            aria-describedby="experiment.endDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
-            id="experiment.startDatetime"
+            id="experiment.endDatetime"
             max="2021-07-20"
             min="2020-07-20"
             name="experiment.endDatetime"
@@ -517,7 +542,7 @@ exports[`renders date validation errors as expected 1`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-          id="experiment.startDatetime-helper-text"
+          id="experiment.endDatetime-helper-text"
         >
           Use the UTC timezone.
         </p>
@@ -532,6 +557,8 @@ exports[`renders date validation errors as expected 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.ownerLogin"
+          id="experiment.ownerLogin-label"
         >
           Owner
           <span
@@ -555,8 +582,10 @@ exports[`renders date validation errors as expected 1`] = `
             </p>
           </div>
           <input
+            aria-describedby="experiment.ownerLogin-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+            id="experiment.ownerLogin"
             name="experiment.ownerLogin"
             placeholder="scjr"
             required=""
@@ -579,6 +608,7 @@ exports[`renders date validation errors as expected 1`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.ownerLogin-helper-text"
         >
           Use WordPress.com username.
         </p>
@@ -607,6 +637,8 @@ exports[`renders date validation errors as expected 2`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.name"
+          id="experiment.name-label"
         >
           Experiment name
           <span
@@ -621,8 +653,10 @@ exports[`renders date validation errors as expected 2`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
         >
           <input
+            aria-describedby="experiment.name-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
+            id="experiment.name"
             name="experiment.name"
             placeholder="experiment_name"
             required=""
@@ -645,6 +679,7 @@ exports[`renders date validation errors as expected 2`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.name-helper-text"
         >
           Use snake_case.
         </p>
@@ -659,6 +694,8 @@ exports[`renders date validation errors as expected 2`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.description"
+          id="experiment.description-label"
         >
           Experiment description
           <span
@@ -673,8 +710,10 @@ exports[`renders date validation errors as expected 2`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
         >
           <textarea
+            aria-describedby="experiment.description-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+            id="experiment.description"
             name="experiment.description"
             placeholder="Monthly vs. yearly pricing"
             required=""
@@ -696,6 +735,7 @@ exports[`renders date validation errors as expected 2`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.description-helper-text"
         >
           State your hypothesis.
         </p>
@@ -769,8 +809,8 @@ exports[`renders date validation errors as expected 2`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
-          for="experiment.startDatetime"
-          id="experiment.startDatetime-label"
+          for="experiment.endDatetime"
+          id="experiment.endDatetime-label"
         >
           End date
           <span
@@ -785,10 +825,10 @@ exports[`renders date validation errors as expected 2`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.startDatetime-helper-text"
+            aria-describedby="experiment.endDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
-            id="experiment.startDatetime"
+            id="experiment.endDatetime"
             max="2026-07-20"
             min="2025-07-20"
             name="experiment.endDatetime"
@@ -812,7 +852,7 @@ exports[`renders date validation errors as expected 2`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-          id="experiment.startDatetime-helper-text"
+          id="experiment.endDatetime-helper-text"
         >
           Use the UTC timezone.
         </p>
@@ -827,6 +867,8 @@ exports[`renders date validation errors as expected 2`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.ownerLogin"
+          id="experiment.ownerLogin-label"
         >
           Owner
           <span
@@ -850,8 +892,10 @@ exports[`renders date validation errors as expected 2`] = `
             </p>
           </div>
           <input
+            aria-describedby="experiment.ownerLogin-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+            id="experiment.ownerLogin"
             name="experiment.ownerLogin"
             placeholder="scjr"
             required=""
@@ -874,6 +918,7 @@ exports[`renders date validation errors as expected 2`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.ownerLogin-helper-text"
         >
           Use WordPress.com username.
         </p>
@@ -902,6 +947,8 @@ exports[`renders date validation errors as expected 3`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.name"
+          id="experiment.name-label"
         >
           Experiment name
           <span
@@ -916,8 +963,10 @@ exports[`renders date validation errors as expected 3`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
         >
           <input
+            aria-describedby="experiment.name-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
+            id="experiment.name"
             name="experiment.name"
             placeholder="experiment_name"
             required=""
@@ -940,6 +989,7 @@ exports[`renders date validation errors as expected 3`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.name-helper-text"
         >
           Use snake_case.
         </p>
@@ -954,6 +1004,8 @@ exports[`renders date validation errors as expected 3`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.description"
+          id="experiment.description-label"
         >
           Experiment description
           <span
@@ -968,8 +1020,10 @@ exports[`renders date validation errors as expected 3`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
         >
           <textarea
+            aria-describedby="experiment.description-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+            id="experiment.description"
             name="experiment.description"
             placeholder="Monthly vs. yearly pricing"
             required=""
@@ -991,6 +1045,7 @@ exports[`renders date validation errors as expected 3`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.description-helper-text"
         >
           State your hypothesis.
         </p>
@@ -1030,7 +1085,7 @@ exports[`renders date validation errors as expected 3`] = `
             name="experiment.startDatetime"
             required=""
             type="date"
-            value="2020-07-20"
+            value="2020-07-28"
           />
           <fieldset
             aria-hidden="true"
@@ -1062,10 +1117,10 @@ exports[`renders date validation errors as expected 3`] = `
         class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-20"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required"
           data-shrink="true"
-          for="experiment.startDatetime"
-          id="experiment.startDatetime-label"
+          for="experiment.endDatetime"
+          id="experiment.endDatetime-label"
         >
           End date
           <span
@@ -1080,16 +1135,16 @@ exports[`renders date validation errors as expected 3`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.startDatetime-helper-text"
+            aria-describedby="experiment.endDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
-            id="experiment.startDatetime"
-            max="2021-07-20"
-            min="2020-07-20"
+            id="experiment.endDatetime"
+            max="2021-07-28"
+            min="2020-07-28"
             name="experiment.endDatetime"
             required=""
             type="date"
-            value=""
+            value="2020-07-20"
           />
           <fieldset
             aria-hidden="true"
@@ -1106,8 +1161,8 @@ exports[`renders date validation errors as expected 3`] = `
           </fieldset>
         </div>
         <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-          id="experiment.startDatetime-helper-text"
+          class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
+          id="experiment.endDatetime-helper-text"
         >
           Use the UTC timezone.
         </p>
@@ -1122,6 +1177,8 @@ exports[`renders date validation errors as expected 3`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.ownerLogin"
+          id="experiment.ownerLogin-label"
         >
           Owner
           <span
@@ -1145,8 +1202,10 @@ exports[`renders date validation errors as expected 3`] = `
             </p>
           </div>
           <input
+            aria-describedby="experiment.ownerLogin-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+            id="experiment.ownerLogin"
             name="experiment.ownerLogin"
             placeholder="scjr"
             required=""
@@ -1169,6 +1228,7 @@ exports[`renders date validation errors as expected 3`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.ownerLogin-helper-text"
         >
           Use WordPress.com username.
         </p>
@@ -1197,6 +1257,8 @@ exports[`renders date validation errors as expected 4`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.name"
+          id="experiment.name-label"
         >
           Experiment name
           <span
@@ -1211,8 +1273,10 @@ exports[`renders date validation errors as expected 4`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
         >
           <input
+            aria-describedby="experiment.name-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
+            id="experiment.name"
             name="experiment.name"
             placeholder="experiment_name"
             required=""
@@ -1235,6 +1299,7 @@ exports[`renders date validation errors as expected 4`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.name-helper-text"
         >
           Use snake_case.
         </p>
@@ -1249,6 +1314,8 @@ exports[`renders date validation errors as expected 4`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.description"
+          id="experiment.description-label"
         >
           Experiment description
           <span
@@ -1263,8 +1330,10 @@ exports[`renders date validation errors as expected 4`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
         >
           <textarea
+            aria-describedby="experiment.description-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+            id="experiment.description"
             name="experiment.description"
             placeholder="Monthly vs. yearly pricing"
             required=""
@@ -1286,6 +1355,7 @@ exports[`renders date validation errors as expected 4`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.description-helper-text"
         >
           State your hypothesis.
         </p>
@@ -1325,7 +1395,7 @@ exports[`renders date validation errors as expected 4`] = `
             name="experiment.startDatetime"
             required=""
             type="date"
-            value="2025-07-21"
+            value="2020-07-28"
           />
           <fieldset
             aria-hidden="true"
@@ -1357,10 +1427,10 @@ exports[`renders date validation errors as expected 4`] = `
         class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-20"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required"
           data-shrink="true"
-          for="experiment.startDatetime"
-          id="experiment.startDatetime-label"
+          for="experiment.endDatetime"
+          id="experiment.endDatetime-label"
         >
           End date
           <span
@@ -1375,16 +1445,16 @@ exports[`renders date validation errors as expected 4`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.startDatetime-helper-text"
+            aria-describedby="experiment.endDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
-            id="experiment.startDatetime"
-            max="2026-07-21"
-            min="2025-07-21"
+            id="experiment.endDatetime"
+            max="2021-07-28"
+            min="2020-07-28"
             name="experiment.endDatetime"
             required=""
             type="date"
-            value=""
+            value="2025-07-21"
           />
           <fieldset
             aria-hidden="true"
@@ -1401,8 +1471,8 @@ exports[`renders date validation errors as expected 4`] = `
           </fieldset>
         </div>
         <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-          id="experiment.startDatetime-helper-text"
+          class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
+          id="experiment.endDatetime-helper-text"
         >
           Use the UTC timezone.
         </p>
@@ -1417,6 +1487,8 @@ exports[`renders date validation errors as expected 4`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.ownerLogin"
+          id="experiment.ownerLogin-label"
         >
           Owner
           <span
@@ -1440,8 +1512,10 @@ exports[`renders date validation errors as expected 4`] = `
             </p>
           </div>
           <input
+            aria-describedby="experiment.ownerLogin-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+            id="experiment.ownerLogin"
             name="experiment.ownerLogin"
             placeholder="scjr"
             required=""
@@ -1464,6 +1538,7 @@ exports[`renders date validation errors as expected 4`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.ownerLogin-helper-text"
         >
           Use WordPress.com username.
         </p>
@@ -1492,6 +1567,8 @@ exports[`renders sensible dates as expected 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.name"
+          id="experiment.name-label"
         >
           Experiment name
           <span
@@ -1506,8 +1583,10 @@ exports[`renders sensible dates as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
         >
           <input
+            aria-describedby="experiment.name-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
+            id="experiment.name"
             name="experiment.name"
             placeholder="experiment_name"
             required=""
@@ -1530,6 +1609,7 @@ exports[`renders sensible dates as expected 1`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.name-helper-text"
         >
           Use snake_case.
         </p>
@@ -1544,6 +1624,8 @@ exports[`renders sensible dates as expected 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.description"
+          id="experiment.description-label"
         >
           Experiment description
           <span
@@ -1558,8 +1640,10 @@ exports[`renders sensible dates as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
         >
           <textarea
+            aria-describedby="experiment.description-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+            id="experiment.description"
             name="experiment.description"
             placeholder="Monthly vs. yearly pricing"
             required=""
@@ -1581,6 +1665,7 @@ exports[`renders sensible dates as expected 1`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.description-helper-text"
         >
           State your hypothesis.
         </p>
@@ -1620,7 +1705,7 @@ exports[`renders sensible dates as expected 1`] = `
             name="experiment.startDatetime"
             required=""
             type="date"
-            value="2020-10-28"
+            value="2020-07-28"
           />
           <fieldset
             aria-hidden="true"
@@ -1652,10 +1737,10 @@ exports[`renders sensible dates as expected 1`] = `
         class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-12"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required"
           data-shrink="true"
-          for="experiment.startDatetime"
-          id="experiment.startDatetime-label"
+          for="experiment.endDatetime"
+          id="experiment.endDatetime-label"
         >
           End date
           <span
@@ -1670,16 +1755,16 @@ exports[`renders sensible dates as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.startDatetime-helper-text"
+            aria-describedby="experiment.endDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
-            id="experiment.startDatetime"
-            max="2021-10-28"
-            min="2020-10-28"
+            id="experiment.endDatetime"
+            max="2021-07-28"
+            min="2020-07-28"
             name="experiment.endDatetime"
             required=""
             type="date"
-            value=""
+            value="2020-10-28"
           />
           <fieldset
             aria-hidden="true"
@@ -1696,8 +1781,8 @@ exports[`renders sensible dates as expected 1`] = `
           </fieldset>
         </div>
         <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-          id="experiment.startDatetime-helper-text"
+          class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
+          id="experiment.endDatetime-helper-text"
         >
           Use the UTC timezone.
         </p>
@@ -1712,6 +1797,8 @@ exports[`renders sensible dates as expected 1`] = `
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
           data-shrink="true"
+          for="experiment.ownerLogin"
+          id="experiment.ownerLogin-label"
         >
           Owner
           <span
@@ -1735,8 +1822,10 @@ exports[`renders sensible dates as expected 1`] = `
             </p>
           </div>
           <input
+            aria-describedby="experiment.ownerLogin-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+            id="experiment.ownerLogin"
             name="experiment.ownerLogin"
             placeholder="scjr"
             required=""
@@ -1759,6 +1848,7 @@ exports[`renders sensible dates as expected 1`] = `
         </div>
         <p
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+          id="experiment.ownerLogin-helper-text"
         >
           Use WordPress.com username.
         </p>

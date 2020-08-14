@@ -44,6 +44,8 @@ test('renders as expected', () => {
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
             data-shrink="true"
+            for="experiment.p2Url"
+            id="experiment.p2Url-label"
           >
             Your Post's URL
           </label>
@@ -53,6 +55,7 @@ test('renders as expected', () => {
             <input
               aria-invalid="false"
               class="MuiInputBase-input MuiOutlinedInput-input"
+              id="experiment.p2Url"
               name="experiment.p2Url"
               placeholder="https://your-p2-post-here"
               type="text"

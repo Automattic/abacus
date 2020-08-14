@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/require-await */
 
-import { act, fireEvent, screen } from '@testing-library/react'
+import { act, fireEvent, screen, waitFor } from '@testing-library/react'
+import { format } from 'date-fns'
 import noop from 'lodash/noop'
-import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
 
@@ -12,6 +12,8 @@ import Fixtures from '@/test-helpers/fixtures'
 import { render } from '@/test-helpers/test-utils'
 
 import ExperimentForm from './ExperimentForm'
+
+jest.setTimeout(10000)
 
 jest.mock('notistack')
 const mockedNotistack = notistack as jest.Mocked<typeof notistack>
@@ -32,9 +34,14 @@ function isSectionComplete(sectionButton: HTMLElement) {
   return !!sectionButton.querySelector('.MuiStepIcon-completed')
 }
 
-test('renders as expected', () => {
-  MockDate.set('2020-07-21')
+async function changeFieldByRole(role: string, name: RegExp, value: string) {
+  const field = screen.getByRole(role, { name: name })
+  await act(async () => {
+    fireEvent.change(field, { target: { value: value } })
+  })
+}
 
+test('renders as expected', () => {
   const onSubmit = async () => undefined
 
   const { container } = render(
@@ -48,9 +55,7 @@ test('renders as expected', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('sections should be browsable by the next buttons', async () => {
-  MockDate.set('2020-07-21')
-
+test('sections should be browsable by the next and prev buttons', async () => {
   const onSubmit = async () => undefined
 
   const { container: _container } = render(
@@ -66,6 +71,14 @@ test('sections should be browsable by the next buttons', async () => {
   await act(async () => {
     fireEvent.click(screen.getByRole('button', { name: /Begin/ }))
   })
+  // screen.getAllByText(/Basic Info/)
+  // await act(async () => {
+  //   fireEvent.click(screen.getByRole('button', { name: /Previous/ }))
+  // })
+  // screen.getByText(/Design and Document Your Experiment/)
+  // await act(async () => {
+  //   fireEvent.click(screen.getByRole('button', { name: /Begin/ }))
+  // })
   screen.getAllByText(/Basic Info/)
   await act(async () => {
     fireEvent.click(screen.getByRole('button', { name: /Next/ }))
@@ -82,8 +95,6 @@ test('sections should be browsable by the next buttons', async () => {
 })
 
 test('sections should be browsable by the section buttons', async () => {
-  MockDate.set('2020-07-21')
-
   const onSubmit = async () => undefined
 
   const { container } = render(
@@ -127,8 +138,6 @@ test('sections should be browsable by the section buttons', async () => {
 })
 
 test('section should be validated after change', async () => {
-  MockDate.set('2020-07-21')
-
   const onSubmit = async () => undefined
 
   const { container: _container } = render(
@@ -204,8 +213,6 @@ test('section should be validated after change', async () => {
 })
 
 test('skipping to submit should check all sections', async () => {
-  MockDate.set('2020-07-21')
-
   const onSubmit = async () => undefined
 
   const { container } = render(
@@ -242,4 +249,107 @@ test('skipping to submit should check all sections', async () => {
   expect(isSectionComplete(submitSectionButton)).toBe(false)
 })
 
-test.todo('form works as expected')
+test('form submits with valid fields', async () => {
+  let submittedData: unknown = null
+  const onSubmit = async (formData: unknown): Promise<undefined> => {
+    // We need to add a timeout here so the loading indicator renders
+    await new Promise((resolve) => setTimeout(resolve, 200))
+    submittedData = formData
+    return
+  }
+
+  const { container: _container } = render(
+    <ExperimentForm
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
+      initialExperiment={createInitialExperiment()}
+      onSubmit={onSubmit}
+    />,
+  )
+
+  // ### Start
+  screen.getByText(/Design and Document Your Experiment/)
+  await changeFieldByRole('textbox', /Your Post's URL/, 'http://example.com/')
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Begin/ }))
+  })
+
+  // ### Basic Info
+  screen.getAllByText(/Basic Info/)
+  await changeFieldByRole('textbox', /Experiment name/, 'test_experiment_name')
+  await changeFieldByRole('textbox', /Experiment description/, 'experiment description')
+  // We need to make some dates relative to today since mocking the schema to work with MockDate is a pain!
+  const now = new Date()
+  now.setDate(now.getDate() + 1)
+  const nextWeek = new Date()
+  nextWeek.setDate(now.getDate() + 7)
+  await act(async () => {
+    fireEvent.change(screen.getByLabelText(/Start date/), { target: { value: format(now, 'yyyy-MM-d') } })
+  })
+  await act(async () => {
+    fireEvent.change(screen.getByLabelText(/End date/), { target: { value: format(nextWeek, 'yyyy-MM-d') } })
+  })
+  await changeFieldByRole('textbox', /Owner/, 'scjr')
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Next/ }))
+  })
+
+  // ### Audience
+  screen.getByText(/Define Your Audience/)
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Next/ }))
+  })
+
+  // ### Metrics
+  screen.getByText(/Assign Metrics/)
+  const metricSearchField = screen.getByRole('button', { name: /Select a Metric/ })
+  const metricAddButton = screen.getByRole('button', { name: 'Add metric' })
+  await act(async () => {
+    fireEvent.focus(metricSearchField)
+  })
+  await act(async () => {
+    fireEvent.keyDown(metricSearchField, { key: 'Enter' })
+  })
+  const metricOption = await screen.findByRole('option', { name: /metric_10/ })
+  await act(async () => {
+    fireEvent.click(metricOption)
+  })
+  await act(async () => {
+    fireEvent.click(metricAddButton)
+  })
+
+  const attributionWindowField = await screen.findByLabelText(/Attribution Window/)
+  await act(async () => {
+    fireEvent.focus(attributionWindowField)
+  })
+  await act(async () => {
+    fireEvent.keyDown(attributionWindowField, { key: 'Enter' })
+  })
+  const attributionWindowFieldOption = await screen.findByRole('option', { name: /24 hours/ })
+  await act(async () => {
+    fireEvent.click(attributionWindowFieldOption)
+  })
+
+  await changeFieldByRole('spinbutton', /Min difference/, '0.01')
+
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Next/ }))
+  })
+
+  // ### Submit
+  screen.getByText(/Confirm and Submit Your Experiment/)
+  await act(async () => {
+    screen.getAllByRole('button', { name: /Submit/ })
+    const submit = screen
+      .getAllByRole('button', { name: /Submit/ })
+      .find((submit) => submit.getAttribute('type') === 'submit')
+    if (!submit) {
+      throw new Error(`Can't find submit button.`)
+    }
+    // const submits = screen.getAllByRole('button', { name: /Submit/ })
+    // // fireEvent.click(submits[0])
+    fireEvent.click(submit)
+  })
+
+  await waitFor(() => expect(submittedData).not.toBeNull())
+})
