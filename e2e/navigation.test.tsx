@@ -5,7 +5,8 @@ export {}
 jest.setTimeout(30000)
 
 describe('Dashboard', () => {
-  it('should redirect to /experiments', async () => {
+  // This test is disabled as it is susceptible to race conditions
+  xit('should redirect to /experiments', async () => {
     await page.goto('http://a8c-abacus-local:3001')
 
     // Sometimes the redirect has not occurred yet. So, we need to wait.
