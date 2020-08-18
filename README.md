@@ -43,6 +43,7 @@ npm run test:integration -- --updateSnapshot
 npm run test:unit
 npm run test:unit -- -- --watch
 npm run test:unit -- -- --updateSnapshot
+DEBUG_PRINT_LIMIT=30000 npm run test:unit # For when react-test-library truncates your debug output
 
 
 # Code formatting

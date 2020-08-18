@@ -59,6 +59,7 @@ const BasicInfo = () => {
         <Field
           component={TextField}
           name='experiment.name'
+          id='experiment.name'
           label='Experiment name'
           placeholder='experiment_name'
           helperText='Use snake_case.'
@@ -75,6 +76,7 @@ const BasicInfo = () => {
         <Field
           component={TextField}
           name='experiment.description'
+          id='experiment.description'
           label='Experiment description'
           placeholder='Monthly vs. yearly pricing'
           helperText='State your hypothesis.'
@@ -113,7 +115,7 @@ const BasicInfo = () => {
           component={TextField}
           className={classes.datePicker}
           name='experiment.endDatetime'
-          id='experiment.startDatetime'
+          id='experiment.endDatetime'
           label='End date'
           helperText='Use the UTC timezone.'
           type='date'
@@ -133,6 +135,7 @@ const BasicInfo = () => {
         <Field
           component={TextField}
           name='experiment.ownerLogin'
+          id='experiment.ownerLogin'
           label='Owner'
           placeholder='scjr'
           helperText='Use WordPress.com username.'

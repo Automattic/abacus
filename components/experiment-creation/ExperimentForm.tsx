@@ -15,15 +15,11 @@ import {
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Formik } from 'formik'
 import _ from 'lodash'
-import { useRouter } from 'next/router'
-import { useSnackbar } from 'notistack'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as yup from 'yup'
 
-import ExperimentsApi from '@/api/ExperimentsApi'
 import { createInitialExperiment } from '@/lib/experiments'
-import { indexMetrics } from '@/lib/normalizers'
-import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
+import { experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
 
 import Audience from './Audience'
 import BasicInfo from './BasicInfo'
@@ -135,10 +131,12 @@ const ExperimentForm = ({
   indexedMetrics,
   indexedSegments,
   initialExperiment,
+  onSubmit,
 }: {
   indexedMetrics: Record<number, MetricBare>
   indexedSegments: Record<number, Segment>
   initialExperiment: ReturnType<typeof createInitialExperiment>
+  onSubmit: (formData: unknown) => Promise<void>
 }) => {
   const classes = useStyles()
 
@@ -171,7 +169,7 @@ const ExperimentForm = ({
       console.info('Form data:', formData)
     }
   }
-
+    
   return (
     <Formik
       initialValues={{ experiment: initialExperiment }}

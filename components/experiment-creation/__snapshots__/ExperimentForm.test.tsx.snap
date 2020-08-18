@@ -332,6 +332,8 @@ exports[`renders as expected 1`] = `
                 <label
                   class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
                   data-shrink="true"
+                  for="experiment.p2Url"
+                  id="experiment.p2Url-label"
                 >
                   Your Post's URL
                 </label>
@@ -341,6 +343,7 @@ exports[`renders as expected 1`] = `
                   <input
                     aria-invalid="false"
                     class="MuiInputBase-input MuiOutlinedInput-input"
+                    id="experiment.p2Url"
                     name="experiment.p2Url"
                     placeholder="https://your-p2-post-here"
                     type="text"
@@ -379,6 +382,2149 @@ exports[`renders as expected 1`] = `
                 class="MuiTouchRipple-root"
               />
             </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`sections should be browsable by the section buttons 1`] = `
+<div>
+  <div
+    class="makeStyles-root-59"
+  >
+    <div
+      class="makeStyles-navigation-60"
+    >
+      <div
+        class="MuiPaper-root MuiStepper-root MuiStepper-vertical MuiPaper-elevation0"
+      >
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root MuiStepIcon-active"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    1
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiStepLabel-active MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Start
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    2
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Basic Info
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    3
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Audience
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    4
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Metrics
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    5
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Submit
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form
+        class="makeStyles-form-61"
+        novalidate=""
+      >
+        <div
+          class="makeStyles-formPart-62"
+        >
+          <div
+            class="MuiPaper-root makeStyles-paper-64 MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="makeStyles-root-67"
+            >
+              <h4
+                class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
+              >
+                Design and Document Your Experiment
+              </h4>
+              <p
+                class="MuiTypography-root MuiTypography-body2"
+              >
+                We think one of the best ways to prevent a failed experiment is by documenting what you hope to learn.
+                <br />
+                <br />
+                <strong>
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/abacus/wiki"
+                  >
+                    Our wiki is a great place to start
+                  </a>
+                  , it will instruct you on creating a P2 post.
+                </strong>
+              </p>
+              <div
+                class="MuiFormControl-root MuiTextField-root makeStyles-p2EntryField-68"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
+                  data-shrink="true"
+                  for="experiment.p2Url"
+                  id="experiment.p2Url-label"
+                >
+                  Your Post's URL
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input"
+                    id="experiment.p2Url"
+                    name="experiment.p2Url"
+                    placeholder="https://your-p2-post-here"
+                    type="text"
+                    value=""
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="PrivateNotchedOutline-root-70 MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="PrivateNotchedOutline-legendLabelled-72 PrivateNotchedOutline-legendNotched-73"
+                    >
+                      <span>
+                        Your Post's URL
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="makeStyles-formPartActions-63"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                Begin
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`sections should be browsable by the section buttons 2`] = `
+<div>
+  <div
+    class="makeStyles-root-59"
+  >
+    <div
+      class="makeStyles-navigation-60"
+    >
+      <div
+        class="MuiPaper-root MuiStepper-root MuiStepper-vertical MuiPaper-elevation0"
+      >
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical Mui-error"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root Mui-error"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label Mui-error MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Start
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical MuiStepConnector-active"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root MuiStepIcon-active"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    2
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiStepLabel-active MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Basic Info
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    3
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Audience
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    4
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Metrics
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    5
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Submit
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form
+        class="makeStyles-form-61"
+        novalidate=""
+      >
+        <div
+          class="makeStyles-formPart-62"
+        >
+          <div
+            class="MuiPaper-root makeStyles-paper-64 MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="makeStyles-root-74"
+            >
+              <h4
+                class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
+              >
+                Basic Info
+              </h4>
+              <div
+                class="makeStyles-row-75"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
+                    data-shrink="true"
+                    for="experiment.name"
+                    id="experiment.name-label"
+                  >
+                    Experiment name
+                    <span
+                      aria-hidden="true"
+                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                    >
+                       
+                      *
+                    </span>
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                  >
+                    <input
+                      aria-describedby="experiment.name-helper-text"
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiOutlinedInput-input"
+                      id="experiment.name"
+                      name="experiment.name"
+                      placeholder="experiment_name"
+                      required=""
+                      type="text"
+                      value=""
+                    />
+                    <fieldset
+                      aria-hidden="true"
+                      class="PrivateNotchedOutline-root-70 MuiOutlinedInput-notchedOutline"
+                    >
+                      <legend
+                        class="PrivateNotchedOutline-legendLabelled-72 PrivateNotchedOutline-legendNotched-73"
+                      >
+                        <span>
+                          Experiment name
+                           *
+                        </span>
+                      </legend>
+                    </fieldset>
+                  </div>
+                  <p
+                    class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+                    id="experiment.name-helper-text"
+                  >
+                    Use snake_case.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="makeStyles-row-75"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
+                    data-shrink="true"
+                    for="experiment.description"
+                    id="experiment.description-label"
+                  >
+                    Experiment description
+                    <span
+                      aria-hidden="true"
+                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                    >
+                       
+                      *
+                    </span>
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+                  >
+                    <textarea
+                      aria-describedby="experiment.description-helper-text"
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                      id="experiment.description"
+                      name="experiment.description"
+                      placeholder="Monthly vs. yearly pricing"
+                      required=""
+                      rows="4"
+                    />
+                    <fieldset
+                      aria-hidden="true"
+                      class="PrivateNotchedOutline-root-70 MuiOutlinedInput-notchedOutline"
+                    >
+                      <legend
+                        class="PrivateNotchedOutline-legendLabelled-72 PrivateNotchedOutline-legendNotched-73"
+                      >
+                        <span>
+                          Experiment description
+                           *
+                        </span>
+                      </legend>
+                    </fieldset>
+                  </div>
+                  <p
+                    class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+                    id="experiment.description-helper-text"
+                  >
+                    State your hypothesis.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="makeStyles-row-75"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-77"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
+                    data-shrink="true"
+                    for="experiment.startDatetime"
+                    id="experiment.startDatetime-label"
+                  >
+                    Start date
+                    <span
+                      aria-hidden="true"
+                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                    >
+                       
+                      *
+                    </span>
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+                  >
+                    <input
+                      aria-describedby="experiment.startDatetime-helper-text"
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiOutlinedInput-input"
+                      id="experiment.startDatetime"
+                      max="2021-08-12"
+                      min="2020-08-12"
+                      name="experiment.startDatetime"
+                      required=""
+                      type="date"
+                      value=""
+                    />
+                    <fieldset
+                      aria-hidden="true"
+                      class="PrivateNotchedOutline-root-70 MuiOutlinedInput-notchedOutline"
+                    >
+                      <legend
+                        class="PrivateNotchedOutline-legendLabelled-72 PrivateNotchedOutline-legendNotched-73"
+                      >
+                        <span>
+                          Start date
+                           *
+                        </span>
+                      </legend>
+                    </fieldset>
+                  </div>
+                  <p
+                    class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+                    id="experiment.startDatetime-helper-text"
+                  >
+                    Use the UTC timezone.
+                  </p>
+                </div>
+                <span
+                  class="makeStyles-through-76"
+                >
+                   through 
+                </span>
+                <div
+                  class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-77"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
+                    data-shrink="true"
+                    for="experiment.endDatetime"
+                    id="experiment.endDatetime-label"
+                  >
+                    End date
+                    <span
+                      aria-hidden="true"
+                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                    >
+                       
+                      *
+                    </span>
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+                  >
+                    <input
+                      aria-describedby="experiment.endDatetime-helper-text"
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiOutlinedInput-input"
+                      id="experiment.endDatetime"
+                      name="experiment.endDatetime"
+                      required=""
+                      type="date"
+                      value=""
+                    />
+                    <fieldset
+                      aria-hidden="true"
+                      class="PrivateNotchedOutline-root-70 MuiOutlinedInput-notchedOutline"
+                    >
+                      <legend
+                        class="PrivateNotchedOutline-legendLabelled-72 PrivateNotchedOutline-legendNotched-73"
+                      >
+                        <span>
+                          End date
+                           *
+                        </span>
+                      </legend>
+                    </fieldset>
+                  </div>
+                  <p
+                    class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+                    id="experiment.endDatetime-helper-text"
+                  >
+                    Use the UTC timezone.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="makeStyles-row-75"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
+                    data-shrink="true"
+                    for="experiment.ownerLogin"
+                    id="experiment.ownerLogin-label"
+                  >
+                    Owner
+                    <span
+                      aria-hidden="true"
+                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                    >
+                       
+                      *
+                    </span>
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
+                  >
+                    <div
+                      class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+                    >
+                      <p
+                        class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+                      >
+                        @
+                      </p>
+                    </div>
+                    <input
+                      aria-describedby="experiment.ownerLogin-helper-text"
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+                      id="experiment.ownerLogin"
+                      name="experiment.ownerLogin"
+                      placeholder="scjr"
+                      required=""
+                      type="text"
+                      value=""
+                    />
+                    <fieldset
+                      aria-hidden="true"
+                      class="PrivateNotchedOutline-root-70 MuiOutlinedInput-notchedOutline"
+                    >
+                      <legend
+                        class="PrivateNotchedOutline-legendLabelled-72 PrivateNotchedOutline-legendNotched-73"
+                      >
+                        <span>
+                          Owner
+                           *
+                        </span>
+                      </legend>
+                    </fieldset>
+                  </div>
+                  <p
+                    class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+                    id="experiment.ownerLogin-helper-text"
+                  >
+                    Use WordPress.com username.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="makeStyles-formPartActions-63"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                Previous
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                Next
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`sections should be browsable by the section buttons 3`] = `
+<div>
+  <div
+    class="makeStyles-root-59"
+  >
+    <div
+      class="makeStyles-navigation-60"
+    >
+      <div
+        class="MuiPaper-root MuiStepper-root MuiStepper-vertical MuiPaper-elevation0"
+      >
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical Mui-error"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root Mui-error"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label Mui-error MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Start
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical Mui-error"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root Mui-error"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label Mui-error MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Basic Info
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical MuiStep-completed"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root MuiStepIcon-completed"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm-2 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiStepLabel-completed MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Audience
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical Mui-error"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root Mui-error"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label Mui-error MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Metrics
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical MuiStepConnector-active"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root MuiStepIcon-active"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    5
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiStepLabel-active MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Submit
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form
+        class="makeStyles-form-61"
+        novalidate=""
+      >
+        <div
+          class="makeStyles-formPart-62"
+        >
+          <div
+            class="MuiPaper-root makeStyles-paper-64 MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <h4
+              class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
+            >
+              Confirm and Submit Your Experiment
+            </h4>
+            <p
+              class="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              Now is a good time to
+               
+              <a
+                class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                href="https://github.com/Automattic/abacus/wiki"
+              >
+                check our wiki's experiment creation checklist
+              </a>
+               
+              and confirm everything is in place.
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              Once you submit your experiment it will be set to staging, where it can be edited up until you set it to running.
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              <strong>
+                 When you are ready, click the Submit button below.
+              </strong>
+            </p>
+          </div>
+          <div
+            class="makeStyles-formPartActions-63"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                Previous
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+            <div
+              class="makeStyles-submitContainer-65"
+            >
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary Mui-disabled Mui-disabled"
+                disabled=""
+                tabindex="-1"
+                type="submit"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  Submit
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`sections should be browsable by the section buttons 4`] = `
+<div>
+  <div
+    class="makeStyles-root-59"
+  >
+    <div
+      class="makeStyles-navigation-60"
+    >
+      <div
+        class="MuiPaper-root MuiStepper-root MuiStepper-vertical MuiPaper-elevation0"
+      >
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical Mui-error"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root Mui-error"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label Mui-error MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Start
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical Mui-error"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root Mui-error"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label Mui-error MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Basic Info
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical MuiStep-completed"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root MuiStepIcon-completed"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm-2 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiStepLabel-completed MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Audience
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical MuiStepConnector-active"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root MuiStepIcon-active"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    4
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiStepLabel-active MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Metrics
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    5
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Submit
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form
+        class="makeStyles-form-61"
+        novalidate=""
+      >
+        <div
+          class="makeStyles-formPart-62"
+        >
+          <div
+            class="MuiPaper-root makeStyles-paper-64 MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="makeStyles-root-78"
+            >
+              <h4
+                class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
+              >
+                Assign Metrics
+              </h4>
+              <div
+                class="MuiTableContainer-root"
+              >
+                <table
+                  class="MuiTable-root"
+                >
+                  <thead
+                    class="MuiTableHead-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-head"
+                    >
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head"
+                        scope="col"
+                      >
+                        Metric
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head"
+                        scope="col"
+                      >
+                        Attribution Window
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head"
+                        scope="col"
+                      >
+                        Change Expected?
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head"
+                        scope="col"
+                      >
+                        Minimum Difference
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head"
+                        scope="col"
+                      />
+                    </tr>
+                  </thead>
+                  <tbody
+                    class="MuiTableBody-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body"
+                        colspan="5"
+                      >
+                        <p
+                          class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+                        >
+                          You don't have any metrics yet.
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div
+                class="makeStyles-addMetric-79"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-80"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                  />
+                </svg>
+                <div
+                  class="MuiFormControl-root makeStyles-addMetricSelect-82"
+                >
+                  <div
+                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                  >
+                    <div
+                      aria-haspopup="listbox"
+                      aria-labelledby="add-metric-label add-metric-select"
+                      class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                      id="add-metric-select"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <span
+                        class="makeStyles-addMetricPlaceholder-81"
+                      >
+                        Select a Metric
+                      </span>
+                    </div>
+                    <input
+                      type="hidden"
+                      value=""
+                    />
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSelect-icon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M7 10l5 5 5-5z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <button
+                  aria-label="Add metric"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    Assign
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="makeStyles-formPartActions-63"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                Previous
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                Next
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`skipping to submit should check all sections 1`] = `
+<div>
+  <div
+    class="makeStyles-root-114"
+  >
+    <div
+      class="makeStyles-navigation-115"
+    >
+      <div
+        class="MuiPaper-root MuiStepper-root MuiStepper-vertical MuiPaper-elevation0"
+      >
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical Mui-error"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root Mui-error"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label Mui-error MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Start
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical Mui-error"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root Mui-error"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label Mui-error MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Basic Info
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical MuiStep-completed"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root MuiStepIcon-completed"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm-2 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiStepLabel-completed MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Audience
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical Mui-error"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root Mui-error"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label Mui-error MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Metrics
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-vertical MuiStepConnector-active"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineVertical"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-vertical"
+        >
+          <button
+            class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiStepLabel-root MuiStepLabel-vertical"
+            >
+              <span
+                class="MuiStepLabel-iconContainer"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiStepIcon-root MuiStepIcon-active"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="12"
+                  />
+                  <text
+                    class="MuiStepIcon-text"
+                    text-anchor="middle"
+                    x="12"
+                    y="16"
+                  >
+                    5
+                  </text>
+                </svg>
+              </span>
+              <span
+                class="MuiStepLabel-labelContainer"
+              >
+                <span
+                  class="MuiTypography-root MuiStepLabel-label MuiStepLabel-active MuiTypography-body2 MuiTypography-displayBlock"
+                >
+                  Submit
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root MuiStepButton-touchRipple"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form
+        class="makeStyles-form-116"
+        novalidate=""
+      >
+        <div
+          class="makeStyles-formPart-117"
+        >
+          <div
+            class="MuiPaper-root makeStyles-paper-119 MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <h4
+              class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
+            >
+              Confirm and Submit Your Experiment
+            </h4>
+            <p
+              class="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              Now is a good time to
+               
+              <a
+                class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                href="https://github.com/Automattic/abacus/wiki"
+              >
+                check our wiki's experiment creation checklist
+              </a>
+               
+              and confirm everything is in place.
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              Once you submit your experiment it will be set to staging, where it can be edited up until you set it to running.
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
+            >
+              <strong>
+                 When you are ready, click the Submit button below.
+              </strong>
+            </p>
+          </div>
+          <div
+            class="makeStyles-formPartActions-118"
+          >
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-text"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                Previous
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+            <div
+              class="makeStyles-submitContainer-120"
+            >
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary Mui-disabled Mui-disabled"
+                disabled=""
+                tabindex="-1"
+                type="submit"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  Submit
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </form>

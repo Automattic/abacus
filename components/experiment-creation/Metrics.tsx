@@ -159,11 +159,14 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                               className={classes.attributionWindowSelect}
                               component={Select}
                               name={`experiment.metricAssignments[${index}].attributionWindowSeconds`}
-                              aria-label='Attribution Window'
+                              labelId={`experiment.metricAssignments[${index}].attributionWindowSeconds`}
                               size='small'
                               variant='outlined'
                               autoWidth
                               displayEmpty
+                              SelectDisplayProps={{
+                                'aria-label': 'Attribution Window',
+                              }}
                             >
                               <MenuItem value=''>-</MenuItem>
                               {Object.entries(AttributionWindowSecondsToHuman).map(
@@ -188,12 +191,15 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                           <TableCell>
                             <Field
                               className={classes.minDifferenceField}
-                              aria-label='Min difference'
                               component={TextField}
                               name={`experiment.metricAssignments[${index}].minDifference`}
+                              id={`experiment.metricAssignments[${index}].minDifference`}
                               type='number'
                               variant='outlined'
                               placeholder='-'
+                              inputProps={{
+                                'aria-label': 'Min difference',
+                              }}
                               InputProps={
                                 indexedMetrics[metricAssignment.metricId].parameterType ===
                                 MetricParameterType.Conversion
