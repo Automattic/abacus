@@ -14,7 +14,7 @@ import { render } from '@/test-helpers/test-utils'
 
 import ExperimentForm from './ExperimentForm'
 
-jest.setTimeout(10000)
+jest.setTimeout(20000)
 
 jest.mock('notistack')
 const mockedNotistack = notistack as jest.Mocked<typeof notistack>
