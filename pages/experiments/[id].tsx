@@ -17,5 +17,5 @@ export default function ExperimentPage() {
     return null
   }
 
-  return <ExperimentPageView {...{ experimentId, debugMode }} view={ExperimentView.Details} />
+  return <ExperimentPageView {...{ experimentId, debugMode }} view={ExperimentView.Overview} />
 }
