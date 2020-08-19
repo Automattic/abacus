@@ -152,24 +152,6 @@ const ExperimentForm = ({
     rootRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
   }, [currentStageId])
 
-  const router = useRouter()
-  const { enqueueSnackbar } = useSnackbar()
-  const onSubmit = async (formData: unknown) => {
-    try {
-      const { experiment } = formData as { experiment: ExperimentFullNew }
-      const receivedExperiment = await ExperimentsApi.create(experiment)
-      enqueueSnackbar('Experiment Created!', { variant: 'success' })
-      router.push(
-        '/experiments/[id]/code-setup?freshly_created',
-        `/experiments/${receivedExperiment.experimentId}/code-setup?freshly_created`,
-      )
-    } catch (error) {
-      enqueueSnackbar('Failed to create experiment 😨 (Form data logged to console.)', { variant: 'error' })
-      console.error(error)
-      console.info('Form data:', formData)
-    }
-  }
-    
   return (
     <Formik
       initialValues={{ experiment: initialExperiment }}
