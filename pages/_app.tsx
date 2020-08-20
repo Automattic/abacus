@@ -126,12 +126,12 @@ const App = React.memo(function App(props: AppProps) {
           {renderError ? (
             <RenderErrorView renderError={renderError} />
           ) : (
-              <SnackbarProvider preventDuplicate>
-                <div className={classes.app}>
-                  <Route {...routeProps} />
-                </div>
-              </SnackbarProvider>
-            )}
+            <SnackbarProvider preventDuplicate>
+              <div className={classes.app}>
+                <Route {...routeProps} />
+              </div>
+            </SnackbarProvider>
+          )}
         </ThemeProvider>
       )}
     </RenderErrorBoundary>
