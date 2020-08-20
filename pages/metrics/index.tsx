@@ -1,5 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/require-await */ // Temporary
-import { Button, createStyles, LinearProgress, makeStyles, Theme, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions } from '@material-ui/core'
+import {
+  Button,
+  createStyles,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  LinearProgress,
+  makeStyles,
+  TextField,
+  Theme,
+} from '@material-ui/core'
 import debugFactory from 'debug'
 import { Formik, FormikProps } from 'formik'
 import { useRouter } from 'next/router'
@@ -8,10 +20,10 @@ import React, { useState } from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
 import Layout from '@/components/Layout'
+import MetricFormFields from '@/components/MetricFormFields'
 import MetricsTable from '@/components/MetricsTable'
 import { MetricParameterType } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
-import MetricFormFields from '@/components/MetricFormFields'
 
 const debug = debugFactory('abacus:pages/metrics/index.tsx')
 
@@ -84,17 +96,17 @@ const MetricsIndexPage = () => {
       {isLoading ? (
         <LinearProgress />
       ) : (
-          <>
-            <MetricsTable canEditMetrics={debugMode} metrics={metrics || []} onEditMetric={onEditMetric} />
-            <div className={classes.actions}>
-              <Button variant='contained' color='secondary' onClick={onAddMetric}>
-                Add Metric
+        <>
+          <MetricsTable canEditMetrics={debugMode} metrics={metrics || []} onEditMetric={onEditMetric} />
+          <div className={classes.actions}>
+            <Button variant='contained' color='secondary' onClick={onAddMetric}>
+              Add Metric
             </Button>
-            </div>
-          </>
-        )}
-      <Dialog open={isEditingMetric} fullWidth aria-labelledby="edit-metric-form-dialog-title">
-        <DialogTitle id="edit-metric-form-dialog-title">Edit Metric</DialogTitle>
+          </div>
+        </>
+      )}
+      <Dialog open={isEditingMetric} fullWidth aria-labelledby='edit-metric-form-dialog-title'>
+        <DialogTitle id='edit-metric-form-dialog-title'>Edit Metric</DialogTitle>
         {editMetricIsLoading && <LinearProgress />}
         {editMetricInitialMetric && (
           <Formik initialValues={{ metric: editMetricInitialMetric }} onSubmit={onSubmitEditMetric}>
@@ -116,8 +128,8 @@ const MetricsIndexPage = () => {
           </Formik>
         )}
       </Dialog>
-      <Dialog open={isAddingMetric} fullWidth aria-labelledby="add-metric-form-dialog-title">
-        <DialogTitle id="add-metric-form-dialog-title">Add Metric</DialogTitle>
+      <Dialog open={isAddingMetric} fullWidth aria-labelledby='add-metric-form-dialog-title'>
+        <DialogTitle id='add-metric-form-dialog-title'>Add Metric</DialogTitle>
         <Formik initialValues={{ metric: addMetricInitialMetric }} onSubmit={onSubmitAddMetric}>
           {(formikProps) => (
             <form onSubmit={formikProps.handleSubmit}>
