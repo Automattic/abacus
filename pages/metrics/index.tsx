@@ -7,6 +7,7 @@ import MetricsApi from '@/api/MetricsApi'
 import Layout from '@/components/Layout'
 import MetricsTable from '@/components/MetricsTable'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
+import { MetricParameterType } from '@/lib/schemas'
 
 const debug = debugFactory('abacus:pages/metrics/index.tsx')
 
@@ -41,7 +42,16 @@ const MetricsIndexPage = () => {
     setEditMetricMetricId(metricId)
   }
 
-  const onAddMetric = () => alert('add metric')
+  // Add Metric Modal
+  const [isAddingMetric, setIsAddingMetric] = useState<boolean>(false)
+  const addMetricInitialMetric = {
+    name: '',
+    description: '',
+    parameterType: MetricParameterType.Conversion,
+    higherIsBetter: 'true',
+    params: '',
+  }
+  const onAddMetric = () => setIsAddingMetric(true)
 
   return (
     <Layout title='Metrics'>
