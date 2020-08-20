@@ -69,6 +69,14 @@ const MetricsIndexPage = () => {
     params: '',
   }
   const onAddMetric = () => setIsAddingMetric(true)
+  const onCancelAddMetric = () => {
+    setIsAddingMetric(false)
+  }
+  const onSubmitAddMetric = async (_formData: unknown) => {
+    // TODO: Full submission
+    enqueueSnackbar('Metric Added!', { variant: 'success' })
+    setIsAddingMetric(false)
+  }
 
   return (
     <Layout title='Metrics'>
@@ -105,6 +113,25 @@ const MetricsIndexPage = () => {
             )}
           </Formik>
         )}
+      </Dialog>
+      <Dialog open={isAddingMetric} aria-labelledby="add-metric-form-dialog-title">
+        <DialogTitle id="add-metric-form-dialog-title">Add Metric</DialogTitle>
+        <Formik initialValues={{ metric: addMetricInitialMetric }} onSubmit={onSubmitAddMetric}>
+          {(formikProps) => (
+            <form onSubmit={formikProps.handleSubmit}>
+              <DialogContent>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={onCancelAddMetric} color="primary">
+                  Cancel
+                </Button>
+                <Button color="primary" type="submit">
+                  Add
+                </Button>
+              </DialogActions>
+            </form>
+          )}
+        </Formik>
       </Dialog>
     </Layout>
   )
