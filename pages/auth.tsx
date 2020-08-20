@@ -1,8 +1,10 @@
 import { CircularProgress, Container, createStyles, makeStyles, Theme, Typography } from '@material-ui/core'
 import debugFactory from 'debug'
+import { toInt } from 'qc-to_int'
+import qs from 'querystring'
 import React, { useEffect, useState } from 'react'
 
-import { AuthError, onExperimentAuthCallbackUrl } from '@/utils/auth'
+import { saveExperimentsAuthInfo } from '@/utils/auth'
 
 const debug = debugFactory('abacus:pages/auth.tsx')
 
@@ -23,10 +25,18 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
+enum AuthError {
+  AccessDenied,
+  UnknownError,
+}
+
+const authErrorMessages: Record<AuthError, string> = {
+  [AuthError.AccessDenied]: 'Please log into WordPress.com and authorize Abacus - Testing to have access.',
+  [AuthError.UnknownError]: 'An unknown error has occured. Check the console for more information.',
+}
+
 /**
  * The authorization page.
- *
- * TODO: It is better to have this at /auth-callback
  *
  * Note: This relies upon the fact that `pages/_app.tsx` will redirect the user to
  * the OAuth authorize page.
@@ -35,22 +45,55 @@ const AuthPage = function AuthPage() {
   debug('AuthPage#render')
   const classes = useStyles()
 
-  const [error, setError] = useState<null | string>(null)
+  const [error, setError] = useState<null | AuthError>(null)
   useEffect(() => {
-    const error = onExperimentAuthCallbackUrl()
-    switch (error) {
-      case AuthError.AccessDenied: {
-        setError('Please log into WordPress.com and authorize Abacus - Testing to have access.')
-        break
-      }
-      case AuthError.UnknownError: {
-        setError('An unknown error has occured. Check the console for more information.')
-        break
-      }
-      default: {
-        return
-      }
+    // This is needed because of server-side rendering
+    if (typeof window === 'undefined') {
+      console.warn('onExperimentAuthCallbackUrl: Could not find `window`')
+      return
     }
+
+    if (!window.location.hash || window.location.hash.length === 0) {
+      console.error('Authentication Error:', 'Missing hash in auth callback url.')
+      setError(AuthError.UnknownError)
+    }
+
+    // If we have the hash with the authorization info, then extract the info, save
+    // it for later, and go to the "home" page.
+    //
+    // The hash should look something like the following upon success:
+    // #access_token=...&expires_in=#######&scope=global&site_id=0&token_type=bearer
+    // The hash should look something like the following upon failure:
+    // #error=access_denied&error_description=You+need+to+log+in+to+WordPress.com&state=
+    const authInfo = qs.parse(window.location.hash.substring(1))
+
+    if (authInfo.error) {
+      console.error('Authentication Error:', authInfo.error, authInfo.error_description)
+      saveExperimentsAuthInfo(null)
+      if (authInfo.error === 'access_denied') {
+        setError(AuthError.AccessDenied)
+      } else {
+        setError(AuthError.UnknownError)
+      }
+      return
+    }
+
+    if (!(authInfo.access_token && authInfo.scope === 'global' && authInfo.token_type === 'bearer')) {
+      console.error('Authentication Error: Invalid AuthInfo Received:', authInfo)
+      setError(AuthError.UnknownError)
+      return
+    }
+
+    const expiresInSeconds = toInt(authInfo.expires_in)
+    const experimentsAuthInfo = {
+      accessToken: authInfo.access_token as string,
+      expiresAt: typeof expiresInSeconds === 'number' ? Date.now() + expiresInSeconds * 1000 : null,
+      scope: 'global',
+      type: 'bearer',
+    }
+    saveExperimentsAuthInfo(experimentsAuthInfo)
+
+    window.location.replace(window.location.origin)
   }, [])
 
   return (
@@ -60,7 +103,7 @@ const AuthPage = function AuthPage() {
       </Typography>
       {error && (
         <Typography variant='body1' gutterBottom>
-          <strong>Oops! Something went wrong:</strong> {error}
+          <strong>Oops! Something went wrong:</strong> {authErrorMessages[error]}
         </Typography>
       )}
       <CircularProgress className={classes.progress} />

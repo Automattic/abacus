@@ -2,13 +2,15 @@ import { makeStyles } from '@material-ui/core/styles'
 import debugFactory from 'debug'
 import { AppProps } from 'next/app'
 import { SnackbarProvider } from 'notistack'
+import qs from 'querystring'
 import React from 'react'
 import * as yup from 'yup'
 
 import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import RenderErrorView from '@/components/RenderErrorView'
+import { config } from '@/config'
 import ThemeProvider from '@/styles/ThemeProvider'
-import { initializeExperimentsAuth } from '@/utils/auth'
+import { getExperimentsAuthInfo } from '@/utils/auth'
 
 const debug = debugFactory('abacus:pages/_app.tsx')
 
@@ -91,7 +93,31 @@ const App = React.memo(function App(props: AppProps) {
     }
   }, [])
 
-  initializeExperimentsAuth()
+  // Initialize Auth
+
+  // This is needed because of server-side rendering
+  if (typeof window === 'undefined') {
+    console.warn('Auth: Could not find `window`')
+  } else {
+    if (!config.experimentApi.needsAuth) {
+      console.warn('Auth: Proceeding uninitialized as needsAuth = false')
+    } else {
+      const experimentsAuthInfo = getExperimentsAuthInfo()
+      if (experimentsAuthInfo) {
+        console.info('Auth: Found existing auth info.')
+      } else {
+        console.info('Auth: Could not find existing auth info, re-authing.')
+        const authQuery = {
+          client_id: config.experimentApi.authClientId,
+          redirect_uri: `${window.location.origin}/auth`,
+          response_type: 'token',
+          scope: 'global',
+        }
+        const authUrl = `${config.experimentApi.authPath}?${qs.stringify(authQuery)}`
+        window.location.replace(authUrl)
+      }
+    }
+  }
 
   return (
     <RenderErrorBoundary>
@@ -100,12 +126,12 @@ const App = React.memo(function App(props: AppProps) {
           {renderError ? (
             <RenderErrorView renderError={renderError} />
           ) : (
-            <SnackbarProvider preventDuplicate>
-              <div className={classes.app}>
-                <Route {...routeProps} />
-              </div>
-            </SnackbarProvider>
-          )}
+              <SnackbarProvider preventDuplicate>
+                <div className={classes.app}>
+                  <Route {...routeProps} />
+                </div>
+              </SnackbarProvider>
+            )}
         </ThemeProvider>
       )}
     </RenderErrorBoundary>
