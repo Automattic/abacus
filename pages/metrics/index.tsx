@@ -1,4 +1,4 @@
-import { LinearProgress } from '@material-ui/core'
+import { LinearProgress, Button, createStyles, makeStyles, Theme } from '@material-ui/core'
 import debugFactory from 'debug'
 import React from 'react'
 
@@ -10,26 +10,42 @@ import { useRouter } from 'next/router'
 
 const debug = debugFactory('abacus:pages/metrics/index.tsx')
 
+const useStyles = makeStyles((theme: Theme) => createStyles({
+  actions: {
+    marginTop: theme.spacing(2),
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+}))
+
 const MetricsIndexPage = () => {
   debug('MetricsIndexPage#render')
+  const classes = useStyles()
+
   const { isLoading, data: metrics, error } = useDataSource(() => MetricsApi.findAll(), [])
+  useDataLoadingError(error, 'Metrics')
+
   const router = useRouter()
   const debugMode = router.query.debug === 'true'
 
-  useDataLoadingError(error, 'Metrics')
-
   const onEditMetric = (metricId: number) => alert(metricId)
+  const onAddMetric = () => alert('add metric')
 
   return (
     <Layout title='Metrics'>
       {isLoading
         ? <LinearProgress />
-        : <MetricsTable
-          canEditMetrics={debugMode}
-          metrics={metrics || []}
-          onEditMetric={onEditMetric}
-        />}
-    </Layout>
+        : <>
+          <MetricsTable
+            canEditMetrics={debugMode}
+            metrics={metrics || []}
+            onEditMetric={onEditMetric}
+          />
+          <div className={classes.actions}>
+            <Button variant="contained" color="secondary" onClick={onAddMetric}>Add Metric</Button>
+          </div>
+        </>}
+    </Layout >
   )
 }
 
