@@ -1,10 +1,20 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */ // Temporary
-import { Button, createStyles, LinearProgress, makeStyles, Theme, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions } from '@material-ui/core'
+/* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/require-await */ // Temporary
+import {
+  Button,
+  createStyles,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  LinearProgress,
+  makeStyles,
+  Theme,
+} from '@material-ui/core'
 import debugFactory from 'debug'
-import { useRouter } from 'next/router'
-import React, { useState } from 'react'
 import { Formik } from 'formik'
+import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
+import React, { useState } from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
 import Layout from '@/components/Layout'
@@ -46,7 +56,7 @@ const MetricsIndexPage = () => {
   } = useDataSource(async () => {
     return editMetricMetricId !== null ? await MetricsApi.findById(editMetricMetricId) : null
   }, [editMetricMetricId])
-  useDataLoadingError(error, 'Metric to edit')
+  useDataLoadingError(editMetricError, 'Metric to edit')
   const onEditMetric = (metricId: number) => {
     setEditMetricMetricId(metricId)
   }
@@ -83,29 +93,28 @@ const MetricsIndexPage = () => {
       {isLoading ? (
         <LinearProgress />
       ) : (
-          <>
-            <MetricsTable canEditMetrics={debugMode} metrics={metrics || []} onEditMetric={onEditMetric} />
-            <div className={classes.actions}>
-              <Button variant='contained' color='secondary' onClick={onAddMetric}>
-                Add Metric
+        <>
+          <MetricsTable canEditMetrics={debugMode} metrics={metrics || []} onEditMetric={onEditMetric} />
+          <div className={classes.actions}>
+            <Button variant='contained' color='secondary' onClick={onAddMetric}>
+              Add Metric
             </Button>
-            </div>
-          </>
-        )}
-      <Dialog open={isEditingMetric} aria-labelledby="edit-metric-form-dialog-title">
-        <DialogTitle id="edit-metric-form-dialog-title">Edit Metric</DialogTitle>
+          </div>
+        </>
+      )}
+      <Dialog open={isEditingMetric} aria-labelledby='edit-metric-form-dialog-title'>
+        <DialogTitle id='edit-metric-form-dialog-title'>Edit Metric</DialogTitle>
         {editMetricIsLoading && <LinearProgress />}
         {editMetricInitialMetric && (
           <Formik initialValues={{ metric: editMetricInitialMetric }} onSubmit={onSubmitEditMetric}>
             {(formikProps) => (
               <form onSubmit={formikProps.handleSubmit}>
-                <DialogContent>
-                </DialogContent>
+                <DialogContent></DialogContent>
                 <DialogActions>
-                  <Button onClick={onCancelEditMetric} color="primary">
+                  <Button onClick={onCancelEditMetric} color='primary'>
                     Cancel
                   </Button>
-                  <Button color="primary" type="submit">
+                  <Button color='primary' type='submit'>
                     Save
                   </Button>
                 </DialogActions>
@@ -114,18 +123,17 @@ const MetricsIndexPage = () => {
           </Formik>
         )}
       </Dialog>
-      <Dialog open={isAddingMetric} aria-labelledby="add-metric-form-dialog-title">
-        <DialogTitle id="add-metric-form-dialog-title">Add Metric</DialogTitle>
+      <Dialog open={isAddingMetric} aria-labelledby='add-metric-form-dialog-title'>
+        <DialogTitle id='add-metric-form-dialog-title'>Add Metric</DialogTitle>
         <Formik initialValues={{ metric: addMetricInitialMetric }} onSubmit={onSubmitAddMetric}>
           {(formikProps) => (
             <form onSubmit={formikProps.handleSubmit}>
-              <DialogContent>
-              </DialogContent>
+              <DialogContent></DialogContent>
               <DialogActions>
-                <Button onClick={onCancelAddMetric} color="primary">
+                <Button onClick={onCancelAddMetric} color='primary'>
                   Cancel
                 </Button>
-                <Button color="primary" type="submit">
+                <Button color='primary' type='submit'>
                   Add
                 </Button>
               </DialogActions>
