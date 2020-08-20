@@ -93,9 +93,16 @@ const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
 /**
  * Renders a table of "bare" metric information.
  */
-const MetricsTable = ({ metrics, canEditMetrics, onEditMetric }: { metrics: MetricBare[], canEditMetrics?: boolean, onEditMetric?: (metricId: number) => void }) => {
+const MetricsTable = ({
+  metrics,
+  canEditMetrics,
+  onEditMetric,
+}: {
+  metrics: MetricBare[]
+  canEditMetrics?: boolean
+  onEditMetric?: (metricId: number) => void
+}) => {
   debug('MetricsTable#render')
-
 
   const theme = useTheme()
   const tableColumns = [
@@ -125,17 +132,23 @@ const MetricsTable = ({ metrics, canEditMetrics, onEditMetric }: { metrics: Metr
 
   return (
     <MaterialTable
-      actions={canEditMetrics ? [{
-        icon: 'edit',
-        tooltip: 'Edit Metric',
-        onClick: (_event, rowData) => {
-          // istanbul ignore next; this should never happen
-          if (!onEditMetric) {
-            throw new Error('Missing onEditMetric while canEditMetrics = true')
-          }
-          onEditMetric((rowData as MetricBare).metricId)
-        }
-      }] : undefined}
+      actions={
+        canEditMetrics
+          ? [
+              {
+                icon: 'edit',
+                tooltip: 'Edit Metric',
+                onClick: (_event, rowData) => {
+                  // istanbul ignore next; this should never happen
+                  if (!onEditMetric) {
+                    throw new Error('Missing onEditMetric while canEditMetrics = true')
+                  }
+                  onEditMetric((rowData as MetricBare).metricId)
+                },
+              },
+            ]
+          : undefined
+      }
       columns={tableColumns}
       data={metrics}
       onRowClick={(_event, _rowData, togglePanel) => togglePanel && togglePanel()}
