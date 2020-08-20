@@ -12,7 +12,7 @@ interface ExperimentsAuthInfo {
 /**
  * Returns the saved Experiments authorization info if available and has not expired.
  */
-export const getExperimentsAuthInfo = (): ExperimentsAuthInfo | null => {
+const getExperimentsAuthInfo = (): ExperimentsAuthInfo | null => {
   try {
     const experimentsAuthInfo = JSON.parse(localStorage.getItem('experiments_auth_info') || 'null')
     if (experimentsAuthInfo && experimentsAuthInfo.expiresAt > Date.now()) {
@@ -30,10 +30,12 @@ export const getExperimentsAuthInfo = (): ExperimentsAuthInfo | null => {
  *
  * @param {ExperimentsAuthInfo} experimentsAuthInfo
  */
-export const saveExperimentsAuthInfo = (experimentsAuthInfo: ExperimentsAuthInfo | null) => {
+const saveExperimentsAuthInfo = (experimentsAuthInfo: ExperimentsAuthInfo | null) => {
   if (experimentsAuthInfo === null) {
     localStorage.removeItem('experiments_auth_info')
   } else {
     localStorage.setItem('experiments_auth_info', JSON.stringify(experimentsAuthInfo))
   }
 }
+
+export { getExperimentsAuthInfo, saveExperimentsAuthInfo }	
