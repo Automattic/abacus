@@ -1,0 +1,289 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders as expected 1`] = `
+<div>
+  <div
+    class="makeStyles-row-2"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required"
+        data-shrink="true"
+        for="metric.name"
+        id="metric.name-label"
+      >
+        Metric name
+        <span
+          aria-hidden="true"
+          class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+      >
+        <input
+          aria-describedby="metric.name-helper-text"
+          aria-invalid="false"
+          class="MuiInputBase-input MuiOutlinedInput-input"
+          id="metric.name"
+          name="metric.name"
+          placeholder="metric_name"
+          required=""
+          type="text"
+          value="metric_name"
+        />
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-5 PrivateNotchedOutline-legendNotched-6"
+          >
+            <span>
+              Metric name
+               *
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+      <p
+        class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
+        id="metric.name-helper-text"
+      >
+        Use snake_case.
+      </p>
+    </div>
+  </div>
+  <div
+    class="makeStyles-row-2"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required"
+        data-shrink="true"
+        for="metric.description"
+        id="metric.description-label"
+      >
+        Metric description
+        <span
+          aria-hidden="true"
+          class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+      >
+        <textarea
+          aria-invalid="false"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+          id="metric.description"
+          name="metric.description"
+          placeholder="Put your Metric description here!"
+          required=""
+          rows="4"
+        >
+          metric_description
+        </textarea>
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-3 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-5 PrivateNotchedOutline-legendNotched-6"
+          >
+            <span>
+              Metric description
+               *
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+  <div
+    class="makeStyles-row-2"
+  >
+    <label
+      class="MuiFormControlLabel-root"
+    >
+      <span
+        class="MuiSwitch-root"
+      >
+        <span
+          aria-disabled="false"
+          aria-label="Higher is better"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-7 MuiSwitch-switchBase MuiSwitch-colorSecondary PrivateSwitchBase-checked-8 Mui-checked"
+          label="Higher is better"
+          variant="outlined"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <input
+              checked=""
+              class="PrivateSwitchBase-input-10 MuiSwitch-input"
+              id="metric.higherIsBetter"
+              name="metric.higherIsBetter"
+              type="checkbox"
+              value="true"
+            />
+            <span
+              class="MuiSwitch-thumb"
+            />
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </span>
+        <span
+          class="MuiSwitch-track"
+        />
+      </span>
+      <span
+        class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+      >
+        Higher is better
+      </span>
+    </label>
+  </div>
+  <div
+    class="makeStyles-row-2"
+  >
+    <fieldset
+      class="MuiFormControl-root"
+    >
+      <label
+        class="MuiFormLabel-root Mui-required"
+      >
+        Metric Type
+        <span
+          aria-hidden="true"
+          class="MuiFormLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        class="MuiFormGroup-root"
+        required=""
+        role="radiogroup"
+      >
+        <label
+          class="MuiFormControlLabel-root"
+        >
+          <span
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-7 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-8 Mui-checked MuiIconButton-colorSecondary"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <input
+                checked=""
+                class="PrivateSwitchBase-input-10"
+                name="metric.parameterType"
+                type="radio"
+                value="conversion"
+              />
+              <div
+                class="PrivateRadioButtonIcon-root-11 PrivateRadioButtonIcon-checked-13"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-12"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                  />
+                </svg>
+              </div>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </span>
+          <span
+            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            Conversion
+          </span>
+        </label>
+        <label
+          class="MuiFormControlLabel-root"
+        >
+          <span
+            aria-disabled="false"
+            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-7 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <input
+                class="PrivateSwitchBase-input-10"
+                name="metric.parameterType"
+                type="radio"
+                value="revenue"
+              />
+              <div
+                class="PrivateRadioButtonIcon-root-11"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-12"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                  />
+                </svg>
+              </div>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </span>
+          <span
+            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            Revenue
+          </span>
+        </label>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
