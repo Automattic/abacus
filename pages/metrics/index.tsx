@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */ // Temporary
 import { Button, createStyles, LinearProgress, makeStyles, Theme } from '@material-ui/core'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
@@ -6,8 +7,8 @@ import React, { useState } from 'react'
 import MetricsApi from '@/api/MetricsApi'
 import Layout from '@/components/Layout'
 import MetricsTable from '@/components/MetricsTable'
-import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { MetricParameterType } from '@/lib/schemas'
+import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 
 const debug = debugFactory('abacus:pages/metrics/index.tsx')
 
@@ -34,7 +35,11 @@ const MetricsIndexPage = () => {
   // Edit Metric Modal
   const [editMetricMetricId, setEditMetricMetricId] = useState<number | null>(null)
   const isEditingMetric = editMetricMetricId !== null
-  const { isLoading: editMetricIsLoading, data: editMetricInitialMetric, error: editMetricError } = useDataSource(async () => {
+  const {
+    isLoading: editMetricIsLoading,
+    data: editMetricInitialMetric,
+    error: editMetricError,
+  } = useDataSource(async () => {
     return editMetricMetricId !== null ? await MetricsApi.findById(editMetricMetricId) : null
   }, [editMetricMetricId])
   useDataLoadingError(error, 'Metric to edit')
@@ -58,16 +63,15 @@ const MetricsIndexPage = () => {
       {isLoading ? (
         <LinearProgress />
       ) : (
-          <>
-            <MetricsTable canEditMetrics={debugMode} metrics={metrics || []} onEditMetric={onEditMetric} />
-            <div className={classes.actions}>
-              <Button variant='contained' color='secondary' onClick={onAddMetric}>
-                Add Metric
+        <>
+          <MetricsTable canEditMetrics={debugMode} metrics={metrics || []} onEditMetric={onEditMetric} />
+          <div className={classes.actions}>
+            <Button variant='contained' color='secondary' onClick={onAddMetric}>
+              Add Metric
             </Button>
-            </div>
-          </>
-        )}
-
+          </div>
+        </>
+      )}
     </Layout>
   )
 }
