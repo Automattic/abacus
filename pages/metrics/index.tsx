@@ -1,15 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/require-await */ // Temporary
-import {
-  Button,
-  createStyles,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  LinearProgress,
-  makeStyles,
-  Theme,
-} from '@material-ui/core'
+import { Button, createStyles, LinearProgress, makeStyles, Theme, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions } from '@material-ui/core'
 import debugFactory from 'debug'
 import { Formik } from 'formik'
 import { useRouter } from 'next/router'
@@ -93,15 +83,15 @@ const MetricsIndexPage = () => {
       {isLoading ? (
         <LinearProgress />
       ) : (
-        <>
-          <MetricsTable canEditMetrics={debugMode} metrics={metrics || []} onEditMetric={onEditMetric} />
-          <div className={classes.actions}>
-            <Button variant='contained' color='secondary' onClick={onAddMetric}>
-              Add Metric
+          <>
+            <MetricsTable canEditMetrics={debugMode} metrics={metrics || []} onEditMetric={onEditMetric} />
+            <div className={classes.actions}>
+              <Button variant='contained' color='secondary' onClick={onAddMetric}>
+                Add Metric
             </Button>
-          </div>
-        </>
-      )}
+            </div>
+          </>
+        )}
       <Dialog open={isEditingMetric} aria-labelledby='edit-metric-form-dialog-title'>
         <DialogTitle id='edit-metric-form-dialog-title'>Edit Metric</DialogTitle>
         {editMetricIsLoading && <LinearProgress />}
@@ -140,7 +130,6 @@ const MetricsIndexPage = () => {
             </form>
           )}
         </Formik>
-      </Dialog>
     </Layout>
   )
 }
