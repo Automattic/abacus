@@ -1,8 +1,9 @@
+import { createStyles, makeStyles, Paper, Theme, Typography } from '@material-ui/core'
 import { TableCellProps } from '@material-ui/core/TableCell'
 import _ from 'lodash'
 import React, { useMemo } from 'react'
 
-import LabelValuePanel from '@/components/LabelValuePanel'
+import LabelValueTable from '@/components/LabelValueTable'
 import SegmentsTable from '@/components/SegmentsTable'
 import VariationsTable from '@/components/VariationsTable'
 import { ExperimentFull, Segment, SegmentAssignment, SegmentType } from '@/lib/schemas'
@@ -43,6 +44,17 @@ function resolveSegmentAssignments(
   })
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    title: {
+      padding: theme.spacing(1, 2),
+      [theme.breakpoints.down('xs')]: {
+        padding: theme.spacing(1),
+      },
+    },
+  }),
+)
+
 /**
  * Renders the audience information of an experiment in a panel component.
  *
@@ -51,6 +63,8 @@ function resolveSegmentAssignments(
  *   of the experiment's segment assignments.
  */
 function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; segments: Segment[] }) {
+  const classes = useStyles()
+
   const segmentsByType = useMemo(
     () => _.groupBy(resolveSegmentAssignments(experiment.segmentAssignments, segments), _.property('segment.type')),
     [experiment.segmentAssignments, segments],
@@ -81,7 +95,14 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
       ),
     },
   ]
-  return <LabelValuePanel data={data} title='Audience' />
+  return (
+    <Paper>
+      <Typography className={classes.title} color='textPrimary' variant='h3'>
+        Audience
+      </Typography>
+      <LabelValueTable data={data} />
+    </Paper>
+  )
 }
 
 export default AudiencePanel
