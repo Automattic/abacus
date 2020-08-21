@@ -6,7 +6,7 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Typography from '@material-ui/core/Typography'
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import Label from '@/components/Label'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
@@ -15,6 +15,7 @@ import { ExperimentFull, MetricAssignment, MetricBare, MetricParameterType } fro
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
 import { Toolbar, Button } from '@material-ui/core'
 import { Add } from '@material-ui/icons'
+import { useSnackbar } from 'notistack'
 
 /**
  * Resolves the metric ID of the metric assignment with the actual metric. If the
@@ -67,6 +68,31 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
     [experiment, metrics],
   )
 
+  // Assign Metric Modal
+  const { enqueueSnackbar } = useSnackbar()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isAssigingMetric, setIsAssigningMetric] = useState<boolean>(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const assignMetricInitialAssignMetric = {
+    metricId: '',
+    attributionWindowSeconds: '',
+    changeExpected: 'false',
+    isPrimary: 'false',
+    minDifference: '',
+  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const onAssignMetric = () => setIsAssigningMetric(true)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const onCancelAssignMetric = () => {
+    setIsAssigningMetric(false)
+  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
+  const onSubmitAssignMetric = async (formData: unknown) => {
+    // TODO: Full submission
+    enqueueSnackbar('Metric Assigned Successfully!', { variant: 'success' })
+    setIsAssigningMetric(false)
+  }
+
   return (
     <Paper>
       <Toolbar>
@@ -75,7 +101,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
         </Typography>
         <Button>
           <Add />
-          Add Metric
+          Assign Metric
         </Button>
       </Toolbar>
       <Table>
