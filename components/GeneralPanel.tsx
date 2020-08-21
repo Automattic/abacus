@@ -1,4 +1,4 @@
-import { Paper, Typography, Toolbar, Button } from '@material-ui/core'
+import { Paper, Typography, Toolbar, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React, { useState } from 'react'
 import { Edit } from '@material-ui/icons'
@@ -8,6 +8,7 @@ import _ from 'lodash'
 import DatetimeText from '@/components/DatetimeText'
 import LabelValueTable from '@/components/LabelValueTable'
 import { ExperimentFull } from '@/lib/schemas'
+import { Formik } from 'formik'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -82,6 +83,24 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
         </Button>
       </Toolbar>
       <LabelValueTable data={data} />
+      <Dialog open={isEditing} aria-labelledby='edit-experiment-general-form-dialog-title'>
+        <DialogTitle id='edit-experiment-general-form-dialog-title'>Edit Experiment: General</DialogTitle>
+        <Formik initialValues={{ experiment: generalEditInitialExperiment }} onSubmit={onSubmitEdit}>
+          {(formikProps) => (
+            <form onSubmit={formikProps.handleSubmit}>
+              <DialogContent></DialogContent>
+              <DialogActions>
+                <Button onClick={onCancelEdit} color='primary'>
+                  Cancel
+                </Button>
+                <Button color='primary' type='submit'>
+                  Save
+                </Button>
+              </DialogActions>
+            </form>
+          )}
+        </Formik>
+      </Dialog>
     </Paper>
   )
 }
