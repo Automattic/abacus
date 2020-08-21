@@ -1,11 +1,13 @@
 import { Paper, Typography, Toolbar, Button } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import React from 'react'
+import React, { useState } from 'react'
+import { Edit } from '@material-ui/icons'
+import { useSnackbar } from 'notistack'
+import _ from 'lodash'
 
 import DatetimeText from '@/components/DatetimeText'
 import LabelValueTable from '@/components/LabelValueTable'
 import { ExperimentFull } from '@/lib/schemas'
-import { Edit } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -49,15 +51,34 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
     { label: 'Owner', value: experiment.ownerLogin },
   ]
 
+  // Edit Modal
+  const { enqueueSnackbar } = useSnackbar()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isEditing, setIsEditing] = useState<boolean>(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const generalEditInitialExperiment = _.pick(experiment, ['description', 'p2Url', 'owner', 'endDatetime'])
+  const onEdit = () => setIsEditing(true)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const onCancelEdit = () => {
+    setIsEditing(false)
+  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
+  const onSubmitEdit = async (formData: unknown) => {
+    // TODO: Full submission
+    enqueueSnackbar('Experiment Updated!', { variant: 'success' })
+    setIsEditing(false)
+  }
+
+
   return (
     <Paper>
       <Toolbar>
         <Typography className={classes.title} color='textPrimary' variant='h3'>
           General
         </Typography>
-        <Button>
+        <Button onClick={onEdit}>
           <Edit />
-          <span> Edit </span>
+           Edit
         </Button>
       </Toolbar>
       <LabelValueTable data={data} />
