@@ -39,7 +39,7 @@ const MetricsIndexPage = () => {
         <LinearProgress />
       ) : (
         <>
-          <MetricsTable metrics={metrics || []} onEditMetric={onEditMetric} />
+          <MetricsTable metrics={metrics || []} onEditMetric={debugMode && onEditMetric} />
           {debugMode && (
             <div className={classes.actions}>
               <Button variant='contained' color='secondary' onClick={onAddMetric}>
