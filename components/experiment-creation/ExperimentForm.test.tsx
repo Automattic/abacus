@@ -88,14 +88,14 @@ test('sections should be browsable by the next and prev buttons', async () => {
   await act(async () => {
     fireEvent.click(screen.getByRole('button', { name: /Begin/ }))
   })
-  // screen.getAllByText(/Basic Info/)
-  // await act(async () => {
-  //   fireEvent.click(screen.getByRole('button', { name: /Previous/ }))
-  // })
-  // screen.getByText(/Design and Document Your Experiment/)
-  // await act(async () => {
-  //   fireEvent.click(screen.getByRole('button', { name: /Begin/ }))
-  // })
+  screen.getAllByText(/Basic Info/)
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Previous/ }))
+  })
+  screen.getByText(/Design and Document Your Experiment/)
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Begin/ }))
+  })
   screen.getAllByText(/Basic Info/)
   await act(async () => {
     fireEvent.click(screen.getByRole('button', { name: /Next/ }))
