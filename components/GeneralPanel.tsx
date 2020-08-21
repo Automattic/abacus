@@ -4,16 +4,19 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  InputAdornment,
   Paper,
   Toolbar,
   Typography,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Edit } from '@material-ui/icons'
-import { Formik } from 'formik'
+import { Formik, Field } from 'formik'
 import _ from 'lodash'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
+import * as dateFns from 'date-fns'
+import { TextField } from 'formik-material-ui'
 
 import DatetimeText from '@/components/DatetimeText'
 import LabelValueTable from '@/components/LabelValueTable'
@@ -27,6 +30,20 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       flexGrow: 1,
+    },
+    row: {
+      margin: theme.spacing(5, 0),
+      display: 'flex',
+      alignItems: 'center',
+      '&:first-of-type': {
+        marginTop: theme.spacing(3),
+      },
+    },
+    datePicker: {
+      '& input:invalid': {
+        // Fix the native date-picker placeholder text colour
+        color: theme.palette.text.hint,
+      },
     },
   }),
 )
@@ -66,7 +83,10 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isEditing, setIsEditing] = useState<boolean>(false)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const generalEditInitialExperiment = _.pick(experiment, ['description', 'p2Url', 'owner', 'endDatetime'])
+  const generalEditInitialExperiment = {
+    ..._.pick(experiment, ['description', 'p2Url', 'ownerLogin', 'endDatetime']),
+    endDatetime: dateFns.format(experiment.endDatetime, 'yyyy-MM-dd'),
+  }
   const onEdit = () => setIsEditing(true)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onCancelEdit = () => {
@@ -91,12 +111,85 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
         </Button>
       </Toolbar>
       <LabelValueTable data={data} />
-      <Dialog open={isEditing} aria-labelledby='edit-experiment-general-form-dialog-title'>
+      <Dialog open={isEditing} fullWidth aria-labelledby='edit-experiment-general-form-dialog-title'>
         <DialogTitle id='edit-experiment-general-form-dialog-title'>Edit Experiment: General</DialogTitle>
         <Formik initialValues={{ experiment: generalEditInitialExperiment }} onSubmit={onSubmitEdit}>
           {(formikProps) => (
             <form onSubmit={formikProps.handleSubmit}>
-              <DialogContent></DialogContent>
+              <DialogContent>
+                <div className={classes.row}>
+                  <Field
+                    component={TextField}
+                    id='experiment.p2Url'
+                    name='experiment.p2Url'
+                    placeholder='https://your-p2-post-here'
+                    label={`Your Post's URL`}
+                    variant='outlined'
+                    fullWidth
+                    required
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                </div>
+
+                <div className={classes.row}>
+                  <Field
+                    component={TextField}
+                    name='experiment.description'
+                    id='experiment.description'
+                    label='Experiment description'
+                    placeholder='Monthly vs. yearly pricing'
+                    helperText='State your hypothesis.'
+                    variant='outlined'
+                    fullWidth
+                    required
+                    multiline
+                    rows={4}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                </div>
+
+                <div className={classes.row}>
+                  <Field
+                    component={TextField}
+                    className={classes.datePicker}
+                    name='experiment.endDatetime'
+                    id='experiment.endDatetime'
+                    label='End date'
+                    helperText='Use the UTC timezone.'
+                    type='date'
+                    variant='outlined'
+                    fullWidth
+                    required
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                </div>
+
+                <div className={classes.row}>
+                  <Field
+                    component={TextField}
+                    name='experiment.ownerLogin'
+                    id='experiment.ownerLogin'
+                    label='Owner'
+                    placeholder='scjr'
+                    helperText='Use WordPress.com username.'
+                    variant='outlined'
+                    fullWidth
+                    required
+                    InputProps={{
+                      startAdornment: <InputAdornment position='start'>@</InputAdornment>,
+                    }}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                </div>
+              </DialogContent>
               <DialogActions>
                 <Button onClick={onCancelEdit} color='primary'>
                   Cancel
