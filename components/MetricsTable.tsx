@@ -92,14 +92,14 @@ const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
 
 /**
  * Renders a table of "bare" metric information.
+ *
+ * @param onEditMetric A Callback. Setting this will show the edit action in the table.
  */
 const MetricsTable = ({
   metrics,
-  canEditMetrics,
   onEditMetric,
 }: {
   metrics: MetricBare[]
-  canEditMetrics?: boolean
   onEditMetric?: (metricId: number) => void
 }) => {
   debug('MetricsTable#render')
@@ -133,20 +133,16 @@ const MetricsTable = ({
   return (
     <MaterialTable
       actions={
-        canEditMetrics
+        onEditMetric
           ? [
-              {
-                icon: 'edit',
-                tooltip: 'Edit Metric',
-                onClick: (_event, rowData) => {
-                  // istanbul ignore next; this should never happen
-                  if (!onEditMetric) {
-                    throw new Error('Missing onEditMetric while canEditMetrics = true')
-                  }
-                  onEditMetric((rowData as MetricBare).metricId)
-                },
+            {
+              icon: 'edit',
+              tooltip: 'Edit Metric',
+              onClick: (_event, rowData) => {
+                onEditMetric((rowData as MetricBare).metricId)
               },
-            ]
+            },
+          ]
           : undefined
       }
       columns={tableColumns}

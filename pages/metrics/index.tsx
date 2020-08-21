@@ -63,16 +63,18 @@ const MetricsIndexPage = () => {
       {isLoading ? (
         <LinearProgress />
       ) : (
-        <>
-          <MetricsTable canEditMetrics={debugMode} metrics={metrics || []} onEditMetric={onEditMetric} />
-          <div className={classes.actions}>
-            <Button variant='contained' color='secondary' onClick={onAddMetric}>
-              Add Metric
-            </Button>
-          </div>
-        </>
-      )}
-    </Layout>
+          <>
+            <MetricsTable metrics={metrics || []} onEditMetric={debugMode ? onEditMetric : undefined} />
+            {debugMode && (
+              <div className={classes.actions}>
+                <Button variant='contained' color='secondary' onClick={onAddMetric}>
+                  Add Metric
+              </Button>
+              </div>
+            )}
+          </>
+        )}
+    </Layout >
   )
 }
 
