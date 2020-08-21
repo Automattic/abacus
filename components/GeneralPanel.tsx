@@ -1,10 +1,11 @@
-import { Paper, Typography } from '@material-ui/core'
+import { Paper, Typography, Toolbar, Button } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
 import LabelValueTable from '@/components/LabelValueTable'
 import { ExperimentFull } from '@/lib/schemas'
+import { Edit } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -13,10 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginRight: theme.spacing(2),
     },
     title: {
-      padding: theme.spacing(1, 2),
-      [theme.breakpoints.down('xs')]: {
-        padding: theme.spacing(1),
-      },
+      flexGrow: 1,
     },
   }),
 )
@@ -53,9 +51,15 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
 
   return (
     <Paper>
-      <Typography className={classes.title} color='textPrimary' variant='h3'>
-        General
-      </Typography>
+      <Toolbar>
+        <Typography className={classes.title} color='textPrimary' variant='h3'>
+          General
+        </Typography>
+        <Button>
+          <Edit />
+          <span> Edit </span>
+        </Button>
+      </Toolbar>
       <LabelValueTable data={data} />
     </Paper>
   )
