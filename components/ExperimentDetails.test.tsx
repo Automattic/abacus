@@ -1,4 +1,5 @@
 import MockDate from 'mockdate'
+import * as notistack from 'notistack'
 import React from 'react'
 
 import Fixtures from '@/test-helpers/fixtures'
@@ -7,6 +8,13 @@ import { createMatchMedia, render } from '@/test-helpers/test-utils'
 import ExperimentDetails from './ExperimentDetails'
 
 MockDate.set('2020-07-21')
+
+jest.mock('notistack')
+const mockedNotistack = notistack as jest.Mocked<typeof notistack>
+mockedNotistack.useSnackbar.mockImplementation(() => ({
+  enqueueSnackbar: jest.fn(),
+  closeSnackbar: jest.fn(),
+}))
 
 const initialJsDomWindowInnerWidth = window.innerWidth
 afterEach(() => {
