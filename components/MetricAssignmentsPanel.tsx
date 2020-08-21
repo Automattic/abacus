@@ -1,3 +1,4 @@
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Toolbar } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
@@ -6,6 +7,9 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Typography from '@material-ui/core/Typography'
+import { Add } from '@material-ui/icons'
+import { Formik } from 'formik'
+import { useSnackbar } from 'notistack'
 import React, { useMemo, useState } from 'react'
 
 import Label from '@/components/Label'
@@ -13,9 +17,6 @@ import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import * as MetricAssignments from '@/lib/metric-assignments'
 import { ExperimentFull, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
-import { Toolbar, Button } from '@material-ui/core'
-import { Add } from '@material-ui/icons'
-import { useSnackbar } from 'notistack'
 
 /**
  * Resolves the metric ID of the metric assignment with the actual metric. If the
@@ -70,9 +71,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
 
   // Assign Metric Modal
   const { enqueueSnackbar } = useSnackbar()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isAssigingMetric, setIsAssigningMetric] = useState<boolean>(false)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isAssigningMetric, setIsAssigningMetric] = useState<boolean>(false)
   const assignMetricInitialAssignMetric = {
     metricId: '',
     attributionWindowSeconds: '',
@@ -80,9 +79,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
     isPrimary: 'false',
     minDifference: '',
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onAssignMetric = () => setIsAssigningMetric(true)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onCancelAssignMetric = () => {
     setIsAssigningMetric(false)
   }
@@ -99,7 +96,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
         <Typography className={classes.title} color='textPrimary' variant='h3'>
           Metrics
         </Typography>
-        <Button>
+        <Button onClick={onAssignMetric}>
           <Add />
           Assign Metric
         </Button>
@@ -143,6 +140,24 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
           ))}
         </TableBody>
       </Table>
+      <Dialog open={isAssigningMetric} aria-labelledby='assign-metric-form-dialog-title'>
+        <DialogTitle id='assign-metric-form-dialog-title'>Add Metric</DialogTitle>
+        <Formik initialValues={{ metricAssignment: assignMetricInitialAssignMetric }} onSubmit={onSubmitAssignMetric}>
+          {(formikProps) => (
+            <form onSubmit={formikProps.handleSubmit}>
+              <DialogContent></DialogContent>
+              <DialogActions>
+                <Button onClick={onCancelAssignMetric} color='primary'>
+                  Cancel
+                </Button>
+                <Button color='primary' type='submit'>
+                  Assign
+                </Button>
+              </DialogActions>
+            </form>
+          )}
+        </Formik>
+      </Dialog>
     </Paper>
   )
 }
