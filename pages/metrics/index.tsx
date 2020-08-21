@@ -40,7 +40,7 @@ const MetricsIndexPage = () => {
     data: editMetricInitialMetric,
     error: editMetricError,
   } = useDataSource(async () => {
-    return editMetricMetricId !== null ? await MetricsApi.findById(editMetricMetricId) : null
+    return editMetricMetricId === null ? null : await MetricsApi.findById(editMetricMetricId)
   }, [editMetricMetricId])
   useDataLoadingError(error, 'Metric to edit')
   const onEditMetric = (metricId: number) => {
