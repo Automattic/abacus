@@ -5,17 +5,17 @@ import React from 'react'
 
 import ExperimentPageView, { ExperimentView } from '@/components/ExperimentPageView'
 
-const debug = debugFactory('abacus:pages/experiments/[id].tsx')
+const debug = debugFactory('abacus:pages/experiments/[id]/results.tsx')
 
-export default function ExperimentPage() {
+export default function CodeSetupPage() {
   const router = useRouter()
   const experimentId = toIntOrNull(router.query.id)
   const debugMode = router.query.debug === 'true'
-  debug(`ExperimentPage#render ${experimentId}`)
+  debug(`ExperimentResultsPage#render ${experimentId}`)
 
   if (!experimentId) {
     return null
   }
 
-  return <ExperimentPageView {...{ experimentId, debugMode }} view={ExperimentView.Overview} />
+  return <ExperimentPageView {...{ experimentId, debugMode }} view={ExperimentView.CodeSetup} />
 }

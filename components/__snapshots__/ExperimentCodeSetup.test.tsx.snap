@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders as expected 1`] = `
+<div>
+  <div
+    class="MuiPaper-root makeStyles-root-1 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <h4
+      class="MuiTypography-root MuiTypography-h4"
+    >
+      Experiment Code Setup
+    </h4>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-gutterBottom"
+    >
+      Connect this experiment to your code.
+    </h6>
+    <br />
+    <h5
+      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+    >
+      Using React
+    </h5>
+    <p
+      class="MuiTypography-root MuiTypography-body1"
+    >
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        href="https://github.com/Automattic/wp-calypso/tree/master/client/components/experiment"
+      >
+        See this Readme
+      </a>
+    </p>
+    <br />
+    <h5
+      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+    >
+      Using PHP
+    </h5>
+    <p
+      class="MuiTypography-root MuiTypography-body1"
+    >
+      See 
+      <code
+        class="MuiTypography-root makeStyles-root-2 MuiTypography-body1"
+      >
+        wp-content/lib/wpcom-abtest/wpcom-experiment.php
+      </code>
+    </p>
+  </div>
+</div>
+`;

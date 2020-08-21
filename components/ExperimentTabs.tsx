@@ -4,6 +4,8 @@ import Tabs from '@material-ui/core/Tabs'
 import { useRouter } from 'next/router'
 import React, { ReactNode } from 'react'
 
+import { ExperimentView } from './ExperimentPageView'
+
 const useStyles = makeStyles(() =>
   createStyles({
     tab: {
@@ -41,22 +43,27 @@ export default function ExperimentTabs({
 }: {
   className?: string
   experimentId: number
-  tab: 'details' | 'results' | 'snippets'
+  tab: ExperimentView
 }) {
   return (
     <Tabs className={className} value={tab}>
-      <LinkTab as={`/experiments/${experimentId}`} label='Details' value='details' url='/experiments/[id]' />
       <LinkTab
-        as={`/experiments/${experimentId}/results`}
-        label='Results'
-        value='results'
-        url='/experiments/[id]/results'
+        label='Overview'
+        value={ExperimentView.Overview}
+        url='/experiments/[id]'
+        as={`/experiments/${experimentId}`}
       />
       <LinkTab
-        as={`/experiments/${experimentId}/snippets`}
-        label='Snippets'
-        value='snippets'
-        url='/experiments/[id]/snippets'
+        label='Results'
+        value={ExperimentView.Results}
+        url='/experiments/[id]/results'
+        as={`/experiments/${experimentId}/results`}
+      />
+      <LinkTab
+        label='Code Setup'
+        value={ExperimentView.CodeSetup}
+        url='/experiments/[id]/code-setup'
+        as={`/experiments/${experimentId}/code-setup`}
       />
     </Tabs>
   )
