@@ -13,6 +13,8 @@ import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import * as MetricAssignments from '@/lib/metric-assignments'
 import { ExperimentFull, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
+import { Toolbar, Button } from '@material-ui/core'
+import { Add } from '@material-ui/icons'
 
 /**
  * Resolves the metric ID of the metric assignment with the actual metric. If the
@@ -46,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginLeft: theme.spacing(1),
     },
     title: {
-      padding: theme.spacing(1, 2),
+      flexGrow: 1,
     },
   }),
 )
@@ -67,9 +69,15 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
 
   return (
     <Paper>
-      <Typography className={classes.title} color='textPrimary' variant='h3'>
-        Metrics
-      </Typography>
+      <Toolbar>
+        <Typography className={classes.title} color='textPrimary' variant='h3'>
+          Metrics
+        </Typography>
+        <Button>
+          <Add />
+          Add Metric
+        </Button>
+      </Toolbar>
       <Table>
         <TableHead>
           <TableRow>
