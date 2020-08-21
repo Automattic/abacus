@@ -8,6 +8,7 @@ import ExperimentsApi from '@/api/ExperimentsApi'
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
 import ExperimentResults from '@/components/experiment-results/ExperimentResults'
+import ExperimentCodeSetup from '@/components/ExperimentCodeSetup'
 import ExperimentDetails from '@/components/ExperimentDetails'
 import ExperimentTabs from '@/components/ExperimentTabs'
 import Layout from '@/components/Layout'
@@ -24,9 +25,9 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 export enum ExperimentView {
-  Details = 'details',
+  Overview = 'overview',
   Results = 'results',
-  Snippets = 'snippets',
+  CodeSetup = 'code-setup',
 }
 
 export default function ExperimentPageView({
@@ -79,10 +80,11 @@ export default function ExperimentPageView({
           segments &&
           analyses && (
             <>
-              {view === ExperimentView.Details && <ExperimentDetails {...{ experiment, metrics, segments }} />}
+              {view === ExperimentView.Overview && <ExperimentDetails {...{ experiment, metrics, segments }} />}
               {view === ExperimentView.Results && (
                 <ExperimentResults {...{ experiment, metrics, analyses, debugMode }} />
               )}
+              {view === ExperimentView.CodeSetup && <ExperimentCodeSetup />}
             </>
           )
         )}

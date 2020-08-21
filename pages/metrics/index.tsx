@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/require-await */ // Temporary
 import {
   Button,
   createStyles,
@@ -54,7 +53,7 @@ const MetricsIndexPage = () => {
     data: editMetricInitialMetric,
     error: editMetricError,
   } = useDataSource(async () => {
-    return editMetricMetricId !== null ? await MetricsApi.findById(editMetricMetricId) : null
+    return editMetricMetricId === null ? null : await MetricsApi.findById(editMetricMetricId)
   }, [editMetricMetricId])
   useDataLoadingError(editMetricError, 'Metric to edit')
   const onEditMetric = (metricId: number) => {
@@ -63,7 +62,8 @@ const MetricsIndexPage = () => {
   const onCancelEditMetric = () => {
     setEditMetricMetricId(null)
   }
-  const onSubmitEditMetric = async (_formData: unknown) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
+  const onSubmitEditMetric = async (formData: unknown) => {
     // TODO: Full submission
     enqueueSnackbar('Metric Edited!', { variant: 'success' })
     setEditMetricMetricId(null)
@@ -82,7 +82,8 @@ const MetricsIndexPage = () => {
   const onCancelAddMetric = () => {
     setIsAddingMetric(false)
   }
-  const onSubmitAddMetric = async (_formData: unknown) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
+  const onSubmitAddMetric = async (formData: unknown) => {
     // TODO: Full submission
     enqueueSnackbar('Metric Added!', { variant: 'success' })
     setIsAddingMetric(false)
@@ -94,12 +95,14 @@ const MetricsIndexPage = () => {
         <LinearProgress />
       ) : (
         <>
-          <MetricsTable canEditMetrics={debugMode} metrics={metrics || []} onEditMetric={onEditMetric} />
-          <div className={classes.actions}>
-            <Button variant='contained' color='secondary' onClick={onAddMetric}>
-              Add Metric
-            </Button>
-          </div>
+          <MetricsTable metrics={metrics || []} onEditMetric={debugMode ? onEditMetric : undefined} />
+          {debugMode && (
+            <div className={classes.actions}>
+              <Button variant='contained' color='secondary' onClick={onAddMetric}>
+                Add Metric
+              </Button>
+            </div>
+          )}
         </>
       )}
       <Dialog open={isEditingMetric} aria-labelledby='edit-metric-form-dialog-title'>
