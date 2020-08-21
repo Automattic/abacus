@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */ // Temporary
 import { Button, createStyles, LinearProgress, makeStyles, Theme } from '@material-ui/core'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
@@ -34,10 +33,14 @@ const MetricsIndexPage = () => {
 
   // Edit Metric Modal
   const [editMetricMetricId, setEditMetricMetricId] = useState<number | null>(null)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars 
   const isEditingMetric = editMetricMetricId !== null
   const {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars 
     isLoading: editMetricIsLoading,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars 
     data: editMetricInitialMetric,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars 
     error: editMetricError,
   } = useDataSource(async () => {
     return editMetricMetricId === null ? null : await MetricsApi.findById(editMetricMetricId)
@@ -48,7 +51,9 @@ const MetricsIndexPage = () => {
   }
 
   // Add Metric Modal
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars 
   const [isAddingMetric, setIsAddingMetric] = useState<boolean>(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars 
   const addMetricInitialMetric = {
     name: '',
     description: '',
