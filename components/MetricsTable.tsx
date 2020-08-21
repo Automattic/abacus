@@ -135,14 +135,14 @@ const MetricsTable = ({
       actions={
         onEditMetric
           ? [
-            {
-              icon: 'edit',
-              tooltip: 'Edit Metric',
-              onClick: (_event, rowData) => {
-                onEditMetric((rowData as MetricBare).metricId)
+              {
+                icon: 'edit',
+                tooltip: 'Edit Metric',
+                onClick: (_event, rowData) => {
+                  onEditMetric((rowData as MetricBare).metricId)
+                },
               },
-            },
-          ]
+            ]
           : undefined
       }
       columns={tableColumns}

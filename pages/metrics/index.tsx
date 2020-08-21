@@ -33,14 +33,14 @@ const MetricsIndexPage = () => {
 
   // Edit Metric Modal
   const [editMetricMetricId, setEditMetricMetricId] = useState<number | null>(null)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const isEditingMetric = editMetricMetricId !== null
   const {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     isLoading: editMetricIsLoading,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     data: editMetricInitialMetric,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     error: editMetricError,
   } = useDataSource(async () => {
     return editMetricMetricId === null ? null : await MetricsApi.findById(editMetricMetricId)
@@ -51,9 +51,9 @@ const MetricsIndexPage = () => {
   }
 
   // Add Metric Modal
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isAddingMetric, setIsAddingMetric] = useState<boolean>(false)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const addMetricInitialMetric = {
     name: '',
     description: '',
@@ -68,18 +68,18 @@ const MetricsIndexPage = () => {
       {isLoading ? (
         <LinearProgress />
       ) : (
-          <>
-            <MetricsTable metrics={metrics || []} onEditMetric={debugMode ? onEditMetric : undefined} />
-            {debugMode && (
-              <div className={classes.actions}>
-                <Button variant='contained' color='secondary' onClick={onAddMetric}>
-                  Add Metric
+        <>
+          <MetricsTable metrics={metrics || []} onEditMetric={debugMode ? onEditMetric : undefined} />
+          {debugMode && (
+            <div className={classes.actions}>
+              <Button variant='contained' color='secondary' onClick={onAddMetric}>
+                Add Metric
               </Button>
-              </div>
-            )}
-          </>
-        )}
-    </Layout >
+            </div>
+          )}
+        </>
+      )}
+    </Layout>
   )
 }
 
