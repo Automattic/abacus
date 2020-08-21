@@ -124,11 +124,39 @@ exports[`renders as expected at large width 1`] = `
           <div
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
-            <h3
-              class="MuiTypography-root makeStyles-title-5 MuiTypography-h3 MuiTypography-colorTextPrimary"
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
-              Metrics
-            </h3>
+              <h3
+                class="MuiTypography-root makeStyles-title-5 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Metrics
+              </h3>
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-text"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                    />
+                  </svg>
+                  Assign Metric
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
             <table
               class="MuiTable-root"
             >
@@ -848,11 +876,39 @@ exports[`renders as expected at small width 1`] = `
           <div
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
-            <h3
-              class="MuiTypography-root makeStyles-title-14 MuiTypography-h3 MuiTypography-colorTextPrimary"
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
-              Metrics
-            </h3>
+              <h3
+                class="MuiTypography-root makeStyles-title-14 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Metrics
+              </h3>
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-text"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                    />
+                  </svg>
+                  Assign Metric
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
             <table
               class="MuiTable-root"
             >
@@ -1355,11 +1411,39 @@ exports[`renders as expected with conclusion data 1`] = `
           <div
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
-            <h3
-              class="MuiTypography-root makeStyles-title-23 MuiTypography-h3 MuiTypography-colorTextPrimary"
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
-              Metrics
-            </h3>
+              <h3
+                class="MuiTypography-root makeStyles-title-23 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Metrics
+              </h3>
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-text"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                    />
+                  </svg>
+                  Assign Metric
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
             <table
               class="MuiTable-root"
             >
@@ -1937,11 +2021,39 @@ exports[`renders as expected without conclusion data 1`] = `
           <div
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
-            <h3
-              class="MuiTypography-root makeStyles-title-33 MuiTypography-h3 MuiTypography-colorTextPrimary"
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
-              Metrics
-            </h3>
+              <h3
+                class="MuiTypography-root makeStyles-title-33 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Metrics
+              </h3>
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-text"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                    />
+                  </svg>
+                  Assign Metric
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
             <table
               class="MuiTable-root"
             >

@@ -1,9 +1,18 @@
+import { fireEvent, screen, waitFor } from '@testing-library/react'
+import * as notistack from 'notistack'
 import React from 'react'
 
 import Fixtures from '@/test-helpers/fixtures'
 import { render } from '@/test-helpers/test-utils'
 
 import MetricAssignmentsPanel from './MetricAssignmentsPanel'
+
+jest.mock('notistack')
+const mockedNotistack = notistack as jest.Mocked<typeof notistack>
+mockedNotistack.useSnackbar.mockImplementation(() => ({
+  enqueueSnackbar: jest.fn(),
+  closeSnackbar: jest.fn(),
+}))
 
 test('renders as expected with all metrics resolvable', () => {
   const metrics = Fixtures.createMetricBares()
@@ -15,11 +24,39 @@ test('renders as expected with all metrics resolvable', () => {
       <div
         class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
       >
-        <h3
-          class="MuiTypography-root makeStyles-title-2 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        <div
+          class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
         >
-          Metrics
-        </h3>
+          <h3
+            class="MuiTypography-root makeStyles-title-2 MuiTypography-h3 MuiTypography-colorTextPrimary"
+          >
+            Metrics
+          </h3>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-text"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                />
+              </svg>
+              Assign Metric
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
         <table
           class="MuiTable-root"
         >
@@ -194,4 +231,29 @@ test('throws an error when some metrics not resolvable', () => {
   } finally {
     consoleErrorSpy.mockRestore()
   }
+})
+
+test('opens, submits and cancels assign metric dialog', () => {
+  const metrics = Fixtures.createMetricBares(5)
+  const experiment = Fixtures.createExperimentFull()
+  const { container: _container } = render(<MetricAssignmentsPanel experiment={experiment} metrics={metrics} />)
+
+  const startAssignButton = screen.getByRole('button', { name: /Assign Metric/ })
+  fireEvent.click(startAssignButton)
+
+  waitFor(() => {
+    screen.getByRole('button', { name: 'Assign' })
+  })
+
+  const assignButton = screen.getByRole('button', { name: 'Assign' })
+  fireEvent.click(assignButton)
+
+  fireEvent.click(startAssignButton)
+
+  waitFor(() => {
+    screen.getByRole('button', { name: /Cancel/ })
+  })
+
+  const cancelButton = screen.getByRole('button', { name: /Cancel/ })
+  fireEvent.click(cancelButton)
 })
