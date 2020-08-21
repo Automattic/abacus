@@ -1,14 +1,23 @@
-import { Paper, Typography, Toolbar, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@material-ui/core'
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Paper,
+  Toolbar,
+  Typography,
+} from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import React, { useState } from 'react'
 import { Edit } from '@material-ui/icons'
-import { useSnackbar } from 'notistack'
+import { Formik } from 'formik'
 import _ from 'lodash'
+import { useSnackbar } from 'notistack'
+import React, { useState } from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
 import LabelValueTable from '@/components/LabelValueTable'
 import { ExperimentFull } from '@/lib/schemas'
-import { Formik } from 'formik'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -70,7 +79,6 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
     setIsEditing(false)
   }
 
-
   return (
     <Paper>
       <Toolbar>
@@ -79,7 +87,7 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
         </Typography>
         <Button onClick={onEdit}>
           <Edit />
-           Edit
+          Edit
         </Button>
       </Toolbar>
       <LabelValueTable data={data} />
