@@ -4,11 +4,9 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   LinearProgress,
   makeStyles,
-  TextField,
   Theme,
 } from '@material-ui/core'
 import debugFactory from 'debug'
