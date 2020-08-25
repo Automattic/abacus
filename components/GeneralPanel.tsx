@@ -20,7 +20,7 @@ import React, { useState } from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
 import LabelValueTable from '@/components/LabelValueTable'
-import { ExperimentFull } from '@/lib/schemas'
+import { ExperimentFull, Status } from '@/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -89,12 +89,13 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
   const onCancelEdit = () => {
     setIsEditing(false)
   }
-  // eslint-disable-next-line @typescript-eslint/require-await
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
   const onSubmitEdit = async (formData: unknown) => {
     // TODO: Full submission
     enqueueSnackbar('Experiment Updated!', { variant: 'success' })
     setIsEditing(false)
   }
+  const canEditEndDate = experiment.status === Status.Running
 
   return (
     <Paper>
@@ -140,7 +141,10 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
                     name='experiment.endDatetime'
                     id='experiment.endDatetime'
                     label='End date'
-                    helperText='Use the UTC timezone.'
+                    disabled={!canEditEndDate}
+                    helperText={
+                      canEditEndDate ? 'Use the UTC timezone.' : `Cannot be changed as the experiment has finished.`
+                    }
                     type='date'
                     variant='outlined'
                     fullWidth

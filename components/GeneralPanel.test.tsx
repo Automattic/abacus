@@ -3,6 +3,7 @@ import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
 
+import { Status } from '@/lib/schemas'
 import Fixtures from '@/test-helpers/fixtures'
 import { render } from '@/test-helpers/test-utils'
 
@@ -158,8 +159,32 @@ test('renders as expected', () => {
   `)
 })
 
-test('opens, submits and cancels edit dialog', () => {
-  const experiment = Fixtures.createExperimentFull()
+test('opens, submits and cancels edit dialog with running experiment', () => {
+  const experiment = Fixtures.createExperimentFull({ status: Status.Running })
+  const { container: _container } = render(<GeneralPanel experiment={experiment} />)
+
+  const editButton = screen.getByRole('button', { name: /Edit/ })
+  fireEvent.click(editButton)
+
+  waitFor(() => {
+    screen.getByRole('button', { name: /Save/ })
+  })
+
+  const saveButton = screen.getByRole('button', { name: /Save/ })
+  fireEvent.click(saveButton)
+
+  fireEvent.click(editButton)
+
+  waitFor(() => {
+    screen.getByRole('button', { name: /Cancel/ })
+  })
+
+  const cancelButton = screen.getByRole('button', { name: /Cancel/ })
+  fireEvent.click(cancelButton)
+})
+
+test('opens, submits and cancels edit dialog with disabled experiment', () => {
+  const experiment = Fixtures.createExperimentFull({ status: Status.Disabled })
   const { container: _container } = render(<GeneralPanel experiment={experiment} />)
 
   const editButton = screen.getByRole('button', { name: /Edit/ })
