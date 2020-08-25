@@ -26,7 +26,7 @@ exports[`renders as expected at large width 1`] = `
                 General
               </h3>
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-text"
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
                 tabindex="0"
                 type="button"
               >
@@ -161,7 +161,7 @@ exports[`renders as expected at large width 1`] = `
                 Metrics
               </h3>
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-text"
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
                 tabindex="0"
                 type="button"
               >
@@ -348,11 +348,15 @@ exports[`renders as expected at large width 1`] = `
       <div
         class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
       >
-        <h3
-          class="MuiTypography-root makeStyles-title-7 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        <div
+          class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
         >
-          Audience
-        </h3>
+          <h3
+            class="MuiTypography-root makeStyles-title-7 MuiTypography-h3 MuiTypography-colorTextPrimary"
+          >
+            Audience
+          </h3>
+        </div>
         <table
           class="MuiTable-root"
         >
@@ -589,7 +593,7 @@ exports[`renders as expected at small width 1`] = `
                 General
               </h3>
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-text"
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
                 tabindex="0"
                 type="button"
               >
@@ -715,11 +719,15 @@ exports[`renders as expected at small width 1`] = `
           <div
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
-            <h3
-              class="MuiTypography-root makeStyles-title-16 MuiTypography-h3 MuiTypography-colorTextPrimary"
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
-              Audience
-            </h3>
+              <h3
+                class="MuiTypography-root makeStyles-title-16 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Audience
+              </h3>
+            </div>
             <table
               class="MuiTable-root"
             >
@@ -941,7 +949,7 @@ exports[`renders as expected at small width 1`] = `
                 Metrics
               </h3>
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-text"
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
                 tabindex="0"
                 type="button"
               >
@@ -1152,7 +1160,7 @@ exports[`renders as expected with conclusion data 1`] = `
                 General
               </h3>
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-text"
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
                 tabindex="0"
                 type="button"
               >
@@ -1278,11 +1286,15 @@ exports[`renders as expected with conclusion data 1`] = `
           <div
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
-            <h3
-              class="MuiTypography-root makeStyles-title-26 MuiTypography-h3 MuiTypography-colorTextPrimary"
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
-              Audience
-            </h3>
+              <h3
+                class="MuiTypography-root makeStyles-title-26 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Audience
+              </h3>
+            </div>
             <table
               class="MuiTable-root"
             >
@@ -1504,7 +1516,7 @@ exports[`renders as expected with conclusion data 1`] = `
                 Metrics
               </h3>
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-text"
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
                 tabindex="0"
                 type="button"
               >
@@ -1790,7 +1802,7 @@ exports[`renders as expected without conclusion data 1`] = `
                 General
               </h3>
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-text"
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
                 tabindex="0"
                 type="button"
               >
@@ -1916,11 +1928,15 @@ exports[`renders as expected without conclusion data 1`] = `
           <div
             class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
           >
-            <h3
-              class="MuiTypography-root makeStyles-title-35 MuiTypography-h3 MuiTypography-colorTextPrimary"
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
-              Audience
-            </h3>
+              <h3
+                class="MuiTypography-root makeStyles-title-35 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Audience
+              </h3>
+            </div>
             <table
               class="MuiTable-root"
             >
@@ -2142,7 +2158,7 @@ exports[`renders as expected without conclusion data 1`] = `
                 Metrics
               </h3>
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-text"
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
                 tabindex="0"
                 type="button"
               >
