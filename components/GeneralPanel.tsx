@@ -80,19 +80,16 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
 
   // Edit Modal
   const { enqueueSnackbar } = useSnackbar()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isEditing, setIsEditing] = useState<boolean>(false)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const generalEditInitialExperiment = {
     ..._.pick(experiment, ['description', 'p2Url', 'ownerLogin', 'endDatetime']),
     endDatetime: dateFns.format(experiment.endDatetime, 'yyyy-MM-dd'),
   }
   const onEdit = () => setIsEditing(true)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onCancelEdit = () => {
     setIsEditing(false)
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
+  // eslint-disable-next-line @typescript-eslint/require-await
   const onSubmitEdit = async (formData: unknown) => {
     // TODO: Full submission
     enqueueSnackbar('Experiment Updated!', { variant: 'success' })
