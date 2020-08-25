@@ -64,6 +64,7 @@ export function createInitialExperiment() {
       { name: 'control', isDefault: true, allocatedPercentage: 50 },
       { name: 'treatment', isDefault: false, allocatedPercentage: 50 },
     ],
+    exposureEvents: [],
   }
 }
 

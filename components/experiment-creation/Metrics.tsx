@@ -15,16 +15,17 @@ import {
   Button,
   InputAdornment,
   Tooltip,
+  IconButton,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React, { useState } from 'react'
 import { FieldArray, useField, Field } from 'formik'
-import { MetricAssignment, MetricBare, MetricParameterType, AttributionWindowSeconds } from '@/lib/schemas'
+import { MetricAssignment, MetricBare, MetricParameterType, AttributionWindowSeconds, Event } from '@/lib/schemas'
 import { TextField, Select, Switch } from 'formik-material-ui'
 
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import MoreMenu from '@/components/MoreMenu'
-import { Add } from '@material-ui/icons'
+import { Add, Clear } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -65,6 +66,23 @@ const useStyles = makeStyles((theme: Theme) =>
     changeExpected: {
       textAlign: 'center',
     },
+    exposureEventsTitle: {
+      marginTop: theme.spacing(6),
+      marginBottom: theme.spacing(4),
+    },
+    exposureEventsEventNameCell: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+    exposureEventsEventName: {
+      flexGrow: 1,
+    },
+    exposureEventsEventRemoveButton: {
+      marginLeft: theme.spacing(1),
+    },
+    exposureEventsEventNoProperties: {
+      marginTop: theme.spacing(3),
+    },
   }),
 )
 
@@ -81,6 +99,7 @@ const createMetricAssignment = (metric: MetricBare) => {
 const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare> }) => {
   const classes = useStyles()
 
+  // Metric Assignments
   const [metricAssignmentsField, _metricAssignmentsFieldMetaProps, metricAssignmentsFieldHelperProps] = useField<
     MetricAssignment[]
   >('experiment.metricAssignments')
@@ -97,6 +116,11 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
       })),
     )
   }
+
+  // ### Exposure Events
+  const [exposureEventsField, _exposureEventsFieldMetaProps, exposureEventsFieldHelperProps] = useField<
+    Event[]
+  >('experiment.exposureEvents')
 
   return (
     <div className={classes.root}>
@@ -202,21 +226,21 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                               }}
                               InputProps={
                                 indexedMetrics[metricAssignment.metricId].parameterType ===
-                                MetricParameterType.Conversion
+                                  MetricParameterType.Conversion
                                   ? {
-                                      endAdornment: (
-                                        <InputAdornment position='end'>
-                                          <Tooltip title='Percentage Points'>
-                                            <Typography variant='body1' color='textSecondary'>
-                                              pp
+                                    endAdornment: (
+                                      <InputAdornment position='end'>
+                                        <Tooltip title='Percentage Points'>
+                                          <Typography variant='body1' color='textSecondary'>
+                                            pp
                                             </Typography>
-                                          </Tooltip>
-                                        </InputAdornment>
-                                      ),
-                                    }
+                                        </Tooltip>
+                                      </InputAdornment>
+                                    ),
+                                  }
                                   : {
-                                      startAdornment: <InputAdornment position='start'>$</InputAdornment>,
-                                    }
+                                    startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+                                  }
                               }
                             />
                           </TableCell>
@@ -263,6 +287,92 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                 </FormControl>
                 <Button variant='contained' disableElevation size='small' onClick={onAddMetric} aria-label='Add metric'>
                   Assign
+                </Button>
+              </div>
+            </>
+          )
+        }}
+      />
+
+      <Typography variant='h4' gutterBottom className={classes.exposureEventsTitle}>
+        Exposure Events (Optional)
+      </Typography>
+
+      <FieldArray
+        name='experiment.exposureEvents'
+        render={(arrayHelpers) => {
+          const onAddExposureEvent = () => {
+            arrayHelpers.push({
+              event: '',
+              props: {},
+            })
+          }
+          return (
+            <>
+              <TableContainer>
+                <Table>
+                  <TableBody>
+                    {exposureEventsField.value.map((exposureEvent, index) => {
+                      const onRemoveExposureEvent = () => {
+                        arrayHelpers.remove(index)
+                      }
+                      const exposureEventPropEntries = exposureEvent.props && Object.entries(exposureEvent.props)
+
+                      return (
+                        <TableRow key={index}>
+                          <TableCell>
+                            <div className={classes.exposureEventsEventNameCell}>
+                              <Field
+                                component={TextField}
+                                name={`experiment.exposureEvents[${index}].event`}
+                                className={classes.exposureEventsEventName}
+                                id={`experiment.exposureEvents[${index}].event`}
+                                type='text'
+                                variant='outlined'
+                                placeholder='event_name'
+                                label='Event'
+                                inputProps={{
+                                  'aria-label': 'Event Name',
+                                }}
+                                InputLabelProps={{
+                                  shrink: true,
+                                }}
+                              />
+                              <IconButton className={classes.exposureEventsEventRemoveButton} onClick={onRemoveExposureEvent} aria-label='Remove exposure event'>
+                                <Clear />
+                              </IconButton>
+                            </div>
+                            <div>
+                              {exposureEventPropEntries && exposureEventPropEntries.length > 0 && (
+                                null
+                              )}
+                              <div className={classes.addMetric}>
+                                <Add className={classes.addMetricAddSymbol} />
+                                <Button variant='contained' disableElevation size='small' aria-label='Add Property'>
+                                  Add Property
+                                </Button>
+                              </div>
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      )
+                    })}
+                    {exposureEventsField.value.length === 0 && (
+                      <TableRow>
+                        <TableCell colSpan={1}>
+                          <Typography variant='body1' align='center'>
+                            You don't have any exposure events.
+                          </Typography>
+                        </TableCell>
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+              <div className={classes.addMetric}>
+                <Add className={classes.addMetricAddSymbol} />
+                <Button variant='contained' disableElevation size='small' onClick={onAddExposureEvent} aria-label='Add exposure event'>
+                  Add Event
                 </Button>
               </div>
             </>
