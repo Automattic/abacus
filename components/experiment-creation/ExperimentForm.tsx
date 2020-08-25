@@ -1,6 +1,3 @@
-// Temporarily ignore until more parts are in place
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* istanbul ignore file */
 import {
   Button,
   CircularProgress,
@@ -37,7 +34,7 @@ enum StageId {
 interface Stage {
   id: StageId
   title: string
-  validatableFields?: string[]
+  validatableFields: string[]
 }
 
 const stages: Stage[] = [
@@ -75,6 +72,7 @@ const stages: Stage[] = [
   {
     id: StageId.Submit,
     title: 'Submit',
+    validatableFields: [],
   },
 ]
 
@@ -161,7 +159,7 @@ const ExperimentForm = ({
       {(formikProps) => {
         const isStageValid = async (stage: Stage): Promise<boolean> => {
           const errors = await formikProps.validateForm()
-          return !stage.validatableFields?.some((field) => _.get(errors, field))
+          return !stage.validatableFields.some((field) => _.get(errors, field))
         }
 
         const updateStageState = async (stage: Stage) => {
@@ -188,11 +186,13 @@ const ExperimentForm = ({
         }
 
         const prevStage = () => {
+          // istanbul ignore else; This condition should never happen
           if (0 < currentStageIndex) {
             changeStage(stages[currentStageIndex - 1].id)
           }
         }
         const nextStage = () => {
+          // istanbul ignore else; This condition should never happen
           if (currentStageIndex < stages.length) {
             changeStage(stages[currentStageIndex + 1].id)
           }

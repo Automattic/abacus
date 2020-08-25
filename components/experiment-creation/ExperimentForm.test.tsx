@@ -88,14 +88,14 @@ test('sections should be browsable by the next and prev buttons', async () => {
   await act(async () => {
     fireEvent.click(screen.getByRole('button', { name: /Begin/ }))
   })
-  // screen.getAllByText(/Basic Info/)
-  // await act(async () => {
-  //   fireEvent.click(screen.getByRole('button', { name: /Previous/ }))
-  // })
-  // screen.getByText(/Design and Document Your Experiment/)
-  // await act(async () => {
-  //   fireEvent.click(screen.getByRole('button', { name: /Begin/ }))
-  // })
+  screen.getAllByText(/Basic Info/)
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Previous/ }))
+  })
+  screen.getByText(/Design and Document Your Experiment/)
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Begin/ }))
+  })
   screen.getAllByText(/Basic Info/)
   await act(async () => {
     fireEvent.click(screen.getByRole('button', { name: /Next/ }))
@@ -310,10 +310,10 @@ test('form submits with valid fields', async () => {
   const nextWeek = new Date()
   nextWeek.setDate(now.getDate() + 7)
   await act(async () => {
-    fireEvent.change(screen.getByLabelText(/Start date/), { target: { value: format(now, 'yyyy-MM-d') } })
+    fireEvent.change(screen.getByLabelText(/Start date/), { target: { value: format(now, 'yyyy-MM-dd') } })
   })
   await act(async () => {
-    fireEvent.change(screen.getByLabelText(/End date/), { target: { value: format(nextWeek, 'yyyy-MM-d') } })
+    fireEvent.change(screen.getByLabelText(/End date/), { target: { value: format(nextWeek, 'yyyy-MM-dd') } })
   })
   await changeFieldByRole('textbox', /Owner/, 'owner-nickname')
   await act(async () => {
@@ -388,8 +388,8 @@ test('form submits with valid fields', async () => {
       p2Url: 'http://example.com/',
       name: 'test_experiment_name',
       description: 'experiment description',
-      startDatetime: format(now, 'yyyy-MM-d'),
-      endDatetime: format(nextWeek, 'yyyy-MM-d'),
+      startDatetime: format(now, 'yyyy-MM-dd'),
+      endDatetime: format(nextWeek, 'yyyy-MM-dd'),
       ownerLogin: 'owner-nickname',
       platform: 'wpcom',
       existingUsersAllowed: 'true',
