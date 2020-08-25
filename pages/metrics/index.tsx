@@ -10,13 +10,14 @@ import {
   Theme,
 } from '@material-ui/core'
 import debugFactory from 'debug'
-import { Formik } from 'formik'
+import { Formik, FormikProps } from 'formik'
 import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 
 import MetricsApi from '@/api/MetricsApi'
 import Layout from '@/components/Layout'
+import MetricFormFields from '@/components/MetricFormFields'
 import MetricsTable from '@/components/MetricsTable'
 import { MetricParameterType } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
@@ -105,14 +106,16 @@ const MetricsIndexPage = () => {
           )}
         </>
       )}
-      <Dialog open={isEditingMetric} aria-labelledby='edit-metric-form-dialog-title'>
+      <Dialog open={isEditingMetric} fullWidth aria-labelledby='edit-metric-form-dialog-title'>
         <DialogTitle id='edit-metric-form-dialog-title'>Edit Metric</DialogTitle>
         {editMetricIsLoading && <LinearProgress />}
         {editMetricInitialMetric && (
           <Formik initialValues={{ metric: editMetricInitialMetric }} onSubmit={onSubmitEditMetric}>
             {(formikProps) => (
               <form onSubmit={formikProps.handleSubmit}>
-                <DialogContent></DialogContent>
+                <DialogContent>
+                  <MetricFormFields formikProps={formikProps as FormikProps<{ metric: unknown }>} />
+                </DialogContent>
                 <DialogActions>
                   <Button onClick={onCancelEditMetric} color='primary'>
                     Cancel
@@ -126,12 +129,14 @@ const MetricsIndexPage = () => {
           </Formik>
         )}
       </Dialog>
-      <Dialog open={isAddingMetric} aria-labelledby='add-metric-form-dialog-title'>
+      <Dialog open={isAddingMetric} fullWidth aria-labelledby='add-metric-form-dialog-title'>
         <DialogTitle id='add-metric-form-dialog-title'>Add Metric</DialogTitle>
         <Formik initialValues={{ metric: addMetricInitialMetric }} onSubmit={onSubmitAddMetric}>
           {(formikProps) => (
             <form onSubmit={formikProps.handleSubmit}>
-              <DialogContent></DialogContent>
+              <DialogContent>
+                <MetricFormFields formikProps={formikProps as FormikProps<{ metric: unknown }>} />
+              </DialogContent>
               <DialogActions>
                 <Button onClick={onCancelAddMetric} color='primary'>
                   Cancel
