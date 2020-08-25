@@ -117,22 +117,6 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
                 <div className={classes.row}>
                   <Field
                     component={TextField}
-                    id='experiment.p2Url'
-                    name='experiment.p2Url'
-                    placeholder='https://your-p2-post-here'
-                    label={`Your Post's URL`}
-                    variant='outlined'
-                    fullWidth
-                    required
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                  />
-                </div>
-
-                <div className={classes.row}>
-                  <Field
-                    component={TextField}
                     name='experiment.description'
                     id='experiment.description'
                     label='Experiment description'
