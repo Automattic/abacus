@@ -1,4 +1,4 @@
-import { createStyles, makeStyles, Paper, Theme, Typography } from '@material-ui/core'
+import { createStyles, makeStyles, Paper, Theme, Typography, Toolbar } from '@material-ui/core'
 import { TableCellProps } from '@material-ui/core/TableCell'
 import _ from 'lodash'
 import React, { useMemo } from 'react'
@@ -46,12 +46,7 @@ function resolveSegmentAssignments(
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    title: {
-      padding: theme.spacing(1, 2),
-      [theme.breakpoints.down('xs')]: {
-        padding: theme.spacing(1),
-      },
-    },
+    title: {},
   }),
 )
 
@@ -97,9 +92,11 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
   ]
   return (
     <Paper>
-      <Typography className={classes.title} color='textPrimary' variant='h3'>
-        Audience
-      </Typography>
+      <Toolbar>
+        <Typography className={classes.title} color='textPrimary' variant='h3'>
+          Audience
+        </Typography>
+      </Toolbar>
       <LabelValueTable data={data} />
     </Paper>
   )
