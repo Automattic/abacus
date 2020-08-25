@@ -1,8 +1,9 @@
+import { Paper, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import React from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
-import LabelValuePanel from '@/components/LabelValuePanel'
+import LabelValueTable from '@/components/LabelValueTable'
 import { ExperimentFull } from '@/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -10,6 +11,12 @@ const useStyles = makeStyles((theme: Theme) =>
     to: {
       marginLeft: theme.spacing(2),
       marginRight: theme.spacing(2),
+    },
+    title: {
+      padding: theme.spacing(1, 2),
+      [theme.breakpoints.down('xs')]: {
+        padding: theme.spacing(1),
+      },
     },
   }),
 )
@@ -43,7 +50,15 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
     },
     { label: 'Owner', value: experiment.ownerLogin },
   ]
-  return <LabelValuePanel data={data} title='General' />
+
+  return (
+    <Paper>
+      <Typography className={classes.title} color='textPrimary' variant='h3'>
+        General
+      </Typography>
+      <LabelValueTable data={data} />
+    </Paper>
+  )
 }
 
 export default GeneralPanel
