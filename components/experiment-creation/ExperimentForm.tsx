@@ -186,13 +186,13 @@ const ExperimentForm = ({
         }
 
         const prevStage = () => {
-          // istanbul ignore next; This condition should never happen
+          // istanbul ignore else; This condition should never happen
           if (0 < currentStageIndex) {
             changeStage(stages[currentStageIndex - 1].id)
           }
         }
         const nextStage = () => {
-          // istanbul ignore next; This condition should never happen
+          // istanbul ignore else; This condition should never happen
           if (currentStageIndex < stages.length) {
             changeStage(stages[currentStageIndex + 1].id)
           }
