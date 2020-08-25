@@ -96,7 +96,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
         <Typography className={classes.title} color='textPrimary' variant='h3'>
           Metrics
         </Typography>
-        <Button onClick={onAssignMetric}>
+        <Button onClick={onAssignMetric} variant='outlined'>
           <Add />
           Assign Metric
         </Button>
