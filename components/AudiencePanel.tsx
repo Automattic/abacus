@@ -1,4 +1,4 @@
-import { createStyles, makeStyles, Paper, Theme, Typography, Toolbar } from '@material-ui/core'
+import { createStyles, makeStyles, Paper, Toolbar, Typography } from '@material-ui/core'
 import { TableCellProps } from '@material-ui/core/TableCell'
 import _ from 'lodash'
 import React, { useMemo } from 'react'
@@ -44,9 +44,11 @@ function resolveSegmentAssignments(
   })
 }
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
-    title: {},
+    title: {
+      flexGrow: 1,
+    },
   }),
 )
 
