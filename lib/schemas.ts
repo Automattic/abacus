@@ -78,14 +78,10 @@ export const metricFullSchema = metricBareSchema
   })
   .defined()
   .camelCase()
-  .test(
-    'exactly-one-params',
-    'Exactly one of eventParams or revenueParams must be defined.',
-    (metricFull) => {
-      // (Logical XOR)
-      return !!metricFull.eventParams !== !!metricFull.revenueParams
-    },
-  )
+  .test('exactly-one-params', 'Exactly one of eventParams or revenueParams must be defined.', (metricFull) => {
+    // (Logical XOR)
+    return !!metricFull.eventParams !== !!metricFull.revenueParams
+  })
 export type MetricFull = yup.InferType<typeof metricFullSchema>
 
 export enum AttributionWindowSeconds {
@@ -266,7 +262,7 @@ export const experimentFullNewOutboundSchema = experimentFullNewSchema
   })
   .snakeCase()
   .transform(
-    // istanbul ignore next; Tested by integration 
+    // istanbul ignore next; Tested by integration
     (currentValue) => ({
       ...currentValue,
       // The P2 field gets incorrectly snake_cased so we fix it here
