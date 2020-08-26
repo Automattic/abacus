@@ -103,7 +103,7 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
         <Typography className={classes.title} color='textPrimary' variant='h3'>
           General
         </Typography>
-        <Button onClick={onEdit}>
+        <Button onClick={onEdit} variant='outlined'>
           <Edit />
           Edit
         </Button>
