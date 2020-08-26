@@ -2,6 +2,7 @@
 // https://app.swaggerhub.com/apis/yanir/experiments/0.1.0
 
 import * as dateFns from 'date-fns'
+import _ from 'lodash'
 import * as yup from 'yup'
 
 const idSchema = yup.number().integer().positive()
@@ -283,7 +284,7 @@ export const experimentFullNewOutboundSchema = experimentFullNewSchema
       exposure_events: currentValue.exposure_events.map(
         (event: EventNew): Event => ({
           event: event.event,
-          props: event.props ? Object.fromEntries(event.props.map(({ key, value }) => [key, value])) : undefined,
+          props: event.props ? _.fromPairs(event.props.map(({ key, value }) => [key, value])) : undefined,
         }),
       ),
     }),
