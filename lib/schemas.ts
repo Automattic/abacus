@@ -19,6 +19,15 @@ export const eventSchema = yup
   .camelCase()
 export type Event = yup.InferType<typeof eventSchema>
 
+export const eventNewSchema = yup
+  .object({
+    event: yup.string().defined(),
+    props: yup.array(yup.object({ key: yup.string().defined(), value: yup.string().defined() }).defined()).defined(),
+  })
+  .defined()
+  .camelCase()
+export type EventNew = yup.InferType<typeof eventNewSchema>
+
 export enum TransactionTypes {
   NewPurchase = 'new purchase',
   Recurring = 'recurring',
@@ -242,6 +251,7 @@ export const experimentFullNewSchema = experimentFullSchema.shape({
             `End date must be within ${MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS} months of start date.`,
           ),
     ),
+  exposureEvents: yup.array(eventNewSchema).notRequired(),
   metricAssignments: yup.array(metricAssignmentNewSchema).defined().min(1),
   segmentAssignments: yup.array(segmentAssignmentNewSchema).defined(),
   variations: yup.array<VariationNew>(variationNewSchema).defined().min(2),
@@ -269,6 +279,11 @@ export const experimentFullNewOutboundSchema = experimentFullNewSchema
         .array(segmentAssignmentNewOutboundSchema)
         .defined()
         .cast(currentValue.segment_assignments),
+      // Converting EventNew to Event
+      exposure_events: currentValue.exposure_events.map((event: EventNew): Event => ({
+        event: event.event,
+        props: event.props ? Object.fromEntries(event.props.map(({ key, value }) => [key, value])) : undefined,
+      }))
     }),
   )
 

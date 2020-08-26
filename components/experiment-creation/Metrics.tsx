@@ -23,7 +23,7 @@ import React, { useState } from 'react'
 
 import MoreMenu from '@/components/MoreMenu'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
-import { Event, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
+import { EventNew, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -120,7 +120,7 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
   }
 
   // ### Exposure Events
-  const [exposureEventsField, _exposureEventsFieldMetaProps, _exposureEventsFieldHelperProps] = useField<Event[]>(
+  const [exposureEventsField, _exposureEventsFieldMetaProps, _exposureEventsFieldHelperProps] = useField<EventNew[]>(
     'experiment.exposureEvents',
   )
 
@@ -361,7 +361,7 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                                   <div>
                                     <div>
                                       {exposureEvent.props &&
-                                        (exposureEvent.props as unknown[]).map((_prop: unknown, propIndex: number) => {
+                                        exposureEvent.props.map((_prop: unknown, propIndex: number) => {
                                           const onRemoveExposureEventProperty = () => {
                                             arrayHelpers.remove(propIndex)
                                           }
