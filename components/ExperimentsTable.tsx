@@ -62,6 +62,7 @@ const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }) =>
         {
           title: 'Start',
           field: 'startDatetime',
+          defaultSort: 'desc',
           render: (experiment) => <DatetimeText datetime={experiment.startDatetime} excludeTime />,
         },
         {
