@@ -81,7 +81,6 @@ export const metricFullSchema = metricBareSchema
   .test(
     'exactly-one-params',
     'Exactly one of eventParams or revenueParams must be defined.',
-    /* istanbul ignore next; This is a test itself */
     (metricFull) => {
       // (Logical XOR)
       return !!metricFull.eventParams !== !!metricFull.revenueParams
