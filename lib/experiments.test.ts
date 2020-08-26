@@ -73,6 +73,7 @@ describe('lib/experiments.ts module', () => {
           "description": "",
           "endDatetime": "",
           "existingUsersAllowed": "true",
+          "exposureEvents": Array [],
           "metricAssignments": Array [],
           "name": "",
           "ownerLogin": "",
