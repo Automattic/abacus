@@ -242,7 +242,6 @@ export const experimentFullNewSchema = experimentFullSchema.shape({
     .defined()
     .when(
       'startDatetime',
-      /* istanbul ignore next; should be e2e tested */
       (startDatetime: Date, schema: yup.DateSchema) =>
         startDatetime &&
         schema
@@ -268,7 +267,7 @@ export const experimentFullNewOutboundSchema = experimentFullNewSchema
   })
   .snakeCase()
   .transform(
-    // istanbul ignore next; This will be tested by e2e tests
+    // istanbul ignore next; Tested by integration 
     (currentValue) => ({
       ...currentValue,
       // The P2 field gets incorrectly snake_cased so we fix it here
