@@ -5,11 +5,15 @@ exports[`renders as expected with all segments resolvable 1`] = `
   <div
     class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
   >
-    <h3
-      class="MuiTypography-root makeStyles-title-9 MuiTypography-h3 MuiTypography-colorTextPrimary"
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
-      Audience
-    </h3>
+      <h3
+        class="MuiTypography-root makeStyles-title-9 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        Audience
+      </h3>
+    </div>
     <table
       class="MuiTable-root"
     >
@@ -246,11 +250,15 @@ exports[`renders as expected with existing users allowed 1`] = `
   <div
     class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
   >
-    <h3
-      class="MuiTypography-root makeStyles-title-5 MuiTypography-h3 MuiTypography-colorTextPrimary"
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
-      Audience
-    </h3>
+      <h3
+        class="MuiTypography-root makeStyles-title-5 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        Audience
+      </h3>
+    </div>
     <table
       class="MuiTable-root"
     >
@@ -463,11 +471,15 @@ exports[`renders as expected with no segment assignments 1`] = `
   <div
     class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
   >
-    <h3
-      class="MuiTypography-root makeStyles-title-1 MuiTypography-h3 MuiTypography-colorTextPrimary"
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
-      Audience
-    </h3>
+      <h3
+        class="MuiTypography-root makeStyles-title-1 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        Audience
+      </h3>
+    </div>
     <table
       class="MuiTable-root"
     >

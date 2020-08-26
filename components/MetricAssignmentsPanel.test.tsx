@@ -33,7 +33,7 @@ test('renders as expected with all metrics resolvable', () => {
             Metrics
           </h3>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text"
+            class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
             tabindex="0"
             type="button"
           >
