@@ -228,21 +228,21 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                               }}
                               InputProps={
                                 indexedMetrics[metricAssignment.metricId].parameterType ===
-                                  MetricParameterType.Conversion
+                                MetricParameterType.Conversion
                                   ? {
-                                    endAdornment: (
-                                      <InputAdornment position='end'>
-                                        <Tooltip title='Percentage Points'>
-                                          <Typography variant='body1' color='textSecondary'>
-                                            pp
+                                      endAdornment: (
+                                        <InputAdornment position='end'>
+                                          <Tooltip title='Percentage Points'>
+                                            <Typography variant='body1' color='textSecondary'>
+                                              pp
                                             </Typography>
-                                        </Tooltip>
-                                      </InputAdornment>
-                                    ),
-                                  }
+                                          </Tooltip>
+                                        </InputAdornment>
+                                      ),
+                                    }
                                   : {
-                                    startAdornment: <InputAdornment position='start'>$</InputAdornment>,
-                                  }
+                                      startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+                                    }
                               }
                             />
                           </TableCell>
