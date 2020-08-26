@@ -280,10 +280,12 @@ export const experimentFullNewOutboundSchema = experimentFullNewSchema
         .defined()
         .cast(currentValue.segment_assignments),
       // Converting EventNew to Event
-      exposure_events: currentValue.exposure_events.map((event: EventNew): Event => ({
-        event: event.event,
-        props: event.props ? Object.fromEntries(event.props.map(({ key, value }) => [key, value])) : undefined,
-      }))
+      exposure_events: currentValue.exposure_events.map(
+        (event: EventNew): Event => ({
+          event: event.event,
+          props: event.props ? Object.fromEntries(event.props.map(({ key, value }) => [key, value])) : undefined,
+        }),
+      ),
     }),
   )
 

@@ -423,7 +423,7 @@ test('form submits with valid fields', async () => {
             {
               key: 'key',
               value: 'value',
-            }
+            },
           ],
         },
       ],
