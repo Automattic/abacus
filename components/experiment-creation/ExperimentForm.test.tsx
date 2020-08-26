@@ -14,7 +14,7 @@ import { render } from '@/test-helpers/test-utils'
 
 import ExperimentForm from './ExperimentForm'
 
-jest.setTimeout(20000)
+jest.setTimeout(30000)
 
 jest.mock('notistack')
 const mockedNotistack = notistack as jest.Mocked<typeof notistack>
@@ -369,19 +369,19 @@ test('form submits with valid fields', async () => {
     fireEvent.click(screen.getByRole('button', { name: /Add exposure event/ }))
   })
   await act(async () => {
-    fireEvent.click(screen.getByRole('button', { name: /Add Property/ }))
+    fireEvent.click(await screen.findByRole('button', { name: /Add Property/ }))
   })
   await act(async () => {
-    fireEvent.click(screen.getByRole('button', { name: /Remove exposure event property/ }))
+    fireEvent.click(await screen.findByRole('button', { name: /Remove exposure event property/ }))
   })
   await act(async () => {
-    fireEvent.click(screen.getByRole('button', { name: /Remove exposure event/ }))
+    fireEvent.click(await screen.findByRole('button', { name: /Remove exposure event/ }))
   })
   await act(async () => {
     fireEvent.click(screen.getByRole('button', { name: /Add exposure event/ }))
   })
   await act(async () => {
-    fireEvent.click(screen.getByRole('button', { name: /Add Property/ }))
+    fireEvent.click(await screen.findByRole('button', { name: /Add Property/ }))
   })
   await changeFieldByRole('textbox', /Event Name/, 'event_name')
   await changeFieldByRole('textbox', /Property Key/, 'key')
