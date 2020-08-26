@@ -1,31 +1,29 @@
-/* eslint-disable */
-import _ from 'lodash'
 import {
-  Typography,
-  TableContainer,
+  Button,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  MenuItem,
+  Select as MuiSelect,
   Table,
+  TableBody,
+  TableCell,
+  TableContainer,
   TableHead,
   TableRow,
-  TableCell,
-  TableBody,
-  Select as MuiSelect,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Button,
-  InputAdornment,
   Tooltip,
-  IconButton,
+  Typography,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import React, { useState } from 'react'
-import { FieldArray, useField, Field } from 'formik'
-import { MetricAssignment, MetricBare, MetricParameterType, AttributionWindowSeconds, Event } from '@/lib/schemas'
-import { TextField, Select, Switch } from 'formik-material-ui'
-
-import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
-import MoreMenu from '@/components/MoreMenu'
 import { Add, Clear } from '@material-ui/icons'
+import { Field, FieldArray, useField } from 'formik'
+import { Select, Switch, TextField } from 'formik-material-ui'
+import _ from 'lodash'
+import React, { useState } from 'react'
+
+import MoreMenu from '@/components/MoreMenu'
+import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
+import { Event, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -80,8 +78,12 @@ const useStyles = makeStyles((theme: Theme) =>
     exposureEventsEventRemoveButton: {
       marginLeft: theme.spacing(1),
     },
-    exposureEventsEventNoProperties: {
+    exposureEventsEventPropertiesRow: {
       marginTop: theme.spacing(3),
+      marginLeft: theme.spacing(3),
+    },
+    exposureEventsEventPropertiesKey: {
+      marginRight: theme.spacing(1),
     },
   }),
 )
@@ -118,9 +120,9 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
   }
 
   // ### Exposure Events
-  const [exposureEventsField, _exposureEventsFieldMetaProps, exposureEventsFieldHelperProps] = useField<
-    Event[]
-  >('experiment.exposureEvents')
+  const [exposureEventsField, _exposureEventsFieldMetaProps, _exposureEventsFieldHelperProps] = useField<Event[]>(
+    'experiment.exposureEvents',
+  )
 
   return (
     <div className={classes.root}>
@@ -257,7 +259,7 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                       <TableRow>
                         <TableCell colSpan={5}>
                           <Typography variant='body1' align='center'>
-                            You don't have any metrics yet.
+                            You don&apos;t have any metrics yet.
                           </Typography>
                         </TableCell>
                       </TableRow>
@@ -304,7 +306,7 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
           const onAddExposureEvent = () => {
             arrayHelpers.push({
               event: '',
-              props: {},
+              props: [],
             })
           }
           return (
@@ -316,7 +318,6 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                       const onRemoveExposureEvent = () => {
                         arrayHelpers.remove(index)
                       }
-                      const exposureEventPropEntries = exposureEvent.props && Object.entries(exposureEvent.props)
 
                       return (
                         <TableRow key={index}>
@@ -338,21 +339,95 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                                   shrink: true,
                                 }}
                               />
-                              <IconButton className={classes.exposureEventsEventRemoveButton} onClick={onRemoveExposureEvent} aria-label='Remove exposure event'>
+                              <IconButton
+                                className={classes.exposureEventsEventRemoveButton}
+                                onClick={onRemoveExposureEvent}
+                                aria-label='Remove exposure event'
+                              >
                                 <Clear />
                               </IconButton>
                             </div>
-                            <div>
-                              {exposureEventPropEntries && exposureEventPropEntries.length > 0 && (
-                                null
-                              )}
-                              <div className={classes.addMetric}>
-                                <Add className={classes.addMetricAddSymbol} />
-                                <Button variant='contained' disableElevation size='small' aria-label='Add Property'>
-                                  Add Property
-                                </Button>
-                              </div>
-                            </div>
+                            <FieldArray
+                              name={`experiment.exposureEvents[${index}].props`}
+                              render={(arrayHelpers) => {
+                                const onAddExposureEventProperty = () => {
+                                  arrayHelpers.push({
+                                    key: '',
+                                    value: '',
+                                  })
+                                }
+
+                                return (
+                                  <div>
+                                    <div>
+                                      {exposureEvent.props &&
+                                        (exposureEvent.props as unknown[]).map((_prop: unknown, propIndex: number) => {
+                                          const onRemoveExposureEventProperty = () => {
+                                            arrayHelpers.remove(propIndex)
+                                          }
+
+                                          return (
+                                            <div className={classes.exposureEventsEventPropertiesRow} key={propIndex}>
+                                              <Field
+                                                component={TextField}
+                                                className={classes.exposureEventsEventPropertiesKey}
+                                                name={`experiment.exposureEvents[${index}].props[${propIndex}].key`}
+                                                id={`experiment.exposureEvents[${index}].props[${propIndex}].key`}
+                                                type='text'
+                                                variant='outlined'
+                                                placeholder='key'
+                                                label='Key'
+                                                size='small'
+                                                inputProps={{
+                                                  'aria-label': 'Property Key',
+                                                }}
+                                                InputLabelProps={{
+                                                  shrink: true,
+                                                }}
+                                              />
+                                              <Field
+                                                component={TextField}
+                                                name={`experiment.exposureEvents[${index}].props[${propIndex}].value`}
+                                                id={`experiment.exposureEvents[${index}].props[${propIndex}].value`}
+                                                type='text'
+                                                variant='outlined'
+                                                placeholder='value'
+                                                label='Value'
+                                                size='small'
+                                                inputProps={{
+                                                  'aria-label': 'Property Value',
+                                                }}
+                                                InputLabelProps={{
+                                                  shrink: true,
+                                                }}
+                                              />
+                                              <IconButton
+                                                className={classes.exposureEventsEventRemoveButton}
+                                                onClick={onRemoveExposureEventProperty}
+                                                aria-label='Remove exposure event property'
+                                              >
+                                                <Clear />
+                                              </IconButton>
+                                            </div>
+                                          )
+                                        })}
+                                    </div>
+                                    <div className={classes.addMetric}>
+                                      <Add className={classes.addMetricAddSymbol} />
+                                      <Button
+                                        variant='contained'
+                                        onClick={onAddExposureEventProperty}
+                                        disableElevation
+                                        size='small'
+                                        aria-label='Add Property'
+                                      >
+                                        Add Property
+                                      </Button>
+                                    </div>
+                                  </div>
+                                )
+                              }}
+                            />
                           </TableCell>
                         </TableRow>
                       )
@@ -361,7 +436,7 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                       <TableRow>
                         <TableCell colSpan={1}>
                           <Typography variant='body1' align='center'>
-                            You don't have any exposure events.
+                            You don&apos;t have any exposure events.
                           </Typography>
                         </TableCell>
                       </TableRow>
@@ -371,7 +446,13 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
               </TableContainer>
               <div className={classes.addMetric}>
                 <Add className={classes.addMetricAddSymbol} />
-                <Button variant='contained' disableElevation size='small' onClick={onAddExposureEvent} aria-label='Add exposure event'>
+                <Button
+                  variant='contained'
+                  disableElevation
+                  size='small'
+                  onClick={onAddExposureEvent}
+                  aria-label='Add exposure event'
+                >
                   Add Event
                 </Button>
               </div>
