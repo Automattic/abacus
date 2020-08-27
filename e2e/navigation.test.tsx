@@ -1,6 +1,6 @@
 // Empty export forces file to be a module which TS requires with its current
 // config. Note: This can be removed once something is being imported.
-export { }
+export {}
 
 jest.setTimeout(30000)
 
@@ -47,7 +47,7 @@ describe('Experiment Creation', () => {
       await page.goto('http://a8c-abacus-local:3001/experiments/new')
       expect(page.url()).toMatch(/^http:\/\/a8c-abacus-local:3001\/experiments\/new/)
       await page.waitForSelector('h4')
-      expect((await page.content()).match(/Design and Document Your Experiment/)).not.toBeNull()
+      expect(/Design and Document Your Experiment/.exec(await page.content())).not.toBeNull()
     })
   })
 })
