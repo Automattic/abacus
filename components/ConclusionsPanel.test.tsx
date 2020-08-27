@@ -1,3 +1,4 @@
+import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import * as notistack from 'notistack'
 import React from 'react'
 
@@ -235,4 +236,36 @@ test('renders as expected without deployed variation', () => {
       </div>
     </div>
   `)
+})
+
+const queryEditDialog = () => screen.queryByRole('heading', { name: /Edit Experiment: Conclusions/ })
+
+test('opens and saves edit dialog', async () => {
+  const experiment = Fixtures.createExperimentFull()
+  const { container: _container } = render(<ConclusionsPanel experiment={experiment} />)
+
+  const editButton = screen.getByRole('button', { name: /Edit/ })
+  fireEvent.click(editButton)
+
+  await waitFor(queryEditDialog)
+
+  const saveButton = screen.getByRole('button', { name: /Save/ })
+  fireEvent.click(saveButton)
+
+  await waitForElementToBeRemoved(queryEditDialog)
+})
+
+test('opens and cancels edit dialog', async () => {
+  const experiment = Fixtures.createExperimentFull()
+  const { container: _container } = render(<ConclusionsPanel experiment={experiment} />)
+
+  const editButton = screen.getByRole('button', { name: /Edit/ })
+  fireEvent.click(editButton)
+
+  await waitFor(queryEditDialog)
+
+  const cancelButton = screen.getByRole('button', { name: /Cancel/ })
+  fireEvent.click(cancelButton)
+
+  await waitForElementToBeRemoved(queryEditDialog)
 })

@@ -67,14 +67,12 @@ function ConclusionsPanel({ experiment }: { experiment: ExperimentFull }) {
   const { enqueueSnackbar } = useSnackbar()
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const editInitialValues = {
-    endReason: experiment.endReason,
-    conclusionUrl: experiment.conclusionUrl,
-    deployedVariationId: String(experiment.deployedVariationId),
+    endReason: experiment.endReason ?? '',
+    conclusionUrl: experiment.conclusionUrl ?? '',
+    deployedVariationId: String(experiment.deployedVariationId ?? ''),
   }
   const onEdit = () => setIsEditing(true)
-  const onCancelEdit = () => {
-    setIsEditing(false)
-  }
+  const onCancelEdit = () => setIsEditing(false)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
   const onSubmitEdit = async (formData: unknown) => {
     // TODO: Full submission
