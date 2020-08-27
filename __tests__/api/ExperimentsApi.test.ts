@@ -63,54 +63,52 @@ describe('ExperimentsApi.ts module', () => {
 
       const newExperiment = experimentFullNewOutboundSchema.cast(rawNewExperiment)
 
-      expect(newExperiment).toMatchInlineSnapshot(`
-        Object {
-          "description": "experiment description",
-          "end_datetime": "2020-09-03",
-          "existing_users_allowed": "true",
-          "exposure_events": Array [
-            Object {
-              "event": "event_name",
-              "props": Object {
-                "key": "value",
-              },
+      expect(newExperiment).toEqual({
+        description: 'experiment description',
+        end_datetime: format(nextWeek, 'yyyy-MM-dd'),
+        existing_users_allowed: 'true',
+        exposure_events: [
+          {
+            event: 'event_name',
+            props: {
+              key: 'value',
             },
-          ],
-          "metric_assignments": Array [
-            Object {
-              "attribution_window_seconds": "86400",
-              "change_expected": false,
-              "is_primary": true,
-              "metric_id": 10,
-              "min_difference": 0.01,
-            },
-          ],
-          "name": "test_experiment_name",
-          "owner_login": "owner-nickname",
-          "p2_url": "http://example.com/",
-          "p_2_url": undefined,
-          "platform": "wpcom",
-          "segment_assignments": Array [
-            Object {
-              "is_excluded": false,
-              "segment_id": 3,
-            },
-          ],
-          "start_datetime": "2020-08-27",
-          "variations": Array [
-            Object {
-              "allocated_percentage": 50,
-              "is_default": true,
-              "name": "control",
-            },
-            Object {
-              "allocated_percentage": 50,
-              "is_default": false,
-              "name": "treatment",
-            },
-          ],
-        }
-      `)
+          },
+        ],
+        metric_assignments: [
+          {
+            attribution_window_seconds: '86400',
+            change_expected: false,
+            is_primary: true,
+            metric_id: 10,
+            min_difference: 0.01,
+          },
+        ],
+        name: 'test_experiment_name',
+        owner_login: 'owner-nickname',
+        p2_url: 'http://example.com/',
+        p_2_url: undefined,
+        platform: 'wpcom',
+        segment_assignments: [
+          {
+            is_excluded: false,
+            segment_id: 3,
+          },
+        ],
+        start_datetime: format(now, 'yyyy-MM-dd'),
+        variations: [
+          {
+            allocated_percentage: 50,
+            is_default: true,
+            name: 'control',
+          },
+          {
+            allocated_percentage: 50,
+            is_default: false,
+            name: 'treatment',
+          },
+        ],
+      })
     })
 
     it('should create a new experiment', async () => {
