@@ -65,8 +65,6 @@ describe('lib/schemas.ts module', () => {
             "description must be defined",
             "parameterType must be defined",
             "higherIsBetter must be defined",
-            "revenueParams.refundDays must be defined",
-            "revenueParams.productSlugs must be defined",
           ]
         `)
       }
