@@ -66,6 +66,11 @@ function ConclusionsPanel({ experiment }: { experiment: ExperimentFull }) {
   // Edit Modal
   const { enqueueSnackbar } = useSnackbar()
   const [isEditing, setIsEditing] = useState<boolean>(false)
+  const editInitialValues = {
+    endReason: experiment.endReason,
+    conclusionUrl: experiment.conclusionUrl,
+    deployedVariationId: String(experiment.deployedVariationId),
+  }
   const onEdit = () => setIsEditing(true)
   const onCancelEdit = () => {
     setIsEditing(false)
@@ -93,7 +98,7 @@ function ConclusionsPanel({ experiment }: { experiment: ExperimentFull }) {
 
       <Dialog open={isEditing} fullWidth aria-labelledby='edit-experiment-conclusions-dialog-title'>
         <DialogTitle id='edit-experiment-conclusions-dialog-title'>Edit Experiment: Conclusions</DialogTitle>
-        <Formik initialValues={{ experiment: experiment }} onSubmit={onSubmitEdit}>
+        <Formik initialValues={{ experiment: editInitialValues }} onSubmit={onSubmitEdit}>
           {(formikProps) => (
             <form onSubmit={formikProps.handleSubmit}>
               <DialogContent>
@@ -134,15 +139,11 @@ function ConclusionsPanel({ experiment }: { experiment: ExperimentFull }) {
                 <div className={classes.row}>
                   <FormControl component='fieldset'>
                     <FormLabel component='legend'>Deployed variation</FormLabel>
-                    <Field
-                      component={FormikMuiRadioGroup}
-                      name='experiment.deployedVariationId'
-                      value={experiment.deployedVariationId}
-                    >
+                    <Field component={FormikMuiRadioGroup} name='experiment.deployedVariationId'>
                       {experiment.variations.map((variation) => (
                         <FormControlLabel
                           key={variation.variationId}
-                          value={variation.variationId}
+                          value={String(variation.variationId)}
                           control={<Radio />}
                           label={variation.name}
                         />
