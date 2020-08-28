@@ -127,7 +127,6 @@ function ConclusionsPanel({ experiment }: { experiment: ExperimentFull }) {
                     label='Conclusion URL'
                     variant='outlined'
                     fullWidth
-                    required
                     InputLabelProps={{
                       shrink: true,
                     }}
