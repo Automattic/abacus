@@ -2,6 +2,7 @@ import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
 
+import { Status } from '@/lib/schemas'
 import Fixtures from '@/test-helpers/fixtures'
 import { createMatchMedia, render } from '@/test-helpers/test-utils'
 
@@ -63,6 +64,7 @@ test('renders as expected with conclusion data', () => {
       Fixtures.createSegmentAssignment({ segmentAssignmentId: 101, segmentId: 1 }),
       Fixtures.createSegmentAssignment({ segmentAssignmentId: 102, segmentId: 2, isExcluded: true }),
     ],
+    status: Status.Disabled,
   })
   const { container } = render(<ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />)
 

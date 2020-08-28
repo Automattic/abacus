@@ -8,8 +8,7 @@ import AudiencePanel from '@/components/AudiencePanel'
 import ConclusionsPanel from '@/components/ConclusionsPanel'
 import GeneralPanel from '@/components/GeneralPanel'
 import MetricAssignmentsPanel from '@/components/MetricAssignmentsPanel'
-import * as Experiments from '@/lib/experiments'
-import { ExperimentFull, MetricBare, Segment } from '@/lib/schemas'
+import { ExperimentFull, MetricBare, Segment, Status } from '@/lib/schemas'
 
 const debug = debugFactory('abacus:components/ExperimentDetails.tsx')
 
@@ -44,7 +43,7 @@ function ExperimentDetails({
           <Grid item>
             <MetricAssignmentsPanel experiment={experiment} metrics={metrics} />
           </Grid>
-          {Experiments.hasConclusionData(experiment) && (
+          {(experiment.status === Status.Completed || experiment.status === Status.Disabled) && (
             <Grid item>
               <ConclusionsPanel experiment={experiment} />
             </Grid>

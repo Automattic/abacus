@@ -37,24 +37,6 @@ describe('lib/experiments.ts module', () => {
     })
   })
 
-  describe('hasConclusionData', () => {
-    it('should return true if at least one piece of conclusion data is set', () => {
-      expect(
-        Experiments.hasConclusionData(
-          Fixtures.createExperimentFull({
-            conclusionUrl: 'https://betterexperiments.wordpress.com/experiment_1/conclusion',
-          }),
-        ),
-      ).toBe(true)
-      expect(Experiments.hasConclusionData(Fixtures.createExperimentFull({ deployedVariationId: 1 }))).toBe(true)
-      expect(Experiments.hasConclusionData(Fixtures.createExperimentFull({ endReason: 'Ran its course.' }))).toBe(true)
-    })
-
-    it('should return false if no conclusion data is set', () => {
-      expect(Experiments.hasConclusionData(Fixtures.createExperimentFull())).toBe(false)
-    })
-  })
-
   describe('getDefaultAnalysisSummary', () => {
     it('returns the correct strategy based on the exposureEvents', () => {
       expect(Experiments.getDefaultAnalysisStrategy(Fixtures.createExperimentFull({ exposureEvents: null }))).toBe(
