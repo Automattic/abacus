@@ -8,6 +8,7 @@ import { DependencyList, useEffect, useRef, useState } from 'react'
  *
  * @param createDataPromise A function that returns a promise to the data
  * @param deps The hook dependencies for `createDataPromise`
+ *  * @returns { data, isLoading, error, reloadRef } Where data, isLoading and error are data states and reloadRef is a Ref to a function that reloads the data.
  */
 export function useDataSource<Data, Deps extends DependencyList | undefined, E extends Error>(
   createDataPromise: () => Promise<Data>,
@@ -20,7 +21,7 @@ export function useDataSource<Data, Deps extends DependencyList | undefined, E e
 
   useEffect(() => {
     // The isSubscribed logic is necessary to prevent setStates after unmounts or dependency changes.
-    // For more information see: https://juliangaramendy.dev/use-promise-subscription/ 
+    // For more information see: https://juliangaramendy.dev/use-promise-subscription/
     let isSubscribed = true
     // For isSubscribed to work with reloading we need to use reload as a Ref
     reloadRef.current = () => {
