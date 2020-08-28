@@ -19,7 +19,8 @@ export function useDataSource<Data, Deps extends DependencyList | undefined, E e
   const reloadRef = useRef<() => void>(noop)
 
   useEffect(() => {
-    // The isSubscribed logic is necessary to prevent setStates after unmounts or dependency changes
+    // The isSubscribed logic is necessary to prevent setStates after unmounts or dependency changes.
+    // For more information see: https://juliangaramendy.dev/use-promise-subscription/ 
     let isSubscribed = true
     // For isSubscribed to work with reloading we need to use reload as a Ref
     reloadRef.current = () => {
