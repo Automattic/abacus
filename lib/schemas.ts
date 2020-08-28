@@ -78,15 +78,10 @@ export const metricFullSchema = metricBareSchema
   })
   .defined()
   .camelCase()
-  .test(
-    'exactly-one-params',
-    'Exactly one of eventParams or revenueParams must be defined.',
-    /* istanbul ignore next; This is a test itself */
-    (metricFull) => {
-      // (Logical XOR)
-      return !!metricFull.eventParams !== !!metricFull.revenueParams
-    },
-  )
+  .test('exactly-one-params', 'Exactly one of eventParams or revenueParams must be defined.', (metricFull) => {
+    // (Logical XOR)
+    return !!metricFull.eventParams !== !!metricFull.revenueParams
+  })
 export type MetricFull = yup.InferType<typeof metricFullSchema>
 
 export enum AttributionWindowSeconds {
@@ -242,7 +237,6 @@ export const experimentFullNewSchema = experimentFullSchema.shape({
     .defined()
     .when(
       'startDatetime',
-      /* istanbul ignore next; should be e2e tested */
       (startDatetime: Date, schema: yup.DateSchema) =>
         startDatetime &&
         schema
@@ -268,7 +262,7 @@ export const experimentFullNewOutboundSchema = experimentFullNewSchema
   })
   .snakeCase()
   .transform(
-    // istanbul ignore next; This will be tested by e2e tests
+    // istanbul ignore next; Tested by integration
     (currentValue) => ({
       ...currentValue,
       // The P2 field gets incorrectly snake_cased so we fix it here
