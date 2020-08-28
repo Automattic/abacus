@@ -14,7 +14,7 @@ import { render } from '@/test-helpers/test-utils'
 
 import ExperimentForm from './ExperimentForm'
 
-jest.setTimeout(20000)
+jest.setTimeout(40000)
 
 jest.mock('notistack')
 const mockedNotistack = notistack as jest.Mocked<typeof notistack>
@@ -364,6 +364,29 @@ test('form submits with valid fields', async () => {
 
   await changeFieldByRole('spinbutton', /Min difference/, '0.01')
 
+  // #### Exposure Events
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Add exposure event/ }))
+  })
+  await act(async () => {
+    fireEvent.click(await screen.findByRole('button', { name: /Add Property/ }))
+  })
+  await act(async () => {
+    fireEvent.click(await screen.findByRole('button', { name: /Remove exposure event property/ }))
+  })
+  await act(async () => {
+    fireEvent.click(await screen.findByRole('button', { name: /Remove exposure event/ }))
+  })
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Add exposure event/ }))
+  })
+  await act(async () => {
+    fireEvent.click(await screen.findByRole('button', { name: /Add Property/ }))
+  })
+  await changeFieldByRole('textbox', /Event Name/, 'event_name')
+  await changeFieldByRole('textbox', /Property Key/, 'key')
+  await changeFieldByRole('textbox', /Property Value/, 'value')
+
   await act(async () => {
     fireEvent.click(screen.getByRole('button', { name: /Next/ }))
   })
@@ -393,6 +416,17 @@ test('form submits with valid fields', async () => {
       ownerLogin: 'owner-nickname',
       platform: 'wpcom',
       existingUsersAllowed: 'true',
+      exposureEvents: [
+        {
+          event: 'event_name',
+          props: [
+            {
+              key: 'key',
+              value: 'value',
+            },
+          ],
+        },
+      ],
       segmentAssignments: [
         {
           isExcluded: false,

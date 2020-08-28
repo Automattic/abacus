@@ -41,6 +41,17 @@ describe('Experiments', () => {
   })
 })
 
+describe('Experiment Creation', () => {
+  describe('from experiments creation', () => {
+    it('should render', async () => {
+      await page.goto('http://a8c-abacus-local:3001/experiments/new')
+      expect(page.url()).toMatch(/^http:\/\/a8c-abacus-local:3001\/experiments\/new/)
+      await page.waitForSelector('h4')
+      expect(/Design and Document Your Experiment/.exec(await page.content())).not.toBeNull()
+    })
+  })
+})
+
 describe('Metrics', () => {
   describe('from Metrics table', () => {
     it('should show metric details on row click', async () => {
