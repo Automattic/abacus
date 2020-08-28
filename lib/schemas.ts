@@ -2,6 +2,7 @@
 // https://app.swaggerhub.com/apis/yanir/experiments/0.1.0
 
 import * as dateFns from 'date-fns'
+import _ from 'lodash'
 import * as yup from 'yup'
 
 const idSchema = yup.number().integer().positive()
@@ -18,6 +19,15 @@ export const eventSchema = yup
   .defined()
   .camelCase()
 export type Event = yup.InferType<typeof eventSchema>
+
+export const eventNewSchema = yup
+  .object({
+    event: yup.string().defined(),
+    props: yup.array(yup.object({ key: yup.string().defined(), value: yup.string().defined() }).defined()).defined(),
+  })
+  .defined()
+  .camelCase()
+export type EventNew = yup.InferType<typeof eventNewSchema>
 
 export enum TransactionTypes {
   NewPurchase = 'new purchase',
@@ -68,15 +78,10 @@ export const metricFullSchema = metricBareSchema
   })
   .defined()
   .camelCase()
-  .test(
-    'exactly-one-params',
-    'Exactly one of eventParams or revenueParams must be defined.',
-    /* istanbul ignore next; This is a test itself */
-    (metricFull) => {
-      // (Logical XOR)
-      return !!metricFull.eventParams !== !!metricFull.revenueParams
-    },
-  )
+  .test('exactly-one-params', 'Exactly one of eventParams or revenueParams must be defined.', (metricFull) => {
+    // (Logical XOR)
+    return !!metricFull.eventParams !== !!metricFull.revenueParams
+  })
 export type MetricFull = yup.InferType<typeof metricFullSchema>
 
 export enum AttributionWindowSeconds {
@@ -232,7 +237,6 @@ export const experimentFullNewSchema = experimentFullSchema.shape({
     .defined()
     .when(
       'startDatetime',
-      /* istanbul ignore next; should be e2e tested */
       (startDatetime: Date, schema: yup.DateSchema) =>
         startDatetime &&
         schema
@@ -242,6 +246,7 @@ export const experimentFullNewSchema = experimentFullSchema.shape({
             `End date must be within ${MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS} months of start date.`,
           ),
     ),
+  exposureEvents: yup.array(eventNewSchema).notRequired(),
   metricAssignments: yup.array(metricAssignmentNewSchema).defined().min(1),
   segmentAssignments: yup.array(segmentAssignmentNewSchema).defined(),
   variations: yup.array<VariationNew>(variationNewSchema).defined().min(2),
@@ -257,7 +262,7 @@ export const experimentFullNewOutboundSchema = experimentFullNewSchema
   })
   .snakeCase()
   .transform(
-    // istanbul ignore next; This will be tested by e2e tests
+    // istanbul ignore next; Tested by integration
     (currentValue) => ({
       ...currentValue,
       // The P2 field gets incorrectly snake_cased so we fix it here
@@ -269,6 +274,13 @@ export const experimentFullNewOutboundSchema = experimentFullNewSchema
         .array(segmentAssignmentNewOutboundSchema)
         .defined()
         .cast(currentValue.segment_assignments),
+      // Converting EventNew to Event
+      exposure_events: currentValue.exposure_events.map(
+        (event: EventNew): Event => ({
+          event: event.event,
+          props: event.props ? _.fromPairs(event.props.map(({ key, value }) => [key, value])) : undefined,
+        }),
+      ),
     }),
   )
 

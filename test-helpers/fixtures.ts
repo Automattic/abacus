@@ -330,9 +330,11 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
     'variations',
     'metricAssignments',
     'segmentAssignments',
+    'exposureEvents',
   ]
   const newExperimentFieldOverrides = {
     ..._.omit(fieldOverrides, fieldsOnlyForExistingExperiments),
+    exposureEvents: undefined,
     status: undefined,
   }
   const existingExperimentFieldOverrides = _.pick(fieldOverrides, fieldsOnlyForExistingExperiments)
