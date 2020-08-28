@@ -24,7 +24,10 @@ export function useDataSource<Data, Deps extends DependencyList | undefined, E e
     let isSubscribed = true
     // For isSubscribed to work with reloading we need to use reload as a Ref
     reloadRef.current = () => {
-      isSubscribed && setIsLoading(true)
+      if (!isSubscribed) {
+        return
+      }
+      setIsLoading(true)
       createDataPromise()
         .then((data) => isSubscribed && setData(data))
         .catch((error) => isSubscribed && setError(error))
