@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { noop } from 'lodash'
 import { useSnackbar } from 'notistack'
 import { DependencyList, useEffect, useRef, useState } from 'react'
 
@@ -16,8 +16,7 @@ export function useDataSource<Data, Deps extends DependencyList | undefined, E e
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [data, setData] = useState<Data | null>(null)
   const [error, setError] = useState<E | null>(null)
-  // eslint-disable-next-line @typescript-eslint/unbound-method
-  const reloadRef = useRef<() => void>(_.noop)
+  const reloadRef = useRef<() => void>(noop)
 
   useEffect(() => {
     // The isSubscribed logic is necessary to prevent setStates after unmounts or dependency changes
@@ -33,8 +32,7 @@ export function useDataSource<Data, Deps extends DependencyList | undefined, E e
     reloadRef.current()
     return () => {
       isSubscribed = false
-      // eslint-disable-next-line @typescript-eslint/unbound-method
-      reloadRef.current = _.noop
+      reloadRef.current = noop
     }
     // Dep checking here is not needed as we are using the additionalHooks option to check useDataSource
     // eslint-disable-next-line react-hooks/exhaustive-deps
