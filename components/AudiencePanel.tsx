@@ -52,6 +52,31 @@ const useStyles = makeStyles(() =>
   }),
 )
 
+function ExposureEventsTable({ experiment }: { experiment: ExperimentFull }) {
+  return (
+    <>
+      {experiment.exposureEvents?.map((ev) => {
+        return (
+          <LabelValueTable
+            key={ev.event}
+            data={[
+              {
+                label: ev.event,
+                value: Object.entries(ev.props ?? {}).map((entry) => (
+                  <LabelValueTable
+                    key={ev.event + entry[0] + entry[1]}
+                    data={[{ label: entry[0], value: <>{entry[1]}</> }]}
+                  />
+                )),
+              },
+            ]}
+          />
+        )
+      })}
+    </>
+  )
+}
+
 /**
  * Renders the audience information of an experiment in a panel component.
  *
@@ -90,6 +115,10 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
           />
         </>
       ),
+    },
+    {
+      label: 'Exposure Events',
+      value: <ExposureEventsTable experiment={experiment} />,
     },
   ]
   return (

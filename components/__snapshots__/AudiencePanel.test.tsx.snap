@@ -239,6 +239,20 @@ exports[`renders as expected with all segments resolvable 1`] = `
             </table>
           </td>
         </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Exposure Events
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          />
+        </tr>
       </tbody>
     </table>
   </div>
@@ -460,6 +474,20 @@ exports[`renders as expected with existing users allowed 1`] = `
             </table>
           </td>
         </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Exposure Events
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          />
+        </tr>
       </tbody>
     </table>
   </div>
@@ -680,6 +708,20 @@ exports[`renders as expected with no segment assignments 1`] = `
               </tbody>
             </table>
           </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Exposure Events
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          />
         </tr>
       </tbody>
     </table>
