@@ -193,7 +193,20 @@ export const experimentBareSchema = yup
     experimentId: idSchema.defined(),
     name: nameSchema.defined(),
     startDatetime: yup.date().defined(),
-    endDatetime: yup.date().defined(),
+    endDatetime: yup
+      .date()
+      .defined()
+      .when(
+        'startDatetime',
+        (startDatetime: Date, schema: yup.DateSchema) =>
+          startDatetime &&
+          schema
+            .min(startDatetime, 'End date must be after start date.')
+            .max(
+              dateFns.addMonths(startDatetime, MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS),
+              `End date must be within ${MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS} months of start date.`,
+            ),
+      ),
     status: yup.string().oneOf(Object.values(Status)).defined(),
     platform: yup.string().oneOf(Object.values(Platform)).defined(),
     ownerLogin: yup.string().defined(),
@@ -231,20 +244,6 @@ export const experimentFullNewSchema = experimentFullSchema.shape({
     .max(
       dateFns.addMonths(now, MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS),
       `Start date must be within ${MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS} months from now.`,
-    ),
-  endDatetime: yup
-    .date()
-    .defined()
-    .when(
-      'startDatetime',
-      (startDatetime: Date, schema: yup.DateSchema) =>
-        startDatetime &&
-        schema
-          .min(startDatetime, 'End date must be after start date.')
-          .max(
-            dateFns.addMonths(startDatetime, MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS),
-            `End date must be within ${MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS} months of start date.`,
-          ),
     ),
   exposureEvents: yup.array(eventNewSchema).notRequired(),
   metricAssignments: yup.array(metricAssignmentNewSchema).defined().min(1),
@@ -340,3 +339,15 @@ export const analysisSchema = yup
   .defined()
   .camelCase()
 export type Analysis = yup.InferType<typeof analysisSchema>
+
+/**
+ * The yup equivalant of _.pick, produces a subset of the original schema.
+ * 
+ * @param schema A yup object schema
+ * @param props Properties to pick
+ * @param value See yup.reach
+ * @param context See yup.reach
+ */
+export function yupPick(schema: yup.ObjectSchema, props: string[], value?: unknown, context?: unknown) {
+  return yup.object(_.fromPairs(props.map(prop => [prop, yup.reach(schema, prop, value, context)])))
+}
