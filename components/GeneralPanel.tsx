@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) =>
  *
  * @param props.experiment - The experiment with the general information.
  */
-function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
+function GeneralPanel({ experiment, experimentReloadRef }: { experiment: ExperimentFull, experimentReloadRef: React.MutableRefObject<() => void> }) {
   const classes = useStyles()
   const data = [
     { label: 'Description', value: experiment.description },
@@ -124,6 +124,7 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
       const experimentPatch = _.pick(formData.experiment, props)
       await ExperimentsApi.patch(experiment.experimentId, experimentPatch)
       enqueueSnackbar('Experiment Updated!', { variant: 'success' })
+      experimentReloadRef.current()
       setIsEditing(false)
     } catch (e) {
       enqueueSnackbar('Oops! Something went wrong while trying to update your experiment.', { variant: 'error' })

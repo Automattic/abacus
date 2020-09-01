@@ -41,7 +41,7 @@ export default function ExperimentPageView({
 }) {
   const classes = useStyles()
 
-  const { isLoading: experimentIsLoading, data: experiment, error: experimentError } = useDataSource(
+  const { isLoading: experimentIsLoading, data: experiment, error: experimentError, reloadRef: experimentReloadRef } = useDataSource(
     () => (experimentId ? ExperimentsApi.findById(experimentId) : createUnresolvingPromise<ExperimentFull>()),
     [experimentId],
   )
@@ -75,19 +75,19 @@ export default function ExperimentPageView({
         {isLoading ? (
           <LinearProgress />
         ) : (
-          experiment &&
-          metrics &&
-          segments &&
-          analyses && (
-            <>
-              {view === ExperimentView.Overview && <ExperimentDetails {...{ experiment, metrics, segments }} />}
-              {view === ExperimentView.Results && (
-                <ExperimentResults {...{ experiment, metrics, analyses, debugMode }} />
-              )}
-              {view === ExperimentView.CodeSetup && <ExperimentCodeSetup />}
-            </>
-          )
-        )}
+            experiment &&
+            metrics &&
+            segments &&
+            analyses && (
+              <>
+                {view === ExperimentView.Overview && <ExperimentDetails {...{ experiment, metrics, segments, experimentReloadRef }} />}
+                {view === ExperimentView.Results && (
+                  <ExperimentResults {...{ experiment, metrics, analyses, debugMode }} />
+                )}
+                {view === ExperimentView.CodeSetup && <ExperimentCodeSetup />}
+              </>
+            )
+          )}
       </>
     </Layout>
   )
