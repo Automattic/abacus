@@ -71,7 +71,13 @@ const useStyles = makeStyles((theme: Theme) =>
  *
  * @param props.experiment - The experiment with the general information.
  */
-function GeneralPanel({ experiment, experimentReloadRef }: { experiment: ExperimentFull, experimentReloadRef: React.MutableRefObject<() => void> }) {
+function GeneralPanel({
+  experiment,
+  experimentReloadRef,
+}: {
+  experiment: ExperimentFull
+  experimentReloadRef: React.MutableRefObject<() => void>
+}) {
   const classes = useStyles()
   const data = [
     { label: 'Description', value: experiment.description },

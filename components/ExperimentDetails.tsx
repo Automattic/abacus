@@ -24,7 +24,7 @@ function ExperimentDetails({
   experiment: ExperimentFull
   metrics: MetricBare[]
   segments: Segment[]
-  experimentReloadRef: React.MutableRefObject<() => void>,
+  experimentReloadRef: React.MutableRefObject<() => void>
 }) {
   debug('ExperimentDetails#render')
   const theme = useTheme()
