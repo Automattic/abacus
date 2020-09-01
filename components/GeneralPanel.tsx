@@ -21,7 +21,7 @@ import * as yup from 'yup'
 
 import DatetimeText from '@/components/DatetimeText'
 import LabelValueTable from '@/components/LabelValueTable'
-import { ExperimentFull, Status, experimentFullNewSchema, experimentFullSchema, yupPick, MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS } from '@/lib/schemas'
+import { ExperimentFull, experimentFullSchema, Status, yupPick } from '@/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -91,8 +91,11 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
   }
   const generalEditValidationSchema = yupPick(experimentFullSchema, props).shape({
     // We need to ensure the end date is in the future
-    endDatetime: (yup.reach(experimentFullSchema, 'endDatetime') as unknown as yup.MixedSchema)
-      .test('future-date', 'End date must be in the future.', dateFns.isFuture)
+    endDatetime: ((yup.reach(experimentFullSchema, 'endDatetime') as unknown) as yup.MixedSchema).test(
+      'future-date',
+      'End date must be in the future.',
+      dateFns.isFuture,
+    ),
   })
   const onEdit = () => setIsEditing(true)
   const onCancelEdit = () => {

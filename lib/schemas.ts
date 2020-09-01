@@ -342,12 +342,12 @@ export type Analysis = yup.InferType<typeof analysisSchema>
 
 /**
  * The yup equivalant of _.pick, produces a subset of the original schema.
- * 
+ *
  * @param schema A yup object schema
  * @param props Properties to pick
  * @param value See yup.reach
  * @param context See yup.reach
  */
 export function yupPick(schema: yup.ObjectSchema, props: string[], value?: unknown, context?: unknown) {
-  return yup.object(_.fromPairs(props.map(prop => [prop, yup.reach(schema, prop, value, context)])))
+  return yup.object(_.fromPairs(props.map((prop) => [prop, yup.reach(schema, prop, value, context)])))
 }
