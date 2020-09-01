@@ -2,7 +2,7 @@ import { format } from 'date-fns'
 import MockDate from 'mockdate'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
-import { ExperimentFullNew, experimentFullNewOutboundSchema, ExperimentFull } from '@/lib/schemas'
+import { ExperimentFull, ExperimentFullNew, experimentFullNewOutboundSchema } from '@/lib/schemas'
 import { validationErrorDisplayer } from '@/test-helpers/test-utils'
 
 MockDate.set('2020-08-13')

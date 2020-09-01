@@ -27,7 +27,7 @@ async function create(newExperiment: ExperimentFullNew) {
 
 /**
  * Attempts to patch an experiment.
- * 
+ *
  *
  * Note: Be sure to handle any errors that may be thrown.
  */
@@ -38,11 +38,11 @@ async function patch(experimentId: number, experimentPatch: Partial<ExperimentFu
     'exposureEvents',
     'segmentAssignments',
     'variations',
-    // TODO: Unimplemented as we aren't snake_casing nested fields yet. 
+    // TODO: Unimplemented as we aren't snake_casing nested fields yet.
     //       We will add special logic for this one...
     'metricAssignments',
   ]
-  if (blacklistedKeys.some(key => keys.includes(key))) {
+  if (blacklistedKeys.some((key) => keys.includes(key))) {
     throw new Error(`Cannot patch experiment: contains blacklisted key.`)
   }
 

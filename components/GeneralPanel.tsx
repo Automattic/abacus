@@ -1,5 +1,6 @@
 import {
   Button,
+  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -8,7 +9,6 @@ import {
   Paper,
   Toolbar,
   Typography,
-  CircularProgress,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Edit } from '@material-ui/icons'
@@ -20,10 +20,10 @@ import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 import * as yup from 'yup'
 
+import ExperimentsApi from '@/api/ExperimentsApi'
 import DatetimeText from '@/components/DatetimeText'
 import LabelValueTable from '@/components/LabelValueTable'
 import { ExperimentFull, experimentFullSchema, Status, yupPick } from '@/lib/schemas'
-import ExperimentsApi from '@/api/ExperimentsApi'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
