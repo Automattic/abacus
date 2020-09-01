@@ -163,6 +163,11 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
   const experiment = Fixtures.createExperimentFull({ status: Status.Running })
   const { container: _container } = render(<GeneralPanel experiment={experiment} />)
 
+  // @ts-ignore
+  global.fetch = jest.fn().mockImplementationOnce(() => new Promise(res =>
+    res({ json: async () => experiment } as unknown as Promise<Response>)
+  ))
+
   const editButton = screen.getByRole('button', { name: /Edit/ })
   fireEvent.click(editButton)
 
@@ -184,6 +189,11 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
 test('checks edit dialog does not allow end datetime changes with disabled experiment', async () => {
   const experiment = Fixtures.createExperimentFull({ status: Status.Disabled })
   const { container: _container } = render(<GeneralPanel experiment={experiment} />)
+
+  // @ts-ignore
+  global.fetch = jest.fn().mockImplementationOnce(() => new Promise(res =>
+    res({ json: async () => experiment } as unknown as Promise<Response>)
+  ))
 
   const editButton = screen.getByRole('button', { name: /Edit/ })
   fireEvent.click(editButton)
