@@ -240,10 +240,17 @@ export const experimentFullNewSchema = experimentFullSchema.shape({
   startDatetime: yup
     .date()
     .defined()
-    .min(now, 'Start date (UTC) must be in the future.')
-    .max(
-      dateFns.addMonths(now, MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS),
+    .test(
+      'future-start-date',
+      'Start date (UTC) must be in the future.',
+      // We need to refer to new Date() instead of using dateFns.isFuture so MockDate works with this in the tests.
+      (date) => dateFns.isBefore(new Date(), date),
+    )
+    .test(
+      'bounded-start-date',
       `Start date must be within ${MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS} months from now.`,
+      // We need to refer to new Date() instead of using dateFns.isFuture so MockDate works with this in the tests.
+      (date) => dateFns.isBefore(date, dateFns.addMonths(now, MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS)),
     ),
   exposureEvents: yup.array(eventNewSchema).notRequired(),
   metricAssignments: yup.array(metricAssignmentNewSchema).defined().min(1),

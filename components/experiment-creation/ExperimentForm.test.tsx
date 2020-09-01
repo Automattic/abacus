@@ -273,8 +273,7 @@ test('skipping to submit should check all sections', async () => {
 })
 
 test('form submits with valid fields', async () => {
-  // As I couldn't mock the date in the /lib/schemas...
-  MockDate.reset()
+  MockDate.set('2020-08-13')
 
   let submittedData: unknown = null
   const onSubmit = async (formData: unknown): Promise<undefined> => {

@@ -92,9 +92,10 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
   const generalEditValidationSchema = yupPick(experimentFullSchema, props).shape({
     // We need to ensure the end date is in the future
     endDatetime: ((yup.reach(experimentFullSchema, 'endDatetime') as unknown) as yup.MixedSchema).test(
-      'future-date',
-      'End date must be in the future.',
-      dateFns.isFuture,
+      'future-end-date',
+      'End date (UTC) must be in the future.',
+      // We need to refer to new Date() instead of using dateFns.isFuture so MockDate works with this in the tests.
+      (date) => dateFns.isBefore(new Date(), date),
     ),
   })
   const onEdit = () => setIsEditing(true)

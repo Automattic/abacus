@@ -1,13 +1,15 @@
 import { format } from 'date-fns'
+import MockDate from 'mockdate'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 import { ExperimentFullNew, experimentFullNewOutboundSchema } from '@/lib/schemas'
 import { validationErrorDisplayer } from '@/test-helpers/test-utils'
 
+MockDate.set('2020-08-13')
+
 describe('ExperimentsApi.ts module', () => {
   describe('create', () => {
     it('should transform a new experiment into a valid outbound form', () => {
-      // We need to make some dates relative to today since mocking the schema to work with MockDate is a pain!
       const now = new Date()
       now.setDate(now.getDate() + 1)
       const nextWeek = new Date()
@@ -112,7 +114,6 @@ describe('ExperimentsApi.ts module', () => {
     })
 
     it('should create a new experiment', async () => {
-      // We need to make some dates relative to today since mocking the schema to work with MockDate is a pain!
       const now = new Date()
       now.setDate(now.getDate() + 1)
       const nextWeek = new Date()
