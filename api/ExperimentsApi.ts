@@ -8,6 +8,7 @@ import {
   experimentFullNewOutboundSchema,
   experimentFullNewSchema,
   experimentFullSchema,
+  yupPick,
 } from '@/lib/schemas'
 
 import { fetchApi } from './utils'
@@ -21,6 +22,39 @@ async function create(newExperiment: ExperimentFullNew) {
   const validatedNewExperiment = await experimentFullNewSchema.validate(newExperiment, { abortEarly: false })
   const outboundNewExperiment = experimentFullNewOutboundSchema.cast(validatedNewExperiment)
   const returnedExperiment = await fetchApi('POST', '/experiments', outboundNewExperiment)
+  return await experimentFullSchema.validate(returnedExperiment)
+}
+
+/**
+ * Attempts to patch an experiment.
+ * 
+ *
+ * Note: Be sure to handle any errors that may be thrown.
+ */
+async function patch(experimentId: number, experimentPatch: Partial<ExperimentFull>) {
+  const keys = Object.keys(experimentPatch)
+  const blacklistedKeys = [
+    'experimentId',
+    'exposureEvents',
+    'segmentAssignments',
+    'variations',
+    // TODO: Unimplemented as we aren't snake_casing nested fields yet. 
+    //       We will add special logic for this one...
+    'metricAssignments',
+  ]
+  if (blacklistedKeys.some(key => keys.includes(key))) {
+    throw new Error(`Cannot patch experiment: contains blacklisted key.`)
+  }
+
+  // We dynamically construct a schema for validation, but we do this simply and shallowly
+  const dynamicValidationSchema = yupPick(experimentFullSchema, Object.keys(experimentPatch))
+  const validatedExperimentPatch = await dynamicValidationSchema.validate(experimentPatch, { abortEarly: false })
+
+  // Similarly we dynamically construct a schema for outbound casting
+  const dynamicOutboundCastSchema = yupPick(experimentFullSchema, Object.keys(experimentPatch)).snakeCase()
+  const outboundExperimentPatch = dynamicOutboundCastSchema.cast(validatedExperimentPatch)
+
+  const returnedExperiment = await fetchApi('PATCH', `/experiments/${experimentId}`, outboundExperimentPatch)
   return await experimentFullSchema.validate(returnedExperiment)
 }
 
@@ -48,6 +82,7 @@ async function findById(id: number): Promise<ExperimentFull> {
 
 const ExperimentsApi = {
   create,
+  patch,
   findAll,
   findById,
 }
