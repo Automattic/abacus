@@ -126,6 +126,7 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
       enqueueSnackbar('Experiment Updated!', { variant: 'success' })
       setIsEditing(false)
     } catch (e) {
+      // istanbul ignore next; Shouldn't occur
       enqueueSnackbar('Oops! Something went wrong while trying to update your experiment.', { variant: 'error' })
     }
   }

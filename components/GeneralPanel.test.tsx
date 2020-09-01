@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/require-await */
 import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import MockDate from 'mockdate'
 import * as notistack from 'notistack'
@@ -163,10 +164,11 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
   const experiment = Fixtures.createExperimentFull({ status: Status.Running })
   const { container: _container } = render(<GeneralPanel experiment={experiment} />)
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
-  global.fetch = jest.fn().mockImplementationOnce(() => new Promise(res =>
-    res({ json: async () => experiment } as unknown as Promise<Response>)
-  ))
+  global.fetch = jest.fn().mockImplementationOnce(async () => ({
+    json: async () => experiment,
+  }))
 
   const editButton = screen.getByRole('button', { name: /Edit/ })
   fireEvent.click(editButton)
@@ -190,10 +192,11 @@ test('checks edit dialog does not allow end datetime changes with disabled exper
   const experiment = Fixtures.createExperimentFull({ status: Status.Disabled })
   const { container: _container } = render(<GeneralPanel experiment={experiment} />)
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
-  global.fetch = jest.fn().mockImplementationOnce(() => new Promise(res =>
-    res({ json: async () => experiment } as unknown as Promise<Response>)
-  ))
+  global.fetch = jest.fn().mockImplementationOnce(async () => ({
+    json: async () => experiment,
+  }))
 
   const editButton = screen.getByRole('button', { name: /Edit/ })
   fireEvent.click(editButton)
