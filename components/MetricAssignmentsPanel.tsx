@@ -1,4 +1,16 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Toolbar, FormControl, MenuItem, FormLabel, InputAdornment, Tooltip } from '@material-ui/core'
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  FormControl,
+  FormLabel,
+  InputAdornment,
+  MenuItem,
+  Toolbar,
+  Tooltip,
+} from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
@@ -8,17 +20,17 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Typography from '@material-ui/core/Typography'
 import { Add } from '@material-ui/icons'
-import { Formik, Field } from 'formik'
+import { Field, Formik } from 'formik'
+import { Select, Switch, TextField } from 'formik-material-ui'
 import { useSnackbar } from 'notistack'
 import React, { useMemo, useState } from 'react'
 
 import Label from '@/components/Label'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import * as MetricAssignments from '@/lib/metric-assignments'
+import { indexMetrics } from '@/lib/normalizers'
 import { ExperimentFull, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
-import { Select, Switch, TextField } from 'formik-material-ui'
-import { indexMetrics } from '@/lib/normalizers'
 
 /**
  * Resolves the metric ID of the metric assignment with the actual metric. If the
@@ -168,7 +180,9 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
               <DialogContent>
                 <div className={classes.row}>
                   <FormControl component='fieldset' fullWidth>
-                    <FormLabel required className={classes.label}>Metric</FormLabel>
+                    <FormLabel required className={classes.label}>
+                      Metric
+                    </FormLabel>
                     <Field
                       component={Select}
                       name={`metricAssignment.metricId`}
@@ -190,7 +204,9 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                 </div>
                 <div className={classes.row}>
                   <FormControl component='fieldset' fullWidth>
-                    <FormLabel required className={classes.label}>Attribution Window</FormLabel>
+                    <FormLabel required className={classes.label}>
+                      Attribution Window
+                    </FormLabel>
                     <Field
                       component={Select}
                       name={`metricAssignment.attributionWindowSeconds`}
@@ -211,10 +227,12 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                 </div>
                 <div className={classes.row}>
                   <FormControl component='fieldset' fullWidth>
-                    <FormLabel required className={classes.label}>Change Expected</FormLabel>
+                    <FormLabel required className={classes.label}>
+                      Change Expected
+                    </FormLabel>
                     <Field
                       component={Switch}
-                      label="Change Expected"
+                      label='Change Expected'
                       name={`metricAssignment.changeExpected`}
                       id={`metricAssignment.changeExpected`}
                       variant='outlined'
@@ -224,7 +242,9 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                 </div>
                 <div className={classes.row}>
                   <FormControl component='fieldset' fullWidth>
-                    <FormLabel required className={classes.label}>Minimum Difference</FormLabel>
+                    <FormLabel required className={classes.label}>
+                      Minimum Difference
+                    </FormLabel>
                     <Field
                       component={TextField}
                       name={`metricAssignment.minDifference`}
@@ -234,22 +254,22 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       placeholder='-'
                       InputProps={
                         formikProps.values.metricAssignment.metricId &&
-                          indexedMetrics[formikProps.values.metricAssignment.metricId as unknown as number].parameterType ===
-                          MetricParameterType.Conversion
+                        indexedMetrics[(formikProps.values.metricAssignment.metricId as unknown) as number]
+                          .parameterType === MetricParameterType.Conversion
                           ? {
-                            endAdornment: (
-                              <InputAdornment position='end'>
-                                <Tooltip title='Percentage Points'>
-                                  <Typography variant='body1' color='textSecondary'>
-                                    pp
-                                            </Typography>
-                                </Tooltip>
-                              </InputAdornment>
-                            ),
-                          }
+                              endAdornment: (
+                                <InputAdornment position='end'>
+                                  <Tooltip title='Percentage Points'>
+                                    <Typography variant='body1' color='textSecondary'>
+                                      pp
+                                    </Typography>
+                                  </Tooltip>
+                                </InputAdornment>
+                              ),
+                            }
                           : {
-                            startAdornment: <InputAdornment position='start'>$</InputAdornment>,
-                          }
+                              startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+                            }
                       }
                     />
                   </FormControl>
@@ -259,7 +279,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                     <FormLabel className={classes.label}>Make Primary</FormLabel>
                     <Field
                       component={Switch}
-                      label="Make Primary"
+                      label='Make Primary'
                       name={`metricAssignment.isPrimary`}
                       id={`metricAssignment.isPrimary`}
                       variant='outlined'

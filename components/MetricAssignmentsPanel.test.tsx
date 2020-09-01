@@ -107,7 +107,7 @@ test('renders as expected with all metrics resolvable', () => {
               >
                 metric_1
                 <span
-                  class="makeStyles-primary-1 makeStyles-root-3"
+                  class="makeStyles-primary-1 makeStyles-root-6"
                 >
                   Primary
                 </span>

@@ -235,7 +235,7 @@ exports[`renders as expected at large width 1`] = `
                   >
                     metric_1
                     <span
-                      class="makeStyles-primary-6 makeStyles-root-8"
+                      class="makeStyles-primary-6 makeStyles-root-11"
                     >
                       Primary
                     </span>
@@ -352,7 +352,7 @@ exports[`renders as expected at large width 1`] = `
           class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
         >
           <h3
-            class="MuiTypography-root makeStyles-title-9 MuiTypography-h3 MuiTypography-colorTextPrimary"
+            class="MuiTypography-root makeStyles-title-12 MuiTypography-h3 MuiTypography-colorTextPrimary"
           >
             Audience
           </h3>
@@ -444,7 +444,7 @@ exports[`renders as expected at large width 1`] = `
                       >
                         control
                         <span
-                          class="makeStyles-default-10 makeStyles-root-8"
+                          class="makeStyles-default-13 makeStyles-root-11"
                         >
                           Default
                         </span>
@@ -549,7 +549,7 @@ exports[`renders as expected at large width 1`] = `
                       >
                         segment_2
                         <span
-                          class="makeStyles-excluded-11 makeStyles-root-8"
+                          class="makeStyles-excluded-14 makeStyles-root-11"
                         >
                           Excluded
                         </span>
@@ -588,7 +588,7 @@ exports[`renders as expected at small width 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-13 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-16 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 General
               </h3>
@@ -675,18 +675,18 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-16"
+                      class="makeStyles-root-19"
                       title="20/09/2020, 20:00:00"
                     >
                       2020-09-21
                     </span>
                     <span
-                      class="makeStyles-to-12"
+                      class="makeStyles-to-15"
                     >
                       to
                     </span>
                     <span
-                      class="makeStyles-root-16"
+                      class="makeStyles-root-19"
                       title="20/11/2020, 20:00:00"
                     >
                       2020-11-21
@@ -723,7 +723,7 @@ exports[`renders as expected at small width 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-20 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-26 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Audience
               </h3>
@@ -815,7 +815,7 @@ exports[`renders as expected at small width 1`] = `
                           >
                             control
                             <span
-                              class="makeStyles-default-21 makeStyles-root-19"
+                              class="makeStyles-default-27 makeStyles-root-25"
                             >
                               Default
                             </span>
@@ -920,7 +920,7 @@ exports[`renders as expected at small width 1`] = `
                           >
                             segment_2
                             <span
-                              class="makeStyles-excluded-22 makeStyles-root-19"
+                              class="makeStyles-excluded-28 makeStyles-root-25"
                             >
                               Excluded
                             </span>
@@ -944,7 +944,7 @@ exports[`renders as expected at small width 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-18 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-21 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Metrics
               </h3>
@@ -1023,7 +1023,7 @@ exports[`renders as expected at small width 1`] = `
                   >
                     metric_1
                     <span
-                      class="makeStyles-primary-17 makeStyles-root-19"
+                      class="makeStyles-primary-20 makeStyles-root-25"
                     >
                       Primary
                     </span>
@@ -1155,7 +1155,7 @@ exports[`renders as expected with conclusion data 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-24 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-30 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 General
               </h3>
@@ -1242,18 +1242,18 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-27"
+                      class="makeStyles-root-33"
                       title="20/09/2020, 20:00:00"
                     >
                       2020-09-21
                     </span>
                     <span
-                      class="makeStyles-to-23"
+                      class="makeStyles-to-29"
                     >
                       to
                     </span>
                     <span
-                      class="makeStyles-root-27"
+                      class="makeStyles-root-33"
                       title="20/11/2020, 20:00:00"
                     >
                       2020-11-21
@@ -1290,7 +1290,7 @@ exports[`renders as expected with conclusion data 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-33 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-42 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Audience
               </h3>
@@ -1382,7 +1382,7 @@ exports[`renders as expected with conclusion data 1`] = `
                           >
                             control
                             <span
-                              class="makeStyles-default-34 makeStyles-root-30"
+                              class="makeStyles-default-43 makeStyles-root-39"
                             >
                               Default
                             </span>
@@ -1487,7 +1487,7 @@ exports[`renders as expected with conclusion data 1`] = `
                           >
                             segment_2
                             <span
-                              class="makeStyles-excluded-35 makeStyles-root-30"
+                              class="makeStyles-excluded-44 makeStyles-root-39"
                             >
                               Excluded
                             </span>
@@ -1511,7 +1511,7 @@ exports[`renders as expected with conclusion data 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-29 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-35 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Metrics
               </h3>
@@ -1590,7 +1590,7 @@ exports[`renders as expected with conclusion data 1`] = `
                   >
                     metric_1
                     <span
-                      class="makeStyles-primary-28 makeStyles-root-30"
+                      class="makeStyles-primary-34 makeStyles-root-39"
                     >
                       Primary
                     </span>
@@ -1705,7 +1705,7 @@ exports[`renders as expected with conclusion data 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-31 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-40 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Conclusions
               </h3>
@@ -1825,7 +1825,7 @@ exports[`renders as expected without conclusion data 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-37 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-46 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 General
               </h3>
@@ -1912,18 +1912,18 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-40"
+                      class="makeStyles-root-49"
                       title="20/09/2020, 20:00:00"
                     >
                       2020-09-21
                     </span>
                     <span
-                      class="makeStyles-to-36"
+                      class="makeStyles-to-45"
                     >
                       to
                     </span>
                     <span
-                      class="makeStyles-root-40"
+                      class="makeStyles-root-49"
                       title="20/11/2020, 20:00:00"
                     >
                       2020-11-21
@@ -1960,7 +1960,7 @@ exports[`renders as expected without conclusion data 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-44 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-56 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Audience
               </h3>
@@ -2052,7 +2052,7 @@ exports[`renders as expected without conclusion data 1`] = `
                           >
                             control
                             <span
-                              class="makeStyles-default-45 makeStyles-root-43"
+                              class="makeStyles-default-57 makeStyles-root-55"
                             >
                               Default
                             </span>
@@ -2157,7 +2157,7 @@ exports[`renders as expected without conclusion data 1`] = `
                           >
                             segment_2
                             <span
-                              class="makeStyles-excluded-46 makeStyles-root-43"
+                              class="makeStyles-excluded-58 makeStyles-root-55"
                             >
                               Excluded
                             </span>
@@ -2181,7 +2181,7 @@ exports[`renders as expected without conclusion data 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-42 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-51 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Metrics
               </h3>
@@ -2260,7 +2260,7 @@ exports[`renders as expected without conclusion data 1`] = `
                   >
                     metric_1
                     <span
-                      class="makeStyles-primary-41 makeStyles-root-43"
+                      class="makeStyles-primary-50 makeStyles-root-55"
                     >
                       Primary
                     </span>
