@@ -8,6 +8,7 @@ import {
   Paper,
   Toolbar,
   Typography,
+  CircularProgress,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Edit } from '@material-ui/icons'
@@ -22,6 +23,7 @@ import * as yup from 'yup'
 import DatetimeText from '@/components/DatetimeText'
 import LabelValueTable from '@/components/LabelValueTable'
 import { ExperimentFull, experimentFullSchema, Status, yupPick } from '@/lib/schemas'
+import ExperimentsApi from '@/api/ExperimentsApi'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -45,6 +47,21 @@ const useStyles = makeStyles((theme: Theme) =>
         // Fix the native date-picker placeholder text colour
         color: theme.palette.text.hint,
       },
+    },
+    submitContainer: {
+      marginLeft: theme.spacing(2),
+      '& .MuiButton-root': {
+        marginLeft: 0,
+      },
+      position: 'relative',
+    },
+    submitProgress: {
+      color: theme.palette.secondary.main,
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      marginTop: -12,
+      marginLeft: -12,
     },
   }),
 )
@@ -102,11 +119,15 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
   const onCancelEdit = () => {
     setIsEditing(false)
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
-  const onSubmitEdit = async (formData: unknown) => {
-    // TODO: Full submission
-    enqueueSnackbar('Experiment Updated!', { variant: 'success' })
-    setIsEditing(false)
+  const onSubmitEdit = async (formData: { experiment: unknown }) => {
+    try {
+      const experimentPatch = _.pick(formData.experiment, props)
+      await ExperimentsApi.patch(experiment.experimentId, experimentPatch)
+      enqueueSnackbar('Experiment Updated!', { variant: 'success' })
+      setIsEditing(false)
+    } catch (e) {
+      enqueueSnackbar('Oops! Something went wrong while trying to update your experiment.', { variant: 'error' })
+    }
   }
   const canEditEndDate = experiment.status === Status.Running
 
@@ -130,7 +151,7 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
           onSubmit={onSubmitEdit}
         >
           {(formikProps) => (
-            <form onSubmit={formikProps.handleSubmit}>
+            <form onSubmit={formikProps.handleSubmit} noValidate>
               <DialogContent>
                 <div className={classes.row}>
                   <Field
@@ -196,9 +217,17 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
                 <Button onClick={onCancelEdit} color='primary'>
                   Cancel
                 </Button>
-                <Button color='primary' type='submit'>
-                  Save
-                </Button>
+                <div className={classes.submitContainer}>
+                  <Button
+                    type='submit'
+                    variant='contained'
+                    color='secondary'
+                    disabled={formikProps.isSubmitting || !formikProps.isValid}
+                  >
+                    Save
+                  </Button>
+                  {formikProps.isSubmitting && <CircularProgress size={24} className={classes.submitProgress} />}
+                </div>
               </DialogActions>
             </form>
           )}
