@@ -9,7 +9,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <h3
-        class="MuiTypography-root makeStyles-title-9 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        class="MuiTypography-root makeStyles-title-17 MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Audience
       </h3>
@@ -101,7 +101,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   >
                     control
                     <span
-                      class="makeStyles-default-10 makeStyles-root-11"
+                      class="makeStyles-default-18 makeStyles-root-19"
                     >
                       Default
                     </span>
@@ -183,7 +183,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   >
                     segment_3
                     <span
-                      class="makeStyles-excluded-12 makeStyles-root-11"
+                      class="makeStyles-excluded-20 makeStyles-root-19"
                     >
                       Excluded
                     </span>
@@ -220,7 +220,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   >
                     segment_2
                     <span
-                      class="makeStyles-excluded-12 makeStyles-root-11"
+                      class="makeStyles-excluded-20 makeStyles-root-19"
                     >
                       Excluded
                     </span>
@@ -251,7 +251,17 @@ exports[`renders as expected with all segments resolvable 1`] = `
           </th>
           <td
             class="MuiTableCell-root MuiTableCell-body"
-          />
+          >
+            <div
+              class="makeStyles-eventList-24"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1"
+              >
+                No exposure events defined
+              </p>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -268,7 +278,7 @@ exports[`renders as expected with existing users allowed 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <h3
-        class="MuiTypography-root makeStyles-title-5 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        class="MuiTypography-root makeStyles-title-9 MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Audience
       </h3>
@@ -360,7 +370,7 @@ exports[`renders as expected with existing users allowed 1`] = `
                   >
                     control
                     <span
-                      class="makeStyles-default-6 makeStyles-root-7"
+                      class="makeStyles-default-10 makeStyles-root-11"
                     >
                       Default
                     </span>
@@ -486,7 +496,17 @@ exports[`renders as expected with existing users allowed 1`] = `
           </th>
           <td
             class="MuiTableCell-root MuiTableCell-body"
-          />
+          >
+            <div
+              class="makeStyles-eventList-16"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1"
+              >
+                No exposure events defined
+              </p>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -721,7 +741,17 @@ exports[`renders as expected with no segment assignments 1`] = `
           </th>
           <td
             class="MuiTableCell-root MuiTableCell-body"
-          />
+          >
+            <div
+              class="makeStyles-eventList-8"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1"
+              >
+                No exposure events defined
+              </p>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
