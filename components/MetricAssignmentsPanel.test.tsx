@@ -243,6 +243,10 @@ test('opens, submits and cancels assign metric dialog', async () => {
   fireEvent.click(startAssignButton)
 
   await waitFor(() => screen.getByRole('button', { name: 'Assign' }))
+  const assignButton = screen.getByRole('button', { name: 'Assign' })
+
+  // We click it now to test the validation state
+  fireEvent.click(assignButton)
 
   const metricSearchField = screen.getByRole('button', { name: /Select a Metric/ })
   await act(async () => {
@@ -270,7 +274,6 @@ test('opens, submits and cancels assign metric dialog', async () => {
 
   await changeFieldByRole('spinbutton', /Minimum Difference/, '0.01')
 
-  const assignButton = screen.getByRole('button', { name: 'Assign' })
   fireEvent.click(assignButton)
   await waitForElementToBeRemoved(assignButton)
 
