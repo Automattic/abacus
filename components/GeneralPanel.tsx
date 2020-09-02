@@ -127,7 +127,8 @@ function GeneralPanel({
       experimentReloadRef.current()
       setIsEditing(false)
     } catch (e) {
-      // istanbul ignore next; Shouldn't occur
+      // istanbul ignore next; Shouldn't occur 
+      console.error(e)
       enqueueSnackbar('Oops! Something went wrong while trying to update your experiment.', { variant: 'error' })
     }
   }
