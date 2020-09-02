@@ -37,8 +37,10 @@ import {
   metricAssignmentNewSchema,
   MetricBare,
   MetricParameterType,
+  MetricAssignmentNew,
 } from '@/lib/schemas'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
+import ExperimentsApi from '@/api/ExperimentsApi'
 
 /**
  * Resolves the metric ID of the metric assignment with the actual metric. If the
@@ -124,10 +126,16 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
     setIsAssigningMetric(false)
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
-  const onSubmitAssignMetric = async (formData: unknown) => {
-    // TODO: Full submission
-    enqueueSnackbar('Metric Assigned Successfully!', { variant: 'success' })
-    setIsAssigningMetric(false)
+  const onSubmitAssignMetric = async (formData: { metricAssignment: typeof assignMetricInitialAssignMetric }) => {
+    try {
+      await ExperimentsApi.assignMetric(experiment, formData.metricAssignment as unknown as MetricAssignmentNew)
+      enqueueSnackbar('Metric Assigned Successfully!', { variant: 'success' })
+      setIsAssigningMetric(false)
+    } catch (e) {
+      // istanbul ignore next; Shouldn't occur
+      console.error(e)
+      enqueueSnackbar('Oops! Something went wrong while trying to assign a metric to your experiment.', { variant: 'error' })
+    }
   }
 
   return (
@@ -289,22 +297,22 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       }}
                       InputProps={
                         formikProps.values.metricAssignment.metricId &&
-                        indexedMetrics[(formikProps.values.metricAssignment.metricId as unknown) as number]
-                          .parameterType === MetricParameterType.Conversion
+                          indexedMetrics[(formikProps.values.metricAssignment.metricId as unknown) as number]
+                            .parameterType === MetricParameterType.Conversion
                           ? {
-                              endAdornment: (
-                                <InputAdornment position='end'>
-                                  <Tooltip title='Percentage Points'>
-                                    <Typography variant='body1' color='textSecondary'>
-                                      pp
+                            endAdornment: (
+                              <InputAdornment position='end'>
+                                <Tooltip title='Percentage Points'>
+                                  <Typography variant='body1' color='textSecondary'>
+                                    pp
                                     </Typography>
-                                  </Tooltip>
-                                </InputAdornment>
-                              ),
-                            }
+                                </Tooltip>
+                              </InputAdornment>
+                            ),
+                          }
                           : {
-                              startAdornment: <InputAdornment position='start'>$</InputAdornment>,
-                            }
+                            startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+                          }
                       }
                     />
                   </FormControl>
