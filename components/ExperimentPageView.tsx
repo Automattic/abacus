@@ -1,6 +1,7 @@
 // istanbul ignore file; Even though it sits with components this is a "page" component
-import { createStyles, LinearProgress, makeStyles, Theme, Tab, Tabs, Button } from '@material-ui/core'
+import { Button, createStyles, LinearProgress, makeStyles, Tab, Tabs, Theme } from '@material-ui/core'
 import _ from 'lodash'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 import AnalysesApi from '@/api/AnalysesApi'
@@ -11,10 +12,9 @@ import ExperimentResults from '@/components/experiment-results/ExperimentResults
 import ExperimentCodeSetup from '@/components/ExperimentCodeSetup'
 import ExperimentDetails from '@/components/ExperimentDetails'
 import Layout from '@/components/Layout'
-import { Analysis, ExperimentFull, Status } from '@/lib/schemas'
+import { Analysis, ExperimentFull } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { createUnresolvingPromise, or } from '@/utils/general'
-import { useRouter } from 'next/router'
 
 const useLinkTabStyles = makeStyles(() =>
   createStyles({
@@ -132,9 +132,12 @@ export default function ExperimentPageView({
             />
           </Tabs>
           <div className={classes.topBarActions}>
-            <Button variant="outlined" color="secondary"> Edit In Wizard </Button>
-            {' '}
-            <Button variant="outlined" classes={{ outlined: classes.topBarActionsDisableOutlined }}> Disable </Button>
+            <Button variant='outlined' color='secondary'>
+              Edit In Wizard
+            </Button>{' '}
+            <Button variant='outlined' classes={{ outlined: classes.topBarActionsDisableOutlined }}>
+              Disable
+            </Button>
           </div>
         </div>
         {isLoading && <LinearProgress />}
