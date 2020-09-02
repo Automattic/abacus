@@ -41,6 +41,7 @@ import {
 } from '@/lib/schemas'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
 import ExperimentsApi from '@/api/ExperimentsApi'
+import LoadingButtonContainer from './LoadingButtonContainer'
 
 /**
  * Resolves the metric ID of the metric assignment with the actual metric. If the
@@ -327,9 +328,16 @@ function MetricAssignmentsPanel({ experiment, experimentReloadRef, metrics }: {
                 <Button onClick={onCancelAssignMetric} color='primary'>
                   Cancel
                 </Button>
-                <Button color='primary' type='submit'>
-                  Assign
-                </Button>
+                <LoadingButtonContainer isLoading={formikProps.isSubmitting}>
+                  <Button
+                    type='submit'
+                    variant='contained'
+                    color='secondary'
+                    disabled={formikProps.isSubmitting || !formikProps.isValid}
+                  >
+                    Assign
+                  </Button>
+                </LoadingButtonContainer>
               </DialogActions>
             </form>
           )}
