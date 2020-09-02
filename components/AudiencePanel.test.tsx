@@ -64,3 +64,34 @@ test('throws an error when some segments not resolvable', () => {
     consoleErrorSpy.mockRestore()
   }
 })
+
+test('Shows exposure events', () => {
+  const experiment = Fixtures.createExperimentFull({
+    exposureEvents: [
+      {
+        event: 'test',
+        props: {
+          prop1: 'value1',
+        },
+      },
+    ],
+  })
+  const { container } = render(<AudiencePanel experiment={experiment} segments={[]} />)
+  expect(container).toMatchSnapshot()
+})
+
+test('Empty array shows no exposure events', () => {
+  const experiment = Fixtures.createExperimentFull({
+    exposureEvents: [],
+  })
+  const { container } = render(<AudiencePanel experiment={experiment} segments={[]} />)
+  expect(container).toMatchSnapshot()
+})
+
+test('null shows no exposure events', () => {
+  const experiment = Fixtures.createExperimentFull({
+    exposureEvents: null,
+  })
+  const { container } = render(<AudiencePanel experiment={experiment} segments={[]} />)
+  expect(container).toMatchSnapshot()
+})

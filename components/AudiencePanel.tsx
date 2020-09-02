@@ -8,6 +8,7 @@ import SegmentsTable from '@/components/SegmentsTable'
 import VariationsTable from '@/components/VariationsTable'
 import { ExperimentFull, Segment, SegmentAssignment, SegmentType } from '@/lib/schemas'
 import * as Variations from '@/lib/variations'
+import theme from '@/styles/theme'
 
 /**
  * Resolves the segment ID of the segment assignment with the actual segment.
@@ -52,6 +53,54 @@ const useStyles = makeStyles(() =>
   }),
 )
 
+const eventStyles = makeStyles(() =>
+  createStyles({
+    entry: {
+      display: 'block',
+      fontFamily: theme.custom.fonts.monospace,
+      color: 'gray',
+    },
+    eventName: {
+      fontFamily: theme.custom.fonts.monospace,
+    },
+    eventList: {
+      '& p:not(:first-child)': {
+        paddingTop: theme.spacing(2),
+      },
+      '& p': {
+        paddingBottom: theme.spacing(2),
+      },
+      '& p:not(:last-child)': {
+        borderBottom: '1px solid rgb(224,224,224)',
+      },
+    },
+  }),
+)
+
+function ExposureEventsTable({ experiment: { exposureEvents } }: { experiment: ExperimentFull }) {
+  const classes = eventStyles()
+
+  return (
+    <div className={classes.eventList}>
+      {exposureEvents && exposureEvents.length ? (
+        exposureEvents.map((ev) => (
+          <Typography key={ev.event}>
+            <span className={classes.eventName}>{ev.event}</span>
+            {ev.props &&
+              Object.entries(ev.props).map(([key, val]) => (
+                <span key={key} className={classes.entry}>
+                  {key}: {val}
+                </span>
+              ))}
+          </Typography>
+        ))
+      ) : (
+        <Typography>No exposure events defined</Typography>
+      )}
+    </div>
+  )
+}
+
 /**
  * Renders the audience information of an experiment in a panel component.
  *
@@ -90,6 +139,10 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
           />
         </>
       ),
+    },
+    {
+      label: 'Exposure Events',
+      value: <ExposureEventsTable experiment={experiment} />,
     },
   ]
   return (
