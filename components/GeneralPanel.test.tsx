@@ -5,6 +5,7 @@ import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
 
+import ExperimentsApi from '@/api/ExperimentsApi'
 import { Status } from '@/lib/schemas'
 import Fixtures from '@/test-helpers/fixtures'
 import { render } from '@/test-helpers/test-utils'
@@ -12,6 +13,9 @@ import { render } from '@/test-helpers/test-utils'
 import GeneralPanel from './GeneralPanel'
 
 MockDate.set('2020-07-21')
+
+jest.mock('@/api/ExperimentsApi')
+const mockedExperimentsApi = ExperimentsApi as jest.Mocked<typeof ExperimentsApi>
 
 jest.mock('notistack')
 const mockedNotistack = notistack as jest.Mocked<typeof notistack>
@@ -122,7 +126,7 @@ test('renders as expected', () => {
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 <span
-                  class="makeStyles-root-7"
+                  class="makeStyles-root-5"
                   title="20/09/2020, 20:00:00"
                 >
                   2020-09-21
@@ -133,7 +137,7 @@ test('renders as expected', () => {
                   to
                 </span>
                 <span
-                  class="makeStyles-root-7"
+                  class="makeStyles-root-5"
                   title="20/11/2020, 20:00:00"
                 >
                   2020-11-21
@@ -167,11 +171,10 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
   const experiment = Fixtures.createExperimentFull({ status: Status.Running })
   render(<GeneralPanel experiment={experiment} experimentReloadRef={experimentReloadRef} />)
 
+  mockedExperimentsApi.patch.mockReset()
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
-  global.fetch = jest.fn().mockImplementationOnce(async () => ({
-    json: async () => experiment,
-  }))
+  mockedExperimentsApi.patch.mockImplementationOnce(async () => experiment)
 
   const editButton = screen.getByRole('button', { name: /Edit/ })
   fireEvent.click(editButton)
@@ -182,6 +185,8 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
   fireEvent.click(saveButton)
   await waitForElementToBeRemoved(saveButton)
 
+  expect(mockedExperimentsApi.patch).toHaveBeenCalledTimes(1)
+
   fireEvent.click(editButton)
 
   await waitFor(() => screen.getByRole('button', { name: /Cancel/ }))
@@ -189,17 +194,18 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
   const cancelButton = screen.getByRole('button', { name: /Cancel/ })
   fireEvent.click(cancelButton)
   await waitForElementToBeRemoved(cancelButton)
+
+  expect(mockedExperimentsApi.patch).toHaveBeenCalledTimes(1)
 })
 
 test('checks edit dialog does not allow end datetime changes with disabled experiment', async () => {
   const experiment = Fixtures.createExperimentFull({ status: Status.Disabled })
   render(<GeneralPanel experiment={experiment} experimentReloadRef={experimentReloadRef} />)
 
+  mockedExperimentsApi.patch.mockReset()
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
-  global.fetch = jest.fn().mockImplementationOnce(async () => ({
-    json: async () => experiment,
-  }))
+  mockedExperimentsApi.patch.mockImplementationOnce(async () => experiment)
 
   const editButton = screen.getByRole('button', { name: /Edit/ })
   fireEvent.click(editButton)
@@ -207,4 +213,10 @@ test('checks edit dialog does not allow end datetime changes with disabled exper
   await waitFor(() => screen.getByRole('button', { name: /Save/ }))
 
   expect(screen.getByLabelText(/End date/)).toBeDisabled()
+
+  const saveButton = screen.getByRole('button', { name: /Save/ })
+  fireEvent.click(saveButton)
+  await waitForElementToBeRemoved(saveButton)
+
+  expect(mockedExperimentsApi.patch).toHaveBeenCalledTimes(1)
 })

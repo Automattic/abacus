@@ -185,30 +185,9 @@ describe('ExperimentsApi.ts module', () => {
         ownerLogin: 'owner-nickname',
       }
       const returnedExperiment = await validationErrorDisplayer(
-        ExperimentsApi.patch(0, (rawNewExperiment as unknown) as Partial<ExperimentFull>),
+        ExperimentsApi.patch(1, (rawNewExperiment as unknown) as Partial<ExperimentFull>),
       )
       expect(returnedExperiment.experimentId).toBeGreaterThan(0)
-    })
-
-    it('should not patch an existing experiment with a blacklisted key', async () => {
-      expect.assertions(1)
-      const now = new Date()
-      now.setDate(now.getDate() + 1)
-      const nextWeek = new Date()
-      nextWeek.setDate(now.getDate() + 7)
-      const rawNewExperiment = {
-        experimentId: 22,
-        description: 'experiment description',
-        endDatetime: format(nextWeek, 'yyyy-MM-dd'),
-        ownerLogin: 'owner-nickname',
-      }
-      try {
-        await validationErrorDisplayer(
-          ExperimentsApi.patch(0, (rawNewExperiment as unknown) as Partial<ExperimentFull>),
-        )
-      } catch (e) {
-        expect(e).toMatchInlineSnapshot(`[Error: Cannot patch experiment: contains blacklisted key.]`)
-      }
     })
   })
 
