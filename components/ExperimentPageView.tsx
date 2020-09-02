@@ -1,8 +1,8 @@
 // istanbul ignore file; Even though it sits with components this is a "page" component
-import { Button, createStyles, LinearProgress, makeStyles, Tab, Tabs, Theme } from '@material-ui/core'
+import { Button, createStyles, LinearProgress, makeStyles, Tab, Tabs, Theme, Dialog, DialogTitle, DialogContent, DialogActions, Typography } from '@material-ui/core'
 import _ from 'lodash'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useState } from 'react'
 
 import AnalysesApi from '@/api/AnalysesApi'
 import ExperimentsApi from '@/api/ExperimentsApi'
@@ -12,9 +12,12 @@ import ExperimentResults from '@/components/experiment-results/ExperimentResults
 import ExperimentCodeSetup from '@/components/ExperimentCodeSetup'
 import ExperimentDetails from '@/components/ExperimentDetails'
 import Layout from '@/components/Layout'
-import { Analysis, ExperimentFull } from '@/lib/schemas'
+import { Analysis, ExperimentFull, Status } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { createUnresolvingPromise, or } from '@/utils/general'
+import { useSnackbar } from 'notistack'
+import LoadingButtonContainer from './LoadingButtonContainer'
+import { SettingsRemoteOutlined } from '@material-ui/icons'
 
 const useLinkTabStyles = makeStyles(() =>
   createStyles({
@@ -107,6 +110,31 @@ export default function ExperimentPageView({
 
   const isLoading = or(experimentIsLoading, metricsIsLoading, segmentsIsLoading, analysesIsLoading)
 
+  const { enqueueSnackbar } = useSnackbar()
+
+  // ### Experiment Actions
+
+  // #### Experiment Disable
+  const canDisableExperiment = experiment?.status !== Status.Disabled
+  const [isAskingToConfirmDisableExperiment, setIsAskingToConfirmDisableExperiment] = useState<boolean>(false)
+  const onAskToConfirmDisableExperiment = () => setIsAskingToConfirmDisableExperiment(true)
+  const onCancelDisableExperiment = () => setIsAskingToConfirmDisableExperiment(false)
+  const [isSubmittingDisableExperiment, setIsSubmittingDisableExperiment] = useState<boolean>(false)
+  const onConfirmDisableExperiment = async () => {
+    try {
+      setIsSubmittingDisableExperiment(true)
+      await new Promise(res => setTimeout(res, 400))
+      enqueueSnackbar('Experiment Disabled', { variant: 'success' })
+      setIsAskingToConfirmDisableExperiment(false)
+    } catch (e) {
+      // istanbul ignore next; Shouldn't occur
+      console.log(e)
+      enqueueSnackbar('Oops! Something went wrong while trying to disable your experiment.', { variant: 'error' })
+    } finally {
+      setIsSubmittingDisableExperiment(false)
+    }
+  }
+
   return (
     <Layout title={`Experiment: ${experiment?.name || ''}`}>
       <>
@@ -138,22 +166,49 @@ export default function ExperimentPageView({
             <Button variant='outlined' color='secondary'>
               Run
             </Button>{' '}
-            <Button variant='outlined' classes={{ outlined: classes.topBarActionsDisableOutlined }}>
+            <Button
+              variant='outlined'
+              classes={{ outlined: classes.topBarActionsDisableOutlined }}
+              disabled={!canDisableExperiment}
+              onClick={onAskToConfirmDisableExperiment}
+            >
               Disable
             </Button>
+            <Dialog open={isAskingToConfirmDisableExperiment} aria-labelledby='confirm-disable-experiment-dialog-title'>
+              <DialogContent>
+                <Typography variant="body1">Are you sure you want to disable this experiment?</Typography>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={onCancelDisableExperiment}>
+                  Cancel
+                </Button>
+                <LoadingButtonContainer isLoading={isSubmittingDisableExperiment}>
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    disabled={isSubmittingDisableExperiment}
+                    onClick={onConfirmDisableExperiment}
+                  >
+                    Disable
+                  </Button>
+                </LoadingButtonContainer>
+              </DialogActions>
+            </Dialog>
           </div>
         </div>
         {isLoading && <LinearProgress />}
-        {experiment && metrics && segments && analyses && (
-          <>
-            {view === ExperimentView.Overview && (
-              <ExperimentDetails {...{ experiment, metrics, segments, experimentReloadRef }} />
-            )}
-            {view === ExperimentView.Results && <ExperimentResults {...{ experiment, metrics, analyses, debugMode }} />}
-            {view === ExperimentView.CodeSetup && <ExperimentCodeSetup />}
-          </>
-        )}
+        {
+          experiment && metrics && segments && analyses && (
+            <>
+              {view === ExperimentView.Overview && (
+                <ExperimentDetails {...{ experiment, metrics, segments, experimentReloadRef }} />
+              )}
+              {view === ExperimentView.Results && <ExperimentResults {...{ experiment, metrics, analyses, debugMode }} />}
+              {view === ExperimentView.CodeSetup && <ExperimentCodeSetup />}
+            </>
+          )
+        }
       </>
-    </Layout>
+    </Layout >
   )
 }
