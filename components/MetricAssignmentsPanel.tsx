@@ -101,7 +101,11 @@ const useStyles = makeStyles((theme: Theme) =>
  * @param props.metrics - The metrics to look up (aka resolve) the metric IDs of the
  *   experiment's metric assignments.
  */
-function MetricAssignmentsPanel({ experiment, metrics }: { experiment: ExperimentFull; metrics: MetricBare[] }) {
+function MetricAssignmentsPanel({ experiment, experimentReloadRef, metrics }: {
+  experiment: ExperimentFull;
+  experimentReloadRef: React.MutableRefObject<() => void>;
+  metrics: MetricBare[]
+}) {
   const classes = useStyles()
   const resolvedMetricAssignments = useMemo(
     () => resolveMetricAssignments(MetricAssignments.sort(experiment.metricAssignments), metrics),
@@ -130,6 +134,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
     try {
       await ExperimentsApi.assignMetric(experiment, formData.metricAssignment as unknown as MetricAssignmentNew)
       enqueueSnackbar('Metric Assigned Successfully!', { variant: 'success' })
+      experimentReloadRef.current()
       setIsAssigningMetric(false)
     } catch (e) {
       // istanbul ignore next; Shouldn't occur

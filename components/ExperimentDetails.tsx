@@ -43,7 +43,7 @@ function ExperimentDetails({
             </Grid>
           )}
           <Grid item>
-            <MetricAssignmentsPanel experiment={experiment} metrics={metrics} />
+            <MetricAssignmentsPanel {...{ experiment, metrics, experimentReloadRef }} />
           </Grid>
           {(experiment.status === Status.Completed || experiment.status === Status.Disabled) && (
             <Grid item>
