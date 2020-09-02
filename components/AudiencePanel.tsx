@@ -77,26 +77,26 @@ const eventStyles = makeStyles(() =>
   }),
 )
 
-function ExposureEventsTable({ experiment }: { experiment: ExperimentFull }) {
+function ExposureEventsTable({ experiment: { exposureEvents } }: { experiment: ExperimentFull }) {
   const classes = eventStyles()
-  const exposureEvents =
-    !Array.isArray(experiment.exposureEvents) || experiment.exposureEvents.length === 0
-      ? null
-      : experiment.exposureEvents
 
   return (
     <div className={classes.eventList}>
-      {exposureEvents?.map((ev) => (
-        <Typography key={ev.event}>
-          <span className={classes.eventName}>{ev.event}</span>
-          {ev.props &&
-            Object.entries(ev.props).map(([key, val]) => (
-              <span key={key} className={classes.entry}>
-                {key}: {val}
-              </span>
-            ))}
-        </Typography>
-      )) ?? <Typography>No exposure events defined</Typography>}
+      {exposureEvents && exposureEvents.length ? (
+        exposureEvents.map((ev) => (
+          <Typography key={ev.event}>
+            <span className={classes.eventName}>{ev.event}</span>
+            {ev.props &&
+              Object.entries(ev.props).map(([key, val]) => (
+                <span key={key} className={classes.entry}>
+                  {key}: {val}
+                </span>
+              ))}
+          </Typography>
+        ))
+      ) : (
+        <Typography>No exposure events defined</Typography>
+      )}
     </div>
   )
 }
