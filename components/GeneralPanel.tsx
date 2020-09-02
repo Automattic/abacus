@@ -119,10 +119,10 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
   const onCancelEdit = () => {
     setIsEditing(false)
   }
-  const onSubmitEdit = async (formData: { experiment: unknown }) => {
+  const onSubmitEdit = async (formData: { experiment: typeof generalEditInitialExperiment }) => {
     try {
       const experimentPatch = _.pick(formData.experiment, props)
-      await ExperimentsApi.patch(experiment.experimentId, experimentPatch)
+      await ExperimentsApi.patch(experiment.experimentId, experimentPatch as unknown as Partial<ExperimentFull>)
       enqueueSnackbar('Experiment Updated!', { variant: 'success' })
       setIsEditing(false)
     } catch (e) {
