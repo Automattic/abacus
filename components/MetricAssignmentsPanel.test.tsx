@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react'
+import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import * as notistack from 'notistack'
 import React from 'react'
 
@@ -233,7 +233,7 @@ test('throws an error when some metrics not resolvable', () => {
   }
 })
 
-test('opens, submits and cancels assign metric dialog', () => {
+test('opens, submits and cancels assign metric dialog', async () => {
   const metrics = Fixtures.createMetricBares(5)
   const experiment = Fixtures.createExperimentFull()
   const { container: _container } = render(<MetricAssignmentsPanel experiment={experiment} metrics={metrics} />)
@@ -241,19 +241,17 @@ test('opens, submits and cancels assign metric dialog', () => {
   const startAssignButton = screen.getByRole('button', { name: /Assign Metric/ })
   fireEvent.click(startAssignButton)
 
-  waitFor(() => {
-    screen.getByRole('button', { name: 'Assign' })
-  })
+  await waitFor(() => screen.getByRole('button', { name: 'Assign' }))
 
   const assignButton = screen.getByRole('button', { name: 'Assign' })
   fireEvent.click(assignButton)
+  await waitForElementToBeRemoved(assignButton)
 
   fireEvent.click(startAssignButton)
 
-  waitFor(() => {
-    screen.getByRole('button', { name: /Cancel/ })
-  })
+  await waitFor(() => screen.getByRole('button', { name: /Cancel/ }))
 
   const cancelButton = screen.getByRole('button', { name: /Cancel/ })
   fireEvent.click(cancelButton)
+  await waitForElementToBeRemoved(cancelButton)
 })
