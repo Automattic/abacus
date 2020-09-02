@@ -1,5 +1,5 @@
 // istanbul ignore file; Even though it sits with components this is a "page" component
-import { createStyles, LinearProgress, makeStyles, Theme, Tab, Tabs } from '@material-ui/core'
+import { createStyles, LinearProgress, makeStyles, Theme, Tab, Tabs, Button } from '@material-ui/core'
 import _ from 'lodash'
 import React from 'react'
 
@@ -11,7 +11,7 @@ import ExperimentResults from '@/components/experiment-results/ExperimentResults
 import ExperimentCodeSetup from '@/components/ExperimentCodeSetup'
 import ExperimentDetails from '@/components/ExperimentDetails'
 import Layout from '@/components/Layout'
-import { Analysis, ExperimentFull } from '@/lib/schemas'
+import { Analysis, ExperimentFull, Status } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { createUnresolvingPromise, or } from '@/utils/general'
 import { useRouter } from 'next/router'
@@ -44,9 +44,14 @@ function LinkTab({ as, label, url, value }: { as?: string; label: React.ReactNod
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    viewTabs: {
+    topBar: {
+      display: 'flex',
       marginBottom: theme.spacing(2),
     },
+    topBarTabs: {
+      flex: 1,
+    },
+    topBarActions: {},
   }),
 )
 
@@ -101,26 +106,33 @@ export default function ExperimentPageView({
   return (
     <Layout title={`Experiment: ${experiment?.name || ''}`}>
       <>
-        <Tabs className={classes.viewTabs} value={view}>
-          <LinkTab
-            label='Overview'
-            value={ExperimentView.Overview}
-            url='/experiments/[id]'
-            as={`/experiments/${experimentId}`}
-          />
-          <LinkTab
-            label='Results'
-            value={ExperimentView.Results}
-            url='/experiments/[id]/results'
-            as={`/experiments/${experimentId}/results`}
-          />
-          <LinkTab
-            label='Code Setup'
-            value={ExperimentView.CodeSetup}
-            url='/experiments/[id]/code-setup'
-            as={`/experiments/${experimentId}/code-setup`}
-          />
-        </Tabs>
+        <div className={classes.topBar}>
+          <Tabs className={classes.topBarTabs} value={view}>
+            <LinkTab
+              label='Overview'
+              value={ExperimentView.Overview}
+              url='/experiments/[id]'
+              as={`/experiments/${experimentId}`}
+            />
+            <LinkTab
+              label='Results'
+              value={ExperimentView.Results}
+              url='/experiments/[id]/results'
+              as={`/experiments/${experimentId}/results`}
+            />
+            <LinkTab
+              label='Code Setup'
+              value={ExperimentView.CodeSetup}
+              url='/experiments/[id]/code-setup'
+              as={`/experiments/${experimentId}/code-setup`}
+            />
+          </Tabs>
+          <div className={classes.topBarActions}>
+            <Button variant="outlined"> Edit In Wizard </Button>
+            {' '}
+            <Button variant="outlined"> Disable </Button>
+          </div>
+        </div>
         {isLoading && <LinearProgress />}
         {experiment && metrics && segments && analyses && (
           <>
