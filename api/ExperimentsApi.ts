@@ -27,7 +27,7 @@ async function create(newExperiment: ExperimentFullNew) {
 
 /**
  * Attempts to patch an experiment.
- * 
+ *
  * Doesn't work with nested fields.
  *
  * TODO: Implement Patching Metric Assignments
