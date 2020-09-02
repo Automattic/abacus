@@ -24,6 +24,7 @@ import ExperimentsApi from '@/api/ExperimentsApi'
 import DatetimeText from '@/components/DatetimeText'
 import LabelValueTable from '@/components/LabelValueTable'
 import { ExperimentFull, experimentFullSchema, Status, yupPick } from '@/lib/schemas'
+import LoadingButtonContainer from './LoadingButtonContainer'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -47,21 +48,6 @@ const useStyles = makeStyles((theme: Theme) =>
         // Fix the native date-picker placeholder text colour
         color: theme.palette.text.hint,
       },
-    },
-    submitContainer: {
-      marginLeft: theme.spacing(2),
-      '& .MuiButton-root': {
-        marginLeft: 0,
-      },
-      position: 'relative',
-    },
-    submitProgress: {
-      color: theme.palette.secondary.main,
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      marginTop: -12,
-      marginLeft: -12,
     },
   }),
 )
@@ -220,7 +206,7 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
                 <Button onClick={onCancelEdit} color='primary'>
                   Cancel
                 </Button>
-                <div className={classes.submitContainer}>
+                <LoadingButtonContainer isLoading={formikProps.isSubmitting}>
                   <Button
                     type='submit'
                     variant='contained'
@@ -229,8 +215,7 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
                   >
                     Save
                   </Button>
-                  {formikProps.isSubmitting && <CircularProgress size={24} className={classes.submitProgress} />}
-                </div>
+                </LoadingButtonContainer>
               </DialogActions>
             </form>
           )}

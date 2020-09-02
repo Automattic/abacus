@@ -22,6 +22,7 @@ import Audience from './Audience'
 import BasicInfo from './BasicInfo'
 import Beginning from './Beginning'
 import Metrics from './Metrics'
+import LoadingButtonContainer from '../LoadingButtonContainer'
 
 enum StageId {
   Beginning,
@@ -106,21 +107,6 @@ const useStyles = makeStyles((theme: Theme) =>
       maxWidth: 950,
       padding: theme.spacing(3, 4),
       marginBottom: theme.spacing(2),
-    },
-    submitContainer: {
-      marginLeft: theme.spacing(2),
-      '& .MuiButton-root': {
-        marginLeft: 0,
-      },
-      position: 'relative',
-    },
-    submitProgress: {
-      color: theme.palette.secondary.main,
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      marginTop: -12,
-      marginLeft: -12,
     },
   }),
 )
@@ -290,7 +276,7 @@ const ExperimentForm = ({
                     </Paper>
                     <div className={classes.formPartActions}>
                       <Button onClick={prevStage}>Previous</Button>
-                      <div className={classes.submitContainer}>
+                      <LoadingButtonContainer isLoading={formikProps.isSubmitting}>
                         <Button
                           type='submit'
                           variant='contained'
@@ -299,8 +285,7 @@ const ExperimentForm = ({
                         >
                           Submit
                         </Button>
-                        {formikProps.isSubmitting && <CircularProgress size={24} className={classes.submitProgress} />}
-                      </div>
+                      </LoadingButtonContainer>
                     </div>
                   </div>
                 )}
