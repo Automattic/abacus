@@ -99,29 +99,29 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
   // Edit Modal
   const { enqueueSnackbar } = useSnackbar()
   const [isEditing, setIsEditing] = useState<boolean>(false)
-  const props = ['description', 'ownerLogin', 'endDatetime']
   const generalEditInitialExperiment = {
-    ..._.pick(experiment, props),
+    ..._.pick(experiment, ['description', 'ownerLogin']),
     endDatetime: dateFns.format(experiment.endDatetime, 'yyyy-MM-dd'),
     // Needed for endDatetime validation
     startDatetime: experiment.startDatetime,
   }
-  const generalEditValidationSchema = yupPick(experimentFullSchema, props).shape({
-    // We need to ensure the end date is in the future
-    endDatetime: ((yup.reach(experimentFullSchema, 'endDatetime') as unknown) as yup.MixedSchema).test(
-      'future-end-date',
-      'End date (UTC) must be in the future.',
-      // We need to refer to new Date() instead of using dateFns.isFuture so MockDate works with this in the tests.
-      (date) => dateFns.isBefore(new Date(), date),
-    ),
+  const canEditEndDate = experiment.status === Status.Running
+  const generalEditValidationSchema = yupPick(experimentFullSchema, ['description', 'ownerLogin']).shape({
+    ...(canEditEndDate && {
+      // We need to ensure the end date is in the future
+      endDatetime: ((yup.reach(experimentFullSchema, 'endDatetime') as unknown) as yup.MixedSchema).test(
+        'future-end-date',
+        'End date (UTC) must be in the future.',
+        // We need to refer to new Date() instead of using dateFns.isFuture so MockDate works with this in the tests.
+        (date) => dateFns.isBefore(new Date(), date),
+      ),
+    }),
   })
   const onEdit = () => setIsEditing(true)
-  const onCancelEdit = () => {
-    setIsEditing(false)
-  }
+  const onCancelEdit = () => setIsEditing(false)
   const onSubmitEdit = async (formData: { experiment: typeof generalEditInitialExperiment }) => {
     try {
-      const experimentPatch = _.pick(formData.experiment, props)
+      const experimentPatch = _.pick(formData.experiment, canEditEndDate ? ['description', 'ownerLogin', 'endDatetime'] : ['description', 'ownerLogin'])
       await ExperimentsApi.patch(experiment.experimentId, experimentPatch as unknown as Partial<ExperimentFull>)
       enqueueSnackbar('Experiment Updated!', { variant: 'success' })
       setIsEditing(false)
@@ -130,7 +130,6 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
       enqueueSnackbar('Oops! Something went wrong while trying to update your experiment.', { variant: 'error' })
     }
   }
-  const canEditEndDate = experiment.status === Status.Running
 
   return (
     <Paper>
