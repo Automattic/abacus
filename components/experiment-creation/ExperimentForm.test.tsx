@@ -10,7 +10,7 @@ import React from 'react'
 import { createInitialExperiment } from '@/lib/experiments'
 import * as Normalizers from '@/lib/normalizers'
 import Fixtures from '@/test-helpers/fixtures'
-import { render } from '@/test-helpers/test-utils'
+import { changeFieldByRole, render } from '@/test-helpers/test-utils'
 
 import ExperimentForm from './ExperimentForm'
 
@@ -45,13 +45,6 @@ function isSectionError(sectionButton: HTMLElement) {
 
 function isSectionComplete(sectionButton: HTMLElement) {
   return !!sectionButton.querySelector('.MuiStepIcon-completed')
-}
-
-async function changeFieldByRole(role: string, name: RegExp, value: string) {
-  const field = screen.getByRole(role, { name: name })
-  await act(async () => {
-    fireEvent.change(field, { target: { value: value } })
-  })
 }
 
 test('renders as expected', () => {

@@ -173,7 +173,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
         </TableBody>
       </Table>
       <Dialog open={isAssigningMetric} aria-labelledby='assign-metric-form-dialog-title'>
-        <DialogTitle id='assign-metric-form-dialog-title'>Add Metric</DialogTitle>
+        <DialogTitle id='assign-metric-form-dialog-title'>Assign Metric</DialogTitle>
         <Formik initialValues={{ metricAssignment: assignMetricInitialAssignMetric }} onSubmit={onSubmitAssignMetric}>
           {(formikProps) => (
             <form onSubmit={formikProps.handleSubmit}>
@@ -204,12 +204,17 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                 </div>
                 <div className={classes.row}>
                   <FormControl component='fieldset' fullWidth>
-                    <FormLabel required className={classes.label}>
+                    <FormLabel
+                      required
+                      className={classes.label}
+                      id={`metricAssignment.attributionWindowSeconds-label`}
+                    >
                       Attribution Window
                     </FormLabel>
                     <Field
                       component={Select}
                       name={`metricAssignment.attributionWindowSeconds`}
+                      labelId={`metricAssignment.attributionWindowSeconds-label`}
                       id={`metricAssignment.attributionWindowSeconds`}
                       variant='outlined'
                       displayEmpty
@@ -235,6 +240,9 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       label='Change Expected'
                       name={`metricAssignment.changeExpected`}
                       id={`metricAssignment.changeExpected`}
+                      inputProps={{
+                        'aria-label': 'Change Expected',
+                      }}
                       variant='outlined'
                       type='checkbox'
                     />
@@ -242,7 +250,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                 </div>
                 <div className={classes.row}>
                   <FormControl component='fieldset' fullWidth>
-                    <FormLabel required className={classes.label}>
+                    <FormLabel required className={classes.label} id={`metricAssignment.minDifference-label`}>
                       Minimum Difference
                     </FormLabel>
                     <Field
@@ -252,6 +260,9 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       type='number'
                       variant='outlined'
                       placeholder='-'
+                      inputProps={{
+                        'aria-label': 'Minimum Difference',
+                      }}
                       InputProps={
                         formikProps.values.metricAssignment.metricId &&
                         indexedMetrics[(formikProps.values.metricAssignment.metricId as unknown) as number]
@@ -271,19 +282,6 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                               startAdornment: <InputAdornment position='start'>$</InputAdornment>,
                             }
                       }
-                    />
-                  </FormControl>
-                </div>
-                <div className={classes.row}>
-                  <FormControl component='fieldset' fullWidth>
-                    <FormLabel className={classes.label}>Make Primary</FormLabel>
-                    <Field
-                      component={Switch}
-                      label='Make Primary'
-                      name={`metricAssignment.isPrimary`}
-                      id={`metricAssignment.isPrimary`}
-                      variant='outlined'
-                      type='checkbox'
                     />
                   </FormControl>
                 </div>
