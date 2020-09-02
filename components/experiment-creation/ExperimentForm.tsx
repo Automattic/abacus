@@ -1,14 +1,4 @@
-import {
-  Button,
-  CircularProgress,
-  Link,
-  Paper,
-  Step,
-  StepButton,
-  StepLabel,
-  Stepper,
-  Typography,
-} from '@material-ui/core'
+import { Button, Link, Paper, Step, StepButton, StepLabel, Stepper, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Formik } from 'formik'
 import _ from 'lodash'
@@ -18,6 +8,7 @@ import * as yup from 'yup'
 import { createInitialExperiment } from '@/lib/experiments'
 import { experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
 
+import LoadingButtonContainer from '../LoadingButtonContainer'
 import Audience from './Audience'
 import BasicInfo from './BasicInfo'
 import Beginning from './Beginning'
@@ -106,21 +97,6 @@ const useStyles = makeStyles((theme: Theme) =>
       maxWidth: 950,
       padding: theme.spacing(3, 4),
       marginBottom: theme.spacing(2),
-    },
-    submitContainer: {
-      marginLeft: theme.spacing(2),
-      '& .MuiButton-root': {
-        marginLeft: 0,
-      },
-      position: 'relative',
-    },
-    submitProgress: {
-      color: theme.palette.secondary.main,
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      marginTop: -12,
-      marginLeft: -12,
     },
   }),
 )
@@ -290,7 +266,7 @@ const ExperimentForm = ({
                     </Paper>
                     <div className={classes.formPartActions}>
                       <Button onClick={prevStage}>Previous</Button>
-                      <div className={classes.submitContainer}>
+                      <LoadingButtonContainer isLoading={formikProps.isSubmitting}>
                         <Button
                           type='submit'
                           variant='contained'
@@ -299,8 +275,7 @@ const ExperimentForm = ({
                         >
                           Submit
                         </Button>
-                        {formikProps.isSubmitting && <CircularProgress size={24} className={classes.submitProgress} />}
-                      </div>
+                      </LoadingButtonContainer>
                     </div>
                   </div>
                 )}

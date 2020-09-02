@@ -1,3 +1,4 @@
+import { noop } from 'lodash'
 import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
@@ -22,6 +23,8 @@ afterEach(() => {
   window.matchMedia = createMatchMedia(initialJsDomWindowInnerWidth)
 })
 
+const experimentReloadRef: React.MutableRefObject<() => void> = { current: noop }
+
 test('renders as expected at large width', () => {
   window.matchMedia = createMatchMedia(1600)
 
@@ -33,7 +36,14 @@ test('renders as expected at large width', () => {
       Fixtures.createSegmentAssignment({ segmentAssignmentId: 102, segmentId: 2, isExcluded: true }),
     ],
   })
-  const { container } = render(<ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />)
+  const { container } = render(
+    <ExperimentDetails
+      experiment={experiment}
+      metrics={metrics}
+      segments={segments}
+      experimentReloadRef={experimentReloadRef}
+    />,
+  )
 
   expect(container).toMatchSnapshot()
 })
@@ -48,7 +58,14 @@ test('renders as expected at small width', () => {
       Fixtures.createSegmentAssignment({ segmentAssignmentId: 102, segmentId: 2, isExcluded: true }),
     ],
   })
-  const { container } = render(<ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />)
+  const { container } = render(
+    <ExperimentDetails
+      experiment={experiment}
+      metrics={metrics}
+      segments={segments}
+      experimentReloadRef={experimentReloadRef}
+    />,
+  )
 
   expect(container).toMatchSnapshot()
 })
@@ -66,7 +83,14 @@ test('renders as expected with conclusion data', () => {
     ],
     status: Status.Disabled,
   })
-  const { container } = render(<ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />)
+  const { container } = render(
+    <ExperimentDetails
+      experiment={experiment}
+      metrics={metrics}
+      segments={segments}
+      experimentReloadRef={experimentReloadRef}
+    />,
+  )
 
   expect(container).toMatchSnapshot()
 })
@@ -80,7 +104,14 @@ test('renders as expected without conclusion data', () => {
       Fixtures.createSegmentAssignment({ segmentAssignmentId: 102, segmentId: 2, isExcluded: true }),
     ],
   })
-  const { container } = render(<ExperimentDetails experiment={experiment} metrics={metrics} segments={segments} />)
+  const { container } = render(
+    <ExperimentDetails
+      experiment={experiment}
+      metrics={metrics}
+      segments={segments}
+      experimentReloadRef={experimentReloadRef}
+    />,
+  )
 
   expect(container).toMatchSnapshot()
 })

@@ -19,9 +19,12 @@ import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 import * as yup from 'yup'
 
+import ExperimentsApi from '@/api/ExperimentsApi'
 import DatetimeText from '@/components/DatetimeText'
 import LabelValueTable from '@/components/LabelValueTable'
 import { ExperimentFull, experimentFullSchema, Status, yupPick } from '@/lib/schemas'
+
+import LoadingButtonContainer from './LoadingButtonContainer'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -54,7 +57,13 @@ const useStyles = makeStyles((theme: Theme) =>
  *
  * @param props.experiment - The experiment with the general information.
  */
-function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
+function GeneralPanel({
+  experiment,
+  experimentReloadRef,
+}: {
+  experiment: ExperimentFull
+  experimentReloadRef: React.MutableRefObject<() => void>
+}) {
   const classes = useStyles()
   const data = [
     { label: 'Description', value: experiment.description },
@@ -82,33 +91,41 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
   // Edit Modal
   const { enqueueSnackbar } = useSnackbar()
   const [isEditing, setIsEditing] = useState<boolean>(false)
-  const props = ['description', 'ownerLogin', 'endDatetime']
   const generalEditInitialExperiment = {
-    ..._.pick(experiment, props),
+    ..._.pick(experiment, ['description', 'ownerLogin']),
     endDatetime: dateFns.format(experiment.endDatetime, 'yyyy-MM-dd'),
     // Needed for endDatetime validation
     startDatetime: experiment.startDatetime,
   }
-  const generalEditValidationSchema = yupPick(experimentFullSchema, props).shape({
-    // We need to ensure the end date is in the future
-    endDatetime: ((yup.reach(experimentFullSchema, 'endDatetime') as unknown) as yup.MixedSchema).test(
-      'future-end-date',
-      'End date (UTC) must be in the future.',
-      // We need to refer to new Date() instead of using dateFns.isFuture so MockDate works with this in the tests.
-      (date) => dateFns.isBefore(new Date(), date),
-    ),
+  const canEditEndDate = experiment.status === Status.Running
+  const generalEditValidationSchema = yupPick(experimentFullSchema, ['description', 'ownerLogin']).shape({
+    ...(canEditEndDate && {
+      // We need to ensure the end date is in the future
+      endDatetime: ((yup.reach(experimentFullSchema, 'endDatetime') as unknown) as yup.MixedSchema).test(
+        'future-end-date',
+        'End date (UTC) must be in the future.',
+        // We need to refer to new Date() instead of using dateFns.isFuture so MockDate works with this in the tests.
+        (date) => dateFns.isBefore(new Date(), date),
+      ),
+    }),
   })
   const onEdit = () => setIsEditing(true)
-  const onCancelEdit = () => {
-    setIsEditing(false)
+  const onCancelEdit = () => setIsEditing(false)
+  const onSubmitEdit = async (formData: { experiment: typeof generalEditInitialExperiment }) => {
+    try {
+      const experimentPatch = _.pick(
+        formData.experiment,
+        canEditEndDate ? ['description', 'ownerLogin', 'endDatetime'] : ['description', 'ownerLogin'],
+      )
+      await ExperimentsApi.patch(experiment.experimentId, (experimentPatch as unknown) as Partial<ExperimentFull>)
+      enqueueSnackbar('Experiment Updated!', { variant: 'success' })
+      experimentReloadRef.current()
+      setIsEditing(false)
+    } catch (e) {
+      // istanbul ignore next; Shouldn't occur
+      enqueueSnackbar('Oops! Something went wrong while trying to update your experiment.', { variant: 'error' })
+    }
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
-  const onSubmitEdit = async (formData: unknown) => {
-    // TODO: Full submission
-    enqueueSnackbar('Experiment Updated!', { variant: 'success' })
-    setIsEditing(false)
-  }
-  const canEditEndDate = experiment.status === Status.Running
 
   return (
     <Paper>
@@ -130,7 +147,7 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
           onSubmit={onSubmitEdit}
         >
           {(formikProps) => (
-            <form onSubmit={formikProps.handleSubmit}>
+            <form onSubmit={formikProps.handleSubmit} noValidate>
               <DialogContent>
                 <div className={classes.row}>
                   <Field
@@ -196,9 +213,16 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
                 <Button onClick={onCancelEdit} color='primary'>
                   Cancel
                 </Button>
-                <Button color='primary' type='submit'>
-                  Save
-                </Button>
+                <LoadingButtonContainer isLoading={formikProps.isSubmitting}>
+                  <Button
+                    type='submit'
+                    variant='contained'
+                    color='secondary'
+                    disabled={formikProps.isSubmitting || !formikProps.isValid}
+                  >
+                    Save
+                  </Button>
+                </LoadingButtonContainer>
               </DialogActions>
             </form>
           )}

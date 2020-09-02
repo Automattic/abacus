@@ -2,7 +2,7 @@ import { format } from 'date-fns'
 import MockDate from 'mockdate'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
-import { ExperimentFullNew, experimentFullNewOutboundSchema } from '@/lib/schemas'
+import { ExperimentFull, ExperimentFullNew, experimentFullNewOutboundSchema } from '@/lib/schemas'
 import { validationErrorDisplayer } from '@/test-helpers/test-utils'
 
 MockDate.set('2020-08-13')
@@ -168,6 +168,24 @@ describe('ExperimentsApi.ts module', () => {
       }
       const returnedExperiment = await validationErrorDisplayer(
         ExperimentsApi.create((rawNewExperiment as unknown) as ExperimentFullNew),
+      )
+      expect(returnedExperiment.experimentId).toBeGreaterThan(0)
+    })
+  })
+
+  describe('patch', () => {
+    it('should patch an existing experiment', async () => {
+      const now = new Date()
+      now.setDate(now.getDate() + 1)
+      const nextWeek = new Date()
+      nextWeek.setDate(now.getDate() + 7)
+      const rawNewExperiment = {
+        description: 'experiment description',
+        endDatetime: format(nextWeek, 'yyyy-MM-dd'),
+        ownerLogin: 'owner-nickname',
+      }
+      const returnedExperiment = await validationErrorDisplayer(
+        ExperimentsApi.patch(1, (rawNewExperiment as unknown) as Partial<ExperimentFull>),
       )
       expect(returnedExperiment.experimentId).toBeGreaterThan(0)
     })
