@@ -52,6 +52,10 @@ const useStyles = makeStyles((theme: Theme) =>
       flex: 1,
     },
     topBarActions: {},
+    topBarActionsDisableOutlined: {
+      borderColor: theme.palette.error.dark,
+      color: theme.palette.error.dark,
+    },
   }),
 )
 
@@ -128,9 +132,9 @@ export default function ExperimentPageView({
             />
           </Tabs>
           <div className={classes.topBarActions}>
-            <Button variant="outlined"> Edit In Wizard </Button>
+            <Button variant="outlined" color="secondary"> Edit In Wizard </Button>
             {' '}
-            <Button variant="outlined"> Disable </Button>
+            <Button variant="outlined" classes={{ outlined: classes.topBarActionsDisableOutlined }}> Disable </Button>
           </div>
         </div>
         {isLoading && <LinearProgress />}
