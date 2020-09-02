@@ -63,10 +63,6 @@ const eventStyles = makeStyles(() =>
     eventName: {
       fontFamily: theme.custom.fonts.monospace,
     },
-    propsList: {
-      margin: 0,
-      paddingInlineStart: 0,
-    },
     eventList: {
       '& p:not(:first-child)': {
         paddingTop: theme.spacing(2),
@@ -83,22 +79,22 @@ const eventStyles = makeStyles(() =>
 
 function ExposureEventsTable({ experiment }: { experiment: ExperimentFull }) {
   const classes = eventStyles()
+  const exposureEvents =
+    !Array.isArray(experiment.exposureEvents) || experiment.exposureEvents.length === 0
+      ? null
+      : experiment.exposureEvents
 
   return (
     <div className={classes.eventList}>
-      {experiment.exposureEvents?.map((ev) => (
+      {exposureEvents?.map((ev) => (
         <Typography key={ev.event}>
           <span className={classes.eventName}>{ev.event}</span>
-          {ev.props && (
-            <ul className={classes.propsList}>
-              {' '}
-              {Object.entries(ev.props).map(([key, val]) => (
-                <li key={key + val} className={classes.entry}>
-                  {key}: {val}
-                </li>
-              ))}
-            </ul>
-          )}
+          {ev.props &&
+            Object.entries(ev.props).map(([key, val]) => (
+              <span key={key + val} className={classes.entry}>
+                {key}: {val}
+              </span>
+            ))}
         </Typography>
       )) ?? <Typography>No exposure events defined</Typography>}
     </div>
