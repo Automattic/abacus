@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/require-await */
 import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
+import { noop } from 'lodash'
 import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
@@ -23,9 +24,11 @@ mockedNotistack.useSnackbar.mockImplementation(() => ({
   closeSnackbar: jest.fn(),
 }))
 
+const experimentReloadRef: React.MutableRefObject<() => void> = { current: noop }
+
 test('renders as expected', () => {
   const experiment = Fixtures.createExperimentFull()
-  const { container } = render(<GeneralPanel experiment={experiment} />)
+  const { container } = render(<GeneralPanel experiment={experiment} experimentReloadRef={experimentReloadRef} />)
 
   expect(container).toMatchInlineSnapshot(`
     <div>
@@ -166,7 +169,7 @@ test('renders as expected', () => {
 
 test('opens, submits and cancels edit dialog with running experiment', async () => {
   const experiment = Fixtures.createExperimentFull({ status: Status.Running })
-  const { container: _container } = render(<GeneralPanel experiment={experiment} />)
+  render(<GeneralPanel experiment={experiment} experimentReloadRef={experimentReloadRef} />)
 
   mockedExperimentsApi.patch.mockReset()
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
@@ -197,7 +200,7 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
 
 test('checks edit dialog does not allow end datetime changes with disabled experiment', async () => {
   const experiment = Fixtures.createExperimentFull({ status: Status.Disabled })
-  const { container: _container } = render(<GeneralPanel experiment={experiment} />)
+  render(<GeneralPanel experiment={experiment} experimentReloadRef={experimentReloadRef} />)
 
   mockedExperimentsApi.patch.mockReset()
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore

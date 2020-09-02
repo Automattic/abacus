@@ -57,7 +57,13 @@ const useStyles = makeStyles((theme: Theme) =>
  *
  * @param props.experiment - The experiment with the general information.
  */
-function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
+function GeneralPanel({
+  experiment,
+  experimentReloadRef,
+}: {
+  experiment: ExperimentFull
+  experimentReloadRef: React.MutableRefObject<() => void>
+}) {
   const classes = useStyles()
   const data = [
     { label: 'Description', value: experiment.description },
@@ -113,6 +119,7 @@ function GeneralPanel({ experiment }: { experiment: ExperimentFull }) {
       )
       await ExperimentsApi.patch(experiment.experimentId, (experimentPatch as unknown) as Partial<ExperimentFull>)
       enqueueSnackbar('Experiment Updated!', { variant: 'success' })
+      experimentReloadRef.current()
       setIsEditing(false)
     } catch (e) {
       // istanbul ignore next; Shouldn't occur

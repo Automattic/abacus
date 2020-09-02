@@ -19,10 +19,12 @@ function ExperimentDetails({
   experiment,
   metrics,
   segments,
+  experimentReloadRef,
 }: {
   experiment: ExperimentFull
   metrics: MetricBare[]
   segments: Segment[]
+  experimentReloadRef: React.MutableRefObject<() => void>
 }) {
   debug('ExperimentDetails#render')
   const theme = useTheme()
@@ -33,7 +35,7 @@ function ExperimentDetails({
       <Grid item xs={12} lg={7}>
         <Grid container direction='column' spacing={2}>
           <Grid item>
-            <GeneralPanel experiment={experiment} />
+            <GeneralPanel {...{ experiment, experimentReloadRef }} />
           </Grid>
           {isMdDown && (
             <Grid item>
