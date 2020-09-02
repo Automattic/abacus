@@ -1,6 +1,5 @@
 import {
   Button,
-  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -24,6 +23,7 @@ import ExperimentsApi from '@/api/ExperimentsApi'
 import DatetimeText from '@/components/DatetimeText'
 import LabelValueTable from '@/components/LabelValueTable'
 import { ExperimentFull, experimentFullSchema, Status, yupPick } from '@/lib/schemas'
+
 import LoadingButtonContainer from './LoadingButtonContainer'
 
 const useStyles = makeStyles((theme: Theme) =>

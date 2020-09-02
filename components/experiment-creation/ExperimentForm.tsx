@@ -1,14 +1,4 @@
-import {
-  Button,
-  CircularProgress,
-  Link,
-  Paper,
-  Step,
-  StepButton,
-  StepLabel,
-  Stepper,
-  Typography,
-} from '@material-ui/core'
+import { Button, Link, Paper, Step, StepButton, StepLabel, Stepper, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Formik } from 'formik'
 import _ from 'lodash'
@@ -18,11 +8,11 @@ import * as yup from 'yup'
 import { createInitialExperiment } from '@/lib/experiments'
 import { experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
 
+import LoadingButtonContainer from '../LoadingButtonContainer'
 import Audience from './Audience'
 import BasicInfo from './BasicInfo'
 import Beginning from './Beginning'
 import Metrics from './Metrics'
-import LoadingButtonContainer from '../LoadingButtonContainer'
 
 enum StageId {
   Beginning,

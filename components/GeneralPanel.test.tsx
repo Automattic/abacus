@@ -123,7 +123,7 @@ test('renders as expected', () => {
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 <span
-                  class="makeStyles-root-7"
+                  class="makeStyles-root-5"
                   title="20/09/2020, 20:00:00"
                 >
                   2020-09-21
@@ -134,7 +134,7 @@ test('renders as expected', () => {
                   to
                 </span>
                 <span
-                  class="makeStyles-root-7"
+                  class="makeStyles-root-5"
                   title="20/11/2020, 20:00:00"
                 >
                   2020-11-21
