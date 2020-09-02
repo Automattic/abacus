@@ -1,4 +1,4 @@
-import { Queries, render as actualRender, RenderOptions } from '@testing-library/react'
+import {act, fireEvent, Queries, render as actualRender, RenderOptions, screen} from '@testing-library/react'
 import mediaQuery from 'css-mediaquery'
 import { Formik } from 'formik'
 import React from 'react'
@@ -66,4 +66,15 @@ export async function validationErrorDisplayer<T>(promise: Promise<T>): Promise<
     }
     throw err
   }
+}
+
+
+/**
+ * Change the value in a form field.
+ */
+export async function changeFieldByRole(role: string, name: RegExp, value: string) {
+  const field = screen.getByRole(role, { name: name })
+  await act(async () => {
+    fireEvent.change(field, { target: { value: value } })
+  })
 }

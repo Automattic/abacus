@@ -18,7 +18,6 @@ import {
 import { Edit } from '@material-ui/icons'
 import { Field, Formik } from 'formik'
 import { RadioGroup as FormikMuiRadioGroup, TextField } from 'formik-material-ui'
-import _ from 'lodash'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 import * as yup from 'yup'
@@ -27,6 +26,7 @@ import ExperimentsApi from '@/api/ExperimentsApi'
 import LabelValueTable from '@/components/LabelValueTable'
 import * as Experiments from '@/lib/experiments'
 import { ExperimentFull, experimentFullSchema, yupPick } from '@/lib/schemas'
+import LoadingButtonContainer from "@/components/LoadingButtonContainer";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -93,6 +93,7 @@ function ConclusionsPanel({
       experimentReloadRef.current()
       setIsEditing(false)
     } catch (e) {
+      // istanbul ignore next; shouldn't happen
       enqueueSnackbar('Oops! Something went wrong while trying to update your experiment.', { variant: 'error' })
     }
   }
@@ -174,9 +175,16 @@ function ConclusionsPanel({
                 <Button onClick={onCancelEdit} color='primary'>
                   Cancel
                 </Button>
-                <Button color='primary' type='submit'>
-                  Save
-                </Button>
+                <LoadingButtonContainer isLoading={formikProps.isSubmitting}>
+                  <Button
+                    type='submit'
+                    variant='contained'
+                    color='secondary'
+                    disabled={formikProps.isSubmitting || !formikProps.isValid}
+                  >
+                    Save
+                  </Button>
+                </LoadingButtonContainer>
               </DialogActions>
             </form>
           )}
