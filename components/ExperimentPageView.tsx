@@ -105,10 +105,6 @@ export default function ExperimentPageView({
 
   const isLoading = or(experimentIsLoading, metricsIsLoading, segmentsIsLoading, analysesIsLoading)
 
-  // ### Experiment Actions
-
-  // #### Experiment Disable
-
   return (
     <Layout title={`Experiment: ${experiment?.name || ''}`}>
       <>
