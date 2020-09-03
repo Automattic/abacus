@@ -1,7 +1,7 @@
 // istanbul ignore file; Even though it sits with components this is a "page" component
 import { Button, createStyles, LinearProgress, makeStyles, Tab, Tabs, Theme } from '@material-ui/core'
 import _ from 'lodash'
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import React from 'react'
 
 import AnalysesApi from '@/api/AnalysesApi'
@@ -15,41 +15,14 @@ import Layout from '@/components/Layout'
 import { Analysis, ExperimentFull } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { createUnresolvingPromise, or } from '@/utils/general'
-import Link from 'next/link'
 
-const useLinkTabStyles = makeStyles(() =>
-  createStyles({
-    tab: {
-      minWidth: 110,
-    },
-  }),
-)
-
-const ButtonLink = React.forwardRef(({ className = undefined, href, hrefAs, children, prefetch = false } : { className?: string, href: string, hrefAs: string, children: React.ReactNode, prefetch?: boolean }, ref) => (
+const NextMuiLink = React.forwardRef(({ className = undefined, href, hrefAs, children, prefetch = false } : { className?: string, href: string, hrefAs: string, children?: React.ReactNode, prefetch?: boolean }, ref) => (
   <Link {...{ href, as: hrefAs, prefetch, ref }}>
       <a className={className}>
           {children}
       </a>
   </Link>
 ));
-
-function LinkTab({ as, label, url, value }: { as?: string; label: React.ReactNode; url: string; value: string }) {
-  const classes = useLinkTabStyles()
-  const router = useRouter()
-  return (
-    <Tab
-      className={classes.tab}
-      label={label}
-      onClick={
-        /* istanbul ignore next; to be handled by an e2e test */
-        () => {
-          router.push(url, as)
-        }
-      }
-      value={value}
-    />
-  )
-}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -59,6 +32,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     topBarTabs: {
       flex: 1,
+    },
+    topBarTab: {
+      minWidth: 110,
     },
     topBarActions: {},
     topBarActionsDisableOutlined: {
@@ -121,30 +97,36 @@ export default function ExperimentPageView({
       <>
         <div className={classes.topBar}>
           <Tabs className={classes.topBarTabs} value={view}>
-            <LinkTab
+            <Tab
+              className={classes.topBarTab}
               label='Overview'
               value={ExperimentView.Overview}
-              url='/experiments/[id]'
-              as={`/experiments/${experimentId}`}
+              component={NextMuiLink}
+              href='/experiments/[id]'
+              hrefAs={`/experiments/${experimentId}`}
             />
-            <LinkTab
+            <Tab
+              className={classes.topBarTab}
               label='Results'
               value={ExperimentView.Results}
-              url='/experiments/[id]/results'
-              as={`/experiments/${experimentId}/results`}
+              component={NextMuiLink}
+              href='/experiments/[id]/results'
+              hrefAs={`/experiments/${experimentId}/results`}
             />
-            <LinkTab
+            <Tab
+              className={classes.topBarTab}
               label='Code Setup'
               value={ExperimentView.CodeSetup}
-              url='/experiments/[id]/code-setup'
-              as={`/experiments/${experimentId}/code-setup`}
+              component={NextMuiLink}
+              href='/experiments/[id]/code-setup'
+              hrefAs={`/experiments/${experimentId}/code-setup`}
             />
           </Tabs>
           <div className={classes.topBarActions}>
             <Button 
               variant='outlined' 
               color='primary' 
-              component={ButtonLink} 
+              component={NextMuiLink} 
               href={`/experiments/[id]/wizard-edit`}
               hrefAs={`/experiments/${experimentId}/wizard-edit`}
               >
