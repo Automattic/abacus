@@ -132,8 +132,11 @@ export default function ExperimentPageView({
             />
           </Tabs>
           <div className={classes.topBarActions}>
-            <Button variant='outlined' color='secondary'>
+            <Button variant='outlined' color='primary'>
               Edit In Wizard
+            </Button>{' '}
+            <Button variant='outlined' color='secondary'>
+              Run
             </Button>{' '}
             <Button variant='outlined' classes={{ outlined: classes.topBarActionsDisableOutlined }}>
               Disable
