@@ -123,8 +123,9 @@ export default function ExperimentPageView({
   const onConfirmDisableExperiment = async () => {
     try {
       setIsSubmittingDisableExperiment(true)
-      await new Promise(res => setTimeout(res, 400))
+      await ExperimentsApi.changeStatus(experimentId, Status.Disabled)
       enqueueSnackbar('Experiment Disabled', { variant: 'success' })
+      experimentReloadRef.current()
       setIsAskingToConfirmDisableExperiment(false)
     } catch (e) {
       // istanbul ignore next; Shouldn't occur

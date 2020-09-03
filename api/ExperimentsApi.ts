@@ -9,6 +9,7 @@ import {
   experimentFullNewSchema,
   experimentFullSchema,
   yupPick,
+  Status,
 } from '@/lib/schemas'
 
 import { fetchApi } from './utils'
@@ -47,6 +48,10 @@ async function patch(experimentId: number, experimentPatch: Partial<ExperimentFu
   return await experimentFullSchema.validate(returnedExperiment)
 }
 
+async function changeStatus(experimentId: number, status: Status) {
+  await fetchApi('PUT', `/experiments/${experimentId}/status`, { status })
+}
+
 /**
  * Finds all the available experiments.
  *
@@ -72,6 +77,7 @@ async function findById(id: number): Promise<ExperimentFull> {
 const ExperimentsApi = {
   create,
   patch,
+  changeStatus,
   findAll,
   findById,
 }
