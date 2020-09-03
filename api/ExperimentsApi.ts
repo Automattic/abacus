@@ -8,8 +8,8 @@ import {
   experimentFullNewOutboundSchema,
   experimentFullNewSchema,
   experimentFullSchema,
-  yupPick,
   Status,
+  yupPick,
 } from '@/lib/schemas'
 
 import { fetchApi } from './utils'

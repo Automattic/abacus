@@ -49,7 +49,7 @@ async function fetchApi(method: string, path: string, body: unknown | null = nul
   // TODO: Should return the response object so the function calling can decide how to parse the result.
   const responseText = await response.text()
   if (responseText === '') {
-    return 
+    return
   }
   return JSON.parse(responseText)
 }

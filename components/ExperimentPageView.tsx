@@ -1,8 +1,8 @@
 // istanbul ignore file; Even though it sits with components this is a "page" component
-import { Button, createStyles, LinearProgress, makeStyles, Tab, Tabs, Theme, Dialog, DialogTitle, DialogContent, DialogActions, Typography } from '@material-ui/core'
+import { Button, createStyles, LinearProgress, makeStyles, Tab, Tabs, Theme } from '@material-ui/core'
 import _ from 'lodash'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React from 'react'
 
 import AnalysesApi from '@/api/AnalysesApi'
 import ExperimentsApi from '@/api/ExperimentsApi'
@@ -12,12 +12,10 @@ import ExperimentResults from '@/components/experiment-results/ExperimentResults
 import ExperimentCodeSetup from '@/components/ExperimentCodeSetup'
 import ExperimentDetails from '@/components/ExperimentDetails'
 import Layout from '@/components/Layout'
-import { Analysis, ExperimentFull, Status } from '@/lib/schemas'
+import { Analysis, ExperimentFull } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { createUnresolvingPromise, or } from '@/utils/general'
-import { useSnackbar } from 'notistack'
-import LoadingButtonContainer from './LoadingButtonContainer'
-import { SettingsRemoteOutlined } from '@material-ui/icons'
+
 import ExperimentDisableButton from './ExperimentDisableButton'
 
 const useLinkTabStyles = makeStyles(() =>
@@ -107,7 +105,6 @@ export default function ExperimentPageView({
 
   const isLoading = or(experimentIsLoading, metricsIsLoading, segmentsIsLoading, analysesIsLoading)
 
-
   // ### Experiment Actions
 
   // #### Experiment Disable
@@ -147,18 +144,16 @@ export default function ExperimentPageView({
           </div>
         </div>
         {isLoading && <LinearProgress />}
-        {
-          experiment && metrics && segments && analyses && (
-            <>
-              {view === ExperimentView.Overview && (
-                <ExperimentDetails {...{ experiment, metrics, segments, experimentReloadRef }} />
-              )}
-              {view === ExperimentView.Results && <ExperimentResults {...{ experiment, metrics, analyses, debugMode }} />}
-              {view === ExperimentView.CodeSetup && <ExperimentCodeSetup />}
-            </>
-          )
-        }
+        {experiment && metrics && segments && analyses && (
+          <>
+            {view === ExperimentView.Overview && (
+              <ExperimentDetails {...{ experiment, metrics, segments, experimentReloadRef }} />
+            )}
+            {view === ExperimentView.Results && <ExperimentResults {...{ experiment, metrics, analyses, debugMode }} />}
+            {view === ExperimentView.CodeSetup && <ExperimentCodeSetup />}
+          </>
+        )}
       </>
-    </Layout >
+    </Layout>
   )
 }
