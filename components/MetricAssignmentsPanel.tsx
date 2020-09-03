@@ -216,7 +216,11 @@ function MetricAssignmentsPanel({ experiment, experimentReloadRef, metrics }: {
                       variant='outlined'
                       fullWidth
                       displayEmpty
-                      error={!!formikProps.errors.metricAssignment?.metricId}
+                      error={
+                        // istanbul ignore next; trivial, not-critical, pain to test.
+                        !!formikProps.errors.metricAssignment?.metricId &&
+                        !!formikProps.touched.metricAssignment?.metricId
+                      }
                     >
                       <MenuItem value=''>
                         <span className={classes.addMetricPlaceholder}>Select a Metric</span>
@@ -249,7 +253,11 @@ function MetricAssignmentsPanel({ experiment, experimentReloadRef, metrics }: {
                       labelId={`metricAssignment.attributionWindowSeconds-label`}
                       id={`metricAssignment.attributionWindowSeconds`}
                       variant='outlined'
-                      error={!!formikProps.errors.metricAssignment?.attributionWindowSeconds}
+                      error={
+                        // istanbul ignore next; trivial, not-critical, pain to test.
+                        !!formikProps.errors.metricAssignment?.attributionWindowSeconds &&
+                        !!formikProps.touched.metricAssignment?.attributionWindowSeconds
+                      }
                       displayEmpty
                     >
                       <MenuItem value=''>-</MenuItem>
@@ -297,9 +305,10 @@ function MetricAssignmentsPanel({ experiment, experimentReloadRef, metrics }: {
                       id={`metricAssignment.minDifference`}
                       type='number'
                       variant='outlined'
-                      placeholder='-'
+                      placeholder='1.30'
                       inputProps={{
                         'aria-label': 'Minimum Difference',
+                        min: '0',
                       }}
                       InputProps={
                         formikProps.values.metricAssignment.metricId &&
