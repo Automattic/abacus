@@ -86,7 +86,7 @@ function ConclusionsPanel({
     try {
       await ExperimentsApi.patch(experiment.experimentId, {
         endReason: formValues.endReason,
-        conclusionUrl: formValues.conclusionUrl.length > 0 ? formValues.conclusionUrl : undefined,
+        conclusionUrl: formValues.conclusionUrl === '' ? undefined : formValues.conclusionUrl,
         deployedVariationId: formValues.deployedVariationId ? Number(formValues.deployedVariationId) : undefined,
       })
       enqueueSnackbar('Experiment Updated!', { variant: 'success' })
