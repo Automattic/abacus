@@ -203,8 +203,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       fullWidth
                       displayEmpty
                       error={
-                        !!formikProps.errors.metricAssignment?.metricId
-                        &&
+                        !!formikProps.errors.metricAssignment?.metricId &&
                         !!formikProps.touched?.metricAssignment?.metricId
                       }
                     >
@@ -240,8 +239,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       id={`metricAssignment.attributionWindowSeconds`}
                       variant='outlined'
                       error={
-                        !!formikProps.errors.metricAssignment?.attributionWindowSeconds
-                        &&
+                        !!formikProps.errors.metricAssignment?.attributionWindowSeconds &&
                         !!formikProps.touched?.metricAssignment?.attributionWindowSeconds
                       }
                       displayEmpty
@@ -298,22 +296,22 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       }}
                       InputProps={
                         formikProps.values.metricAssignment.metricId &&
-                          indexedMetrics[(formikProps.values.metricAssignment.metricId as unknown) as number]
-                            .parameterType === MetricParameterType.Conversion
+                        indexedMetrics[(formikProps.values.metricAssignment.metricId as unknown) as number]
+                          .parameterType === MetricParameterType.Conversion
                           ? {
-                            endAdornment: (
-                              <InputAdornment position='end'>
-                                <Tooltip title='Percentage Points'>
-                                  <Typography variant='body1' color='textSecondary'>
-                                    pp
+                              endAdornment: (
+                                <InputAdornment position='end'>
+                                  <Tooltip title='Percentage Points'>
+                                    <Typography variant='body1' color='textSecondary'>
+                                      pp
                                     </Typography>
-                                </Tooltip>
-                              </InputAdornment>
-                            ),
-                          }
+                                  </Tooltip>
+                                </InputAdornment>
+                              ),
+                            }
                           : {
-                            startAdornment: <InputAdornment position='start'>$</InputAdornment>,
-                          }
+                              startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+                            }
                       }
                     />
                   </FormControl>
