@@ -1,9 +1,10 @@
-import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
+/* eslint-disable @typescript-eslint/require-await */
+import { act, fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import * as notistack from 'notistack'
 import React from 'react'
 
 import Fixtures from '@/test-helpers/fixtures'
-import { render } from '@/test-helpers/test-utils'
+import { changeFieldByRole, render } from '@/test-helpers/test-utils'
 
 import MetricAssignmentsPanel from './MetricAssignmentsPanel'
 
@@ -107,7 +108,7 @@ test('renders as expected with all metrics resolvable', () => {
               >
                 metric_1
                 <span
-                  class="makeStyles-primary-1 makeStyles-root-3"
+                  class="makeStyles-primary-1 makeStyles-root-6"
                 >
                   Primary
                 </span>
@@ -242,6 +243,32 @@ test('opens, submits and cancels assign metric dialog', async () => {
   fireEvent.click(startAssignButton)
 
   await waitFor(() => screen.getByRole('button', { name: 'Assign' }))
+
+  const metricSearchField = screen.getByRole('button', { name: /Select a Metric/ })
+  await act(async () => {
+    fireEvent.focus(metricSearchField)
+  })
+  await act(async () => {
+    fireEvent.keyDown(metricSearchField, { key: 'Enter' })
+  })
+  const metricOption = await screen.findByRole('option', { name: /metric_3/ })
+  await act(async () => {
+    fireEvent.click(metricOption)
+  })
+
+  const attributionWindowField = await screen.findByLabelText(/Attribution Window/)
+  await act(async () => {
+    fireEvent.focus(attributionWindowField)
+  })
+  await act(async () => {
+    fireEvent.keyDown(attributionWindowField, { key: 'Enter' })
+  })
+  const attributionWindowFieldOption = await screen.findByRole('option', { name: /24 hours/ })
+  await act(async () => {
+    fireEvent.click(attributionWindowFieldOption)
+  })
+
+  await changeFieldByRole('spinbutton', /Minimum Difference/, '0.01')
 
   const assignButton = screen.getByRole('button', { name: 'Assign' })
   fireEvent.click(assignButton)

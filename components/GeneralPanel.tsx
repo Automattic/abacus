@@ -21,6 +21,7 @@ import * as yup from 'yup'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 import DatetimeText from '@/components/DatetimeText'
+import ExperimentStatus from '@/components/ExperimentStatus'
 import LabelValueTable from '@/components/LabelValueTable'
 import { ExperimentFull, experimentFullSchema, Status, yupPick } from '@/lib/schemas'
 
@@ -74,6 +75,10 @@ function GeneralPanel({
           {experiment.p2Url}
         </a>
       ),
+    },
+    {
+      label: 'Status',
+      value: <ExperimentStatus status={experiment.status} />,
     },
     {
       label: 'Dates',

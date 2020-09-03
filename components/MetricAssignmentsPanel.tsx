@@ -1,4 +1,16 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Toolbar } from '@material-ui/core'
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  FormControl,
+  FormLabel,
+  InputAdornment,
+  MenuItem,
+  Toolbar,
+  Tooltip,
+} from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
@@ -8,13 +20,15 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Typography from '@material-ui/core/Typography'
 import { Add } from '@material-ui/icons'
-import { Formik } from 'formik'
+import { Field, Formik } from 'formik'
+import { Select, Switch, TextField } from 'formik-material-ui'
 import { useSnackbar } from 'notistack'
 import React, { useMemo, useState } from 'react'
 
 import Label from '@/components/Label'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import * as MetricAssignments from '@/lib/metric-assignments'
+import { indexMetrics } from '@/lib/normalizers'
 import { ExperimentFull, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
 
@@ -52,6 +66,21 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1,
     },
+    addMetricPlaceholder: {
+      fontFamily: theme.typography.fontFamily,
+    },
+    row: {
+      minWidth: 400,
+      marginTop: theme.spacing(3),
+      display: 'flex',
+      alignItems: 'center',
+      '&:first-of-type': {
+        marginTop: theme.spacing(0),
+      },
+    },
+    label: {
+      marginBottom: theme.spacing(1),
+    },
   }),
 )
 
@@ -69,14 +98,17 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
     [experiment, metrics],
   )
 
+  // TODO: Normalize this higher up
+  const indexedMetrics = indexMetrics(metrics)
+
   // Assign Metric Modal
   const { enqueueSnackbar } = useSnackbar()
   const [isAssigningMetric, setIsAssigningMetric] = useState<boolean>(false)
   const assignMetricInitialAssignMetric = {
     metricId: '',
     attributionWindowSeconds: '',
-    changeExpected: 'false',
-    isPrimary: 'false',
+    changeExpected: false,
+    isPrimary: false,
     minDifference: '',
   }
   const onAssignMetric = () => setIsAssigningMetric(true)
@@ -141,11 +173,119 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
         </TableBody>
       </Table>
       <Dialog open={isAssigningMetric} aria-labelledby='assign-metric-form-dialog-title'>
-        <DialogTitle id='assign-metric-form-dialog-title'>Add Metric</DialogTitle>
+        <DialogTitle id='assign-metric-form-dialog-title'>Assign Metric</DialogTitle>
         <Formik initialValues={{ metricAssignment: assignMetricInitialAssignMetric }} onSubmit={onSubmitAssignMetric}>
           {(formikProps) => (
             <form onSubmit={formikProps.handleSubmit}>
-              <DialogContent></DialogContent>
+              <DialogContent>
+                <div className={classes.row}>
+                  <FormControl component='fieldset' fullWidth>
+                    <FormLabel required className={classes.label}>
+                      Metric
+                    </FormLabel>
+                    <Field
+                      component={Select}
+                      name={`metricAssignment.metricId`}
+                      id={`metricAssignment.metricId`}
+                      variant='outlined'
+                      fullWidth
+                      displayEmpty
+                    >
+                      <MenuItem value=''>
+                        <span className={classes.addMetricPlaceholder}>Select a Metric</span>
+                      </MenuItem>
+                      {Object.values(indexedMetrics).map((metric) => (
+                        <MenuItem value={metric.metricId} key={metric.metricId}>
+                          {metric.name}
+                        </MenuItem>
+                      ))}
+                    </Field>
+                  </FormControl>
+                </div>
+                <div className={classes.row}>
+                  <FormControl component='fieldset' fullWidth>
+                    <FormLabel
+                      required
+                      className={classes.label}
+                      id={`metricAssignment.attributionWindowSeconds-label`}
+                    >
+                      Attribution Window
+                    </FormLabel>
+                    <Field
+                      component={Select}
+                      name={`metricAssignment.attributionWindowSeconds`}
+                      labelId={`metricAssignment.attributionWindowSeconds-label`}
+                      id={`metricAssignment.attributionWindowSeconds`}
+                      variant='outlined'
+                      displayEmpty
+                    >
+                      <MenuItem value=''>-</MenuItem>
+                      {Object.entries(AttributionWindowSecondsToHuman).map(
+                        ([attributionWindowSeconds, attributionWindowSecondsHuman]) => (
+                          <MenuItem value={attributionWindowSeconds} key={attributionWindowSeconds}>
+                            {attributionWindowSecondsHuman}
+                          </MenuItem>
+                        ),
+                      )}
+                    </Field>
+                  </FormControl>
+                </div>
+                <div className={classes.row}>
+                  <FormControl component='fieldset' fullWidth>
+                    <FormLabel required className={classes.label}>
+                      Change Expected
+                    </FormLabel>
+                    <Field
+                      component={Switch}
+                      label='Change Expected'
+                      name={`metricAssignment.changeExpected`}
+                      id={`metricAssignment.changeExpected`}
+                      inputProps={{
+                        'aria-label': 'Change Expected',
+                      }}
+                      variant='outlined'
+                      type='checkbox'
+                    />
+                  </FormControl>
+                </div>
+                <div className={classes.row}>
+                  <FormControl component='fieldset' fullWidth>
+                    <FormLabel required className={classes.label} id={`metricAssignment.minDifference-label`}>
+                      Minimum Difference
+                    </FormLabel>
+                    <Field
+                      component={TextField}
+                      name={`metricAssignment.minDifference`}
+                      id={`metricAssignment.minDifference`}
+                      type='number'
+                      variant='outlined'
+                      placeholder='-'
+                      inputProps={{
+                        'aria-label': 'Minimum Difference',
+                      }}
+                      InputProps={
+                        formikProps.values.metricAssignment.metricId &&
+                        indexedMetrics[(formikProps.values.metricAssignment.metricId as unknown) as number]
+                          .parameterType === MetricParameterType.Conversion
+                          ? {
+                              endAdornment: (
+                                <InputAdornment position='end'>
+                                  <Tooltip title='Percentage Points'>
+                                    <Typography variant='body1' color='textSecondary'>
+                                      pp
+                                    </Typography>
+                                  </Tooltip>
+                                </InputAdornment>
+                              ),
+                            }
+                          : {
+                              startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+                            }
+                      }
+                    />
+                  </FormControl>
+                </div>
+              </DialogContent>
               <DialogActions>
                 <Button onClick={onCancelAssignMetric} color='primary'>
                   Cancel

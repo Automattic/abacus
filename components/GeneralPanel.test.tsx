@@ -120,13 +120,37 @@ test('renders as expected', () => {
                 role="cell"
                 scope="row"
               >
-                Dates
+                Status
               </th>
               <td
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 <span
                   class="makeStyles-root-5"
+                >
+                  <span
+                    class="makeStyles-statusDot-10 makeStyles-staging-8"
+                  />
+                   
+                  staging
+                </span>
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="cell"
+                scope="row"
+              >
+                Dates
+              </th>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <span
+                  class="makeStyles-root-11"
                   title="20/09/2020, 20:00:00"
                 >
                   2020-09-21
@@ -137,7 +161,7 @@ test('renders as expected', () => {
                   to
                 </span>
                 <span
-                  class="makeStyles-root-5"
+                  class="makeStyles-root-11"
                   title="20/11/2020, 20:00:00"
                 >
                   2020-11-21
