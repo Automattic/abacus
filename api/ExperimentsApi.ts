@@ -1,5 +1,5 @@
-import * as yup from 'yup'
 import _ from 'lodash'
+import * as yup from 'yup'
 
 import {
   ExperimentBare,
@@ -9,10 +9,10 @@ import {
   experimentFullNewOutboundSchema,
   experimentFullNewSchema,
   experimentFullSchema,
-  yupPick,
   MetricAssignmentNew,
-  metricAssignmentNewSchema,
   metricAssignmentNewOutboundSchema,
+  metricAssignmentNewSchema,
+  yupPick,
 } from '@/lib/schemas'
 
 import { fetchApi } from './utils'
@@ -54,9 +54,9 @@ async function patch(experimentId: number, experimentPatch: Partial<ExperimentFu
  *
  * Metric Assignment is a bit funky right now, so we do it here.
  * In particular it require passing in all existing metricAssignments.
- * 
+ *
  * Note: Be sure to handle any errors that may be thrown.
- * 
+ *
  * @param experiment A full experiment object, needed to fill in the existing metricAssignments, will be removed in the future.
  * @param metricAssignment The new metricAssignment.
  */
@@ -65,20 +65,19 @@ async function assignMetric(experiment: ExperimentFull, metricAssignment: Metric
   const outboundMetricAssignment = metricAssignmentNewOutboundSchema.cast(validatedMetricAssignment)
 
   // The backend replaces all the metricAssignments, so we format it as metricAssignmentNewOutbound.
-  const outboundExistingMetricAssignments = yup.array(metricAssignmentNewOutboundSchema).cast(
-    experiment.metricAssignments.map(metricAssignment => _.omit(metricAssignment, 'metricAssignmentId'))
-  )
+  const outboundExistingMetricAssignments = yup
+    .array(metricAssignmentNewOutboundSchema)
+    .cast(experiment.metricAssignments.map((metricAssignment) => _.omit(metricAssignment, 'metricAssignmentId')))
   // istanbul ignore next; Shouldn't occur
   if (!outboundExistingMetricAssignments) {
     throw new Error('Something went wrong while transforming existing metricAssignments to outbound form.')
   }
 
-  const metricAssignments = [
-    ...outboundExistingMetricAssignments,
-    outboundMetricAssignment
-  ]
+  const metricAssignments = [...outboundExistingMetricAssignments, outboundMetricAssignment]
 
-  const returnedExperiment = await fetchApi('PATCH', `/experiments/${experiment.experimentId}`, { metric_assignments: metricAssignments })
+  const returnedExperiment = await fetchApi('PATCH', `/experiments/${experiment.experimentId}`, {
+    metric_assignments: metricAssignments,
+  })
   return await experimentFullSchema.validate(returnedExperiment)
 }
 
