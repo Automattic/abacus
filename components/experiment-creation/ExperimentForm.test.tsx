@@ -10,7 +10,7 @@ import React from 'react'
 import { createInitialExperiment } from '@/lib/experiments'
 import * as Normalizers from '@/lib/normalizers'
 import Fixtures from '@/test-helpers/fixtures'
-import {changeFieldByRole, render} from '@/test-helpers/test-utils'
+import { changeFieldByRole, render } from '@/test-helpers/test-utils'
 
 import ExperimentForm from './ExperimentForm'
 

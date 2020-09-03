@@ -1,13 +1,13 @@
 import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
+import { noop } from 'lodash'
 import * as notistack from 'notistack'
 import React from 'react'
 
+import ExperimentsApi from '@/api/ExperimentsApi'
 import Fixtures from '@/test-helpers/fixtures'
-import {changeFieldByRole, render} from '@/test-helpers/test-utils'
+import { changeFieldByRole, render } from '@/test-helpers/test-utils'
 
 import ConclusionsPanel from './ConclusionsPanel'
-import {noop} from "lodash";
-import ExperimentsApi from "@/api/ExperimentsApi";
 
 jest.mock('notistack')
 const mockedNotistack = notistack as jest.Mocked<typeof notistack>
@@ -253,6 +253,7 @@ test('opens and saves edit dialog', async () => {
   mockedExperimentsApi.patch.mockClear().mockReset()
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/require-await
   mockedExperimentsApi.patch.mockImplementation(async () => experiment)
 
   // First round: Save empty form.
@@ -261,9 +262,7 @@ test('opens and saves edit dialog', async () => {
   fireEvent.click(screen.getByRole('button', { name: /Save/ }))
   await waitForElementToBeRemoved(queryEditDialog)
   expect(mockedExperimentsApi.patch).toHaveBeenCalledTimes(1)
-  expect(mockedExperimentsApi.patch).toHaveBeenLastCalledWith(1, {
-    conclusionUrl: null, deployedVariationId: null, endReason: ''
-  })
+  expect(mockedExperimentsApi.patch).toHaveBeenLastCalledWith(1, { endReason: '' })
 
   // Second round: Add some details.
   mockedExperimentsApi.patch.mockClear()
@@ -271,13 +270,14 @@ test('opens and saves edit dialog', async () => {
   await waitFor(queryEditDialog)
   await changeFieldByRole('textbox', /Reason/, 'The experiment ended')
   await changeFieldByRole('textbox', /Conclusion/, 'https://www.conclusions.com/')
-  // TODO: fix
-  await changeFieldByRole('radio', /control/, '1')
+  fireEvent.click(screen.getByLabelText(/test/))
   fireEvent.click(screen.getByRole('button', { name: /Save/ }))
   await waitForElementToBeRemoved(queryEditDialog)
   expect(mockedExperimentsApi.patch).toHaveBeenCalledTimes(1)
   expect(mockedExperimentsApi.patch).toHaveBeenLastCalledWith(1, {
-    conclusionUrl: 'https://www.conclusions.com/', deployedVariationId: null, endReason: 'The experiment ended'
+    conclusionUrl: 'https://www.conclusions.com/',
+    deployedVariationId: 2,
+    endReason: 'The experiment ended',
   })
 })
 

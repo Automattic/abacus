@@ -24,9 +24,9 @@ import * as yup from 'yup'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 import LabelValueTable from '@/components/LabelValueTable'
+import LoadingButtonContainer from '@/components/LoadingButtonContainer'
 import * as Experiments from '@/lib/experiments'
 import { ExperimentFull, experimentFullSchema, yupPick } from '@/lib/schemas'
-import LoadingButtonContainer from "@/components/LoadingButtonContainer";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -86,8 +86,8 @@ function ConclusionsPanel({
     try {
       await ExperimentsApi.patch(experiment.experimentId, {
         endReason: formValues.endReason,
-        conclusionUrl: formValues.conclusionUrl.length > 0 ? formValues.conclusionUrl : null,
-        deployedVariationId: formValues.deployedVariationId ? Number(formValues.deployedVariationId) : null,
+        conclusionUrl: formValues.conclusionUrl.length > 0 ? formValues.conclusionUrl : undefined,
+        deployedVariationId: formValues.deployedVariationId ? Number(formValues.deployedVariationId) : undefined,
       })
       enqueueSnackbar('Experiment Updated!', { variant: 'success' })
       experimentReloadRef.current()
