@@ -225,6 +225,7 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                               placeholder='1.30'
                               inputProps={{
                                 'aria-label': 'Min difference',
+                                min: '0',
                               }}
                               InputProps={
                                 indexedMetrics[metricAssignment.metricId].parameterType ===

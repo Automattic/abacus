@@ -286,6 +286,7 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       placeholder='1.30'
                       inputProps={{
                         'aria-label': 'Minimum Difference',
+                        min: '0',
                       }}
                       InputProps={
                         formikProps.values.metricAssignment.metricId &&
