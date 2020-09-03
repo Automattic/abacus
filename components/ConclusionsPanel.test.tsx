@@ -1,9 +1,11 @@
 import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
+import { noop } from 'lodash'
 import * as notistack from 'notistack'
 import React from 'react'
 
+import ExperimentsApi from '@/api/ExperimentsApi'
 import Fixtures from '@/test-helpers/fixtures'
-import { render } from '@/test-helpers/test-utils'
+import { changeFieldByRole, render } from '@/test-helpers/test-utils'
 
 import ConclusionsPanel from './ConclusionsPanel'
 
@@ -14,13 +16,18 @@ mockedNotistack.useSnackbar.mockImplementation(() => ({
   closeSnackbar: jest.fn(),
 }))
 
+jest.mock('@/api/ExperimentsApi')
+const mockedExperimentsApi = ExperimentsApi as jest.Mocked<typeof ExperimentsApi>
+
+const experimentReloadRef: React.MutableRefObject<() => void> = { current: noop }
+
 test('renders as expected with complete conclusion data', () => {
   const experiment = Fixtures.createExperimentFull({
     conclusionUrl: 'https://betterexperiments.wordpress.com/experiment_1/conclusion',
     deployedVariationId: 2,
     endReason: 'Ran its course.',
   })
-  const { container } = render(<ConclusionsPanel experiment={experiment} />)
+  const { container } = render(<ConclusionsPanel experiment={experiment} experimentReloadRef={experimentReloadRef} />)
 
   expect(container).toMatchInlineSnapshot(`
     <div>
@@ -133,7 +140,7 @@ test('renders as expected without deployed variation', () => {
     deployedVariationId: null,
     endReason: 'Ran its course.',
   })
-  const { container } = render(<ConclusionsPanel experiment={experiment} />)
+  const { container } = render(<ConclusionsPanel experiment={experiment} experimentReloadRef={experimentReloadRef} />)
 
   expect(container).toMatchInlineSnapshot(`
     <div>
@@ -242,30 +249,44 @@ const queryEditDialog = () => screen.queryByRole('heading', { name: /Edit Experi
 
 test('opens and saves edit dialog', async () => {
   const experiment = Fixtures.createExperimentFull()
-  const { container: _container } = render(<ConclusionsPanel experiment={experiment} />)
+  render(<ConclusionsPanel experiment={experiment} experimentReloadRef={experimentReloadRef} />)
+  mockedExperimentsApi.patch.mockClear().mockReset()
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/require-await
+  mockedExperimentsApi.patch.mockImplementation(async () => experiment)
 
-  const editButton = screen.getByRole('button', { name: /Edit/ })
-  fireEvent.click(editButton)
-
+  // First round: Save empty form.
+  fireEvent.click(screen.getByRole('button', { name: /Edit/ }))
   await waitFor(queryEditDialog)
-
-  const saveButton = screen.getByRole('button', { name: /Save/ })
-  fireEvent.click(saveButton)
-
+  fireEvent.click(screen.getByRole('button', { name: /Save/ }))
   await waitForElementToBeRemoved(queryEditDialog)
+  expect(mockedExperimentsApi.patch).toHaveBeenCalledTimes(1)
+  expect(mockedExperimentsApi.patch).toHaveBeenLastCalledWith(1, { endReason: '' })
+
+  // Second round: Add some details.
+  mockedExperimentsApi.patch.mockClear()
+  fireEvent.click(screen.getByRole('button', { name: /Edit/ }))
+  await waitFor(queryEditDialog)
+  await changeFieldByRole('textbox', /Reason/, 'The experiment ended')
+  await changeFieldByRole('textbox', /Conclusion/, 'https://www.conclusions.com/')
+  fireEvent.click(screen.getByLabelText(/test/))
+  fireEvent.click(screen.getByRole('button', { name: /Save/ }))
+  await waitForElementToBeRemoved(queryEditDialog)
+  expect(mockedExperimentsApi.patch).toHaveBeenCalledTimes(1)
+  expect(mockedExperimentsApi.patch).toHaveBeenLastCalledWith(1, {
+    conclusionUrl: 'https://www.conclusions.com/',
+    deployedVariationId: 2,
+    endReason: 'The experiment ended',
+  })
 })
 
 test('opens and cancels edit dialog', async () => {
   const experiment = Fixtures.createExperimentFull()
-  const { container: _container } = render(<ConclusionsPanel experiment={experiment} />)
+  render(<ConclusionsPanel experiment={experiment} experimentReloadRef={experimentReloadRef} />)
 
-  const editButton = screen.getByRole('button', { name: /Edit/ })
-  fireEvent.click(editButton)
-
+  fireEvent.click(screen.getByRole('button', { name: /Edit/ }))
   await waitFor(queryEditDialog)
-
-  const cancelButton = screen.getByRole('button', { name: /Cancel/ })
-  fireEvent.click(cancelButton)
-
+  fireEvent.click(screen.getByRole('button', { name: /Cancel/ }))
   await waitForElementToBeRemoved(queryEditDialog)
 })
