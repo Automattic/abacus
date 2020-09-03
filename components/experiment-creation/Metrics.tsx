@@ -222,27 +222,27 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                               id={`experiment.metricAssignments[${index}].minDifference`}
                               type='number'
                               variant='outlined'
-                              placeholder='-'
+                              placeholder='1.30'
                               inputProps={{
                                 'aria-label': 'Min difference',
                               }}
                               InputProps={
                                 indexedMetrics[metricAssignment.metricId].parameterType ===
-                                MetricParameterType.Conversion
+                                  MetricParameterType.Conversion
                                   ? {
-                                      endAdornment: (
-                                        <InputAdornment position='end'>
-                                          <Tooltip title='Percentage Points'>
-                                            <Typography variant='body1' color='textSecondary'>
-                                              pp
+                                    endAdornment: (
+                                      <InputAdornment position='end'>
+                                        <Tooltip title='Percentage Points'>
+                                          <Typography variant='body1' color='textSecondary'>
+                                            pp
                                             </Typography>
-                                          </Tooltip>
-                                        </InputAdornment>
-                                      ),
-                                    }
+                                        </Tooltip>
+                                      </InputAdornment>
+                                    ),
+                                  }
                                   : {
-                                      startAdornment: <InputAdornment position='start'>$</InputAdornment>,
-                                    }
+                                    startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+                                  }
                               }
                             />
                           </TableCell>

@@ -283,28 +283,28 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       id={`metricAssignment.minDifference`}
                       type='number'
                       variant='outlined'
-                      placeholder='-'
+                      placeholder='1.30'
                       inputProps={{
                         'aria-label': 'Minimum Difference',
                       }}
                       InputProps={
                         formikProps.values.metricAssignment.metricId &&
-                        indexedMetrics[(formikProps.values.metricAssignment.metricId as unknown) as number]
-                          .parameterType === MetricParameterType.Conversion
+                          indexedMetrics[(formikProps.values.metricAssignment.metricId as unknown) as number]
+                            .parameterType === MetricParameterType.Conversion
                           ? {
-                              endAdornment: (
-                                <InputAdornment position='end'>
-                                  <Tooltip title='Percentage Points'>
-                                    <Typography variant='body1' color='textSecondary'>
-                                      pp
+                            endAdornment: (
+                              <InputAdornment position='end'>
+                                <Tooltip title='Percentage Points'>
+                                  <Typography variant='body1' color='textSecondary'>
+                                    pp
                                     </Typography>
-                                  </Tooltip>
-                                </InputAdornment>
-                              ),
-                            }
+                                </Tooltip>
+                              </InputAdornment>
+                            ),
+                          }
                           : {
-                              startAdornment: <InputAdornment position='start'>$</InputAdornment>,
-                            }
+                            startAdornment: <InputAdornment position='start'>$</InputAdornment>,
+                          }
                       }
                     />
                   </FormControl>
