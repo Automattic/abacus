@@ -15,6 +15,7 @@ import Layout from '@/components/Layout'
 import { Analysis, ExperimentFull } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { createUnresolvingPromise, or } from '@/utils/general'
+import Link from 'next/link'
 
 const useLinkTabStyles = makeStyles(() =>
   createStyles({
@@ -23,6 +24,14 @@ const useLinkTabStyles = makeStyles(() =>
     },
   }),
 )
+
+const ButtonLink = React.forwardRef(({ className = undefined, href, hrefAs, children, prefetch = false } : { className?: string, href: string, hrefAs: string, children: React.ReactNode, prefetch?: boolean }, ref) => (
+  <Link {...{ href, as: hrefAs, prefetch, ref }}>
+      <a className={className}>
+          {children}
+      </a>
+  </Link>
+));
 
 function LinkTab({ as, label, url, value }: { as?: string; label: React.ReactNode; url: string; value: string }) {
   const classes = useLinkTabStyles()
@@ -132,7 +141,13 @@ export default function ExperimentPageView({
             />
           </Tabs>
           <div className={classes.topBarActions}>
-            <Button variant='outlined' color='primary'>
+            <Button 
+              variant='outlined' 
+              color='primary' 
+              component={ButtonLink} 
+              href={`/experiments/[id]/wizard-edit`}
+              hrefAs={`/experiments/${experimentId}/wizard-edit`}
+              >
               Edit In Wizard
             </Button>{' '}
             <Button variant='outlined' color='secondary'>
