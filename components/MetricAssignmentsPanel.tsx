@@ -202,7 +202,11 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       variant='outlined'
                       fullWidth
                       displayEmpty
-                      error={!!formikProps.errors.metricAssignment?.metricId}
+                      error={
+                        !!formikProps.errors.metricAssignment?.metricId
+                        &&
+                        !!formikProps.touched?.metricAssignment?.metricId
+                      }
                     >
                       <MenuItem value=''>
                         <span className={classes.addMetricPlaceholder}>Select a Metric</span>
@@ -235,7 +239,11 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       labelId={`metricAssignment.attributionWindowSeconds-label`}
                       id={`metricAssignment.attributionWindowSeconds`}
                       variant='outlined'
-                      error={!!formikProps.errors.metricAssignment?.attributionWindowSeconds}
+                      error={
+                        !!formikProps.errors.metricAssignment?.attributionWindowSeconds
+                        &&
+                        !!formikProps.touched?.metricAssignment?.attributionWindowSeconds
+                      }
                       displayEmpty
                     >
                       <MenuItem value=''>-</MenuItem>
