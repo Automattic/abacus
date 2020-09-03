@@ -78,7 +78,7 @@ async function assignMetric(experiment: ExperimentFull, metricAssignment: Metric
     outboundMetricAssignment
   ]
 
-  const returnedExperiment = await fetchApi('PATCH', `/experiments/${experiment.experimentId}`, { metricAssignments })
+  const returnedExperiment = await fetchApi('PATCH', `/experiments/${experiment.experimentId}`, { metric_assignments: metricAssignments })
   return await experimentFullSchema.validate(returnedExperiment)
 }
 
