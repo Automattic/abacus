@@ -18,6 +18,7 @@ import { createUnresolvingPromise, or } from '@/utils/general'
 import { useSnackbar } from 'notistack'
 import LoadingButtonContainer from './LoadingButtonContainer'
 import { SettingsRemoteOutlined } from '@material-ui/icons'
+import ExperimentDisableButton from './ExperimentDisableButton'
 
 const useLinkTabStyles = makeStyles(() =>
   createStyles({
@@ -55,10 +56,6 @@ const useStyles = makeStyles((theme: Theme) =>
       flex: 1,
     },
     topBarActions: {},
-    topBarActionsDisableOutlined: {
-      borderColor: theme.palette.error.dark,
-      color: theme.palette.error.dark,
-    },
   }),
 )
 
@@ -110,31 +107,10 @@ export default function ExperimentPageView({
 
   const isLoading = or(experimentIsLoading, metricsIsLoading, segmentsIsLoading, analysesIsLoading)
 
-  const { enqueueSnackbar } = useSnackbar()
 
   // ### Experiment Actions
 
   // #### Experiment Disable
-  const canDisableExperiment = experiment?.status !== Status.Disabled
-  const [isAskingToConfirmDisableExperiment, setIsAskingToConfirmDisableExperiment] = useState<boolean>(false)
-  const onAskToConfirmDisableExperiment = () => setIsAskingToConfirmDisableExperiment(true)
-  const onCancelDisableExperiment = () => setIsAskingToConfirmDisableExperiment(false)
-  const [isSubmittingDisableExperiment, setIsSubmittingDisableExperiment] = useState<boolean>(false)
-  const onConfirmDisableExperiment = async () => {
-    try {
-      setIsSubmittingDisableExperiment(true)
-      await ExperimentsApi.changeStatus(experimentId, Status.Disabled)
-      enqueueSnackbar('Experiment Disabled', { variant: 'success' })
-      experimentReloadRef.current()
-      setIsAskingToConfirmDisableExperiment(false)
-    } catch (e) {
-      // istanbul ignore next; Shouldn't occur
-      console.log(e)
-      enqueueSnackbar('Oops! Something went wrong while trying to disable your experiment.', { variant: 'error' })
-    } finally {
-      setIsSubmittingDisableExperiment(false)
-    }
-  }
 
   return (
     <Layout title={`Experiment: ${experiment?.name || ''}`}>
@@ -167,34 +143,7 @@ export default function ExperimentPageView({
             <Button variant='outlined' color='secondary'>
               Run
             </Button>{' '}
-            <Button
-              variant='outlined'
-              classes={{ outlined: classes.topBarActionsDisableOutlined }}
-              disabled={!canDisableExperiment}
-              onClick={onAskToConfirmDisableExperiment}
-            >
-              Disable
-            </Button>
-            <Dialog open={isAskingToConfirmDisableExperiment} aria-labelledby='confirm-disable-experiment-dialog-title'>
-              <DialogContent>
-                <Typography variant="body1">Are you sure you want to disable this experiment?</Typography>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={onCancelDisableExperiment}>
-                  Cancel
-                </Button>
-                <LoadingButtonContainer isLoading={isSubmittingDisableExperiment}>
-                  <Button
-                    variant='contained'
-                    color='primary'
-                    disabled={isSubmittingDisableExperiment}
-                    onClick={onConfirmDisableExperiment}
-                  >
-                    Disable
-                  </Button>
-                </LoadingButtonContainer>
-              </DialogActions>
-            </Dialog>
+            <ExperimentDisableButton {...{ experiment, experimentReloadRef }} />
           </div>
         </div>
         {isLoading && <LinearProgress />}
