@@ -203,8 +203,9 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       fullWidth
                       displayEmpty
                       error={
+                        // istanbul ignore next; trivial, not-critical, pain to test.
                         !!formikProps.errors.metricAssignment?.metricId &&
-                        !!formikProps.touched?.metricAssignment?.metricId
+                        !!formikProps.touched.metricAssignment?.metricId
                       }
                     >
                       <MenuItem value=''>
@@ -239,8 +240,9 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       id={`metricAssignment.attributionWindowSeconds`}
                       variant='outlined'
                       error={
+                        // istanbul ignore next; trivial, not-critical, pain to test.
                         !!formikProps.errors.metricAssignment?.attributionWindowSeconds &&
-                        !!formikProps.touched?.metricAssignment?.attributionWindowSeconds
+                        !!formikProps.touched.metricAssignment?.attributionWindowSeconds
                       }
                       displayEmpty
                     >
