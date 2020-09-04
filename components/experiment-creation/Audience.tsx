@@ -124,9 +124,11 @@ const Audience = ({
   const [segmentAssignmentsField, _segmentAssignmentsFieldMeta, segmentAssignmentsFieldHelper] = useField(
     'experiment.segmentAssignments',
   )
-  const [segmentExclusionState, setSegmentExclusionState] = useState<SegmentExclusionState>(
-    SegmentExclusionState.Include,
-  )
+  const [segmentExclusionState, setSegmentExclusionState] = useState<SegmentExclusionState>(() => {
+    // We initialize the segmentExclusionState from existing data if there is any
+    const firstSegmentAssignment =  (segmentAssignmentsField.value as SegmentAssignmentNew[])[0]
+    return firstSegmentAssignment && firstSegmentAssignment.isExcluded ? SegmentExclusionState.Exclude : SegmentExclusionState.Include
+  })
   const onChangeSegmentExclusionState = (event: React.SyntheticEvent<HTMLInputElement>, value: string) => {
     setSegmentExclusionState(value as SegmentExclusionState)
     segmentAssignmentsFieldHelper.setValue(
