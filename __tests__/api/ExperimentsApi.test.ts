@@ -3,7 +3,13 @@ import { format } from 'date-fns'
 import MockDate from 'mockdate'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
-import { ExperimentFull, ExperimentFullNew, experimentFullNewOutboundSchema, MetricAssignmentNew, Status } from '@/lib/schemas'
+import {
+  ExperimentFull,
+  ExperimentFullNew,
+  experimentFullNewOutboundSchema,
+  MetricAssignmentNew,
+  Status,
+} from '@/lib/schemas'
 import Fixtures from '@/test-helpers/fixtures'
 import { validationErrorDisplayer } from '@/test-helpers/test-utils'
 
@@ -194,55 +200,6 @@ describe('ExperimentsApi.ts module', () => {
   })
 
   describe('assignMetric', () => {
-    it('should make the right request', async () => {
-      // NOTE: We are unit testing this one as the request it makes isn't so simple
-      const experiment = Fixtures.createExperimentFull()
-
-      // @ts-ignore
-      const origFetch = global.fetch
-      // @ts-ignore
-      global.fetch = jest.fn().mockImplementationOnce(async () => ({
-        json: async () => experiment,
-      }))
-
-      const newMetricAssignment = Fixtures.createMetricAssignment({}) as MetricAssignmentNew
-      // @ts-ignore
-      newMetricAssignment.metricAssignmentId = undefined
-      await validationErrorDisplayer(ExperimentsApi.assignMetric(experiment, newMetricAssignment))
-      // @ts-ignore
-      expect(global.fetch).toHaveBeenCalledTimes(1)
-      // @ts-ignore
-      expect(global.fetch).toMatchInlineSnapshot(`
-        [MockFunction] {
-          "calls": Array [
-            Array [
-              "https://virtserver.swaggerhub.com/yanir/experiments/0.1.0/experiments/1",
-              Object {
-                "body": "{\\"metric_assignments\\":[{\\"metric_id\\":1,\\"attribution_window_seconds\\":604800,\\"change_expected\\":true,\\"is_primary\\":true,\\"min_difference\\":0.1},{\\"metric_id\\":2,\\"attribution_window_seconds\\":2419200,\\"change_expected\\":false,\\"is_primary\\":false,\\"min_difference\\":10.5},{\\"metric_id\\":2,\\"attribution_window_seconds\\":3600,\\"change_expected\\":true,\\"is_primary\\":false,\\"min_difference\\":0.5},{\\"metric_id\\":3,\\"attribution_window_seconds\\":21600,\\"change_expected\\":true,\\"is_primary\\":false,\\"min_difference\\":12},{\\"metric_id\\":1,\\"attribution_window_seconds\\":604800,\\"change_expected\\":true,\\"is_primary\\":true,\\"min_difference\\":0.1}]}",
-                "headers": Headers {
-                  "_headers": Object {
-                    "content-type": Array [
-                      "application/json",
-                    ],
-                  },
-                },
-                "method": "PATCH",
-              },
-            ],
-          ],
-          "results": Array [
-            Object {
-              "type": "return",
-              "value": Promise {},
-            },
-          ],
-        }
-      `)
-
-      // @ts-ignore
-      global.fetch = origFetch
-    })
-
     it('should assign a metric', async () => {
       // This is the non-unit test version of above
       const experiment = Fixtures.createExperimentFull()
