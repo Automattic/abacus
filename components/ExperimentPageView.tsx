@@ -11,18 +11,28 @@ import SegmentsApi from '@/api/SegmentsApi'
 import ExperimentResults from '@/components/experiment-results/ExperimentResults'
 import ExperimentCodeSetup from '@/components/ExperimentCodeSetup'
 import ExperimentDetails from '@/components/ExperimentDetails'
+import ExperimentDisableButton from '@/components/ExperimentDisableButton'
 import Layout from '@/components/Layout'
 import { Analysis, ExperimentFull } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { createUnresolvingPromise, or } from '@/utils/general'
 
-const NextMuiLink = React.forwardRef(({ className = undefined, href, hrefAs, children, prefetch = false } : { className?: string, href: string, hrefAs: string, children?: React.ReactNode, prefetch?: boolean }, ref) => (
-  <Link {...{ href, as: hrefAs, prefetch, ref }}>
-      <a className={className}>
-          {children}
-      </a>
-  </Link>
-));
+const NextMuiLink = React.forwardRef(
+  (
+    {
+      className = undefined,
+      href,
+      hrefAs,
+      children,
+      prefetch = false,
+    }: { className?: string; href: string; hrefAs: string; children?: React.ReactNode; prefetch?: boolean },
+    ref,
+  ) => (
+    <Link {...{ href, as: hrefAs, prefetch, ref }}>
+      <a className={className}>{children}</a>
+    </Link>
+  ),
+)
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,10 +47,6 @@ const useStyles = makeStyles((theme: Theme) =>
       minWidth: 110,
     },
     topBarActions: {},
-    topBarActionsDisableOutlined: {
-      borderColor: theme.palette.error.dark,
-      color: theme.palette.error.dark,
-    },
   }),
 )
 
@@ -123,21 +129,19 @@ export default function ExperimentPageView({
             />
           </Tabs>
           <div className={classes.topBarActions}>
-            <Button 
-              variant='outlined' 
-              color='primary' 
-              component={NextMuiLink} 
+            <Button
+              variant='outlined'
+              color='primary'
+              component={NextMuiLink}
               href={`/experiments/[id]/wizard-edit`}
               hrefAs={`/experiments/${experimentId}/wizard-edit`}
-              >
+            >
               Edit In Wizard
             </Button>{' '}
             <Button variant='outlined' color='secondary'>
               Run
             </Button>{' '}
-            <Button variant='outlined' classes={{ outlined: classes.topBarActionsDisableOutlined }}>
-              Disable
-            </Button>
+            <ExperimentDisableButton {...{ experiment, experimentReloadRef }} />
           </div>
         </div>
         {isLoading && <LinearProgress />}
