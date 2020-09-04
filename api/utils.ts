@@ -42,6 +42,11 @@ async function fetchApi(method: string, path: string, body: unknown | null = nul
     throw new NotFoundError()
   }
 
+  // istanbul ignore next; branch can't be reached with the current tests.
+  if (response.status >= 300 || response.status < 200) {
+    throw new Error('Received a non-2XX response from server.')
+  }
+
   // Sometimes we don't have a JSON response but this abstraction was built as if all returns were JSON.
   // This is unfortunately the best way I can see to deal with it.
   // We lose the streaming parsing of fetch, but it shouldn't be a performance problem for now.
