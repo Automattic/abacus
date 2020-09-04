@@ -17,7 +17,9 @@ describe('ExperimentsApi.ts module', () => {
     // NOTE: We are unit testing this one as the request it makes isn't so simple
     it('should make the right request', async () => {
       const experiment = Fixtures.createExperimentFull()
-      const newMetricAssignment = Fixtures.createMetricAssignment({ metricAssignmentId: undefined }) as MetricAssignmentNew
+      const newMetricAssignment = Fixtures.createMetricAssignment({
+        metricAssignmentId: undefined,
+      }) as MetricAssignmentNew
 
       mockedUtils.fetchApi.mockImplementation(async () => experiment)
 
