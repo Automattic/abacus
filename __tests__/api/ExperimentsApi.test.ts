@@ -2,7 +2,7 @@ import { format } from 'date-fns'
 import MockDate from 'mockdate'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
-import { ExperimentFull, ExperimentFullNew, experimentFullNewOutboundSchema } from '@/lib/schemas'
+import { ExperimentFull, ExperimentFullNew, experimentFullNewOutboundSchema, Status } from '@/lib/schemas'
 import { validationErrorDisplayer } from '@/test-helpers/test-utils'
 
 MockDate.set('2020-08-13')
@@ -188,6 +188,16 @@ describe('ExperimentsApi.ts module', () => {
         ExperimentsApi.patch(1, (rawNewExperiment as unknown) as Partial<ExperimentFull>),
       )
       expect(returnedExperiment.experimentId).toBeGreaterThan(0)
+    })
+  })
+
+  describe('changeStatus', () => {
+    it('should disable an existing experiment', async () => {
+      await validationErrorDisplayer(ExperimentsApi.changeStatus(1, Status.Disabled))
+    })
+
+    it('should run an existing experiment', async () => {
+      await validationErrorDisplayer(ExperimentsApi.changeStatus(1, Status.Running))
     })
   })
 
