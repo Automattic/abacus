@@ -135,7 +135,6 @@ function MetricAssignmentsPanel({
   const onCancelAssignMetric = () => {
     setIsAssigningMetric(false)
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
   const onSubmitAssignMetric = async (formData: { metricAssignment: typeof assignMetricInitialAssignMetric }) => {
     try {
       await ExperimentsApi.assignMetric(experiment, (formData.metricAssignment as unknown) as MetricAssignmentNew)
