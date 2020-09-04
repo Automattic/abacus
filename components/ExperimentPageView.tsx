@@ -11,6 +11,7 @@ import SegmentsApi from '@/api/SegmentsApi'
 import ExperimentResults from '@/components/experiment-results/ExperimentResults'
 import ExperimentCodeSetup from '@/components/ExperimentCodeSetup'
 import ExperimentDetails from '@/components/ExperimentDetails'
+import ExperimentDisableButton from '@/components/ExperimentDisableButton'
 import Layout from '@/components/Layout'
 import { Analysis, ExperimentFull } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
@@ -46,10 +47,6 @@ const useStyles = makeStyles((theme: Theme) =>
       minWidth: 110,
     },
     topBarActions: {},
-    topBarActionsDisableOutlined: {
-      borderColor: theme.palette.error.dark,
-      color: theme.palette.error.dark,
-    },
   }),
 )
 
@@ -144,9 +141,7 @@ export default function ExperimentPageView({
             <Button variant='outlined' color='secondary'>
               Run
             </Button>{' '}
-            <Button variant='outlined' classes={{ outlined: classes.topBarActionsDisableOutlined }}>
-              Disable
-            </Button>
+            <ExperimentDisableButton {...{ experiment, experimentReloadRef }} />
           </div>
         </div>
         {isLoading && <LinearProgress />}

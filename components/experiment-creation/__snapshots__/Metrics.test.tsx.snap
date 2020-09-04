@@ -582,8 +582,9 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
                     aria-label="Min difference"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
                     id="experiment.metricAssignments[0].minDifference"
+                    min="0"
                     name="experiment.metricAssignments[0].minDifference"
-                    placeholder="-"
+                    placeholder="1.30"
                     type="number"
                     value=""
                   />
@@ -951,8 +952,9 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
                     aria-label="Min difference"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
                     id="experiment.metricAssignments[0].minDifference"
+                    min="0"
                     name="experiment.metricAssignments[0].minDifference"
-                    placeholder="-"
+                    placeholder="1.30"
                     type="number"
                     value=""
                   />
@@ -1318,8 +1320,9 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
                     aria-label="Min difference"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
                     id="experiment.metricAssignments[0].minDifference"
+                    min="0"
                     name="experiment.metricAssignments[0].minDifference"
-                    placeholder="-"
+                    placeholder="1.30"
                     type="number"
                     value=""
                   />
@@ -1877,8 +1880,9 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
                     aria-label="Min difference"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
                     id="experiment.metricAssignments[0].minDifference"
+                    min="0"
                     name="experiment.metricAssignments[0].minDifference"
-                    placeholder="-"
+                    placeholder="1.30"
                     type="number"
                     value=""
                   />

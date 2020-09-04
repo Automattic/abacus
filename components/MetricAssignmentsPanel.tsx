@@ -5,6 +5,7 @@ import {
   DialogContent,
   DialogTitle,
   FormControl,
+  FormHelperText,
   FormLabel,
   InputAdornment,
   MenuItem,
@@ -20,16 +21,23 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Typography from '@material-ui/core/Typography'
 import { Add } from '@material-ui/icons'
-import { Field, Formik } from 'formik'
+import { ErrorMessage, Field, Formik } from 'formik'
 import { Select, Switch, TextField } from 'formik-material-ui'
 import { useSnackbar } from 'notistack'
 import React, { useMemo, useState } from 'react'
+import * as yup from 'yup'
 
 import Label from '@/components/Label'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import * as MetricAssignments from '@/lib/metric-assignments'
 import { indexMetrics } from '@/lib/normalizers'
-import { ExperimentFull, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
+import {
+  ExperimentFull,
+  MetricAssignment,
+  metricAssignmentNewSchema,
+  MetricBare,
+  MetricParameterType,
+} from '@/lib/schemas'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
 
 /**
@@ -174,13 +182,17 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
       </Table>
       <Dialog open={isAssigningMetric} aria-labelledby='assign-metric-form-dialog-title'>
         <DialogTitle id='assign-metric-form-dialog-title'>Assign Metric</DialogTitle>
-        <Formik initialValues={{ metricAssignment: assignMetricInitialAssignMetric }} onSubmit={onSubmitAssignMetric}>
+        <Formik
+          initialValues={{ metricAssignment: assignMetricInitialAssignMetric }}
+          onSubmit={onSubmitAssignMetric}
+          validationSchema={yup.object({ metricAssignment: metricAssignmentNewSchema })}
+        >
           {(formikProps) => (
-            <form onSubmit={formikProps.handleSubmit}>
+            <form onSubmit={formikProps.handleSubmit} noValidate>
               <DialogContent>
                 <div className={classes.row}>
                   <FormControl component='fieldset' fullWidth>
-                    <FormLabel required className={classes.label}>
+                    <FormLabel required className={classes.label} htmlFor={`metricAssignment.metricId`}>
                       Metric
                     </FormLabel>
                     <Field
@@ -190,6 +202,11 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       variant='outlined'
                       fullWidth
                       displayEmpty
+                      error={
+                        // istanbul ignore next; trivial, not-critical, pain to test.
+                        !!formikProps.errors.metricAssignment?.metricId &&
+                        !!formikProps.touched.metricAssignment?.metricId
+                      }
                     >
                       <MenuItem value=''>
                         <span className={classes.addMetricPlaceholder}>Select a Metric</span>
@@ -200,6 +217,11 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                         </MenuItem>
                       ))}
                     </Field>
+                    {formikProps.errors.metricAssignment?.metricId && (
+                      <FormHelperText error={true}>
+                        <ErrorMessage name={`metricAssignment.metricId`} />
+                      </FormHelperText>
+                    )}
                   </FormControl>
                 </div>
                 <div className={classes.row}>
@@ -217,6 +239,11 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       labelId={`metricAssignment.attributionWindowSeconds-label`}
                       id={`metricAssignment.attributionWindowSeconds`}
                       variant='outlined'
+                      error={
+                        // istanbul ignore next; trivial, not-critical, pain to test.
+                        !!formikProps.errors.metricAssignment?.attributionWindowSeconds &&
+                        !!formikProps.touched.metricAssignment?.attributionWindowSeconds
+                      }
                       displayEmpty
                     >
                       <MenuItem value=''>-</MenuItem>
@@ -228,6 +255,11 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                         ),
                       )}
                     </Field>
+                    {formikProps.errors.metricAssignment?.attributionWindowSeconds && (
+                      <FormHelperText error={true}>
+                        <ErrorMessage name={`metricAssignment.attributionWindowSeconds`} />
+                      </FormHelperText>
+                    )}
                   </FormControl>
                 </div>
                 <div className={classes.row}>
@@ -259,9 +291,10 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                       id={`metricAssignment.minDifference`}
                       type='number'
                       variant='outlined'
-                      placeholder='-'
+                      placeholder='1.30'
                       inputProps={{
                         'aria-label': 'Minimum Difference',
+                        min: '0',
                       }}
                       InputProps={
                         formikProps.values.metricAssignment.metricId &&

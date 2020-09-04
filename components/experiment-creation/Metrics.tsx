@@ -222,9 +222,10 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                               id={`experiment.metricAssignments[${index}].minDifference`}
                               type='number'
                               variant='outlined'
-                              placeholder='-'
+                              placeholder='1.30'
                               inputProps={{
                                 'aria-label': 'Min difference',
+                                min: '0',
                               }}
                               InputProps={
                                 indexedMetrics[metricAssignment.metricId].parameterType ===

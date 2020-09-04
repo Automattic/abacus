@@ -47,7 +47,7 @@ function ExperimentDetails({
           </Grid>
           {(experiment.status === Status.Completed || experiment.status === Status.Disabled) && (
             <Grid item>
-              <ConclusionsPanel experiment={experiment} />
+              <ConclusionsPanel {...{ experiment, experimentReloadRef }} />
             </Grid>
           )}
         </Grid>

@@ -107,7 +107,7 @@ export const metricAssignmentNewSchema = yup
     changeExpected: yup.bool().defined(),
     isPrimary: yup.bool().defined(),
     metricId: idSchema.defined(),
-    minDifference: yup.number().defined(),
+    minDifference: yup.number().defined().positive(),
   })
   .defined()
   .camelCase()

@@ -43,8 +43,8 @@ const ExperimentsNewPage = function () {
       const receivedExperiment = await ExperimentsApi.create(experiment)
       enqueueSnackbar('Experiment Created!', { variant: 'success' })
       router.push(
-        '/experiments/[id]/snippets?freshly_created',
-        `/experiments/${receivedExperiment.experimentId}/snippets?freshly_created`,
+        '/experiments/[id]/code-setup?freshly_created',
+        `/experiments/${receivedExperiment.experimentId}/code-setup?freshly_created`,
       )
     } catch (error) {
       enqueueSnackbar('Failed to create experiment 😨 (Form data logged to console.)', { variant: 'error' })
