@@ -12,6 +12,7 @@ import {
   MetricAssignmentNew,
   metricAssignmentNewOutboundSchema,
   metricAssignmentNewSchema,
+  Status,
   yupPick,
 } from '@/lib/schemas'
 
@@ -47,6 +48,10 @@ async function patch(experimentId: number, experimentPatch: Partial<ExperimentFu
 
   const returnedExperiment = await fetchApi('PATCH', `/experiments/${experimentId}`, outboundExperimentPatch)
   return await experimentFullSchema.validate(returnedExperiment)
+}
+
+async function changeStatus(experimentId: number, status: Status) {
+  await fetchApi('PUT', `/experiments/${experimentId}/status`, { status })
 }
 
 /**
@@ -107,6 +112,7 @@ const ExperimentsApi = {
   create,
   patch,
   assignMetric,
+  changeStatus,
   findAll,
   findById,
 }

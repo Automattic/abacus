@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/require-await */
-import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
+import { act, fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import { noop } from 'lodash'
 import MockDate from 'mockdate'
 import * as notistack from 'notistack'
@@ -8,7 +8,7 @@ import React from 'react'
 import ExperimentsApi from '@/api/ExperimentsApi'
 import { Status } from '@/lib/schemas'
 import Fixtures from '@/test-helpers/fixtures'
-import { render } from '@/test-helpers/test-utils'
+import { changeFieldByRole, render } from '@/test-helpers/test-utils'
 
 import GeneralPanel from './GeneralPanel'
 
@@ -205,11 +205,38 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
 
   await waitFor(() => screen.getByRole('button', { name: /Save/ }))
 
+  changeFieldByRole('textbox', /Experiment description/, 'Edited description.')
+  // This date was picked as it is after the fixture start date.
+  await act(async () => {
+    fireEvent.change(screen.getByLabelText(/End date/), { target: { value: '2020-10-20' } })
+  })
+  changeFieldByRole('textbox', /Owner/, 'changed_test_a11n')
+
   const saveButton = screen.getByRole('button', { name: /Save/ })
   fireEvent.click(saveButton)
   await waitForElementToBeRemoved(saveButton)
 
   expect(mockedExperimentsApi.patch).toHaveBeenCalledTimes(1)
+  expect(mockedExperimentsApi.patch).toMatchInlineSnapshot(`
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          1,
+          Object {
+            "description": "Edited description.",
+            "endDatetime": "2020-10-20",
+            "ownerLogin": "changed_test_a11n",
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": Promise {},
+        },
+      ],
+    }
+  `)
 
   fireEvent.click(editButton)
 
@@ -236,11 +263,32 @@ test('checks edit dialog does not allow end datetime changes with disabled exper
 
   await waitFor(() => screen.getByRole('button', { name: /Save/ }))
 
+  changeFieldByRole('textbox', /Experiment description/, 'Edited description.')
   expect(screen.getByLabelText(/End date/)).toBeDisabled()
+  changeFieldByRole('textbox', /Owner/, 'changed_test_a11n')
 
   const saveButton = screen.getByRole('button', { name: /Save/ })
   fireEvent.click(saveButton)
   await waitForElementToBeRemoved(saveButton)
 
   expect(mockedExperimentsApi.patch).toHaveBeenCalledTimes(1)
+  expect(mockedExperimentsApi.patch).toMatchInlineSnapshot(`
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          1,
+          Object {
+            "description": "Edited description.",
+            "ownerLogin": "changed_test_a11n",
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": Promise {},
+        },
+      ],
+    }
+  `)
 })

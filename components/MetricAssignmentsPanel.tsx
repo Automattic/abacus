@@ -208,7 +208,7 @@ function MetricAssignmentsPanel({
           validationSchema={yup.object({ metricAssignment: metricAssignmentNewSchema })}
         >
           {(formikProps) => (
-            <form onSubmit={formikProps.handleSubmit}>
+            <form onSubmit={formikProps.handleSubmit} noValidate>
               <DialogContent>
                 <div className={classes.row}>
                   <FormControl component='fieldset' fullWidth>

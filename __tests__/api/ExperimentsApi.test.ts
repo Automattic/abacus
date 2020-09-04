@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import MockDate from 'mockdate'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
-import { ExperimentFull, ExperimentFullNew, experimentFullNewOutboundSchema, MetricAssignmentNew } from '@/lib/schemas'
+import { ExperimentFull, ExperimentFullNew, experimentFullNewOutboundSchema, MetricAssignmentNew, Status } from '@/lib/schemas'
 import Fixtures from '@/test-helpers/fixtures'
 import { validationErrorDisplayer } from '@/test-helpers/test-utils'
 
@@ -250,6 +250,16 @@ describe('ExperimentsApi.ts module', () => {
       // @ts-ignore
       newMetricAssignment.metricAssignmentId = undefined
       await validationErrorDisplayer(ExperimentsApi.assignMetric(experiment, newMetricAssignment))
+    })
+  })
+
+  describe('changeStatus', () => {
+    it('should disable an existing experiment', async () => {
+      await validationErrorDisplayer(ExperimentsApi.changeStatus(1, Status.Disabled))
+    })
+
+    it('should run an existing experiment', async () => {
+      await validationErrorDisplayer(ExperimentsApi.changeStatus(1, Status.Running))
     })
   })
 

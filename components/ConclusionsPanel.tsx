@@ -20,10 +20,13 @@ import { Field, Formik } from 'formik'
 import { RadioGroup as FormikMuiRadioGroup, TextField } from 'formik-material-ui'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
+import * as yup from 'yup'
 
+import ExperimentsApi from '@/api/ExperimentsApi'
 import LabelValueTable from '@/components/LabelValueTable'
+import LoadingButtonContainer from '@/components/LoadingButtonContainer'
 import * as Experiments from '@/lib/experiments'
-import { ExperimentFull } from '@/lib/schemas'
+import { ExperimentFull, experimentFullSchema, yupPick } from '@/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -46,7 +49,13 @@ const useStyles = makeStyles((theme: Theme) =>
  *
  * @param props.experiment - The experiment with the conclusion information.
  */
-function ConclusionsPanel({ experiment }: { experiment: ExperimentFull }) {
+function ConclusionsPanel({
+  experiment,
+  experimentReloadRef,
+}: {
+  experiment: ExperimentFull
+  experimentReloadRef: React.MutableRefObject<() => void>
+}) {
   const classes = useStyles()
 
   const deployedVariation = Experiments.getDeployedVariation(experiment)
@@ -73,11 +82,20 @@ function ConclusionsPanel({ experiment }: { experiment: ExperimentFull }) {
   }
   const onEdit = () => setIsEditing(true)
   const onCancelEdit = () => setIsEditing(false)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
-  const onSubmitEdit = async (formData: unknown) => {
-    // TODO: Full submission
-    enqueueSnackbar('Experiment Updated!', { variant: 'success' })
-    setIsEditing(false)
+  const onSubmitEdit = async ({ experiment: formValues }: { experiment: typeof editInitialValues }) => {
+    try {
+      await ExperimentsApi.patch(experiment.experimentId, {
+        endReason: formValues.endReason,
+        conclusionUrl: formValues.conclusionUrl === '' ? undefined : formValues.conclusionUrl,
+        deployedVariationId: formValues.deployedVariationId ? Number(formValues.deployedVariationId) : undefined,
+      })
+      enqueueSnackbar('Experiment Updated!', { variant: 'success' })
+      experimentReloadRef.current()
+      setIsEditing(false)
+    } catch (e) {
+      // istanbul ignore next; shouldn't happen
+      enqueueSnackbar('Oops! Something went wrong while trying to update your experiment.', { variant: 'error' })
+    }
   }
 
   return (
@@ -96,7 +114,11 @@ function ConclusionsPanel({ experiment }: { experiment: ExperimentFull }) {
 
       <Dialog open={isEditing} fullWidth aria-labelledby='edit-experiment-conclusions-dialog-title'>
         <DialogTitle id='edit-experiment-conclusions-dialog-title'>Edit Experiment: Conclusions</DialogTitle>
-        <Formik initialValues={{ experiment: editInitialValues }} onSubmit={onSubmitEdit}>
+        <Formik
+          initialValues={{ experiment: editInitialValues }}
+          validationSchema={yup.object({ experiment: yupPick(experimentFullSchema, Object.keys(editInitialValues)) })}
+          onSubmit={onSubmitEdit}
+        >
           {(formikProps) => (
             <form onSubmit={formikProps.handleSubmit}>
               <DialogContent>
@@ -153,9 +175,16 @@ function ConclusionsPanel({ experiment }: { experiment: ExperimentFull }) {
                 <Button onClick={onCancelEdit} color='primary'>
                   Cancel
                 </Button>
-                <Button color='primary' type='submit'>
-                  Save
-                </Button>
+                <LoadingButtonContainer isLoading={formikProps.isSubmitting}>
+                  <Button
+                    type='submit'
+                    variant='contained'
+                    color='secondary'
+                    disabled={formikProps.isSubmitting || !formikProps.isValid}
+                  >
+                    Save
+                  </Button>
+                </LoadingButtonContainer>
               </DialogActions>
             </form>
           )}
