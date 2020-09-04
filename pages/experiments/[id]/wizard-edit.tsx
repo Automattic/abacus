@@ -7,7 +7,7 @@ import _ from 'lodash'
 import { useDataSource, useDataLoadingError } from '@/utils/data-loading'
 import ExperimentsApi from '@/api/ExperimentsApi'
 import { createUnresolvingPromise, or } from '@/utils/general'
-import { ExperimentFull, MetricAssignment, SegmentAssignment, Variation } from '@/lib/schemas'
+import { ExperimentFull, MetricAssignment, SegmentAssignment, Variation, Event } from '@/lib/schemas'
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
 import Layout from '@/components/Layout'
@@ -45,6 +45,13 @@ function variationToFormData(variation: Variation) {
   }
 }
 
+function exposureEventToFormData(exposureEvent: Event) {
+  return {
+    event: exposureEvent.event,
+    props: Object.entries(exposureEvent.props as object).map(([key, value]) => ({ key, value }))
+  }
+}
+
 function experimentToExperimentFormData(experiment: ExperimentFull) {
   return {
     p2Url: experiment.p2Url,
@@ -58,7 +65,7 @@ function experimentToExperimentFormData(experiment: ExperimentFull) {
     metricAssignments: experiment.metricAssignments.map(metricAssignmentToFormData),
     segmentAssignments: experiment.segmentAssignments.map(segmentAssignmentToFormData),
     variations: experiment.variations.map(variationToFormData),
-    exposureEvents: experiment.exposureEvents || [],
+    exposureEvents: (experiment.exposureEvents || []).map(exposureEventToFormData),
   }
 }
 
