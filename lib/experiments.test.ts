@@ -47,36 +47,4 @@ describe('lib/experiments.ts module', () => {
       ).toBe(AnalysisStrategy.PpNaive)
     })
   })
-
-  describe('createNewExperiment', () => {
-    it('should return a new experiment', () => {
-      expect(Experiments.createInitialExperiment()).toMatchInlineSnapshot(`
-        Object {
-          "description": "",
-          "endDatetime": "",
-          "existingUsersAllowed": "true",
-          "exposureEvents": Array [],
-          "metricAssignments": Array [],
-          "name": "",
-          "ownerLogin": "",
-          "p2Url": "",
-          "platform": "wpcom",
-          "segmentAssignments": Array [],
-          "startDatetime": "",
-          "variations": Array [
-            Object {
-              "allocatedPercentage": 50,
-              "isDefault": true,
-              "name": "control",
-            },
-            Object {
-              "allocatedPercentage": 50,
-              "isDefault": false,
-              "name": "treatment",
-            },
-          ],
-        }
-      `)
-    })
-  })
 })

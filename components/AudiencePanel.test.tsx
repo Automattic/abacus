@@ -7,7 +7,7 @@ import { render } from '@/test-helpers/test-utils'
 import AudiencePanel from './AudiencePanel'
 
 test('renders as expected with no segment assignments', () => {
-  const experiment = Fixtures.createExperimentFull()
+  const experiment = Fixtures.createExperimentFull({ segmentAssignments: [] })
   const { container } = render(<AudiencePanel experiment={experiment} segments={[]} />)
 
   expect(container).toMatchSnapshot()
@@ -15,6 +15,7 @@ test('renders as expected with no segment assignments', () => {
 
 test('renders as expected with existing users allowed', () => {
   const experiment = Fixtures.createExperimentFull({
+    segmentAssignments: [],
     existingUsersAllowed: true,
   })
   const { container } = render(<AudiencePanel experiment={experiment} segments={[]} />)
@@ -26,10 +27,11 @@ test('renders as expected with all segments resolvable', () => {
   const segments = Fixtures.createSegments(5)
   const experiment = Fixtures.createExperimentFull({
     segmentAssignments: [
-      Fixtures.createSegmentAssignment({ segmentAssignmentId: 101, segmentId: 1 }),
-      Fixtures.createSegmentAssignment({ segmentAssignmentId: 102, segmentId: 2, isExcluded: true }),
-      Fixtures.createSegmentAssignment({ segmentAssignmentId: 103, segmentId: 3, isExcluded: true }),
-      Fixtures.createSegmentAssignment({ segmentAssignmentId: 104, segmentId: 4 }),
+      Fixtures.createSegmentAssignment({ segmentAssignmentId: 1, segmentId: 1 }),
+      Fixtures.createSegmentAssignment({ segmentAssignmentId: 2, segmentId: 2, isExcluded: true }),
+      Fixtures.createSegmentAssignment({ segmentAssignmentId: 3, segmentId: 3, isExcluded: true }),
+      Fixtures.createSegmentAssignment({ segmentAssignmentId: 4, segmentId: 4 }),
+      Fixtures.createSegmentAssignment({ segmentAssignmentId: 5, segmentId: 5 }),
     ],
   })
   const { container } = render(<AudiencePanel experiment={experiment} segments={segments} />)
@@ -41,11 +43,11 @@ test('throws an error when some segments not resolvable', () => {
   const segments = Fixtures.createSegments(5)
   const experiment = Fixtures.createExperimentFull({
     segmentAssignments: [
-      Fixtures.createSegmentAssignment({ segmentAssignmentId: 101, segmentId: 1 }),
-      Fixtures.createSegmentAssignment({ segmentAssignmentId: 102, segmentId: 2, isExcluded: true }),
-      Fixtures.createSegmentAssignment({ segmentAssignmentId: 103, segmentId: 3, isExcluded: true }),
-      Fixtures.createSegmentAssignment({ segmentAssignmentId: 104, segmentId: 4 }),
-      Fixtures.createSegmentAssignment({ segmentAssignmentId: 110, segmentId: 10 }),
+      Fixtures.createSegmentAssignment({ segmentAssignmentId: 1, segmentId: 1 }),
+      Fixtures.createSegmentAssignment({ segmentAssignmentId: 2, segmentId: 2, isExcluded: true }),
+      Fixtures.createSegmentAssignment({ segmentAssignmentId: 3, segmentId: 3, isExcluded: true }),
+      Fixtures.createSegmentAssignment({ segmentAssignmentId: 4, segmentId: 4 }),
+      Fixtures.createSegmentAssignment({ segmentAssignmentId: 5, segmentId: 10 }),
     ],
   })
 
@@ -67,6 +69,7 @@ test('throws an error when some segments not resolvable', () => {
 
 test('Shows exposure events', () => {
   const experiment = Fixtures.createExperimentFull({
+    segmentAssignments: [],
     exposureEvents: [
       {
         event: 'test',
@@ -82,6 +85,7 @@ test('Shows exposure events', () => {
 
 test('Empty array shows no exposure events', () => {
   const experiment = Fixtures.createExperimentFull({
+    segmentAssignments: [],
     exposureEvents: [],
   })
   const { container } = render(<AudiencePanel experiment={experiment} segments={[]} />)
@@ -90,6 +94,7 @@ test('Empty array shows no exposure events', () => {
 
 test('null shows no exposure events', () => {
   const experiment = Fixtures.createExperimentFull({
+    segmentAssignments: [],
     exposureEvents: null,
   })
   const { container } = render(<AudiencePanel experiment={experiment} segments={[]} />)

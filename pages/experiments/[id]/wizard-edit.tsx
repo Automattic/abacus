@@ -1,21 +1,21 @@
+import { LinearProgress } from '@material-ui/core'
 import debugFactory from 'debug'
+import _ from 'lodash'
 import { useRouter } from 'next/router'
+import { useSnackbar } from 'notistack'
 import { toIntOrNull } from 'qc-to_int'
 import React from 'react'
-import _ from 'lodash'
 
-import { useDataSource, useDataLoadingError } from '@/utils/data-loading'
 import ExperimentsApi from '@/api/ExperimentsApi'
-import { createUnresolvingPromise, or } from '@/utils/general'
-import { ExperimentFull } from '@/lib/schemas'
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
-import Layout from '@/components/Layout'
-import { LinearProgress } from '@material-ui/core'
 import ExperimentForm from '@/components/experiment-creation/ExperimentForm'
-import { useSnackbar } from 'notistack'
+import Layout from '@/components/Layout'
 import { experimentToFormData } from '@/lib/form-data'
 import * as Normalizers from '@/lib/normalizers'
+import { ExperimentFull } from '@/lib/schemas'
+import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
+import { createUnresolvingPromise, or } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/experiments/[id]/results.tsx')
 
@@ -51,12 +51,9 @@ export default function WizardEditPage() {
       // const { experiment } = formData as { experiment: ExperimentFullNew }
       // const receivedExperiment = await ExperimentsApi.put(experiment)
       // TEMPORARY:
-      await new Promise(resolve => setTimeout(resolve, 500))
+      await new Promise((resolve) => setTimeout(resolve, 500))
       enqueueSnackbar('Experiment Updated!', { variant: 'success' })
-      router.push(
-        '/experiments/[id]?freshly_wizard_edited',
-        `/experiments/${experimentId}?freshly_wizard_edited`,
-      )
+      router.push('/experiments/[id]?freshly_wizard_edited', `/experiments/${experimentId}?freshly_wizard_edited`)
     } catch (error) {
       enqueueSnackbar('Failed to update experiment 😨 (Form data logged to console.)', { variant: 'error' })
       console.error(error)
@@ -70,6 +67,7 @@ export default function WizardEditPage() {
     <Layout title={`Editing Experiment: ${experiment?.name || ''}`}>
       {isLoading && <LinearProgress />}
       {!isLoading && initialExperiment && indexedMetrics && indexedSegments && (
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore; initialExperiment type doesn't quite fit, I would leave this as a reasonable compromise
         <ExperimentForm {...{ indexedMetrics, indexedSegments, initialExperiment, onSubmit }} />
       )}

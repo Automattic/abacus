@@ -2,7 +2,7 @@ import { act, fireEvent, render, screen } from '@testing-library/react'
 import { Formik, FormikProps } from 'formik'
 import React from 'react'
 
-import { createInitialExperiment } from '@/lib/experiments'
+import { ExperimentFormData, experimentToFormData } from '@/lib/form-data'
 import { Segment, SegmentType } from '@/lib/schemas'
 
 import Audience from './Audience'
@@ -29,13 +29,13 @@ test('renders as expected', async () => {
 
   const { container } = render(
     <Formik
-      initialValues={{ experiment: createInitialExperiment() }}
+      initialValues={{ experiment: experimentToFormData({}) }}
       onSubmit={
         /* istanbul ignore next; This is unused */
         () => undefined
       }
     >
-      {(formikProps: FormikProps<{ experiment: ReturnType<typeof createInitialExperiment> }>) => (
+      {(formikProps: FormikProps<{ experiment: ExperimentFormData }>) => (
         <Audience indexedSegments={indexedSegments} formikProps={formikProps} />
       )}
     </Formik>,
