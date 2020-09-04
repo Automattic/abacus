@@ -68,6 +68,9 @@ export async function validationErrorDisplayer<T>(promise: Promise<T>): Promise<
   }
 }
 
+/**
+ * Change the value in a form field.
+ */
 export async function changeFieldByRole(role: string, name: RegExp, value: string) {
   const field = screen.getByRole(role, { name: name })
   // eslint-disable-next-line @typescript-eslint/require-await

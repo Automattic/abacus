@@ -11,12 +11,11 @@ import SegmentsApi from '@/api/SegmentsApi'
 import ExperimentResults from '@/components/experiment-results/ExperimentResults'
 import ExperimentCodeSetup from '@/components/ExperimentCodeSetup'
 import ExperimentDetails from '@/components/ExperimentDetails'
+import ExperimentDisableButton from '@/components/ExperimentDisableButton'
 import Layout from '@/components/Layout'
 import { Analysis, ExperimentFull } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { createUnresolvingPromise, or } from '@/utils/general'
-
-import ExperimentDisableButton from './ExperimentDisableButton'
 
 const useLinkTabStyles = makeStyles(() =>
   createStyles({
