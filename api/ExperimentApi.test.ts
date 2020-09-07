@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/ban-ts-ignore, @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/require-await */
 import MockDate from 'mockdate'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 import * as Utils from '@/api/utils'
-import { MetricAssignmentNew } from '@/lib/schemas'
 import Fixtures from '@/test-helpers/fixtures'
 import { validationErrorDisplayer } from '@/test-helpers/test-utils'
 
@@ -17,9 +16,7 @@ describe('ExperimentsApi.ts module', () => {
     // NOTE: We are unit testing this one as the request it makes isn't so simple
     it('should make the right request', async () => {
       const experiment = Fixtures.createExperimentFull()
-      const newMetricAssignment = Fixtures.createMetricAssignment({
-        metricAssignmentId: undefined,
-      }) as MetricAssignmentNew
+      const newMetricAssignment = Fixtures.createMetricAssignment({ metricAssignmentId: undefined })
 
       mockedUtils.fetchApi.mockImplementation(async () => experiment)
 
