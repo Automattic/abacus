@@ -1,6 +1,5 @@
-import { format } from 'date-fns'
-
 import { Event, ExperimentFull, MetricAssignment, Platform, SegmentAssignment, Variation } from './schemas'
+import { formatISODate } from '@/utils/time'
 
 function metricAssignmentToFormData(metricAssignment: MetricAssignment) {
   return {
@@ -39,8 +38,8 @@ export function experimentToFormData(experiment: Partial<ExperimentFull>) {
     p2Url: experiment.p2Url ?? '',
     name: experiment.name ?? '',
     description: experiment.description ?? '',
-    startDatetime: experiment.startDatetime ? format(experiment.startDatetime, 'yyyy-MM-dd') : '',
-    endDatetime: experiment.endDatetime ? format(experiment.endDatetime, 'yyyy-MM-dd') : '',
+    startDatetime: experiment.startDatetime ? formatISODate(experiment.startDatetime) : '',
+    endDatetime: experiment.endDatetime ? formatISODate(experiment.endDatetime) : '',
     ownerLogin: experiment.ownerLogin ?? '',
     existingUsersAllowed: experiment.existingUsersAllowed ?? true,
     platform: experiment.platform ?? Platform.Wpcom,

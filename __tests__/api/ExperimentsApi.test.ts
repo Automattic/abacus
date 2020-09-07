@@ -1,9 +1,9 @@
-import { format } from 'date-fns'
 import MockDate from 'mockdate'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 import { ExperimentFull, ExperimentFullNew, experimentFullNewOutboundSchema, Status } from '@/lib/schemas'
 import { validationErrorDisplayer } from '@/test-helpers/test-utils'
+import { formatISODate } from '@/utils/time'
 
 MockDate.set('2020-08-13')
 
@@ -18,8 +18,8 @@ describe('ExperimentsApi.ts module', () => {
         p2Url: 'http://example.com/',
         name: 'test_experiment_name',
         description: 'experiment description',
-        startDatetime: format(now, 'yyyy-MM-dd'),
-        endDatetime: format(nextWeek, 'yyyy-MM-dd'),
+        startDatetime: formatISODate(now),
+        endDatetime: formatISODate(nextWeek),
         ownerLogin: 'owner-nickname',
         platform: 'wpcom',
         existingUsersAllowed: 'true',
@@ -67,7 +67,7 @@ describe('ExperimentsApi.ts module', () => {
 
       expect(newExperiment).toEqual({
         description: 'experiment description',
-        end_datetime: format(nextWeek, 'yyyy-MM-dd'),
+        end_datetime: formatISODate(nextWeek),
         existing_users_allowed: 'true',
         exposure_events: [
           {
@@ -97,7 +97,7 @@ describe('ExperimentsApi.ts module', () => {
             segment_id: 3,
           },
         ],
-        start_datetime: format(now, 'yyyy-MM-dd'),
+        start_datetime: formatISODate(now),
         variations: [
           {
             allocated_percentage: 50,
@@ -122,8 +122,8 @@ describe('ExperimentsApi.ts module', () => {
         p2Url: 'http://example.com/',
         name: 'test_experiment_name',
         description: 'experiment description',
-        startDatetime: format(now, 'yyyy-MM-dd'),
-        endDatetime: format(nextWeek, 'yyyy-MM-dd'),
+        startDatetime: formatISODate(now),
+        endDatetime: formatISODate(nextWeek),
         ownerLogin: 'owner-nickname',
         platform: 'wpcom',
         existingUsersAllowed: 'true',
@@ -181,7 +181,7 @@ describe('ExperimentsApi.ts module', () => {
       nextWeek.setDate(now.getDate() + 7)
       const rawNewExperiment = {
         description: 'experiment description',
-        endDatetime: format(nextWeek, 'yyyy-MM-dd'),
+        endDatetime: formatISODate(nextWeek),
         ownerLogin: 'owner-nickname',
       }
       const returnedExperiment = await validationErrorDisplayer(

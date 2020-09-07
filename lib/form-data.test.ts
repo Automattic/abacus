@@ -9,7 +9,7 @@ describe('lib/form-data.test.ts module', () => {
         Object {
           "description": "",
           "endDatetime": "",
-          "existingUsersAllowed": "true",
+          "existingUsersAllowed": true,
           "exposureEvents": Array [],
           "metricAssignments": Array [],
           "name": "",
@@ -39,8 +39,8 @@ describe('lib/form-data.test.ts module', () => {
       expect(experimentToFormData(experiment)).toMatchInlineSnapshot(`
         Object {
           "description": "Experiment with things. Change stuff. Profit.",
-          "endDatetime": "2021-01-04",
-          "existingUsersAllowed": "true",
+          "endDatetime": "2021-01-07",
+          "existingUsersAllowed": false,
           "exposureEvents": Array [
             Object {
               "event": "eventName",
@@ -100,7 +100,7 @@ describe('lib/form-data.test.ts module', () => {
               "segmentId": 1,
             },
           ],
-          "startDatetime": "2020-11-04",
+          "startDatetime": "2020-11-07",
           "variations": Array [
             Object {
               "allocatedPercentage": "40",
