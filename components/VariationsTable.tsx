@@ -57,7 +57,12 @@ function VariationsTable({
           return (
             <TableRow key={variation.variationId}>
               <TableCell>
-                <a href={assignmentHref(variation.name, experimentName, experimentPlatform)}>{variation.name}</a>
+                <a
+                  title='Drag this to your bookmarks to make it easier to switch between active variations'
+                  href={assignmentHref(variation.name, experimentName, experimentPlatform)}
+                >
+                  {variation.name}
+                </a>
                 {variation.isDefault && <Label className={classes.default} text='Default' />}
               </TableCell>
               <TableCell>{variation.allocatedPercentage}%</TableCell>
