@@ -466,7 +466,16 @@ exports[`renders as expected at large width 1`] = `
                       <td
                         class="MuiTableCell-root MuiTableCell-body"
                       >
-                        control
+                        <a
+                          href="javascript:(() => 
+        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=control', {credentials: 'include'})
+        .then(() => alert('Successfully set experiment_1 to variation control'))
+        .catch((er) => alert('Unable to set variation: ' + er))
+    )()"
+                          title="Drag this to your bookmarks to make it easier to switch between active variations"
+                        >
+                          control
+                        </a>
                         <span
                           class="makeStyles-default-19 makeStyles-root-17"
                         >
@@ -486,7 +495,16 @@ exports[`renders as expected at large width 1`] = `
                       <td
                         class="MuiTableCell-root MuiTableCell-body"
                       >
-                        test
+                        <a
+                          href="javascript:(() => 
+        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=test', {credentials: 'include'})
+        .then(() => alert('Successfully set experiment_1 to variation test'))
+        .catch((er) => alert('Unable to set variation: ' + er))
+    )()"
+                          title="Drag this to your bookmarks to make it easier to switch between active variations"
+                        >
+                          test
+                        </a>
                       </td>
                       <td
                         class="MuiTableCell-root MuiTableCell-body"
@@ -885,7 +903,16 @@ exports[`renders as expected at small width 1`] = `
                           <td
                             class="MuiTableCell-root MuiTableCell-body"
                           >
-                            control
+                            <a
+                              href="javascript:(() => 
+        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=control', {credentials: 'include'})
+        .then(() => alert('Successfully set experiment_1 to variation control'))
+        .catch((er) => alert('Unable to set variation: ' + er))
+    )()"
+                              title="Drag this to your bookmarks to make it easier to switch between active variations"
+                            >
+                              control
+                            </a>
                             <span
                               class="makeStyles-default-42 makeStyles-root-40"
                             >
@@ -905,7 +932,16 @@ exports[`renders as expected at small width 1`] = `
                           <td
                             class="MuiTableCell-root MuiTableCell-body"
                           >
-                            test
+                            <a
+                              href="javascript:(() => 
+        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=test', {credentials: 'include'})
+        .then(() => alert('Successfully set experiment_1 to variation test'))
+        .catch((er) => alert('Unable to set variation: ' + er))
+    )()"
+                              title="Drag this to your bookmarks to make it easier to switch between active variations"
+                            >
+                              test
+                            </a>
                           </td>
                           <td
                             class="MuiTableCell-root MuiTableCell-body"
@@ -1500,7 +1536,16 @@ exports[`renders as expected with conclusion data 1`] = `
                           <td
                             class="MuiTableCell-root MuiTableCell-body"
                           >
-                            control
+                            <a
+                              href="javascript:(() => 
+        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=control', {credentials: 'include'})
+        .then(() => alert('Successfully set experiment_1 to variation control'))
+        .catch((er) => alert('Unable to set variation: ' + er))
+    )()"
+                              title="Drag this to your bookmarks to make it easier to switch between active variations"
+                            >
+                              control
+                            </a>
                             <span
                               class="makeStyles-default-67 makeStyles-root-63"
                             >
@@ -1520,7 +1565,16 @@ exports[`renders as expected with conclusion data 1`] = `
                           <td
                             class="MuiTableCell-root MuiTableCell-body"
                           >
-                            test
+                            <a
+                              href="javascript:(() => 
+        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=test', {credentials: 'include'})
+        .then(() => alert('Successfully set experiment_1 to variation test'))
+        .catch((er) => alert('Unable to set variation: ' + er))
+    )()"
+                              title="Drag this to your bookmarks to make it easier to switch between active variations"
+                            >
+                              test
+                            </a>
                           </td>
                           <td
                             class="MuiTableCell-root MuiTableCell-body"
@@ -2218,7 +2272,16 @@ exports[`renders as expected without conclusion data 1`] = `
                           <td
                             class="MuiTableCell-root MuiTableCell-body"
                           >
-                            control
+                            <a
+                              href="javascript:(() => 
+        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=control', {credentials: 'include'})
+        .then(() => alert('Successfully set experiment_1 to variation control'))
+        .catch((er) => alert('Unable to set variation: ' + er))
+    )()"
+                              title="Drag this to your bookmarks to make it easier to switch between active variations"
+                            >
+                              control
+                            </a>
                             <span
                               class="makeStyles-default-90 makeStyles-root-88"
                             >
@@ -2238,7 +2301,16 @@ exports[`renders as expected without conclusion data 1`] = `
                           <td
                             class="MuiTableCell-root MuiTableCell-body"
                           >
-                            test
+                            <a
+                              href="javascript:(() => 
+        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=test', {credentials: 'include'})
+        .then(() => alert('Successfully set experiment_1 to variation test'))
+        .catch((er) => alert('Unable to set variation: ' + er))
+    )()"
+                              title="Drag this to your bookmarks to make it easier to switch between active variations"
+                            >
+                              test
+                            </a>
                           </td>
                           <td
                             class="MuiTableCell-root MuiTableCell-body"

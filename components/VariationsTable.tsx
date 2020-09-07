@@ -17,12 +17,28 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
+function assignmentHref(variationName: string, experimentName: string, experimentPlatform: string) {
+  return `javascript:(() => 
+        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/${experimentPlatform}?${experimentName}=${variationName}', {credentials: 'include'})
+        .then(() => alert('Successfully set ${experimentName} to variation ${variationName}'))
+        .catch((er) => alert('Unable to set variation: ' + er))
+    )()`
+}
+
 /**
  * Renders the variations in tabular formation, in the order that they're given.
  *
  * @param props.variations - The variations to render.
  */
-function VariationsTable({ variations }: { variations: Variation[] }) {
+function VariationsTable({
+  variations,
+  experimentName,
+  experimentPlatform,
+}: {
+  variations: Variation[]
+  experimentName: string
+  experimentPlatform: string
+}) {
   const classes = useStyles()
   return (
     <Table>
@@ -41,7 +57,7 @@ function VariationsTable({ variations }: { variations: Variation[] }) {
           return (
             <TableRow key={variation.variationId}>
               <TableCell>
-                {variation.name}
+                <a href={assignmentHref(variation.name, experimentName, experimentPlatform)}>{variation.name}</a>
                 {variation.isDefault && <Label className={classes.default} text='Default' />}
               </TableCell>
               <TableCell>{variation.allocatedPercentage}%</TableCell>
