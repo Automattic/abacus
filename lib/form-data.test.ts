@@ -1,6 +1,10 @@
+import MockDate from 'mockdate'
+
 import Fixtures from '@/test-helpers/fixtures'
 
 import { experimentToFormData } from './form-data'
+
+MockDate.set('2020-08-13')
 
 describe('lib/form-data.test.ts module', () => {
   describe('experimentToFormData', () => {
@@ -39,7 +43,7 @@ describe('lib/form-data.test.ts module', () => {
       expect(experimentToFormData(experiment)).toMatchInlineSnapshot(`
         Object {
           "description": "Experiment with things. Change stuff. Profit.",
-          "endDatetime": "2021-01-07",
+          "endDatetime": "2020-12-13",
           "existingUsersAllowed": false,
           "exposureEvents": Array [
             Object {
@@ -100,7 +104,7 @@ describe('lib/form-data.test.ts module', () => {
               "segmentId": 1,
             },
           ],
-          "startDatetime": "2020-11-07",
+          "startDatetime": "2020-10-13",
           "variations": Array [
             Object {
               "allocatedPercentage": "40",
