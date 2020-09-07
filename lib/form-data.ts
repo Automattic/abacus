@@ -42,7 +42,7 @@ export function experimentToFormData(experiment: Partial<ExperimentFull>) {
     startDatetime: experiment.startDatetime ? format(experiment.startDatetime, 'yyyy-MM-dd') : '',
     endDatetime: experiment.endDatetime ? format(experiment.endDatetime, 'yyyy-MM-dd') : '',
     ownerLogin: experiment.ownerLogin ?? '',
-    existingUsersAllowed: experiment.existingUsersAllowed ? String(experiment.existingUsersAllowed) : 'true',
+    existingUsersAllowed: experiment.existingUsersAllowed ?? true,
     platform: experiment.platform ?? Platform.Wpcom,
     metricAssignments: experiment.metricAssignments ? experiment.metricAssignments.map(metricAssignmentToFormData) : [],
     segmentAssignments: experiment.segmentAssignments
