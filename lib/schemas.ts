@@ -10,6 +10,12 @@ export const nameSchema = yup
   .string()
   .max(128)
   .matches(/^[a-z][a-z0-9_]*[a-z0-9]$/, 'This field must use a basic snake_case.')
+const dateSchema = yup
+  .date()
+  // As yup's default transform sets a local timezone and we want it to be in UTC:
+  .transform(function (_value, originalValue) {
+    return new Date(originalValue)
+  })
 
 export const eventSchema = yup
   .object({
@@ -192,9 +198,8 @@ export const experimentBareSchema = yup
   .object({
     experimentId: idSchema.defined(),
     name: nameSchema.defined(),
-    startDatetime: yup.date().defined(),
-    endDatetime: yup
-      .date()
+    startDatetime: dateSchema.defined(),
+    endDatetime: dateSchema
       .defined()
       .when(
         'startDatetime',
@@ -237,8 +242,7 @@ export const experimentFullNewSchema = experimentFullSchema.shape({
   experimentId: idSchema.nullable(),
   // This effectively makes status undefined (best I could do in yup)
   status: yup.mixed().oneOf([]).notRequired(),
-  startDatetime: yup
-    .date()
+  startDatetime: dateSchema
     .defined()
     .test(
       'future-start-date',
@@ -336,7 +340,7 @@ export enum AnalysisStrategy {
 export const analysisSchema = yup
   .object({
     metricAssignmentId: idSchema.defined(),
-    analysisDatetime: yup.date().defined(),
+    analysisDatetime: dateSchema.defined(),
     analysisStrategy: yup.string().oneOf(Object.values(AnalysisStrategy)).defined(),
     // TODO: Provide better validation for these
     participantStats: yup.object().defined() as yup.Schema<Record<string, number>>,
