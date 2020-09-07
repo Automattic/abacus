@@ -7,7 +7,8 @@ import TableRow from '@material-ui/core/TableRow'
 import React from 'react'
 
 import Label from '@/components/Label'
-import { Variation } from '@/lib/schemas'
+import { ExperimentFull } from '@/lib/schemas'
+import * as Variations from '@/lib/variations'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,13 +32,9 @@ function assignmentHref(variationName: string, experimentName: string, experimen
  * @param props.variations - The variations to render.
  */
 function VariationsTable({
-  variations,
-  experimentName,
-  experimentPlatform,
+  experiment: { variations, name: experimentName, platform: experimentPlatform },
 }: {
-  variations: Variation[]
-  experimentName: string
-  experimentPlatform: string
+  experiment: ExperimentFull
 }) {
   const classes = useStyles()
   return (
@@ -53,7 +50,7 @@ function VariationsTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {variations.map((variation) => {
+        {Variations.sort(variations).map((variation) => {
           return (
             <TableRow key={variation.variationId}>
               <TableCell>
