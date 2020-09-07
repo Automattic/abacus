@@ -13,7 +13,7 @@ describe('lib/form-data.test.ts module', () => {
         Object {
           "description": "",
           "endDatetime": "",
-          "existingUsersAllowed": true,
+          "existingUsersAllowed": "true",
           "exposureEvents": Array [],
           "metricAssignments": Array [],
           "name": "",
@@ -44,7 +44,7 @@ describe('lib/form-data.test.ts module', () => {
         Object {
           "description": "Experiment with things. Change stuff. Profit.",
           "endDatetime": "2020-12-13",
-          "existingUsersAllowed": false,
+          "existingUsersAllowed": "true",
           "exposureEvents": Array [
             Object {
               "event": "eventName",
