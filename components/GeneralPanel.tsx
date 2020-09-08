@@ -24,9 +24,9 @@ import DatetimeText from '@/components/DatetimeText'
 import ExperimentStatus from '@/components/ExperimentStatus'
 import LabelValueTable from '@/components/LabelValueTable'
 import { ExperimentFull, experimentFullSchema, Status, yupPick } from '@/lib/schemas'
+import { formatIsoDate } from '@/utils/time'
 
 import LoadingButtonContainer from './LoadingButtonContainer'
-import { formatISODate } from '@/utils/time'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -99,7 +99,7 @@ function GeneralPanel({
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const generalEditInitialExperiment = {
     ..._.pick(experiment, ['description', 'ownerLogin']),
-    endDatetime: formatISODate(experiment.endDatetime),
+    endDatetime: formatIsoDate(experiment.endDatetime),
     // Needed for endDatetime validation
     startDatetime: experiment.startDatetime,
   }

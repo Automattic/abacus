@@ -1,20 +1,20 @@
 /* eslint-disable @typescript-eslint/require-await */
 
 import { act, fireEvent, screen, waitFor } from '@testing-library/react'
+import _ from 'lodash'
 import noop from 'lodash/noop'
 import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
-import _ from 'lodash'
 
 import { experimentToFormData } from '@/lib/form-data'
 import * as Normalizers from '@/lib/normalizers'
+import { experimentFullNewSchema, Status } from '@/lib/schemas'
 import Fixtures from '@/test-helpers/fixtures'
 import { changeFieldByRole, render, validationErrorDisplayer } from '@/test-helpers/test-utils'
+import { formatIsoDate } from '@/utils/time'
 
 import ExperimentForm from './ExperimentForm'
-import { Status, experimentFullNewSchema, experimentFullNewOutboundSchema, experimentFullSchema } from '@/lib/schemas'
-import { formatISODate } from '@/utils/time'
 
 jest.setTimeout(40000)
 
@@ -304,10 +304,10 @@ test('form submits with valid fields', async () => {
   const nextWeek = new Date()
   nextWeek.setDate(now.getDate() + 7)
   await act(async () => {
-    fireEvent.change(screen.getByLabelText(/Start date/), { target: { value: formatISODate(now) } })
+    fireEvent.change(screen.getByLabelText(/Start date/), { target: { value: formatIsoDate(now) } })
   })
   await act(async () => {
-    fireEvent.change(screen.getByLabelText(/End date/), { target: { value: formatISODate(nextWeek) } })
+    fireEvent.change(screen.getByLabelText(/End date/), { target: { value: formatIsoDate(nextWeek) } })
   })
   await changeFieldByRole('textbox', /Owner/, 'owner-nickname')
   await act(async () => {
@@ -405,8 +405,8 @@ test('form submits with valid fields', async () => {
       p2Url: 'http://example.com/',
       name: 'test_experiment_name',
       description: 'experiment description',
-      startDatetime: formatISODate(now),
-      endDatetime: formatISODate(nextWeek),
+      startDatetime: formatIsoDate(now),
+      endDatetime: formatIsoDate(nextWeek),
       ownerLogin: 'owner-nickname',
       platform: 'wpcom',
       existingUsersAllowed: 'true',
@@ -450,18 +450,16 @@ test('form submits with valid fields', async () => {
       ],
     },
   })
-
 })
 
 test('form submits an edited experiment without any changes', async () => {
   MockDate.set('2020-08-13')
 
-  const experiment = Fixtures.createExperimentFull({ 
+  const experiment = Fixtures.createExperimentFull({
     status: Status.Staging,
     conclusionUrl: undefined,
     deployedVariationId: undefined,
     endReason: undefined,
-
   })
 
   let submittedData: unknown = null
@@ -480,7 +478,6 @@ test('form submits an edited experiment without any changes', async () => {
       onSubmit={onSubmit}
     />,
   )
-
 
   // ### Move through the form stages
   await act(async () => {
@@ -511,19 +508,21 @@ test('form submits an edited experiment without any changes', async () => {
 
   await waitFor(() => expect(submittedData).not.toBeNull())
 
-  const validatedExperiment = await validationErrorDisplayer(experimentFullNewSchema.validate((submittedData as { experiment: unknown }).experiment))
+  const validatedExperiment = await validationErrorDisplayer(
+    experimentFullNewSchema.validate((submittedData as { experiment: unknown }).experiment),
+  )
 
   // We need to remove Ids, status, conclusion data, reformart exposure events to make it like new
-  let newShapedExperiment = _.clone(experiment)
+  const newShapedExperiment = _.clone(experiment)
   delete newShapedExperiment.experimentId
   delete newShapedExperiment.status
   delete newShapedExperiment.conclusionUrl
   delete newShapedExperiment.deployedVariationId
   delete newShapedExperiment.endReason
-  newShapedExperiment.metricAssignments.forEach(metricAssignment => delete metricAssignment.metricAssignmentId)
-  newShapedExperiment.segmentAssignments.forEach(segmentAssignment => delete segmentAssignment.segmentAssignmentId)
-  newShapedExperiment.variations.forEach(variation => delete variation.variationId)
-  newShapedExperiment.exposureEvents?.forEach(exposureEvent => {
+  newShapedExperiment.metricAssignments.forEach((metricAssignment) => delete metricAssignment.metricAssignmentId)
+  newShapedExperiment.segmentAssignments.forEach((segmentAssignment) => delete segmentAssignment.segmentAssignmentId)
+  newShapedExperiment.variations.forEach((variation) => delete variation.variationId)
+  newShapedExperiment.exposureEvents?.forEach((exposureEvent) => {
     if (!exposureEvent.props) {
       return
     }

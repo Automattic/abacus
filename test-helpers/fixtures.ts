@@ -4,7 +4,6 @@
  * Functions in this file return new objects populated with dummy values, which may potentially be overridden in
  * functions that accept Partial<T> as an argument.
  */
-import * as dateFns from 'date-fns'
 import _ from 'lodash'
 
 import {
@@ -262,8 +261,8 @@ function createExperimentFullNew(fieldOverrides: Partial<ExperimentFullNew> = {}
   const now = new Date()
   // This is a bit funky as we want to work in UTC but DateFns only does local time
   // and we want to avoid DST problems.
-  const startDatetime = new Date((new Date((new Date()).setMonth(now.getMonth() + 2))).setUTCHours(0))
-  const endDatetime = new Date((new Date((new Date()).setMonth(now.getMonth() + 4))).setUTCHours(0))
+  const startDatetime = new Date(new Date(new Date().setMonth(now.getMonth() + 2)).setUTCHours(0))
+  const endDatetime = new Date(new Date(new Date().setMonth(now.getMonth() + 4)).setUTCHours(0))
   return {
     name: 'experiment_1',
     startDatetime,
