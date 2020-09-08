@@ -94,13 +94,13 @@ const Layout = ({ title, children }: { title: string; children?: ReactNode }) =>
           )
         }
         <div className={classes.appBarTop}>
-          <Container maxWidth='xl' component='a' className={classes.appLogotype} href='/'>
+          <Container component='a' className={classes.appLogotype} href='/'>
             <img alt='logo' className={classes.appLogo} src='/img/logo.png' />
             <span className={classes.appName}>Abacus</span>
           </Container>
         </div>
         <div className={classes.appBarBottom}>
-          <Container maxWidth='xl'>
+          <Container>
             <nav className={classes.appNav}>
               <Link href='/experiments'>
                 <a>Experiments</a>
