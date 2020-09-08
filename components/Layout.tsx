@@ -63,7 +63,8 @@ const useStyles = makeStyles((theme: Theme) =>
       flex: '1 0',
     },
     contentTitle: {
-      margin: theme.spacing(4, 0, 2, 0),
+      margin: theme.spacing(3, 0, 2, 0),
+      color: theme.palette.grey.A700,
     },
 
     // Footer
@@ -115,7 +116,7 @@ const Layout = ({ title, children }: { title: string; children?: ReactNode }) =>
         </div>
       </AppBar>
       <Container className={classes.content}>
-        <Typography variant='h1' className={classes.contentTitle}>
+        <Typography variant='h2' className={classes.contentTitle}>
           {title}
         </Typography>
         {children}
