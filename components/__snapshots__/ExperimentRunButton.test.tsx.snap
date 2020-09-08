@@ -2,20 +2,25 @@
 
 exports[`renders as expected 1`] = `
 <div>
-  <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonOutlined-1"
-    tabindex="0"
-    type="button"
+  <span
+    class=""
+    title=""
   >
-    <span
-      class="MuiButton-label"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary"
+      tabindex="0"
+      type="button"
     >
-      Run
-    </span>
-    <span
-      class="MuiTouchRipple-root"
-    />
-  </button>
+      <span
+        class="MuiButton-label"
+      >
+        Run
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </span>
 </div>
 `;
 
@@ -23,19 +28,24 @@ exports[`runs an experiment 1`] = `
 <div
   aria-hidden="true"
 >
-  <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonOutlined-2"
-    tabindex="0"
-    type="button"
+  <span
+    class=""
+    title=""
   >
-    <span
-      class="MuiButton-label"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary"
+      tabindex="0"
+      type="button"
     >
-      Run
-    </span>
-    <span
-      class="MuiTouchRipple-root"
-    />
-  </button>
+      <span
+        class="MuiButton-label"
+      >
+        Run
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </span>
 </div>
 `;
