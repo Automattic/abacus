@@ -2,6 +2,7 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/api/**/*.ts',
+    '!<rootDir>/api/**/*.test.ts',
     '!**/node_modules/**',
     // FIXME: TODO: Get tests on the following. This is related to issues 52 and 64.
     // Currently we are unable to test the following because the code won't hit the

@@ -1,12 +1,17 @@
 /* eslint-disable @typescript-eslint/require-await */
 import { act, fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
+import { noop } from 'lodash'
 import * as notistack from 'notistack'
 import React from 'react'
 
+import ExperimentsApi from '@/api/ExperimentsApi'
 import Fixtures from '@/test-helpers/fixtures'
 import { changeFieldByRole, render } from '@/test-helpers/test-utils'
 
 import MetricAssignmentsPanel from './MetricAssignmentsPanel'
+
+jest.mock('@/api/ExperimentsApi')
+const mockedExperimentsApi = ExperimentsApi as jest.Mocked<typeof ExperimentsApi>
 
 jest.mock('notistack')
 const mockedNotistack = notistack as jest.Mocked<typeof notistack>
@@ -18,7 +23,8 @@ mockedNotistack.useSnackbar.mockImplementation(() => ({
 test('renders as expected with all metrics resolvable', () => {
   const metrics = Fixtures.createMetricBares()
   const experiment = Fixtures.createExperimentFull()
-  const { container } = render(<MetricAssignmentsPanel experiment={experiment} metrics={metrics} />)
+  const experimentReloadRef: React.MutableRefObject<() => void> = { current: noop }
+  const { container } = render(<MetricAssignmentsPanel {...{ experiment, metrics, experimentReloadRef }} />)
 
   expect(container).toMatchInlineSnapshot(`
     <div>
@@ -219,13 +225,14 @@ test('renders as expected with all metrics resolvable', () => {
 test('throws an error when some metrics not resolvable', () => {
   const metrics = Fixtures.createMetricBares(1)
   const experiment = Fixtures.createExperimentFull()
+  const experimentReloadRef: React.MutableRefObject<() => void> = { current: noop }
 
   // Note: This console.error spy is mainly used to suppress the output that the
   // `render` function outputs.
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {})
   try {
-    render(<MetricAssignmentsPanel experiment={experiment} metrics={metrics} />)
+    render(<MetricAssignmentsPanel {...{ experiment, metrics, experimentReloadRef }} />)
     expect(false).toBe(true) // Should never be reached
   } catch (err) {
     expect(consoleErrorSpy).toHaveBeenCalled()
@@ -237,7 +244,13 @@ test('throws an error when some metrics not resolvable', () => {
 test('opens, submits and cancels assign metric dialog', async () => {
   const metrics = Fixtures.createMetricBares(5)
   const experiment = Fixtures.createExperimentFull()
-  const { container: _container } = render(<MetricAssignmentsPanel experiment={experiment} metrics={metrics} />)
+  const experimentReloadRef: React.MutableRefObject<() => void> = { current: noop }
+  const { container: _container } = render(<MetricAssignmentsPanel {...{ experiment, metrics, experimentReloadRef }} />)
+
+  mockedExperimentsApi.assignMetric.mockReset()
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
+  mockedExperimentsApi.assignMetric.mockImplementationOnce(async () => null)
 
   const startAssignButton = screen.getByRole('button', { name: /Assign Metric/ })
   fireEvent.click(startAssignButton)
@@ -277,6 +290,15 @@ test('opens, submits and cancels assign metric dialog', async () => {
   fireEvent.click(assignButton)
   await waitForElementToBeRemoved(assignButton)
 
+  expect(mockedExperimentsApi.assignMetric).toHaveBeenCalledTimes(1)
+  expect(mockedExperimentsApi.assignMetric).toHaveBeenLastCalledWith(experiment, {
+    attributionWindowSeconds: '86400',
+    changeExpected: false,
+    isPrimary: false,
+    metricId: 3,
+    minDifference: 0.01,
+  })
+
   fireEvent.click(startAssignButton)
 
   await waitFor(() => screen.getByRole('button', { name: /Cancel/ }))
@@ -284,4 +306,6 @@ test('opens, submits and cancels assign metric dialog', async () => {
   const cancelButton = screen.getByRole('button', { name: /Cancel/ })
   fireEvent.click(cancelButton)
   await waitForElementToBeRemoved(cancelButton)
+
+  expect(mockedExperimentsApi.assignMetric).toHaveBeenCalledTimes(1)
 })

@@ -2,6 +2,7 @@ import MockDate from 'mockdate'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 import { ExperimentFull, ExperimentFullNew, experimentFullNewOutboundSchema, Status } from '@/lib/schemas'
+import Fixtures from '@/test-helpers/fixtures'
 import { validationErrorDisplayer } from '@/test-helpers/test-utils'
 import { formatIsoDate } from '@/utils/time'
 
@@ -188,6 +189,15 @@ describe('ExperimentsApi.ts module', () => {
         ExperimentsApi.patch(1, (rawNewExperiment as unknown) as Partial<ExperimentFull>),
       )
       expect(returnedExperiment.experimentId).toBeGreaterThan(0)
+    })
+  })
+
+  describe('assignMetric', () => {
+    it('should assign a metric', async () => {
+      // This is the non-unit test version of above
+      const experiment = Fixtures.createExperimentFull()
+      const newMetricAssignment = Fixtures.createMetricAssignment({ metricAssignmentId: undefined })
+      await validationErrorDisplayer(ExperimentsApi.assignMetric(experiment, newMetricAssignment))
     })
   })
 

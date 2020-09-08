@@ -27,6 +27,7 @@ import { useSnackbar } from 'notistack'
 import React, { useMemo, useState } from 'react'
 import * as yup from 'yup'
 
+import ExperimentsApi from '@/api/ExperimentsApi'
 import Label from '@/components/Label'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import * as MetricAssignments from '@/lib/metric-assignments'
@@ -34,11 +35,14 @@ import { indexMetrics } from '@/lib/normalizers'
 import {
   ExperimentFull,
   MetricAssignment,
+  MetricAssignmentNew,
   metricAssignmentNewSchema,
   MetricBare,
   MetricParameterType,
 } from '@/lib/schemas'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
+
+import LoadingButtonContainer from './LoadingButtonContainer'
 
 /**
  * Resolves the metric ID of the metric assignment with the actual metric. If the
@@ -99,7 +103,15 @@ const useStyles = makeStyles((theme: Theme) =>
  * @param props.metrics - The metrics to look up (aka resolve) the metric IDs of the
  *   experiment's metric assignments.
  */
-function MetricAssignmentsPanel({ experiment, metrics }: { experiment: ExperimentFull; metrics: MetricBare[] }) {
+function MetricAssignmentsPanel({
+  experiment,
+  experimentReloadRef,
+  metrics,
+}: {
+  experiment: ExperimentFull
+  experimentReloadRef: React.MutableRefObject<() => void>
+  metrics: MetricBare[]
+}) {
   const classes = useStyles()
   const resolvedMetricAssignments = useMemo(
     () => resolveMetricAssignments(MetricAssignments.sort(experiment.metricAssignments), metrics),
@@ -123,11 +135,18 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
   const onCancelAssignMetric = () => {
     setIsAssigningMetric(false)
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/require-await
-  const onSubmitAssignMetric = async (formData: unknown) => {
-    // TODO: Full submission
-    enqueueSnackbar('Metric Assigned Successfully!', { variant: 'success' })
-    setIsAssigningMetric(false)
+  const onSubmitAssignMetric = async (formData: { metricAssignment: typeof assignMetricInitialAssignMetric }) => {
+    try {
+      await ExperimentsApi.assignMetric(experiment, (formData.metricAssignment as unknown) as MetricAssignmentNew)
+      enqueueSnackbar('Metric Assigned Successfully!', { variant: 'success' })
+      experimentReloadRef.current()
+      setIsAssigningMetric(false)
+    } catch (e) /* istanbul ignore next; Shouldn't happen */ {
+      console.error(e)
+      enqueueSnackbar('Oops! Something went wrong while trying to assign a metric to your experiment.', {
+        variant: 'error',
+      })
+    }
   }
 
   return (
@@ -323,9 +342,16 @@ function MetricAssignmentsPanel({ experiment, metrics }: { experiment: Experimen
                 <Button onClick={onCancelAssignMetric} color='primary'>
                   Cancel
                 </Button>
-                <Button color='primary' type='submit'>
-                  Assign
-                </Button>
+                <LoadingButtonContainer isLoading={formikProps.isSubmitting}>
+                  <Button
+                    type='submit'
+                    variant='contained'
+                    color='secondary'
+                    disabled={formikProps.isSubmitting || !formikProps.isValid}
+                  >
+                    Assign
+                  </Button>
+                </LoadingButtonContainer>
               </DialogActions>
             </form>
           )}
