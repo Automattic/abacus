@@ -1,18 +1,20 @@
 /* eslint-disable @typescript-eslint/require-await */
 
 import { act, fireEvent, screen, waitFor } from '@testing-library/react'
-import { format } from 'date-fns'
 import noop from 'lodash/noop'
 import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
+import _ from 'lodash'
 
 import { experimentToFormData } from '@/lib/form-data'
 import * as Normalizers from '@/lib/normalizers'
 import Fixtures from '@/test-helpers/fixtures'
-import { changeFieldByRole, render } from '@/test-helpers/test-utils'
+import { changeFieldByRole, render, validationErrorDisplayer } from '@/test-helpers/test-utils'
 
 import ExperimentForm from './ExperimentForm'
+import { Status, experimentFullNewSchema, experimentFullNewOutboundSchema, experimentFullSchema } from '@/lib/schemas'
+import { formatISODate } from '@/utils/time'
 
 jest.setTimeout(40000)
 
@@ -302,10 +304,10 @@ test('form submits with valid fields', async () => {
   const nextWeek = new Date()
   nextWeek.setDate(now.getDate() + 7)
   await act(async () => {
-    fireEvent.change(screen.getByLabelText(/Start date/), { target: { value: format(now, 'yyyy-MM-dd') } })
+    fireEvent.change(screen.getByLabelText(/Start date/), { target: { value: formatISODate(now) } })
   })
   await act(async () => {
-    fireEvent.change(screen.getByLabelText(/End date/), { target: { value: format(nextWeek, 'yyyy-MM-dd') } })
+    fireEvent.change(screen.getByLabelText(/End date/), { target: { value: formatISODate(nextWeek) } })
   })
   await changeFieldByRole('textbox', /Owner/, 'owner-nickname')
   await act(async () => {
@@ -403,8 +405,8 @@ test('form submits with valid fields', async () => {
       p2Url: 'http://example.com/',
       name: 'test_experiment_name',
       description: 'experiment description',
-      startDatetime: format(now, 'yyyy-MM-dd'),
-      endDatetime: format(nextWeek, 'yyyy-MM-dd'),
+      startDatetime: formatISODate(now),
+      endDatetime: formatISODate(nextWeek),
       ownerLogin: 'owner-nickname',
       platform: 'wpcom',
       existingUsersAllowed: 'true',
@@ -448,4 +450,86 @@ test('form submits with valid fields', async () => {
       ],
     },
   })
+
+})
+
+test('form submits an edited experiment without any changes', async () => {
+  MockDate.set('2020-08-13')
+
+  const experiment = Fixtures.createExperimentFull({ 
+    status: Status.Staging,
+    conclusionUrl: undefined,
+    deployedVariationId: undefined,
+    endReason: undefined,
+
+  })
+
+  let submittedData: unknown = null
+  const onSubmit = async (formData: unknown): Promise<undefined> => {
+    // We need to add a timeout here so the loading indicator renders
+    await new Promise((resolve) => setTimeout(resolve, 200))
+    submittedData = formData
+    return
+  }
+
+  const { container: _container } = render(
+    <ExperimentForm
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
+      initialExperiment={experimentToFormData(experiment)}
+      onSubmit={onSubmit}
+    />,
+  )
+
+
+  // ### Move through the form stages
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Begin/ }))
+  })
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Next/ }))
+  })
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Next/ }))
+  })
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Next/ }))
+  })
+
+  // ### Submit
+  screen.getByText(/Confirm and Submit Your Experiment/)
+  await act(async () => {
+    screen.getAllByRole('button', { name: /Submit/ })
+    const submit = screen
+      .getAllByRole('button', { name: /Submit/ })
+      .find((submit) => submit.getAttribute('type') === 'submit')
+    if (!submit) {
+      throw new Error(`Can't find submit button.`)
+    }
+    fireEvent.click(submit)
+  })
+
+  await waitFor(() => expect(submittedData).not.toBeNull())
+
+  const validatedExperiment = await validationErrorDisplayer(experimentFullNewSchema.validate((submittedData as { experiment: unknown }).experiment))
+
+  // We need to remove Ids, status, conclusion data, reformart exposure events to make it like new
+  let newShapedExperiment = _.clone(experiment)
+  delete newShapedExperiment.experimentId
+  delete newShapedExperiment.status
+  delete newShapedExperiment.conclusionUrl
+  delete newShapedExperiment.deployedVariationId
+  delete newShapedExperiment.endReason
+  newShapedExperiment.metricAssignments.forEach(metricAssignment => delete metricAssignment.metricAssignmentId)
+  newShapedExperiment.segmentAssignments.forEach(segmentAssignment => delete segmentAssignment.segmentAssignmentId)
+  newShapedExperiment.variations.forEach(variation => delete variation.variationId)
+  newShapedExperiment.exposureEvents?.forEach(exposureEvent => {
+    if (!exposureEvent.props) {
+      return
+    }
+
+    exposureEvent.props = _.toPairs(exposureEvent.props).map(([key, value]) => ({ key, value }))
+  })
+
+  expect(validatedExperiment).toEqual(newShapedExperiment)
 })
