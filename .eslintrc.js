@@ -170,7 +170,7 @@ module.exports = {
       },
     ],
 
-    '@typescript-eslint/no-unused-vars': ['error', { varsIgnorePattern: '^_' }],
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
   },
   settings: {
     'import/resolver': {

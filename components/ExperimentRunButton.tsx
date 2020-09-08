@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, Typography, Tooltip } from '@material-ui/core'
+import { Button, Dialog, DialogActions, DialogContent, Tooltip, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
@@ -8,12 +8,9 @@ import { ExperimentFull, Status } from '@/lib/schemas'
 
 import LoadingButtonContainer from './LoadingButtonContainer'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((_theme: Theme) =>
   createStyles({
-    buttonOutlined: {
-      borderColor: theme.palette.error.dark,
-      color: theme.palette.error.dark,
-    },
+    root: {},
   }),
 )
 
@@ -24,7 +21,7 @@ const ExperimentRunButton = ({
   experiment: ExperimentFull | null
   experimentReloadRef: React.MutableRefObject<() => void>
 }) => {
-  const classes = useStyles()
+  const _classes = useStyles()
 
   const { enqueueSnackbar } = useSnackbar()
 
@@ -54,11 +51,15 @@ const ExperimentRunButton = ({
   }
 
   return (
-    <> 
+    <>
       <Tooltip title={canRunExperiment ? '' : `This experiment is ${experiment?.status}.`}>
         <span>
-          <Button variant='outlined' color='secondary' disabled={!canRunExperiment}
-            onClick={onAskToConfirmRunExperiment}>
+          <Button
+            variant='outlined'
+            color='secondary'
+            disabled={!canRunExperiment}
+            onClick={onAskToConfirmRunExperiment}
+          >
             Run
           </Button>
         </span>

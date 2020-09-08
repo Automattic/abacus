@@ -15,6 +15,7 @@ import Layout from '@/components/Layout'
 import { Analysis, ExperimentFull, Status } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { createUnresolvingPromise, or } from '@/utils/general'
+
 import ExperimentRunButton from './ExperimentRunButton'
 
 const NextMuiLink = React.forwardRef(
@@ -101,7 +102,6 @@ export default function ExperimentPageView({
   const isLoading = or(experimentIsLoading, metricsIsLoading, segmentsIsLoading, analysesIsLoading)
 
   const canEditInWizard = experiment && experiment.status === Status.Staging
-  const canRunExperiment = experiment && experiment.status === Status.Staging
 
   return (
     <Layout title={`Experiment: ${experiment?.name || ''}`}>
