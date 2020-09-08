@@ -15,6 +15,7 @@ import Layout from '@/components/Layout'
 import { Analysis, ExperimentFull, Status } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { createUnresolvingPromise, or } from '@/utils/general'
+import ExperimentRunButton from './ExperimentRunButton'
 
 const NextMuiLink = React.forwardRef(
   // istanbul ignore next; Just the trivial className = undefined path that is missing
@@ -147,13 +148,7 @@ export default function ExperimentPageView({
                 </Button>
               </span>
             </Tooltip>{' '}
-            <Tooltip title={canRunExperiment ? '' : `This experiment is ${experiment?.status}.`}>
-              <span>
-                <Button variant='outlined' color='secondary' disabled={!canRunExperiment}>
-                  Run
-                </Button>
-              </span>
-            </Tooltip>{' '}
+            <ExperimentRunButton {...{ experiment, experimentReloadRef }} />{' '}
             <ExperimentDisableButton {...{ experiment, experimentReloadRef }} />
           </div>
         </div>
