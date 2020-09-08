@@ -5,7 +5,6 @@ import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import { withStyles } from '@material-ui/styles'
 import React from 'react'
 
 import Label from '@/components/Label'
@@ -19,6 +18,13 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     variation: {
       borderBottom: '1px dashed #a3a3a3',
+    },
+    tooltip: {
+      maxWidth: '500px',
+      padding: theme.spacing(2),
+      '& a:link': {
+        color: '#cee6f8',
+      },
     },
   }),
 )
@@ -49,17 +55,6 @@ function dangerousAssignmentLink(variationName: string, experimentName: string, 
   }
 }
 
-const HtmlTooltip = withStyles((theme) => ({
-  tooltip: {
-    maxWidth: '500px',
-    border: '1px solid #dadde9',
-    padding: theme.spacing(2),
-    '& a:link': {
-      color: '#cee6f8',
-    },
-  },
-}))(Tooltip)
-
 /**
  * Renders the variations in tabular formation, in the order that they're given.
  *
@@ -88,10 +83,13 @@ function VariationsTable({
           return (
             <TableRow key={variation.variationId}>
               <TableCell>
-                <HtmlTooltip
+                <Tooltip
                   interactive
                   arrow
                   placement={'left'}
+                  classes={{
+                    popper: classes.tooltip,
+                  }}
                   title={
                     <>
                       <Typography color='inherit' variant='body1' gutterBottom>
@@ -110,7 +108,7 @@ function VariationsTable({
                   }
                 >
                   <span className={classes.variation}>{variation.name}</span>
-                </HtmlTooltip>
+                </Tooltip>
                 {variation.isDefault && <Label className={classes.default} text='Default' />}
               </TableCell>
               <TableCell>{variation.allocatedPercentage}%</TableCell>
