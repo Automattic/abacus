@@ -75,12 +75,16 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const Layout = ({ title, children }: { title: string; children?: ReactNode }) => {
+const Layout = ({ title, headTitle, children }: { 
+  title?: string;
+  headTitle?: string;
+  children?: ReactNode 
+}) => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
       <Head>
-        <title>{title} | Abacus</title>
+        <title>{title ?? headTitle} | Abacus</title>
         <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
@@ -116,9 +120,11 @@ const Layout = ({ title, children }: { title: string; children?: ReactNode }) =>
         </div>
       </AppBar>
       <Container className={classes.content}>
-        <Typography variant='h2' className={classes.contentTitle}>
-          {title}
-        </Typography>
+        {title && (
+          <Typography variant='h2' className={classes.contentTitle}>
+            {title}
+          </Typography>
+        )}
         {children}
       </Container>
       <footer className={classes.footer}>
