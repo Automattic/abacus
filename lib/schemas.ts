@@ -6,7 +6,7 @@ import _ from 'lodash'
 import * as yup from 'yup'
 
 const idSchema = yup.number().integer().positive()
-const nameSchema = yup
+export const nameSchema = yup
   .string()
   .max(128)
   .matches(/^[a-z][a-z0-9_]*[a-z0-9]$/, 'This field must use a basic snake_case.')

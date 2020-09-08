@@ -9,7 +9,7 @@ import { withStyles } from '@material-ui/styles'
 import React from 'react'
 
 import Label from '@/components/Label'
-import { ExperimentFull } from '@/lib/schemas'
+import { ExperimentFull, nameSchema } from '@/lib/schemas'
 import * as Variations from '@/lib/variations'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -24,9 +24,16 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 function assignmentHref(variationName: string, experimentName: string, experimentPlatform: string) {
+  nameSchema.validateSync(variationName)
+  nameSchema.validateSync(experimentName)
+  nameSchema.validateSync(experimentPlatform)
   return `javascript:(() => 
-        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/${experimentPlatform}?${experimentName}=${variationName}', {credentials: 'include'})
-        .then(() => alert('Successfully set ${experimentName} to variation ${variationName}'))
+        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/${encodeURIComponent(
+          experimentPlatform,
+        )}?${encodeURIComponent(experimentName)}=${encodeURIComponent(variationName)}', {credentials: 'include'})
+        .then(() => alert('Successfully set ' + decodeURIComponent('${encodeURIComponent(
+          experimentName,
+        )}') + ' to variation ' + decodeURIComponent('${encodeURIComponent(variationName)}')))
         .catch((er) => alert('Unable to set variation: ' + er))
     )()`
 }
