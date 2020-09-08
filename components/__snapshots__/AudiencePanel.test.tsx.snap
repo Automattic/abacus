@@ -9,7 +9,7 @@ exports[`Empty array shows no exposure events 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <h3
-        class="MuiTypography-root makeStyles-title-22 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        class="MuiTypography-root makeStyles-title-28 MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Audience
       </h3>
@@ -99,18 +99,13 @@ exports[`Empty array shows no exposure events 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <a
-                      href="javascript:(() => 
-        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=control', {credentials: 'include'})
-        .then(() => alert('Successfully set experiment_1 to variation control'))
-        .catch((er) => alert('Unable to set variation: ' + er))
-    )()"
-                      title="Drag this to your bookmarks to make it easier to switch between active variations"
+                    <span
+                      class="makeStyles-variation-38"
                     >
                       control
-                    </a>
+                    </span>
                     <span
-                      class="makeStyles-default-29 makeStyles-root-30"
+                      class="makeStyles-default-37 makeStyles-root-40"
                     >
                       Default
                     </span>
@@ -128,16 +123,11 @@ exports[`Empty array shows no exposure events 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <a
-                      href="javascript:(() => 
-        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=test', {credentials: 'include'})
-        .then(() => alert('Successfully set experiment_1 to variation test'))
-        .catch((er) => alert('Unable to set variation: ' + er))
-    )()"
-                      title="Drag this to your bookmarks to make it easier to switch between active variations"
+                    <span
+                      class="makeStyles-variation-38"
                     >
                       test
-                    </a>
+                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -247,7 +237,7 @@ exports[`Empty array shows no exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <div
-              class="makeStyles-eventList-34"
+              class="makeStyles-eventList-44"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1"
@@ -272,7 +262,7 @@ exports[`Shows exposure events 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <h3
-        class="MuiTypography-root makeStyles-title-22 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        class="MuiTypography-root makeStyles-title-28 MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Audience
       </h3>
@@ -362,18 +352,13 @@ exports[`Shows exposure events 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <a
-                      href="javascript:(() => 
-        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=control', {credentials: 'include'})
-        .then(() => alert('Successfully set experiment_1 to variation control'))
-        .catch((er) => alert('Unable to set variation: ' + er))
-    )()"
-                      title="Drag this to your bookmarks to make it easier to switch between active variations"
+                    <span
+                      class="makeStyles-variation-30"
                     >
                       control
-                    </a>
+                    </span>
                     <span
-                      class="makeStyles-default-23 makeStyles-root-24"
+                      class="makeStyles-default-29 makeStyles-root-32"
                     >
                       Default
                     </span>
@@ -391,16 +376,11 @@ exports[`Shows exposure events 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <a
-                      href="javascript:(() => 
-        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=test', {credentials: 'include'})
-        .then(() => alert('Successfully set experiment_1 to variation test'))
-        .catch((er) => alert('Unable to set variation: ' + er))
-    )()"
-                      title="Drag this to your bookmarks to make it easier to switch between active variations"
+                    <span
+                      class="makeStyles-variation-30"
                     >
                       test
-                    </a>
+                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -510,18 +490,18 @@ exports[`Shows exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <div
-              class="makeStyles-eventList-28"
+              class="makeStyles-eventList-36"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1"
               >
                 <span
-                  class="makeStyles-eventName-27"
+                  class="makeStyles-eventName-35"
                 >
                   test
                 </span>
                 <span
-                  class="makeStyles-entry-26"
+                  class="makeStyles-entry-34"
                 >
                   prop1
                   : 
@@ -546,7 +526,7 @@ exports[`null shows no exposure events 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <h3
-        class="MuiTypography-root makeStyles-title-22 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        class="MuiTypography-root makeStyles-title-28 MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Audience
       </h3>
@@ -636,18 +616,13 @@ exports[`null shows no exposure events 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <a
-                      href="javascript:(() => 
-        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=control', {credentials: 'include'})
-        .then(() => alert('Successfully set experiment_1 to variation control'))
-        .catch((er) => alert('Unable to set variation: ' + er))
-    )()"
-                      title="Drag this to your bookmarks to make it easier to switch between active variations"
+                    <span
+                      class="makeStyles-variation-46"
                     >
                       control
-                    </a>
+                    </span>
                     <span
-                      class="makeStyles-default-35 makeStyles-root-36"
+                      class="makeStyles-default-45 makeStyles-root-48"
                     >
                       Default
                     </span>
@@ -665,16 +640,11 @@ exports[`null shows no exposure events 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <a
-                      href="javascript:(() => 
-        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=test', {credentials: 'include'})
-        .then(() => alert('Successfully set experiment_1 to variation test'))
-        .catch((er) => alert('Unable to set variation: ' + er))
-    )()"
-                      title="Drag this to your bookmarks to make it easier to switch between active variations"
+                    <span
+                      class="makeStyles-variation-46"
                     >
                       test
-                    </a>
+                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -784,7 +754,7 @@ exports[`null shows no exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <div
-              class="makeStyles-eventList-40"
+              class="makeStyles-eventList-52"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1"
@@ -809,7 +779,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <h3
-        class="MuiTypography-root makeStyles-title-15 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        class="MuiTypography-root makeStyles-title-19 MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Audience
       </h3>
@@ -899,18 +869,13 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <a
-                      href="javascript:(() => 
-        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=control', {credentials: 'include'})
-        .then(() => alert('Successfully set experiment_1 to variation control'))
-        .catch((er) => alert('Unable to set variation: ' + er))
-    )()"
-                      title="Drag this to your bookmarks to make it easier to switch between active variations"
+                    <span
+                      class="makeStyles-variation-21"
                     >
                       control
-                    </a>
+                    </span>
                     <span
-                      class="makeStyles-default-16 makeStyles-root-17"
+                      class="makeStyles-default-20 makeStyles-root-23"
                     >
                       Default
                     </span>
@@ -928,16 +893,11 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <a
-                      href="javascript:(() => 
-        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=test', {credentials: 'include'})
-        .then(() => alert('Successfully set experiment_1 to variation test'))
-        .catch((er) => alert('Unable to set variation: ' + er))
-    )()"
-                      title="Drag this to your bookmarks to make it easier to switch between active variations"
+                    <span
+                      class="makeStyles-variation-21"
                     >
                       test
-                    </a>
+                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -1001,7 +961,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   >
                     segment_3
                     <span
-                      class="makeStyles-excluded-18 makeStyles-root-17"
+                      class="makeStyles-excluded-24 makeStyles-root-23"
                     >
                       Excluded
                     </span>
@@ -1038,7 +998,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   >
                     segment_2
                     <span
-                      class="makeStyles-excluded-18 makeStyles-root-17"
+                      class="makeStyles-excluded-24 makeStyles-root-23"
                     >
                       Excluded
                     </span>
@@ -1071,7 +1031,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <div
-              class="makeStyles-eventList-21"
+              class="makeStyles-eventList-27"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1"
@@ -1096,7 +1056,7 @@ exports[`renders as expected with existing users allowed 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <h3
-        class="MuiTypography-root makeStyles-title-8 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        class="MuiTypography-root makeStyles-title-10 MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Audience
       </h3>
@@ -1186,18 +1146,13 @@ exports[`renders as expected with existing users allowed 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <a
-                      href="javascript:(() => 
-        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=control', {credentials: 'include'})
-        .then(() => alert('Successfully set experiment_1 to variation control'))
-        .catch((er) => alert('Unable to set variation: ' + er))
-    )()"
-                      title="Drag this to your bookmarks to make it easier to switch between active variations"
+                    <span
+                      class="makeStyles-variation-12"
                     >
                       control
-                    </a>
+                    </span>
                     <span
-                      class="makeStyles-default-9 makeStyles-root-10"
+                      class="makeStyles-default-11 makeStyles-root-14"
                     >
                       Default
                     </span>
@@ -1215,16 +1170,11 @@ exports[`renders as expected with existing users allowed 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <a
-                      href="javascript:(() => 
-        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=test', {credentials: 'include'})
-        .then(() => alert('Successfully set experiment_1 to variation test'))
-        .catch((er) => alert('Unable to set variation: ' + er))
-    )()"
-                      title="Drag this to your bookmarks to make it easier to switch between active variations"
+                    <span
+                      class="makeStyles-variation-12"
                     >
                       test
-                    </a>
+                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -1334,7 +1284,7 @@ exports[`renders as expected with existing users allowed 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <div
-              class="makeStyles-eventList-14"
+              class="makeStyles-eventList-18"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1"
@@ -1449,18 +1399,13 @@ exports[`renders as expected with no segment assignments 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <a
-                      href="javascript:(() => 
-        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=control', {credentials: 'include'})
-        .then(() => alert('Successfully set experiment_1 to variation control'))
-        .catch((er) => alert('Unable to set variation: ' + er))
-    )()"
-                      title="Drag this to your bookmarks to make it easier to switch between active variations"
+                    <span
+                      class="makeStyles-variation-3"
                     >
                       control
-                    </a>
+                    </span>
                     <span
-                      class="makeStyles-default-2 makeStyles-root-3"
+                      class="makeStyles-default-2 makeStyles-root-5"
                     >
                       Default
                     </span>
@@ -1478,16 +1423,11 @@ exports[`renders as expected with no segment assignments 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    <a
-                      href="javascript:(() => 
-        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/calypso?experiment_1=test', {credentials: 'include'})
-        .then(() => alert('Successfully set experiment_1 to variation test'))
-        .catch((er) => alert('Unable to set variation: ' + er))
-    )()"
-                      title="Drag this to your bookmarks to make it easier to switch between active variations"
+                    <span
+                      class="makeStyles-variation-3"
                     >
                       test
-                    </a>
+                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -1597,7 +1537,7 @@ exports[`renders as expected with no segment assignments 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <div
-              class="makeStyles-eventList-7"
+              class="makeStyles-eventList-9"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1"

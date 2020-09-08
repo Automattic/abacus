@@ -1,9 +1,11 @@
+import { Tooltip, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
+import { withStyles } from '@material-ui/styles'
 import React from 'react'
 
 import Label from '@/components/Label'
@@ -15,6 +17,9 @@ const useStyles = makeStyles((theme: Theme) =>
     default: {
       marginLeft: theme.spacing(1),
     },
+    variation: {
+      borderBottom: '1px dashed #a3a3a3',
+    },
   }),
 )
 
@@ -25,6 +30,27 @@ function assignmentHref(variationName: string, experimentName: string, experimen
         .catch((er) => alert('Unable to set variation: ' + er))
     )()`
 }
+
+function dangerousAssignmentLink(variationName: string, experimentName: string, experimentPlatform: string) {
+  return {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    __html: `<a href="${assignmentHref(
+      variationName,
+      experimentName,
+      experimentPlatform,
+    )}">${variationName} - ${experimentName}</a>`,
+  }
+}
+
+const HtmlTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: '#f5f5f9',
+    color: 'rgba(0, 0, 0, 0.87)',
+    maxWidth: '10dw',
+    fontSize: theme.typography.pxToRem(12),
+    border: '1px solid #dadde9',
+  },
+}))(Tooltip)
 
 /**
  * Renders the variations in tabular formation, in the order that they're given.
@@ -54,12 +80,28 @@ function VariationsTable({
           return (
             <TableRow key={variation.variationId}>
               <TableCell>
-                <a
-                  title='Drag this to your bookmarks to make it easier to switch between active variations'
-                  href={assignmentHref(variation.name, experimentName, experimentPlatform)}
+                <HtmlTooltip
+                  interactive
+                  arrow
+                  placement={'left'}
+                  title={
+                    <>
+                      <Typography color='inherit'>
+                        Drag this link to your bookmarks to make it easier to switch between active variations:
+                      </Typography>
+                      <Typography
+                        color='inherit'
+                        dangerouslySetInnerHTML={dangerousAssignmentLink(
+                          variation.name,
+                          experimentName,
+                          experimentPlatform,
+                        )}
+                      />
+                    </>
+                  }
                 >
-                  {variation.name}
-                </a>
+                  <span className={classes.variation}>{variation.name}</span>
+                </HtmlTooltip>
                 {variation.isDefault && <Label className={classes.default} text='Default' />}
               </TableCell>
               <TableCell>{variation.allocatedPercentage}%</TableCell>
