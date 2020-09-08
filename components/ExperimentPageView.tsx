@@ -122,12 +122,12 @@ export default function ExperimentPageView({
       <>
         <div className={classes.title}>
           <Typography variant='h2'>
-            Experiment:{' '} 
+            Experiment:{' '}
             {experiment ? (
-              <span className={classes.titleName}>
-                {experiment.name}
-              </span>
-            ) : <Skeleton className={classes.titleNameSkeleton} variant="text" width={200} />}
+              <span className={classes.titleName}>{experiment.name}</span>
+            ) : (
+              <Skeleton className={classes.titleNameSkeleton} variant='text' width={200} />
+            )}
           </Typography>
         </div>
         <div className={classes.topBar}>

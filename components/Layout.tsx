@@ -75,16 +75,12 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const Layout = ({ title, headTitle, children }: { 
-  title?: string;
-  headTitle?: string;
-  children?: ReactNode 
-}) => {
+const Layout = ({ title, headTitle, children }: { title?: string; headTitle?: string; children?: ReactNode }) => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
       <Head>
-        <title>{title ?? headTitle} | Abacus</title>
+        <title>{ title ?? /* istanbul ignore next; trivial */ headTitle} | Abacus</title>
         <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
