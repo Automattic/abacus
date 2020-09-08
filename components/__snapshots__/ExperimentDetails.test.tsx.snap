@@ -144,7 +144,7 @@ exports[`renders as expected at large width 1`] = `
                     </span>
                     <span
                       class="makeStyles-root-11"
-                      title="20/11/2020, 20:00:00"
+                      title="20/11/2020, 19:00:00"
                     >
                       2020-11-21
                     </span>
@@ -784,7 +784,7 @@ exports[`renders as expected at small width 1`] = `
                     </span>
                     <span
                       class="makeStyles-root-34"
-                      title="20/11/2020, 20:00:00"
+                      title="20/11/2020, 19:00:00"
                     >
                       2020-11-21
                     </span>
@@ -1424,7 +1424,7 @@ exports[`renders as expected with conclusion data 1`] = `
                     </span>
                     <span
                       class="makeStyles-root-57"
-                      title="20/11/2020, 20:00:00"
+                      title="20/11/2020, 19:00:00"
                     >
                       2020-11-21
                     </span>
@@ -2167,7 +2167,7 @@ exports[`renders as expected without conclusion data 1`] = `
                     </span>
                     <span
                       class="makeStyles-root-82"
-                      title="20/11/2020, 20:00:00"
+                      title="20/11/2020, 19:00:00"
                     >
                       2020-11-21
                     </span>
