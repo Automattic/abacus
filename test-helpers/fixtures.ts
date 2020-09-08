@@ -260,10 +260,14 @@ function createMetricAssignment(fieldOverrides: Partial<MetricAssignment>): Metr
 /* istanbul ignore next; All coverage to be removed, see https://github.com/Automattic/abacus/issues/231 */
 function createExperimentFullNew(fieldOverrides: Partial<ExperimentFullNew> = {}): ExperimentFullNew {
   const now = new Date()
+  // This is a bit funky as we want to work in UTC but DateFns only does local time
+  // and we want to avoid DST problems.
+  const startDatetime = new Date((new Date((new Date()).setMonth(now.getMonth() + 2))).setUTCHours(0))
+  const endDatetime = new Date((new Date((new Date()).setMonth(now.getMonth() + 4))).setUTCHours(0))
   return {
     name: 'experiment_1',
-    startDatetime: dateFns.addMonths(now, 2),
-    endDatetime: dateFns.addMonths(now, 4),
+    startDatetime,
+    endDatetime,
     platform: Platform.Calypso,
     ownerLogin: 'test_a11n',
     description: 'Experiment with things. Change stuff. Profit.',
