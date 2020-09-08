@@ -80,7 +80,7 @@ const Layout = ({ title, headTitle, children }: { title?: string; headTitle?: st
   return (
     <div className={classes.root}>
       <Head>
-        <title>{ title ?? /* istanbul ignore next; trivial */ headTitle} | Abacus</title>
+        <title>{title ?? /* istanbul ignore next; trivial */ headTitle} | Abacus</title>
         <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
