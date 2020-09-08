@@ -10,6 +10,8 @@ import { changeFieldByRole, render } from '@/test-helpers/test-utils'
 
 import MetricAssignmentsPanel from './MetricAssignmentsPanel'
 
+jest.setTimeout(10000)
+
 jest.mock('@/api/ExperimentsApi')
 const mockedExperimentsApi = ExperimentsApi as jest.Mocked<typeof ExperimentsApi>
 
