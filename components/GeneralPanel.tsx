@@ -33,6 +33,8 @@ const useStyles = makeStyles((theme: Theme) =>
     to: {
       marginLeft: theme.spacing(2),
       marginRight: theme.spacing(2),
+      fontFamily: theme.custom.fonts.monospace,
+      color: theme.palette.grey[600]
     },
     title: {
       flexGrow: 1,
