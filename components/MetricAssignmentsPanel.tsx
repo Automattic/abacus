@@ -28,7 +28,6 @@ import React, { useMemo, useState } from 'react'
 import * as yup from 'yup'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
-import Label from '@/components/Label'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import * as MetricAssignments from '@/lib/metric-assignments'
 import { indexMetrics } from '@/lib/normalizers'
@@ -196,7 +195,9 @@ function MetricAssignmentsPanel({
               <TableCell className={classes.monospace}>
                 {AttributionWindowSecondsToHuman[resolvedMetricAssignment.attributionWindowSeconds]}
               </TableCell>
-              <TableCell className={classes.monospace}>{formatBoolean(resolvedMetricAssignment.changeExpected)}</TableCell>
+              <TableCell className={classes.monospace}>
+                {formatBoolean(resolvedMetricAssignment.changeExpected)}
+              </TableCell>
               <TableCell className={classes.monospace}>
                 <span>
                   {resolvedMetricAssignment.metric.parameterType === MetricParameterType.Revenue
