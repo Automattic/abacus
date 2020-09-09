@@ -43,30 +43,34 @@ test('renders as expected', () => {
           >
             General
           </h3>
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
-            tabindex="0"
-            type="button"
+          <div
+            class=""
+            title="Use \\"Edit in Wizard\\" for staging experiments."
           >
-            <span
-              class="MuiButton-label"
+            <button
+              aria-label="Edit Experiment General Data"
+              class="MuiButtonBase-root MuiButton-root MuiButton-outlined Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <span
+                class="MuiButton-label"
               >
-                <path
-                  d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                />
-              </svg>
-              Edit
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                  />
+                </svg>
+                Edit
+              </span>
+            </button>
+          </div>
         </div>
         <table
           class="MuiTable-root"

@@ -1,22 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`disables an experiment 1`] = `
-<div
-  aria-hidden="true"
->
+exports[`renders as expected 1`] = `
+<div>
   <span
     class=""
     title=""
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonOutlined-2"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary"
       tabindex="0"
       type="button"
     >
       <span
         class="MuiButton-label"
       >
-        Disable
+        Run
       </span>
       <span
         class="MuiTouchRipple-root"
@@ -26,21 +24,23 @@ exports[`disables an experiment 1`] = `
 </div>
 `;
 
-exports[`renders as expected 1`] = `
-<div>
+exports[`runs an experiment 1`] = `
+<div
+  aria-hidden="true"
+>
   <span
     class=""
     title=""
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonOutlined-1"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary"
       tabindex="0"
       type="button"
     >
       <span
         class="MuiButton-label"
       >
-        Disable
+        Run
       </span>
       <span
         class="MuiTouchRipple-root"

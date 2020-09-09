@@ -43,6 +43,7 @@ test('renders as expected with complete conclusion data', () => {
             Conclusions
           </h3>
           <button
+            aria-label="Edit Conclusion"
             class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
             tabindex="0"
             type="button"
@@ -156,6 +157,7 @@ test('renders as expected without deployed variation', () => {
             Conclusions
           </h3>
           <button
+            aria-label="Edit Conclusion"
             class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
             tabindex="0"
             type="button"

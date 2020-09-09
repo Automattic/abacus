@@ -39,6 +39,7 @@ import {
   metricAssignmentNewSchema,
   MetricBare,
   MetricParameterType,
+  Status,
 } from '@/lib/schemas'
 import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
 
@@ -123,6 +124,7 @@ function MetricAssignmentsPanel({
 
   // Assign Metric Modal
   const { enqueueSnackbar } = useSnackbar()
+  const canAssignMetric = experiment.status !== Status.Staging
   const [isAssigningMetric, setIsAssigningMetric] = useState<boolean>(false)
   const assignMetricInitialAssignMetric = {
     metricId: '',
@@ -155,10 +157,14 @@ function MetricAssignmentsPanel({
         <Typography className={classes.title} color='textPrimary' variant='h3'>
           Metrics
         </Typography>
-        <Button onClick={onAssignMetric} variant='outlined'>
-          <Add />
-          Assign Metric
-        </Button>
+        <Tooltip title={canAssignMetric ? '' : 'Use "Edit in Wizard" for staging experiments.'}>
+          <div>
+            <Button onClick={onAssignMetric} variant='outlined' disabled={!canAssignMetric}>
+              <Add />
+              Assign Metric
+            </Button>
+          </div>
+        </Tooltip>
       </Toolbar>
       <Table>
         <TableHead>
