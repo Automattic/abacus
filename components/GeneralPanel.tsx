@@ -5,10 +5,10 @@ import {
   DialogContent,
   DialogTitle,
   InputAdornment,
+  Link,
   Paper,
   Toolbar,
   Typography,
-  Link,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Edit } from '@material-ui/icons'
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginLeft: theme.spacing(2),
       marginRight: theme.spacing(2),
       fontFamily: theme.custom.fonts.monospace,
-      color: theme.palette.grey[600]
+      color: theme.palette.grey[600],
     },
     title: {
       flexGrow: 1,
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     monospace: {
       fontFamily: theme.custom.fonts.monospace,
-    }
+    },
   }),
 )
 
