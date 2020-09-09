@@ -8,6 +8,7 @@ import {
   Paper,
   Toolbar,
   Typography,
+  Link,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Edit } from '@material-ui/icons'
@@ -50,6 +51,9 @@ const useStyles = makeStyles((theme: Theme) =>
         color: theme.palette.text.hint,
       },
     },
+    monospace: {
+      fontFamily: theme.custom.fonts.monospace,
+    }
   }),
 )
 
@@ -67,13 +71,13 @@ function GeneralPanel({
 }) {
   const classes = useStyles()
   const data = [
-    { label: 'Description', value: experiment.description },
+    { label: 'Description', value: <span className={classes.monospace}>{experiment.description}</span> },
     {
       label: 'P2 Link',
       value: (
-        <a href={experiment.p2Url} rel='noopener noreferrer' target='_blank'>
+        <Link href={experiment.p2Url} rel='noopener noreferrer' target='_blank' className={classes.monospace}>
           {experiment.p2Url}
-        </a>
+        </Link>
       ),
     },
     {
@@ -90,7 +94,7 @@ function GeneralPanel({
         </>
       ),
     },
-    { label: 'Owner', value: experiment.ownerLogin },
+    { label: 'Owner', value: <span className={classes.monospace}>{experiment.ownerLogin}</span> },
   ]
 
   // Edit Modal
