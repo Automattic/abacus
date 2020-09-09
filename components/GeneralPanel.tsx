@@ -73,15 +73,6 @@ function GeneralPanel({
 }) {
   const classes = useStyles()
   const data = [
-    { label: 'Description', value: <span className={classes.monospace}>{experiment.description}</span> },
-    {
-      label: 'P2 Link',
-      value: (
-        <Link href={experiment.p2Url} rel='noopener noreferrer' target='_blank' className={classes.monospace}>
-          {experiment.p2Url}
-        </Link>
-      ),
-    },
     {
       label: 'Status',
       value: <ExperimentStatus status={experiment.status} />,
@@ -96,7 +87,16 @@ function GeneralPanel({
         </>
       ),
     },
+    { label: 'Description', value: <span className={classes.monospace}>{experiment.description}</span> },
     { label: 'Owner', value: <span className={classes.monospace}>{experiment.ownerLogin}</span> },
+    {
+      label: 'P2 Link',
+      value: (
+        <Link href={experiment.p2Url} rel='noopener noreferrer' target='_blank' className={classes.monospace}>
+          {experiment.p2Url}
+        </Link>
+      ),
+    },
   ]
 
   // Edit Modal
