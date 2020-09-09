@@ -7,7 +7,6 @@ import TableRow from '@material-ui/core/TableRow'
 import _ from 'lodash'
 import React, { useMemo } from 'react'
 
-import Label from '@/components/Label'
 import { Segment, SegmentType } from '@/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -63,7 +62,9 @@ function SegmentsTable({
       <TableBody>
         {resolvedSegmentAssignments.length === 0 ? (
           <TableRow>
-            <TableCell className={classes.monospace}>All {type === SegmentType.Country ? 'countries' : 'locales'} included</TableCell>
+            <TableCell className={classes.monospace}>
+              All {type === SegmentType.Country ? 'countries' : 'locales'} included
+            </TableCell>
           </TableRow>
         ) : (
           sortedResolvedSegmentAssignments.map(

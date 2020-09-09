@@ -123,7 +123,14 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
 
   const data = [
     { label: 'Platform', value: <span className={classes.monospace}>{experiment.platform}</span> },
-    { label: 'User Type', value: <span className={classes.monospace}>{experiment.existingUsersAllowed ? 'All users (new + existing)' : 'New users only'}</span> },
+    {
+      label: 'User Type',
+      value: (
+        <span className={classes.monospace}>
+          {experiment.existingUsersAllowed ? 'All users (new + existing)' : 'New users only'}
+        </span>
+      ),
+    },
     {
       label: 'Variations',
       padding: 'none' as TableCellProps['padding'],

@@ -7,7 +7,6 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import React from 'react'
 
-import Label from '@/components/Label'
 import { ExperimentFull, nameSchema } from '@/lib/schemas'
 import * as Variations from '@/lib/variations'
 
@@ -16,8 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
     default: {
       color: theme.palette.grey[500],
     },
-    defaultLabel: {
-    },
+    defaultLabel: {},
     variation: {
       borderBottomWidth: 1,
       borderBottomStyle: 'dashed',
