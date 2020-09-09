@@ -9,7 +9,7 @@ import {
   MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS,
   MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS,
 } from '@/lib/schemas'
-import { formatISODate } from '@/utils/time'
+import { formatIsoDate } from '@/utils/time'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -47,7 +47,7 @@ const BasicInfo = () => {
   const maxEndDate =
     startDateField.value &&
     dateFns.addMonths(new Date(startDateField.value), MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS)
-  const formatDateForInput = (date: Date) => (date ? formatISODate(date) : undefined)
+  const formatDateForInput = (date: Date) => (date ? formatIsoDate(date) : undefined)
 
   return (
     <div className={classes.root}>

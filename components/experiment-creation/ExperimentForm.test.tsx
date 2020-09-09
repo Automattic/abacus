@@ -10,9 +10,9 @@ import { createInitialExperiment } from '@/lib/experiments'
 import * as Normalizers from '@/lib/normalizers'
 import Fixtures from '@/test-helpers/fixtures'
 import { changeFieldByRole, render } from '@/test-helpers/test-utils'
+import { formatIsoDate } from '@/utils/time'
 
 import ExperimentForm from './ExperimentForm'
-import { formatISODate } from '@/utils/time'
 
 jest.setTimeout(40000)
 
@@ -302,10 +302,10 @@ test('form submits with valid fields', async () => {
   const nextWeek = new Date()
   nextWeek.setDate(now.getDate() + 7)
   await act(async () => {
-    fireEvent.change(screen.getByLabelText(/Start date/), { target: { value: formatISODate(now) } })
+    fireEvent.change(screen.getByLabelText(/Start date/), { target: { value: formatIsoDate(now) } })
   })
   await act(async () => {
-    fireEvent.change(screen.getByLabelText(/End date/), { target: { value: formatISODate(nextWeek) } })
+    fireEvent.change(screen.getByLabelText(/End date/), { target: { value: formatIsoDate(nextWeek) } })
   })
   await changeFieldByRole('textbox', /Owner/, 'owner-nickname')
   await act(async () => {
@@ -403,8 +403,8 @@ test('form submits with valid fields', async () => {
       p2Url: 'http://example.com/',
       name: 'test_experiment_name',
       description: 'experiment description',
-      startDatetime: formatISODate(now),
-      endDatetime: formatISODate(nextWeek),
+      startDatetime: formatIsoDate(now),
+      endDatetime: formatIsoDate(nextWeek),
       ownerLogin: 'owner-nickname',
       platform: 'wpcom',
       existingUsersAllowed: 'true',
