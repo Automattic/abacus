@@ -14,10 +14,14 @@ import * as Variations from '@/lib/variations'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     default: {
-      marginLeft: theme.spacing(1),
+      color: theme.palette.grey[500],
+    },
+    defaultLabel: {
     },
     variation: {
-      borderBottom: '1px dashed #a3a3a3',
+      borderBottomWidth: 1,
+      borderBottomStyle: 'dashed',
+      borderBottomColor: theme.palette.grey[500],
     },
     tooltip: {
       maxWidth: '500px',
@@ -25,6 +29,9 @@ const useStyles = makeStyles((theme: Theme) =>
       '& a:link': {
         color: '#cee6f8',
       },
+    },
+    monospace: {
+      fontFamily: theme.custom.fonts.monospace,
     },
   }),
 )
@@ -82,7 +89,7 @@ function VariationsTable({
         {Variations.sort(variations).map((variation) => {
           return (
             <TableRow key={variation.variationId}>
-              <TableCell>
+              <TableCell className={classes.monospace}>
                 <Tooltip
                   interactive
                   arrow
@@ -109,9 +116,9 @@ function VariationsTable({
                 >
                   <span className={classes.variation}>{variation.name}</span>
                 </Tooltip>
-                {variation.isDefault && <Label className={classes.default} text='Default' />}
+                {variation.isDefault && <span className={classes.default}> default</span>}
               </TableCell>
-              <TableCell>{variation.allocatedPercentage}%</TableCell>
+              <TableCell className={classes.monospace}>{variation.allocatedPercentage}%</TableCell>
             </TableRow>
           )
         })}

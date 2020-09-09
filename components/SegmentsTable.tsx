@@ -13,7 +13,10 @@ import { Segment, SegmentType } from '@/lib/schemas'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     excluded: {
-      marginLeft: theme.spacing(1),
+      color: theme.palette.grey[500],
+    },
+    monospace: {
+      fontFamily: theme.custom.fonts.monospace,
     },
   }),
 )
@@ -60,16 +63,16 @@ function SegmentsTable({
       <TableBody>
         {resolvedSegmentAssignments.length === 0 ? (
           <TableRow>
-            <TableCell>All {type === SegmentType.Country ? 'countries' : 'locales'} included</TableCell>
+            <TableCell className={classes.monospace}>All {type === SegmentType.Country ? 'countries' : 'locales'} included</TableCell>
           </TableRow>
         ) : (
           sortedResolvedSegmentAssignments.map(
             (resolvedSegmentAssignment) =>
               resolvedSegmentAssignment.segment && (
                 <TableRow key={resolvedSegmentAssignment.segment.segmentId}>
-                  <TableCell>
+                  <TableCell className={classes.monospace}>
                     {resolvedSegmentAssignment.segment.name}
-                    {resolvedSegmentAssignment.isExcluded && <Label className={classes.excluded} text='Excluded' />}
+                    {resolvedSegmentAssignment.isExcluded && <span className={classes.excluded}> excluded</span>}
                   </TableCell>
                 </TableRow>
               ),
