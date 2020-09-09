@@ -74,7 +74,10 @@ function resolveMetricAssignments(metricAssignments: MetricAssignment[], metrics
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     primary: {
-      marginLeft: theme.spacing(1),
+      color: theme.palette.grey[500],
+    },
+    monospace: {
+      fontFamily: theme.custom.fonts.monospace,
     },
     title: {
       flexGrow: 1,
@@ -186,15 +189,15 @@ function MetricAssignmentsPanel({
         <TableBody>
           {resolvedMetricAssignments.map((resolvedMetricAssignment) => (
             <TableRow key={resolvedMetricAssignment.metricAssignmentId}>
-              <TableCell>
+              <TableCell className={classes.monospace}>
                 {resolvedMetricAssignment.metric.name}
-                {resolvedMetricAssignment.isPrimary && <Label className={classes.primary} text='Primary' />}
+                {resolvedMetricAssignment.isPrimary && <span className={classes.primary}> primary </span>}
               </TableCell>
-              <TableCell>
+              <TableCell className={classes.monospace}>
                 {AttributionWindowSecondsToHuman[resolvedMetricAssignment.attributionWindowSeconds]}
               </TableCell>
-              <TableCell>{formatBoolean(resolvedMetricAssignment.changeExpected)}</TableCell>
-              <TableCell>
+              <TableCell className={classes.monospace}>{formatBoolean(resolvedMetricAssignment.changeExpected)}</TableCell>
+              <TableCell className={classes.monospace}>
                 <span>
                   {resolvedMetricAssignment.metric.parameterType === MetricParameterType.Revenue
                     ? formatUsCurrencyDollar(resolvedMetricAssignment.minDifference)
