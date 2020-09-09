@@ -41,13 +41,13 @@ test('renders as expected with segment names not in order', () => {
             class="MuiTableRow-root"
           >
             <td
-              class="MuiTableCell-root MuiTableCell-body"
+              class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
             >
               bar
               <span
-                class="makeStyles-excluded-1 makeStyles-root-2"
+                class="makeStyles-excluded-1"
               >
-                Excluded
+                 excluded
               </span>
             </td>
           </tr>
@@ -55,7 +55,7 @@ test('renders as expected with segment names not in order', () => {
             class="MuiTableRow-root"
           >
             <td
-              class="MuiTableCell-root MuiTableCell-body"
+              class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
             >
               foo
             </td>
