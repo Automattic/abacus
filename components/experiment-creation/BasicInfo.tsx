@@ -137,7 +137,7 @@ const BasicInfo = () => {
           name='experiment.ownerLogin'
           id='experiment.ownerLogin'
           label='Owner'
-          placeholder='scjr'
+          placeholder='wp_username'
           helperText='Use WordPress.com username.'
           variant='outlined'
           fullWidth

@@ -7,7 +7,6 @@ import LabelValueTable from '@/components/LabelValueTable'
 import SegmentsTable from '@/components/SegmentsTable'
 import VariationsTable from '@/components/VariationsTable'
 import { ExperimentFull, Segment, SegmentAssignment, SegmentType } from '@/lib/schemas'
-import * as Variations from '@/lib/variations'
 import theme from '@/styles/theme'
 
 /**
@@ -122,7 +121,7 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
     {
       label: 'Variations',
       padding: 'none' as TableCellProps['padding'],
-      value: <VariationsTable variations={Variations.sort(experiment.variations)} />,
+      value: <VariationsTable experiment={experiment} />,
     },
     {
       label: 'Segments',

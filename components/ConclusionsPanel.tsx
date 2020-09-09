@@ -104,7 +104,7 @@ function ConclusionsPanel({
         <Typography className={classes.title} color='textPrimary' variant='h3'>
           Conclusions
         </Typography>
-        <Button onClick={onEdit} variant='outlined'>
+        <Button onClick={onEdit} variant='outlined' aria-label='Edit Conclusion'>
           <Edit />
           Edit
         </Button>

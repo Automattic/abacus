@@ -7,6 +7,7 @@ import {
   InputAdornment,
   Paper,
   Toolbar,
+  Tooltip,
   Typography,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
@@ -103,6 +104,7 @@ function GeneralPanel({
     // Needed for endDatetime validation
     startDatetime: experiment.startDatetime,
   }
+  const canEdit = experiment.status !== Status.Staging
   const canEditEndDate = experiment.status === Status.Running
   const generalEditValidationSchema = yupPick(experimentFullSchema, ['description', 'ownerLogin']).shape({
     ...(canEditEndDate && {
@@ -139,10 +141,14 @@ function GeneralPanel({
         <Typography className={classes.title} color='textPrimary' variant='h3'>
           General
         </Typography>
-        <Button onClick={onEdit} variant='outlined'>
-          <Edit />
-          Edit
-        </Button>
+        <Tooltip title={canEdit ? '' : 'Use "Edit in Wizard" for staging experiments.'}>
+          <div>
+            <Button onClick={onEdit} variant='outlined' disabled={!canEdit} aria-label='Edit Experiment General Data'>
+              <Edit />
+              Edit
+            </Button>
+          </div>
+        </Tooltip>
       </Toolbar>
       <LabelValueTable data={data} />
       <Dialog open={isEditing} fullWidth aria-labelledby='edit-experiment-general-form-dialog-title'>
@@ -201,7 +207,7 @@ function GeneralPanel({
                     name='experiment.ownerLogin'
                     id='experiment.ownerLogin'
                     label='Owner'
-                    placeholder='scjr'
+                    placeholder='wp_username'
                     helperText='Use WordPress.com username.'
                     variant='outlined'
                     fullWidth
