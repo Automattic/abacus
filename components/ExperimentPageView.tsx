@@ -1,5 +1,15 @@
 // istanbul ignore file; Even though it sits with components this is a "page" component
-import { Button, createStyles, LinearProgress, makeStyles, Tab, Tabs, Theme, Tooltip, Typography } from '@material-ui/core'
+import {
+  Button,
+  createStyles,
+  LinearProgress,
+  makeStyles,
+  Tab,
+  Tabs,
+  Theme,
+  Tooltip,
+  Typography
+} from '@material-ui/core'
 import { Skeleton } from '@material-ui/lab'
 import _ from 'lodash'
 import Link from 'next/link'
