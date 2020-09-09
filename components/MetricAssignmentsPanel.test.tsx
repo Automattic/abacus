@@ -5,6 +5,7 @@ import * as notistack from 'notistack'
 import React from 'react'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
+import { Status } from '@/lib/schemas'
 import Fixtures from '@/test-helpers/fixtures'
 import { changeFieldByRole, render } from '@/test-helpers/test-utils'
 
@@ -39,30 +40,33 @@ test('renders as expected with all metrics resolvable', () => {
           >
             Metrics
           </h3>
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
-            tabindex="0"
-            type="button"
+          <div
+            class=""
+            title="Use \\"Edit in Wizard\\" for staging experiments."
           >
-            <span
-              class="MuiButton-label"
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-outlined Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <span
+                class="MuiButton-label"
               >
-                <path
-                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-                />
-              </svg>
-              Assign Metric
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                  />
+                </svg>
+                Assign Metric
+              </span>
+            </button>
+          </div>
         </div>
         <table
           class="MuiTable-root"
@@ -243,7 +247,7 @@ test('throws an error when some metrics not resolvable', () => {
 
 test('opens, submits and cancels assign metric dialog', async () => {
   const metrics = Fixtures.createMetricBares(5)
-  const experiment = Fixtures.createExperimentFull()
+  const experiment = Fixtures.createExperimentFull({ status: Status.Running })
   const experimentReloadRef: React.MutableRefObject<() => void> = { current: noop }
   const { container: _container } = render(<MetricAssignmentsPanel {...{ experiment, metrics, experimentReloadRef }} />)
 
