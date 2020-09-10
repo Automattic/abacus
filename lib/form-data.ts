@@ -34,6 +34,9 @@ function exposureEventToFormData(exposureEvent: Event) {
   }
 }
 
+/**
+ * Takes an experiment object and formats it for use as form-data in ExperimentForm.
+ */
 export function experimentToFormData(experiment: Partial<ExperimentFull>) {
   return {
     p2Url: experiment.p2Url ?? '',
