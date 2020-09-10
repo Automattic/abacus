@@ -1,4 +1,16 @@
-import { Button, createStyles, LinearProgress, makeStyles, Tab, Tabs, Theme, Tooltip } from '@material-ui/core'
+// istanbul ignore file; Even though it sits with components this is a "page" component
+import {
+  Button,
+  createStyles,
+  LinearProgress,
+  makeStyles,
+  Tab,
+  Tabs,
+  Theme,
+  Tooltip,
+  Typography,
+} from '@material-ui/core'
+import { Skeleton } from '@material-ui/lab'
 import _ from 'lodash'
 import Link from 'next/link'
 import React from 'react'
@@ -39,6 +51,17 @@ const NextMuiLink = React.forwardRef(
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    title: {
+      margin: theme.spacing(3, 0, 1, 0),
+      color: theme.palette.grey.A700,
+    },
+    titleName: {
+      fontFamily: theme.custom.fonts.monospace,
+      color: '#000',
+    },
+    titleNameSkeleton: {
+      display: 'inline-block',
+    },
     topBar: {
       display: 'flex',
       marginBottom: theme.spacing(2),
@@ -49,7 +72,14 @@ const useStyles = makeStyles((theme: Theme) =>
     topBarTab: {
       minWidth: 110,
     },
-    topBarActions: {},
+    topBarActions: {
+      display: 'flex',
+      alignItems: 'flex-end',
+      '& > *': {
+        marginLeft: 4,
+        marginBottom: 7,
+      },
+    },
   }),
 )
 
@@ -104,8 +134,18 @@ export default function ExperimentPageView({
   const canEditInWizard = experiment && experiment.status === Status.Staging
 
   return (
-    <Layout title={`Experiment: ${experiment?.name || ''}`}>
+    <Layout headTitle={`${experiment?.name} - Experiment`}>
       <>
+        <div className={classes.title}>
+          <Typography variant='h2'>
+            Experiment:{' '}
+            {experiment ? (
+              <span className={classes.titleName}>{experiment.name}</span>
+            ) : (
+              <Skeleton className={classes.titleNameSkeleton} variant='text' width={200} />
+            )}
+          </Typography>
+        </div>
         <div className={classes.topBar}>
           <Tabs className={classes.topBarTabs} value={view}>
             <Tab
