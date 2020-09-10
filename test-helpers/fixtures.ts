@@ -262,7 +262,7 @@ function createExperimentFullNew(fieldOverrides: Partial<ExperimentFullNew> = {}
   // This is a bit funky as we want to work in UTC but DateFns only does local time
   // and we want to avoid DST problems.
   const startDatetime = new Date(new Date(new Date().setMonth(now.getMonth() + 2)).setUTCHours(0, 0, 0, 0))
-  const endDatetime = new Date(new Date(new Date().setMonth(now.getMonth() + 4)).setUTCHours(0, 0, 0 ,0))
+  const endDatetime = new Date(new Date(new Date().setMonth(now.getMonth() + 4)).setUTCHours(0, 0, 0, 0))
   return {
     name: 'experiment_1',
     startDatetime,
