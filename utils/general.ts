@@ -14,3 +14,9 @@ export function or(...xs: unknown[]) {
 export function createUnresolvingPromise<T>() {
   return new Promise<T>(() => null)
 }
+
+/**
+ * A name prefix for our test data.
+ * Mainly used to filter test data out for normal users.
+ */
+export const testDataNamePrefix = 'explat_test_'

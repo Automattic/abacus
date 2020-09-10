@@ -21,6 +21,7 @@ import MetricFormFields from '@/components/MetricFormFields'
 import MetricsTable from '@/components/MetricsTable'
 import { MetricParameterType } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
+import { testDataNamePrefix } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/metrics/index.tsx')
 
@@ -37,12 +38,20 @@ const useStyles = makeStyles((theme: Theme) =>
 const MetricsIndexPage = () => {
   debug('MetricsIndexPage#render')
   const classes = useStyles()
-
-  const { isLoading, data: metrics, error } = useDataSource(() => MetricsApi.findAll(), [])
-  useDataLoadingError(error, 'Metrics')
-
   const router = useRouter()
   const debugMode = router.query.debug === 'true'
+
+  const { isLoading, data: metrics, error } = useDataSource(async () => {
+    const metrics = await MetricsApi.findAll()
+
+    // We conditionally filter debug data out here
+    if (debugMode) {
+      return metrics
+    } else {
+      return metrics.filter((metric) => !metric.name.startsWith(testDataNamePrefix))
+    }
+  }, [debugMode])
+  useDataLoadingError(error, 'Metrics')
 
   const { enqueueSnackbar } = useSnackbar()
 

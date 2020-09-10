@@ -13,7 +13,7 @@ import { createInitialExperiment } from '@/lib/experiments'
 import * as Normalizers from '@/lib/normalizers'
 import { ExperimentFullNew } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
-import { or } from '@/utils/general'
+import { or, testDataNamePrefix } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/experiments/new.tsx')
 
@@ -32,13 +32,24 @@ const useStyles = makeStyles((theme: Theme) =>
 const ExperimentsNewPage = function () {
   debug('ExperimentsNewPage#render')
   const classes = useStyles()
+  const router = useRouter()
+  const debugMode = router.query.debug === 'true'
 
   const initialExperiment = createInitialExperiment()
 
-  const { isLoading: metricsIsLoading, data: indexedMetrics, error: metricsError } = useDataSource(
-    async () => Normalizers.indexMetrics(await MetricsApi.findAll()),
-    [],
-  )
+  const { isLoading: metricsIsLoading, data: indexedMetrics, error: metricsError } = useDataSource(async () => {
+    const metrics = await MetricsApi.findAll()
+    let filteredMetrics
+
+    // We conditionally filter debug data out here
+    if (debugMode) {
+      filteredMetrics = metrics
+    } else {
+      filteredMetrics = metrics.filter((metric) => !metric.name.startsWith(testDataNamePrefix))
+    }
+
+    return Normalizers.indexMetrics(filteredMetrics)
+  }, [debugMode])
   useDataLoadingError(metricsError, 'Metrics')
 
   const { isLoading: segmentsIsLoading, data: indexedSegments, error: segmentsError } = useDataSource(
@@ -49,7 +60,6 @@ const ExperimentsNewPage = function () {
 
   const isLoading = or(metricsIsLoading, segmentsIsLoading)
 
-  const router = useRouter()
   const { enqueueSnackbar } = useSnackbar()
   const onSubmit = async (formData: unknown) => {
     try {

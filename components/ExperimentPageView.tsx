@@ -26,7 +26,7 @@ import ExperimentDisableButton from '@/components/ExperimentDisableButton'
 import Layout from '@/components/Layout'
 import { Analysis, ExperimentFull, Status } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
-import { createUnresolvingPromise, or } from '@/utils/general'
+import { createUnresolvingPromise, or, testDataNamePrefix } from '@/utils/general'
 
 import ExperimentRunButton from './ExperimentRunButton'
 
@@ -111,10 +111,17 @@ export default function ExperimentPageView({
   )
   useDataLoadingError(experimentError, 'Experiment')
 
-  const { isLoading: metricsIsLoading, data: metrics, error: metricsError } = useDataSource(
-    () => MetricsApi.findAll(),
-    [],
-  )
+  const { isLoading: metricsIsLoading, data: metrics, error: metricsError } = useDataSource(async () => {
+    const metrics = await MetricsApi.findAll()
+
+    // We conditionally filter debug data out here
+    // istanbul ignore if
+    if (debugMode) {
+      return metrics
+    } else {
+      return metrics.filter((metric) => !metric.name.startsWith(testDataNamePrefix))
+    }
+  }, [debugMode])
   useDataLoadingError(metricsError, 'Metrics')
 
   const { isLoading: segmentsIsLoading, data: segments, error: segmentsError } = useDataSource(
