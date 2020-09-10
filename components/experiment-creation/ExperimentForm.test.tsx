@@ -70,7 +70,7 @@ test('sections should be browsable by the next and prev buttons', async () => {
 
   const onSubmit = async () => undefined
 
-  const { container: _container } = render(
+  render(
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
@@ -156,7 +156,7 @@ test('section should be validated after change', async () => {
 
   const onSubmit = async () => undefined
 
-  const { container: _container } = render(
+  render(
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
@@ -278,7 +278,7 @@ test('form submits with valid fields', async () => {
     return
   }
 
-  const { container: _container } = render(
+  render(
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
@@ -470,7 +470,7 @@ test('form submits an edited experiment without any changes', async () => {
     return
   }
 
-  const { container: _container } = render(
+  render(
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
