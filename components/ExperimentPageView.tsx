@@ -8,7 +8,7 @@ import {
   Tabs,
   Theme,
   Tooltip,
-  Typography
+  Typography,
 } from '@material-ui/core'
 import { Skeleton } from '@material-ui/lab'
 import _ from 'lodash'
