@@ -495,16 +495,15 @@ test('form submits an edited experiment without any changes', async () => {
 
   // ### Submit
   screen.getByText(/Confirm and Submit Your Experiment/)
-  await act(async () => {
-    screen.getAllByRole('button', { name: /Submit/ })
-    const submit = screen
-      .getAllByRole('button', { name: /Submit/ })
-      .find((submit) => submit.getAttribute('type') === 'submit')
-    if (!submit) {
-      throw new Error(`Can't find submit button.`)
-    }
-    fireEvent.click(submit)
-  })
+
+  screen.getAllByRole('button', { name: /Submit/ })
+  const submit = screen
+    .getAllByRole('button', { name: /Submit/ })
+    .find((submit) => submit.getAttribute('type') === 'submit')
+  if (!submit) {
+    throw new Error(`Can't find submit button.`)
+  }
+  fireEvent.click(submit)
 
   await waitFor(() => expect(submittedData).not.toBeNull())
 
@@ -512,7 +511,7 @@ test('form submits an edited experiment without any changes', async () => {
     experimentFullNewSchema.validate((submittedData as { experiment: unknown }).experiment),
   )
 
-  // We need to remove Ids, status, conclusion data, reformart exposure events to make it like new
+  // We need to remove Ids, status, conclusion data, reformat exposure events to make it like new
   const newShapedExperiment = _.clone(experiment)
   delete newShapedExperiment.experimentId
   delete newShapedExperiment.status
