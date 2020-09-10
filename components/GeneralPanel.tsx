@@ -5,6 +5,7 @@ import {
   DialogContent,
   DialogTitle,
   InputAdornment,
+  Link,
   Paper,
   Toolbar,
   Tooltip,
@@ -33,6 +34,8 @@ const useStyles = makeStyles((theme: Theme) =>
     to: {
       marginLeft: theme.spacing(2),
       marginRight: theme.spacing(2),
+      fontFamily: theme.custom.fonts.monospace,
+      color: theme.palette.grey[600],
     },
     title: {
       flexGrow: 1,
@@ -51,6 +54,9 @@ const useStyles = makeStyles((theme: Theme) =>
         color: theme.palette.text.hint,
       },
     },
+    monospace: {
+      fontFamily: theme.custom.fonts.monospace,
+    },
   }),
 )
 
@@ -68,15 +74,6 @@ function GeneralPanel({
 }) {
   const classes = useStyles()
   const data = [
-    { label: 'Description', value: experiment.description },
-    {
-      label: 'P2 Link',
-      value: (
-        <a href={experiment.p2Url} rel='noopener noreferrer' target='_blank'>
-          {experiment.p2Url}
-        </a>
-      ),
-    },
     {
       label: 'Status',
       value: <ExperimentStatus status={experiment.status} />,
@@ -91,7 +88,16 @@ function GeneralPanel({
         </>
       ),
     },
-    { label: 'Owner', value: experiment.ownerLogin },
+    { label: 'Description', value: <span className={classes.monospace}>{experiment.description}</span> },
+    { label: 'Owner', value: <span className={classes.monospace}>{experiment.ownerLogin}</span> },
+    {
+      label: 'P2 Link',
+      value: (
+        <Link href={experiment.p2Url} rel='noopener noreferrer' target='_blank' className={classes.monospace}>
+          {experiment.p2Url}
+        </Link>
+      ),
+    },
   ]
 
   // Edit Modal
