@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, Typography } from '@material-ui/core'
+import { Button, Dialog, DialogActions, DialogContent, Tooltip, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
@@ -55,14 +55,18 @@ const ExperimentDisableButton = ({
 
   return (
     <>
-      <Button
-        variant='outlined'
-        classes={{ outlined: classes.buttonOutlined }}
-        disabled={!canDisableExperiment}
-        onClick={onAskToConfirmDisableExperiment}
-      >
-        Disable
-      </Button>
+      <Tooltip title={canDisableExperiment ? '' : 'This experiment is disabled.'}>
+        <span>
+          <Button
+            variant='outlined'
+            classes={{ outlined: classes.buttonOutlined }}
+            disabled={!canDisableExperiment}
+            onClick={onAskToConfirmDisableExperiment}
+          >
+            Disable
+          </Button>
+        </span>
+      </Tooltip>
       <Dialog open={isAskingToConfirmDisableExperiment} aria-labelledby='confirm-disable-experiment-dialog-title'>
         <DialogContent>
           <Typography variant='body1'>Are you sure you want to disable this experiment?</Typography>
