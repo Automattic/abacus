@@ -67,8 +67,6 @@ export default function WizardEditPage() {
     <Layout title={`Editing Experiment: ${experiment?.name || ''}`}>
       {isLoading && <LinearProgress />}
       {!isLoading && initialExperiment && indexedMetrics && indexedSegments && (
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-        // @ts-ignore; initialExperiment type doesn't quite fit, I would leave this as a reasonable compromise
         <ExperimentForm {...{ indexedMetrics, indexedSegments, initialExperiment, onSubmit }} />
       )}
     </Layout>
