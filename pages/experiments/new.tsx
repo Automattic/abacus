@@ -1,4 +1,4 @@
-import { LinearProgress } from '@material-ui/core'
+import { createStyles, LinearProgress, makeStyles, Theme, Typography } from '@material-ui/core'
 import debugFactory from 'debug'
 import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
@@ -17,8 +17,22 @@ import { or } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/experiments/new.tsx')
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    title: {
+      margin: theme.spacing(3, 0, 0, 0),
+      color: theme.palette.grey.A700,
+    },
+    progress: {
+      marginTop: theme.spacing(2),
+    },
+  }),
+)
+
 const ExperimentsNewPage = function () {
   debug('ExperimentsNewPage#render')
+  const classes = useStyles()
+
   const initialExperiment = createInitialExperiment()
 
   const { isLoading: metricsIsLoading, data: indexedMetrics, error: metricsError } = useDataSource(
@@ -54,8 +68,11 @@ const ExperimentsNewPage = function () {
   }
 
   return (
-    <Layout title='Create an Experiment'>
-      {isLoading && <LinearProgress />}
+    <Layout headTitle='Create an Experiment'>
+      <div className={classes.title}>
+        <Typography variant='h2'>Create an Experiment</Typography>
+      </div>
+      {isLoading && <LinearProgress className={classes.progress} />}
       {!isLoading && indexedMetrics && indexedSegments && (
         <ExperimentForm {...{ indexedMetrics, indexedSegments, initialExperiment, onSubmit }} />
       )}
