@@ -496,7 +496,6 @@ test('form submits an edited experiment without any changes', async () => {
   // ### Submit
   screen.getByText(/Confirm and Submit Your Experiment/)
 
-  screen.getAllByRole('button', { name: /Submit/ })
   const submit = screen
     .getAllByRole('button', { name: /Submit/ })
     .find((submit) => submit.getAttribute('type') === 'submit')
