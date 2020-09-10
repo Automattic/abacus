@@ -521,11 +521,9 @@ test('form submits an edited experiment without any changes', async () => {
   newShapedExperiment.segmentAssignments.forEach((segmentAssignment) => delete segmentAssignment.segmentAssignmentId)
   newShapedExperiment.variations.forEach((variation) => delete variation.variationId)
   newShapedExperiment.exposureEvents?.forEach((exposureEvent) => {
-    if (!exposureEvent.props) {
-      return
+    if (exposureEvent.props) {
+      exposureEvent.props = _.toPairs(exposureEvent.props).map(([key, value]) => ({ key, value }))
     }
-
-    exposureEvent.props = _.toPairs(exposureEvent.props).map(([key, value]) => ({ key, value }))
   })
 
   expect(validatedExperiment).toEqual(newShapedExperiment)
