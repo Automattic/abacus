@@ -1,12 +1,13 @@
+import { createStyles, makeStyles, Paper, Toolbar, Typography } from '@material-ui/core'
 import { TableCellProps } from '@material-ui/core/TableCell'
 import _ from 'lodash'
 import React, { useMemo } from 'react'
 
-import LabelValuePanel from '@/components/LabelValuePanel'
+import LabelValueTable from '@/components/LabelValueTable'
 import SegmentsTable from '@/components/SegmentsTable'
 import VariationsTable from '@/components/VariationsTable'
 import { ExperimentFull, Segment, SegmentAssignment, SegmentType } from '@/lib/schemas'
-import * as Variations from '@/lib/variations'
+import theme from '@/styles/theme'
 
 /**
  * Resolves the segment ID of the segment assignment with the actual segment.
@@ -43,6 +44,62 @@ function resolveSegmentAssignments(
   })
 }
 
+const useStyles = makeStyles(() =>
+  createStyles({
+    title: {
+      flexGrow: 1,
+    },
+  }),
+)
+
+const eventStyles = makeStyles(() =>
+  createStyles({
+    entry: {
+      display: 'block',
+      fontFamily: theme.custom.fonts.monospace,
+      color: 'gray',
+    },
+    eventName: {
+      fontFamily: theme.custom.fonts.monospace,
+    },
+    eventList: {
+      '& p:not(:first-child)': {
+        paddingTop: theme.spacing(2),
+      },
+      '& p': {
+        paddingBottom: theme.spacing(2),
+      },
+      '& p:not(:last-child)': {
+        borderBottom: '1px solid rgb(224,224,224)',
+      },
+    },
+  }),
+)
+
+function ExposureEventsTable({ experiment: { exposureEvents } }: { experiment: ExperimentFull }) {
+  const classes = eventStyles()
+
+  return (
+    <div className={classes.eventList}>
+      {exposureEvents && exposureEvents.length ? (
+        exposureEvents.map((ev) => (
+          <Typography key={ev.event}>
+            <span className={classes.eventName}>{ev.event}</span>
+            {ev.props &&
+              Object.entries(ev.props).map(([key, val]) => (
+                <span key={key} className={classes.entry}>
+                  {key}: {val}
+                </span>
+              ))}
+          </Typography>
+        ))
+      ) : (
+        <Typography>No exposure events defined</Typography>
+      )}
+    </div>
+  )
+}
+
 /**
  * Renders the audience information of an experiment in a panel component.
  *
@@ -51,6 +108,8 @@ function resolveSegmentAssignments(
  *   of the experiment's segment assignments.
  */
 function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; segments: Segment[] }) {
+  const classes = useStyles()
+
   const segmentsByType = useMemo(
     () => _.groupBy(resolveSegmentAssignments(experiment.segmentAssignments, segments), _.property('segment.type')),
     [experiment.segmentAssignments, segments],
@@ -62,7 +121,7 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
     {
       label: 'Variations',
       padding: 'none' as TableCellProps['padding'],
-      value: <VariationsTable variations={Variations.sort(experiment.variations)} />,
+      value: <VariationsTable experiment={experiment} />,
     },
     {
       label: 'Segments',
@@ -80,8 +139,21 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
         </>
       ),
     },
+    {
+      label: 'Exposure Events',
+      value: <ExposureEventsTable experiment={experiment} />,
+    },
   ]
-  return <LabelValuePanel data={data} title='Audience' />
+  return (
+    <Paper>
+      <Toolbar>
+        <Typography className={classes.title} color='textPrimary' variant='h3'>
+          Audience
+        </Typography>
+      </Toolbar>
+      <LabelValueTable data={data} />
+    </Paper>
+  )
 }
 
 export default AudiencePanel

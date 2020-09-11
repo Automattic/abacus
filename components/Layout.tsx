@@ -63,7 +63,8 @@ const useStyles = makeStyles((theme: Theme) =>
       flex: '1 0',
     },
     contentTitle: {
-      margin: theme.spacing(4, 0, 2, 0),
+      margin: theme.spacing(3, 0, 2, 0),
+      color: theme.palette.grey.A700,
     },
 
     // Footer
@@ -74,12 +75,12 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const Layout = ({ title, children }: { title: string; children?: ReactNode }) => {
+const Layout = ({ title, headTitle, children }: { title?: string; headTitle?: string; children?: ReactNode }) => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
       <Head>
-        <title>{title} | Abacus</title>
+        <title>{title ?? /* istanbul ignore next; trivial */ headTitle} | Abacus</title>
         <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
@@ -93,13 +94,13 @@ const Layout = ({ title, children }: { title: string; children?: ReactNode }) =>
           )
         }
         <div className={classes.appBarTop}>
-          <Container maxWidth='xl' component='a' className={classes.appLogotype} href='/'>
+          <Container component='a' className={classes.appLogotype} href='/'>
             <img alt='logo' className={classes.appLogo} src='/img/logo.png' />
             <span className={classes.appName}>Abacus</span>
           </Container>
         </div>
         <div className={classes.appBarBottom}>
-          <Container maxWidth='xl'>
+          <Container>
             <nav className={classes.appNav}>
               <Link href='/experiments'>
                 <a>Experiments</a>
@@ -115,9 +116,11 @@ const Layout = ({ title, children }: { title: string; children?: ReactNode }) =>
         </div>
       </AppBar>
       <Container className={classes.content}>
-        <Typography variant='h1' className={classes.contentTitle}>
-          {title}
-        </Typography>
+        {title && (
+          <Typography variant='h2' className={classes.contentTitle}>
+            {title}
+          </Typography>
+        )}
         {children}
       </Container>
       <footer className={classes.footer}>

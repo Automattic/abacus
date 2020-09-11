@@ -1,6 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react-hooks'
 import * as notistack from 'notistack'
-import { act } from 'react-dom/test-utils'
 
 import { useDataLoadingError, useDataSource } from './data-loading'
 
@@ -31,7 +30,7 @@ describe('utils/data-loading.ts module', () => {
         return useDataSource(() => promise, [])
       })
 
-      expect(renderResult.result.current).toEqual({
+      expect(renderResult.result.current).toMatchObject({
         isLoading: true,
         data: null,
         error: null,
@@ -43,7 +42,7 @@ describe('utils/data-loading.ts module', () => {
 
       await renderResult.waitForNextUpdate()
 
-      expect(renderResult.result.current).toEqual({
+      expect(renderResult.result.current).toMatchObject({
         isLoading: false,
         data: 123,
         error: null,
@@ -57,7 +56,7 @@ describe('utils/data-loading.ts module', () => {
         return useDataSource(() => promise, [])
       })
 
-      expect(renderResult.result.current).toEqual({
+      expect(renderResult.result.current).toMatchObject({
         isLoading: true,
         data: null,
         error: null,
@@ -69,10 +68,85 @@ describe('utils/data-loading.ts module', () => {
 
       await renderResult.waitForNextUpdate()
 
-      expect(renderResult.result.current).toEqual({
+      expect(renderResult.result.current).toMatchObject({
         isLoading: false,
         data: null,
         error: 123,
+      })
+    })
+
+    it('should resolve promise after unmount without logging an error', () => {
+      const originalConsoleError = console.error
+      console.error = jest.fn()
+
+      const { resolve, promise } = createControllablePromise()
+
+      const renderResult = renderHook(() => {
+        return useDataSource(() => promise, [])
+      })
+
+      renderResult.unmount()
+
+      act(() => resolve(123))
+
+      expect((console.error as jest.Mock).mock.calls.length).toBe(0)
+
+      console.error = originalConsoleError
+    })
+
+    it('should be able to reload data', async () => {
+      const { promise: promise0, resolve: resolve0 } = createControllablePromise()
+      let isPromise0Resolved = false
+      const promise1 = promise0.then((data) => {
+        isPromise0Resolved = true
+        return data
+      })
+      const { promise: promise2, resolve: resolve2 } = createControllablePromise()
+
+      const renderResult = renderHook(() => {
+        return useDataSource(() => {
+          return isPromise0Resolved ? promise2 : promise1
+        }, [])
+      })
+
+      expect(renderResult.result.current).toMatchObject({
+        isLoading: true,
+        data: null,
+        error: null,
+      })
+
+      act(() => {
+        resolve0(123)
+      })
+
+      await renderResult.waitForNextUpdate()
+
+      expect(renderResult.result.current).toMatchObject({
+        isLoading: false,
+        data: 123,
+        error: null,
+      })
+
+      act(() => {
+        renderResult.result.current.reloadRef.current()
+      })
+
+      expect(renderResult.result.current).toMatchObject({
+        isLoading: true,
+        data: 123,
+        error: null,
+      })
+
+      act(() => {
+        resolve2(456)
+      })
+
+      await renderResult.waitForNextUpdate()
+
+      expect(renderResult.result.current).toMatchObject({
+        isLoading: false,
+        data: 456,
+        error: null,
       })
     })
   })

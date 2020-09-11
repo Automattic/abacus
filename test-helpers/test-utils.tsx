@@ -1,6 +1,6 @@
-import { Queries, render as actualRender, RenderOptions } from '@testing-library/react'
+import { act, fireEvent, Queries, render as actualRender, RenderOptions, screen } from '@testing-library/react'
 import mediaQuery from 'css-mediaquery'
-import { Formik } from 'formik'
+import { Formik, FormikValues } from 'formik'
 import React from 'react'
 import { ValidationError } from 'yup'
 
@@ -46,9 +46,15 @@ export function createMatchMedia(width: number) {
 /**
  * Mock Formik for rendering Formik components when you don't care about the formik connection.
  */
-export const MockFormik = ({ children }: { children: React.ReactNode }) => {
+export const MockFormik = ({
+  children,
+  initialValues = {},
+}: {
+  children: React.ReactNode
+  initialValues?: FormikValues
+}) => {
   return (
-    <Formik initialValues={{}} onSubmit={() => undefined}>
+    <Formik initialValues={initialValues} onSubmit={() => undefined}>
       {children}
     </Formik>
   )
@@ -66,4 +72,15 @@ export async function validationErrorDisplayer<T>(promise: Promise<T>): Promise<
     }
     throw err
   }
+}
+
+/**
+ * Change the value in a form field.
+ */
+export async function changeFieldByRole(role: string, name: RegExp, value: string) {
+  const field = screen.getByRole(role, { name: name })
+  // eslint-disable-next-line @typescript-eslint/require-await
+  await act(async () => {
+    fireEvent.change(field, { target: { value: value } })
+  })
 }

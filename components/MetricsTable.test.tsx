@@ -1,4 +1,4 @@
-import { fireEvent, getByText, getDefaultNormalizer, waitFor } from '@testing-library/react'
+import { fireEvent, getByText, getDefaultNormalizer, screen, waitFor } from '@testing-library/react'
 import * as notistack from 'notistack'
 import React from 'react'
 
@@ -69,4 +69,17 @@ test('with some metrics, loads and opens metric details', async () => {
     // Close metric details
     fireEvent.click(getByText(container, /metric_1/))
   }
+})
+
+test('with some metrics and canEditMetrics can click on the edit button', () => {
+  const onEditMetric = jest.fn()
+  const { container: _container } = render(
+    <MetricsTable metrics={Fixtures.createMetricBares(2)} onEditMetric={onEditMetric} />,
+  )
+
+  const edits = screen.getAllByRole('button', { name: 'Edit Metric' })
+
+  fireEvent.click(edits[0])
+
+  expect(onEditMetric.mock.calls.length).toBe(1)
 })

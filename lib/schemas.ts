@@ -2,13 +2,20 @@
 // https://app.swaggerhub.com/apis/yanir/experiments/0.1.0
 
 import * as dateFns from 'date-fns'
+import _ from 'lodash'
 import * as yup from 'yup'
 
 const idSchema = yup.number().integer().positive()
-const nameSchema = yup
+export const nameSchema = yup
   .string()
   .max(128)
   .matches(/^[a-z][a-z0-9_]*[a-z0-9]$/, 'This field must use a basic snake_case.')
+const dateSchema = yup
+  .date()
+  // As yup's default transform sets a local timezone and we want it to be in UTC:
+  .transform(function (_value, originalValue) {
+    return new Date(originalValue)
+  })
 
 export const eventSchema = yup
   .object({
@@ -18,6 +25,15 @@ export const eventSchema = yup
   .defined()
   .camelCase()
 export type Event = yup.InferType<typeof eventSchema>
+
+export const eventNewSchema = yup
+  .object({
+    event: yup.string().defined(),
+    props: yup.array(yup.object({ key: yup.string().defined(), value: yup.string().defined() }).defined()).defined(),
+  })
+  .defined()
+  .camelCase()
+export type EventNew = yup.InferType<typeof eventNewSchema>
 
 export enum TransactionTypes {
   NewPurchase = 'new purchase',
@@ -68,15 +84,10 @@ export const metricFullSchema = metricBareSchema
   })
   .defined()
   .camelCase()
-  .test(
-    'exactly-one-params',
-    'Exactly one of eventParams or revenueParams must be defined.',
-    /* istanbul ignore next; This is a test itself */
-    (metricFull) => {
-      // (Logical XOR)
-      return !!metricFull.eventParams !== !!metricFull.revenueParams
-    },
-  )
+  .test('exactly-one-params', 'Exactly one of eventParams or revenueParams must be defined.', (metricFull) => {
+    // (Logical XOR)
+    return !!metricFull.eventParams !== !!metricFull.revenueParams
+  })
 export type MetricFull = yup.InferType<typeof metricFullSchema>
 
 export enum AttributionWindowSeconds {
@@ -102,11 +113,12 @@ export const metricAssignmentNewSchema = yup
     changeExpected: yup.bool().defined(),
     isPrimary: yup.bool().defined(),
     metricId: idSchema.defined(),
-    minDifference: yup.number().defined(),
+    minDifference: yup.number().defined().positive(),
   })
   .defined()
   .camelCase()
 export type MetricAssignmentNew = yup.InferType<typeof metricAssignmentNewSchema>
+export const metricAssignmentNewOutboundSchema = metricAssignmentNewSchema.snakeCase()
 
 export const metricAssignmentSchema = metricAssignmentNewSchema
   .shape({
@@ -139,6 +151,7 @@ export const segmentAssignmentNewSchema = yup
   .defined()
   .camelCase()
 export type SegmentAssignmentNew = yup.InferType<typeof segmentAssignmentNewSchema>
+export const segmentAssignmentNewOutboundSchema = segmentAssignmentNewSchema.snakeCase()
 
 export const segmentAssignmentSchema = segmentAssignmentNewSchema
   .shape({
@@ -157,6 +170,7 @@ export const variationNewSchema = yup
   .defined()
   .camelCase()
 export type VariationNew = yup.InferType<typeof variationNewSchema>
+export const variationNewOutboundSchema = variationNewSchema.snakeCase()
 
 export const variationSchema = variationNewSchema
   .shape({
@@ -184,8 +198,20 @@ export const experimentBareSchema = yup
   .object({
     experimentId: idSchema.defined(),
     name: nameSchema.defined(),
-    startDatetime: yup.date().defined(),
-    endDatetime: yup.date().defined(),
+    startDatetime: dateSchema.defined(),
+    endDatetime: dateSchema
+      .defined()
+      .when(
+        'startDatetime',
+        (startDatetime: Date, schema: yup.DateSchema) =>
+          startDatetime &&
+          schema
+            .min(startDatetime, 'End date must be after start date.')
+            .max(
+              dateFns.addMonths(startDatetime, MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS),
+              `End date must be within ${MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS} months of start date.`,
+            ),
+      ),
     status: yup.string().oneOf(Object.values(Status)).defined(),
     platform: yup.string().oneOf(Object.values(Platform)).defined(),
     ownerLogin: yup.string().defined(),
@@ -214,35 +240,59 @@ export type ExperimentFull = yup.InferType<typeof experimentFullSchema>
 const now = new Date()
 export const experimentFullNewSchema = experimentFullSchema.shape({
   experimentId: idSchema.nullable(),
-  // Using yesterday here to avoid timezone issues
-  startDatetime: yup
-    .date()
+  // This effectively makes status undefined (best I could do in yup)
+  status: yup.mixed().oneOf([]).notRequired(),
+  startDatetime: dateSchema
     .defined()
-    .min(now, 'Start date (UTC) must be in the future.')
-    .max(
-      dateFns.addMonths(now, MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS),
+    .test(
+      'future-start-date',
+      'Start date (UTC) must be in the future.',
+      // We need to refer to new Date() instead of using dateFns.isFuture so MockDate works with this in the tests.
+      (date) => dateFns.isBefore(new Date(), date),
+    )
+    .test(
+      'bounded-start-date',
       `Start date must be within ${MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS} months from now.`,
+      // We need to refer to new Date() instead of using dateFns.isFuture so MockDate works with this in the tests.
+      (date) => dateFns.isBefore(date, dateFns.addMonths(now, MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS)),
     ),
-  endDatetime: yup
-    .date()
-    .defined()
-    .when(
-      'startDatetime',
-      /* istanbul ignore next; should be e2e tested */
-      (startDatetime: Date, schema: yup.DateSchema) =>
-        startDatetime &&
-        schema
-          .min(startDatetime, 'End date must be after start date.')
-          .max(
-            dateFns.addMonths(startDatetime, MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS),
-            `End date must be within ${MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS} months of start date.`,
-          ),
-    ),
+  exposureEvents: yup.array(eventNewSchema).notRequired(),
   metricAssignments: yup.array(metricAssignmentNewSchema).defined().min(1),
   segmentAssignments: yup.array(segmentAssignmentNewSchema).defined(),
   variations: yup.array<VariationNew>(variationNewSchema).defined().min(2),
 })
 export type ExperimentFullNew = yup.InferType<typeof experimentFullNewSchema>
+/**
+ * For casting use only.
+ */
+export const experimentFullNewOutboundSchema = experimentFullNewSchema
+  .shape({
+    // Seems to work here but not below?
+    variations: yup.array<VariationNew>(variationNewOutboundSchema).defined(),
+  })
+  .snakeCase()
+  .transform(
+    // istanbul ignore next; Tested by integration
+    (currentValue) => ({
+      ...currentValue,
+      // The P2 field gets incorrectly snake_cased so we fix it here
+      p_2_url: undefined,
+      p2_url: currentValue.p_2_url,
+      // These two only seem to work down here rather then above?
+      metric_assignments: yup.array(metricAssignmentNewOutboundSchema).defined().cast(currentValue.metric_assignments),
+      segment_assignments: yup
+        .array(segmentAssignmentNewOutboundSchema)
+        .defined()
+        .cast(currentValue.segment_assignments),
+      // Converting EventNew to Event
+      exposure_events: currentValue.exposure_events.map(
+        (event: EventNew): Event => ({
+          event: event.event,
+          props: event.props ? _.fromPairs(event.props.map(({ key, value }) => [key, value])) : undefined,
+        }),
+      ),
+    }),
+  )
 
 export enum RecommendationReason {
   CiInRope = 'ci_in_rope',
@@ -290,7 +340,7 @@ export enum AnalysisStrategy {
 export const analysisSchema = yup
   .object({
     metricAssignmentId: idSchema.defined(),
-    analysisDatetime: yup.date().defined(),
+    analysisDatetime: dateSchema.defined(),
     analysisStrategy: yup.string().oneOf(Object.values(AnalysisStrategy)).defined(),
     // TODO: Provide better validation for these
     participantStats: yup.object().defined() as yup.Schema<Record<string, number>>,
@@ -300,3 +350,15 @@ export const analysisSchema = yup
   .defined()
   .camelCase()
 export type Analysis = yup.InferType<typeof analysisSchema>
+
+/**
+ * The yup equivalant of _.pick, produces a subset of the original schema.
+ *
+ * @param schema A yup object schema
+ * @param props Properties to pick
+ * @param value See yup.reach
+ * @param context See yup.reach
+ */
+export function yupPick(schema: yup.ObjectSchema, props: string[], value?: unknown, context?: unknown) {
+  return yup.object(_.fromPairs(props.map((prop) => [prop, yup.reach(schema, prop, value, context)])))
+}

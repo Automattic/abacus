@@ -1,15 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders as expected with all segments resolvable 1`] = `
+exports[`Empty array shows no exposure events 1`] = `
 <div>
   <div
     class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
   >
-    <h3
-      class="MuiTypography-root makeStyles-title-9 MuiTypography-h3 MuiTypography-colorTextPrimary"
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
-      Audience
-    </h3>
+      <h3
+        class="MuiTypography-root makeStyles-title-28 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        Audience
+      </h3>
+    </div>
     <table
       class="MuiTable-root"
     >
@@ -59,7 +63,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
             Variations
           </th>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+            class="MuiTableCell-root MuiTableCell-body"
           >
             <table
               class="MuiTable-root"
@@ -95,9 +99,13 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    control
                     <span
-                      class="makeStyles-default-10 makeStyles-root-11"
+                      class="makeStyles-variation-38"
+                    >
+                      control
+                    </span>
+                    <span
+                      class="makeStyles-default-37 makeStyles-root-40"
                     >
                       Default
                     </span>
@@ -115,7 +123,11 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    test
+                    <span
+                      class="makeStyles-variation-38"
+                    >
+                      test
+                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -139,7 +151,777 @@ exports[`renders as expected with all segments resolvable 1`] = `
             Segments
           </th>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Locales
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    All 
+                    locales
+                     included
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Countries
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    All 
+                    countries
+                     included
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Exposure Events
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            <div
+              class="makeStyles-eventList-44"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1"
+              >
+                No exposure events defined
+              </p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`Shows exposure events 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <h3
+        class="MuiTypography-root makeStyles-title-28 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        Audience
+      </h3>
+    </div>
+    <table
+      class="MuiTable-root"
+    >
+      <tbody
+        class="MuiTableBody-root"
+      >
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Platform
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            calypso
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            User Type
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            New users only
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Variations
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Name
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Percent
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-variation-30"
+                    >
+                      control
+                    </span>
+                    <span
+                      class="makeStyles-default-29 makeStyles-root-32"
+                    >
+                      Default
+                    </span>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    60
+                    %
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-variation-30"
+                    >
+                      test
+                    </span>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    40
+                    %
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Segments
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Locales
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    All 
+                    locales
+                     included
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Countries
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    All 
+                    countries
+                     included
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Exposure Events
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            <div
+              class="makeStyles-eventList-36"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1"
+              >
+                <span
+                  class="makeStyles-eventName-35"
+                >
+                  test
+                </span>
+                <span
+                  class="makeStyles-entry-34"
+                >
+                  prop1
+                  : 
+                  value1
+                </span>
+              </p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`null shows no exposure events 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <h3
+        class="MuiTypography-root makeStyles-title-28 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        Audience
+      </h3>
+    </div>
+    <table
+      class="MuiTable-root"
+    >
+      <tbody
+        class="MuiTableBody-root"
+      >
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Platform
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            calypso
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            User Type
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            New users only
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Variations
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Name
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Percent
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-variation-46"
+                    >
+                      control
+                    </span>
+                    <span
+                      class="makeStyles-default-45 makeStyles-root-48"
+                    >
+                      Default
+                    </span>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    60
+                    %
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-variation-46"
+                    >
+                      test
+                    </span>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    40
+                    %
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Segments
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Locales
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    All 
+                    locales
+                     included
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Countries
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    All 
+                    countries
+                     included
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Exposure Events
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            <div
+              class="makeStyles-eventList-52"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1"
+              >
+                No exposure events defined
+              </p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`renders as expected with all segments resolvable 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <h3
+        class="MuiTypography-root makeStyles-title-19 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        Audience
+      </h3>
+    </div>
+    <table
+      class="MuiTable-root"
+    >
+      <tbody
+        class="MuiTableBody-root"
+      >
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Platform
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            calypso
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            User Type
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            New users only
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Variations
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Name
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Percent
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-variation-21"
+                    >
+                      control
+                    </span>
+                    <span
+                      class="makeStyles-default-20 makeStyles-root-23"
+                    >
+                      Default
+                    </span>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    60
+                    %
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-variation-21"
+                    >
+                      test
+                    </span>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    40
+                    %
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Segments
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
           >
             <table
               class="MuiTable-root"
@@ -179,10 +961,19 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   >
                     segment_3
                     <span
-                      class="makeStyles-excluded-12 makeStyles-root-11"
+                      class="makeStyles-excluded-24 makeStyles-root-23"
                     >
                       Excluded
                     </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    segment_5
                   </td>
                 </tr>
               </tbody>
@@ -216,7 +1007,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   >
                     segment_2
                     <span
-                      class="makeStyles-excluded-12 makeStyles-root-11"
+                      class="makeStyles-excluded-24 makeStyles-root-23"
                     >
                       Excluded
                     </span>
@@ -235,6 +1026,55 @@ exports[`renders as expected with all segments resolvable 1`] = `
             </table>
           </td>
         </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Exposure Events
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            <div
+              class="makeStyles-eventList-27"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1"
+              >
+                <span
+                  class="makeStyles-eventName-26"
+                >
+                  eventName
+                </span>
+                <span
+                  class="makeStyles-entry-25"
+                >
+                  additionalProp1
+                  : 
+                  prop1Value
+                </span>
+                <span
+                  class="makeStyles-entry-25"
+                >
+                  additionalProp2
+                  : 
+                  prop2Value
+                </span>
+                <span
+                  class="makeStyles-entry-25"
+                >
+                  additionalProp3
+                  : 
+                  prop3Value
+                </span>
+              </p>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -246,11 +1086,15 @@ exports[`renders as expected with existing users allowed 1`] = `
   <div
     class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
   >
-    <h3
-      class="MuiTypography-root makeStyles-title-5 MuiTypography-h3 MuiTypography-colorTextPrimary"
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
-      Audience
-    </h3>
+      <h3
+        class="MuiTypography-root makeStyles-title-10 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        Audience
+      </h3>
+    </div>
     <table
       class="MuiTable-root"
     >
@@ -300,7 +1144,7 @@ exports[`renders as expected with existing users allowed 1`] = `
             Variations
           </th>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+            class="MuiTableCell-root MuiTableCell-body"
           >
             <table
               class="MuiTable-root"
@@ -336,9 +1180,13 @@ exports[`renders as expected with existing users allowed 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    control
                     <span
-                      class="makeStyles-default-6 makeStyles-root-7"
+                      class="makeStyles-variation-12"
+                    >
+                      control
+                    </span>
+                    <span
+                      class="makeStyles-default-11 makeStyles-root-14"
                     >
                       Default
                     </span>
@@ -356,7 +1204,11 @@ exports[`renders as expected with existing users allowed 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    test
+                    <span
+                      class="makeStyles-variation-12"
+                    >
+                      test
+                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -380,7 +1232,7 @@ exports[`renders as expected with existing users allowed 1`] = `
             Segments
           </th>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+            class="MuiTableCell-root MuiTableCell-body"
           >
             <table
               class="MuiTable-root"
@@ -452,6 +1304,55 @@ exports[`renders as expected with existing users allowed 1`] = `
             </table>
           </td>
         </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Exposure Events
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            <div
+              class="makeStyles-eventList-18"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1"
+              >
+                <span
+                  class="makeStyles-eventName-17"
+                >
+                  eventName
+                </span>
+                <span
+                  class="makeStyles-entry-16"
+                >
+                  additionalProp1
+                  : 
+                  prop1Value
+                </span>
+                <span
+                  class="makeStyles-entry-16"
+                >
+                  additionalProp2
+                  : 
+                  prop2Value
+                </span>
+                <span
+                  class="makeStyles-entry-16"
+                >
+                  additionalProp3
+                  : 
+                  prop3Value
+                </span>
+              </p>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -463,11 +1364,15 @@ exports[`renders as expected with no segment assignments 1`] = `
   <div
     class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
   >
-    <h3
-      class="MuiTypography-root makeStyles-title-1 MuiTypography-h3 MuiTypography-colorTextPrimary"
+    <div
+      class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
-      Audience
-    </h3>
+      <h3
+        class="MuiTypography-root makeStyles-title-1 MuiTypography-h3 MuiTypography-colorTextPrimary"
+      >
+        Audience
+      </h3>
+    </div>
     <table
       class="MuiTable-root"
     >
@@ -517,7 +1422,7 @@ exports[`renders as expected with no segment assignments 1`] = `
             Variations
           </th>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+            class="MuiTableCell-root MuiTableCell-body"
           >
             <table
               class="MuiTable-root"
@@ -553,9 +1458,13 @@ exports[`renders as expected with no segment assignments 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    control
                     <span
-                      class="makeStyles-default-2 makeStyles-root-3"
+                      class="makeStyles-variation-3"
+                    >
+                      control
+                    </span>
+                    <span
+                      class="makeStyles-default-2 makeStyles-root-5"
                     >
                       Default
                     </span>
@@ -573,7 +1482,11 @@ exports[`renders as expected with no segment assignments 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    test
+                    <span
+                      class="makeStyles-variation-3"
+                    >
+                      test
+                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
@@ -597,7 +1510,7 @@ exports[`renders as expected with no segment assignments 1`] = `
             Segments
           </th>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+            class="MuiTableCell-root MuiTableCell-body"
           >
             <table
               class="MuiTable-root"
@@ -667,6 +1580,55 @@ exports[`renders as expected with no segment assignments 1`] = `
                 </tr>
               </tbody>
             </table>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            role="cell"
+            scope="row"
+          >
+            Exposure Events
+          </th>
+          <td
+            class="MuiTableCell-root MuiTableCell-body"
+          >
+            <div
+              class="makeStyles-eventList-9"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1"
+              >
+                <span
+                  class="makeStyles-eventName-8"
+                >
+                  eventName
+                </span>
+                <span
+                  class="makeStyles-entry-7"
+                >
+                  additionalProp1
+                  : 
+                  prop1Value
+                </span>
+                <span
+                  class="makeStyles-entry-7"
+                >
+                  additionalProp2
+                  : 
+                  prop2Value
+                </span>
+                <span
+                  class="makeStyles-entry-7"
+                >
+                  additionalProp3
+                  : 
+                  prop3Value
+                </span>
+              </p>
+            </div>
           </td>
         </tr>
       </tbody>

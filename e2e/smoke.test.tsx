@@ -15,16 +15,9 @@ describe('Experiments', () => {
   })
 
   // In non-production contexts, we should see the main page immediately.
-  it('should skip authentication and show the main page.', async () => {
-    await page.goto('http://a8c-abacus-local:3001')
+  it('should skip authentication and show the experiments page.', async () => {
+    await page.goto('http://a8c-abacus-local:3001/experiments')
 
-    // Sometimes the redirect has not occurred yet. So, we need to wait.
-    if (new URL(page.url()).pathname === '/') {
-      await page.waitForNavigation({ timeout: 2000 })
-    }
-
-    // We should arrive at the '/experiments' list
-    expect(new URL(page.url()).pathname).toBe('/experiments')
     await expect(page.title()).resolves.toMatch('Experiments | Abacus')
     // TODO: make more interesting assertions once there is more content to display
   })

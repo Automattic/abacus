@@ -1,18 +1,14 @@
-// Temporarily ignore until more parts are in place
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* istanbul ignore file */
 import { Button, Link, Paper, Step, StepButton, StepLabel, Stepper, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import useComponentSize from '@rehooks/component-size'
 import { Formik } from 'formik'
 import _ from 'lodash'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as yup from 'yup'
 
-import { createInitialExperiment } from '@/lib/experiments'
-import { indexMetrics } from '@/lib/normalizers'
-import { ExperimentFullNew, experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
+import { ExperimentFormData } from '@/lib/form-data'
+import { experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
 
+import LoadingButtonContainer from '../LoadingButtonContainer'
 import Audience from './Audience'
 import BasicInfo from './BasicInfo'
 import Beginning from './Beginning'
@@ -29,7 +25,7 @@ enum StageId {
 interface Stage {
   id: StageId
   title: string
-  validatableFields?: string[]
+  validatableFields: string[]
 }
 
 const stages: Stage[] = [
@@ -62,11 +58,12 @@ const stages: Stage[] = [
   {
     id: StageId.Metrics,
     title: 'Metrics',
-    validatableFields: ['experiment.metricAssignments'],
+    validatableFields: ['experiment.metricAssignments', 'experiment.exposureEvents'],
   },
   {
     id: StageId.Submit,
     title: 'Submit',
+    validatableFields: [],
   },
 ]
 
@@ -89,7 +86,7 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(2, 1),
     },
     formPartActions: {
-      maxWidth: 800,
+      maxWidth: 950,
       display: 'flex',
       justifyContent: 'flex-end',
       '& .MuiButton-root': {
@@ -97,7 +94,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     paper: {
-      maxWidth: 800,
+      maxWidth: 950,
       padding: theme.spacing(3, 4),
       marginBottom: theme.spacing(2),
     },
@@ -108,10 +105,12 @@ const ExperimentForm = ({
   indexedMetrics,
   indexedSegments,
   initialExperiment,
+  onSubmit,
 }: {
   indexedMetrics: Record<number, MetricBare>
   indexedSegments: Record<number, Segment>
-  initialExperiment: ReturnType<typeof createInitialExperiment>
+  initialExperiment: ExperimentFormData
+  onSubmit: (formData: unknown) => Promise<void>
 }) => {
   const classes = useStyles()
 
@@ -130,13 +129,13 @@ const ExperimentForm = ({
   return (
     <Formik
       initialValues={{ experiment: initialExperiment }}
-      onSubmit={(v) => alert(JSON.stringify(v, null, 2))}
+      onSubmit={onSubmit}
       validationSchema={yup.object({ experiment: experimentFullNewSchema })}
     >
       {(formikProps) => {
         const isStageValid = async (stage: Stage): Promise<boolean> => {
           const errors = await formikProps.validateForm()
-          return !stage.validatableFields?.some((field) => _.get(errors, field))
+          return !stage.validatableFields.some((field) => _.get(errors, field))
         }
 
         const updateStageState = async (stage: Stage) => {
@@ -163,11 +162,13 @@ const ExperimentForm = ({
         }
 
         const prevStage = () => {
+          // istanbul ignore else; This condition should never happen
           if (0 < currentStageIndex) {
             changeStage(stages[currentStageIndex - 1].id)
           }
         }
         const nextStage = () => {
+          // istanbul ignore else; This condition should never happen
           if (currentStageIndex < stages.length) {
             changeStage(stages[currentStageIndex + 1].id)
           }
@@ -265,14 +266,16 @@ const ExperimentForm = ({
                     </Paper>
                     <div className={classes.formPartActions}>
                       <Button onClick={prevStage}>Previous</Button>
-                      <Button
-                        type='submit'
-                        variant='contained'
-                        color='secondary'
-                        disabled={formikProps.isSubmitting || errorStages.length > 0}
-                      >
-                        Submit
-                      </Button>
+                      <LoadingButtonContainer isLoading={formikProps.isSubmitting}>
+                        <Button
+                          type='submit'
+                          variant='contained'
+                          color='secondary'
+                          disabled={formikProps.isSubmitting || errorStages.length > 0}
+                        >
+                          Submit
+                        </Button>
+                      </LoadingButtonContainer>
                     </div>
                   </div>
                 )}

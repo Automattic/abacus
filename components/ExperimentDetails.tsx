@@ -8,8 +8,7 @@ import AudiencePanel from '@/components/AudiencePanel'
 import ConclusionsPanel from '@/components/ConclusionsPanel'
 import GeneralPanel from '@/components/GeneralPanel'
 import MetricAssignmentsPanel from '@/components/MetricAssignmentsPanel'
-import * as Experiments from '@/lib/experiments'
-import { ExperimentFull, MetricBare, Segment } from '@/lib/schemas'
+import { ExperimentFull, MetricBare, Segment, Status } from '@/lib/schemas'
 
 const debug = debugFactory('abacus:components/ExperimentDetails.tsx')
 
@@ -20,10 +19,12 @@ function ExperimentDetails({
   experiment,
   metrics,
   segments,
+  experimentReloadRef,
 }: {
   experiment: ExperimentFull
   metrics: MetricBare[]
   segments: Segment[]
+  experimentReloadRef: React.MutableRefObject<() => void>
 }) {
   debug('ExperimentDetails#render')
   const theme = useTheme()
@@ -34,7 +35,7 @@ function ExperimentDetails({
       <Grid item xs={12} lg={7}>
         <Grid container direction='column' spacing={2}>
           <Grid item>
-            <GeneralPanel experiment={experiment} />
+            <GeneralPanel {...{ experiment, experimentReloadRef }} />
           </Grid>
           {isMdDown && (
             <Grid item>
@@ -42,11 +43,11 @@ function ExperimentDetails({
             </Grid>
           )}
           <Grid item>
-            <MetricAssignmentsPanel experiment={experiment} metrics={metrics} />
+            <MetricAssignmentsPanel {...{ experiment, metrics, experimentReloadRef }} />
           </Grid>
-          {Experiments.hasConclusionData(experiment) && (
+          {(experiment.status === Status.Completed || experiment.status === Status.Disabled) && (
             <Grid item>
-              <ConclusionsPanel experiment={experiment} />
+              <ConclusionsPanel {...{ experiment, experimentReloadRef }} />
             </Grid>
           )}
         </Grid>

@@ -92,8 +92,16 @@ const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
 
 /**
  * Renders a table of "bare" metric information.
+ *
+ * @param onEditMetric A Callback. Setting this will show the edit action in the table.
  */
-const MetricsTable = ({ metrics }: { metrics: MetricBare[] }) => {
+const MetricsTable = ({
+  metrics,
+  onEditMetric,
+}: {
+  metrics: MetricBare[]
+  onEditMetric?: (metricId: number) => void
+}) => {
   debug('MetricsTable#render')
 
   const theme = useTheme()
@@ -124,10 +132,26 @@ const MetricsTable = ({ metrics }: { metrics: MetricBare[] }) => {
 
   return (
     <MaterialTable
+      actions={
+        onEditMetric
+          ? [
+              {
+                icon: 'edit',
+                tooltip: 'Edit Metric',
+                onClick: (_event, rowData) => {
+                  onEditMetric((rowData as MetricBare).metricId)
+                },
+              },
+            ]
+          : undefined
+      }
       columns={tableColumns}
       data={metrics}
       onRowClick={(_event, _rowData, togglePanel) => togglePanel && togglePanel()}
-      options={defaultTableOptions}
+      options={{
+        ...defaultTableOptions,
+        actionsColumnIndex: 3,
+      }}
       detailPanel={(rowData) => <MetricDetail metricBare={rowData} />}
     />
   )

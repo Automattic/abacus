@@ -3,7 +3,7 @@
 exports[`allows adding, editing and removing a Metric Assignment 1`] = `
 <div>
   <div
-    class="makeStyles-root-11"
+    class="makeStyles-root-17"
   >
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -73,11 +73,11 @@ exports[`allows adding, editing and removing a Metric Assignment 1`] = `
       </table>
     </div>
     <div
-      class="makeStyles-addMetric-12"
+      class="makeStyles-addMetric-18"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-13"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-19"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -86,7 +86,7 @@ exports[`allows adding, editing and removing a Metric Assignment 1`] = `
         />
       </svg>
       <div
-        class="MuiFormControl-root makeStyles-addMetricSelect-15"
+        class="MuiFormControl-root makeStyles-addMetricSelect-21"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -100,7 +100,7 @@ exports[`allows adding, editing and removing a Metric Assignment 1`] = `
             tabindex="0"
           >
             <span
-              class="makeStyles-addMetricPlaceholder-14"
+              class="makeStyles-addMetricPlaceholder-20"
             >
               Select a Metric
             </span>
@@ -131,6 +131,66 @@ exports[`allows adding, editing and removing a Metric Assignment 1`] = `
           class="MuiButton-label"
         >
           Assign
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <h4
+      class="MuiTypography-root makeStyles-exposureEventsTitle-27 MuiTypography-h4 MuiTypography-gutterBottom"
+    >
+      Exposure Events (Optional)
+    </h4>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+              colspan="1"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+              >
+                You don't have any exposure events.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="makeStyles-addMetric-18"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-19"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+      </svg>
+      <button
+        aria-label="Add exposure event"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Add Event
         </span>
         <span
           class="MuiTouchRipple-root"
@@ -144,7 +204,7 @@ exports[`allows adding, editing and removing a Metric Assignment 1`] = `
 exports[`allows adding, editing and removing a Metric Assignment 2`] = `
 <div>
   <div
-    class="makeStyles-root-11"
+    class="makeStyles-root-17"
   >
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -214,11 +274,11 @@ exports[`allows adding, editing and removing a Metric Assignment 2`] = `
       </table>
     </div>
     <div
-      class="makeStyles-addMetric-12"
+      class="makeStyles-addMetric-18"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-13"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-19"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -227,7 +287,7 @@ exports[`allows adding, editing and removing a Metric Assignment 2`] = `
         />
       </svg>
       <div
-        class="MuiFormControl-root makeStyles-addMetricSelect-15"
+        class="MuiFormControl-root makeStyles-addMetricSelect-21"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -241,7 +301,7 @@ exports[`allows adding, editing and removing a Metric Assignment 2`] = `
             tabindex="0"
           >
             <span
-              class="makeStyles-addMetricPlaceholder-14"
+              class="makeStyles-addMetricPlaceholder-20"
             >
               Select a Metric
             </span>
@@ -278,6 +338,66 @@ exports[`allows adding, editing and removing a Metric Assignment 2`] = `
         />
       </button>
     </div>
+    <h4
+      class="MuiTypography-root makeStyles-exposureEventsTitle-27 MuiTypography-h4 MuiTypography-gutterBottom"
+    >
+      Exposure Events (Optional)
+    </h4>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+              colspan="1"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+              >
+                You don't have any exposure events.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="makeStyles-addMetric-18"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-19"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+      </svg>
+      <button
+        aria-label="Add exposure event"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Add Event
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
   </div>
 </div>
 `;
@@ -285,7 +405,7 @@ exports[`allows adding, editing and removing a Metric Assignment 2`] = `
 exports[`allows adding, editing and removing a Metric Assignment 3`] = `
 <div>
   <div
-    class="makeStyles-root-11"
+    class="makeStyles-root-17"
   >
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -344,14 +464,14 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <span
-                class="makeStyles-metricName-17"
+                class="makeStyles-metricName-23"
                 title="string"
               >
                 asdf_7d_refund
               </span>
               <br />
               <span
-                class="makeStyles-primary-18"
+                class="makeStyles-primary-24"
               >
                 Primary
               </span>
@@ -360,12 +480,12 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Attribution Window"
-                class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-16"
+                class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-22"
               >
                 <div
                   aria-haspopup="listbox"
-                  aria-labelledby="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
+                  aria-label="Attribution Window"
+                  aria-labelledby="experiment.metricAssignments[0].attributionWindowSeconds mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
                   id="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   role="button"
@@ -390,11 +510,11 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
                 </svg>
                 <fieldset
                   aria-hidden="true"
-                  class="PrivateNotchedOutline-root-21 MuiOutlinedInput-notchedOutline"
+                  class="PrivateNotchedOutline-root-33 MuiOutlinedInput-notchedOutline"
                   style="padding-left: 8px;"
                 >
                   <legend
-                    class="PrivateNotchedOutline-legend-22"
+                    class="PrivateNotchedOutline-legend-34"
                     style="width: 0.01px;"
                   >
                     <span>
@@ -405,7 +525,7 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
               </div>
             </td>
             <td
-              class="MuiTableCell-root MuiTableCell-body makeStyles-changeExpected-20"
+              class="MuiTableCell-root MuiTableCell-body makeStyles-changeExpected-26"
             >
               <span
                 class="MuiSwitch-root"
@@ -413,14 +533,14 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
                 <span
                   aria-disabled="false"
                   aria-label="Change Expected"
-                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-25 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-37 MuiSwitch-switchBase MuiSwitch-colorSecondary"
                   variant="outlined"
                 >
                   <span
                     class="MuiIconButton-label"
                   >
                     <input
-                      class="PrivateSwitchBase-input-28 MuiSwitch-input"
+                      class="PrivateSwitchBase-input-40 MuiSwitch-input"
                       id="experiment.metricAssignments[0].changeExpected"
                       name="experiment.metricAssignments[0].changeExpected"
                       type="checkbox"
@@ -443,8 +563,7 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Min difference"
-                class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-19"
+                class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-25"
               >
                 <div
                   class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
@@ -460,19 +579,22 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
                   </div>
                   <input
                     aria-invalid="false"
+                    aria-label="Min difference"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+                    id="experiment.metricAssignments[0].minDifference"
+                    min="0"
                     name="experiment.metricAssignments[0].minDifference"
-                    placeholder="-"
+                    placeholder="1.30"
                     type="number"
                     value=""
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="PrivateNotchedOutline-root-21 MuiOutlinedInput-notchedOutline"
+                    class="PrivateNotchedOutline-root-33 MuiOutlinedInput-notchedOutline"
                     style="padding-left: 8px;"
                   >
                     <legend
-                      class="PrivateNotchedOutline-legend-22"
+                      class="PrivateNotchedOutline-legend-34"
                       style="width: 0.01px;"
                     >
                       <span>
@@ -520,11 +642,11 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
       </table>
     </div>
     <div
-      class="makeStyles-addMetric-12"
+      class="makeStyles-addMetric-18"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-13"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-19"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -533,7 +655,7 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
         />
       </svg>
       <div
-        class="MuiFormControl-root makeStyles-addMetricSelect-15"
+        class="MuiFormControl-root makeStyles-addMetricSelect-21"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -547,7 +669,7 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
             tabindex="0"
           >
             <span
-              class="makeStyles-addMetricPlaceholder-14"
+              class="makeStyles-addMetricPlaceholder-20"
             >
               Select a Metric
             </span>
@@ -578,6 +700,66 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
           class="MuiButton-label"
         >
           Assign
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <h4
+      class="MuiTypography-root makeStyles-exposureEventsTitle-27 MuiTypography-h4 MuiTypography-gutterBottom"
+    >
+      Exposure Events (Optional)
+    </h4>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+              colspan="1"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+              >
+                You don't have any exposure events.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="makeStyles-addMetric-18"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-19"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+      </svg>
+      <button
+        aria-label="Add exposure event"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Add Event
         </span>
         <span
           class="MuiTouchRipple-root"
@@ -593,7 +775,7 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
   aria-hidden="true"
 >
   <div
-    class="makeStyles-root-11"
+    class="makeStyles-root-17"
   >
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -652,14 +834,14 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <span
-                class="makeStyles-metricName-17"
+                class="makeStyles-metricName-23"
                 title="string"
               >
                 asdf_7d_refund
               </span>
               <br />
               <span
-                class="makeStyles-primary-18"
+                class="makeStyles-primary-24"
               >
                 Primary
               </span>
@@ -668,12 +850,12 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Attribution Window"
-                class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-16"
+                class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-22"
               >
                 <div
                   aria-haspopup="listbox"
-                  aria-labelledby="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
+                  aria-label="Attribution Window"
+                  aria-labelledby="experiment.metricAssignments[0].attributionWindowSeconds mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
                   id="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   role="button"
@@ -698,11 +880,11 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
                 </svg>
                 <fieldset
                   aria-hidden="true"
-                  class="PrivateNotchedOutline-root-21 MuiOutlinedInput-notchedOutline"
+                  class="PrivateNotchedOutline-root-33 MuiOutlinedInput-notchedOutline"
                   style="padding-left: 8px;"
                 >
                   <legend
-                    class="PrivateNotchedOutline-legend-22"
+                    class="PrivateNotchedOutline-legend-34"
                     style="width: 0.01px;"
                   >
                     <span>
@@ -713,7 +895,7 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
               </div>
             </td>
             <td
-              class="MuiTableCell-root MuiTableCell-body makeStyles-changeExpected-20"
+              class="MuiTableCell-root MuiTableCell-body makeStyles-changeExpected-26"
             >
               <span
                 class="MuiSwitch-root"
@@ -721,14 +903,14 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
                 <span
                   aria-disabled="false"
                   aria-label="Change Expected"
-                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-25 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-37 MuiSwitch-switchBase MuiSwitch-colorSecondary"
                   variant="outlined"
                 >
                   <span
                     class="MuiIconButton-label"
                   >
                     <input
-                      class="PrivateSwitchBase-input-28 MuiSwitch-input"
+                      class="PrivateSwitchBase-input-40 MuiSwitch-input"
                       id="experiment.metricAssignments[0].changeExpected"
                       name="experiment.metricAssignments[0].changeExpected"
                       type="checkbox"
@@ -751,8 +933,7 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Min difference"
-                class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-19"
+                class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-25"
               >
                 <div
                   class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
@@ -768,19 +949,22 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
                   </div>
                   <input
                     aria-invalid="false"
+                    aria-label="Min difference"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+                    id="experiment.metricAssignments[0].minDifference"
+                    min="0"
                     name="experiment.metricAssignments[0].minDifference"
-                    placeholder="-"
+                    placeholder="1.30"
                     type="number"
                     value=""
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="PrivateNotchedOutline-root-21 MuiOutlinedInput-notchedOutline"
+                    class="PrivateNotchedOutline-root-33 MuiOutlinedInput-notchedOutline"
                     style="padding-left: 8px;"
                   >
                     <legend
-                      class="PrivateNotchedOutline-legend-22"
+                      class="PrivateNotchedOutline-legend-34"
                       style="width: 0.01px;"
                     >
                       <span>
@@ -828,11 +1012,11 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
       </table>
     </div>
     <div
-      class="makeStyles-addMetric-12"
+      class="makeStyles-addMetric-18"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-13"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-19"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -841,7 +1025,7 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
         />
       </svg>
       <div
-        class="MuiFormControl-root makeStyles-addMetricSelect-15"
+        class="MuiFormControl-root makeStyles-addMetricSelect-21"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -855,7 +1039,7 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
             tabindex="0"
           >
             <span
-              class="makeStyles-addMetricPlaceholder-14"
+              class="makeStyles-addMetricPlaceholder-20"
             >
               Select a Metric
             </span>
@@ -886,6 +1070,66 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
           class="MuiButton-label"
         >
           Assign
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <h4
+      class="MuiTypography-root makeStyles-exposureEventsTitle-27 MuiTypography-h4 MuiTypography-gutterBottom"
+    >
+      Exposure Events (Optional)
+    </h4>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+              colspan="1"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+              >
+                You don't have any exposure events.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="makeStyles-addMetric-18"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-19"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+      </svg>
+      <button
+        aria-label="Add exposure event"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Add Event
         </span>
         <span
           class="MuiTouchRipple-root"
@@ -899,7 +1143,7 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
 exports[`allows adding, editing and removing a Metric Assignment 5`] = `
 <div>
   <div
-    class="makeStyles-root-11"
+    class="makeStyles-root-17"
   >
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -958,14 +1202,14 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <span
-                class="makeStyles-metricName-17"
+                class="makeStyles-metricName-23"
                 title="string"
               >
                 asdf_7d_refund
               </span>
               <br />
               <span
-                class="makeStyles-primary-18"
+                class="makeStyles-primary-24"
               >
                 Primary
               </span>
@@ -974,12 +1218,12 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Attribution Window"
-                class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-16"
+                class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-22"
               >
                 <div
                   aria-haspopup="listbox"
-                  aria-labelledby="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
+                  aria-label="Attribution Window"
+                  aria-labelledby="experiment.metricAssignments[0].attributionWindowSeconds mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
                   id="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   role="button"
@@ -1004,11 +1248,11 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
                 </svg>
                 <fieldset
                   aria-hidden="true"
-                  class="PrivateNotchedOutline-root-21 MuiOutlinedInput-notchedOutline"
+                  class="PrivateNotchedOutline-root-33 MuiOutlinedInput-notchedOutline"
                   style="padding-left: 8px;"
                 >
                   <legend
-                    class="PrivateNotchedOutline-legend-22"
+                    class="PrivateNotchedOutline-legend-34"
                     style="width: 0.01px;"
                   >
                     <span>
@@ -1019,7 +1263,7 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
               </div>
             </td>
             <td
-              class="MuiTableCell-root MuiTableCell-body makeStyles-changeExpected-20"
+              class="MuiTableCell-root MuiTableCell-body makeStyles-changeExpected-26"
             >
               <span
                 class="MuiSwitch-root"
@@ -1027,14 +1271,14 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
                 <span
                   aria-disabled="false"
                   aria-label="Change Expected"
-                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-25 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-37 MuiSwitch-switchBase MuiSwitch-colorSecondary"
                   variant="outlined"
                 >
                   <span
                     class="MuiIconButton-label"
                   >
                     <input
-                      class="PrivateSwitchBase-input-28 MuiSwitch-input"
+                      class="PrivateSwitchBase-input-40 MuiSwitch-input"
                       id="experiment.metricAssignments[0].changeExpected"
                       name="experiment.metricAssignments[0].changeExpected"
                       type="checkbox"
@@ -1057,8 +1301,7 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Min difference"
-                class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-19"
+                class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-25"
               >
                 <div
                   class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
@@ -1074,19 +1317,22 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
                   </div>
                   <input
                     aria-invalid="false"
+                    aria-label="Min difference"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
+                    id="experiment.metricAssignments[0].minDifference"
+                    min="0"
                     name="experiment.metricAssignments[0].minDifference"
-                    placeholder="-"
+                    placeholder="1.30"
                     type="number"
                     value=""
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="PrivateNotchedOutline-root-21 MuiOutlinedInput-notchedOutline"
+                    class="PrivateNotchedOutline-root-33 MuiOutlinedInput-notchedOutline"
                     style="padding-left: 8px;"
                   >
                     <legend
-                      class="PrivateNotchedOutline-legend-22"
+                      class="PrivateNotchedOutline-legend-34"
                       style="width: 0.01px;"
                     >
                       <span>
@@ -1134,11 +1380,11 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
       </table>
     </div>
     <div
-      class="makeStyles-addMetric-12"
+      class="makeStyles-addMetric-18"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-13"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-19"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -1147,7 +1393,7 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
         />
       </svg>
       <div
-        class="MuiFormControl-root makeStyles-addMetricSelect-15"
+        class="MuiFormControl-root makeStyles-addMetricSelect-21"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -1161,7 +1407,7 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
             tabindex="0"
           >
             <span
-              class="makeStyles-addMetricPlaceholder-14"
+              class="makeStyles-addMetricPlaceholder-20"
             >
               Select a Metric
             </span>
@@ -1198,6 +1444,66 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
         />
       </button>
     </div>
+    <h4
+      class="MuiTypography-root makeStyles-exposureEventsTitle-27 MuiTypography-h4 MuiTypography-gutterBottom"
+    >
+      Exposure Events (Optional)
+    </h4>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+              colspan="1"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+              >
+                You don't have any exposure events.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="makeStyles-addMetric-18"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-19"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+      </svg>
+      <button
+        aria-label="Add exposure event"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Add Event
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
   </div>
 </div>
 `;
@@ -1205,7 +1511,7 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
 exports[`allows adding, editing and removing a Metric Assignment 6`] = `
 <div>
   <div
-    class="makeStyles-root-11"
+    class="makeStyles-root-17"
   >
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -1275,11 +1581,11 @@ exports[`allows adding, editing and removing a Metric Assignment 6`] = `
       </table>
     </div>
     <div
-      class="makeStyles-addMetric-12"
+      class="makeStyles-addMetric-18"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-13"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-19"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -1288,7 +1594,7 @@ exports[`allows adding, editing and removing a Metric Assignment 6`] = `
         />
       </svg>
       <div
-        class="MuiFormControl-root makeStyles-addMetricSelect-15"
+        class="MuiFormControl-root makeStyles-addMetricSelect-21"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -1302,7 +1608,7 @@ exports[`allows adding, editing and removing a Metric Assignment 6`] = `
             tabindex="0"
           >
             <span
-              class="makeStyles-addMetricPlaceholder-14"
+              class="makeStyles-addMetricPlaceholder-20"
             >
               Select a Metric
             </span>
@@ -1339,6 +1645,66 @@ exports[`allows adding, editing and removing a Metric Assignment 6`] = `
         />
       </button>
     </div>
+    <h4
+      class="MuiTypography-root makeStyles-exposureEventsTitle-27 MuiTypography-h4 MuiTypography-gutterBottom"
+    >
+      Exposure Events (Optional)
+    </h4>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+              colspan="1"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+              >
+                You don't have any exposure events.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="makeStyles-addMetric-18"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-19"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+      </svg>
+      <button
+        aria-label="Add exposure event"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Add Event
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
   </div>
 </div>
 `;
@@ -1346,7 +1712,7 @@ exports[`allows adding, editing and removing a Metric Assignment 6`] = `
 exports[`allows adding, editing and removing a Metric Assignment 7`] = `
 <div>
   <div
-    class="makeStyles-root-11"
+    class="makeStyles-root-17"
   >
     <h4
       class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -1405,14 +1771,14 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <span
-                class="makeStyles-metricName-17"
+                class="makeStyles-metricName-23"
                 title="string"
               >
                 registration_start
               </span>
               <br />
               <span
-                class="makeStyles-primary-18"
+                class="makeStyles-primary-24"
               >
                 Primary
               </span>
@@ -1421,12 +1787,12 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Attribution Window"
-                class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-16"
+                class="MuiInputBase-root MuiOutlinedInput-root makeStyles-attributionWindowSelect-22"
               >
                 <div
                   aria-haspopup="listbox"
-                  aria-labelledby="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
+                  aria-label="Attribution Window"
+                  aria-labelledby="experiment.metricAssignments[0].attributionWindowSeconds mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
                   id="mui-component-select-experiment.metricAssignments[0].attributionWindowSeconds"
                   role="button"
@@ -1451,11 +1817,11 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
                 </svg>
                 <fieldset
                   aria-hidden="true"
-                  class="PrivateNotchedOutline-root-29 MuiOutlinedInput-notchedOutline"
+                  class="PrivateNotchedOutline-root-41 MuiOutlinedInput-notchedOutline"
                   style="padding-left: 8px;"
                 >
                   <legend
-                    class="PrivateNotchedOutline-legend-30"
+                    class="PrivateNotchedOutline-legend-42"
                     style="width: 0.01px;"
                   >
                     <span>
@@ -1466,7 +1832,7 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
               </div>
             </td>
             <td
-              class="MuiTableCell-root MuiTableCell-body makeStyles-changeExpected-20"
+              class="MuiTableCell-root MuiTableCell-body makeStyles-changeExpected-26"
             >
               <span
                 class="MuiSwitch-root"
@@ -1474,14 +1840,14 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
                 <span
                   aria-disabled="false"
                   aria-label="Change Expected"
-                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-33 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-45 MuiSwitch-switchBase MuiSwitch-colorSecondary"
                   variant="outlined"
                 >
                   <span
                     class="MuiIconButton-label"
                   >
                     <input
-                      class="PrivateSwitchBase-input-36 MuiSwitch-input"
+                      class="PrivateSwitchBase-input-48 MuiSwitch-input"
                       id="experiment.metricAssignments[0].changeExpected"
                       name="experiment.metricAssignments[0].changeExpected"
                       type="checkbox"
@@ -1504,17 +1870,19 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <div
-                aria-label="Min difference"
-                class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-19"
+                class="MuiFormControl-root MuiTextField-root makeStyles-minDifferenceField-25"
               >
                 <div
                   class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
                 >
                   <input
                     aria-invalid="false"
+                    aria-label="Min difference"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                    id="experiment.metricAssignments[0].minDifference"
+                    min="0"
                     name="experiment.metricAssignments[0].minDifference"
-                    placeholder="-"
+                    placeholder="1.30"
                     type="number"
                     value=""
                   />
@@ -1530,11 +1898,11 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
                   </div>
                   <fieldset
                     aria-hidden="true"
-                    class="PrivateNotchedOutline-root-29 MuiOutlinedInput-notchedOutline"
+                    class="PrivateNotchedOutline-root-41 MuiOutlinedInput-notchedOutline"
                     style="padding-left: 8px;"
                   >
                     <legend
-                      class="PrivateNotchedOutline-legend-30"
+                      class="PrivateNotchedOutline-legend-42"
                       style="width: 0.01px;"
                     >
                       <span>
@@ -1582,11 +1950,11 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
       </table>
     </div>
     <div
-      class="makeStyles-addMetric-12"
+      class="makeStyles-addMetric-18"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-13"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-19"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -1595,7 +1963,7 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
         />
       </svg>
       <div
-        class="MuiFormControl-root makeStyles-addMetricSelect-15"
+        class="MuiFormControl-root makeStyles-addMetricSelect-21"
       >
         <div
           class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -1609,7 +1977,7 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
             tabindex="0"
           >
             <span
-              class="makeStyles-addMetricPlaceholder-14"
+              class="makeStyles-addMetricPlaceholder-20"
             >
               Select a Metric
             </span>
@@ -1640,6 +2008,66 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
           class="MuiButton-label"
         >
           Assign
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <h4
+      class="MuiTypography-root makeStyles-exposureEventsTitle-27 MuiTypography-h4 MuiTypography-gutterBottom"
+    >
+      Exposure Events (Optional)
+    </h4>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+              colspan="1"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+              >
+                You don't have any exposure events.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="makeStyles-addMetric-18"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-19"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+      </svg>
+      <button
+        aria-label="Add exposure event"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Add Event
         </span>
         <span
           class="MuiTouchRipple-root"
@@ -1781,6 +2209,66 @@ exports[`renders as expected 1`] = `
           class="MuiButton-label"
         >
           Assign
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <h4
+      class="MuiTypography-root makeStyles-exposureEventsTitle-11 MuiTypography-h4 MuiTypography-gutterBottom"
+    >
+      Exposure Events (Optional)
+    </h4>
+    <div
+      class="MuiTableContainer-root"
+    >
+      <table
+        class="MuiTable-root"
+      >
+        <tbody
+          class="MuiTableBody-root"
+        >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-body"
+              colspan="1"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+              >
+                You don't have any exposure events.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="makeStyles-addMetric-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-3"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+      </svg>
+      <button
+        aria-label="Add exposure event"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Add Event
         </span>
         <span
           class="MuiTouchRipple-root"

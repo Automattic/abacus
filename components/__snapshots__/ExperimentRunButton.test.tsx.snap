@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders as expected 1`] = `
+<div>
+  <span
+    class=""
+    title=""
+  >
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Run
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </span>
+</div>
+`;
+
+exports[`runs an experiment 1`] = `
+<div
+  aria-hidden="true"
+>
+  <span
+    class=""
+    title=""
+  >
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Run
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </span>
+</div>
+`;
