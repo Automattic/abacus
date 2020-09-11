@@ -1,5 +1,6 @@
 import {
   Button,
+  Chip,
   Dialog,
   DialogActions,
   DialogContent,
@@ -11,7 +12,6 @@ import {
   MenuItem,
   Toolbar,
   Tooltip,
-  Chip,
 } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     primaryChip: {
       marginTop: theme.spacing(1),
-    }
+    },
   }),
 )
 
@@ -193,8 +193,11 @@ function MetricAssignmentsPanel({
           {resolvedMetricAssignments.map((resolvedMetricAssignment) => (
             <TableRow key={resolvedMetricAssignment.metricAssignmentId}>
               <TableCell className={classes.monospace}>
-                {resolvedMetricAssignment.metric.name}<br />
-                {resolvedMetricAssignment.isPrimary && <Chip label="Primary" variant="outlined" disabled className={classes.primaryChip} />}
+                {resolvedMetricAssignment.metric.name}
+                <br />
+                {resolvedMetricAssignment.isPrimary && (
+                  <Chip label='Primary' variant='outlined' disabled className={classes.primaryChip} />
+                )}
               </TableCell>
               <TableCell className={classes.monospace}>
                 {AttributionWindowSecondsToHuman[resolvedMetricAssignment.attributionWindowSeconds]}
