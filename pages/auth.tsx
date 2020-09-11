@@ -62,7 +62,9 @@ const AuthPage = function AuthPage() {
       if (authInfo.error === 'access_denied') {
         setError('Please log into WordPress.com and authorize Abacus - Testing to have access.')
       } else {
-        setError(`An unknown error has occured. Error Code: '${authInfo.error}'. Error Desc: '${authInfo.error_description}'.`)
+        setError(
+          `An unknown error has occured. Error Code: '${authInfo.error}'. Error Desc: '${authInfo.error_description}'.`,
+        )
       }
       return
     }

@@ -94,7 +94,7 @@ const App = React.memo(function App(props: AppProps) {
   }, [])
 
   if (typeof window !== 'undefined' && config.experimentApi.needsAuth) {
-    // Prompt user for authorization if we don't have auth info.	
+    // Prompt user for authorization if we don't have auth info.
     const experimentsAuthInfo = getExperimentsAuthInfo()
     if (!experimentsAuthInfo) {
       const authQuery = {
