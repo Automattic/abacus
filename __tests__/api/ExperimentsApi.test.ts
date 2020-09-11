@@ -8,63 +8,64 @@ import { formatIsoDate } from '@/utils/time'
 
 MockDate.set('2020-08-13')
 
+const now = new Date()
+now.setDate(now.getDate() + 1)
+const nextWeek = new Date()
+nextWeek.setDate(now.getDate() + 7)
+
+const createRawNewExperiment = () => ({
+  p2Url: 'http://example.com/',
+  name: 'test_experiment_name',
+  description: 'experiment description',
+  startDatetime: formatIsoDate(now),
+  endDatetime: formatIsoDate(nextWeek),
+  ownerLogin: 'owner-nickname',
+  platform: 'wpcom',
+  existingUsersAllowed: 'true',
+  exposureEvents: [
+    {
+      event: 'event_name',
+      props: [
+        {
+          key: 'key',
+          value: 'value',
+        },
+      ],
+    },
+  ],
+  segmentAssignments: [
+    {
+      isExcluded: false,
+      segmentId: 3,
+    },
+  ],
+  variations: [
+    {
+      allocatedPercentage: 50,
+      isDefault: true,
+      name: 'control',
+    },
+    {
+      allocatedPercentage: 50,
+      isDefault: false,
+      name: 'treatment',
+    },
+  ],
+  metricAssignments: [
+    {
+      attributionWindowSeconds: '86400',
+      changeExpected: false,
+      isPrimary: true,
+      metricId: 10,
+      minDifference: 0.01,
+    },
+  ],
+})
+
 describe('ExperimentsApi.ts module', () => {
   describe('create', () => {
     it('should transform a new experiment into a valid outbound form', () => {
-      const now = new Date()
-      now.setDate(now.getDate() + 1)
-      const nextWeek = new Date()
-      nextWeek.setDate(now.getDate() + 7)
-      const rawNewExperiment = {
-        p2Url: 'http://example.com/',
-        name: 'test_experiment_name',
-        description: 'experiment description',
-        startDatetime: formatIsoDate(now),
-        endDatetime: formatIsoDate(nextWeek),
-        ownerLogin: 'owner-nickname',
-        platform: 'wpcom',
-        existingUsersAllowed: 'true',
-        exposureEvents: [
-          {
-            event: 'event_name',
-            props: [
-              {
-                key: 'key',
-                value: 'value',
-              },
-            ],
-          },
-        ],
-        segmentAssignments: [
-          {
-            isExcluded: false,
-            segmentId: 3,
-          },
-        ],
-        variations: [
-          {
-            allocatedPercentage: 50,
-            isDefault: true,
-            name: 'control',
-          },
-          {
-            allocatedPercentage: 50,
-            isDefault: false,
-            name: 'treatment',
-          },
-        ],
-        metricAssignments: [
-          {
-            attributionWindowSeconds: '86400',
-            changeExpected: false,
-            isPrimary: true,
-            metricId: 10,
-            minDifference: 0.01,
-          },
-        ],
-      }
-
-      const newExperiment = experimentFullNewOutboundSchema.cast(rawNewExperiment)
+      const newExperiment = experimentFullNewOutboundSchema.cast(createRawNewExperiment())
 
       expect(newExperiment).toEqual({
         description: 'experiment description',
@@ -115,71 +116,24 @@ describe('ExperimentsApi.ts module', () => {
     })
 
     it('should create a new experiment', async () => {
-      const now = new Date()
-      now.setDate(now.getDate() + 1)
-      const nextWeek = new Date()
-      nextWeek.setDate(now.getDate() + 7)
-      const rawNewExperiment = {
-        p2Url: 'http://example.com/',
-        name: 'test_experiment_name',
-        description: 'experiment description',
-        startDatetime: formatIsoDate(now),
-        endDatetime: formatIsoDate(nextWeek),
-        ownerLogin: 'owner-nickname',
-        platform: 'wpcom',
-        existingUsersAllowed: 'true',
-        exposureEvents: [
-          {
-            event: 'event_name',
-            props: [
-              {
-                key: 'key',
-                value: 'value',
-              },
-            ],
-          },
-        ],
-        segmentAssignments: [
-          {
-            isExcluded: false,
-            segmentId: 3,
-          },
-        ],
-        variations: [
-          {
-            allocatedPercentage: 50,
-            isDefault: true,
-            name: 'control',
-          },
-          {
-            allocatedPercentage: 50,
-            isDefault: false,
-            name: 'treatment',
-          },
-        ],
-        metricAssignments: [
-          {
-            attributionWindowSeconds: '86400',
-            changeExpected: false,
-            isPrimary: true,
-            metricId: 10,
-            minDifference: 0.01,
-          },
-        ],
-      }
       const returnedExperiment = await validationErrorDisplayer(
-        ExperimentsApi.create((rawNewExperiment as unknown) as ExperimentFullNew),
+        ExperimentsApi.create((createRawNewExperiment() as unknown) as ExperimentFullNew),
       )
       expect(returnedExperiment.experimentId).toBeGreaterThan(0)
     })
   })
 
+  describe('put', () => {
+    it('should put an existing experiment', async () => {
+      const returnedExperiment = await validationErrorDisplayer(
+        ExperimentsApi.put(1, (createRawNewExperiment() as unknown) as ExperimentFullNew),
+      )
+      expect(returnedExperiment.experimentId).toEqual(1)
+    })
+  })
+
   describe('patch', () => {
     it('should patch an existing experiment', async () => {
-      const now = new Date()
-      now.setDate(now.getDate() + 1)
-      const nextWeek = new Date()
-      nextWeek.setDate(now.getDate() + 7)
       const rawNewExperiment = {
         description: 'experiment description',
         endDatetime: formatIsoDate(nextWeek),
