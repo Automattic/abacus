@@ -1,4 +1,4 @@
-import { Tooltip, Typography, Chip } from '@material-ui/core'
+import { Chip, Tooltip, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
