@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       '& th, & td': {
         paddingLeft: 0,
-      }
+      },
     },
     excluded: {
       color: theme.palette.grey[500],
@@ -79,7 +79,7 @@ function SegmentsTable({
                 <TableRow key={resolvedSegmentAssignment.segment.segmentId}>
                   <TableCell className={classes.monospace}>
                     {resolvedSegmentAssignment.segment.name}{' '}
-                    {resolvedSegmentAssignment.isExcluded && <Chip label="Excluded" variant="outlined" disabled />}
+                    {resolvedSegmentAssignment.isExcluded && <Chip label='Excluded' variant='outlined' disabled />}
                   </TableCell>
                 </TableRow>
               ),

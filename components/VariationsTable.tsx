@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       '& th, & td': {
         paddingLeft: 0,
-      }
+      },
     },
     default: {
       color: theme.palette.grey[500],
@@ -119,7 +119,7 @@ function VariationsTable({
                 >
                   <span className={classes.variation}>{variation.name}</span>
                 </Tooltip>{' '}
-                {variation.isDefault && <Chip label="Default" variant="outlined" disabled />}
+                {variation.isDefault && <Chip label='Default' variant='outlined' disabled />}
               </TableCell>
               <TableCell className={classes.monospace}>{variation.allocatedPercentage}%</TableCell>
             </TableRow>
