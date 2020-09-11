@@ -25,16 +25,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-enum AuthError {
-  AccessDenied,
-  UnknownError,
-}
-
-const authErrorMessages: Record<AuthError, string> = {
-  [AuthError.AccessDenied]: 'Please log into WordPress.com and authorize Abacus - Testing to have access.',
-  [AuthError.UnknownError]: 'An unknown error has occured. Check the console for more information.',
-}
-
 /**
  * The authorization page.
  *
@@ -45,17 +35,16 @@ const AuthPage = function AuthPage() {
   debug('AuthPage#render')
   const classes = useStyles()
 
-  const [error, setError] = useState<null | AuthError>(null)
+  const [error, setError] = useState<null | string>(null)
   useEffect(() => {
     // This is needed because of server-side rendering
     if (typeof window === 'undefined') {
-      console.warn('onExperimentAuthCallbackUrl: Could not find `window`')
       return
     }
 
     if (!window.location.hash || window.location.hash.length === 0) {
       console.error('Authentication Error:', 'Missing hash in auth callback url.')
-      setError(AuthError.UnknownError)
+      setError(`An unknown error has occured: Missing hash in auth callback url.`)
     }
 
     // If we have the hash with the authorization info, then extract the info, save
@@ -71,16 +60,16 @@ const AuthPage = function AuthPage() {
       console.error('Authentication Error:', authInfo.error, authInfo.error_description)
       saveExperimentsAuthInfo(null)
       if (authInfo.error === 'access_denied') {
-        setError(AuthError.AccessDenied)
+        setError('Please log into WordPress.com and authorize Abacus - Testing to have access.')
       } else {
-        setError(AuthError.UnknownError)
+        setError(`An unknown error has occured. Error Code: '${authInfo.error}'. Error Desc: '${authInfo.error_description}'.`)
       }
       return
     }
 
     if (!(authInfo.access_token && authInfo.scope === 'global' && authInfo.token_type === 'bearer')) {
       console.error('Authentication Error: Invalid AuthInfo Received:', authInfo)
-      setError(AuthError.UnknownError)
+      setError('An unknown error has occured: Invalid AuthInfo Received.')
       return
     }
 
@@ -103,7 +92,7 @@ const AuthPage = function AuthPage() {
       </Typography>
       {error && (
         <Typography variant='body1' gutterBottom>
-          <strong>Oops! Something went wrong:</strong> {authErrorMessages[error]}
+          <strong>Oops! Something went wrong:</strong> {error}
         </Typography>
       )}
       <CircularProgress className={classes.progress} />
