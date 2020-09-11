@@ -1,4 +1,4 @@
-import { Tooltip, Typography } from '@material-ui/core'
+import { Tooltip, Typography, Chip } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -12,6 +12,11 @@ import * as Variations from '@/lib/variations'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    root: {
+      '& th, & td': {
+        paddingLeft: 0,
+      }
+    },
     default: {
       color: theme.palette.grey[500],
     },
@@ -72,7 +77,7 @@ function VariationsTable({
 }) {
   const classes = useStyles()
   return (
-    <Table>
+    <Table className={classes.root}>
       <TableHead>
         <TableRow>
           <TableCell component='th' variant='head'>
@@ -113,8 +118,8 @@ function VariationsTable({
                   }
                 >
                   <span className={classes.variation}>{variation.name}</span>
-                </Tooltip>
-                {variation.isDefault && <span className={classes.default}> default</span>}
+                </Tooltip>{' '}
+                {variation.isDefault && <Chip label="Default" variant="outlined" disabled />}
               </TableCell>
               <TableCell className={classes.monospace}>{variation.allocatedPercentage}%</TableCell>
             </TableRow>

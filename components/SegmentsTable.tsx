@@ -4,6 +4,7 @@ import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
+import { Chip } from '@material-ui/core'
 import _ from 'lodash'
 import React, { useMemo } from 'react'
 
@@ -11,6 +12,11 @@ import { Segment, SegmentType } from '@/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    root: {
+      '& th, & td': {
+        paddingLeft: 0,
+      }
+    },
     excluded: {
       color: theme.palette.grey[500],
     },
@@ -51,7 +57,7 @@ function SegmentsTable({
   )
   const classes = useStyles()
   return (
-    <Table>
+    <Table className={classes.root}>
       <TableHead>
         <TableRow>
           <TableCell component='th' variant='head'>
@@ -72,8 +78,8 @@ function SegmentsTable({
               resolvedSegmentAssignment.segment && (
                 <TableRow key={resolvedSegmentAssignment.segment.segmentId}>
                   <TableCell className={classes.monospace}>
-                    {resolvedSegmentAssignment.segment.name}
-                    {resolvedSegmentAssignment.isExcluded && <span className={classes.excluded}> excluded</span>}
+                    {resolvedSegmentAssignment.segment.name}{' '}
+                    {resolvedSegmentAssignment.isExcluded && <Chip label="Excluded" variant="outlined" disabled />}
                   </TableCell>
                 </TableRow>
               ),
