@@ -93,29 +93,19 @@ const App = React.memo(function App(props: AppProps) {
     }
   }, [])
 
-  // Initialize Auth
-
-  // This is needed because of server-side rendering
-  if (typeof window === 'undefined') {
-    console.warn('Auth: Could not find `window`')
-  } else {
-    if (!config.experimentApi.needsAuth) {
-      console.warn('Auth: Proceeding uninitialized as needsAuth = false')
-    } else {
-      const experimentsAuthInfo = getExperimentsAuthInfo()
-      if (experimentsAuthInfo) {
-        console.info('Auth: Found existing auth info.')
-      } else {
-        console.info('Auth: Could not find existing auth info, re-authing.')
-        const authQuery = {
-          client_id: config.experimentApi.authClientId,
-          redirect_uri: `${window.location.origin}/auth`,
-          response_type: 'token',
-          scope: 'global',
-        }
-        const authUrl = `${config.experimentApi.authPath}?${qs.stringify(authQuery)}`
-        window.location.replace(authUrl)
+  if (typeof window !== 'undefined' && config.experimentApi.needsAuth) {
+    // Prompt user for authorization if we don't have auth info.	
+    const experimentsAuthInfo = getExperimentsAuthInfo()
+    if (!experimentsAuthInfo) {
+      const authQuery = {
+        client_id: config.experimentApi.authClientId,
+        redirect_uri: `${window.location.origin}/auth`,
+        response_type: 'token',
+        scope: 'global',
       }
+
+      const authUrl = `${config.experimentApi.authPath}?${qs.stringify(authQuery)}`
+      window.location.replace(authUrl)
     }
   }
 
