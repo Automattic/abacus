@@ -1034,6 +1034,16 @@ exports[`renders as expected with all segments resolvable 1`] = `
                     </div>
                   </td>
                 </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-41"
+                  >
+                    segment_5
+                     
+                  </td>
+                </tr>
               </tbody>
             </table>
             <table
@@ -1107,11 +1117,36 @@ exports[`renders as expected with all segments resolvable 1`] = `
             <div
               class="makeStyles-eventList-44"
             >
-              <span
-                class="makeStyles-monospace-45"
+              <p
+                class="MuiTypography-root makeStyles-monospace-45 MuiTypography-body1"
               >
-                No exposure events defined
-              </span>
+                <span
+                  class="makeStyles-eventName-43"
+                >
+                  eventName
+                </span>
+                <span
+                  class="makeStyles-entry-42"
+                >
+                  additionalProp1
+                  : 
+                  prop1Value
+                </span>
+                <span
+                  class="makeStyles-entry-42"
+                >
+                  additionalProp2
+                  : 
+                  prop2Value
+                </span>
+                <span
+                  class="makeStyles-entry-42"
+                >
+                  additionalProp3
+                  : 
+                  prop3Value
+                </span>
+              </p>
             </div>
           </td>
         </tr>
@@ -1375,11 +1410,36 @@ exports[`renders as expected with existing users allowed 1`] = `
             <div
               class="makeStyles-eventList-29"
             >
-              <span
-                class="makeStyles-monospace-30"
+              <p
+                class="MuiTypography-root makeStyles-monospace-30 MuiTypography-body1"
               >
-                No exposure events defined
-              </span>
+                <span
+                  class="makeStyles-eventName-28"
+                >
+                  eventName
+                </span>
+                <span
+                  class="makeStyles-entry-27"
+                >
+                  additionalProp1
+                  : 
+                  prop1Value
+                </span>
+                <span
+                  class="makeStyles-entry-27"
+                >
+                  additionalProp2
+                  : 
+                  prop2Value
+                </span>
+                <span
+                  class="makeStyles-entry-27"
+                >
+                  additionalProp3
+                  : 
+                  prop3Value
+                </span>
+              </p>
             </div>
           </td>
         </tr>
@@ -1643,11 +1703,36 @@ exports[`renders as expected with no segment assignments 1`] = `
             <div
               class="makeStyles-eventList-14"
             >
-              <span
-                class="makeStyles-monospace-15"
+              <p
+                class="MuiTypography-root makeStyles-monospace-15 MuiTypography-body1"
               >
-                No exposure events defined
-              </span>
+                <span
+                  class="makeStyles-eventName-13"
+                >
+                  eventName
+                </span>
+                <span
+                  class="makeStyles-entry-12"
+                >
+                  additionalProp1
+                  : 
+                  prop1Value
+                </span>
+                <span
+                  class="makeStyles-entry-12"
+                >
+                  additionalProp2
+                  : 
+                  prop2Value
+                </span>
+                <span
+                  class="makeStyles-entry-12"
+                >
+                  additionalProp3
+                  : 
+                  prop3Value
+                </span>
+              </p>
             </div>
           </td>
         </tr>

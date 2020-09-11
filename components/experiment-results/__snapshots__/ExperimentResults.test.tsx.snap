@@ -312,25 +312,25 @@ exports[`renders the condensed table with some analyses in non-debug mode 2`] = 
     Analysis strategy
   </dt>
   <dd>
-    Without crossovers and spammers
+    Exposed without crossovers and spammers
   </dd>
   <dt>
     Analyzed participants
   </dt>
   <dd>
-    1600
+    1400
      (
-    160
+    140
      not final
     <span>
       ; 
-      960
+      840
        in 
       control
     </span>
     <span>
       ; 
-      640
+      560
        in 
       test
     </span>

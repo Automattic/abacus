@@ -1,11 +1,10 @@
-/* eslint-disable @typescript-eslint/require-await */
-import { format } from 'date-fns'
 import MockDate from 'mockdate'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
 import { ExperimentFull, ExperimentFullNew, experimentFullNewOutboundSchema, Status } from '@/lib/schemas'
 import Fixtures from '@/test-helpers/fixtures'
 import { validationErrorDisplayer } from '@/test-helpers/test-utils'
+import { formatIsoDate } from '@/utils/time'
 
 MockDate.set('2020-08-13')
 
@@ -20,8 +19,8 @@ describe('ExperimentsApi.ts module', () => {
         p2Url: 'http://example.com/',
         name: 'test_experiment_name',
         description: 'experiment description',
-        startDatetime: format(now, 'yyyy-MM-dd'),
-        endDatetime: format(nextWeek, 'yyyy-MM-dd'),
+        startDatetime: formatIsoDate(now),
+        endDatetime: formatIsoDate(nextWeek),
         ownerLogin: 'owner-nickname',
         platform: 'wpcom',
         existingUsersAllowed: 'true',
@@ -69,7 +68,7 @@ describe('ExperimentsApi.ts module', () => {
 
       expect(newExperiment).toEqual({
         description: 'experiment description',
-        end_datetime: format(nextWeek, 'yyyy-MM-dd'),
+        end_datetime: formatIsoDate(nextWeek),
         existing_users_allowed: 'true',
         exposure_events: [
           {
@@ -99,7 +98,7 @@ describe('ExperimentsApi.ts module', () => {
             segment_id: 3,
           },
         ],
-        start_datetime: format(now, 'yyyy-MM-dd'),
+        start_datetime: formatIsoDate(now),
         variations: [
           {
             allocated_percentage: 50,
@@ -124,8 +123,8 @@ describe('ExperimentsApi.ts module', () => {
         p2Url: 'http://example.com/',
         name: 'test_experiment_name',
         description: 'experiment description',
-        startDatetime: format(now, 'yyyy-MM-dd'),
-        endDatetime: format(nextWeek, 'yyyy-MM-dd'),
+        startDatetime: formatIsoDate(now),
+        endDatetime: formatIsoDate(nextWeek),
         ownerLogin: 'owner-nickname',
         platform: 'wpcom',
         existingUsersAllowed: 'true',
@@ -183,7 +182,7 @@ describe('ExperimentsApi.ts module', () => {
       nextWeek.setDate(now.getDate() + 7)
       const rawNewExperiment = {
         description: 'experiment description',
-        endDatetime: format(nextWeek, 'yyyy-MM-dd'),
+        endDatetime: formatIsoDate(nextWeek),
         ownerLogin: 'owner-nickname',
       }
       const returnedExperiment = await validationErrorDisplayer(

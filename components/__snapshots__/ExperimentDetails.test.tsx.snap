@@ -68,54 +68,16 @@ exports[`renders as expected at large width 1`] = `
                     role="cell"
                     scope="row"
                   >
-                    Description
-                  </th>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    Experiment with things. Change stuff. Profit.
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root"
-                >
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head"
-                    role="cell"
-                    scope="row"
-                  >
-                    P2 Link
-                  </th>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    <a
-                      href="https://wordpress.com/experiment_1"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      https://wordpress.com/experiment_1
-                    </a>
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root"
-                >
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head"
-                    role="cell"
-                    scope="row"
-                  >
                     Status
                   </th>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-5"
+                      class="makeStyles-root-6"
                     >
                       <span
-                        class="makeStyles-statusDot-10 makeStyles-staging-8"
+                        class="makeStyles-statusDot-11 makeStyles-staging-9"
                       />
                        
                       staging
@@ -136,7 +98,7 @@ exports[`renders as expected at large width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-11"
+                      class="makeStyles-root-12"
                       title="20/09/2020, 20:00:00"
                     >
                       2020-09-21
@@ -147,10 +109,30 @@ exports[`renders as expected at large width 1`] = `
                       to
                     </span>
                     <span
-                      class="makeStyles-root-11"
-                      title="20/11/2020, 20:00:00"
+                      class="makeStyles-root-12"
+                      title="20/11/2020, 19:00:00"
                     >
                       2020-11-21
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Description
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-5"
+                    >
+                      Experiment with things. Change stuff. Profit.
                     </span>
                   </td>
                 </tr>
@@ -167,7 +149,34 @@ exports[`renders as expected at large width 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    test_a11n
+                    <span
+                      class="makeStyles-monospace-5"
+                    >
+                      test_a11n
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    P2 Link
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <a
+                      class="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-monospace-5 MuiTypography-colorPrimary"
+                      href="https://wordpress.com/experiment_1"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      https://wordpress.com/experiment_1
+                    </a>
                   </td>
                 </tr>
               </tbody>
@@ -184,7 +193,7 @@ exports[`renders as expected at large width 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-13 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-14 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Metrics
               </h3>
@@ -266,7 +275,7 @@ exports[`renders as expected at large width 1`] = `
                   >
                     metric_1
                     <span
-                      class="makeStyles-primary-12 makeStyles-root-17"
+                      class="makeStyles-primary-13 makeStyles-root-18"
                     >
                       Primary
                     </span>
@@ -383,7 +392,7 @@ exports[`renders as expected at large width 1`] = `
           class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
         >
           <h3
-            class="MuiTypography-root makeStyles-title-18 MuiTypography-h3 MuiTypography-colorTextPrimary"
+            class="MuiTypography-root makeStyles-title-19 MuiTypography-h3 MuiTypography-colorTextPrimary"
           >
             Audience
           </h3>
@@ -408,7 +417,7 @@ exports[`renders as expected at large width 1`] = `
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 <span
-                  class="makeStyles-monospace-19"
+                  class="makeStyles-monospace-20"
                 >
                   calypso
                 </span>
@@ -428,7 +437,7 @@ exports[`renders as expected at large width 1`] = `
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 <span
-                  class="makeStyles-monospace-19"
+                  class="makeStyles-monospace-20"
                 >
                   New users only
                 </span>
@@ -448,7 +457,7 @@ exports[`renders as expected at large width 1`] = `
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 <table
-                  class="MuiTable-root makeStyles-root-20"
+                  class="MuiTable-root makeStyles-root-21"
                 >
                   <thead
                     class="MuiTableHead-root"
@@ -479,10 +488,10 @@ exports[`renders as expected at large width 1`] = `
                       class="MuiTableRow-root"
                     >
                       <td
-                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
                       >
                         <span
-                          class="makeStyles-variation-23"
+                          class="makeStyles-variation-24"
                         >
                           control
                         </span>
@@ -499,7 +508,7 @@ exports[`renders as expected at large width 1`] = `
                         </div>
                       </td>
                       <td
-                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
                       >
                         60
                         %
@@ -509,17 +518,17 @@ exports[`renders as expected at large width 1`] = `
                       class="MuiTableRow-root"
                     >
                       <td
-                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
                       >
                         <span
-                          class="makeStyles-variation-23"
+                          class="makeStyles-variation-24"
                         >
                           test
                         </span>
                          
                       </td>
                       <td
-                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
                       >
                         40
                         %
@@ -543,7 +552,7 @@ exports[`renders as expected at large width 1`] = `
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 <table
-                  class="MuiTable-root makeStyles-root-26"
+                  class="MuiTable-root makeStyles-root-27"
                 >
                   <thead
                     class="MuiTableHead-root"
@@ -567,7 +576,7 @@ exports[`renders as expected at large width 1`] = `
                       class="MuiTableRow-root"
                     >
                       <td
-                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-28"
+                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-29"
                       >
                         segment_1
                          
@@ -576,7 +585,7 @@ exports[`renders as expected at large width 1`] = `
                   </tbody>
                 </table>
                 <table
-                  class="MuiTable-root makeStyles-root-26"
+                  class="MuiTable-root makeStyles-root-27"
                 >
                   <thead
                     class="MuiTableHead-root"
@@ -600,7 +609,7 @@ exports[`renders as expected at large width 1`] = `
                       class="MuiTableRow-root"
                     >
                       <td
-                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-28"
+                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-29"
                       >
                         segment_2
                          
@@ -634,13 +643,38 @@ exports[`renders as expected at large width 1`] = `
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 <div
-                  class="makeStyles-eventList-31"
+                  class="makeStyles-eventList-32"
                 >
-                  <span
-                    class="makeStyles-monospace-32"
+                  <p
+                    class="MuiTypography-root makeStyles-monospace-33 MuiTypography-body1"
                   >
-                    No exposure events defined
-                  </span>
+                    <span
+                      class="makeStyles-eventName-31"
+                    >
+                      eventName
+                    </span>
+                    <span
+                      class="makeStyles-entry-30"
+                    >
+                      additionalProp1
+                      : 
+                      prop1Value
+                    </span>
+                    <span
+                      class="makeStyles-entry-30"
+                    >
+                      additionalProp2
+                      : 
+                      prop2Value
+                    </span>
+                    <span
+                      class="makeStyles-entry-30"
+                    >
+                      additionalProp3
+                      : 
+                      prop3Value
+                    </span>
+                  </p>
                 </div>
               </td>
             </tr>
@@ -673,7 +707,7 @@ exports[`renders as expected at small width 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-34 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-35 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 General
               </h3>
@@ -720,54 +754,16 @@ exports[`renders as expected at small width 1`] = `
                     role="cell"
                     scope="row"
                   >
-                    Description
-                  </th>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    Experiment with things. Change stuff. Profit.
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root"
-                >
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head"
-                    role="cell"
-                    scope="row"
-                  >
-                    P2 Link
-                  </th>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    <a
-                      href="https://wordpress.com/experiment_1"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      https://wordpress.com/experiment_1
-                    </a>
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root"
-                >
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head"
-                    role="cell"
-                    scope="row"
-                  >
                     Status
                   </th>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-37"
+                      class="makeStyles-root-39"
                     >
                       <span
-                        class="makeStyles-statusDot-42 makeStyles-staging-40"
+                        class="makeStyles-statusDot-44 makeStyles-staging-42"
                       />
                        
                       staging
@@ -788,21 +784,41 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-43"
+                      class="makeStyles-root-45"
                       title="20/09/2020, 20:00:00"
                     >
                       2020-09-21
                     </span>
                     <span
-                      class="makeStyles-to-33"
+                      class="makeStyles-to-34"
                     >
                       to
                     </span>
                     <span
-                      class="makeStyles-root-43"
-                      title="20/11/2020, 20:00:00"
+                      class="makeStyles-root-45"
+                      title="20/11/2020, 19:00:00"
                     >
                       2020-11-21
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Description
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-38"
+                    >
+                      Experiment with things. Change stuff. Profit.
                     </span>
                   </td>
                 </tr>
@@ -819,7 +835,34 @@ exports[`renders as expected at small width 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    test_a11n
+                    <span
+                      class="makeStyles-monospace-38"
+                    >
+                      test_a11n
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    P2 Link
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <a
+                      class="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-monospace-38 MuiTypography-colorPrimary"
+                      href="https://wordpress.com/experiment_1"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      https://wordpress.com/experiment_1
+                    </a>
                   </td>
                 </tr>
               </tbody>
@@ -836,7 +879,7 @@ exports[`renders as expected at small width 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-50 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-52 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Audience
               </h3>
@@ -861,7 +904,7 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-monospace-51"
+                      class="makeStyles-monospace-53"
                     >
                       calypso
                     </span>
@@ -881,7 +924,7 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-monospace-51"
+                      class="makeStyles-monospace-53"
                     >
                       New users only
                     </span>
@@ -901,7 +944,7 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <table
-                      class="MuiTable-root makeStyles-root-52"
+                      class="MuiTable-root makeStyles-root-54"
                     >
                       <thead
                         class="MuiTableHead-root"
@@ -932,10 +975,10 @@ exports[`renders as expected at small width 1`] = `
                           class="MuiTableRow-root"
                         >
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-57"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-59"
                           >
                             <span
-                              class="makeStyles-variation-55"
+                              class="makeStyles-variation-57"
                             >
                               control
                             </span>
@@ -952,7 +995,7 @@ exports[`renders as expected at small width 1`] = `
                             </div>
                           </td>
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-57"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-59"
                           >
                             60
                             %
@@ -962,17 +1005,17 @@ exports[`renders as expected at small width 1`] = `
                           class="MuiTableRow-root"
                         >
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-57"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-59"
                           >
                             <span
-                              class="makeStyles-variation-55"
+                              class="makeStyles-variation-57"
                             >
                               test
                             </span>
                              
                           </td>
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-57"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-59"
                           >
                             40
                             %
@@ -996,7 +1039,7 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <table
-                      class="MuiTable-root makeStyles-root-58"
+                      class="MuiTable-root makeStyles-root-60"
                     >
                       <thead
                         class="MuiTableHead-root"
@@ -1020,7 +1063,7 @@ exports[`renders as expected at small width 1`] = `
                           class="MuiTableRow-root"
                         >
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-60"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-62"
                           >
                             segment_1
                              
@@ -1029,7 +1072,7 @@ exports[`renders as expected at small width 1`] = `
                       </tbody>
                     </table>
                     <table
-                      class="MuiTable-root makeStyles-root-58"
+                      class="MuiTable-root makeStyles-root-60"
                     >
                       <thead
                         class="MuiTableHead-root"
@@ -1053,7 +1096,7 @@ exports[`renders as expected at small width 1`] = `
                           class="MuiTableRow-root"
                         >
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-60"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-62"
                           >
                             segment_2
                              
@@ -1087,13 +1130,38 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <div
-                      class="makeStyles-eventList-63"
+                      class="makeStyles-eventList-65"
                     >
-                      <span
-                        class="makeStyles-monospace-64"
+                      <p
+                        class="MuiTypography-root makeStyles-monospace-66 MuiTypography-body1"
                       >
-                        No exposure events defined
-                      </span>
+                        <span
+                          class="makeStyles-eventName-64"
+                        >
+                          eventName
+                        </span>
+                        <span
+                          class="makeStyles-entry-63"
+                        >
+                          additionalProp1
+                          : 
+                          prop1Value
+                        </span>
+                        <span
+                          class="makeStyles-entry-63"
+                        >
+                          additionalProp2
+                          : 
+                          prop2Value
+                        </span>
+                        <span
+                          class="makeStyles-entry-63"
+                        >
+                          additionalProp3
+                          : 
+                          prop3Value
+                        </span>
+                      </p>
                     </div>
                   </td>
                 </tr>
@@ -1111,7 +1179,7 @@ exports[`renders as expected at small width 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-45 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-47 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Metrics
               </h3>
@@ -1193,7 +1261,7 @@ exports[`renders as expected at small width 1`] = `
                   >
                     metric_1
                     <span
-                      class="makeStyles-primary-44 makeStyles-root-49"
+                      class="makeStyles-primary-46 makeStyles-root-51"
                     >
                       Primary
                     </span>
@@ -1325,7 +1393,7 @@ exports[`renders as expected with conclusion data 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-66 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-68 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 General
               </h3>
@@ -1374,54 +1442,16 @@ exports[`renders as expected with conclusion data 1`] = `
                     role="cell"
                     scope="row"
                   >
-                    Description
-                  </th>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    Experiment with things. Change stuff. Profit.
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root"
-                >
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head"
-                    role="cell"
-                    scope="row"
-                  >
-                    P2 Link
-                  </th>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    <a
-                      href="https://wordpress.com/experiment_1"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      https://wordpress.com/experiment_1
-                    </a>
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root"
-                >
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head"
-                    role="cell"
-                    scope="row"
-                  >
                     Status
                   </th>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-69"
+                      class="makeStyles-root-72"
                     >
                       <span
-                        class="makeStyles-statusDot-74 makeStyles-disabled-73"
+                        class="makeStyles-statusDot-77 makeStyles-disabled-76"
                       />
                        
                       disabled
@@ -1442,21 +1472,41 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-75"
+                      class="makeStyles-root-78"
                       title="20/09/2020, 20:00:00"
                     >
                       2020-09-21
                     </span>
                     <span
-                      class="makeStyles-to-65"
+                      class="makeStyles-to-67"
                     >
                       to
                     </span>
                     <span
-                      class="makeStyles-root-75"
-                      title="20/11/2020, 20:00:00"
+                      class="makeStyles-root-78"
+                      title="20/11/2020, 19:00:00"
                     >
                       2020-11-21
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Description
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-71"
+                    >
+                      Experiment with things. Change stuff. Profit.
                     </span>
                   </td>
                 </tr>
@@ -1473,7 +1523,34 @@ exports[`renders as expected with conclusion data 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    test_a11n
+                    <span
+                      class="makeStyles-monospace-71"
+                    >
+                      test_a11n
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    P2 Link
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <a
+                      class="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-monospace-71 MuiTypography-colorPrimary"
+                      href="https://wordpress.com/experiment_1"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      https://wordpress.com/experiment_1
+                    </a>
                   </td>
                 </tr>
               </tbody>
@@ -1490,7 +1567,7 @@ exports[`renders as expected with conclusion data 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-84 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-87 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Audience
               </h3>
@@ -1515,7 +1592,7 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-monospace-85"
+                      class="makeStyles-monospace-88"
                     >
                       calypso
                     </span>
@@ -1535,7 +1612,7 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-monospace-85"
+                      class="makeStyles-monospace-88"
                     >
                       New users only
                     </span>
@@ -1555,7 +1632,7 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <table
-                      class="MuiTable-root makeStyles-root-86"
+                      class="MuiTable-root makeStyles-root-89"
                     >
                       <thead
                         class="MuiTableHead-root"
@@ -1586,10 +1663,10 @@ exports[`renders as expected with conclusion data 1`] = `
                           class="MuiTableRow-root"
                         >
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-94"
                           >
                             <span
-                              class="makeStyles-variation-89"
+                              class="makeStyles-variation-92"
                             >
                               control
                             </span>
@@ -1606,7 +1683,7 @@ exports[`renders as expected with conclusion data 1`] = `
                             </div>
                           </td>
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-94"
                           >
                             60
                             %
@@ -1616,17 +1693,17 @@ exports[`renders as expected with conclusion data 1`] = `
                           class="MuiTableRow-root"
                         >
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-94"
                           >
                             <span
-                              class="makeStyles-variation-89"
+                              class="makeStyles-variation-92"
                             >
                               test
                             </span>
                              
                           </td>
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-94"
                           >
                             40
                             %
@@ -1650,7 +1727,7 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <table
-                      class="MuiTable-root makeStyles-root-92"
+                      class="MuiTable-root makeStyles-root-95"
                     >
                       <thead
                         class="MuiTableHead-root"
@@ -1674,7 +1751,7 @@ exports[`renders as expected with conclusion data 1`] = `
                           class="MuiTableRow-root"
                         >
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-94"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-97"
                           >
                             segment_1
                              
@@ -1683,7 +1760,7 @@ exports[`renders as expected with conclusion data 1`] = `
                       </tbody>
                     </table>
                     <table
-                      class="MuiTable-root makeStyles-root-92"
+                      class="MuiTable-root makeStyles-root-95"
                     >
                       <thead
                         class="MuiTableHead-root"
@@ -1707,7 +1784,7 @@ exports[`renders as expected with conclusion data 1`] = `
                           class="MuiTableRow-root"
                         >
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-94"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-97"
                           >
                             segment_2
                              
@@ -1741,13 +1818,38 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <div
-                      class="makeStyles-eventList-97"
+                      class="makeStyles-eventList-100"
                     >
-                      <span
-                        class="makeStyles-monospace-98"
+                      <p
+                        class="MuiTypography-root makeStyles-monospace-101 MuiTypography-body1"
                       >
-                        No exposure events defined
-                      </span>
+                        <span
+                          class="makeStyles-eventName-99"
+                        >
+                          eventName
+                        </span>
+                        <span
+                          class="makeStyles-entry-98"
+                        >
+                          additionalProp1
+                          : 
+                          prop1Value
+                        </span>
+                        <span
+                          class="makeStyles-entry-98"
+                        >
+                          additionalProp2
+                          : 
+                          prop2Value
+                        </span>
+                        <span
+                          class="makeStyles-entry-98"
+                        >
+                          additionalProp3
+                          : 
+                          prop3Value
+                        </span>
+                      </p>
                     </div>
                   </td>
                 </tr>
@@ -1765,7 +1867,7 @@ exports[`renders as expected with conclusion data 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-77 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-80 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Metrics
               </h3>
@@ -1849,7 +1951,7 @@ exports[`renders as expected with conclusion data 1`] = `
                   >
                     metric_1
                     <span
-                      class="makeStyles-primary-76 makeStyles-root-81"
+                      class="makeStyles-primary-79 makeStyles-root-84"
                     >
                       Primary
                     </span>
@@ -1964,7 +2066,7 @@ exports[`renders as expected with conclusion data 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-82 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-85 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Conclusions
               </h3>
@@ -2085,7 +2187,7 @@ exports[`renders as expected without conclusion data 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-100 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-103 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 General
               </h3>
@@ -2132,54 +2234,16 @@ exports[`renders as expected without conclusion data 1`] = `
                     role="cell"
                     scope="row"
                   >
-                    Description
-                  </th>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    Experiment with things. Change stuff. Profit.
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root"
-                >
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head"
-                    role="cell"
-                    scope="row"
-                  >
-                    P2 Link
-                  </th>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body"
-                  >
-                    <a
-                      href="https://wordpress.com/experiment_1"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      https://wordpress.com/experiment_1
-                    </a>
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root"
-                >
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head"
-                    role="cell"
-                    scope="row"
-                  >
                     Status
                   </th>
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-103"
+                      class="makeStyles-root-107"
                     >
                       <span
-                        class="makeStyles-statusDot-108 makeStyles-staging-106"
+                        class="makeStyles-statusDot-112 makeStyles-staging-110"
                       />
                        
                       staging
@@ -2200,21 +2264,41 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-root-109"
+                      class="makeStyles-root-113"
                       title="20/09/2020, 20:00:00"
                     >
                       2020-09-21
                     </span>
                     <span
-                      class="makeStyles-to-99"
+                      class="makeStyles-to-102"
                     >
                       to
                     </span>
                     <span
-                      class="makeStyles-root-109"
-                      title="20/11/2020, 20:00:00"
+                      class="makeStyles-root-113"
+                      title="20/11/2020, 19:00:00"
                     >
                       2020-11-21
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Description
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-106"
+                    >
+                      Experiment with things. Change stuff. Profit.
                     </span>
                   </td>
                 </tr>
@@ -2231,7 +2315,34 @@ exports[`renders as expected without conclusion data 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body"
                   >
-                    test_a11n
+                    <span
+                      class="makeStyles-monospace-106"
+                    >
+                      test_a11n
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    P2 Link
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <a
+                      class="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-monospace-106 MuiTypography-colorPrimary"
+                      href="https://wordpress.com/experiment_1"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      https://wordpress.com/experiment_1
+                    </a>
                   </td>
                 </tr>
               </tbody>
@@ -2248,7 +2359,7 @@ exports[`renders as expected without conclusion data 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-116 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-120 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Audience
               </h3>
@@ -2273,7 +2384,7 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-monospace-117"
+                      class="makeStyles-monospace-121"
                     >
                       calypso
                     </span>
@@ -2293,7 +2404,7 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <span
-                      class="makeStyles-monospace-117"
+                      class="makeStyles-monospace-121"
                     >
                       New users only
                     </span>
@@ -2313,7 +2424,7 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <table
-                      class="MuiTable-root makeStyles-root-118"
+                      class="MuiTable-root makeStyles-root-122"
                     >
                       <thead
                         class="MuiTableHead-root"
@@ -2344,10 +2455,10 @@ exports[`renders as expected without conclusion data 1`] = `
                           class="MuiTableRow-root"
                         >
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-123"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-127"
                           >
                             <span
-                              class="makeStyles-variation-121"
+                              class="makeStyles-variation-125"
                             >
                               control
                             </span>
@@ -2364,7 +2475,7 @@ exports[`renders as expected without conclusion data 1`] = `
                             </div>
                           </td>
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-123"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-127"
                           >
                             60
                             %
@@ -2374,17 +2485,17 @@ exports[`renders as expected without conclusion data 1`] = `
                           class="MuiTableRow-root"
                         >
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-123"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-127"
                           >
                             <span
-                              class="makeStyles-variation-121"
+                              class="makeStyles-variation-125"
                             >
                               test
                             </span>
                              
                           </td>
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-123"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-127"
                           >
                             40
                             %
@@ -2408,7 +2519,7 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <table
-                      class="MuiTable-root makeStyles-root-124"
+                      class="MuiTable-root makeStyles-root-128"
                     >
                       <thead
                         class="MuiTableHead-root"
@@ -2432,7 +2543,7 @@ exports[`renders as expected without conclusion data 1`] = `
                           class="MuiTableRow-root"
                         >
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-126"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-130"
                           >
                             segment_1
                              
@@ -2441,7 +2552,7 @@ exports[`renders as expected without conclusion data 1`] = `
                       </tbody>
                     </table>
                     <table
-                      class="MuiTable-root makeStyles-root-124"
+                      class="MuiTable-root makeStyles-root-128"
                     >
                       <thead
                         class="MuiTableHead-root"
@@ -2465,7 +2576,7 @@ exports[`renders as expected without conclusion data 1`] = `
                           class="MuiTableRow-root"
                         >
                           <td
-                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-126"
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-130"
                           >
                             segment_2
                              
@@ -2499,13 +2610,38 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body"
                   >
                     <div
-                      class="makeStyles-eventList-129"
+                      class="makeStyles-eventList-133"
                     >
-                      <span
-                        class="makeStyles-monospace-130"
+                      <p
+                        class="MuiTypography-root makeStyles-monospace-134 MuiTypography-body1"
                       >
-                        No exposure events defined
-                      </span>
+                        <span
+                          class="makeStyles-eventName-132"
+                        >
+                          eventName
+                        </span>
+                        <span
+                          class="makeStyles-entry-131"
+                        >
+                          additionalProp1
+                          : 
+                          prop1Value
+                        </span>
+                        <span
+                          class="makeStyles-entry-131"
+                        >
+                          additionalProp2
+                          : 
+                          prop2Value
+                        </span>
+                        <span
+                          class="makeStyles-entry-131"
+                        >
+                          additionalProp3
+                          : 
+                          prop3Value
+                        </span>
+                      </p>
                     </div>
                   </td>
                 </tr>
@@ -2523,7 +2659,7 @@ exports[`renders as expected without conclusion data 1`] = `
               class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
             >
               <h3
-                class="MuiTypography-root makeStyles-title-111 MuiTypography-h3 MuiTypography-colorTextPrimary"
+                class="MuiTypography-root makeStyles-title-115 MuiTypography-h3 MuiTypography-colorTextPrimary"
               >
                 Metrics
               </h3>
@@ -2605,7 +2741,7 @@ exports[`renders as expected without conclusion data 1`] = `
                   >
                     metric_1
                     <span
-                      class="makeStyles-primary-110 makeStyles-root-115"
+                      class="makeStyles-primary-114 makeStyles-root-119"
                     >
                       Primary
                     </span>

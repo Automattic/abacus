@@ -5,7 +5,7 @@ import _ from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
 import * as yup from 'yup'
 
-import { createInitialExperiment } from '@/lib/experiments'
+import { ExperimentFormData } from '@/lib/form-data'
 import { experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
 
 import LoadingButtonContainer from '../LoadingButtonContainer'
@@ -109,7 +109,7 @@ const ExperimentForm = ({
 }: {
   indexedMetrics: Record<number, MetricBare>
   indexedSegments: Record<number, Segment>
-  initialExperiment: ReturnType<typeof createInitialExperiment>
+  initialExperiment: ExperimentFormData
   onSubmit: (formData: unknown) => Promise<void>
 }) => {
   const classes = useStyles()

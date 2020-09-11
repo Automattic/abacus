@@ -1,6 +1,6 @@
 import { act, fireEvent, Queries, render as actualRender, RenderOptions, screen } from '@testing-library/react'
 import mediaQuery from 'css-mediaquery'
-import { Formik } from 'formik'
+import { Formik, FormikValues } from 'formik'
 import React from 'react'
 import { ValidationError } from 'yup'
 
@@ -46,9 +46,15 @@ export function createMatchMedia(width: number) {
 /**
  * Mock Formik for rendering Formik components when you don't care about the formik connection.
  */
-export const MockFormik = ({ children }: { children: React.ReactNode }) => {
+export const MockFormik = ({
+  children,
+  initialValues = {},
+}: {
+  children: React.ReactNode
+  initialValues?: FormikValues
+}) => {
   return (
-    <Formik initialValues={{}} onSubmit={() => undefined}>
+    <Formik initialValues={initialValues} onSubmit={() => undefined}>
       {children}
     </Formik>
   )
