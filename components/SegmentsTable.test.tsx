@@ -17,7 +17,7 @@ test('renders as expected with segment names not in order', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       <table
-        class="MuiTable-root"
+        class="MuiTable-root makeStyles-root-1"
       >
         <thead
           class="MuiTableHead-root"
@@ -41,23 +41,30 @@ test('renders as expected with segment names not in order', () => {
             class="MuiTableRow-root"
           >
             <td
-              class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
+              class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-3"
             >
               bar
-              <span
-                class="makeStyles-excluded-1"
+               
+              <div
+                aria-disabled="true"
+                class="MuiChip-root MuiChip-outlined Mui-disabled"
               >
-                 excluded
-              </span>
+                <span
+                  class="MuiChip-label"
+                >
+                  Excluded
+                </span>
+              </div>
             </td>
           </tr>
           <tr
             class="MuiTableRow-root"
           >
             <td
-              class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
+              class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-3"
             >
               foo
+               
             </td>
           </tr>
         </tbody>
