@@ -25,7 +25,7 @@ test('renders layout with declared title and children', () => {
         class="makeStyles-appBarTop-5"
       >
         <a
-          class="MuiContainer-root makeStyles-appLogotype-7 MuiContainer-maxWidthXl"
+          class="MuiContainer-root makeStyles-appLogotype-7 MuiContainer-maxWidthLg"
           href="/"
         >
           <img
@@ -44,7 +44,7 @@ test('renders layout with declared title and children', () => {
         class="makeStyles-appBarBottom-4"
       >
         <div
-          class="MuiContainer-root MuiContainer-maxWidthXl"
+          class="MuiContainer-root MuiContainer-maxWidthLg"
         >
           <nav
             class="makeStyles-appNav-9"

@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/require-await */
-import { act, fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
+import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import { noop } from 'lodash'
 import MockDate from 'mockdate'
 import * as notistack from 'notistack'
@@ -86,54 +85,16 @@ test('renders as expected', () => {
                 role="cell"
                 scope="row"
               >
-                Description
-              </th>
-              <td
-                class="MuiTableCell-root MuiTableCell-body"
-              >
-                Experiment with things. Change stuff. Profit.
-              </td>
-            </tr>
-            <tr
-              class="MuiTableRow-root"
-            >
-              <th
-                class="MuiTableCell-root MuiTableCell-head"
-                role="cell"
-                scope="row"
-              >
-                P2 Link
-              </th>
-              <td
-                class="MuiTableCell-root MuiTableCell-body"
-              >
-                <a
-                  href="https://wordpress.com/experiment_1"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  https://wordpress.com/experiment_1
-                </a>
-              </td>
-            </tr>
-            <tr
-              class="MuiTableRow-root"
-            >
-              <th
-                class="MuiTableCell-root MuiTableCell-head"
-                role="cell"
-                scope="row"
-              >
                 Status
               </th>
               <td
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 <span
-                  class="makeStyles-root-5"
+                  class="makeStyles-root-6"
                 >
                   <span
-                    class="makeStyles-statusDot-10 makeStyles-staging-8"
+                    class="makeStyles-statusDot-11 makeStyles-staging-9"
                   />
                    
                   staging
@@ -154,7 +115,7 @@ test('renders as expected', () => {
                 class="MuiTableCell-root MuiTableCell-body"
               >
                 <span
-                  class="makeStyles-root-11"
+                  class="makeStyles-root-12"
                   title="20/09/2020, 20:00:00"
                 >
                   2020-09-21
@@ -165,10 +126,30 @@ test('renders as expected', () => {
                   to
                 </span>
                 <span
-                  class="makeStyles-root-11"
-                  title="20/11/2020, 20:00:00"
+                  class="makeStyles-root-12"
+                  title="20/11/2020, 19:00:00"
                 >
                   2020-11-21
+                </span>
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="cell"
+                scope="row"
+              >
+                Description
+              </th>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <span
+                  class="makeStyles-monospace-5"
+                >
+                  Experiment with things. Change stuff. Profit.
                 </span>
               </td>
             </tr>
@@ -185,7 +166,34 @@ test('renders as expected', () => {
               <td
                 class="MuiTableCell-root MuiTableCell-body"
               >
-                test_a11n
+                <span
+                  class="makeStyles-monospace-5"
+                >
+                  test_a11n
+                </span>
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="cell"
+                scope="row"
+              >
+                P2 Link
+              </th>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-monospace-5 MuiTypography-colorPrimary"
+                  href="https://wordpress.com/experiment_1"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  https://wordpress.com/experiment_1
+                </a>
               </td>
             </tr>
           </tbody>
@@ -202,6 +210,7 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
   mockedExperimentsApi.patch.mockReset()
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/require-await
   mockedExperimentsApi.patch.mockImplementationOnce(async () => experiment)
 
   const editButton = screen.getByRole('button', { name: /Edit/ })
@@ -209,12 +218,10 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
 
   await waitFor(() => screen.getByRole('button', { name: /Save/ }))
 
-  changeFieldByRole('textbox', /Experiment description/, 'Edited description.')
+  await changeFieldByRole('textbox', /Experiment description/, 'Edited description.')
   // This date was picked as it is after the fixture start date.
-  await act(async () => {
-    fireEvent.change(screen.getByLabelText(/End date/), { target: { value: '2020-10-20' } })
-  })
-  changeFieldByRole('textbox', /Owner/, 'changed_test_a11n')
+  fireEvent.change(screen.getByLabelText(/End date/), { target: { value: '2020-10-20' } })
+  await changeFieldByRole('textbox', /Owner/, 'changed_test_a11n')
 
   const saveButton = screen.getByRole('button', { name: /Save/ })
   fireEvent.click(saveButton)
@@ -260,6 +267,7 @@ test('checks edit dialog does not allow end datetime changes with disabled exper
   mockedExperimentsApi.patch.mockReset()
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/require-await
   mockedExperimentsApi.patch.mockImplementationOnce(async () => experiment)
 
   const editButton = screen.getByRole('button', { name: /Edit/ })
@@ -267,9 +275,9 @@ test('checks edit dialog does not allow end datetime changes with disabled exper
 
   await waitFor(() => screen.getByRole('button', { name: /Save/ }))
 
-  changeFieldByRole('textbox', /Experiment description/, 'Edited description.')
+  await changeFieldByRole('textbox', /Experiment description/, 'Edited description.')
   expect(screen.getByLabelText(/End date/)).toBeDisabled()
-  changeFieldByRole('textbox', /Owner/, 'changed_test_a11n')
+  await changeFieldByRole('textbox', /Owner/, 'changed_test_a11n')
 
   const saveButton = screen.getByRole('button', { name: /Save/ })
   fireEvent.click(saveButton)

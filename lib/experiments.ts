@@ -38,29 +38,6 @@ export function getDefaultAnalysisStrategy(experiment: ExperimentFull) {
   return experiment.exposureEvents ? AnalysisStrategy.PpNaive : AnalysisStrategy.MittNoSpammersNoCrossovers
 }
 
-/**
- * Initial Experiment data for use in the ExperimentForm
- */
-export function createInitialExperiment() {
-  return {
-    p2Url: '',
-    name: '',
-    description: '',
-    startDatetime: '',
-    endDatetime: '',
-    ownerLogin: '',
-    existingUsersAllowed: 'true',
-    platform: Platform.Wpcom,
-    metricAssignments: [],
-    segmentAssignments: [],
-    variations: [
-      { name: 'control', isDefault: true, allocatedPercentage: 50 },
-      { name: 'treatment', isDefault: false, allocatedPercentage: 50 },
-    ],
-    exposureEvents: [],
-  }
-}
-
 export const PlatformToHuman: Record<Platform, string> = {
   [Platform.Wpcom]: 'WordPress.com',
   [Platform.Calypso]: 'Calypso',

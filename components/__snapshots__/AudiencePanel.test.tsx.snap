@@ -967,6 +967,15 @@ exports[`renders as expected with all segments resolvable 1`] = `
                     </span>
                   </td>
                 </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    segment_5
+                  </td>
+                </tr>
               </tbody>
             </table>
             <table
@@ -1036,7 +1045,32 @@ exports[`renders as expected with all segments resolvable 1`] = `
               <p
                 class="MuiTypography-root MuiTypography-body1"
               >
-                No exposure events defined
+                <span
+                  class="makeStyles-eventName-26"
+                >
+                  eventName
+                </span>
+                <span
+                  class="makeStyles-entry-25"
+                >
+                  additionalProp1
+                  : 
+                  prop1Value
+                </span>
+                <span
+                  class="makeStyles-entry-25"
+                >
+                  additionalProp2
+                  : 
+                  prop2Value
+                </span>
+                <span
+                  class="makeStyles-entry-25"
+                >
+                  additionalProp3
+                  : 
+                  prop3Value
+                </span>
               </p>
             </div>
           </td>
@@ -1289,7 +1323,32 @@ exports[`renders as expected with existing users allowed 1`] = `
               <p
                 class="MuiTypography-root MuiTypography-body1"
               >
-                No exposure events defined
+                <span
+                  class="makeStyles-eventName-17"
+                >
+                  eventName
+                </span>
+                <span
+                  class="makeStyles-entry-16"
+                >
+                  additionalProp1
+                  : 
+                  prop1Value
+                </span>
+                <span
+                  class="makeStyles-entry-16"
+                >
+                  additionalProp2
+                  : 
+                  prop2Value
+                </span>
+                <span
+                  class="makeStyles-entry-16"
+                >
+                  additionalProp3
+                  : 
+                  prop3Value
+                </span>
               </p>
             </div>
           </td>
@@ -1542,7 +1601,32 @@ exports[`renders as expected with no segment assignments 1`] = `
               <p
                 class="MuiTypography-root MuiTypography-body1"
               >
-                No exposure events defined
+                <span
+                  class="makeStyles-eventName-8"
+                >
+                  eventName
+                </span>
+                <span
+                  class="makeStyles-entry-7"
+                >
+                  additionalProp1
+                  : 
+                  prop1Value
+                </span>
+                <span
+                  class="makeStyles-entry-7"
+                >
+                  additionalProp2
+                  : 
+                  prop2Value
+                </span>
+                <span
+                  class="makeStyles-entry-7"
+                >
+                  additionalProp3
+                  : 
+                  prop3Value
+                </span>
               </p>
             </div>
           </td>

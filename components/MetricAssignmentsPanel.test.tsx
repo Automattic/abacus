@@ -117,11 +117,17 @@ test('renders as expected with all metrics resolvable', () => {
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 metric_1
-                <span
-                  class="makeStyles-primary-1"
+                <br />
+                <div
+                  aria-disabled="true"
+                  class="MuiChip-root makeStyles-primaryChip-7 MuiChip-outlined Mui-disabled"
                 >
-                   primary 
-                </span>
+                  <span
+                    class="MuiChip-label"
+                  >
+                    Primary
+                  </span>
+                </div>
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
@@ -148,6 +154,7 @@ test('renders as expected with all metrics resolvable', () => {
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 metric_2
+                <br />
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
@@ -174,6 +181,7 @@ test('renders as expected with all metrics resolvable', () => {
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 metric_2
+                <br />
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
@@ -200,6 +208,7 @@ test('renders as expected with all metrics resolvable', () => {
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 metric_3
+                <br />
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
