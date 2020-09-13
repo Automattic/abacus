@@ -1,5 +1,6 @@
 import {
   Button,
+  Chip,
   Dialog,
   DialogActions,
   DialogContent,
@@ -28,7 +29,6 @@ import React, { useMemo, useState } from 'react'
 import * as yup from 'yup'
 
 import ExperimentsApi from '@/api/ExperimentsApi'
-import Label from '@/components/Label'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import * as MetricAssignments from '@/lib/metric-assignments'
 import { indexMetrics } from '@/lib/normalizers'
@@ -74,7 +74,10 @@ function resolveMetricAssignments(metricAssignments: MetricAssignment[], metrics
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     primary: {
-      marginLeft: theme.spacing(1),
+      color: theme.palette.grey[500],
+    },
+    monospace: {
+      fontFamily: theme.custom.fonts.monospace,
     },
     title: {
       flexGrow: 1,
@@ -93,6 +96,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     label: {
       marginBottom: theme.spacing(1),
+    },
+    primaryChip: {
+      marginTop: theme.spacing(1),
     },
   }),
 )
@@ -186,15 +192,20 @@ function MetricAssignmentsPanel({
         <TableBody>
           {resolvedMetricAssignments.map((resolvedMetricAssignment) => (
             <TableRow key={resolvedMetricAssignment.metricAssignmentId}>
-              <TableCell>
+              <TableCell className={classes.monospace}>
                 {resolvedMetricAssignment.metric.name}
-                {resolvedMetricAssignment.isPrimary && <Label className={classes.primary} text='Primary' />}
+                <br />
+                {resolvedMetricAssignment.isPrimary && (
+                  <Chip label='Primary' variant='outlined' disabled className={classes.primaryChip} />
+                )}
               </TableCell>
-              <TableCell>
+              <TableCell className={classes.monospace}>
                 {AttributionWindowSecondsToHuman[resolvedMetricAssignment.attributionWindowSeconds]}
               </TableCell>
-              <TableCell>{formatBoolean(resolvedMetricAssignment.changeExpected)}</TableCell>
-              <TableCell>
+              <TableCell className={classes.monospace}>
+                {formatBoolean(resolvedMetricAssignment.changeExpected)}
+              </TableCell>
+              <TableCell className={classes.monospace}>
                 <span>
                   {resolvedMetricAssignment.metric.parameterType === MetricParameterType.Revenue
                     ? formatUsCurrencyDollar(resolvedMetricAssignment.minDifference)

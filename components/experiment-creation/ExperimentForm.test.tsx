@@ -106,6 +106,51 @@ test('sections should be browsable by the next and prev buttons', async () => {
   screen.getByText(/Confirm and Submit Your Experiment/)
 })
 
+test('sections should be browsable by enter presses', async () => {
+  MockDate.set('2020-08-13')
+
+  const enterKeyCode = 13
+
+  const onSubmit = async () => undefined
+
+  render(
+    <ExperimentForm
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
+      initialExperiment={experimentToFormData({})}
+      onSubmit={onSubmit}
+    />,
+  )
+
+  const form = document.querySelector('form')
+
+  if (!form) {
+    throw new Error('Could not find form!')
+  }
+
+  screen.getByText(/Design and Document Your Experiment/)
+  await act(async () => {
+    fireEvent.keyPress(form, { key: 'Enter', code: enterKeyCode, charCode: enterKeyCode })
+  })
+  screen.getAllByText(/Basic Info/)
+  await act(async () => {
+    fireEvent.keyPress(form, { key: 'Enter', code: enterKeyCode, charCode: enterKeyCode })
+  })
+  screen.getByText(/Define Your Audience/)
+  await act(async () => {
+    fireEvent.keyPress(form, { key: 'Enter', code: enterKeyCode, charCode: enterKeyCode })
+  })
+  screen.getByText(/Assign Metrics/)
+  await act(async () => {
+    fireEvent.keyPress(form, { key: 'Enter', code: enterKeyCode, charCode: enterKeyCode })
+  })
+  screen.getByText(/Confirm and Submit Your Experiment/)
+  await act(async () => {
+    fireEvent.keyPress(form, { key: 'Enter', code: enterKeyCode, charCode: enterKeyCode })
+  })
+  screen.getByText(/Confirm and Submit Your Experiment/)
+})
+
 test('sections should be browsable by the section buttons', async () => {
   MockDate.set('2020-08-13')
 
