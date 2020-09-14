@@ -162,16 +162,17 @@ const ExperimentForm = ({
         }
 
         const prevStage = () => {
-          // istanbul ignore else; This condition should never happen
-          if (0 < currentStageIndex) {
-            changeStage(stages[currentStageIndex - 1].id)
-          }
+          const prevStage = stages[currentStageIndex - 1]
+          prevStage && changeStage(prevStage.id)
         }
         const nextStage = () => {
-          // istanbul ignore else; This condition should never happen
-          if (currentStageIndex < stages.length) {
-            changeStage(stages[currentStageIndex + 1].id)
-          }
+          const nextStage = stages[currentStageIndex + 1]
+          nextStage && changeStage(nextStage.id)
+        }
+
+        const onEnterKeyPressOnForm = (e: React.KeyboardEvent<HTMLFormElement>) => {
+          e.preventDefault()
+          nextStage()
         }
 
         return (
@@ -190,7 +191,19 @@ const ExperimentForm = ({
               </Stepper>
             </div>
             <div ref={rootRef}>
-              <form className={classes.form} onSubmit={formikProps.handleSubmit} noValidate>
+              {/* Explanation: This should be fine as we aren't hiding behaviour that can't be accessed otherwise. */}
+              {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+              <form
+                className={classes.form}
+                onSubmit={formikProps.handleSubmit}
+                noValidate
+                onKeyPress={(e) => {
+                  // istanbul ignore else
+                  if (e.key === 'Enter') {
+                    onEnterKeyPressOnForm(e)
+                  }
+                }}
+              >
                 {currentStageId === StageId.Beginning && (
                   <div className={classes.formPart}>
                     <Paper className={classes.paper}>

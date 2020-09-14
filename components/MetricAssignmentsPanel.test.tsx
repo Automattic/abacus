@@ -36,7 +36,7 @@ test('renders as expected with all metrics resolvable', () => {
           class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
         >
           <h3
-            class="MuiTypography-root makeStyles-title-2 MuiTypography-h3 MuiTypography-colorTextPrimary"
+            class="MuiTypography-root makeStyles-title-3 MuiTypography-h3 MuiTypography-colorTextPrimary"
           >
             Metrics
           </h3>
@@ -114,27 +114,33 @@ test('renders as expected with all metrics resolvable', () => {
               class="MuiTableRow-root"
             >
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 metric_1
-                <span
-                  class="makeStyles-primary-1 makeStyles-root-6"
+                <br />
+                <div
+                  aria-disabled="true"
+                  class="MuiChip-root makeStyles-primaryChip-7 MuiChip-outlined Mui-disabled"
                 >
-                  Primary
-                </span>
+                  <span
+                    class="MuiChip-label"
+                  >
+                    Primary
+                  </span>
+                </div>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 1 week
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 Yes
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 <span>
                   0.1 pp
@@ -145,22 +151,23 @@ test('renders as expected with all metrics resolvable', () => {
               class="MuiTableRow-root"
             >
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 metric_2
+                <br />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 4 weeks
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 No
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 <span>
                   $10.50
@@ -171,22 +178,23 @@ test('renders as expected with all metrics resolvable', () => {
               class="MuiTableRow-root"
             >
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 metric_2
+                <br />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 1 hour
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 Yes
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 <span>
                   $0.50
@@ -197,22 +205,23 @@ test('renders as expected with all metrics resolvable', () => {
               class="MuiTableRow-root"
             >
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 metric_3
+                <br />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 6 hours
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 Yes
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 <span>
                   12 pp

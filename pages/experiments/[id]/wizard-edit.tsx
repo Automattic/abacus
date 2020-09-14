@@ -13,7 +13,7 @@ import ExperimentForm from '@/components/experiment-creation/ExperimentForm'
 import Layout from '@/components/Layout'
 import { experimentToFormData } from '@/lib/form-data'
 import * as Normalizers from '@/lib/normalizers'
-import { ExperimentFull } from '@/lib/schemas'
+import { ExperimentFull, ExperimentFullNew } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 import { createUnresolvingPromise, or } from '@/utils/general'
 
@@ -47,11 +47,11 @@ export default function WizardEditPage() {
   const { enqueueSnackbar } = useSnackbar()
   const onSubmit = async (formData: unknown) => {
     try {
-      // TODO: submission
-      // const { experiment } = formData as { experiment: ExperimentFullNew }
-      // const receivedExperiment = await ExperimentsApi.put(experiment)
-      // TEMPORARY:
-      await new Promise((resolve) => setTimeout(resolve, 500))
+      if (!_.isNumber(experimentId)) {
+        throw Error('This should never occur: Missing experimentId')
+      }
+      const { experiment } = formData as { experiment: ExperimentFullNew }
+      await ExperimentsApi.put(experimentId, experiment)
       enqueueSnackbar('Experiment Updated!', { variant: 'success' })
       router.push('/experiments/[id]?freshly_wizard_edited', `/experiments/${experimentId}?freshly_wizard_edited`)
     } catch (error) {
