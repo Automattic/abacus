@@ -52,7 +52,6 @@ export default function WizardEditPage() {
       }
       const { experiment } = formData as { experiment: ExperimentFullNew }
       await ExperimentsApi.put(experimentId, experiment)
-      await new Promise((resolve) => setTimeout(resolve, 500))
       enqueueSnackbar('Experiment Updated!', { variant: 'success' })
       router.push('/experiments/[id]?freshly_wizard_edited', `/experiments/${experimentId}?freshly_wizard_edited`)
     } catch (error) {
