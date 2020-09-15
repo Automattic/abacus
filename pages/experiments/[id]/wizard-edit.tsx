@@ -15,13 +15,14 @@ import { experimentToFormData } from '@/lib/form-data'
 import * as Normalizers from '@/lib/normalizers'
 import { ExperimentFull, ExperimentFullNew } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
-import { createUnresolvingPromise, or } from '@/utils/general'
+import { createUnresolvingPromise, or, testDataNamePrefix } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/experiments/[id]/results.tsx')
 
 export default function WizardEditPage() {
   const router = useRouter()
   const experimentId = toIntOrNull(router.query.id)
+  const debugMode = router.query.debug === 'true'
   debug(`ExperimentWizardEdit#render ${experimentId}`)
 
   const { isLoading: experimentIsLoading, data: experiment, error: experimentError } = useDataSource(
@@ -30,10 +31,19 @@ export default function WizardEditPage() {
   )
   useDataLoadingError(experimentError, 'Experiment')
 
-  const { isLoading: metricsIsLoading, data: indexedMetrics, error: metricsError } = useDataSource(
-    async () => Normalizers.indexMetrics(await MetricsApi.findAll()),
-    [],
-  )
+  const { isLoading: metricsIsLoading, data: indexedMetrics, error: metricsError } = useDataSource(async () => {
+    const metrics = await MetricsApi.findAll()
+    let filteredMetrics
+
+    // We conditionally filter debug data out here
+    if (debugMode) {
+      filteredMetrics = metrics
+    } else {
+      filteredMetrics = metrics.filter((metric) => !metric.name.startsWith(testDataNamePrefix))
+    }
+
+    return Normalizers.indexMetrics(filteredMetrics)
+  }, [debugMode])
   useDataLoadingError(metricsError, 'Metrics')
 
   const { isLoading: segmentsIsLoading, data: indexedSegments, error: segmentsError } = useDataSource(
