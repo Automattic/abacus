@@ -5,9 +5,7 @@ import React, { ReactNode } from 'react'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      backgroundColor: '#eee',
-      borderRadius: theme.spacing(2),
-      padding: theme.spacing(1, 1.5),
+      color: theme.palette.grey[500],
     },
   }),
 )

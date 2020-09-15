@@ -31,6 +31,18 @@ async function create(newExperiment: ExperimentFullNew) {
 }
 
 /**
+ * Attempts to PUT an experiment, overwriting the existing experiment.
+ *
+ * Note: Be sure to handle any errors that may be thrown.
+ */
+async function put(experimentId: number, experiment: ExperimentFullNew) {
+  const validatedExperiment = await experimentFullNewSchema.validate(experiment, { abortEarly: false })
+  const outboundExperiment = experimentFullNewOutboundSchema.cast(validatedExperiment)
+  const returnedExperiment = await fetchApi('PUT', `/experiments/${experimentId}`, outboundExperiment)
+  return await experimentFullSchema.validate(returnedExperiment)
+}
+
+/**
  * Attempts to patch an experiment.
  *
  * Doesn't work with nested fields.
@@ -110,6 +122,7 @@ async function findById(id: number): Promise<ExperimentFull> {
 
 const ExperimentsApi = {
   create,
+  put,
   patch,
   assignMetric,
   changeStatus,

@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/require-await */
-import { act, fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
+import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import { noop } from 'lodash'
 import MockDate from 'mockdate'
 import * as notistack from 'notistack'
@@ -211,6 +210,7 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
   mockedExperimentsApi.patch.mockReset()
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/require-await
   mockedExperimentsApi.patch.mockImplementationOnce(async () => experiment)
 
   const editButton = screen.getByRole('button', { name: /Edit/ })
@@ -218,12 +218,10 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
 
   await waitFor(() => screen.getByRole('button', { name: /Save/ }))
 
-  changeFieldByRole('textbox', /Experiment description/, 'Edited description.')
+  await changeFieldByRole('textbox', /Experiment description/, 'Edited description.')
   // This date was picked as it is after the fixture start date.
-  await act(async () => {
-    fireEvent.change(screen.getByLabelText(/End date/), { target: { value: '2020-10-20' } })
-  })
-  changeFieldByRole('textbox', /Owner/, 'changed_test_a11n')
+  fireEvent.change(screen.getByLabelText(/End date/), { target: { value: '2020-10-20' } })
+  await changeFieldByRole('textbox', /Owner/, 'changed_test_a11n')
 
   const saveButton = screen.getByRole('button', { name: /Save/ })
   fireEvent.click(saveButton)
@@ -269,6 +267,7 @@ test('checks edit dialog does not allow end datetime changes with disabled exper
   mockedExperimentsApi.patch.mockReset()
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/require-await
   mockedExperimentsApi.patch.mockImplementationOnce(async () => experiment)
 
   const editButton = screen.getByRole('button', { name: /Edit/ })
@@ -276,9 +275,9 @@ test('checks edit dialog does not allow end datetime changes with disabled exper
 
   await waitFor(() => screen.getByRole('button', { name: /Save/ }))
 
-  changeFieldByRole('textbox', /Experiment description/, 'Edited description.')
+  await changeFieldByRole('textbox', /Experiment description/, 'Edited description.')
   expect(screen.getByLabelText(/End date/)).toBeDisabled()
-  changeFieldByRole('textbox', /Owner/, 'changed_test_a11n')
+  await changeFieldByRole('textbox', /Owner/, 'changed_test_a11n')
 
   const saveButton = screen.getByRole('button', { name: /Save/ })
   fireEvent.click(saveButton)

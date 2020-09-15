@@ -1,4 +1,4 @@
-import { Tooltip, Typography } from '@material-ui/core'
+import { Chip, Tooltip, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -7,17 +7,24 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import React from 'react'
 
-import Label from '@/components/Label'
 import { ExperimentFull, nameSchema } from '@/lib/schemas'
 import * as Variations from '@/lib/variations'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    default: {
-      marginLeft: theme.spacing(1),
+    root: {
+      '& th, & td': {
+        paddingLeft: 0,
+      },
     },
+    default: {
+      color: theme.palette.grey[500],
+    },
+    defaultLabel: {},
     variation: {
-      borderBottom: '1px dashed #a3a3a3',
+      borderBottomWidth: 1,
+      borderBottomStyle: 'dashed',
+      borderBottomColor: theme.palette.grey[500],
     },
     tooltip: {
       maxWidth: '500px',
@@ -25,6 +32,9 @@ const useStyles = makeStyles((theme: Theme) =>
       '& a:link': {
         color: '#cee6f8',
       },
+    },
+    monospace: {
+      fontFamily: theme.custom.fonts.monospace,
     },
   }),
 )
@@ -67,7 +77,7 @@ function VariationsTable({
 }) {
   const classes = useStyles()
   return (
-    <Table>
+    <Table className={classes.root}>
       <TableHead>
         <TableRow>
           <TableCell component='th' variant='head'>
@@ -82,7 +92,7 @@ function VariationsTable({
         {Variations.sort(variations).map((variation) => {
           return (
             <TableRow key={variation.variationId}>
-              <TableCell>
+              <TableCell className={classes.monospace}>
                 <Tooltip
                   interactive
                   arrow
@@ -108,10 +118,10 @@ function VariationsTable({
                   }
                 >
                   <span className={classes.variation}>{variation.name}</span>
-                </Tooltip>
-                {variation.isDefault && <Label className={classes.default} text='Default' />}
+                </Tooltip>{' '}
+                {variation.isDefault && <Chip label='Default' variant='outlined' disabled />}
               </TableCell>
-              <TableCell>{variation.allocatedPercentage}%</TableCell>
+              <TableCell className={classes.monospace}>{variation.allocatedPercentage}%</TableCell>
             </TableRow>
           )
         })}

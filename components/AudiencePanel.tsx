@@ -49,6 +49,9 @@ const useStyles = makeStyles(() =>
     title: {
       flexGrow: 1,
     },
+    monospace: {
+      fontFamily: theme.custom.fonts.monospace,
+    },
   }),
 )
 
@@ -73,6 +76,9 @@ const eventStyles = makeStyles(() =>
         borderBottom: '1px solid rgb(224,224,224)',
       },
     },
+    monospace: {
+      fontFamily: theme.custom.fonts.monospace,
+    },
   }),
 )
 
@@ -83,7 +89,7 @@ function ExposureEventsTable({ experiment: { exposureEvents } }: { experiment: E
     <div className={classes.eventList}>
       {exposureEvents && exposureEvents.length ? (
         exposureEvents.map((ev) => (
-          <Typography key={ev.event}>
+          <Typography className={classes.monospace} key={ev.event}>
             <span className={classes.eventName}>{ev.event}</span>
             {ev.props &&
               Object.entries(ev.props).map(([key, val]) => (
@@ -94,7 +100,7 @@ function ExposureEventsTable({ experiment: { exposureEvents } }: { experiment: E
           </Typography>
         ))
       ) : (
-        <Typography>No exposure events defined</Typography>
+        <span className={classes.monospace}>No exposure events defined</span>
       )}
     </div>
   )
@@ -116,8 +122,15 @@ function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; s
   )
 
   const data = [
-    { label: 'Platform', value: experiment.platform },
-    { label: 'User Type', value: experiment.existingUsersAllowed ? 'All users (new + existing)' : 'New users only' },
+    { label: 'Platform', value: <span className={classes.monospace}>{experiment.platform}</span> },
+    {
+      label: 'User Type',
+      value: (
+        <span className={classes.monospace}>
+          {experiment.existingUsersAllowed ? 'All users (new + existing)' : 'New users only'}
+        </span>
+      ),
+    },
     {
       label: 'Variations',
       padding: 'none' as TableCellProps['padding'],

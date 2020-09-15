@@ -1,3 +1,4 @@
+import { Chip } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -7,13 +8,20 @@ import TableRow from '@material-ui/core/TableRow'
 import _ from 'lodash'
 import React, { useMemo } from 'react'
 
-import Label from '@/components/Label'
 import { Segment, SegmentType } from '@/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    root: {
+      '& th, & td': {
+        paddingLeft: 0,
+      },
+    },
     excluded: {
-      marginLeft: theme.spacing(1),
+      color: theme.palette.grey[500],
+    },
+    monospace: {
+      fontFamily: theme.custom.fonts.monospace,
     },
   }),
 )
@@ -49,7 +57,7 @@ function SegmentsTable({
   )
   const classes = useStyles()
   return (
-    <Table>
+    <Table className={classes.root}>
       <TableHead>
         <TableRow>
           <TableCell component='th' variant='head'>
@@ -60,16 +68,18 @@ function SegmentsTable({
       <TableBody>
         {resolvedSegmentAssignments.length === 0 ? (
           <TableRow>
-            <TableCell>All {type === SegmentType.Country ? 'countries' : 'locales'} included</TableCell>
+            <TableCell className={classes.monospace}>
+              All {type === SegmentType.Country ? 'countries' : 'locales'} included
+            </TableCell>
           </TableRow>
         ) : (
           sortedResolvedSegmentAssignments.map(
             (resolvedSegmentAssignment) =>
               resolvedSegmentAssignment.segment && (
                 <TableRow key={resolvedSegmentAssignment.segment.segmentId}>
-                  <TableCell>
-                    {resolvedSegmentAssignment.segment.name}
-                    {resolvedSegmentAssignment.isExcluded && <Label className={classes.excluded} text='Excluded' />}
+                  <TableCell className={classes.monospace}>
+                    {resolvedSegmentAssignment.segment.name}{' '}
+                    {resolvedSegmentAssignment.isExcluded && <Chip label='Excluded' variant='outlined' disabled />}
                   </TableCell>
                 </TableRow>
               ),

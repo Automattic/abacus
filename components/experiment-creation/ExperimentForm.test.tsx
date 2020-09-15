@@ -1,15 +1,17 @@
 /* eslint-disable @typescript-eslint/require-await */
 
 import { act, fireEvent, screen, waitFor } from '@testing-library/react'
+import _ from 'lodash'
 import noop from 'lodash/noop'
 import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
 
-import { createInitialExperiment } from '@/lib/experiments'
+import { experimentToFormData } from '@/lib/form-data'
 import * as Normalizers from '@/lib/normalizers'
+import { experimentFullNewSchema, Status } from '@/lib/schemas'
 import Fixtures from '@/test-helpers/fixtures'
-import { changeFieldByRole, render } from '@/test-helpers/test-utils'
+import { changeFieldByRole, render, validationErrorDisplayer } from '@/test-helpers/test-utils'
 import { formatIsoDate } from '@/utils/time'
 
 import ExperimentForm from './ExperimentForm'
@@ -56,7 +58,7 @@ test('renders as expected', () => {
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
-      initialExperiment={createInitialExperiment()}
+      initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
     />,
   )
@@ -68,11 +70,11 @@ test('sections should be browsable by the next and prev buttons', async () => {
 
   const onSubmit = async () => undefined
 
-  const { container: _container } = render(
+  render(
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
-      initialExperiment={createInitialExperiment()}
+      initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
     />,
   )
@@ -104,6 +106,51 @@ test('sections should be browsable by the next and prev buttons', async () => {
   screen.getByText(/Confirm and Submit Your Experiment/)
 })
 
+test('sections should be browsable by enter presses', async () => {
+  MockDate.set('2020-08-13')
+
+  const enterKeyCode = 13
+
+  const onSubmit = async () => undefined
+
+  render(
+    <ExperimentForm
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
+      initialExperiment={experimentToFormData({})}
+      onSubmit={onSubmit}
+    />,
+  )
+
+  const form = document.querySelector('form')
+
+  if (!form) {
+    throw new Error('Could not find form!')
+  }
+
+  screen.getByText(/Design and Document Your Experiment/)
+  await act(async () => {
+    fireEvent.keyPress(form, { key: 'Enter', code: enterKeyCode, charCode: enterKeyCode })
+  })
+  screen.getAllByText(/Basic Info/)
+  await act(async () => {
+    fireEvent.keyPress(form, { key: 'Enter', code: enterKeyCode, charCode: enterKeyCode })
+  })
+  screen.getByText(/Define Your Audience/)
+  await act(async () => {
+    fireEvent.keyPress(form, { key: 'Enter', code: enterKeyCode, charCode: enterKeyCode })
+  })
+  screen.getByText(/Assign Metrics/)
+  await act(async () => {
+    fireEvent.keyPress(form, { key: 'Enter', code: enterKeyCode, charCode: enterKeyCode })
+  })
+  screen.getByText(/Confirm and Submit Your Experiment/)
+  await act(async () => {
+    fireEvent.keyPress(form, { key: 'Enter', code: enterKeyCode, charCode: enterKeyCode })
+  })
+  screen.getByText(/Confirm and Submit Your Experiment/)
+})
+
 test('sections should be browsable by the section buttons', async () => {
   MockDate.set('2020-08-13')
 
@@ -113,7 +160,7 @@ test('sections should be browsable by the section buttons', async () => {
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
-      initialExperiment={createInitialExperiment()}
+      initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
     />,
   )
@@ -154,11 +201,11 @@ test('section should be validated after change', async () => {
 
   const onSubmit = async () => undefined
 
-  const { container: _container } = render(
+  render(
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
-      initialExperiment={createInitialExperiment()}
+      initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
     />,
   )
@@ -235,7 +282,7 @@ test('skipping to submit should check all sections', async () => {
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
-      initialExperiment={createInitialExperiment()}
+      initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
     />,
   )
@@ -276,11 +323,11 @@ test('form submits with valid fields', async () => {
     return
   }
 
-  const { container: _container } = render(
+  render(
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
-      initialExperiment={createInitialExperiment()}
+      initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
     />,
   )
@@ -448,4 +495,81 @@ test('form submits with valid fields', async () => {
       ],
     },
   })
+})
+
+test('form submits an edited experiment without any changes', async () => {
+  MockDate.set('2020-08-13')
+
+  const experiment = Fixtures.createExperimentFull({
+    status: Status.Staging,
+    conclusionUrl: undefined,
+    deployedVariationId: undefined,
+    endReason: undefined,
+  })
+
+  let submittedData: unknown = null
+  const onSubmit = async (formData: unknown): Promise<undefined> => {
+    // We need to add a timeout here so the loading indicator renders
+    await new Promise((resolve) => setTimeout(resolve, 200))
+    submittedData = formData
+    return
+  }
+
+  render(
+    <ExperimentForm
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
+      initialExperiment={experimentToFormData(experiment)}
+      onSubmit={onSubmit}
+    />,
+  )
+
+  // ### Move through the form stages
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Begin/ }))
+  })
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Next/ }))
+  })
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Next/ }))
+  })
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: /Next/ }))
+  })
+
+  // ### Submit
+  screen.getByText(/Confirm and Submit Your Experiment/)
+
+  const submit = screen
+    .getAllByRole('button', { name: /Submit/ })
+    .find((submit) => submit.getAttribute('type') === 'submit')
+  if (!submit) {
+    throw new Error(`Can't find submit button.`)
+  }
+  fireEvent.click(submit)
+
+  await waitFor(() => expect(submittedData).not.toBeNull())
+
+  const validatedExperiment = await validationErrorDisplayer(
+    experimentFullNewSchema.validate((submittedData as { experiment: unknown }).experiment),
+  )
+
+  // We need to remove Ids, status, conclusion data, reformat exposure events to make it like new
+  const newShapedExperiment = _.clone(experiment)
+  delete newShapedExperiment.experimentId
+  delete newShapedExperiment.status
+  delete newShapedExperiment.conclusionUrl
+  delete newShapedExperiment.deployedVariationId
+  delete newShapedExperiment.endReason
+  newShapedExperiment.metricAssignments.forEach((metricAssignment) => delete metricAssignment.metricAssignmentId)
+  newShapedExperiment.segmentAssignments.forEach((segmentAssignment) => delete segmentAssignment.segmentAssignmentId)
+  newShapedExperiment.variations.forEach((variation) => delete variation.variationId)
+  newShapedExperiment.exposureEvents?.forEach((exposureEvent) => {
+    if (exposureEvent.props) {
+      exposureEvent.props = _.toPairs(exposureEvent.props).map(([key, value]) => ({ key, value }))
+    }
+  })
+
+  expect(validatedExperiment).toEqual(newShapedExperiment)
 })

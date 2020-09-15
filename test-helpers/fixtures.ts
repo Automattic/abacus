@@ -397,7 +397,23 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
         minDifference: 12,
       }),
     ],
-    segmentAssignments: [],
+    segmentAssignments: [
+      {
+        segmentAssignmentId: 1,
+        segmentId: 1,
+        isExcluded: true,
+      },
+    ],
+    exposureEvents: [
+      {
+        event: 'eventName',
+        props: {
+          additionalProp1: 'prop1Value',
+          additionalProp2: 'prop2Value',
+          additionalProp3: 'prop3Value',
+        },
+      },
+    ],
     ...existingExperimentFieldOverrides,
   }
 }
