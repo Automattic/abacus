@@ -13,6 +13,7 @@ import * as Variations from '@/lib/variations'
 import { createStaticTableOptions } from '@/utils/material-table'
 
 import RecommendationString from './RecommendationString'
+import { Table, TableBody, TableRow, TableCell, makeStyles, Theme, createStyles, TableContainer } from '@material-ui/core'
 
 /**
  * Render the latest analyses for the experiment for each metric assignment as a single condensed table, using only
@@ -93,43 +94,87 @@ export default function CondensedLatestAnalyses({
   )
 }
 
+
+const useAnalysisDetailStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      padding: theme.spacing(2, 8),
+      background: theme.palette.action.hover,
+    },
+    headerCell: {
+      fontWeight: 'bold',
+      width: '9rem',
+      verticalAlign: 'top',
+    },
+    dataCell: {
+      fontFamily: theme.custom.fonts.monospace,
+    },
+  }),
+)
+
 function AnalysisDetailPanel({ analysis, experiment }: { analysis: Analysis; experiment: ExperimentFull }) {
+  const classes = useAnalysisDetailStyles()
+
   return (
-    <dl className='analysis-detail-panel'>
-      <dt>Last analyzed</dt>
-      <dd>
-        <DatetimeText datetime={analysis.analysisDatetime} excludeTime={true} />
-      </dd>
-      <dt>Analysis strategy</dt>
-      <dd>{AnalysisStrategyToHuman[analysis.analysisStrategy]}</dd>
-      <dt>Analyzed participants</dt>
-      <dd>
-        {analysis.participantStats.total} ({analysis.participantStats.not_final} not final
-        {Variations.sort(experiment.variations).map(({ variationId, name }) => (
-          <span key={variationId}>
-            ; {analysis.participantStats[`variation_${variationId}`]} in {name}
-          </span>
-        ))}
-        )
-      </dd>
-      {analysis.metricEstimates && analysis.recommendation && (
-        <>
-          <dt>Difference interval</dt>
-          <dd>
-            [{_.round(analysis.metricEstimates.diff.bottom, 4)}, {_.round(analysis.metricEstimates.diff.top, 4)}]
-          </dd>
-          {analysis.recommendation.warnings.length > 0 && (
-            <>
-              <dt>Warnings</dt>
-              <dd>
-                {analysis.recommendation.warnings.map((warning) => (
-                  <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
+    <TableContainer className={classes.root}>
+      <Table>
+        <TableBody>
+          <TableRow>
+            <TableCell component='th' scope='row' variant='head'>
+              Last analyzed
+            </TableCell>
+            <TableCell>
+              <DatetimeText datetime={analysis.analysisDatetime} excludeTime={true} />
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell component='th' scope='row' variant='head'>
+              Analysis strategy
+            </TableCell>
+            <TableCell className={classes.dataCell}>
+              {AnalysisStrategyToHuman[analysis.analysisStrategy]}
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell component='th' scope='row' variant='head'>
+              Analyzed participants
+            </TableCell>
+            <TableCell className={classes.dataCell}>
+              {analysis.participantStats.total} ({analysis.participantStats.not_final} not final
+                {Variations.sort(experiment.variations).map(({ variationId, name }) => (
+                  <span key={variationId}>
+                    ; {analysis.participantStats[`variation_${variationId}`]} in {name}
+                  </span>
                 ))}
-              </dd>
+              )
+            </TableCell>
+          </TableRow>
+          {analysis.metricEstimates && analysis.recommendation && (
+            <>
+              <TableRow>
+                <TableCell component='th' scope='row' variant='head'>
+                  Difference interval
+                </TableCell>
+                <TableCell className={classes.dataCell}>
+                    [{_.round(analysis.metricEstimates.diff.bottom, 4)}, {_.round(analysis.metricEstimates.diff.top, 4)}]
+                </TableCell>
+              </TableRow>
+              {analysis.recommendation.warnings.length > 0 && (
+                <TableRow>
+                  <TableCell component='th' scope='row' variant='head'>
+                    Warnings
+                  </TableCell>
+                  <TableCell className={classes.dataCell}>
+                    {analysis.recommendation.warnings.map((warning) => (
+                      <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
+                    ))}
+                  </TableCell>
+                </TableRow>
+              )}
             </>
           )}
-        </>
-      )}
-    </dl>
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 }
