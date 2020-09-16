@@ -13,7 +13,7 @@ import * as Variations from '@/lib/variations'
 import { createStaticTableOptions } from '@/utils/material-table'
 
 import RecommendationString from './RecommendationString'
-import { Table, TableBody, TableRow, TableCell, makeStyles, Theme, createStyles, TableContainer } from '@material-ui/core'
+import { Table, TableBody, TableRow, TableCell, makeStyles, Theme, createStyles, TableContainer, useTheme, Chip } from '@material-ui/core'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme: Theme) =>
       '& .MuiIconButton-root.Mui-disabled': {
         opacity: 0,
       },
+    },
+    primaryChip: {
+      marginTop: theme.spacing(1),
     },
   }),
 )
@@ -40,6 +43,7 @@ export default function CondensedLatestAnalyses({
   metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
 }) {
   const classes = useStyles()
+  const theme = useTheme()
 
   // Sort the assignments for consistency and collect the data we need to render the component.
   const defaultAnalysisStrategy = Experiments.getDefaultAnalysisStrategy(experiment)
@@ -58,14 +62,21 @@ export default function CondensedLatestAnalyses({
       title: 'Metric',
       render: ({ metric, metricAssignment }: { metric: MetricBare; metricAssignment: MetricAssignment }) => (
         <>
-          {metric.name} {metricAssignment.isPrimary && <Label text='Primary' />}
+          {metric.name} {metricAssignment.isPrimary && <Chip label='Primary' variant='outlined' disabled className={classes.primaryChip} />}
         </>
       ),
+      cellStyle: {
+        fontFamily: theme.custom.fonts.monospace,
+        fontWeight: 600,
+      },
     },
     {
       title: 'Attribution window',
       render: ({ metricAssignment }: { metricAssignment: MetricAssignment }) =>
         AttributionWindowSecondsToHuman[metricAssignment.attributionWindowSeconds],
+      cellStyle: {
+        fontFamily: theme.custom.fonts.monospace,
+      },
     },
     {
       title: 'Recommendation',
@@ -77,6 +88,9 @@ export default function CondensedLatestAnalyses({
           return <>Not analyzed yet</>
         }
         return <RecommendationString recommendation={analysis.recommendation} experiment={experiment} />
+      },
+      cellStyle: {
+        fontFamily: theme.custom.fonts.monospace,
       },
     },
   ]

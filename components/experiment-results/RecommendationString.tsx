@@ -30,7 +30,7 @@ export default function RecommendationString({
 
   return (
     <>
-      Deploy <code>{chosenVariation.name}</code>
+      Deploy {chosenVariation.name}
     </>
   )
 }
