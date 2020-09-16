@@ -15,6 +15,17 @@ import { createStaticTableOptions } from '@/utils/material-table'
 import RecommendationString from './RecommendationString'
 import { Table, TableBody, TableRow, TableCell, makeStyles, Theme, createStyles, TableContainer } from '@material-ui/core'
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      // Hide the '>' expander buttons when they are disabled
+      '& .MuiIconButton-root.Mui-disabled': {
+        opacity: 0,
+      },
+    },
+  }),
+)
+
 /**
  * Render the latest analyses for the experiment for each metric assignment as a single condensed table, using only
  * the experiment's default analysis strategy.
@@ -28,6 +39,8 @@ export default function CondensedLatestAnalyses({
   metricsById: { [key: number]: MetricBare }
   metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
 }) {
+  const classes = useStyles()
+
   // Sort the assignments for consistency and collect the data we need to render the component.
   const defaultAnalysisStrategy = Experiments.getDefaultAnalysisStrategy(experiment)
   const resultSummaries = MetricAssignments.sort(experiment.metricAssignments).map((metricAssignment) => {
@@ -76,21 +89,23 @@ export default function CondensedLatestAnalyses({
     },
   ]
   return (
-    <MaterialTable
-      columns={tableColumns}
-      data={resultSummaries}
-      options={createStaticTableOptions(resultSummaries.length)}
-      onRowClick={(_event, rowData, togglePanel) => {
-        const { analysis, recommendationConflict } = rowData as {
-          analysis?: Analysis
-          recommendationConflict?: boolean
-        }
-        if (togglePanel && analysis && !recommendationConflict) {
-          togglePanel()
-        }
-      }}
-      detailPanel={detailPanel}
-    />
+    <div className={classes.root}>
+      <MaterialTable
+        columns={tableColumns}
+        data={resultSummaries}
+        options={createStaticTableOptions(resultSummaries.length)}
+        onRowClick={(_event, rowData, togglePanel) => {
+          const { analysis, recommendationConflict } = rowData as {
+            analysis?: Analysis
+            recommendationConflict?: boolean
+          }
+          if (togglePanel && analysis && !recommendationConflict) {
+            togglePanel()
+          }
+        }}
+        detailPanel={detailPanel}
+      />
+    </div>
   )
 }
 
