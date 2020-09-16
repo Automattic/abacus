@@ -70,7 +70,6 @@ export default function ExperimentResults({
 
   return (
     <div className='analysis-latest-results'>
-      <h3>Latest results by metric</h3>
       <CondensedLatestAnalyses
         experiment={experiment}
         metricsById={metricsById}
