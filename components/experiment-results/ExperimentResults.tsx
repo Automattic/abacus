@@ -1,13 +1,13 @@
 import _ from 'lodash'
 import React, { useMemo } from 'react'
 
+import DebugOutput from '@/components/DebugOutput'
 import * as Experiments from '@/lib/experiments'
 import { Analysis, ExperimentFull, MetricBare } from '@/lib/schemas'
 
 import CondensedLatestAnalyses from './CondensedLatestAnalyses'
 import FullLatestAnalyses from './FullLatestAnalyses'
 import ParticipantCounts from './ParticipantCounts'
-import DebugOutput from '@/components/DebugOutput'
 
 /**
  * Main component for summarizing experiment results.
@@ -63,7 +63,7 @@ export default function ExperimentResults({
         </div>
 
         <p>Found {analyses.length} analysis objects in total.</p>
-        <DebugOutput label={`All analysis objects (${analyses.length})`} content={analyses} />
+        <DebugOutput label={`All analysis objects (${analyses.length})`} content={analyses} className='debug-json' />
       </>
     )
   }

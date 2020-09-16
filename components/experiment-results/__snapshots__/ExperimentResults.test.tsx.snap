@@ -4,287 +4,291 @@ exports[`renders the condensed table with some analyses in non-debug mode 1`] = 
 <div
   class="analysis-latest-results"
 >
-  <h3>
-    Latest results by metric
-  </h3>
   <div
-    class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
-    style="position: relative;"
+    class="makeStyles-root-21"
   >
     <div
-      class="Component-horizontalScrollContainer-19"
-      style="overflow-x: auto; position: relative;"
+      class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+      style="position: relative;"
     >
-      <div>
-        <div
-          style="overflow-y: auto;"
-        >
-          <div>
-            <table
-              class="MuiTable-root"
-              style="table-layout: auto;"
-            >
-              <thead
-                class="MuiTableHead-root"
+      <div
+        class="Component-horizontalScrollContainer-27"
+        style="overflow-x: auto; position: relative;"
+      >
+        <div>
+          <div
+            style="overflow-y: auto;"
+          >
+            <div>
+              <table
+                class="MuiTable-root"
+                style="table-layout: auto;"
               >
-                <tr
-                  class="MuiTableRow-root MuiTableRow-head"
+                <thead
+                  class="MuiTableHead-root"
                 >
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-20 MuiTableCell-paddingNone"
-                    scope="col"
-                    style="font-weight: 700;"
-                  />
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-20 MuiTableCell-alignLeft"
-                    scope="col"
-                    style="font-weight: 700; box-sizing: border-box;"
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-head"
                   >
-                    Metric
-                  </th>
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-20 MuiTableCell-alignLeft"
-                    scope="col"
-                    style="font-weight: 700; box-sizing: border-box;"
-                  >
-                    Attribution window
-                  </th>
-                  <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-20 MuiTableCell-alignLeft"
-                    scope="col"
-                    style="font-weight: 700; box-sizing: border-box;"
-                  >
-                    Recommendation
-                  </th>
-                </tr>
-              </thead>
-              <tbody
-                class="MuiTableBody-root"
-              >
-                <tr
-                  class="MuiTableRow-root MuiTableRow-hover"
-                  index="0"
-                  level="0"
-                  path="0"
-                  style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
-                >
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
-                  >
-                    <div
-                      style="width: 42px; text-align: center; display: flex;"
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-28 MuiTableCell-paddingNone"
+                      scope="col"
+                      style="font-weight: 700;"
+                    />
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-28 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
                     >
-                      <button
-                        class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
-                        disabled=""
-                        style="transition: all ease 200ms; transform: none;"
-                        tabindex="-1"
-                        type="button"
+                      Metric
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-28 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Attribution window
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-28 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Recommendation
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="MuiTableBody-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover"
+                    index="0"
+                    level="0"
+                    path="0"
+                    style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                    >
+                      <div
+                        style="width: 42px; text-align: center; display: flex;"
                       >
-                        <span
-                          class="MuiIconButton-label"
+                        <button
+                          class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                          disabled=""
+                          style="transition: all ease 200ms; transform: none;"
+                          tabindex="-1"
+                          type="button"
                         >
                           <span
-                            aria-hidden="true"
-                            class="material-icons MuiIcon-root"
+                            class="MuiIconButton-label"
                           >
-                            chevron_right
+                            <span
+                              aria-hidden="true"
+                              class="material-icons MuiIcon-root"
+                            >
+                              chevron_right
+                            </span>
                           </span>
-                        </span>
-                      </button>
-                    </div>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                    style="box-sizing: border-box;"
-                  >
-                    metric_1
-                     
-                    <span
-                      class="makeStyles-root-21"
+                        </button>
+                      </div>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
                     >
-                      Primary
-                    </span>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                    style="box-sizing: border-box;"
-                  >
-                    1 week
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                    style="box-sizing: border-box;"
-                  >
-                    Manual analysis required
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root MuiTableRow-hover"
-                  index="1"
-                  level="0"
-                  path="1"
-                  style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
-                >
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
-                  >
-                    <div
-                      style="width: 42px; text-align: center; display: flex;"
-                    >
-                      <button
-                        class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
-                        disabled=""
-                        style="transition: all ease 200ms; transform: none;"
-                        tabindex="-1"
-                        type="button"
+                      metric_1
+                       
+                      <div
+                        aria-disabled="true"
+                        class="MuiChip-root makeStyles-primaryChip-22 MuiChip-outlined Mui-disabled"
                       >
                         <span
-                          class="MuiIconButton-label"
+                          class="MuiChip-label"
                         >
-                          <span
-                            aria-hidden="true"
-                            class="material-icons MuiIcon-root"
-                          >
-                            chevron_right
-                          </span>
+                          Primary
                         </span>
-                      </button>
-                    </div>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                    style="box-sizing: border-box;"
-                  >
-                    metric_2
-                     
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                    style="box-sizing: border-box;"
-                  >
-                    4 weeks
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                    style="box-sizing: border-box;"
-                  >
-                    Not analyzed yet
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root MuiTableRow-hover"
-                  index="2"
-                  level="0"
-                  path="2"
-                  style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
-                >
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
-                  >
-                    <div
-                      style="width: 42px; text-align: center; display: flex;"
+                      </div>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      <button
-                        class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
-                        disabled=""
-                        style="transition: all ease 200ms; transform: none;"
-                        tabindex="-1"
-                        type="button"
-                      >
-                        <span
-                          class="MuiIconButton-label"
-                        >
-                          <span
-                            aria-hidden="true"
-                            class="material-icons MuiIcon-root"
-                          >
-                            chevron_right
-                          </span>
-                        </span>
-                      </button>
-                    </div>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                    style="box-sizing: border-box;"
-                  >
-                    metric_2
-                     
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                    style="box-sizing: border-box;"
-                  >
-                    1 hour
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                    style="box-sizing: border-box;"
-                  >
-                    Not analyzed yet
-                  </td>
-                </tr>
-                <tr
-                  class="MuiTableRow-root MuiTableRow-hover"
-                  index="3"
-                  level="0"
-                  path="3"
-                  style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
-                >
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
-                  >
-                    <div
-                      style="width: 42px; text-align: center; display: flex;"
+                      1 week
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      <button
-                        class="MuiButtonBase-root MuiIconButton-root"
-                        style="transition: all ease 200ms; transform: none;"
-                        tabindex="0"
-                        type="button"
+                      Manual analysis required
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover"
+                    index="1"
+                    level="0"
+                    path="1"
+                    style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                    >
+                      <div
+                        style="width: 42px; text-align: center; display: flex;"
                       >
-                        <span
-                          class="MuiIconButton-label"
+                        <button
+                          class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                          disabled=""
+                          style="transition: all ease 200ms; transform: none;"
+                          tabindex="-1"
+                          type="button"
                         >
                           <span
-                            aria-hidden="true"
-                            class="material-icons MuiIcon-root"
+                            class="MuiIconButton-label"
                           >
-                            chevron_right
+                            <span
+                              aria-hidden="true"
+                              class="material-icons MuiIcon-root"
+                            >
+                              chevron_right
+                            </span>
                           </span>
-                        </span>
-                        <span
-                          class="MuiTouchRipple-root"
-                        />
-                      </button>
-                    </div>
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                    style="box-sizing: border-box;"
+                        </button>
+                      </div>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                    >
+                      metric_2
+                       
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                    >
+                      4 weeks
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                    >
+                      Not analyzed yet
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover"
+                    index="2"
+                    level="0"
+                    path="2"
+                    style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
                   >
-                    metric_3
-                     
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                    style="box-sizing: border-box;"
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                    >
+                      <div
+                        style="width: 42px; text-align: center; display: flex;"
+                      >
+                        <button
+                          class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                          disabled=""
+                          style="transition: all ease 200ms; transform: none;"
+                          tabindex="-1"
+                          type="button"
+                        >
+                          <span
+                            class="MuiIconButton-label"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons MuiIcon-root"
+                            >
+                              chevron_right
+                            </span>
+                          </span>
+                        </button>
+                      </div>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                    >
+                      metric_2
+                       
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                    >
+                      1 hour
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                    >
+                      Not analyzed yet
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover"
+                    index="3"
+                    level="0"
+                    path="3"
+                    style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
                   >
-                    6 hours
-                  </td>
-                  <td
-                    class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                    style="box-sizing: border-box;"
-                  >
-                    Deploy 
-                    <code>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                    >
+                      <div
+                        style="width: 42px; text-align: center; display: flex;"
+                      >
+                        <button
+                          class="MuiButtonBase-root MuiIconButton-root"
+                          style="transition: all ease 200ms; transform: none;"
+                          tabindex="0"
+                          type="button"
+                        >
+                          <span
+                            class="MuiIconButton-label"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons MuiIcon-root"
+                            >
+                              chevron_right
+                            </span>
+                          </span>
+                          <span
+                            class="MuiTouchRipple-root"
+                          />
+                        </button>
+                      </div>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                    >
+                      metric_3
+                       
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                    >
+                      6 hours
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                    >
+                      Deploy 
                       test
-                    </code>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -294,70 +298,128 @@ exports[`renders the condensed table with some analyses in non-debug mode 1`] = 
 `;
 
 exports[`renders the condensed table with some analyses in non-debug mode 2`] = `
-<dl
-  class="analysis-detail-panel"
+<div
+  class="MuiTableContainer-root makeStyles-root-29 analysis-detail-panel"
 >
-  <dt>
-    Last analyzed
-  </dt>
-  <dd>
-    <span
-      class="makeStyles-root-22"
-      title="09/05/2020, 20:00:00"
+  <table
+    class="MuiTable-root"
+  >
+    <tbody
+      class="MuiTableBody-root"
     >
-      2020-05-10
-    </span>
-  </dd>
-  <dt>
-    Analysis strategy
-  </dt>
-  <dd>
-    Exposed without crossovers and spammers
-  </dd>
-  <dt>
-    Analyzed participants
-  </dt>
-  <dd>
-    1400
-     (
-    140
-     not final
-    <span>
-      ; 
-      840
-       in 
-      control
-    </span>
-    <span>
-      ; 
-      560
-       in 
-      test
-    </span>
-    )
-  </dd>
-  <dt>
-    Difference interval
-  </dt>
-  <dd>
-    [
-    -0.01
-    , 
-    0.01
-    ]
-  </dd>
-  <dt>
-    Warnings
-  </dt>
-  <dd>
-    <div>
-      Experiment period is too short. Wait a few days to be safer.
-    </div>
-    <div>
-      The CI is too wide in comparison to the ROPE. Collect more data to be safer.
-    </div>
-  </dd>
-</dl>
+      <tr
+        class="MuiTableRow-root"
+      >
+        <th
+          class="MuiTableCell-root MuiTableCell-head"
+          role="cell"
+          scope="row"
+        >
+          Last analyzed
+        </th>
+        <td
+          class="MuiTableCell-root MuiTableCell-body"
+        >
+          <span
+            class="makeStyles-root-32"
+            title="09/05/2020, 20:00:00"
+          >
+            2020-05-10
+          </span>
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root"
+      >
+        <th
+          class="MuiTableCell-root MuiTableCell-head"
+          role="cell"
+          scope="row"
+        >
+          Analysis strategy
+        </th>
+        <td
+          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-31"
+        >
+          Exposed without crossovers and spammers
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root"
+      >
+        <th
+          class="MuiTableCell-root MuiTableCell-head"
+          role="cell"
+          scope="row"
+        >
+          Analyzed participants
+        </th>
+        <td
+          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-31"
+        >
+          1400
+           (
+          140
+           not final
+          <span>
+            ; 
+            840
+             in 
+            control
+          </span>
+          <span>
+            ; 
+            560
+             in 
+            test
+          </span>
+          )
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root"
+      >
+        <th
+          class="MuiTableCell-root MuiTableCell-head"
+          role="cell"
+          scope="row"
+        >
+          Difference interval
+        </th>
+        <td
+          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-31"
+        >
+          [
+          -0.01
+          , 
+          0.01
+          ]
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root"
+      >
+        <th
+          class="MuiTableCell-root MuiTableCell-head"
+          role="cell"
+          scope="row"
+        >
+          Warnings
+        </th>
+        <td
+          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-31"
+        >
+          <div>
+            Experiment period is too short. Wait a few days to be safer.
+          </div>
+          <div>
+            The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 `;
 
 exports[`renders the full tables with some analyses and a different primary metric in debug mode 1`] = `
@@ -372,7 +434,7 @@ exports[`renders the full tables with some analyses and a different primary metr
     style="position: relative;"
   >
     <div
-      class="Component-horizontalScrollContainer-12"
+      class="Component-horizontalScrollContainer-15"
       style="overflow-x: auto; position: relative;"
     >
       <div>
@@ -391,28 +453,28 @@ exports[`renders the full tables with some analyses and a different primary metr
                   class="MuiTableRow-root MuiTableRow-head"
                 >
                   <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignLeft"
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-16 MuiTableCell-alignLeft"
                     scope="col"
                     style="font-weight: 700; box-sizing: border-box;"
                   >
                     Strategy
                   </th>
                   <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignLeft"
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-16 MuiTableCell-alignLeft"
                     scope="col"
                     style="font-weight: 700; box-sizing: border-box;"
                   >
                     Total
                   </th>
                   <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignLeft"
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-16 MuiTableCell-alignLeft"
                     scope="col"
                     style="font-weight: 700; box-sizing: border-box;"
                   >
                     control
                   </th>
                   <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignLeft"
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-16 MuiTableCell-alignLeft"
                     scope="col"
                     style="font-weight: 700; box-sizing: border-box;"
                   >
@@ -466,10 +528,18 @@ exports[`renders the full tables with some analyses and a different primary metr
 `;
 
 exports[`renders the full tables with some analyses in debug mode 1`] = `
-<pre
-  class="debug-json"
+<div
+  class="makeStyles-root-8 debug-json"
 >
-  [
+  <p
+    class="MuiTypography-root makeStyles-label-10 MuiTypography-body1"
+  >
+    All analysis objects (16)
+  </p>
+  <p
+    class="MuiTypography-root makeStyles-pre-9 MuiTypography-body1"
+  >
+    [
   {
     "metricAssignmentId": 123,
     "analysisStrategy": "itt_pure",
@@ -505,7 +575,10 @@ exports[`renders the full tables with some analyses in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 0
+    }
   },
   {
     "metricAssignmentId": 123,
@@ -539,7 +612,10 @@ exports[`renders the full tables with some analyses in debug mode 1`] = `
       "reason": "rope_in_ci",
       "warnings": []
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 1
+    }
   },
   {
     "metricAssignmentId": 123,
@@ -573,7 +649,10 @@ exports[`renders the full tables with some analyses in debug mode 1`] = `
       "reason": "ci_in_rope",
       "warnings": []
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 2
+    }
   },
   {
     "metricAssignmentId": 123,
@@ -610,7 +689,10 @@ exports[`renders the full tables with some analyses in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 3
+    }
   },
   {
     "metricAssignmentId": 123,
@@ -647,7 +729,10 @@ exports[`renders the full tables with some analyses in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 4
+    }
   },
   {
     "metricAssignmentId": 123,
@@ -838,7 +923,10 @@ exports[`renders the full tables with some analyses in debug mode 1`] = `
     },
     "metricEstimates": null,
     "recommendation": null,
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 0
+    }
   },
   {
     "metricAssignmentId": 126,
@@ -875,7 +963,10 @@ exports[`renders the full tables with some analyses in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 0
+    }
   },
   {
     "metricAssignmentId": 126,
@@ -912,7 +1003,10 @@ exports[`renders the full tables with some analyses in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 1
+    }
   },
   {
     "metricAssignmentId": 126,
@@ -949,7 +1043,10 @@ exports[`renders the full tables with some analyses in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 2
+    }
   },
   {
     "metricAssignmentId": 126,
@@ -986,7 +1083,10 @@ exports[`renders the full tables with some analyses in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 3
+    }
   },
   {
     "metricAssignmentId": 126,
@@ -1023,10 +1123,14 @@ exports[`renders the full tables with some analyses in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "tableData": {
+      "id": 4
+    }
   }
 ]
-</pre>
+  </p>
+</div>
 `;
 
 exports[`renders the full tables with some analyses in debug mode 2`] = `
@@ -1384,9 +1488,7 @@ exports[`renders the full tables with some analyses in debug mode 3`] = `
                       style="box-sizing: border-box;"
                     >
                       Deploy 
-                      <code>
-                        test
-                      </code>
+                      test
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1502,9 +1604,7 @@ exports[`renders the full tables with some analyses in debug mode 3`] = `
                       style="box-sizing: border-box;"
                     >
                       Deploy 
-                      <code>
-                        test
-                      </code>
+                      test
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1548,9 +1648,7 @@ exports[`renders the full tables with some analyses in debug mode 3`] = `
                       style="box-sizing: border-box;"
                     >
                       Deploy 
-                      <code>
-                        test
-                      </code>
+                      test
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1907,9 +2005,7 @@ exports[`renders the full tables with some analyses in debug mode 3`] = `
                       style="box-sizing: border-box;"
                     >
                       Deploy 
-                      <code>
-                        test
-                      </code>
+                      test
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1953,9 +2049,7 @@ exports[`renders the full tables with some analyses in debug mode 3`] = `
                       style="box-sizing: border-box;"
                     >
                       Deploy 
-                      <code>
-                        test
-                      </code>
+                      test
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1999,9 +2093,7 @@ exports[`renders the full tables with some analyses in debug mode 3`] = `
                       style="box-sizing: border-box;"
                     >
                       Deploy 
-                      <code>
-                        test
-                      </code>
+                      test
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -2045,9 +2137,7 @@ exports[`renders the full tables with some analyses in debug mode 3`] = `
                       style="box-sizing: border-box;"
                     >
                       Deploy 
-                      <code>
-                        test
-                      </code>
+                      test
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -2091,9 +2181,7 @@ exports[`renders the full tables with some analyses in debug mode 3`] = `
                       style="box-sizing: border-box;"
                     >
                       Deploy 
-                      <code>
-                        test
-                      </code>
+                      test
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"

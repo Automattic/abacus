@@ -1,9 +1,21 @@
+import {
+  Chip,
+  createStyles,
+  makeStyles,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Theme,
+  useTheme,
+} from '@material-ui/core'
+import clsx from 'clsx'
 import _ from 'lodash'
 import MaterialTable from 'material-table'
 import React from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
-import Label from '@/components/Label'
 import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from '@/lib/analyses'
 import * as Experiments from '@/lib/experiments'
 import * as MetricAssignments from '@/lib/metric-assignments'
@@ -13,7 +25,6 @@ import * as Variations from '@/lib/variations'
 import { createStaticTableOptions } from '@/utils/material-table'
 
 import RecommendationString from './RecommendationString'
-import { Table, TableBody, TableRow, TableCell, makeStyles, Theme, createStyles, TableContainer, useTheme, Chip } from '@material-ui/core'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -62,7 +73,10 @@ export default function CondensedLatestAnalyses({
       title: 'Metric',
       render: ({ metric, metricAssignment }: { metric: MetricBare; metricAssignment: MetricAssignment }) => (
         <>
-          {metric.name} {metricAssignment.isPrimary && <Chip label='Primary' variant='outlined' disabled className={classes.primaryChip} />}
+          {metric.name}{' '}
+          {metricAssignment.isPrimary && (
+            <Chip label='Primary' variant='outlined' disabled className={classes.primaryChip} />
+          )}
         </>
       ),
       cellStyle: {
@@ -123,7 +137,6 @@ export default function CondensedLatestAnalyses({
   )
 }
 
-
 const useAnalysisDetailStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -145,7 +158,7 @@ function AnalysisDetailPanel({ analysis, experiment }: { analysis: Analysis; exp
   const classes = useAnalysisDetailStyles()
 
   return (
-    <TableContainer className={classes.root}>
+    <TableContainer className={clsx(classes.root, 'analysis-detail-panel')}>
       <Table>
         <TableBody>
           <TableRow>
@@ -160,9 +173,7 @@ function AnalysisDetailPanel({ analysis, experiment }: { analysis: Analysis; exp
             <TableCell component='th' scope='row' variant='head'>
               Analysis strategy
             </TableCell>
-            <TableCell className={classes.dataCell}>
-              {AnalysisStrategyToHuman[analysis.analysisStrategy]}
-            </TableCell>
+            <TableCell className={classes.dataCell}>{AnalysisStrategyToHuman[analysis.analysisStrategy]}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell component='th' scope='row' variant='head'>
@@ -170,11 +181,11 @@ function AnalysisDetailPanel({ analysis, experiment }: { analysis: Analysis; exp
             </TableCell>
             <TableCell className={classes.dataCell}>
               {analysis.participantStats.total} ({analysis.participantStats.not_final} not final
-                {Variations.sort(experiment.variations).map(({ variationId, name }) => (
-                  <span key={variationId}>
-                    ; {analysis.participantStats[`variation_${variationId}`]} in {name}
-                  </span>
-                ))}
+              {Variations.sort(experiment.variations).map(({ variationId, name }) => (
+                <span key={variationId}>
+                  ; {analysis.participantStats[`variation_${variationId}`]} in {name}
+                </span>
+              ))}
               )
             </TableCell>
           </TableRow>
@@ -185,7 +196,7 @@ function AnalysisDetailPanel({ analysis, experiment }: { analysis: Analysis; exp
                   Difference interval
                 </TableCell>
                 <TableCell className={classes.dataCell}>
-                    [{_.round(analysis.metricEstimates.diff.bottom, 4)}, {_.round(analysis.metricEstimates.diff.top, 4)}]
+                  [{_.round(analysis.metricEstimates.diff.bottom, 4)}, {_.round(analysis.metricEstimates.diff.top, 4)}]
                 </TableCell>
               </TableRow>
               {analysis.recommendation.warnings.length > 0 && (

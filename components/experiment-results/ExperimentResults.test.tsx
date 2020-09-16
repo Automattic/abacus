@@ -20,8 +20,8 @@ test('renders the full tables with some analyses in debug mode', () => {
   )
 
   // In debug mode, we should have a <pre> element with the JSON.
-  expect(container).toHaveTextContent(`Found ${analyses.length} analysis objects in total.`)
-  expect(container.querySelector('pre.debug-json')).toMatchSnapshot()
+  expect(container).toHaveTextContent(`All analysis objects (${analyses.length})`)
+  expect(container.querySelector('.debug-json')).toMatchSnapshot()
 
   // Table snapshots are somewhat verbose, but they will allow us to see if there are any expected changes to the
   // numbers in the tables.
@@ -48,7 +48,7 @@ test('renders the condensed table with some analyses in non-debug mode', async (
   const { container } = render(<ExperimentResults analyses={analyses} experiment={experiment} metrics={metrics} />)
 
   // In non-debug mode, we shouldn't have a <pre> element with the JSON.
-  expect(container.querySelector('pre.debug-json')).toBeNull()
+  expect(container.querySelector('.debug-json')).toBeNull()
 
   // Check the table snapshot before expanding any metric.
   expect(container.querySelector('.analysis-latest-results')).toMatchSnapshot()

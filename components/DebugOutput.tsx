@@ -2,6 +2,7 @@
 
 import { Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import clsx from 'clsx'
 import React from 'react'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -33,11 +34,19 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const DebugOutput = ({ label, content }: { label?: string; content: unknown }) => {
+const DebugOutput = ({
+  label,
+  content,
+  className = undefined,
+}: {
+  label?: string
+  content: unknown
+  className?: string
+}) => {
   const classes = useStyles()
 
   return (
-    <div className={classes.root}>
+    <div className={clsx(classes.root, className)}>
       <Typography variant='body1' className={classes.label}>
         {label}
       </Typography>

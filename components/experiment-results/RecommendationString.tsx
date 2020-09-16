@@ -28,9 +28,5 @@ export default function RecommendationString({
     throw new Error('No match for chosenVariationId among variations in experiment.')
   }
 
-  return (
-    <>
-      Deploy {chosenVariation.name}
-    </>
-  )
+  return <>Deploy {chosenVariation.name}</>
 }
