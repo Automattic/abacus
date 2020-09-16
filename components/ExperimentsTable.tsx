@@ -22,11 +22,7 @@ const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }) =>
 
   /* istanbul ignore next; to be handled by an e2e test */
   const handleRowClick = (event?: React.MouseEvent, rowData?: ExperimentBare) => {
-    if (rowData?.status === 'staging') {
-      router.push('/experiments/[id]', `/experiments/${rowData?.experimentId}`)
-    } else {
-      router.push('/experiments/[id]/results', `/experiments/${rowData?.experimentId}/results`)
-    }
+    router.push('/experiments/[id]', `/experiments/${rowData?.experimentId}`)
   }
 
   return (
