@@ -378,6 +378,36 @@ export const analysisSchema = yup
   .camelCase()
 export type Analysis = yup.InferType<typeof analysisSchema>
 
+export const autocompleteItemSchema = yup.object({
+  name: yup.string(),
+  value: yup.string().nullable().notRequired(),
+})
+export type AutocompleteItem = yup.InferType<typeof autocompleteItemSchema>
+
+export const autocompleteSchema = yup.object({
+  completions: yup.array<AutocompleteItem>(autocompleteItemSchema),
+})
+export type UserCompletions = yup.InferType<typeof autocompleteSchema>
+export type EventCompletions = yup.InferType<typeof autocompleteSchema>
+export type TransactionTypeCompletions = yup.InferType<typeof autocompleteSchema>
+export type ProductCompletions = yup.InferType<typeof autocompleteSchema>
+
+export const eventPropsSchema = yup.object({
+  name: yup.string(),
+  description: yup.string(),
+})
+export type EventProp = yup.InferType<typeof eventPropsSchema>
+
+export const eventDetailsSchema = yup.object({
+  name: yup.string(),
+  description: yup.string(),
+  owner: yup.string(),
+  is_registered: yup.boolean(),
+  is_validated: yup.boolean(),
+  props: yup.array<EventProp>(eventPropsSchema),
+})
+export type EventDetails = yup.InferType<typeof eventDetailsSchema>
+
 /**
  * The yup equivalant of _.pick, produces a subset of the original schema.
  *
