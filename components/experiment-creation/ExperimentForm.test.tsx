@@ -16,8 +16,6 @@ import { formatIsoDate } from '@/utils/time'
 
 import ExperimentForm from './ExperimentForm'
 
-jest.setTimeout(40000)
-
 jest.mock('notistack')
 const mockedNotistack = notistack as jest.Mocked<typeof notistack>
 mockedNotistack.useSnackbar.mockImplementation(() => ({
