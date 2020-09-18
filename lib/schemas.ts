@@ -57,7 +57,6 @@ export const metricRevenueParamsSchema = yup
   })
   .defined()
   .camelCase()
-
 export type MetricRevenueParams = yup.InferType<typeof metricRevenueParamsSchema>
 
 export enum MetricParameterType {
@@ -79,16 +78,44 @@ export type MetricBare = yup.InferType<typeof metricBareSchema>
 export const metricFullSchema = metricBareSchema
   .shape({
     higherIsBetter: yup.boolean().defined(),
-    eventParams: yup.array(eventSchema).nullable(),
-    revenueParams: metricRevenueParamsSchema.notRequired().nullable(),
+    eventParams: yup.mixed().when('parameterType', {
+      is: MetricParameterType.Conversion,
+      then: yup.array(eventSchema).defined(),
+      otherwise: yup.mixed().oneOf([null]),
+    }),
+    revenueParams: yup.mixed().when('parameterType', {
+      is: MetricParameterType.Revenue,
+      then: metricRevenueParamsSchema.defined(),
+      otherwise: yup.mixed().oneOf([null]),
+    }),
   })
   .defined()
   .camelCase()
+  .test('event-params-required', 'Event Params is required and must be valid JSON.', (metricFull) => {
+    return !(metricFull.parameterType === MetricParameterType.Conversion && !metricFull.eventParams)
+  })
+  .test('revenue-params-required', 'Revenue Params is required and must be valid JSON.', (metricFull) => {
+    return !(metricFull.parameterType === MetricParameterType.Revenue && !metricFull.revenueParams)
+  })
   .test('exactly-one-params', 'Exactly one of eventParams or revenueParams must be defined.', (metricFull) => {
     // (Logical XOR)
     return !!metricFull.eventParams !== !!metricFull.revenueParams
   })
 export type MetricFull = yup.InferType<typeof metricFullSchema>
+export const metricFullNewSchema = metricFullSchema.shape({
+  metricId: idSchema.nullable(),
+})
+export type MetricFullNew = yup.InferType<typeof metricFullNewSchema>
+export const metricFullNewOutboundSchema = metricFullNewSchema.snakeCase().transform(
+  // istanbul ignore next; Tested by integration
+  (currentValue) => ({
+    ...currentValue,
+    revenueParams: undefined,
+    revenue_params: currentValue.revenue_params
+      ? metricRevenueParamsSchema.snakeCase().cast(currentValue.revenue_params)
+      : undefined,
+  }),
+)
 
 export enum AttributionWindowSeconds {
   OneHour = 3600,
