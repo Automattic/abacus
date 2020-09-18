@@ -127,11 +127,11 @@ describe('lib/form-data.test.ts module', () => {
       expect(metricToFormData({})).toMatchInlineSnapshot(`
         Object {
           "description": "",
-          "eventParams": "",
+          "eventParams": undefined,
           "higherIsBetter": true,
           "name": "",
           "parameterType": "conversion",
-          "revenueParams": "",
+          "revenueParams": undefined,
         }
       `)
     })
@@ -151,14 +151,14 @@ describe('lib/form-data.test.ts module', () => {
           "higherIsBetter": false,
           "name": "metric_1",
           "parameterType": "conversion",
-          "revenueParams": "",
+          "revenueParams": undefined,
         }
       `)
 
       expect(metricToFormData(Fixtures.createMetricFull(2))).toMatchInlineSnapshot(`
         Object {
           "description": "This is metric 2",
-          "eventParams": "",
+          "eventParams": undefined,
           "higherIsBetter": false,
           "name": "metric_2",
           "parameterType": "revenue",

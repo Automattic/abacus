@@ -54,8 +54,8 @@ const MetricFormFields = ({ formikProps }: { formikProps: FormikProps<{ metric: 
         ...formikProps.values,
         metric: {
           ...formikProps.values.metric,
-          revenueParams: 'null',
-          eventParams: (eventParams === 'null' || eventParams === 'undefined') ? '[]' : eventParams,
+          revenueParams: undefined,
+          eventParams: eventParams ?? '[]',
         },
       })
     } else {
@@ -64,8 +64,8 @@ const MetricFormFields = ({ formikProps }: { formikProps: FormikProps<{ metric: 
         ...formikProps.values,
         metric: {
           ...formikProps.values.metric,
-          revenueParams: (revenueParams === 'null' || revenueParams === 'undefined') ? '{}' : revenueParams,
-          eventParams: 'null',
+          revenueParams: revenueParams ?? '{}',
+          eventParams: undefined,
         },
       })
     }

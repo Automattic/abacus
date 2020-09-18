@@ -80,7 +80,7 @@ export const metricToFormData = (metric: Partial<MetricFull>) => ({
   description: metric.description ?? '',
   parameterType: metric.parameterType ?? MetricParameterType.Conversion,
   higherIsBetter: metric.higherIsBetter ?? true,
-  eventParams: metric.eventParams ? JSON.stringify(metric.eventParams, null, 2) : '',
-  revenueParams: metric.revenueParams ? JSON.stringify(metric.revenueParams, null, 2) : '',
+  eventParams: metric.eventParams ? JSON.stringify(metric.eventParams, null, 2) : undefined,
+  revenueParams: metric.revenueParams ? JSON.stringify(metric.revenueParams, null, 2) : undefined,
 })
 export type MetricFormData = ReturnType<typeof metricToFormData>

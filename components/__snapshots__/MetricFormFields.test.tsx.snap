@@ -691,7 +691,9 @@ exports[`renders as expected for new metric 1`] = `
             name="metric.eventParams"
             required=""
             rows="8"
-          />
+          >
+            []
+          </textarea>
           <fieldset
             aria-hidden="true"
             class="PrivateNotchedOutline-root-37 MuiOutlinedInput-notchedOutline"
