@@ -53,7 +53,7 @@ export const metricRevenueParamsSchema = yup
   .object({
     refundDays: yup.number().integer().positive().defined(),
     productSlugs: yup.array(yup.string().defined()).defined(),
-    transactionTypes: yup.array(yup.string().oneOf(Object.values(TransactionTypes)).defined()),
+    transactionTypes: yup.array(yup.string().oneOf(Object.values(TransactionTypes)).defined()).defined(),
   })
   .defined()
   .camelCase()
