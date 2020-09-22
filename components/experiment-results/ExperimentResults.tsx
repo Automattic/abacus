@@ -1,13 +1,21 @@
 import _ from 'lodash'
-import React, { useMemo } from 'react'
+import React from 'react'
 
 import DebugOutput from '@/components/DebugOutput'
 import * as Experiments from '@/lib/experiments'
-import { Analysis, ExperimentFull, MetricBare } from '@/lib/schemas'
+import * as MetricAssignments from '@/lib/metric-assignments'
+import { indexMetrics } from '@/lib/normalizers'
+import { Analysis, AnalysisStrategy, ExperimentFull, MetricAssignment, MetricBare } from '@/lib/schemas'
 
 import CondensedLatestAnalyses from './CondensedLatestAnalyses'
 import FullLatestAnalyses from './FullLatestAnalyses'
 import ParticipantCounts from './ParticipantCounts'
+
+export type MetricAssignmentAnalysesData = {
+  metricAssignment: MetricAssignment
+  metric: MetricBare
+  analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
+}
 
 /**
  * Main component for summarizing experiment results.
@@ -23,33 +31,44 @@ export default function ExperimentResults({
   metrics: MetricBare[]
   debugMode?: boolean
 }) {
-  const metricsById = useMemo(() => _.zipObject(_.map(metrics, 'metricId'), metrics), [metrics])
-  const metricAssignmentIdToLatestAnalyses = useMemo(
-    () =>
-      _.mapValues(_.groupBy(analyses, 'metricAssignmentId'), (metricAnalyses) => {
-        metricAnalyses = _.orderBy(metricAnalyses, ['analysisDatetime'], ['desc'])
-        return _.sortBy(
-          _.filter(metricAnalyses, ['analysisDatetime', metricAnalyses[0].analysisDatetime]),
-          'analysisStrategy',
-        )
-      }),
-    [analyses],
-  )
+  const indexedMetrics = indexMetrics(metrics)
+  const analysesByMetricAssignmentId = _.groupBy(analyses, 'metricAssignmentId')
+  const allMetricAssignmentAnalysesData: MetricAssignmentAnalysesData[] = MetricAssignments.sort(
+    experiment.metricAssignments,
+  ).map((metricAssignment) => {
+    const metricAssignmentAnalyses = analysesByMetricAssignmentId[metricAssignment.metricAssignmentId] || []
+    return {
+      metricAssignment,
+      metric: indexedMetrics[metricAssignment.metricId],
+      analysesByStrategyDateAsc: _.groupBy(
+        _.orderBy(metricAssignmentAnalyses, ['analysisDatetime'], ['asc']),
+        'analysisStrategy',
+      ) as Record<AnalysisStrategy, Analysis[]>,
+    }
+  })
 
   if (analyses.length === 0) {
     return <p>No analyses yet for {experiment.name}.</p>
   }
 
   if (debugMode) {
+    const primaryMetricAssignmentId = Experiments.getPrimaryMetricAssignmentId(experiment)
+    const primaryMetricAssignmentAnalysesData = allMetricAssignmentAnalysesData.find(
+      ({ metricAssignment: { metricAssignmentId } }) => metricAssignmentId === primaryMetricAssignmentId,
+    )
+
+    // istanbul ignore next; Should never occur
+    if (!primaryMetricAssignmentAnalysesData) {
+      throw new Error('Missing primary metricAssignment!')
+    }
+
     return (
       <>
         <div className='analysis-participant-counts'>
           <h3>Participant counts for the primary metric</h3>
           <ParticipantCounts
             experiment={experiment}
-            latestPrimaryMetricAnalyses={
-              metricAssignmentIdToLatestAnalyses[Experiments.getPrimaryMetricAssignmentId(experiment) as number]
-            }
+            primaryMetricAssignmentAnalysesData={primaryMetricAssignmentAnalysesData}
           />
         </div>
 
@@ -57,8 +76,7 @@ export default function ExperimentResults({
           <h3>Latest results by metric</h3>
           <FullLatestAnalyses
             experiment={experiment}
-            metricsById={metricsById}
-            metricAssignmentIdToLatestAnalyses={metricAssignmentIdToLatestAnalyses}
+            allMetricAssignmentAnalysesData={allMetricAssignmentAnalysesData}
           />
         </div>
 
@@ -72,8 +90,7 @@ export default function ExperimentResults({
     <div className='analysis-latest-results'>
       <CondensedLatestAnalyses
         experiment={experiment}
-        metricsById={metricsById}
-        metricAssignmentIdToLatestAnalyses={metricAssignmentIdToLatestAnalyses}
+        allMetricAssignmentAnalysesData={allMetricAssignmentAnalysesData}
       />
     </div>
   )

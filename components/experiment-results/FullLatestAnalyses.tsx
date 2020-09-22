@@ -1,38 +1,38 @@
 import { Typography } from '@material-ui/core'
-import _ from 'lodash'
+import _, { last } from 'lodash'
 import MaterialTable from 'material-table'
-import React, { useMemo } from 'react'
+import React from 'react'
 
 import DatetimeText from '@/components/DatetimeText'
 import RecommendationString from '@/components/experiment-results/RecommendationString'
 import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from '@/lib/analyses'
-import * as MetricAssignments from '@/lib/metric-assignments'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
-import { Analysis, ExperimentFull, MetricBare } from '@/lib/schemas'
+import { Analysis, ExperimentFull } from '@/lib/schemas'
 import { createStaticTableOptions } from '@/utils/material-table'
+
+import { MetricAssignmentAnalysesData } from './ExperimentResults'
 
 /**
  * Render the latest analyses for the experiment for each metric assignment.
  */
 export default function FullLatestAnalyses({
   experiment,
-  metricsById,
-  metricAssignmentIdToLatestAnalyses,
+  allMetricAssignmentAnalysesData,
 }: {
   experiment: ExperimentFull
-  metricsById: { [key: number]: MetricBare }
-  metricAssignmentIdToLatestAnalyses: { [key: number]: Analysis[] }
+  allMetricAssignmentAnalysesData: MetricAssignmentAnalysesData[]
 }) {
-  // Sort the assignments for consistency and collect the data we need to render the component.
-  const resultSummaries = useMemo(() => {
-    return MetricAssignments.sort(experiment.metricAssignments).map((metricAssignment) => {
+  const metricAssignmentSummaries = allMetricAssignmentAnalysesData.map(
+    ({ metricAssignment, metric, analysesByStrategyDateAsc }) => {
       return {
         metricAssignment,
-        metric: metricsById[metricAssignment.metricId],
-        latestAnalyses: metricAssignmentIdToLatestAnalyses[metricAssignment.metricAssignmentId] || [],
+        metric,
+        analysesByStrategyDateAsc,
+        latestAnalyses: Object.values(analysesByStrategyDateAsc).map(last) as Analysis[],
       }
-    })
-  }, [experiment, metricsById, metricAssignmentIdToLatestAnalyses])
+    },
+  )
+
   const tableColumns = [
     { title: 'Strategy', render: ({ analysisStrategy }: Analysis) => AnalysisStrategyToHuman[analysisStrategy] },
     {
@@ -69,7 +69,7 @@ export default function FullLatestAnalyses({
   ]
   return (
     <>
-      {resultSummaries.map(({ metricAssignment, metric, latestAnalyses }) => (
+      {metricAssignmentSummaries.map(({ metricAssignment, metric, latestAnalyses }) => (
         <div key={metricAssignment.metricAssignmentId}>
           <Typography variant={'subtitle1'}>
             <strong>

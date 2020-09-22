@@ -391,7 +391,8 @@ exports[`renders the condensed table with some analyses in non-debug mode 2`] = 
         >
           [
           -0.01
-          , 
+          ,
+           
           0.01
           ]
         </td>
