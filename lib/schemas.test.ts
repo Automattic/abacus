@@ -131,6 +131,7 @@ describe('lib/schemas.ts module', () => {
             "higherIsBetter must be defined",
             "revenueParams.refundDays must be defined",
             "revenueParams.productSlugs must be defined",
+            "revenueParams.transactionTypes must be defined",
           ]
         `)
       }
@@ -221,6 +222,7 @@ describe('lib/schemas.ts module', () => {
             "higherIsBetter must be defined",
             "revenueParams.refundDays must be defined",
             "revenueParams.productSlugs must be defined",
+            "revenueParams.transactionTypes must be defined",
           ]
         `)
       }
