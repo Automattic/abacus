@@ -35,4 +35,5 @@ module.exports = {
   preset: 'ts-jest',
   setupFilesAfterEnv: ['isomorphic-fetch'],
   testMatch: ['**/__tests__/**/?(*.)+(spec|test).ts?(x)'],
+  testTimeout: 120000,
 }
