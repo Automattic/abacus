@@ -2,9 +2,11 @@ import { AppBar, Container, Theme, Typography } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { ReactNode } from 'react'
 
 import { isTestingProductionConfigInDevelopment } from '@/config'
+import { isDebugMode, toggleDebugMode } from '@/utils/general'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,6 +20,15 @@ const useStyles = makeStyles((theme: Theme) =>
       flexStretch: 0,
       padding: theme.spacing(1, 0),
       background: theme.palette.error.light,
+      color: theme.palette.error.contrastText,
+      textTransform: 'uppercase',
+      textAlign: 'center',
+    },
+
+    debugModeBar: {
+      flexStretch: 0,
+      padding: theme.spacing(1, 0),
+      background: '#232323bf',
       color: theme.palette.error.contrastText,
       textTransform: 'uppercase',
       textAlign: 'center',
@@ -77,6 +88,16 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Layout = ({ title, headTitle, children }: { title?: string; headTitle?: string; children?: ReactNode }) => {
   const classes = useStyles()
+  const router = useRouter()
+
+  // istanbul ignore next; debug mode only
+  const onToggleDebugMode = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+    if (e.shiftKey) {
+      toggleDebugMode()
+      router.reload()
+    }
+  }
+
   return (
     <div className={classes.root}>
       <Head>
@@ -90,6 +111,14 @@ const Layout = ({ title, headTitle, children }: { title?: string; headTitle?: st
           isTestingProductionConfigInDevelopment && (
             <div className={classes.productionConfigInDevelopmentBar}>
               <Typography variant='body1'> Using production config in development </Typography>
+            </div>
+          )
+        }
+        {
+          /* istanbul ignore next; Development mode only */
+          isDebugMode() && (
+            <div className={classes.debugModeBar}>
+              <Typography variant='body1'> Debug Mode </Typography>
             </div>
           )
         }
@@ -125,7 +154,9 @@ const Layout = ({ title, headTitle, children }: { title?: string; headTitle?: st
       </Container>
       <footer className={classes.footer}>
         <Container>
-          <Typography variant='body1'>The Abacus footer. Brought to you by Automattic.</Typography>
+          <Typography variant='body1' onDoubleClick={onToggleDebugMode}>
+            The Abacus footer. Brought to you by Automattic.
+          </Typography>
         </Container>
       </footer>
     </div>

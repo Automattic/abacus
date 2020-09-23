@@ -11,7 +11,6 @@ import {
 } from '@material-ui/core'
 import debugFactory from 'debug'
 import { Formik, FormikProps } from 'formik'
-import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 import * as yup from 'yup'
@@ -24,6 +23,7 @@ import MetricsTable from '@/components/MetricsTable'
 import { MetricFormData, metricToFormData } from '@/lib/form-data'
 import { MetricFullNew, metricFullNewSchema } from '@/lib/schemas'
 import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
+import { isDebugMode } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/metrics/index.tsx')
 
@@ -44,8 +44,7 @@ const MetricsIndexPage = () => {
   const { isLoading, data: metrics, error, reloadRef } = useDataSource(() => MetricsApi.findAll(), [])
   useDataLoadingError(error, 'Metrics')
 
-  const router = useRouter()
-  const debugMode = router.query.debug === 'true'
+  const debugMode = isDebugMode()
 
   const { enqueueSnackbar } = useSnackbar()
 

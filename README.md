@@ -130,6 +130,11 @@ npm run storybook
 
 This will open a browser window of the Storybook webapp.
 
+### "DebugMode"
+
+We currently have a special debug mode which adds in-development features as well as extra debug information.
+To activate it hold shift and double click on the footer.
+
 ## Advanced Tools
 
 ### Docker (_Not Recommended_)
