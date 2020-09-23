@@ -378,19 +378,31 @@ export const analysisSchema = yup
   .camelCase()
 export type Analysis = yup.InferType<typeof analysisSchema>
 
-export const autocompleteItemSchema = yup.object({
-  name: yup.string(),
-  value: yup.string().nullable().notRequired(),
-})
+export const analysisResponseSchema = yup
+  .object({
+    analyses: yup.array(analysisSchema).defined(),
+  })
+  .defined()
+export type AnalysisResponse = yup.InferType<typeof analysisResponseSchema>
+
+export const autocompleteItemSchema = yup
+  .object({
+    name: yup.string().required(),
+    value: yup.string(),
+  })
+  .required()
 export type AutocompleteItem = yup.InferType<typeof autocompleteItemSchema>
 
-export const autocompleteSchema = yup.object({
-  completions: yup.array<AutocompleteItem>(autocompleteItemSchema),
-})
+export const autocompleteSchema = yup
+  .object({
+    completions: yup.array<AutocompleteItem>(autocompleteItemSchema).required(),
+  })
+  .required()
 export type UserCompletions = yup.InferType<typeof autocompleteSchema>
 export type EventCompletions = yup.InferType<typeof autocompleteSchema>
 export type TransactionTypeCompletions = yup.InferType<typeof autocompleteSchema>
 export type ProductCompletions = yup.InferType<typeof autocompleteSchema>
+export type Autocompletions = UserCompletions | EventCompletions | TransactionTypeCompletions | ProductCompletions
 
 export const eventPropsSchema = yup.object({
   name: yup.string(),
