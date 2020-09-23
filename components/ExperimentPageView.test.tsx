@@ -83,11 +83,11 @@ const getButtonStates = () => {
 }
 
 test('experiment page view renders results without crashing', async () => {
-  const { container: _container } = await renderExperimentPageView({}, ExperimentView.Results)
+  await renderExperimentPageView({}, ExperimentView.Results)
 })
 
 test('experiment page view renders code-setup without crashing', async () => {
-  const { container: _container } = await renderExperimentPageView({}, ExperimentView.CodeSetup)
+  await renderExperimentPageView({}, ExperimentView.CodeSetup)
 })
 
 test('experiment page view renders with null experimentId without crashing', async () => {
@@ -104,10 +104,7 @@ test('experiment page view renders with null experimentId without crashing', asy
 })
 
 test('staging experiment shows correct features enabled in overview', async () => {
-  const { container: _container } = await renderExperimentPageView(
-    { experiment: { status: Status.Staging } },
-    ExperimentView.Overview,
-  )
+  await renderExperimentPageView({ experiment: { status: Status.Staging } }, ExperimentView.Overview)
 
   await waitFor(() => screen.getByRole('button', { name: /Assign Metric/ }))
 
@@ -122,10 +119,7 @@ test('staging experiment shows correct features enabled in overview', async () =
 })
 
 test('running experiment shows correct features enabled in overview', async () => {
-  const { container: _container } = await renderExperimentPageView(
-    { experiment: { status: Status.Running } },
-    ExperimentView.Overview,
-  )
+  await renderExperimentPageView({ experiment: { status: Status.Running } }, ExperimentView.Overview)
 
   await waitFor(() => screen.getByRole('button', { name: /Assign Metric/ }))
 
@@ -140,10 +134,7 @@ test('running experiment shows correct features enabled in overview', async () =
 })
 
 test('completed experiment shows correct features enabled in overview', async () => {
-  const { container: _container } = await renderExperimentPageView(
-    { experiment: { status: Status.Completed } },
-    ExperimentView.Overview,
-  )
+  await renderExperimentPageView({ experiment: { status: Status.Completed } }, ExperimentView.Overview)
 
   await waitFor(() => screen.getByRole('button', { name: /Assign Metric/ }))
 
@@ -158,10 +149,7 @@ test('completed experiment shows correct features enabled in overview', async ()
 })
 
 test('disabled experiment shows correct features enabled in overview', async () => {
-  const { container: _container } = await renderExperimentPageView(
-    { experiment: { status: Status.Disabled } },
-    ExperimentView.Overview,
-  )
+  await renderExperimentPageView({ experiment: { status: Status.Disabled } }, ExperimentView.Overview)
 
   await waitFor(() => screen.getByRole('button', { name: /Assign Metric/ }))
 
