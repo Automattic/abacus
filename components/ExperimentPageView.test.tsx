@@ -49,13 +49,10 @@ const renderExperimentPageView = async ({ experiment: experimentOverrides = {} }
   const analyses = Fixtures.createAnalyses()
   mockedAnalysesApi.findByExperimentId.mockImplementationOnce(async () => analyses)
 
-  // This is needed to fix warnings:
-  let renderResult = null
+  // This `act` is needed to fix warnings:
   await act(async () => {
-    renderResult = render(<ExperimentPageView experimentId={experiment.experimentId} view={view} debugMode={false} />)
+    render(<ExperimentPageView experimentId={experiment.experimentId} view={view} debugMode={false} />)
   })
-
-  return renderResult as ReturnType<typeof render>
 }
 
 /**
