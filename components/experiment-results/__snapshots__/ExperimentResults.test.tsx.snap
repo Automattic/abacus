@@ -168,7 +168,7 @@ exports[`renders the condensed table with some analyses in non-debug mode 1`] = 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      4 weeks
+                      1 hour
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -221,7 +221,7 @@ exports[`renders the condensed table with some analyses in non-debug mode 1`] = 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      1 hour
+                      4 weeks
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1683,6 +1683,95 @@ exports[`renders the full tables with some analyses in debug mode 3`] = `
       </strong>
        
       with 
+      1 hour
+       attribution,
+       
+      <strong>
+        not analyzed yet
+      </strong>
+    </h6>
+    <div
+      class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+      style="position: relative;"
+    >
+      <div
+        class="Component-horizontalScrollContainer-5"
+        style="overflow-x: auto; position: relative;"
+      >
+        <div>
+          <div
+            style="overflow-y: auto;"
+          >
+            <div>
+              <table
+                class="MuiTable-root"
+                style="table-layout: auto;"
+              >
+                <thead
+                  class="MuiTableHead-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-head"
+                  >
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Strategy
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Participants (not final)
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Difference interval
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Recommendation
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Warnings
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="MuiTableBody-root"
+                />
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+  </div>
+  <div>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle1"
+    >
+      <strong>
+        <code>
+          metric_2
+        </code>
+      </strong>
+       
+      with 
       4 weeks
        attribution,
        
@@ -1794,95 +1883,6 @@ exports[`renders the full tables with some analyses in debug mode 3`] = `
                     </td>
                   </tr>
                 </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-  </div>
-  <div>
-    <h6
-      class="MuiTypography-root MuiTypography-subtitle1"
-    >
-      <strong>
-        <code>
-          metric_2
-        </code>
-      </strong>
-       
-      with 
-      1 hour
-       attribution,
-       
-      <strong>
-        not analyzed yet
-      </strong>
-    </h6>
-    <div
-      class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
-      style="position: relative;"
-    >
-      <div
-        class="Component-horizontalScrollContainer-5"
-        style="overflow-x: auto; position: relative;"
-      >
-        <div>
-          <div
-            style="overflow-y: auto;"
-          >
-            <div>
-              <table
-                class="MuiTable-root"
-                style="table-layout: auto;"
-              >
-                <thead
-                  class="MuiTableHead-root"
-                >
-                  <tr
-                    class="MuiTableRow-root MuiTableRow-head"
-                  >
-                    <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
-                      scope="col"
-                      style="font-weight: 700; box-sizing: border-box;"
-                    >
-                      Strategy
-                    </th>
-                    <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
-                      scope="col"
-                      style="font-weight: 700; box-sizing: border-box;"
-                    >
-                      Participants (not final)
-                    </th>
-                    <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
-                      scope="col"
-                      style="font-weight: 700; box-sizing: border-box;"
-                    >
-                      Difference interval
-                    </th>
-                    <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
-                      scope="col"
-                      style="font-weight: 700; box-sizing: border-box;"
-                    >
-                      Recommendation
-                    </th>
-                    <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-6 MuiTableCell-alignLeft"
-                      scope="col"
-                      style="font-weight: 700; box-sizing: border-box;"
-                    >
-                      Warnings
-                    </th>
-                  </tr>
-                </thead>
-                <tbody
-                  class="MuiTableBody-root"
-                />
               </table>
             </div>
           </div>

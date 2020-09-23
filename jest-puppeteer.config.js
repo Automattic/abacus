@@ -9,7 +9,7 @@ module.exports = {
     command:
       'echo "Building app..." && NEXT_PUBLIC_NODE_ENV_OVERRIDE=test npm run build && echo "Starting app..." && npm run start -- -p 3001',
     debug: true, // Allows us to see the output of the above commands.
-    launchTimeout: 60 * 1000,
+    launchTimeout: 120 * 1000,
     port: 3001,
   },
 }

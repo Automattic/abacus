@@ -316,18 +316,18 @@ exports[`renders as expected at large width 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
                   >
-                    4 weeks
+                    1 hour
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
                   >
-                    No
+                    Yes
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
                   >
                     <span>
-                      $10.50
+                      $0.50
                     </span>
                   </td>
                 </tr>
@@ -343,18 +343,18 @@ exports[`renders as expected at large width 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
                   >
-                    1 hour
+                    4 weeks
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
                   >
-                    Yes
+                    No
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
                   >
                     <span>
-                      $0.50
+                      $10.50
                     </span>
                   </td>
                 </tr>
@@ -1311,18 +1311,18 @@ exports[`renders as expected at small width 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
                   >
-                    4 weeks
+                    1 hour
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
                   >
-                    No
+                    Yes
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
                   >
                     <span>
-                      $10.50
+                      $0.50
                     </span>
                   </td>
                 </tr>
@@ -1338,18 +1338,18 @@ exports[`renders as expected at small width 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
                   >
-                    1 hour
+                    4 weeks
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
                   >
-                    Yes
+                    No
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
                   >
                     <span>
-                      $0.50
+                      $10.50
                     </span>
                   </td>
                 </tr>
@@ -2010,18 +2010,18 @@ exports[`renders as expected with conclusion data 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
                   >
-                    4 weeks
+                    1 hour
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
                   >
-                    No
+                    Yes
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
                   >
                     <span>
-                      $10.50
+                      $0.50
                     </span>
                   </td>
                 </tr>
@@ -2037,18 +2037,18 @@ exports[`renders as expected with conclusion data 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
                   >
-                    1 hour
+                    4 weeks
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
                   >
-                    Yes
+                    No
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
                   >
                     <span>
-                      $0.50
+                      $10.50
                     </span>
                   </td>
                 </tr>
@@ -2809,18 +2809,18 @@ exports[`renders as expected without conclusion data 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
                   >
-                    4 weeks
+                    1 hour
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
                   >
-                    No
+                    Yes
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
                   >
                     <span>
-                      $10.50
+                      $0.50
                     </span>
                   </td>
                 </tr>
@@ -2836,18 +2836,18 @@ exports[`renders as expected without conclusion data 1`] = `
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
                   >
-                    1 hour
+                    4 weeks
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
                   >
-                    Yes
+                    No
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
                   >
                     <span>
-                      $0.50
+                      $10.50
                     </span>
                   </td>
                 </tr>
