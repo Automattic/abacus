@@ -15,8 +15,24 @@ export const AttributionWindowSecondsToHuman: Record<AttributionWindowSeconds, s
 }
 
 /**
- * Return the experiment's variations sorted in the canonical order: Primary first, then by ID.
+ * Return the experiment's metric assignments sorted in a canonical order:
+ * - Primary first
+ * - Assignments with the same metricId are next to each other
+ * - Assignments with the same metricId are ordered by attributionWindow asc
+ * -
  */
 export function sort(metricAssignments: MetricAssignment[]) {
-  return _.orderBy(metricAssignments, ['isPrimary', 'metricAssignmentId'], ['desc', 'asc'])
+  const metricAssignmentsByMetric = Object.values(_.groupBy(metricAssignments, 'metricId'))
+    // Order within groups
+    .map((metricAssignments) =>
+      _.orderBy(metricAssignments, ['isPrimary', 'attributionWindowSeconds'], ['desc', 'asc']),
+    )
+  // Order the groups
+  const orderedMetricAssignmentsByMetric = _.orderBy(
+    metricAssignmentsByMetric,
+    ['[0].isPrimary', '[0].metricId'],
+    ['desc', 'asc'],
+  )
+
+  return _.flatten(orderedMetricAssignmentsByMetric)
 }
