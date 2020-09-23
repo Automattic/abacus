@@ -159,18 +159,18 @@ test('renders as expected with all metrics resolvable', () => {
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
-                4 weeks
+                1 hour
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
-                No
+                Yes
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 <span>
-                  $10.50
+                  $0.50
                 </span>
               </td>
             </tr>
@@ -186,18 +186,18 @@ test('renders as expected with all metrics resolvable', () => {
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
-                1 hour
+                4 weeks
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
-                Yes
+                No
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 <span>
-                  $0.50
+                  $10.50
                 </span>
               </td>
             </tr>
