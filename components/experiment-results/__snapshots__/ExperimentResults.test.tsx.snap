@@ -596,7 +596,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             "t": 64,
           },
           "showlegend": false,
-          "title": "Conversation rate difference estimates [%]",
+          "title": "Conversion rate difference estimates [%]",
         },
         "style": Object {
           "display": "inline-block",
