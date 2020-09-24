@@ -18,6 +18,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@rehooks/component-size": "^1.0.3",
+    "@types/react-plotly.js": "^2.2.4",
     "clsx": "^1.1.1",
     "date-fns": "^2.13.0",
     "debug": "^4.1.1",
@@ -30,11 +31,13 @@
     "next": "^9.3.6",
     "normalizr": "^3.6.0",
     "notistack": "^0.9.17",
+    "plotly.js": "^1.55.2",
     "qc-to_bool": "^1.1.2",
     "qc-to_int": "^1.0.1",
     "querystring": "^0.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-plotly.js": "^2.5.0",
     "yup": "^0.29.1"
   },
   "@comment devDependencies": {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the condensed table with some analyses in non-debug mode 1`] = `
+exports[`renders the condensed table with some analyses in non-debug mode for a Conversion Metric 1`] = `
 <div
   class="analysis-latest-results"
 >
@@ -297,7 +297,7 @@ exports[`renders the condensed table with some analyses in non-debug mode 1`] = 
 </div>
 `;
 
-exports[`renders the condensed table with some analyses in non-debug mode 2`] = `
+exports[`renders the condensed table with some analyses in non-debug mode for a Conversion Metric 2`] = `
 <div
   class="MuiTableContainer-root makeStyles-root-29 analysis-detail-panel"
 >
@@ -321,7 +321,7 @@ exports[`renders the condensed table with some analyses in non-debug mode 2`] = 
           class="MuiTableCell-root MuiTableCell-body"
         >
           <span
-            class="makeStyles-root-32"
+            class="makeStyles-root-34"
             title="09/05/2020, 20:00:00"
           >
             2020-05-10
@@ -392,7 +392,6 @@ exports[`renders the condensed table with some analyses in non-debug mode 2`] = 
           [
           -0.01
           ,
-           
           0.01
           ]
         </td>
@@ -420,7 +419,825 @@ exports[`renders the condensed table with some analyses in non-debug mode 2`] = 
       </tr>
     </tbody>
   </table>
+  <div
+    class="makeStyles-plots-32"
+  />
 </div>
+`;
+
+exports[`renders the condensed table with some analyses in non-debug mode for a Conversion Metric 3`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "className": "makeStyles-plot-33",
+        "data": Array [
+          Object {
+            "line": Object {
+              "color": "#1f78b488",
+            },
+            "mode": "lines",
+            "name": "test: lower bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              -112.3,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "#1f78b488",
+            },
+            "mode": "lines",
+            "name": "test: upper bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              100,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "#ff7f0088",
+            },
+            "mode": "lines",
+            "name": "control: lower bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              0,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "#ff7f0088",
+            },
+            "mode": "lines",
+            "name": "control: upper bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              1000,
+            ],
+          },
+        ],
+        "debug": false,
+        "layout": Object {
+          "autosize": true,
+          "hoverlabel": Object {
+            "namelength": -1,
+          },
+          "margin": Object {
+            "b": 48,
+            "l": 32,
+            "r": 16,
+            "t": 64,
+          },
+          "showlegend": false,
+          "title": "Conversion rate estimates by variation [%]",
+        },
+        "style": Object {
+          "display": "inline-block",
+          "position": "relative",
+        },
+        "useResizeHandler": false,
+      },
+      Object {},
+    ],
+    Array [
+      Object {
+        "className": "makeStyles-plot-33",
+        "data": Array [
+          Object {
+            "line": Object {
+              "width": 0,
+            },
+            "marker": Object {
+              "color": "444",
+            },
+            "mode": "lines",
+            "name": "difference: lower bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              -1,
+            ],
+          },
+          Object {
+            "fill": "tonexty",
+            "fillcolor": "rgba(0,0,0,.2)",
+            "line": Object {
+              "width": 0,
+            },
+            "marker": Object {
+              "color": "444",
+            },
+            "mode": "lines",
+            "name": "difference: upper bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              1,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "rgba(0,0,0,.4)",
+              "dash": "dash",
+            },
+            "mode": "lines",
+            "name": "ROPE: lower bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              -1200,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "rgba(0,0,0,.4)",
+              "dash": "dash",
+            },
+            "mode": "lines",
+            "name": "ROPE: upper bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              1200,
+            ],
+          },
+        ],
+        "debug": false,
+        "layout": Object {
+          "autosize": true,
+          "hoverlabel": Object {
+            "namelength": -1,
+          },
+          "margin": Object {
+            "b": 48,
+            "l": 32,
+            "r": 16,
+            "t": 64,
+          },
+          "showlegend": false,
+          "title": "Conversation rate difference estimates [%]",
+        },
+        "style": Object {
+          "display": "inline-block",
+          "position": "relative",
+        },
+        "useResizeHandler": false,
+      },
+      Object {},
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`renders the condensed table with some analyses in non-debug mode for a Revenue Metric 1`] = `
+<div
+  class="analysis-latest-results"
+>
+  <div
+    class="makeStyles-root-35"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+      style="position: relative;"
+    >
+      <div
+        class="Component-horizontalScrollContainer-41"
+        style="overflow-x: auto; position: relative;"
+      >
+        <div>
+          <div
+            style="overflow-y: auto;"
+          >
+            <div>
+              <table
+                class="MuiTable-root"
+                style="table-layout: auto;"
+              >
+                <thead
+                  class="MuiTableHead-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-head"
+                  >
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-42 MuiTableCell-paddingNone"
+                      scope="col"
+                      style="font-weight: 700;"
+                    />
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-42 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Metric
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-42 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Attribution window
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-42 MuiTableCell-alignLeft"
+                      scope="col"
+                      style="font-weight: 700; box-sizing: border-box;"
+                    >
+                      Recommendation
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="MuiTableBody-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover"
+                    index="0"
+                    level="0"
+                    path="0"
+                    style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                    >
+                      <div
+                        style="width: 42px; text-align: center; display: flex;"
+                      >
+                        <button
+                          class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                          disabled=""
+                          style="transition: all ease 200ms; transform: none;"
+                          tabindex="-1"
+                          type="button"
+                        >
+                          <span
+                            class="MuiIconButton-label"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons MuiIcon-root"
+                            >
+                              chevron_right
+                            </span>
+                          </span>
+                        </button>
+                      </div>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                    >
+                      metric_1
+                       
+                      <div
+                        aria-disabled="true"
+                        class="MuiChip-root makeStyles-primaryChip-36 MuiChip-outlined Mui-disabled"
+                      >
+                        <span
+                          class="MuiChip-label"
+                        >
+                          Primary
+                        </span>
+                      </div>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                    >
+                      1 week
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                    >
+                      Manual analysis required
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover"
+                    index="1"
+                    level="0"
+                    path="1"
+                    style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                    >
+                      <div
+                        style="width: 42px; text-align: center; display: flex;"
+                      >
+                        <button
+                          class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                          disabled=""
+                          style="transition: all ease 200ms; transform: none;"
+                          tabindex="-1"
+                          type="button"
+                        >
+                          <span
+                            class="MuiIconButton-label"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons MuiIcon-root"
+                            >
+                              chevron_right
+                            </span>
+                          </span>
+                        </button>
+                      </div>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                    >
+                      metric_2
+                       
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                    >
+                      1 hour
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                    >
+                      Not analyzed yet
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover"
+                    index="2"
+                    level="0"
+                    path="2"
+                    style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                    >
+                      <div
+                        style="width: 42px; text-align: center; display: flex;"
+                      >
+                        <button
+                          class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                          disabled=""
+                          style="transition: all ease 200ms; transform: none;"
+                          tabindex="-1"
+                          type="button"
+                        >
+                          <span
+                            class="MuiIconButton-label"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons MuiIcon-root"
+                            >
+                              chevron_right
+                            </span>
+                          </span>
+                        </button>
+                      </div>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                    >
+                      metric_2
+                       
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                    >
+                      4 weeks
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                    >
+                      Not analyzed yet
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover"
+                    index="3"
+                    level="0"
+                    path="3"
+                    style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                    >
+                      <div
+                        style="width: 42px; text-align: center; display: flex;"
+                      >
+                        <button
+                          class="MuiButtonBase-root MuiIconButton-root"
+                          style="transition: all ease 200ms; transform: none;"
+                          tabindex="0"
+                          type="button"
+                        >
+                          <span
+                            class="MuiIconButton-label"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons MuiIcon-root"
+                            >
+                              chevron_right
+                            </span>
+                          </span>
+                          <span
+                            class="MuiTouchRipple-root"
+                          />
+                        </button>
+                      </div>
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                    >
+                      metric_3
+                       
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                    >
+                      6 hours
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                    >
+                      Deploy 
+                      test
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders the condensed table with some analyses in non-debug mode for a Revenue Metric 2`] = `
+<div
+  class="MuiTableContainer-root makeStyles-root-43 analysis-detail-panel"
+>
+  <table
+    class="MuiTable-root"
+  >
+    <tbody
+      class="MuiTableBody-root"
+    >
+      <tr
+        class="MuiTableRow-root"
+      >
+        <th
+          class="MuiTableCell-root MuiTableCell-head"
+          role="cell"
+          scope="row"
+        >
+          Last analyzed
+        </th>
+        <td
+          class="MuiTableCell-root MuiTableCell-body"
+        >
+          <span
+            class="makeStyles-root-48"
+            title="09/05/2020, 20:00:00"
+          >
+            2020-05-10
+          </span>
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root"
+      >
+        <th
+          class="MuiTableCell-root MuiTableCell-head"
+          role="cell"
+          scope="row"
+        >
+          Analysis strategy
+        </th>
+        <td
+          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-45"
+        >
+          Exposed without crossovers and spammers
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root"
+      >
+        <th
+          class="MuiTableCell-root MuiTableCell-head"
+          role="cell"
+          scope="row"
+        >
+          Analyzed participants
+        </th>
+        <td
+          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-45"
+        >
+          1400
+           (
+          140
+           not final
+          <span>
+            ; 
+            840
+             in 
+            control
+          </span>
+          <span>
+            ; 
+            560
+             in 
+            test
+          </span>
+          )
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root"
+      >
+        <th
+          class="MuiTableCell-root MuiTableCell-head"
+          role="cell"
+          scope="row"
+        >
+          Difference interval
+        </th>
+        <td
+          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-45"
+        >
+          [
+          -0.01
+          ,
+          0.01
+          ]
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root"
+      >
+        <th
+          class="MuiTableCell-root MuiTableCell-head"
+          role="cell"
+          scope="row"
+        >
+          Warnings
+        </th>
+        <td
+          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-45"
+        >
+          <div>
+            Experiment period is too short. Wait a few days to be safer.
+          </div>
+          <div>
+            The CI is too wide in comparison to the ROPE. Collect more data to be safer.
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="makeStyles-plots-46"
+  />
+</div>
+`;
+
+exports[`renders the condensed table with some analyses in non-debug mode for a Revenue Metric 3`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "className": "makeStyles-plot-47",
+        "data": Array [
+          Object {
+            "line": Object {
+              "color": "#1f78b488",
+            },
+            "mode": "lines",
+            "name": "test: lower bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              -1.123,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "#1f78b488",
+            },
+            "mode": "lines",
+            "name": "test: upper bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              1,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "#ff7f0088",
+            },
+            "mode": "lines",
+            "name": "control: lower bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              0,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "#ff7f0088",
+            },
+            "mode": "lines",
+            "name": "control: upper bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              10,
+            ],
+          },
+        ],
+        "debug": false,
+        "layout": Object {
+          "autosize": true,
+          "hoverlabel": Object {
+            "namelength": -1,
+          },
+          "margin": Object {
+            "b": 48,
+            "l": 32,
+            "r": 16,
+            "t": 64,
+          },
+          "showlegend": false,
+          "title": "Revenue estimates by variation [$]",
+        },
+        "style": Object {
+          "display": "inline-block",
+          "position": "relative",
+        },
+        "useResizeHandler": false,
+      },
+      Object {},
+    ],
+    Array [
+      Object {
+        "className": "makeStyles-plot-47",
+        "data": Array [
+          Object {
+            "line": Object {
+              "width": 0,
+            },
+            "marker": Object {
+              "color": "444",
+            },
+            "mode": "lines",
+            "name": "difference: lower bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              -0.01,
+            ],
+          },
+          Object {
+            "fill": "tonexty",
+            "fillcolor": "rgba(0,0,0,.2)",
+            "line": Object {
+              "width": 0,
+            },
+            "marker": Object {
+              "color": "444",
+            },
+            "mode": "lines",
+            "name": "difference: upper bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              0.01,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "rgba(0,0,0,.4)",
+              "dash": "dash",
+            },
+            "mode": "lines",
+            "name": "ROPE: lower bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              -12,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "rgba(0,0,0,.4)",
+              "dash": "dash",
+            },
+            "mode": "lines",
+            "name": "ROPE: upper bound",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              12,
+            ],
+          },
+        ],
+        "debug": false,
+        "layout": Object {
+          "autosize": true,
+          "hoverlabel": Object {
+            "namelength": -1,
+          },
+          "margin": Object {
+            "b": 48,
+            "l": 32,
+            "r": 16,
+            "t": 64,
+          },
+          "showlegend": false,
+          "title": "Revenue difference estimates [$]",
+        },
+        "style": Object {
+          "display": "inline-block",
+          "position": "relative",
+        },
+        "useResizeHandler": false,
+      },
+      Object {},
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
 `;
 
 exports[`renders the full tables with some analyses and a different primary metric in debug mode 1`] = `
@@ -527,6 +1344,8 @@ exports[`renders the full tables with some analyses and a different primary metr
   </div>
 </div>
 `;
+
+exports[`renders the full tables with some analyses and a different primary metric in debug mode 2`] = `[MockFunction]`;
 
 exports[`renders the full tables with some analyses in debug mode 1`] = `
 <div
@@ -2207,3 +3026,5 @@ exports[`renders the full tables with some analyses in debug mode 3`] = `
   </div>
 </div>
 `;
+
+exports[`renders the full tables with some analyses in debug mode 4`] = `[MockFunction]`;

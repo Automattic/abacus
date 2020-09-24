@@ -11,15 +11,24 @@ import {
   useTheme,
 } from '@material-ui/core'
 import clsx from 'clsx'
-import _ from 'lodash'
+import _, { identity } from 'lodash'
 import MaterialTable from 'material-table'
+import { PlotData } from 'plotly.js'
 import React from 'react'
+import Plot from 'react-plotly.js'
 
 import DatetimeText from '@/components/DatetimeText'
 import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from '@/lib/analyses'
 import * as Experiments from '@/lib/experiments'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
-import { Analysis, ExperimentFull, MetricAssignment, MetricBare } from '@/lib/schemas'
+import {
+  Analysis,
+  AnalysisStrategy,
+  ExperimentFull,
+  MetricAssignment,
+  MetricBare,
+  MetricParameterType,
+} from '@/lib/schemas'
 import * as Variations from '@/lib/variations'
 import { createStaticTableOptions } from '@/utils/material-table'
 
@@ -128,16 +137,24 @@ export default function CondensedLatestAnalyses({
 
   const DetailPanel = [
     ({
+      analysesByStrategyDateAsc,
       latestDefaultAnalysis,
+      metricAssignment,
+      metric,
       recommendationConflict,
     }: {
+      analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
       latestDefaultAnalysis?: Analysis
+      metricAssignment: MetricAssignment
+      metric: MetricBare
       recommendationConflict?: boolean
     }) => {
       return {
         render: () =>
           latestDefaultAnalysis && (
-            <AnalysisDetailPanel latestDefaultAnalysis={latestDefaultAnalysis} experiment={experiment} />
+            <AnalysisDetailPanel
+              {...{ analysesByStrategyDateAsc, latestDefaultAnalysis, metricAssignment, metric, experiment }}
+            />
           ),
         disabled: !latestDefaultAnalysis || recommendationConflict,
       }
@@ -179,17 +196,142 @@ const useAnalysisDetailStyles = makeStyles((theme: Theme) =>
     dataCell: {
       fontFamily: theme.custom.fonts.monospace,
     },
+    plots: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      marginTop: theme.spacing(2),
+    },
+    plot: {
+      width: `calc(50% - ${theme.spacing(1)}px)`,
+      height: 400,
+    },
   }),
 )
 
 function AnalysisDetailPanel({
   latestDefaultAnalysis,
+  metricAssignment,
+  metric,
+  analysesByStrategyDateAsc,
   experiment,
 }: {
   latestDefaultAnalysis: Analysis
+  metricAssignment: MetricAssignment
+  metric: MetricBare
+  analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
   experiment: ExperimentFull
 }) {
   const classes = useAnalysisDetailStyles()
+  const theme = useTheme()
+
+  // We hand out colors based on the order of the variant.
+  // Control and Treatment should have a consistent order even across experiments so this should give good results.
+  // Ideally we would add some marker to differentiate control variants
+  //
+  // These come from a data pallete generator and should be visually equidistant.
+  const variantColors = ['#1f78b488', '#ff7f0088']
+
+  const isConversion = metric.parameterType === MetricParameterType.Conversion
+  const estimateTransform: (estimate: number | null) => number | null = isConversion
+    ? (estimate: number | null) => estimate && estimate * 100
+    : identity
+  const strategy = Experiments.getDefaultAnalysisStrategy(experiment)
+  const analyses = analysesByStrategyDateAsc[strategy]
+  const dates = analyses.map(({ analysisDatetime }) => analysisDatetime.toISOString())
+
+  const plotlyDataVariationGraph: Array<Partial<PlotData>> = [
+    ..._.flatMap(experiment.variations, (variation, index) => {
+      const variationKey = `variation_${variation.variationId}`
+      return [
+        {
+          name: `${variation.name}: lower bound`,
+          x: dates,
+          y: analyses
+            .map(({ metricEstimates }) => metricEstimates && metricEstimates[variationKey].bottom)
+            .map(estimateTransform),
+          line: {
+            color: variantColors[index],
+          },
+          mode: 'lines' as 'lines',
+          type: 'scatter' as 'scatter',
+        },
+        {
+          name: `${variation.name}: upper bound`,
+          x: dates,
+          y: analyses
+            .map(({ metricEstimates }) => metricEstimates && metricEstimates[variationKey].top)
+            .map(estimateTransform),
+          line: {
+            color: variantColors[index],
+          },
+          mode: 'lines' as 'lines',
+          type: 'scatter' as 'scatter',
+        },
+      ]
+    }),
+  ]
+
+  const plotlyDataDifferenceGraph: Array<Partial<PlotData>> = [
+    {
+      name: `difference: lower bound`,
+      x: dates,
+      y: analyses
+        .map(({ metricEstimates }) => metricEstimates && metricEstimates['diff'].bottom)
+        .map(estimateTransform),
+      line: { width: 0 },
+      marker: { color: '444' },
+      mode: 'lines' as 'lines',
+      type: 'scatter' as 'scatter',
+    },
+    {
+      name: `difference: upper bound`,
+      x: dates,
+      y: analyses.map(({ metricEstimates }) => metricEstimates && metricEstimates['diff'].top).map(estimateTransform),
+      fill: 'tonexty',
+      fillcolor: 'rgba(0,0,0,.2)',
+      line: { width: 0 },
+      marker: { color: '444' },
+      mode: 'lines' as 'lines',
+      type: 'scatter' as 'scatter',
+    },
+    {
+      name: 'ROPE: lower bound',
+      x: dates,
+      y: analyses.map((_) => -metricAssignment.minDifference).map(estimateTransform),
+      line: {
+        color: 'rgba(0,0,0,.4)',
+        dash: 'dash',
+      },
+      mode: 'lines' as 'lines',
+      type: 'scatter' as 'scatter',
+    },
+    {
+      name: 'ROPE: upper bound',
+      x: dates,
+      y: analyses.map((_) => metricAssignment.minDifference).map(estimateTransform),
+      line: {
+        color: 'rgba(0,0,0,.4)',
+        dash: 'dash',
+      },
+      mode: 'lines' as 'lines',
+      type: 'scatter' as 'scatter',
+    },
+  ]
+
+  const plotlyLayoutDefault = {
+    autosize: true,
+    margin: {
+      l: theme.spacing(4),
+      r: theme.spacing(2),
+      t: theme.spacing(8),
+      b: theme.spacing(6),
+    },
+    showlegend: false,
+    hoverlabel: {
+      // Don't restrict name lengths
+      namelength: -1,
+    },
+  }
 
   return (
     <TableContainer className={clsx(classes.root, 'analysis-detail-panel')}>
@@ -233,7 +375,7 @@ function AnalysisDetailPanel({
                   Difference interval
                 </TableCell>
                 <TableCell className={classes.dataCell}>
-                  [{_.round(latestDefaultAnalysis.metricEstimates.diff.bottom, 4)},{' '}
+                  [{_.round(latestDefaultAnalysis.metricEstimates.diff.bottom, 4)},
                   {_.round(latestDefaultAnalysis.metricEstimates.diff.top, 4)}]
                 </TableCell>
               </TableRow>
@@ -253,6 +395,24 @@ function AnalysisDetailPanel({
           )}
         </TableBody>
       </Table>
+      <div className={classes.plots}>
+        <Plot
+          layout={{
+            ...plotlyLayoutDefault,
+            title: isConversion ? `Conversion rate estimates by variation [%]` : `Revenue estimates by variation [$]`,
+          }}
+          data={plotlyDataVariationGraph}
+          className={classes.plot}
+        />
+        <Plot
+          layout={{
+            ...plotlyLayoutDefault,
+            title: isConversion ? `Conversation rate difference estimates [%]` : `Revenue difference estimates [$]`,
+          }}
+          data={plotlyDataDifferenceGraph}
+          className={classes.plot}
+        />
+      </div>
     </TableContainer>
   )
 }
