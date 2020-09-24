@@ -14,6 +14,7 @@ describe('lib/schemas.ts module', () => {
         },
         {
           name: 'Hello World',
+          value: 'Hello World',
         },
       ],
     }
