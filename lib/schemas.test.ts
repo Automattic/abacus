@@ -1,6 +1,55 @@
 import * as Schemas from './schemas'
 
 describe('lib/schemas.ts module', () => {
+  describe('autocomplete schema tests', () => {
+    const completionObject = {
+      completions: [
+        {
+          name: 'Santa',
+          value: 'smartcookie',
+        },
+        {
+          name: 'Snow White',
+          value: 'sleepingprincess',
+        },
+        {
+          name: 'Hello World',
+          value: 'Hello World',
+        },
+      ],
+    }
+
+    const eventDetailObject = {
+      name: 'test_event',
+      description: 'A description about a test event',
+      owner: 'bob',
+      is_registered: false,
+      is_validated: true,
+      props: [
+        {
+          name: 'complicated_property',
+          description: 'This prop is complicated',
+        },
+        {
+          name: 'no_description',
+          description: '',
+        },
+      ],
+    }
+
+    it('should parse responses correctly', async () => {
+      expect(await Schemas.autocompleteSchema.validate(completionObject, { abortEarly: false })).toEqual(
+        completionObject,
+      )
+    })
+
+    it('should parse event details correctly', async () => {
+      expect(await Schemas.eventDetailsSchema.validate(eventDetailObject, { abortEarly: false })).toEqual(
+        eventDetailObject,
+      )
+    })
+  })
+
   describe('metricFullSchema params constraint', () => {
     it('should require params matching parameter type', async () => {
       expect.assertions(6)

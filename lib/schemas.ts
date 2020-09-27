@@ -378,6 +378,52 @@ export const analysisSchema = yup
   .camelCase()
 export type Analysis = yup.InferType<typeof analysisSchema>
 
+export const analysisResponseSchema = yup
+  .object({
+    analyses: yup.array(analysisSchema).defined(),
+  })
+  .defined()
+export type AnalysisResponse = yup.InferType<typeof analysisResponseSchema>
+
+export const autocompleteItemSchema = yup
+  .object({
+    name: yup.string().defined(),
+    value: yup.string().defined(),
+  })
+  .required()
+export type AutocompleteItem = yup.InferType<typeof autocompleteItemSchema>
+
+export const autocompleteSchema = yup
+  .object({
+    completions: yup.array<AutocompleteItem>(autocompleteItemSchema).defined(),
+  })
+  .defined()
+export type UserCompletions = yup.InferType<typeof autocompleteSchema>
+export type EventCompletions = yup.InferType<typeof autocompleteSchema>
+export type TransactionTypeCompletions = yup.InferType<typeof autocompleteSchema>
+export type ProductCompletions = yup.InferType<typeof autocompleteSchema>
+export type Autocompletions = UserCompletions | EventCompletions | TransactionTypeCompletions | ProductCompletions
+
+export const eventPropsSchema = yup
+  .object({
+    name: yup.string().defined(),
+    description: yup.string().defined(),
+  })
+  .defined()
+export type EventProp = yup.InferType<typeof eventPropsSchema>
+
+export const eventDetailsSchema = yup
+  .object({
+    name: yup.string().defined(),
+    description: yup.string().defined(),
+    owner: yup.string().defined(),
+    is_registered: yup.boolean().defined(),
+    is_validated: yup.boolean().defined(),
+    props: yup.array<EventProp>(eventPropsSchema).defined(),
+  })
+  .defined()
+export type EventDetails = yup.InferType<typeof eventDetailsSchema>
+
 /**
  * The yup equivalant of _.pick, produces a subset of the original schema.
  *
