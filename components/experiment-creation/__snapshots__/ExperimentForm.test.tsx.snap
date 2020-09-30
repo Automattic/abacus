@@ -1312,66 +1312,130 @@ exports[`sections should be browsable by the section buttons 2`] = `
                 class="makeStyles-row-133"
               >
                 <div
-                  class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                  aria-expanded="false"
+                  class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
+                  name="experiment.ownerLogin"
+                  role="combobox"
                 >
-                  <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
-                    data-shrink="true"
-                    for="experiment.ownerLogin"
-                    id="experiment.ownerLogin-label"
-                  >
-                    Owner
-                    <span
-                      aria-hidden="true"
-                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-                    >
-                       
-                      *
-                    </span>
-                  </label>
                   <div
-                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart"
+                    class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
                   >
+                    <label
+                      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
+                      data-shrink="true"
+                      for="experiment.ownerLogin"
+                      id="experiment.ownerLogin-label"
+                    >
+                      Owner
+                      <span
+                        aria-hidden="true"
+                        class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                      >
+                         
+                        *
+                      </span>
+                    </label>
                     <div
-                      class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+                      class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
                     >
-                      <p
-                        class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+                      <div
+                        class="MuiInputAdornment-root MuiInputAdornment-positionStart"
                       >
-                        @
-                      </p>
+                        <p
+                          class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+                        >
+                          @
+                        </p>
+                      </div>
+                      <input
+                        aria-autocomplete="list"
+                        aria-describedby="experiment.ownerLogin-helper-text"
+                        aria-invalid="false"
+                        autocapitalize="none"
+                        autocomplete="off"
+                        class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                        id="experiment.ownerLogin"
+                        placeholder="wp_username"
+                        required=""
+                        spellcheck="false"
+                        type="text"
+                        value=""
+                      />
+                      <div
+                        class="MuiAutocomplete-endAdornment"
+                      >
+                        <button
+                          aria-label="Clear"
+                          class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
+                          tabindex="-1"
+                          title="Clear"
+                          type="button"
+                        >
+                          <span
+                            class="MuiIconButton-label"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                              focusable="false"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                              />
+                            </svg>
+                          </span>
+                          <span
+                            class="MuiTouchRipple-root"
+                          />
+                        </button>
+                        <button
+                          aria-label="Open"
+                          class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
+                          tabindex="-1"
+                          title="Open"
+                          type="button"
+                        >
+                          <span
+                            class="MuiIconButton-label"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="MuiSvgIcon-root"
+                              focusable="false"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                d="M7 10l5 5 5-5z"
+                              />
+                            </svg>
+                          </span>
+                          <span
+                            class="MuiTouchRipple-root"
+                          />
+                        </button>
+                      </div>
+                      <fieldset
+                        aria-hidden="true"
+                        class="PrivateNotchedOutline-root-128 MuiOutlinedInput-notchedOutline"
+                      >
+                        <legend
+                          class="PrivateNotchedOutline-legendLabelled-130 PrivateNotchedOutline-legendNotched-131"
+                        >
+                          <span>
+                            Owner
+                             *
+                          </span>
+                        </legend>
+                      </fieldset>
                     </div>
-                    <input
-                      aria-describedby="experiment.ownerLogin-helper-text"
-                      aria-invalid="false"
-                      class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart"
-                      id="experiment.ownerLogin"
-                      name="experiment.ownerLogin"
-                      placeholder="wp_username"
-                      required=""
-                      type="text"
-                      value=""
-                    />
-                    <fieldset
-                      aria-hidden="true"
-                      class="PrivateNotchedOutline-root-128 MuiOutlinedInput-notchedOutline"
+                    <p
+                      class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+                      id="experiment.ownerLogin-helper-text"
                     >
-                      <legend
-                        class="PrivateNotchedOutline-legendLabelled-130 PrivateNotchedOutline-legendNotched-131"
-                      >
-                        <span>
-                          Owner
-                           *
-                        </span>
-                      </legend>
-                    </fieldset>
+                      Use WordPress.com username.
+                    </p>
                   </div>
-                  <p
-                    class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-                    id="experiment.ownerLogin-helper-text"
-                  >
-                    Use WordPress.com username.
-                  </p>
                 </div>
               </div>
             </div>

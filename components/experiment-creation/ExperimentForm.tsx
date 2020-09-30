@@ -6,7 +6,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import * as yup from 'yup'
 
 import { ExperimentFormData } from '@/lib/form-data'
-import { experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
+import { AutocompleteItem, experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
+import { DataSourceResult } from '@/utils/data-loading'
 
 import LoadingButtonContainer from '../LoadingButtonContainer'
 import Audience from './Audience'
@@ -106,10 +107,12 @@ const ExperimentForm = ({
   indexedSegments,
   initialExperiment,
   onSubmit,
+  userCompletions,
 }: {
   indexedMetrics: Record<number, MetricBare>
   indexedSegments: Record<number, Segment>
   initialExperiment: ExperimentFormData
+  userCompletions: DataSourceResult<AutocompleteItem[]>
   onSubmit: (formData: unknown) => Promise<void>
 }) => {
   const classes = useStyles()
@@ -219,7 +222,7 @@ const ExperimentForm = ({
                 {currentStageId === StageId.BasicInfo && (
                   <div className={classes.formPart}>
                     <Paper className={classes.paper}>
-                      <BasicInfo />
+                      <BasicInfo userCompletions={userCompletions} />
                     </Paper>
                     <div className={classes.formPartActions}>
                       <Button onClick={prevStage}>Previous</Button>

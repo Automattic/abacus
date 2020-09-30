@@ -9,9 +9,10 @@ import React from 'react'
 
 import { experimentToFormData } from '@/lib/form-data'
 import * as Normalizers from '@/lib/normalizers'
-import { experimentFullNewSchema, Status } from '@/lib/schemas'
+import { AutocompleteItem, experimentFullNewSchema, Status } from '@/lib/schemas'
 import Fixtures from '@/test-helpers/fixtures'
 import { changeFieldByRole, render, validationErrorDisplayer } from '@/test-helpers/test-utils'
+import { DataSourceResult } from '@/utils/data-loading'
 import { formatIsoDate } from '@/utils/time'
 
 import ExperimentForm from './ExperimentForm'
@@ -47,6 +48,18 @@ function isSectionComplete(sectionButton: HTMLElement) {
   return !!sectionButton.querySelector('.MuiStepIcon-completed')
 }
 
+const userCompletionData: DataSourceResult<AutocompleteItem[]> = {
+  isLoading: false,
+  error: null,
+  data: [
+    {
+      name: 'testing (owner-nickname)',
+      value: 'owner-nickname',
+    },
+  ],
+  reloadRef: { current: () => undefined },
+}
+
 test('renders as expected', () => {
   MockDate.set('2020-08-13')
 
@@ -58,6 +71,7 @@ test('renders as expected', () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
+      userCompletions={userCompletionData}
     />,
   )
   expect(container).toMatchSnapshot()
@@ -74,6 +88,7 @@ test('sections should be browsable by the next and prev buttons', async () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
+      userCompletions={userCompletionData}
     />,
   )
 
@@ -117,6 +132,7 @@ test('sections should be browsable by enter presses', async () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
+      userCompletions={userCompletionData}
     />,
   )
 
@@ -160,6 +176,7 @@ test('sections should be browsable by the section buttons', async () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
+      userCompletions={userCompletionData}
     />,
   )
 
@@ -205,6 +222,7 @@ test('section should be validated after change', async () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
+      userCompletions={userCompletionData}
     />,
   )
 
@@ -282,6 +300,7 @@ test('skipping to submit should check all sections', async () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
+      userCompletions={userCompletionData}
     />,
   )
 
@@ -327,6 +346,7 @@ test('form submits with valid fields', async () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
+      userCompletions={userCompletionData}
     />,
   )
 
@@ -352,7 +372,14 @@ test('form submits with valid fields', async () => {
   await act(async () => {
     fireEvent.change(screen.getByLabelText(/End date/), { target: { value: formatIsoDate(nextWeek) } })
   })
-  await changeFieldByRole('textbox', /Owner/, 'owner-nickname')
+  // search for the user
+  await act(async () => {
+    await changeFieldByRole('textbox', /Owner/, 'testing')
+  })
+  // click the selected user
+  await act(async () => {
+    fireEvent.click(screen.getByText('testing (owner-nickname)'))
+  })
   await act(async () => {
     fireEvent.click(screen.getByRole('button', { name: /Next/ }))
   })
@@ -519,6 +546,7 @@ test('form submits an edited experiment without any changes', async () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData(experiment)}
       onSubmit={onSubmit}
+      userCompletions={userCompletionData}
     />,
   )
 

@@ -1,6 +1,13 @@
 import { noop } from 'lodash'
 import { useSnackbar } from 'notistack'
-import { DependencyList, useEffect, useRef, useState } from 'react'
+import { DependencyList, MutableRefObject, useEffect, useRef, useState } from 'react'
+
+export interface DataSourceResult<T> {
+  data: T | null
+  isLoading: boolean
+  error: Error | null
+  reloadRef: MutableRefObject<() => void>
+}
 
 /**
  * Declarative data loader.
@@ -13,7 +20,7 @@ import { DependencyList, useEffect, useRef, useState } from 'react'
 export function useDataSource<Data, Deps extends DependencyList | undefined, E extends Error>(
   createDataPromise: () => Promise<Data>,
   deps: Deps,
-) {
+): DataSourceResult<Data> {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [data, setData] = useState<Data | null>(null)
   const [error, setError] = useState<E | null>(null)
