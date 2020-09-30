@@ -5,14 +5,6 @@ import React, { useCallback } from 'react'
 
 import { AutocompleteItem } from '@/lib/schemas'
 
-export interface AutocompleteAttributes {
-  renderInput: (params: AutocompleteRenderInputParams) => unknown
-  getOptionSelected: (option: AutocompleteItem, value: string | AutocompleteItem) => boolean
-  options: AutocompleteItem[]
-  loading: boolean
-  getOptionLabel: (option: AutocompleteItem | string | null) => string
-}
-
 export const getOptionValue = (option: AutocompleteItem | string | null) =>
   (typeof option === 'string' ? option : option?.value) ?? ''
 
