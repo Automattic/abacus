@@ -465,8 +465,10 @@ test('form submits with valid fields', async () => {
   await act(async () => {
     fireEvent.click(screen.getByText('event_name'))
   })
-  //await changeFieldByRole('textbox', /Event Name/, 'event_name')
-  await changeFieldByRole('textbox', /Property Key/, 'key')
+  // enter the prop value
+  await act(async () => {
+    await changeFieldByRole('textbox', /Key/, 'key')
+  })
   await changeFieldByRole('textbox', /Property Value/, 'value')
 
   await act(async () => {

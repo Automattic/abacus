@@ -22,11 +22,12 @@ import { Field, FieldArray, FieldArrayRenderProps, useField } from 'formik'
 import { Select, Switch, TextField } from 'formik-material-ui'
 import React, { useState } from 'react'
 
+import { getPropCompletions } from '@/api/AutocompleteApi'
 import AbacusAutocomplete, { autocompleteInputProps } from '@/components/Autocomplete'
 import MoreMenu from '@/components/MoreMenu'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
 import { AutocompleteItem, EventNew, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
-import { DataSourceResult } from '@/utils/data-loading'
+import { DataSourceResult, useDataSource } from '@/utils/data-loading'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -88,6 +89,10 @@ const useStyles = makeStyles((theme: Theme) =>
     exposureEventsEventPropertiesKey: {
       marginRight: theme.spacing(1),
     },
+    exposureEventsEventPropertiesKeyAutoComplete: {
+      display: 'inline-flex',
+      minWidth: '40%',
+    },
   }),
 )
 
@@ -118,12 +123,15 @@ const EventEditor = ({
     | 'exposureEventsEventPropertiesRow'
     | 'addMetric'
     | 'addMetricAddSymbol'
-    | 'exposureEventsEventPropertiesKey',
+    | 'exposureEventsEventPropertiesKey'
+    | 'exposureEventsEventPropertiesKeyAutoComplete',
     string
   >
   eventCompletions: DataSourceResult<AutocompleteItem[]>
   exposureEvent: EventNew
 }) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const { isLoading, data: propList } = useDataSource(getPropCompletions(exposureEvent.event), [exposureEvent.event])
   const onRemoveExposureEvent = () => {
     arrayHelpers.remove(index)
   }
@@ -185,21 +193,30 @@ const EventEditor = ({
                       return (
                         <div className={classes.exposureEventsEventPropertiesRow} key={propIndex}>
                           <Field
-                            component={TextField}
-                            className={classes.exposureEventsEventPropertiesKey}
+                            component={AbacusAutocomplete}
                             name={`experiment.exposureEvents[${index}].props[${propIndex}].key`}
                             id={`experiment.exposureEvents[${index}].props[${propIndex}].key`}
-                            type='text'
-                            variant='outlined'
-                            placeholder='key'
-                            label='Key'
-                            size='small'
-                            inputProps={{
-                              'aria-label': 'Property Key',
-                            }}
-                            InputLabelProps={{
-                              shrink: true,
-                            }}
+                            options={propList}
+                            loading={isLoading}
+                            freeSolo={true}
+                            className={classes.exposureEventsEventPropertiesKeyAutoComplete}
+                            renderInput={(params: AutocompleteRenderInputParams) => (
+                              <MuiTextField
+                                {...params}
+                                className={classes.exposureEventsEventPropertiesKey}
+                                label='Key'
+                                placeholder='key'
+                                variant='outlined'
+                                size='small'
+                                InputProps={{
+                                  ...autocompleteInputProps(params, isLoading),
+                                  'aria-label': 'Property Key',
+                                }}
+                                InputLabelProps={{
+                                  shrink: true,
+                                }}
+                              />
+                            )}
                           />
                           <Field
                             component={TextField}
