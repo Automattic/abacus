@@ -17,7 +17,7 @@ jobs:
           paths:
             - .
 
-  run-static-checks:
+  static-checks:
     executor:
       name: node/default
       tag: '12.18.4'
@@ -32,7 +32,7 @@ jobs:
           name: Linting
           command: npm run lint
 
-  unit-test:
+  unit-tests:
     executor:
       name: node/default
       tag: '12.18.4'
@@ -44,7 +44,7 @@ jobs:
           name: Unit Testing
           command: npm run test:unit -- -- --ci --maxWorkers 2
 
-  integration-e2e-test:
+  integration-e2e:
     executor:
       name: node/default
       tag: '12.18.4'
@@ -52,19 +52,57 @@ jobs:
       # Reuse the workspace from the build job
       - attach_workspace:
           at: .
-      # Copied from https://circleci.com/orbs/registry/orb/threetreeslight/puppeteer.
+      # Adapted from https://circleci.com/orbs/registry/orb/threetreeslight/puppeteer.
       # Not using this Orb directly to prevent re-downloading Chromium which was already
-      # done in the previous step.
+      # done in the build step.
+      # Ideally, we'd use an image/executor that already have these dependencies, but
+      # that's not supported yet.
+      # See https://discuss.circleci.com/t/new-ruby-convenience-image-public-beta/33274/6
       - run:
           name: Install Headless Chrome Dependencies
           command: |
             sudo apt update -qq
             sudo apt install -yqq \
-            gconf-service libasound2 libatk1.0-0 libatk-bridge2.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
-            libexpat1 libfontconfig1 libgbm-dev libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 \
-            libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
-            libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
-            ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+              ca-certificates \
+              fonts-liberation \
+              gconf-service \
+              libappindicator1 \
+              libasound2 \
+              libatk1.0-0 \
+              libatk-bridge2.0-0 \
+              libc6 \
+              libcairo2 \
+              libcups2 \
+              libdbus-1-3 \
+              libexpat1 \
+              libfontconfig1 \
+              libgbm-dev \
+              libgcc1 \
+              libgconf-2-4 \
+              libgdk-pixbuf2.0-0 \
+              libglib2.0-0 \
+              libgtk-3-0 \
+              libnspr4 \
+              libnss3 \
+              libpango-1.0-0 \
+              libpangocairo-1.0-0 \
+              libstdc++6 \
+              libx11-6 \
+              libx11-xcb1 \
+              libxcb1 \
+              libxcomposite1 \
+              libxcursor1 \
+              libxdamage1 \
+              libxext6 \
+              libxfixes3 \
+              libxi6 \
+              libxrandr2 \
+              libxrender1 \
+              libxss1 \
+              libxtst6 \
+              lsb-release \
+              xdg-utils \
+              wget
       - run:
           name: Configure local host mapping
           command: echo 127.0.0.1 a8c-abacus-local | sudo tee -a /etc/hosts
@@ -79,12 +117,12 @@ workflows:
   build-and-test:
     jobs:
       - build
-      - run-static-checks:
+      - static-checks:
           requires:
             - build
-      - unit-test:
+      - unit-tests:
           requires:
             - build
-      - integration-e2e-test:
+      - integration-e2e:
           requires:
             - build
