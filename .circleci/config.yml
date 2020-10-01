@@ -17,7 +17,34 @@ jobs:
           paths:
             - .
 
-  test:
+  run-static-checks:
+    executor:
+      name: node/default
+      tag: '12.18.4'
+    steps:
+      # Reuse the workspace from the build job
+      - attach_workspace:
+          at: .
+      - run:
+          name: Format Checking
+          command: npm run format:check
+      - run:
+          name: Linting
+          command: npm run lint
+
+  unit-test:
+    executor:
+      name: node/default
+      tag: '12.18.4'
+    steps:
+      # Reuse the workspace from the build job
+      - attach_workspace:
+          at: .
+      - run:
+          name: Unit Testing
+          command: npm run test:unit -- -- --ci --maxWorkers 2
+
+  integration-e2e-test:
     executor:
       name: node/default
       tag: '12.18.4'
@@ -42,15 +69,6 @@ jobs:
           name: Configure local host mapping
           command: echo 127.0.0.1 a8c-abacus-local | sudo tee -a /etc/hosts
       - run:
-          name: Format Checking
-          command: npm run format:check
-      - run:
-          name: Linting
-          command: npm run lint
-      - run:
-          name: Unit Testing
-          command: npm run test:unit -- -- --ci --maxWorkers 2
-      - run:
           name: Integration Testing
           command: npm run test:integration -- --ci
       - run:
@@ -61,6 +79,12 @@ workflows:
   build-and-test:
     jobs:
       - build
-      - test:
+      - run-static-checks:
+          requires:
+            - build
+      - unit-test:
+          requires:
+            - build
+      - integration-e2e-test:
           requires:
             - build
