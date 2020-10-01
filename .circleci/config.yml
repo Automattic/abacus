@@ -1,53 +1,127 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@1.1.6
+  node: circleci/node@4.0.1
 
 jobs:
-  build-and-verify:
+  build:
     executor:
       name: node/default
-      tag: '10.18.1'
+      tag: '12.18.4'
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run:
-                name: Install Package Dependencies
-                command: npm install
-            # Copied from https://circleci.com/orbs/registry/orb/threetreeslight/puppeteer.
-            # Not using this Orb directly to prevent re-downloading Chromium which was already
-            # done in the previous step.
-            - run:
-                name: Install Headless Chrome Dependencies
-                command: |
-                  sudo apt update -qq
-                  sudo apt install -yqq \
-                  gconf-service libasound2 libatk1.0-0 libatk-bridge2.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
-                  libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 \
-                  libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 \
-                  libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates \
-                  fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
-            - run:
-                name: Configure local host mapping
-                command: echo 127.0.0.1 a8c-abacus-local | sudo tee -a /etc/hosts
-            - run:
-                name: Format Checking
-                command: npm run format:check
-            - run:
-                name: Linting
-                command: npm run lint
-            - run:
-                name: Unit Testing
-                command: npm run test:unit -- -- --ci --maxWorkers 2
-            - run:
-                name: Integration Testing
-                command: npm run test:integration -- --ci
-            - run:
-                name: End-to-End Testing
-                command: npm run test:e2e -- --ci
+      - node/install-packages
+      # Save workspace for subsequent jobs
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  static-checks:
+    executor:
+      name: node/default
+      tag: '12.18.4'
+    steps:
+      # Reuse the workspace from the build job
+      - attach_workspace:
+          at: .
+      - run:
+          name: Format Checking
+          command: npm run format:check
+      - run:
+          name: Linting
+          command: npm run lint
+
+  unit-tests:
+    executor:
+      name: node/default
+      tag: '12.18.4'
+    steps:
+      # Reuse the workspace from the build job
+      - attach_workspace:
+          at: .
+      - run:
+          name: Unit Testing
+          command: npm run test:unit -- -- --ci --maxWorkers 2
+
+  integration-e2e:
+    executor:
+      name: node/default
+      tag: '12.18.4'
+    steps:
+      # Reuse the workspace from the build job
+      - attach_workspace:
+          at: .
+      # Adapted from https://circleci.com/orbs/registry/orb/threetreeslight/puppeteer. Not using this Orb directly to
+      # prevent re-downloading Chromium which was already done in the build step.
+      # We only run this step here rather than in the build job because Chrome isn't needed for the other jobs.
+      # Ideally, we'd use an image/executor that already have these dependencies, but that's not supported yet.
+      # See https://discuss.circleci.com/t/new-ruby-convenience-image-public-beta/33274/6
+      - run:
+          name: Install Headless Chrome Dependencies
+          command: |
+            sudo apt update -qq
+            sudo apt install -yqq \
+              ca-certificates \
+              fonts-liberation \
+              gconf-service \
+              libappindicator1 \
+              libasound2 \
+              libatk1.0-0 \
+              libatk-bridge2.0-0 \
+              libc6 \
+              libcairo2 \
+              libcups2 \
+              libdbus-1-3 \
+              libexpat1 \
+              libfontconfig1 \
+              libgbm-dev \
+              libgcc1 \
+              libgconf-2-4 \
+              libgdk-pixbuf2.0-0 \
+              libglib2.0-0 \
+              libgtk-3-0 \
+              libnspr4 \
+              libnss3 \
+              libpango-1.0-0 \
+              libpangocairo-1.0-0 \
+              libstdc++6 \
+              libx11-6 \
+              libx11-xcb1 \
+              libxcb1 \
+              libxcomposite1 \
+              libxcursor1 \
+              libxdamage1 \
+              libxext6 \
+              libxfixes3 \
+              libxi6 \
+              libxrandr2 \
+              libxrender1 \
+              libxss1 \
+              libxtst6 \
+              lsb-release \
+              xdg-utils \
+              wget
+      - run:
+          name: Configure local host mapping
+          command: echo 127.0.0.1 a8c-abacus-local | sudo tee -a /etc/hosts
+      - run:
+          name: Integration Testing
+          command: npm run test:integration -- --ci
+      - run:
+          name: End-to-End Testing
+          command: npm run test:e2e -- --ci
 
 workflows:
-  build-and-verify:
+  build-and-test:
     jobs:
-      - build-and-verify
+      - build
+      - static-checks:
+          requires:
+            - build
+      - unit-tests:
+          requires:
+            - build
+      - integration-e2e:
+          requires:
+            - build
