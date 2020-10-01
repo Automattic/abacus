@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import React from 'react'
 
-import { getUserCompletions } from '@/api/AutocompleteApi'
+import { getEventCompletions, getUserCompletions } from '@/api/AutocompleteApi'
 import ExperimentsApi from '@/api/ExperimentsApi'
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
@@ -68,6 +68,7 @@ const ExperimentsNewPage = function (): JSX.Element {
   }
   const completionBag = {
     userCompletionDataSource: useDataSource(getUserCompletions, []),
+    eventCompletionDataSource: useDataSource(getEventCompletions, []),
   }
 
   return (

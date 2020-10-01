@@ -3,8 +3,9 @@ import { Formik } from 'formik'
 import React from 'react'
 
 import { experimentToFormData } from '@/lib/form-data'
-import { MetricBare, MetricParameterType } from '@/lib/schemas'
+import { AutocompleteItem, MetricBare, MetricParameterType } from '@/lib/schemas'
 import { render } from '@/test-helpers/test-utils'
+import { DataSourceResult } from '@/utils/data-loading'
 
 import Metrics from './Metrics'
 
@@ -23,6 +24,18 @@ const indexedMetrics: Record<number, MetricBare> = {
   },
 }
 
+const eventCompletions: DataSourceResult<AutocompleteItem[]> = {
+  isLoading: false,
+  data: [
+    {
+      name: 'event_name',
+      value: 'event_name',
+    },
+  ],
+  error: null,
+  reloadRef: { current: () => undefined },
+}
+
 test('renders as expected', () => {
   const { container } = render(
     <Formik
@@ -32,7 +45,7 @@ test('renders as expected', () => {
         () => undefined
       }
     >
-      {() => <Metrics indexedMetrics={indexedMetrics} />}
+      {() => <Metrics indexedMetrics={indexedMetrics} eventCompletions={eventCompletions} />}
     </Formik>,
   )
   expect(container).toMatchSnapshot()
@@ -47,7 +60,7 @@ test('allows adding, editing and removing a Metric Assignment', async () => {
         () => undefined
       }
     >
-      {() => <Metrics indexedMetrics={indexedMetrics} />}
+      {() => <Metrics indexedMetrics={indexedMetrics} eventCompletions={eventCompletions} />}
     </Formik>,
   )
   expect(container).toMatchSnapshot()

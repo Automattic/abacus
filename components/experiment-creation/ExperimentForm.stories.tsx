@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { getUserCompletions } from '@/api/AutocompleteApi'
+import { getEventCompletions, getUserCompletions } from '@/api/AutocompleteApi'
 import { experimentToFormData } from '@/lib/form-data'
 import * as Normalizers from '@/lib/normalizers'
 import { Platform, Status } from '@/lib/schemas'
@@ -16,6 +16,7 @@ export default { title: 'ExperimentCreation' }
 export const Form = (): JSX.Element => {
   const completionBag = {
     userCompletionDataSource: useDataSource(getUserCompletions, []),
+    eventCompletionDataSource: useDataSource(getEventCompletions, [])
   }
   return (
     <ExperimentForm
@@ -31,6 +32,7 @@ export const Form = (): JSX.Element => {
 export const FormWithExistingExperiment = (): JSX.Element => {
   const completionBag = {
     userCompletionDataSource: useDataSource(getUserCompletions, []),
+    eventCompletionDataSource: useDataSource(getEventCompletions, [])
   }
   return (
     <ExperimentForm

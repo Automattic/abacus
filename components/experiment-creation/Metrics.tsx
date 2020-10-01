@@ -11,18 +11,22 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TextField as MuiTextField,
   Tooltip,
   Typography,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Add, Clear } from '@material-ui/icons'
+import { AutocompleteRenderInputParams } from '@material-ui/lab'
 import { Field, FieldArray, useField } from 'formik'
 import { Select, Switch, TextField } from 'formik-material-ui'
 import React, { useState } from 'react'
 
+import AbacusAutocomplete, { autocompleteInputProps } from '@/components/Autocomplete'
 import MoreMenu from '@/components/MoreMenu'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
-import { EventNew, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
+import { AutocompleteItem, EventNew, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
+import { DataSourceResult } from '@/utils/data-loading'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -97,7 +101,13 @@ const createMetricAssignment = (metric: MetricBare) => {
   }
 }
 
-const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare> }): JSX.Element => {
+const Metrics = ({
+  indexedMetrics,
+  eventCompletions,
+}: {
+  indexedMetrics: Record<number, MetricBare>
+  eventCompletions: DataSourceResult<AutocompleteItem[]>
+}): JSX.Element => {
   const classes = useStyles()
 
   // Metric Assignments
@@ -324,20 +334,27 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                           <TableCell>
                             <div className={classes.exposureEventsEventNameCell}>
                               <Field
-                                component={TextField}
+                                component={AbacusAutocomplete}
                                 name={`experiment.exposureEvents[${index}].event`}
                                 className={classes.exposureEventsEventName}
                                 id={`experiment.exposureEvents[${index}].event`}
-                                type='text'
-                                variant='outlined'
-                                placeholder='event_name'
-                                label='Event'
-                                inputProps={{
-                                  'aria-label': 'Event Name',
-                                }}
-                                InputLabelProps={{
-                                  shrink: true,
-                                }}
+                                options={eventCompletions.data}
+                                loading={eventCompletions.isLoading}
+                                renderInput={(params: AutocompleteRenderInputParams) => (
+                                  <MuiTextField
+                                    {...params}
+                                    label='Event Name'
+                                    placeholder='event_name'
+                                    variant='outlined'
+                                    InputLabelProps={{
+                                      shrink: true,
+                                    }}
+                                    InputProps={{
+                                      ...autocompleteInputProps(params, eventCompletions.isLoading),
+                                      'aria-label': 'Event Name',
+                                    }}
+                                  />
+                                )}
                               />
                               <IconButton
                                 className={classes.exposureEventsEventRemoveButton}

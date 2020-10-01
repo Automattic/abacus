@@ -60,6 +60,18 @@ const completionBag = {
   },
 }
 
+const eventCompletionData: DataSourceResult<AutocompleteItem[]> = {
+  isLoading: false,
+  error: null,
+  data: [
+    {
+      name: 'event_name',
+      value: 'event_name',
+    },
+  ],
+  reloadRef: { current: () => undefined },
+}
+
 test('renders as expected', () => {
   MockDate.set('2020-08-13')
 
@@ -445,7 +457,15 @@ test('form submits with valid fields', async () => {
   await act(async () => {
     fireEvent.click(await screen.findByRole('button', { name: /Add Property/ }))
   })
-  await changeFieldByRole('textbox', /Event Name/, 'event_name')
+  // search for the event
+  await act(async () => {
+    await changeFieldByRole('textbox', /Event Name/, 'event_name')
+  })
+  // click the selected event
+  await act(async () => {
+    fireEvent.click(screen.getByText('event_name'))
+  })
+  //await changeFieldByRole('textbox', /Event Name/, 'event_name')
   await changeFieldByRole('textbox', /Property Key/, 'key')
   await changeFieldByRole('textbox', /Property Value/, 'value')
 
