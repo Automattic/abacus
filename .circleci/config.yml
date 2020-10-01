@@ -52,11 +52,10 @@ jobs:
       # Reuse the workspace from the build job
       - attach_workspace:
           at: .
-      # Adapted from https://circleci.com/orbs/registry/orb/threetreeslight/puppeteer.
-      # Not using this Orb directly to prevent re-downloading Chromium which was already
-      # done in the build step.
-      # Ideally, we'd use an image/executor that already have these dependencies, but
-      # that's not supported yet.
+      # Adapted from https://circleci.com/orbs/registry/orb/threetreeslight/puppeteer. Not using this Orb directly to
+      # prevent re-downloading Chromium which was already done in the build step.
+      # We only run this step here rather than in the build job because Chrome isn't needed for the other jobs.
+      # Ideally, we'd use an image/executor that already have these dependencies, but that's not supported yet.
       # See https://discuss.circleci.com/t/new-ruby-convenience-image-public-beta/33274/6
       - run:
           name: Install Headless Chrome Dependencies
