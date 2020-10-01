@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/require-await */
-import { getUserCompletions } from '@/api/AutocompleteApi'
+import { getEventCompletions, getUserCompletions } from '@/api/AutocompleteApi'
 import * as Utils from '@/api/utils'
 
 jest.mock('@/api/utils')
@@ -19,6 +19,25 @@ test('it retrieves user list from the api', async () => {
       Object {
         "name": "Test",
         "value": "test",
+      },
+    ]
+  `)
+})
+
+test('it retrieves event list from the api', async () => {
+  mockedUtils.fetchApi.mockImplementation(async () => ({
+    completions: [
+      {
+        name: 'event_name',
+        value: 'event_name',
+      },
+    ],
+  }))
+  expect(await getEventCompletions()).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "name": "event_name",
+        "value": "event_name",
       },
     ]
   `)

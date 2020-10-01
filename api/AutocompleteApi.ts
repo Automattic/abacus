@@ -14,3 +14,7 @@ async function getCompletion(name: string) {
 export async function getUserCompletions(): Promise<AutocompleteItem[]> {
   return (await getCompletion('users')).completions
 }
+
+export async function getEventCompletions(): Promise<AutocompleteItem[]> {
+  return (await getCompletion('events')).completions
+}
