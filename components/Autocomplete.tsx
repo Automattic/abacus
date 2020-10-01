@@ -5,6 +5,7 @@ import React, { useCallback } from 'react'
 
 import { AutocompleteItem } from '@/lib/schemas'
 
+// break out these functions to achieve 100% coverage
 export const getOptionValue = (option: AutocompleteItem | string | null) =>
   (typeof option === 'string' ? option : option?.value) ?? ''
 
