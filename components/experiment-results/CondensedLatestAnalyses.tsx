@@ -196,15 +196,20 @@ const useAnalysisDetailStyles = makeStyles((theme: Theme) =>
     dataCell: {
       fontFamily: theme.custom.fonts.monospace,
     },
-    plots: {
+    metricEstimatePlots: {
       display: 'flex',
       justifyContent: 'space-between',
       marginTop: theme.spacing(2),
     },
-    plot: {
+    metricEstimatePlot: {
       width: `calc(50% - ${theme.spacing(1)}px)`,
       height: 400,
     },
+    participantsPlot: {
+      height: 400,
+      marginTop: theme.spacing(2),
+      width: '100%',
+    }
   }),
 )
 
@@ -228,8 +233,12 @@ function AnalysisDetailPanel({
   // Control and Treatment should have a consistent order even across experiments so this should give good results.
   // Ideally we would add some marker to differentiate control variants
   //
-  // These come from a data pallete generator and should be visually equidistant.
+  // These come from our internal data colors and should be visually equidistant.
   const variantColors = ['#1f78b488', '#ff7f0088']
+  // Same deal for these 
+  const totalParticipantsColor = '#a6cee388'
+  const notFinalParticipantsColor = '#33a02c88'
+  // Unused internal colors: #fb9a9988, #e31a1c88, #fdbf6f88, #cab2d688, #b2df8a88
 
   const isConversion = metric.parameterType === MetricParameterType.Conversion
   const estimateTransform: (estimate: number | null) => number | null = isConversion
@@ -318,6 +327,47 @@ function AnalysisDetailPanel({
     },
   ]
 
+  const plotlyDataParticipantsGraph: Array<Partial<PlotData>> = [
+    {
+      name: `Total`,
+      x: dates,
+      y: analyses
+        .map(( { participantStats: { total } } ) => total),
+      line: {
+        color: totalParticipantsColor,
+      },
+      mode: 'lines' as 'lines',
+      type: 'scatter' as 'scatter',
+    },
+    {
+      name: `Not final`,
+      x: dates,
+      y: analyses
+        .map(( { participantStats: { not_final } } ) => not_final),
+      line: {
+        color: notFinalParticipantsColor,
+      },
+      mode: 'lines' as 'lines',
+      type: 'scatter' as 'scatter',
+    },
+    ..._.flatMap(experiment.variations, (variation, index) => {
+      const variationKey = `variation_${variation.variationId}`
+      return [
+        {
+          name: `${variation.name}`,
+          x: dates,
+          y: analyses
+            .map(({ participantStats: { [variationKey] : variationCount } }) => variationCount),
+          line: {
+            color: variantColors[index],
+          },
+          mode: 'lines' as 'lines',
+          type: 'scatter' as 'scatter',
+        },
+      ]
+    }),
+  ]
+
   const plotlyLayoutDefault = {
     autosize: true,
     margin: {
@@ -395,14 +445,14 @@ function AnalysisDetailPanel({
           )}
         </TableBody>
       </Table>
-      <div className={classes.plots}>
+      <div className={classes.metricEstimatePlots}>
         <Plot
           layout={{
             ...plotlyLayoutDefault,
             title: isConversion ? `Conversion rate estimates by variation [%]` : `Revenue estimates by variation [$]`,
           }}
           data={plotlyDataVariationGraph}
-          className={classes.plot}
+          className={classes.metricEstimatePlot}
         />
         <Plot
           layout={{
@@ -410,9 +460,17 @@ function AnalysisDetailPanel({
             title: isConversion ? `Conversion rate difference estimates [%]` : `Revenue difference estimates [$]`,
           }}
           data={plotlyDataDifferenceGraph}
-          className={classes.plot}
+          className={classes.metricEstimatePlot}
         />
       </div>
+      <Plot
+        layout={{
+          ...plotlyLayoutDefault,
+          title: 'Participant Counts',
+        }}
+        data={plotlyDataParticipantsGraph}
+        className={classes.participantsPlot}
+      />
     </TableContainer>
   )
 }
