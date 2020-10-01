@@ -209,7 +209,7 @@ const useAnalysisDetailStyles = makeStyles((theme: Theme) =>
       height: 400,
       marginTop: theme.spacing(2),
       width: '100%',
-    }
+    },
   }),
 )
 
@@ -235,7 +235,7 @@ function AnalysisDetailPanel({
   //
   // These come from our internal data colors and should be visually equidistant.
   const variantColors = ['#1f78b488', '#ff7f0088']
-  // Same deal for these 
+  // Same deal for these
   const totalParticipantsColor = '#a6cee388'
   const notFinalParticipantsColor = '#33a02c88'
   // Unused internal colors: #fb9a9988, #e31a1c88, #fdbf6f88, #cab2d688, #b2df8a88
@@ -331,8 +331,7 @@ function AnalysisDetailPanel({
     {
       name: `Total`,
       x: dates,
-      y: analyses
-        .map(( { participantStats: { total } } ) => total),
+      y: analyses.map(({ participantStats: { total } }) => total),
       line: {
         color: totalParticipantsColor,
       },
@@ -342,8 +341,7 @@ function AnalysisDetailPanel({
     {
       name: `Not final`,
       x: dates,
-      y: analyses
-        .map(( { participantStats: { not_final } } ) => not_final),
+      y: analyses.map(({ participantStats: { not_final: notFinal } }) => notFinal),
       line: {
         color: notFinalParticipantsColor,
       },
@@ -356,8 +354,7 @@ function AnalysisDetailPanel({
         {
           name: `${variation.name}`,
           x: dates,
-          y: analyses
-            .map(({ participantStats: { [variationKey] : variationCount } }) => variationCount),
+          y: analyses.map(({ participantStats: { [variationKey]: variationCount } }) => variationCount),
           line: {
             color: variantColors[index],
           },
@@ -466,7 +463,7 @@ function AnalysisDetailPanel({
       <Plot
         layout={{
           ...plotlyLayoutDefault,
-          title: 'Participant Counts',
+          title: 'Participants',
         }}
         data={plotlyDataParticipantsGraph}
         className={classes.participantsPlot}
