@@ -321,7 +321,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableCell-root MuiTableCell-body"
         >
           <span
-            class="makeStyles-root-14"
+            class="makeStyles-root-15"
             title="09/05/2020, 20:00:00"
           >
             2020-05-10
@@ -420,7 +420,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     </tbody>
   </table>
   <div
-    class="makeStyles-plots-12"
+    class="makeStyles-metricEstimatePlots-12"
   />
 </div>
 `;
@@ -430,7 +430,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   "calls": Array [
     Array [
       Object {
-        "className": "makeStyles-plot-13",
+        "className": "makeStyles-metricEstimatePlot-13",
         "data": Array [
           Object {
             "line": Object {
@@ -514,7 +514,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-plot-13",
+        "className": "makeStyles-metricEstimatePlot-13",
         "data": Array [
           Object {
             "line": Object {
@@ -606,8 +606,96 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       },
       Object {},
     ],
+    Array [
+      Object {
+        "className": "makeStyles-participantsPlot-14",
+        "data": Array [
+          Object {
+            "line": Object {
+              "color": "#a6cee388",
+            },
+            "mode": "lines",
+            "name": "Total",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              1400,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "#33a02c88",
+            },
+            "mode": "lines",
+            "name": "Not final",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              140,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "#1f78b488",
+            },
+            "mode": "lines",
+            "name": "test",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              560,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "#ff7f0088",
+            },
+            "mode": "lines",
+            "name": "control",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              840,
+            ],
+          },
+        ],
+        "debug": false,
+        "layout": Object {
+          "autosize": true,
+          "hoverlabel": Object {
+            "namelength": -1,
+          },
+          "margin": Object {
+            "b": 48,
+            "l": 32,
+            "r": 16,
+            "t": 64,
+          },
+          "showlegend": false,
+          "title": "Participants",
+        },
+        "style": Object {
+          "display": "inline-block",
+          "position": "relative",
+        },
+        "useResizeHandler": false,
+      },
+      Object {},
+    ],
   ],
   "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
     Object {
       "type": "return",
       "value": undefined,
@@ -625,14 +713,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   class="analysis-latest-results"
 >
   <div
-    class="makeStyles-root-15"
+    class="makeStyles-root-16"
   >
     <div
       class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
       style="position: relative;"
     >
       <div
-        class="Component-horizontalScrollContainer-21"
+        class="Component-horizontalScrollContainer-22"
         style="overflow-x: auto; position: relative;"
       >
         <div>
@@ -651,26 +739,26 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     class="MuiTableRow-root MuiTableRow-head"
                   >
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-22 MuiTableCell-paddingNone"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-23 MuiTableCell-paddingNone"
                       scope="col"
                       style="font-weight: 700;"
                     />
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-22 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-23 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Metric
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-22 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-23 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Attribution window
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-22 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-23 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
@@ -722,7 +810,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                        
                       <div
                         aria-disabled="true"
-                        class="MuiChip-root makeStyles-primaryChip-16 MuiChip-outlined Mui-disabled"
+                        class="MuiChip-root makeStyles-primaryChip-17 MuiChip-outlined Mui-disabled"
                       >
                         <span
                           class="MuiChip-label"
@@ -919,7 +1007,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
 
 exports[`renders the condensed table with some analyses in non-debug mode for a Revenue Metric 2`] = `
 <div
-  class="MuiTableContainer-root makeStyles-root-23 analysis-detail-panel"
+  class="MuiTableContainer-root makeStyles-root-24 analysis-detail-panel"
 >
   <table
     class="MuiTable-root"
@@ -941,7 +1029,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableCell-root MuiTableCell-body"
         >
           <span
-            class="makeStyles-root-28"
+            class="makeStyles-root-30"
             title="09/05/2020, 20:00:00"
           >
             2020-05-10
@@ -959,7 +1047,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           Analysis strategy
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-26"
         >
           Exposed without crossovers and spammers
         </td>
@@ -975,7 +1063,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           Analyzed participants
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-26"
         >
           1400
            (
@@ -1007,7 +1095,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           Difference interval
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-26"
         >
           [
           -0.01
@@ -1027,7 +1115,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           Warnings
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-dataCell-26"
         >
           <div>
             Experiment period is too short. Wait a few days to be safer.
@@ -1040,7 +1128,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     </tbody>
   </table>
   <div
-    class="makeStyles-plots-26"
+    class="makeStyles-metricEstimatePlots-27"
   />
 </div>
 `;
@@ -1050,7 +1138,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   "calls": Array [
     Array [
       Object {
-        "className": "makeStyles-plot-27",
+        "className": "makeStyles-metricEstimatePlot-28",
         "data": Array [
           Object {
             "line": Object {
@@ -1134,7 +1222,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-plot-27",
+        "className": "makeStyles-metricEstimatePlot-28",
         "data": Array [
           Object {
             "line": Object {
@@ -1226,8 +1314,96 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       },
       Object {},
     ],
+    Array [
+      Object {
+        "className": "makeStyles-participantsPlot-29",
+        "data": Array [
+          Object {
+            "line": Object {
+              "color": "#a6cee388",
+            },
+            "mode": "lines",
+            "name": "Total",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              1400,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "#33a02c88",
+            },
+            "mode": "lines",
+            "name": "Not final",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              140,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "#1f78b488",
+            },
+            "mode": "lines",
+            "name": "test",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              560,
+            ],
+          },
+          Object {
+            "line": Object {
+              "color": "#ff7f0088",
+            },
+            "mode": "lines",
+            "name": "control",
+            "type": "scatter",
+            "x": Array [
+              "2020-05-10T00:00:00.000Z",
+            ],
+            "y": Array [
+              840,
+            ],
+          },
+        ],
+        "debug": false,
+        "layout": Object {
+          "autosize": true,
+          "hoverlabel": Object {
+            "namelength": -1,
+          },
+          "margin": Object {
+            "b": 48,
+            "l": 32,
+            "r": 16,
+            "t": 64,
+          },
+          "showlegend": false,
+          "title": "Participants",
+        },
+        "style": Object {
+          "display": "inline-block",
+          "position": "relative",
+        },
+        "useResizeHandler": false,
+      },
+      Object {},
+    ],
   ],
   "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
     Object {
       "type": "return",
       "value": undefined,
