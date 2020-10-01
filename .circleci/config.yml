@@ -4,13 +4,27 @@ orbs:
   node: circleci/node@4.0.1
 
 jobs:
-  build-and-verify:
+  build:
     executor:
       name: node/default
       tag: '12.18.4'
     steps:
       - checkout
       - node/install-packages
+      # Save workspace for subsequent jobs
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  test:
+    executor:
+      name: node/default
+      tag: '12.18.4'
+    steps:
+      # Reuse the workspace from the build job
+      - attach_workspace:
+          at: .
       # Copied from https://circleci.com/orbs/registry/orb/threetreeslight/puppeteer.
       # Not using this Orb directly to prevent re-downloading Chromium which was already
       # done in the previous step.
@@ -44,6 +58,9 @@ jobs:
           command: npm run test:e2e -- --ci
 
 workflows:
-  build-and-verify:
+  build-and-test:
     jobs:
-      - build-and-verify
+      - build
+      - test:
+          requires:
+            - build
