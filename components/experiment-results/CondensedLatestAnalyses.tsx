@@ -31,7 +31,7 @@ import {
   MetricParameterType,
 } from '@/lib/schemas'
 import * as Variations from '@/lib/variations'
-import * as Visualisations from '@/lib/visualisations'
+import * as Visualizations from '@/lib/visualizations'
 import { createStaticTableOptions } from '@/utils/material-table'
 
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
@@ -118,7 +118,7 @@ export default function CondensedLatestAnalyses({
           x: dates,
           y: analyses.map(({ participantStats: { [variationKey]: variationCount } }) => variationCount),
           line: {
-            color: Visualisations.variantColors[index],
+            color: Visualizations.variantColors[index],
           },
           mode: 'lines' as 'lines',
           type: 'scatter' as 'scatter',
@@ -207,7 +207,7 @@ export default function CondensedLatestAnalyses({
       <Paper className={classes.summary}>
         <Plot
           layout={{
-            ...Visualisations.plotlyLayoutDefault,
+            ...Visualizations.plotlyLayoutDefault,
             title: `Participants (${AnalysisStrategyToHuman[strategy]})`,
           }}
           data={plotlyDataParticipantGraph}
@@ -298,7 +298,7 @@ function AnalysisDetailPanel({
             .map(({ metricEstimates }) => metricEstimates && metricEstimates[variationKey].bottom)
             .map(estimateTransform),
           line: {
-            color: Visualisations.variantColors[index],
+            color: Visualizations.variantColors[index],
           },
           mode: 'lines' as 'lines',
           type: 'scatter' as 'scatter',
@@ -310,7 +310,7 @@ function AnalysisDetailPanel({
             .map(({ metricEstimates }) => metricEstimates && metricEstimates[variationKey].top)
             .map(estimateTransform),
           line: {
-            color: Visualisations.variantColors[index],
+            color: Visualizations.variantColors[index],
           },
           mode: 'lines' as 'lines',
           type: 'scatter' as 'scatter',
@@ -431,7 +431,7 @@ function AnalysisDetailPanel({
       <div className={classes.metricEstimatePlots}>
         <Plot
           layout={{
-            ...Visualisations.plotlyLayoutDefault,
+            ...Visualizations.plotlyLayoutDefault,
             title: isConversion ? `Conversion rate estimates by variation [%]` : `Revenue estimates by variation [$]`,
           }}
           data={plotlyDataVariationGraph}
@@ -439,7 +439,7 @@ function AnalysisDetailPanel({
         />
         <Plot
           layout={{
-            ...Visualisations.plotlyLayoutDefault,
+            ...Visualizations.plotlyLayoutDefault,
             title: isConversion ? `Conversion rate difference estimates [%]` : `Revenue difference estimates [$]`,
           }}
           data={plotlyDataDifferenceGraph}
