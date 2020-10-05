@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/require-await,@typescript-eslint/no-misused-promises */
 import { act, renderHook } from '@testing-library/react-hooks'
 import * as notistack from 'notistack'
 
@@ -22,7 +23,7 @@ function createControllablePromise() {
 }
 
 describe('utils/data-loading.ts module', () => {
-  describe('useDataSource', () => {
+  describe('useDataSource', async () => {
     it('should have expected state without error', async () => {
       const { resolve, promise } = createControllablePromise()
 
@@ -36,7 +37,7 @@ describe('utils/data-loading.ts module', () => {
         error: null,
       })
 
-      act(() => {
+      await act(() => {
         resolve(123)
       })
 
@@ -62,7 +63,7 @@ describe('utils/data-loading.ts module', () => {
         error: null,
       })
 
-      act(() => {
+      await act(() => {
         reject(123)
       })
 
@@ -75,7 +76,7 @@ describe('utils/data-loading.ts module', () => {
       })
     })
 
-    it('should resolve promise after unmount without logging an error', () => {
+    it('should resolve promise after unmount without logging an error', async () => {
       const originalConsoleError = console.error
       console.error = jest.fn()
 
@@ -87,7 +88,7 @@ describe('utils/data-loading.ts module', () => {
 
       renderResult.unmount()
 
-      act(() => resolve(123))
+      await act(() => resolve(123))
 
       expect((console.error as jest.Mock).mock.calls.length).toBe(0)
 
@@ -115,7 +116,7 @@ describe('utils/data-loading.ts module', () => {
         error: null,
       })
 
-      act(() => {
+      await act(() => {
         resolve0(123)
       })
 
@@ -127,7 +128,7 @@ describe('utils/data-loading.ts module', () => {
         error: null,
       })
 
-      act(() => {
+      await act(() => {
         renderResult.result.current.reloadRef.current()
       })
 
@@ -137,7 +138,7 @@ describe('utils/data-loading.ts module', () => {
         error: null,
       })
 
-      act(() => {
+      await act(() => {
         resolve2(456)
       })
 

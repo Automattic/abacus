@@ -3,7 +3,7 @@
  * Coerces values to booleans and performs an `or` operation across them.
  * @param xs Any values
  */
-export function or(...xs: unknown[]) {
+export function or(...xs: unknown[]): boolean {
   return xs.reduce((acc, x) => acc || !!x, false) as boolean
 }
 
@@ -11,14 +11,14 @@ export function or(...xs: unknown[]) {
  * Returns a promise that never resolves.
  * Useful as an empty data-loading data-promise.
  */
-export function createUnresolvingPromise<T>() {
+export function createUnresolvingPromise<T>(): Promise<T> {
   return new Promise<T>(() => null)
 }
 
 const debugModeLocalStorageKey = 'abacus-debug-mode'
 
 // istanbul ignore next; Debug only
-export function isDebugMode() {
+export function isDebugMode(): boolean {
   // NextJS SSR...
   if (typeof localStorage === 'undefined') {
     return false
@@ -28,7 +28,7 @@ export function isDebugMode() {
 }
 
 // istanbul ignore next; Debug only
-export function toggleDebugMode() {
+export function toggleDebugMode(): void {
   if (localStorage.getItem(debugModeLocalStorageKey) === 'true') {
     localStorage.removeItem(debugModeLocalStorageKey)
   } else {

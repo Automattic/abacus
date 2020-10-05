@@ -61,7 +61,7 @@ export function useDataSource<Data, Deps extends DependencyList | undefined, E e
  * @param error
  * @param dataName (Optional) Name of the data to be included in the message
  */
-export function useDataLoadingError<E extends Error | null>(error: E, dataName?: string) {
+export function useDataLoadingError<E extends Error | null>(error: E, dataName?: string): void {
   const { enqueueSnackbar } = useSnackbar()
 
   useEffect(() => {
