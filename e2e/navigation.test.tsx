@@ -61,7 +61,7 @@ describe('Metrics', () => {
 
       const $tableRows = await page.$$('.MuiTableBody-root tr')
       expect($tableRows.length).toBeGreaterThan(0)
-      $tableRows[0].click()
+      await $tableRows[0].click()
       await page.waitForSelector('.MuiTableBody-root .MuiTableBody-root')
       expect(await page.content()).toMatch(/Higher is Better/)
     })

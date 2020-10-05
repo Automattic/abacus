@@ -20,10 +20,10 @@ import { createUnresolvingPromise, or } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/experiments/[id]/results.tsx')
 
-export default function WizardEditPage() {
+export default function WizardEditPage(): JSX.Element {
   const router = useRouter()
-  const experimentId = toIntOrNull(router.query.id)
-  debug(`ExperimentWizardEdit#render ${experimentId}`)
+  const experimentId = toIntOrNull(router.query.id) as number | null
+  debug(`ExperimentWizardEdit#render ${experimentId ?? 'null'}`)
 
   const { isLoading: experimentIsLoading, data: experiment, error: experimentError } = useDataSource(
     () => (experimentId ? ExperimentsApi.findById(experimentId) : createUnresolvingPromise<ExperimentFull>()),
@@ -54,7 +54,7 @@ export default function WizardEditPage() {
       const { experiment } = formData as { experiment: ExperimentFullNew }
       await ExperimentsApi.put(experimentId, experiment)
       enqueueSnackbar('Experiment Updated!', { variant: 'success' })
-      router.push('/experiments/[id]?freshly_wizard_edited', `/experiments/${experimentId}?freshly_wizard_edited`)
+      await router.push('/experiments/[id]?freshly_wizard_edited', `/experiments/${experimentId}?freshly_wizard_edited`)
     } catch (error) {
       enqueueSnackbar('Failed to update experiment 😨 (Form data logged to console.)', { variant: 'error' })
       console.error(error)

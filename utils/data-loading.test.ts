@@ -23,7 +23,7 @@ function createControllablePromise() {
 }
 
 describe('utils/data-loading.ts module', () => {
-  describe('useDataSource', async () => {
+  describe('useDataSource', () => {
     it('should have expected state without error', async () => {
       const { resolve, promise } = createControllablePromise()
 
@@ -37,7 +37,8 @@ describe('utils/data-loading.ts module', () => {
         error: null,
       })
 
-      await act(() => {
+      // this actually triggers a promise but needs to run synchronously.
+      void act(() => {
         resolve(123)
       })
 
@@ -63,7 +64,8 @@ describe('utils/data-loading.ts module', () => {
         error: null,
       })
 
-      await act(() => {
+      // this actually triggers a promise but needs to run synchronously.
+      void act(() => {
         reject(123)
       })
 
@@ -78,7 +80,7 @@ describe('utils/data-loading.ts module', () => {
 
     it('should resolve promise after unmount without logging an error', async () => {
       const originalConsoleError = console.error
-      console.error = jest.fn()
+      console.error = jest.fn((d) => originalConsoleError(d))
 
       const { resolve, promise } = createControllablePromise()
 
@@ -88,7 +90,8 @@ describe('utils/data-loading.ts module', () => {
 
       renderResult.unmount()
 
-      await act(() => resolve(123))
+      // this actually triggers a promise but needs to run synchronously.
+      void act(() => resolve(123))
 
       expect((console.error as jest.Mock).mock.calls.length).toBe(0)
 
@@ -116,7 +119,8 @@ describe('utils/data-loading.ts module', () => {
         error: null,
       })
 
-      await act(() => {
+      // this triggers a promise but runs synchronously
+      void act(() => {
         resolve0(123)
       })
 
@@ -128,7 +132,8 @@ describe('utils/data-loading.ts module', () => {
         error: null,
       })
 
-      await act(() => {
+      // this triggers a promise but runs synchronously
+      void act(() => {
         renderResult.result.current.reloadRef.current()
       })
 
@@ -138,7 +143,8 @@ describe('utils/data-loading.ts module', () => {
         error: null,
       })
 
-      await act(() => {
+      // this triggers a promise but runs synchronously
+      void act(() => {
         resolve2(456)
       })
 
@@ -155,7 +161,7 @@ describe('utils/data-loading.ts module', () => {
   describe('useDataLoadingError(error)', () => {
     it('should not display any errors for an error value of null', () => {
       const originalConsoleError = console.error
-      console.error = jest.fn()
+      console.error = jest.fn((er) => originalConsoleError(er))
 
       const mockedEnqueueSnackbar = jest.fn()
       mockedNotistack.useSnackbar.mockImplementation(() => ({

@@ -82,6 +82,7 @@ const useStyles = makeStyles({
 
 const App = React.memo(function App(props: AppProps) {
   debug('App#render')
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { Component: Route, pageProps: routeProps } = props
   const classes = useStyles()
 

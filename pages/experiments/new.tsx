@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const ExperimentsNewPage = function () {
+const ExperimentsNewPage = function (): JSX.Element {
   debug('ExperimentsNewPage#render')
   const classes = useStyles()
   const initialExperiment = experimentToFormData({})
@@ -56,7 +56,7 @@ const ExperimentsNewPage = function () {
       const { experiment } = formData as { experiment: ExperimentFullNew }
       const receivedExperiment = await ExperimentsApi.create(experiment)
       enqueueSnackbar('Experiment Created!', { variant: 'success' })
-      router.push(
+      await router.push(
         '/experiments/[id]/code-setup?freshly_created',
         `/experiments/${receivedExperiment.experimentId}/code-setup?freshly_created`,
       )

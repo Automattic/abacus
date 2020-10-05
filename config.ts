@@ -10,7 +10,7 @@ const productionConfig = {
 const mockConfig = {
   experimentApi: {
     needsAuth: false,
-    authPath: null,
+    authPath: 'http://example.com',
     authClientId: 68797,
     rootUrl: 'https://virtserver.swaggerhub.com/yanir/experiments/0.1.0',
   },

@@ -497,12 +497,12 @@ test('form submits with valid fields', async () => {
       ],
       variations: [
         {
-          allocatedPercentage: 50,
+          allocatedPercentage: '50',
           isDefault: true,
           name: 'control',
         },
         {
-          allocatedPercentage: 50,
+          allocatedPercentage: '50',
           isDefault: false,
           name: 'treatment',
         },

@@ -8,11 +8,11 @@ import { isDebugMode } from '@/utils/general'
 
 const debug = debugFactory('abacus:pages/experiments/[id]/debug.tsx')
 
-export default function DebugPage() {
+export default function DebugPage(): JSX.Element | null {
   const router = useRouter()
-  const experimentId = toIntOrNull(router.query.id)
+  const experimentId = toIntOrNull(router.query.id) as number | null
   const debugMode = isDebugMode()
-  debug(`ExperimentDebugPage#render ${experimentId}`)
+  debug(`ExperimentDebugPage#render ${experimentId ?? 'null'}`)
 
   if (!experimentId) {
     return null

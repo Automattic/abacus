@@ -9,7 +9,7 @@ import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
 
 const debug = debugFactory('abacus:pages/experiments/index.tsx')
 
-const ExperimentsIndexPage = function () {
+const ExperimentsIndexPage = function (): JSX.Element {
   debug('ExperimentsIndexPage#render')
 
   const { isLoading, data: experiments, error } = useDataSource(() => ExperimentsApi.findAll(), [])

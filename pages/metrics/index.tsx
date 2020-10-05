@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const MetricsIndexPage = () => {
+const MetricsIndexPage = (): JSX.Element => {
   debug('MetricsIndexPage#render')
   const classes = useStyles()
 
