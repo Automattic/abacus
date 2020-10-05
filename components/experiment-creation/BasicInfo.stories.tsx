@@ -10,7 +10,7 @@ export default { title: 'ExperimentCreation.Form Parts.BasicInfo' }
 
 export const FormPart = () => {
   const completionBag = {
-    userCompletions: useDataSource(getUserCompletions, []),
+    userCompletionDataSource: useDataSource(getUserCompletions, []),
   }
   return (
     <MockFormik>

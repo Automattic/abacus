@@ -15,7 +15,7 @@ export default { title: 'ExperimentCreation' }
 
 export const Form = () => {
   const completionBag = {
-    userCompletions: useDataSource(getUserCompletions, []),
+    userCompletionDataSource: useDataSource(getUserCompletions, []),
   }
   return (
     <ExperimentForm
@@ -30,7 +30,7 @@ export const Form = () => {
 
 export const FormWithExistingExperiment = () => {
   const completionBag = {
-    userCompletions: useDataSource(getUserCompletions, []),
+    userCompletionDataSource: useDataSource(getUserCompletions, []),
   }
   return (
     <ExperimentForm
