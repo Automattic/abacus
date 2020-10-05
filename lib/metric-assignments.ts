@@ -21,7 +21,7 @@ export const AttributionWindowSecondsToHuman: Record<AttributionWindowSeconds, s
  * - Assignments with the same metricId are ordered by attributionWindow asc
  * -
  */
-export function sort(metricAssignments: MetricAssignment[]) {
+export function sort(metricAssignments: MetricAssignment[]): MetricAssignment[] {
   const metricAssignmentsByMetric = Object.values(_.groupBy(metricAssignments, 'metricId'))
     // Order within groups
     .map((metricAssignments) =>

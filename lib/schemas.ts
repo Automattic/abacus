@@ -4,6 +4,7 @@
 import * as dateFns from 'date-fns'
 import _ from 'lodash'
 import * as yup from 'yup'
+import { ObjectSchema } from 'yup'
 
 const idSchema = yup.number().integer().positive()
 export const nameSchema = yup
@@ -459,6 +460,12 @@ export type EventDetails = yup.InferType<typeof eventDetailsSchema>
  * @param value See yup.reach
  * @param context See yup.reach
  */
-export function yupPick(schema: yup.ObjectSchema, props: string[], value?: unknown, context?: unknown) {
+export function yupPick(
+  schema: yup.ObjectSchema,
+  props: string[],
+  value?: unknown,
+  context?: unknown,
+  // eslint-disable-next-line @typescript-eslint/ban-types
+): ObjectSchema<{} | undefined> {
   return yup.object(_.fromPairs(props.map((prop) => [prop, yup.reach(schema, prop, value, context)])))
 }

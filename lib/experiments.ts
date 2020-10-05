@@ -34,7 +34,9 @@ export function getPrimaryMetricAssignmentId(experiment: ExperimentFull): number
 /**
  * Return this experiment's default analysis strategy, which depends on the existence of exposureEvents.
  */
-export function getDefaultAnalysisStrategy(experiment: ExperimentFull) {
+export function getDefaultAnalysisStrategy(
+  experiment: ExperimentFull,
+): AnalysisStrategy.PpNaive | AnalysisStrategy.MittNoSpammersNoCrossovers {
   return experiment.exposureEvents ? AnalysisStrategy.PpNaive : AnalysisStrategy.MittNoSpammersNoCrossovers
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import * as Schemas from './schemas'
 
 describe('lib/schemas.ts module', () => {

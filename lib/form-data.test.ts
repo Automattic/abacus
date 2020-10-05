@@ -24,12 +24,12 @@ describe('lib/form-data.test.ts module', () => {
           "startDatetime": "",
           "variations": Array [
             Object {
-              "allocatedPercentage": 50,
+              "allocatedPercentage": "50",
               "isDefault": true,
               "name": "control",
             },
             Object {
-              "allocatedPercentage": 50,
+              "allocatedPercentage": "50",
               "isDefault": false,
               "name": "treatment",
             },
