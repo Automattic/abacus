@@ -64,7 +64,7 @@ export default function WizardEditPage() {
 
   const initialExperiment = experiment && experimentToFormData(experiment)
   const completionBag = {
-    userCompletions: useDataSource(getUserCompletions, []),
+    userCompletionDataSource: useDataSource(getUserCompletions, []),
   }
 
   return (

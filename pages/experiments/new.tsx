@@ -67,7 +67,7 @@ const ExperimentsNewPage = function () {
     }
   }
   const completionBag = {
-    userCompletions: useDataSource(getUserCompletions, []),
+    userCompletionDataSource: useDataSource(getUserCompletions, []),
   }
 
   return (
