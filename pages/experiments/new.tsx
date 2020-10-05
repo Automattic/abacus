@@ -66,7 +66,9 @@ const ExperimentsNewPage = function () {
       console.info('Form data:', formData)
     }
   }
-  const userCompletions = useDataSource(getUserCompletions, [])
+  const completionBag = {
+    userCompletions: useDataSource(getUserCompletions, []),
+  }
 
   return (
     <Layout headTitle='Create an Experiment'>
@@ -75,7 +77,7 @@ const ExperimentsNewPage = function () {
       </div>
       {isLoading && <LinearProgress className={classes.progress} />}
       {!isLoading && indexedMetrics && indexedSegments && (
-        <ExperimentForm {...{ indexedMetrics, indexedSegments, initialExperiment, onSubmit, userCompletions }} />
+        <ExperimentForm {...{ indexedMetrics, indexedSegments, initialExperiment, onSubmit, completionBag }} />
       )}
     </Layout>
   )

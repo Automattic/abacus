@@ -9,10 +9,9 @@ import React from 'react'
 
 import { experimentToFormData } from '@/lib/form-data'
 import * as Normalizers from '@/lib/normalizers'
-import { AutocompleteItem, experimentFullNewSchema, Status } from '@/lib/schemas'
+import { experimentFullNewSchema, Status } from '@/lib/schemas'
 import Fixtures from '@/test-helpers/fixtures'
 import { changeFieldByRole, render, validationErrorDisplayer } from '@/test-helpers/test-utils'
-import { DataSourceResult } from '@/utils/data-loading'
 import { formatIsoDate } from '@/utils/time'
 
 import ExperimentForm from './ExperimentForm'
@@ -48,16 +47,18 @@ function isSectionComplete(sectionButton: HTMLElement) {
   return !!sectionButton.querySelector('.MuiStepIcon-completed')
 }
 
-const userCompletionData: DataSourceResult<AutocompleteItem[]> = {
-  isLoading: false,
-  error: null,
-  data: [
-    {
-      name: 'testing (owner-nickname)',
-      value: 'owner-nickname',
-    },
-  ],
-  reloadRef: { current: () => undefined },
+const completionBag = {
+  userCompletions: {
+    isLoading: false,
+    error: null,
+    data: [
+      {
+        name: 'testing (owner-nickname)',
+        value: 'owner-nickname',
+      },
+    ],
+    reloadRef: { current: () => undefined },
+  },
 }
 
 test('renders as expected', () => {
@@ -71,7 +72,7 @@ test('renders as expected', () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
-      userCompletions={userCompletionData}
+      completionBag={completionBag}
     />,
   )
   expect(container).toMatchSnapshot()
@@ -88,7 +89,7 @@ test('sections should be browsable by the next and prev buttons', async () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
-      userCompletions={userCompletionData}
+      completionBag={completionBag}
     />,
   )
 
@@ -132,7 +133,7 @@ test('sections should be browsable by enter presses', async () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
-      userCompletions={userCompletionData}
+      completionBag={completionBag}
     />,
   )
 
@@ -176,7 +177,7 @@ test('sections should be browsable by the section buttons', async () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
-      userCompletions={userCompletionData}
+      completionBag={completionBag}
     />,
   )
 
@@ -222,7 +223,7 @@ test('section should be validated after change', async () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
-      userCompletions={userCompletionData}
+      completionBag={completionBag}
     />,
   )
 
@@ -300,7 +301,7 @@ test('skipping to submit should check all sections', async () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
-      userCompletions={userCompletionData}
+      completionBag={completionBag}
     />,
   )
 
@@ -346,7 +347,7 @@ test('form submits with valid fields', async () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
-      userCompletions={userCompletionData}
+      completionBag={completionBag}
     />,
   )
 
@@ -546,7 +547,7 @@ test('form submits an edited experiment without any changes', async () => {
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData(experiment)}
       onSubmit={onSubmit}
-      userCompletions={userCompletionData}
+      completionBag={completionBag}
     />,
   )
 

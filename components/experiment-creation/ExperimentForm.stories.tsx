@@ -14,20 +14,24 @@ import ExperimentForm from './ExperimentForm'
 export default { title: 'ExperimentCreation' }
 
 export const Form = () => {
-  const userCompletions = useDataSource(getUserCompletions, [])
+  const completionBag = {
+    userCompletions: useDataSource(getUserCompletions, []),
+  }
   return (
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={async (formData: unknown) => alert(JSON.stringify(formData, null, 2))}
-      userCompletions={userCompletions}
+      completionBag={completionBag}
     />
   )
 }
 
 export const FormWithExistingExperiment = () => {
-  const userCompletions = useDataSource(getUserCompletions, [])
+  const completionBag = {
+    userCompletions: useDataSource(getUserCompletions, []),
+  }
   return (
     <ExperimentForm
       indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
@@ -65,7 +69,7 @@ export const FormWithExistingExperiment = () => {
         variations: [],
       })}
       onSubmit={async (formData: unknown) => alert(JSON.stringify(formData, null, 2))}
-      userCompletions={userCompletions}
+      completionBag={completionBag}
     />
   )
 }

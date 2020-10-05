@@ -1,5 +1,10 @@
 import { fetchApi } from '@/api/utils'
 import { AutocompleteItem, autocompleteSchema, Autocompletions } from '@/lib/schemas'
+import { DataSourceResult } from '@/utils/data-loading'
+
+export interface CompletionBag {
+  userCompletions: DataSourceResult<AutocompleteItem[]>
+}
 
 async function getCompletion<T extends Autocompletions>(name: string) {
   const autocompleteData = await fetchApi('GET', `/autocomplete/${name}`)

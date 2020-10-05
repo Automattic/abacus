@@ -20,7 +20,7 @@ const userCompletions: DataSourceResult<AutocompleteItem[]> = {
 test('renders as expected', () => {
   const { container } = render(
     <MockFormik>
-      <BasicInfo userCompletions={userCompletions} />
+      <BasicInfo completionBag={{ userCompletions }} />
     </MockFormik>,
   )
   expect(container).toMatchSnapshot()
@@ -30,7 +30,7 @@ test('renders sensible dates as expected', () => {
   MockDate.set('2020-07-21')
   const { container } = render(
     <MockFormik initialValues={{ experiment: { startDatetime: '', endDatetime: '' } }}>
-      <BasicInfo userCompletions={userCompletions} />
+      <BasicInfo completionBag={{ userCompletions }} />
     </MockFormik>,
   )
   const startDateInput = getByLabelText(container, /Start date/)
@@ -47,7 +47,7 @@ test('renders date validation errors as expected', () => {
   MockDate.set('2020-07-21')
   const { container } = render(
     <MockFormik initialValues={{ experiment: { startDatetime: '', endDatetime: '' } }}>
-      <BasicInfo userCompletions={userCompletions} />
+      <BasicInfo completionBag={{ userCompletions }} />
     </MockFormik>,
   )
   const startDateInput = getByLabelText(container, /Start date/)

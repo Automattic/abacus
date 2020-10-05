@@ -9,10 +9,12 @@ import BasicInfo from './BasicInfo'
 export default { title: 'ExperimentCreation.Form Parts.BasicInfo' }
 
 export const FormPart = () => {
-  const userCompletions = useDataSource(getUserCompletions, [])
+  const completionBag = {
+    userCompletions: useDataSource(getUserCompletions, []),
+  }
   return (
     <MockFormik>
-      <BasicInfo userCompletions={userCompletions} />
+      <BasicInfo completionBag={completionBag} />
     </MockFormik>
   )
 }

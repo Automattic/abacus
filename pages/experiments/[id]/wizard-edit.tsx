@@ -63,13 +63,15 @@ export default function WizardEditPage() {
   }
 
   const initialExperiment = experiment && experimentToFormData(experiment)
-  const userCompletions = useDataSource(getUserCompletions, [])
+  const completionBag = {
+    userCompletions: useDataSource(getUserCompletions, []),
+  }
 
   return (
     <Layout title={`Editing Experiment: ${experiment?.name || ''}`}>
       {isLoading && <LinearProgress />}
       {!isLoading && initialExperiment && indexedMetrics && indexedSegments && (
-        <ExperimentForm {...{ indexedMetrics, indexedSegments, initialExperiment, onSubmit, userCompletions }} />
+        <ExperimentForm {...{ indexedMetrics, indexedSegments, initialExperiment, onSubmit, completionBag }} />
       )}
     </Layout>
   )

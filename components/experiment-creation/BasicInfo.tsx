@@ -6,13 +6,12 @@ import { Field, useField } from 'formik'
 import { TextField } from 'formik-material-ui'
 import React from 'react'
 
+import { CompletionBag } from '@/api/AutocompleteApi'
 import AbacusAutocomplete, { autocompleteInputProps } from '@/components/Autocomplete'
 import {
-  AutocompleteItem,
   MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS,
   MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS,
 } from '@/lib/schemas'
-import { DataSourceResult } from '@/utils/data-loading'
 import { formatIsoDate } from '@/utils/time'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -41,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const BasicInfo = ({ userCompletions }: { userCompletions: DataSourceResult<AutocompleteItem[]> }) => {
+const BasicInfo = ({ completionBag: { userCompletions } }: { completionBag: CompletionBag }) => {
   const classes = useStyles()
 
   const [startDateField] = useField('experiment.startDatetime')
