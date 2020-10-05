@@ -1,4 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles'
+import React from 'react'
 
 declare module '@material-ui/core/styles/createPalette' {
   interface TypeBackground {

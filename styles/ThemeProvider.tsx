@@ -7,7 +7,7 @@ import theme from './theme'
 /**
  * A pre-configured MUI theme provider.
  */
-const ThemeProvider = ({ children }: { children: ReactNode }) => (
+const ThemeProvider: (children: { children: ReactNode }) => JSX.Element = ({ children }) => (
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
     {children}
