@@ -52,7 +52,7 @@ function createAnalysis(fieldOverrides: Partial<Analysis>): Analysis {
   }
 }
 
-function createAnalyses() {
+function createAnalyses(): Analysis[] {
   return [
     // Full set of "latest" analyses for the default metric assignment.
     createAnalysis({
@@ -427,7 +427,7 @@ function createMetricBare(id: number): MetricBare {
   }
 }
 
-function createMetricBares(numMetrics = 3) {
+function createMetricBares(numMetrics = 3): MetricBare[] {
   return _.range(1, numMetrics + 1).map(createMetricBare)
 }
 
@@ -463,7 +463,7 @@ function createSegment(id: number): Segment {
 /**
  * Creates an array of segments.
  */
-function createSegments(numSegments = 2) {
+function createSegments(numSegments = 2): Segment[] {
   return _.range(1, numSegments + 1).map(createSegment)
 }
 
