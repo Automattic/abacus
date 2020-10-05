@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const BasicInfo = ({ completionBag: { userCompletions } }: { completionBag: CompletionBag }) => {
+const BasicInfo = ({ completionBag: { userCompletionDataSource } }: { completionBag: CompletionBag }) => {
   const classes = useStyles()
 
   const [startDateField] = useField('experiment.startDatetime')
@@ -140,8 +140,8 @@ const BasicInfo = ({ completionBag: { userCompletions } }: { completionBag: Comp
           name='experiment.ownerLogin'
           id='experiment.ownerLogin'
           fullWidth
-          options={userCompletions.data ?? []}
-          loading={userCompletions.isLoading}
+          options={userCompletionDataSource.data ?? []}
+          loading={userCompletionDataSource.isLoading}
           renderInput={(params: AutocompleteRenderInputParams) => (
             <MuiTextField
               {...params}
@@ -151,7 +151,7 @@ const BasicInfo = ({ completionBag: { userCompletions } }: { completionBag: Comp
               variant='outlined'
               required
               InputProps={{
-                ...autocompleteInputProps(params, userCompletions.isLoading),
+                ...autocompleteInputProps(params, userCompletionDataSource.isLoading),
                 startAdornment: <InputAdornment position='start'>@</InputAdornment>,
               }}
               InputLabelProps={{

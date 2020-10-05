@@ -48,7 +48,7 @@ function isSectionComplete(sectionButton: HTMLElement) {
 }
 
 const completionBag = {
-  userCompletions: {
+  userCompletionDataSource: {
     isLoading: false,
     error: null,
     data: [

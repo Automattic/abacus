@@ -3,7 +3,7 @@ import { AutocompleteItem, autocompleteSchema, Autocompletions } from '@/lib/sch
 import { DataSourceResult } from '@/utils/data-loading'
 
 export interface CompletionBag {
-  userCompletions: DataSourceResult<AutocompleteItem[]>
+  userCompletionDataSource: DataSourceResult<AutocompleteItem[]>
 }
 
 async function getCompletion<T extends Autocompletions>(name: string) {
