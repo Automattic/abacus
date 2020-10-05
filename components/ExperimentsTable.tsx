@@ -15,14 +15,14 @@ const debug = debugFactory('abacus:components/ExperimentsTable.tsx')
 /**
  * Renders a table of "bare" experiment information.
  */
-const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }) => {
+const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }): JSX.Element => {
   debug('ExperimentsTable#render')
   const router = useRouter()
   const theme = useTheme()
 
   /* istanbul ignore next; to be handled by an e2e test */
   const handleRowClick = (event?: React.MouseEvent, rowData?: ExperimentBare) => {
-    router.push('/experiments/[id]', `/experiments/${rowData?.experimentId}`)
+    void router.push('/experiments/[id]', `/experiments/${rowData?.experimentId ?? ''}`)
   }
 
   return (

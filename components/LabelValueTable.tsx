@@ -7,7 +7,13 @@ import React, { ReactNode } from 'react'
 /**
  * A table of label/value pairs.
  */
-function LabelValueTable({ className, data }: { className?: string; data: { label: string; value: ReactNode }[] }) {
+function LabelValueTable({
+  className,
+  data,
+}: {
+  className?: string
+  data: { label: string; value: ReactNode }[]
+}): JSX.Element {
   return (
     <Table className={className}>
       <TableBody>

@@ -2,7 +2,7 @@ import { IconButton, Menu } from '@material-ui/core'
 import { MoreVert as MoreVertIcon } from '@material-ui/icons'
 import React from 'react'
 
-export default function MoreMenu({ children }: { children: React.ReactNode }) {
+export default function MoreMenu({ children }: { children: React.ReactNode }): JSX.Element {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
   const open = Boolean(anchorEl)
 

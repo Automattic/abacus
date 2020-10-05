@@ -3,7 +3,7 @@ import React from 'react'
 
 export default { title: 'Headings' }
 
-export const all = () => (
+export const all = (): JSX.Element => (
   <>
     <Typography variant='h1'>h1. Heading</Typography>
     <Typography variant='h2'>h2. Heading</Typography>

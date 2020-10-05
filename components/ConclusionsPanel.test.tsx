@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/require-await */
 import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import { noop } from 'lodash'
 import * as notistack from 'notistack'
@@ -253,9 +254,6 @@ test('opens and saves edit dialog', async () => {
   const experiment = Fixtures.createExperimentFull()
   render(<ConclusionsPanel experiment={experiment} experimentReloadRef={experimentReloadRef} />)
   mockedExperimentsApi.patch.mockClear().mockReset()
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/require-await
   mockedExperimentsApi.patch.mockImplementation(async () => experiment)
 
   // First round: Save empty form.

@@ -109,11 +109,11 @@ function ExposureEventsTable({ experiment: { exposureEvents } }: { experiment: E
 /**
  * Renders the audience information of an experiment in a panel component.
  *
- * @param props.experiment - The experiment with the audience information.
- * @param props.segments - The segments to look up (aka resolve) the segment IDs
+ * @param experiment - The experiment with the audience information.
+ * @param segments - The segments to look up (aka resolve) the segment IDs
  *   of the experiment's segment assignments.
  */
-function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; segments: Segment[] }) {
+function AudiencePanel({ experiment, segments }: { experiment: ExperimentFull; segments: Segment[] }): JSX.Element {
   const classes = useStyles()
 
   const segmentsByType = useMemo(

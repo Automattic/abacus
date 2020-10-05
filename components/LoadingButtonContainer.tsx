@@ -22,7 +22,13 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const LoadingButtonContainer = ({ isLoading, children }: { isLoading: boolean; children: React.ReactNode }) => {
+const LoadingButtonContainer = ({
+  isLoading,
+  children,
+}: {
+  isLoading: boolean
+  children: React.ReactNode
+}): JSX.Element => {
   const classes = useStyles()
 
   return (

@@ -73,9 +73,7 @@ test('with some metrics, loads and opens metric details', async () => {
 
 test('with some metrics and canEditMetrics can click on the edit button', () => {
   const onEditMetric = jest.fn()
-  const { container: _container } = render(
-    <MetricsTable metrics={Fixtures.createMetricBares(2)} onEditMetric={onEditMetric} />,
-  )
+  render(<MetricsTable metrics={Fixtures.createMetricBares(2)} onEditMetric={onEditMetric} />)
 
   const edits = screen.getAllByRole('button', { name: 'Edit Metric' })
 

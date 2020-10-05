@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-export default function ExperimentCodeSetup() {
+export default function ExperimentCodeSetup(): JSX.Element {
   const classes = useStyles()
   return (
     <Paper className={classes.root}>

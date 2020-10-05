@@ -2,7 +2,7 @@ import React from 'react'
 
 import type { RenderError } from '@/components/RenderErrorBoundary'
 
-const RenderErrorView = (props: { renderError: RenderError }) => {
+export default function (props: { renderError: RenderError }): JSX.Element {
   return (
     <>
       <strong>Oops!</strong>
@@ -12,5 +12,3 @@ const RenderErrorView = (props: { renderError: RenderError }) => {
     </>
   )
 }
-
-export default RenderErrorView

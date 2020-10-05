@@ -258,10 +258,10 @@ test('opens, submits and cancels assign metric dialog', async () => {
   const metrics = Fixtures.createMetricBares(5)
   const experiment = Fixtures.createExperimentFull({ status: Status.Running })
   const experimentReloadRef: React.MutableRefObject<() => void> = { current: noop }
-  const { container: _container } = render(<MetricAssignmentsPanel {...{ experiment, metrics, experimentReloadRef }} />)
+  render(<MetricAssignmentsPanel {...{ experiment, metrics, experimentReloadRef }} />)
 
   mockedExperimentsApi.assignMetric.mockReset()
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   mockedExperimentsApi.assignMetric.mockImplementationOnce(async () => null)
 

@@ -64,7 +64,8 @@ const useStyles = makeStyles((theme: Theme) =>
 /**
  * Renders the general information of an experiment in a panel component.
  *
- * @param props.experiment - The experiment with the general information.
+ * @param experiment - The experiment with the general information.
+ * @param experimentReloadRef - Ref to reload the experiment.
  */
 function GeneralPanel({
   experiment,
@@ -72,7 +73,7 @@ function GeneralPanel({
 }: {
   experiment: ExperimentFull
   experimentReloadRef: React.MutableRefObject<() => void>
-}) {
+}): JSX.Element {
   const classes = useStyles()
   const data = [
     {
@@ -147,7 +148,7 @@ function GeneralPanel({
         <Typography className={classes.title} color='textPrimary' variant='h3'>
           General
         </Typography>
-        <Tooltip title={canEdit ? '' : 'Use "Edit in Wizard" for staging experiments.'}>
+        <Tooltip title={canEdit ? '' : 'Use \\"Edit in Wizard\\" for staging experiments.'}>
           <div>
             <Button onClick={onEdit} variant='outlined' disabled={!canEdit} aria-label='Edit Experiment General Data'>
               <Edit />

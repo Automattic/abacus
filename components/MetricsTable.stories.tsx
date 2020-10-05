@@ -5,6 +5,6 @@ import MetricsTable from '@/components/MetricsTable'
 import Fixtures from '../test-helpers/fixtures'
 
 export default { title: 'MetricsTable' }
-export const withNoMetrics = () => <MetricsTable metrics={[]} />
-export const withFewMetrics = () => <MetricsTable metrics={Fixtures.createMetricBares(4)} />
-export const withManyMetrics = () => <MetricsTable metrics={Fixtures.createMetricBares(40)} />
+export const withNoMetrics = (): JSX.Element => <MetricsTable metrics={[]} />
+export const withFewMetrics = (): JSX.Element => <MetricsTable metrics={Fixtures.createMetricBares(4)} />
+export const withManyMetrics = (): JSX.Element => <MetricsTable metrics={Fixtures.createMetricBares(40)} />

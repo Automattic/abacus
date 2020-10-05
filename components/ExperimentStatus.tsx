@@ -32,11 +32,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-function ExperimentStatus({ status }: { status: Status }) {
+function ExperimentStatus({ status }: { status: Status }): JSX.Element {
   const classes = useStyles()
   return (
     <span className={classes.root}>
-      <span className={clsx(classes.statusDot, classes[status])}></span> {status}
+      <span className={clsx(classes.statusDot, classes[status])} /> {status}
     </span>
   )
 }

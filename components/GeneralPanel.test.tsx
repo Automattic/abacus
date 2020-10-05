@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/require-await */
 import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import { noop } from 'lodash'
 import MockDate from 'mockdate'
@@ -44,7 +45,7 @@ test('renders as expected', () => {
           </h3>
           <div
             class=""
-            title="Use \\"Edit in Wizard\\" for staging experiments."
+            title="Use \\\\\\"Edit in Wizard\\\\\\" for staging experiments."
           >
             <button
               aria-label="Edit Experiment General Data"
@@ -208,9 +209,6 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
   render(<GeneralPanel experiment={experiment} experimentReloadRef={experimentReloadRef} />)
 
   mockedExperimentsApi.patch.mockReset()
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/require-await
   mockedExperimentsApi.patch.mockImplementationOnce(async () => experiment)
 
   const editButton = screen.getByRole('button', { name: /Edit/ })
@@ -265,9 +263,6 @@ test('checks edit dialog does not allow end datetime changes with disabled exper
   render(<GeneralPanel experiment={experiment} experimentReloadRef={experimentReloadRef} />)
 
   mockedExperimentsApi.patch.mockReset()
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/require-await
   mockedExperimentsApi.patch.mockImplementationOnce(async () => experiment)
 
   const editButton = screen.getByRole('button', { name: /Edit/ })

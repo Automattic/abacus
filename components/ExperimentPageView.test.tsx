@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/require-await, @typescript-eslint/ban-ts-ignore */
+/* eslint-disable @typescript-eslint/require-await */
 import { act, screen, waitFor } from '@testing-library/react'
-import _ from 'lodash'
 import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
@@ -95,8 +94,13 @@ test('experiment page view renders with null experimentId without crashing', asy
   mockedSegmentsApi.findAll.mockImplementationOnce(async () => segments)
 
   await act(async () => {
-    // @ts-ignore
-    render(<ExperimentPageView experimentId={null} view={ExperimentView.Overview} debugMode={false} />)
+    render(
+      <ExperimentPageView
+        experimentId={(null as unknown) as number}
+        view={ExperimentView.Overview}
+        debugMode={false}
+      />,
+    )
   })
 })
 

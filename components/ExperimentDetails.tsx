@@ -25,7 +25,7 @@ function ExperimentDetails({
   metrics: MetricBare[]
   segments: Segment[]
   experimentReloadRef: React.MutableRefObject<() => void>
-}) {
+}): JSX.Element {
   debug('ExperimentDetails#render')
   const theme = useTheme()
   const isMdDown = useMediaQuery(theme.breakpoints.down('md'))

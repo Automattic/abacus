@@ -9,4 +9,4 @@ const data = [
   { label: 'Label 2', value: <span>React Element</span> },
 ]
 
-export const basic = () => <LabelValueTable data={data} />
+export const basic = (): JSX.Element => <LabelValueTable data={data} />

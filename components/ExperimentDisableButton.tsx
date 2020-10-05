@@ -23,7 +23,7 @@ const ExperimentDisableButton = ({
 }: {
   experiment: ExperimentFull | null
   experimentReloadRef: React.MutableRefObject<() => void>
-}) => {
+}): JSX.Element => {
   const classes = useStyles()
 
   const { enqueueSnackbar } = useSnackbar()

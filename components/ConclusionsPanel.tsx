@@ -47,7 +47,8 @@ const useStyles = makeStyles((theme: Theme) =>
 /**
  * Renders the conclusion information of an experiment in a panel component.
  *
- * @param props.experiment - The experiment with the conclusion information.
+ * @param experiment - The experiment with the conclusion information.
+ * @param experimentReloadRef - A ref for reloading the experiment.
  */
 function ConclusionsPanel({
   experiment,
@@ -55,7 +56,7 @@ function ConclusionsPanel({
 }: {
   experiment: ExperimentFull
   experimentReloadRef: React.MutableRefObject<() => void>
-}) {
+}): JSX.Element {
   const classes = useStyles()
 
   const deployedVariation = Experiments.getDeployedVariation(experiment)

@@ -42,7 +42,7 @@ const DebugOutput = ({
   label?: string
   content: unknown
   className?: string
-}) => {
+}): JSX.Element => {
   const classes = useStyles()
 
   return (

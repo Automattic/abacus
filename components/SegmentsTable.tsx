@@ -37,9 +37,9 @@ const SegmentTypeToHeading = {
 /**
  * Renders the segments of a particular type.
  *
- * @param props.resolvedSegmentAssignments - The segment assignments with the
+ * @param resolvedSegmentAssignments - The segment assignments with the
  *   segment IDs resolved to the actual segment.
- * @param props.type - The segment type the segment assignments represent.
+ * @param type - The segment type the segment assignments represent.
  */
 function SegmentsTable({
   resolvedSegmentAssignments,
@@ -50,7 +50,7 @@ function SegmentsTable({
     isExcluded: boolean
   }[]
   type: SegmentType
-}) {
+}): JSX.Element {
   const sortedResolvedSegmentAssignments = useMemo(
     () => _.orderBy(resolvedSegmentAssignments, [_.property('segment.name')]),
     [resolvedSegmentAssignments],

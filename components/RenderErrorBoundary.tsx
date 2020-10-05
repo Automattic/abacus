@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 interface RenderError {
   clear: () => void
@@ -64,19 +64,19 @@ type State = {
 class RenderErrorBoundary extends React.PureComponent<Props, State> {
   state = { error: null, info: null }
 
-  clear = () => {
+  clear = (): void => {
     this.setState({
       error: null,
       info: null,
     })
   }
 
-  componentDidCatch(error: Error, info: React.ErrorInfo) {
+  componentDidCatch(error: Error, info: React.ErrorInfo): void {
     this.setState({ error, info })
     console.error('Render Error:\n\n', error, info)
   }
 
-  render() {
+  render(): ReactNode {
     const { error, info } = this.state
     const childrenArg = {
       renderError: (error && info

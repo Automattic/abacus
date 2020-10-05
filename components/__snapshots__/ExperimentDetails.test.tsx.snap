@@ -27,7 +27,7 @@ exports[`renders as expected at large width 1`] = `
               </h3>
               <div
                 class=""
-                title="Use \\"Edit in Wizard\\" for staging experiments."
+                title="Use \\\\\\"Edit in Wizard\\\\\\" for staging experiments."
               >
                 <button
                   aria-label="Edit Experiment General Data"
@@ -722,7 +722,7 @@ exports[`renders as expected at small width 1`] = `
               </h3>
               <div
                 class=""
-                title="Use \\"Edit in Wizard\\" for staging experiments."
+                title="Use \\\\\\"Edit in Wizard\\\\\\" for staging experiments."
               >
                 <button
                   aria-label="Edit Experiment General Data"
@@ -2220,7 +2220,7 @@ exports[`renders as expected without conclusion data 1`] = `
               </h3>
               <div
                 class=""
-                title="Use \\"Edit in Wizard\\" for staging experiments."
+                title="Use \\\\\\"Edit in Wizard\\\\\\" for staging experiments."
               >
                 <button
                   aria-label="Edit Experiment General Data"

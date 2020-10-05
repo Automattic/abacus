@@ -68,13 +68,13 @@ function dangerousAssignmentLink(variationName: string, experimentName: string, 
 /**
  * Renders the variations in tabular formation, in the order that they're given.
  *
- * @param props.variations - The variations to render.
+ * @param variations - The variations to render.
  */
 function VariationsTable({
   experiment: { variations, name: experimentName, platform: experimentPlatform },
 }: {
   experiment: ExperimentFull
-}) {
+}): JSX.Element {
   const classes = useStyles()
   return (
     <Table className={classes.root}>

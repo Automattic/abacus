@@ -106,8 +106,9 @@ const useStyles = makeStyles((theme: Theme) =>
 /**
  * Renders the assigned metric information of an experiment in a panel component.
  *
- * @param props.experiment - The experiment with the metric assignment information.
- * @param props.metrics - The metrics to look up (aka resolve) the metric IDs of the
+ * @param experiment - The experiment with the metric assignment information.
+ * @param experimentReloadRef - Trigger a reload of the experiment.
+ * @param metrics - The metrics to look up (aka resolve) the metric IDs of the
  *   experiment's metric assignments.
  */
 function MetricAssignmentsPanel({
@@ -118,7 +119,7 @@ function MetricAssignmentsPanel({
   experiment: ExperimentFull
   experimentReloadRef: React.MutableRefObject<() => void>
   metrics: MetricBare[]
-}) {
+}): JSX.Element {
   const classes = useStyles()
   const resolvedMetricAssignments = useMemo(
     () => resolveMetricAssignments(MetricAssignments.sort(experiment.metricAssignments), metrics),

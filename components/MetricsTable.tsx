@@ -93,6 +93,7 @@ const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
 /**
  * Renders a table of "bare" metric information.
  *
+ * @param metrics An array of metrics.
  * @param onEditMetric A Callback. Setting this will show the edit action in the table.
  */
 const MetricsTable = ({
@@ -101,7 +102,7 @@ const MetricsTable = ({
 }: {
   metrics: MetricBare[]
   onEditMetric?: (metricId: number) => void
-}) => {
+}): JSX.Element => {
   debug('MetricsTable#render')
 
   const theme = useTheme()

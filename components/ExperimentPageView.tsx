@@ -1,4 +1,3 @@
-// istanbul ignore file; Even though it sits with components this is a "page" component
 import {
   Button,
   createStyles,
@@ -11,7 +10,6 @@ import {
   Typography,
 } from '@material-ui/core'
 import { Skeleton } from '@material-ui/lab'
-import _ from 'lodash'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import React from 'react'
@@ -103,7 +101,7 @@ export default function ExperimentPageView({
   view: ExperimentView
   experimentId: number
   debugMode: boolean
-}) {
+}): JSX.Element {
   const classes = useStyles()
 
   const {
@@ -140,7 +138,7 @@ export default function ExperimentPageView({
   const canEditInWizard = experiment && experiment.status === Status.Staging
 
   return (
-    <Layout headTitle={`${experiment?.name} - Experiment`}>
+    <Layout headTitle={`${experiment?.name ?? 'unknown'} - Experiment`}>
       <>
         <div className={classes.title}>
           <Typography variant='h2'>

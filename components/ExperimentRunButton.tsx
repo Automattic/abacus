@@ -20,8 +20,8 @@ const ExperimentRunButton = ({
 }: {
   experiment: ExperimentFull | null
   experimentReloadRef: React.MutableRefObject<() => void>
-}) => {
-  const _classes = useStyles()
+}): JSX.Element => {
+  useStyles()
 
   const { enqueueSnackbar } = useSnackbar()
 
@@ -52,7 +52,7 @@ const ExperimentRunButton = ({
 
   return (
     <>
-      <Tooltip title={canRunExperiment ? '' : `This experiment is ${experiment?.status}.`}>
+      <Tooltip title={canRunExperiment ? '' : `This experiment is ${experiment?.status ?? 'undefined status'}.`}>
         <span>
           <Button
             variant='outlined'

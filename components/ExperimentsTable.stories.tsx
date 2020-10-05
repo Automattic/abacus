@@ -9,7 +9,7 @@ export default { title: 'ExperimentsTable' }
 
 const experiments: ExperimentBare[] = []
 
-export const withNoExperiments = () => <ExperimentsTable experiments={experiments} />
+export const withNoExperiments = (): JSX.Element => <ExperimentsTable experiments={experiments} />
 
 const endDatetime = addToDate(new Date(), { days: 14 })
 const startDatetime = new Date()
@@ -51,7 +51,7 @@ const onePageOfExperiments: ExperimentBare[] = [
   },
 ]
 
-export const withOnePageOfExperiments = () => <ExperimentsTable experiments={onePageOfExperiments} />
+export const withOnePageOfExperiments = (): JSX.Element => <ExperimentsTable experiments={onePageOfExperiments} />
 
 const moreThanOnePageOfExperiments: ExperimentBare[] = Array.from(Array(40).keys()).map((num) => ({
   experimentId: num + 1,
@@ -63,4 +63,6 @@ const moreThanOnePageOfExperiments: ExperimentBare[] = Array.from(Array(40).keys
   status: Status.Staging,
 }))
 
-export const withMoreThanOnePageOfExperiments = () => <ExperimentsTable experiments={moreThanOnePageOfExperiments} />
+export const withMoreThanOnePageOfExperiments = (): JSX.Element => (
+  <ExperimentsTable experiments={moreThanOnePageOfExperiments} />
+)

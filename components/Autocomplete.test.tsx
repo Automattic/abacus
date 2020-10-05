@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/require-await,@typescript-eslint/ban-ts-comment */
 import { InputAdornment, TextField as MuiTextField } from '@material-ui/core'
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { Field } from 'formik'
@@ -17,8 +17,7 @@ import { changeFieldByRole, MockFormik } from '@/test-helpers/test-utils'
 document.createRange = () => ({
   setStart: () => undefined,
   setEnd: () => undefined,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore; This is just for mocking
+  // @ts-ignore
   commonAncestorContainer: {
     nodeName: 'BODY',
     ownerDocument: document,
@@ -128,7 +127,6 @@ test('An autocomplete component can be rendered', async () => {
 
 test('it shows as loading data', () => {
   const isLoading = true
-  const options: AutocompleteItem[] = []
 
   const { container } = render(
     <MockFormik initialValues={{ name: 'no_name' }}>
@@ -137,7 +135,7 @@ test('it shows as loading data', () => {
         name='name'
         id='name'
         fullWidth
-        options={options}
+        options={[]}
         loading={isLoading}
         renderInput={(params: AutocompleteRenderInputParams) => {
           return (

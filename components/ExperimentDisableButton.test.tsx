@@ -36,9 +36,7 @@ test('disables an experiment', async () => {
   const { container } = render(<ExperimentDisableButton {...{ experiment, experimentReloadRef }} />)
 
   mockedExperimentsApi.changeStatus.mockReset()
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore
-  mockedExperimentsApi.changeStatus.mockImplementationOnce(async () => experiment)
+  mockedExperimentsApi.changeStatus.mockImplementationOnce(async () => undefined)
 
   const firstDisableButton = screen.getByRole('button', { name: /Disable/ })
 

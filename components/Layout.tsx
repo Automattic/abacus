@@ -86,7 +86,15 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const Layout = ({ title, headTitle, children }: { title?: string; headTitle?: string; children?: ReactNode }) => {
+const Layout = ({
+  title,
+  headTitle,
+  children,
+}: {
+  title?: string
+  headTitle?: string
+  children?: ReactNode
+}): JSX.Element => {
   const classes = useStyles()
   const router = useRouter()
 

@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const MetricFormFields = ({ formikProps }: { formikProps: FormikProps<{ metric: MetricFormData }> }) => {
+const MetricFormFields = ({ formikProps }: { formikProps: FormikProps<{ metric: MetricFormData }> }): JSX.Element => {
   const classes = useStyles()
 
   // Here we reset the params field after parameterType changes

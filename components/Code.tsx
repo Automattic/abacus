@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-export default function Code({ children }: { children: React.ReactNode }) {
+export default function Code({ children }: { children: React.ReactNode }): JSX.Element {
   const classes = useStyles()
 
   return (

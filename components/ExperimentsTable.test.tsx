@@ -8,8 +8,7 @@ import { render } from '@/test-helpers/test-utils'
 import ExperimentsTable from './ExperimentsTable'
 
 test('with no experiments, renders an empty table', () => {
-  const experiments: ExperimentBare[] = []
-  const { container, getByText } = render(<ExperimentsTable experiments={experiments} />)
+  const { container, getByText } = render(<ExperimentsTable experiments={[]} />)
 
   expect(getByText('Name')).toBeInTheDocument()
   expect(getByText('Start')).toBeInTheDocument()
