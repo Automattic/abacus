@@ -5,6 +5,7 @@ import _ from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
 import * as yup from 'yup'
 
+import { CompletionBag } from '@/api/AutocompleteApi'
 import { ExperimentFormData } from '@/lib/form-data'
 import { experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
 
@@ -106,10 +107,12 @@ const ExperimentForm = ({
   indexedSegments,
   initialExperiment,
   onSubmit,
+  completionBag,
 }: {
   indexedMetrics: Record<number, MetricBare>
   indexedSegments: Record<number, Segment>
   initialExperiment: ExperimentFormData
+  completionBag: CompletionBag
   onSubmit: (formData: unknown) => Promise<void>
 }) => {
   const classes = useStyles()
@@ -219,7 +222,7 @@ const ExperimentForm = ({
                 {currentStageId === StageId.BasicInfo && (
                   <div className={classes.formPart}>
                     <Paper className={classes.paper}>
-                      <BasicInfo />
+                      <BasicInfo completionBag={completionBag} />
                     </Paper>
                     <div className={classes.formPartActions}>
                       <Button onClick={prevStage}>Previous</Button>

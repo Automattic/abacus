@@ -4,27 +4,13 @@ orbs:
   node: circleci/node@4.0.1
 
 jobs:
-  build:
+  static-checks:
     executor:
       name: node/default
       tag: '12.18.4'
     steps:
       - checkout
       - node/install-packages
-      # Save workspace for subsequent jobs
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
-
-  static-checks:
-    executor:
-      name: node/default
-      tag: '12.18.4'
-    steps:
-      # Reuse the workspace from the build job
-      - attach_workspace:
-          at: .
       - run:
           name: Format Checking
           command: npm run format:check
@@ -37,9 +23,8 @@ jobs:
       name: node/default
       tag: '12.18.4'
     steps:
-      # Reuse the workspace from the build job
-      - attach_workspace:
-          at: .
+      - checkout
+      - node/install-packages
       - run:
           name: Unit Testing
           command: npm run test:unit -- -- --ci --maxWorkers 2
@@ -49,9 +34,8 @@ jobs:
       name: node/default
       tag: '12.18.4'
     steps:
-      # Reuse the workspace from the build job
-      - attach_workspace:
-          at: .
+      - checkout
+      - node/install-packages
       # Adapted from https://circleci.com/orbs/registry/orb/threetreeslight/puppeteer. Not using this Orb directly to
       # prevent re-downloading Chromium which was already done in the build step.
       # We only run this step here rather than in the build job because Chrome isn't needed for the other jobs.
@@ -115,13 +99,6 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      - build
-      - static-checks:
-          requires:
-            - build
-      - unit-tests:
-          requires:
-            - build
-      - integration-e2e:
-          requires:
-            - build
+      - static-checks
+      - unit-tests
+      - integration-e2e

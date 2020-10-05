@@ -6,6 +6,7 @@ import { useSnackbar } from 'notistack'
 import { toIntOrNull } from 'qc-to_int'
 import React from 'react'
 
+import { getUserCompletions } from '@/api/AutocompleteApi'
 import ExperimentsApi from '@/api/ExperimentsApi'
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
@@ -62,12 +63,15 @@ export default function WizardEditPage() {
   }
 
   const initialExperiment = experiment && experimentToFormData(experiment)
+  const completionBag = {
+    userCompletionDataSource: useDataSource(getUserCompletions, []),
+  }
 
   return (
     <Layout title={`Editing Experiment: ${experiment?.name || ''}`}>
       {isLoading && <LinearProgress />}
       {!isLoading && initialExperiment && indexedMetrics && indexedSegments && (
-        <ExperimentForm {...{ indexedMetrics, indexedSegments, initialExperiment, onSubmit }} />
+        <ExperimentForm {...{ indexedMetrics, indexedSegments, initialExperiment, onSubmit, completionBag }} />
       )}
     </Layout>
   )

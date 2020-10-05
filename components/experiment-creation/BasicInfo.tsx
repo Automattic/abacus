@@ -1,10 +1,13 @@
-import { InputAdornment, Typography } from '@material-ui/core'
+import { InputAdornment, TextField as MuiTextField, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { AutocompleteRenderInputParams } from '@material-ui/lab'
 import * as dateFns from 'date-fns'
 import { Field, useField } from 'formik'
 import { TextField } from 'formik-material-ui'
 import React from 'react'
 
+import { CompletionBag } from '@/api/AutocompleteApi'
+import AbacusAutocomplete, { autocompleteInputProps } from '@/components/Autocomplete'
 import {
   MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS,
   MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS,
@@ -37,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const BasicInfo = () => {
+const BasicInfo = ({ completionBag: { userCompletionDataSource } }: { completionBag: CompletionBag }) => {
   const classes = useStyles()
 
   const [startDateField] = useField('experiment.startDatetime')
@@ -133,21 +136,29 @@ const BasicInfo = () => {
 
       <div className={classes.row}>
         <Field
-          component={TextField}
+          component={AbacusAutocomplete}
           name='experiment.ownerLogin'
           id='experiment.ownerLogin'
-          label='Owner'
-          placeholder='wp_username'
-          helperText='Use WordPress.com username.'
-          variant='outlined'
           fullWidth
-          required
-          InputProps={{
-            startAdornment: <InputAdornment position='start'>@</InputAdornment>,
-          }}
-          InputLabelProps={{
-            shrink: true,
-          }}
+          options={userCompletionDataSource.data ?? []}
+          loading={userCompletionDataSource.isLoading}
+          renderInput={(params: AutocompleteRenderInputParams) => (
+            <MuiTextField
+              {...params}
+              label='Owner'
+              placeholder='wp_username'
+              helperText='Use WordPress.com username.'
+              variant='outlined'
+              required
+              InputProps={{
+                ...autocompleteInputProps(params, userCompletionDataSource.isLoading),
+                startAdornment: <InputAdornment position='start'>@</InputAdornment>,
+              }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          )}
         />
       </div>
     </div>

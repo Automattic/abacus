@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import React from 'react'
 
+import { getUserCompletions } from '@/api/AutocompleteApi'
 import ExperimentsApi from '@/api/ExperimentsApi'
 import MetricsApi from '@/api/MetricsApi'
 import SegmentsApi from '@/api/SegmentsApi'
@@ -65,6 +66,9 @@ const ExperimentsNewPage = function () {
       console.info('Form data:', formData)
     }
   }
+  const completionBag = {
+    userCompletionDataSource: useDataSource(getUserCompletions, []),
+  }
 
   return (
     <Layout headTitle='Create an Experiment'>
@@ -73,7 +77,7 @@ const ExperimentsNewPage = function () {
       </div>
       {isLoading && <LinearProgress className={classes.progress} />}
       {!isLoading && indexedMetrics && indexedSegments && (
-        <ExperimentForm {...{ indexedMetrics, indexedSegments, initialExperiment, onSubmit }} />
+        <ExperimentForm {...{ indexedMetrics, indexedSegments, initialExperiment, onSubmit, completionBag }} />
       )}
     </Layout>
   )
