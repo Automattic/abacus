@@ -4,6 +4,7 @@ import { DataSourceResult } from '@/utils/data-loading'
 
 export interface CompletionBag {
   userCompletionDataSource: DataSourceResult<AutocompleteItem[]>
+  eventCompletionDataSource: DataSourceResult<AutocompleteItem[]>
 }
 
 async function getCompletion(name: string) {
@@ -15,11 +16,11 @@ export async function getUserCompletions(): Promise<AutocompleteItem[]> {
   return (await getCompletion('users')).completions
 }
 
-export async function getEventCompletions(): Promise<AutocompleteItem[]> {
+export async function getEventNameCompletions(): Promise<AutocompleteItem[]> {
   return (await getCompletion('events')).completions
 }
 
-export function getPropCompletions(eventName: string): () => Promise<AutocompleteItem[]> {
+export function getPropNameCompletions(eventName: string): () => Promise<AutocompleteItem[]> {
   return async () => {
     if (eventName === '') {
       return [{ name: 'Enter an event name', value: '' }]

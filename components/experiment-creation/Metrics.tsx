@@ -22,12 +22,12 @@ import { Field, FieldArray, FieldArrayRenderProps, useField } from 'formik'
 import { Select, Switch, TextField } from 'formik-material-ui'
 import React, { useState } from 'react'
 
-import { getPropCompletions } from '@/api/AutocompleteApi'
+import { CompletionBag, getPropNameCompletions } from '@/api/AutocompleteApi'
 import AbacusAutocomplete, { autocompleteInputProps } from '@/components/Autocomplete'
 import MoreMenu from '@/components/MoreMenu'
 import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
-import { AutocompleteItem, EventNew, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
-import { DataSourceResult, useDataSource } from '@/utils/data-loading'
+import { EventNew, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
+import { useDataSource } from '@/utils/data-loading'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -110,7 +110,7 @@ const EventEditor = ({
   arrayHelpers,
   index,
   classes,
-  eventCompletions,
+  completionBag: { eventCompletionDataSource },
   exposureEvent,
 }: {
   arrayHelpers: FieldArrayRenderProps
@@ -127,11 +127,13 @@ const EventEditor = ({
     | 'exposureEventsEventPropertiesKeyAutoComplete',
     string
   >
-  eventCompletions: DataSourceResult<AutocompleteItem[]>
+  completionBag: CompletionBag
   exposureEvent: EventNew
 }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const { isLoading, data: propList } = useDataSource(getPropCompletions(exposureEvent.event), [exposureEvent.event])
+  const { isLoading, data: propList } = useDataSource(getPropNameCompletions(exposureEvent.event), [
+    exposureEvent.event,
+  ])
   const onRemoveExposureEvent = () => {
     arrayHelpers.remove(index)
   }
@@ -145,8 +147,8 @@ const EventEditor = ({
             name={`experiment.exposureEvents[${index}].event`}
             className={classes.exposureEventsEventName}
             id={`experiment.exposureEvents[${index}].event`}
-            options={eventCompletions.data}
-            loading={eventCompletions.isLoading}
+            options={eventCompletionDataSource.data}
+            loading={eventCompletionDataSource.isLoading}
             renderInput={(params: AutocompleteRenderInputParams) => (
               <MuiTextField
                 {...params}
@@ -157,7 +159,7 @@ const EventEditor = ({
                   shrink: true,
                 }}
                 InputProps={{
-                  ...autocompleteInputProps(params, eventCompletions.isLoading),
+                  ...autocompleteInputProps(params, eventCompletionDataSource.isLoading),
                   'aria-label': 'Event Name',
                 }}
               />
@@ -268,10 +270,10 @@ const EventEditor = ({
 
 const Metrics = ({
   indexedMetrics,
-  eventCompletions,
+  completionBag,
 }: {
   indexedMetrics: Record<number, MetricBare>
-  eventCompletions: DataSourceResult<AutocompleteItem[]>
+  completionBag: CompletionBag
 }): JSX.Element => {
   const classes = useStyles()
 
@@ -490,7 +492,7 @@ const Metrics = ({
                 <Table>
                   <TableBody>
                     {exposureEventsField.value.map((exposureEvent, index) => (
-                      <EventEditor key={index} {...{ arrayHelpers, eventCompletions, index, classes, exposureEvent }} />
+                      <EventEditor key={index} {...{ arrayHelpers, index, classes, completionBag, exposureEvent }} />
                     ))}
                     {exposureEventsField.value.length === 0 && (
                       <TableRow>

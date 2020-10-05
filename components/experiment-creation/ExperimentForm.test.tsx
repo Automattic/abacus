@@ -58,18 +58,17 @@ const completionBag = {
     ],
     reloadRef: { current: () => undefined },
   },
-}
-
-const eventCompletionData: DataSourceResult<AutocompleteItem[]> = {
-  isLoading: false,
-  error: null,
-  data: [
-    {
-      name: 'event_name',
-      value: 'event_name',
-    },
-  ],
-  reloadRef: { current: () => undefined },
+  eventCompletionDataSource: {
+    isLoading: false,
+    error: null,
+    data: [
+      {
+        name: 'event_name',
+        value: 'event_name',
+      },
+    ],
+    reloadRef: { current: () => undefined },
+  },
 }
 
 test('renders as expected', () => {

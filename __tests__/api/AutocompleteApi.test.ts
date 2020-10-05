@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/require-await */
-import { getEventCompletions, getPropCompletions, getUserCompletions } from '@/api/AutocompleteApi'
+import { getEventNameCompletions, getPropNameCompletions, getUserCompletions } from '@/api/AutocompleteApi'
 import NotFoundError from '@/api/NotFoundError'
 import * as Utils from '@/api/utils'
 
@@ -34,7 +34,7 @@ test('it retrieves event list from the api', async () => {
       },
     ],
   }))
-  expect(await getEventCompletions()).toMatchInlineSnapshot(`
+  expect(await getEventNameCompletions()).toMatchInlineSnapshot(`
     Array [
       Object {
         "name": "event_name",
@@ -58,7 +58,7 @@ test('it retrieves event details from the api', async () => {
       },
     ],
   }))
-  expect(await getPropCompletions('event_name')()).toMatchInlineSnapshot(`
+  expect(await getPropNameCompletions('event_name')()).toMatchInlineSnapshot(`
     Array [
       Object {
         "name": "a_prop",
@@ -69,7 +69,7 @@ test('it retrieves event details from the api', async () => {
 })
 
 test('an empty event name returns a useful error message', async () => {
-  expect(await getPropCompletions('')()).toMatchInlineSnapshot(`
+  expect(await getPropNameCompletions('')()).toMatchInlineSnapshot(`
     Array [
       Object {
         "name": "Enter an event name",
@@ -83,7 +83,7 @@ test('a nonexistent event name returns a useful error message', async () => {
   mockedUtils.fetchApi.mockImplementation(async () => {
     throw new NotFoundError()
   })
-  expect(await getPropCompletions('no_exist')()).toMatchInlineSnapshot(`
+  expect(await getPropNameCompletions('no_exist')()).toMatchInlineSnapshot(`
     Array [
       Object {
         "name": "No props found for this event",
