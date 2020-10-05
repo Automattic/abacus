@@ -18,7 +18,7 @@ export default function ParticipantCounts({
 }: {
   experiment: ExperimentFull
   primaryMetricAssignmentAnalysesData: MetricAssignmentAnalysesData
-}) {
+}): JSX.Element {
   const latestPrimaryMetricAnalyses = Object.values(primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc).map(
     last,
   ) as Analysis[]

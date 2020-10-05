@@ -25,7 +25,7 @@ export default function ExperimentResults({
   experiment: ExperimentFull
   metrics: MetricBare[]
   debugMode?: boolean
-}) {
+}): JSX.Element {
   const indexedMetrics = indexMetrics(metrics)
   const analysesByMetricAssignmentId = _.groupBy(analyses, 'metricAssignmentId')
   const allMetricAssignmentAnalysesData: MetricAssignmentAnalysesData[] = MetricAssignments.sort(

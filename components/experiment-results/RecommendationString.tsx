@@ -11,7 +11,7 @@ export default function RecommendationString({
 }: {
   recommendation: Recommendation
   experiment: ExperimentFull
-}) {
+}): JSX.Element {
   if (!recommendation.endExperiment) {
     return <>Inconclusive</>
   }

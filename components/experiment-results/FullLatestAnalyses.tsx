@@ -21,7 +21,7 @@ export default function FullLatestAnalyses({
 }: {
   experiment: ExperimentFull
   allMetricAssignmentAnalysesData: MetricAssignmentAnalysesData[]
-}) {
+}): JSX.Element {
   const metricAssignmentSummaries = allMetricAssignmentAnalysesData.map(
     ({ metricAssignment, metric, analysesByStrategyDateAsc }) => {
       return {

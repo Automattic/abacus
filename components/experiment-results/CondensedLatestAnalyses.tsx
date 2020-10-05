@@ -71,7 +71,7 @@ export default function CondensedLatestAnalyses({
 }: {
   experiment: ExperimentFull
   allMetricAssignmentAnalysesData: MetricAssignmentAnalysesData[]
-}) {
+}): JSX.Element {
   const classes = useStyles()
   const theme = useTheme()
 
@@ -300,8 +300,8 @@ function AnalysisDetailPanel({
           line: {
             color: Visualizations.variantColors[index],
           },
-          mode: 'lines' as 'lines',
-          type: 'scatter' as 'scatter',
+          mode: 'lines' as const,
+          type: 'scatter' as const,
         },
         {
           name: `${variation.name}: upper bound`,
@@ -312,8 +312,8 @@ function AnalysisDetailPanel({
           line: {
             color: Visualizations.variantColors[index],
           },
-          mode: 'lines' as 'lines',
-          type: 'scatter' as 'scatter',
+          mode: 'lines' as const,
+          type: 'scatter' as const,
         },
       ]
     }),
@@ -328,8 +328,8 @@ function AnalysisDetailPanel({
         .map(estimateTransform),
       line: { width: 0 },
       marker: { color: '444' },
-      mode: 'lines' as 'lines',
-      type: 'scatter' as 'scatter',
+      mode: 'lines' as const,
+      type: 'scatter' as const,
     },
     {
       name: `difference: upper bound`,
@@ -339,8 +339,8 @@ function AnalysisDetailPanel({
       fillcolor: 'rgba(0,0,0,.2)',
       line: { width: 0 },
       marker: { color: '444' },
-      mode: 'lines' as 'lines',
-      type: 'scatter' as 'scatter',
+      mode: 'lines' as const,
+      type: 'scatter' as const,
     },
     {
       name: 'ROPE: lower bound',
@@ -350,8 +350,8 @@ function AnalysisDetailPanel({
         color: 'rgba(0,0,0,.4)',
         dash: 'dash',
       },
-      mode: 'lines' as 'lines',
-      type: 'scatter' as 'scatter',
+      mode: 'lines' as const,
+      type: 'scatter' as const,
     },
     {
       name: 'ROPE: upper bound',
@@ -361,8 +361,8 @@ function AnalysisDetailPanel({
         color: 'rgba(0,0,0,.4)',
         dash: 'dash',
       },
-      mode: 'lines' as 'lines',
-      type: 'scatter' as 'scatter',
+      mode: 'lines' as const,
+      type: 'scatter' as const,
     },
   ]
 
