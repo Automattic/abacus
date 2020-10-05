@@ -1,6 +1,4 @@
-import * as yup from 'yup'
-
-import { Segment, segmentSchema } from '@/lib/schemas'
+import { Segment, segmentResponseSchema } from '@/lib/schemas'
 
 import { fetchApi } from './utils'
 
@@ -12,8 +10,8 @@ import { fetchApi } from './utils'
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<Segment[]> {
-  const { segments } = await fetchApi('GET', '/segments')
-  return await yup.array(segmentSchema).defined().validate(segments, { abortEarly: false })
+  const { segments } = await segmentResponseSchema.validate(await fetchApi('GET', '/segments'), { abortEarly: false })
+  return segments
 }
 
 const SegmentsApi = {

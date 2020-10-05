@@ -1,6 +1,4 @@
-import * as yup from 'yup'
-
-import { Analysis, analysisSchema } from '@/lib/schemas'
+import { Analysis, analysisResponseSchema } from '@/lib/schemas'
 
 import { fetchApi } from './utils'
 
@@ -12,8 +10,10 @@ import { fetchApi } from './utils'
  * @throws UnauthorizedError
  */
 async function findByExperimentId(experimentId: number): Promise<Analysis[]> {
-  const { analyses } = await fetchApi('GET', `/analyses/${experimentId}`)
-  return await yup.array(analysisSchema).defined().validate(analyses, { abortEarly: false })
+  const { analyses } = await analysisResponseSchema.validate(await fetchApi('GET', `/analyses/${experimentId}`), {
+    abortEarly: false,
+  })
+  return analyses
 }
 
 const AnalysesApi = {

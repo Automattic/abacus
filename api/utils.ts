@@ -13,7 +13,7 @@ import UnauthorizedError from './UnauthorizedError'
  *
  * @throws UnauthorizedError
  */
-async function fetchApi(method: string, path: string, body: unknown | null = null) {
+async function fetchApi(method: string, path: string, body: unknown | null = null): Promise<unknown> {
   /* istanbul ignore next; code branch not reachable in integration tests -- we don't hit production */
   const apiUrlRoot = config.experimentApi.rootUrl
 
@@ -56,7 +56,7 @@ async function fetchApi(method: string, path: string, body: unknown | null = nul
   if (responseText === '') {
     return
   }
-  return JSON.parse(responseText)
+  return JSON.parse(responseText) as unknown
 }
 
 export { fetchApi }

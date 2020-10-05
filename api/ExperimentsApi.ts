@@ -3,12 +3,12 @@ import * as yup from 'yup'
 
 import {
   ExperimentBare,
-  experimentBareSchema,
   ExperimentFull,
   ExperimentFullNew,
   experimentFullNewOutboundSchema,
   experimentFullNewSchema,
   experimentFullSchema,
+  experimentSummaryResponse,
   MetricAssignmentNew,
   metricAssignmentNewOutboundSchema,
   metricAssignmentNewSchema,
@@ -24,11 +24,10 @@ import { fetchApi } from './utils'
  *
  * Note: Be sure to handle any errors that may be thrown.
  */
-async function create(newExperiment: ExperimentFullNew) {
+async function create(newExperiment: ExperimentFullNew): Promise<ExperimentFull> {
   const validatedNewExperiment = await experimentFullNewSchema.validate(newExperiment, { abortEarly: false })
   const outboundNewExperiment = experimentFullNewOutboundSchema.cast(validatedNewExperiment)
-  const returnedExperiment = await fetchApi('POST', '/experiments', outboundNewExperiment)
-  return await experimentFullSchema.validate(returnedExperiment)
+  return await experimentFullSchema.validate(await fetchApi('POST', '/experiments', outboundNewExperiment))
 }
 
 /**
@@ -36,11 +35,10 @@ async function create(newExperiment: ExperimentFullNew) {
  *
  * Note: Be sure to handle any errors that may be thrown.
  */
-async function put(experimentId: number, experiment: ExperimentFullNew) {
+async function put(experimentId: number, experiment: ExperimentFullNew): Promise<ExperimentFull> {
   const validatedExperiment = await experimentFullNewSchema.validate(experiment, { abortEarly: false })
   const outboundExperiment = experimentFullNewOutboundSchema.cast(validatedExperiment)
-  const returnedExperiment = await fetchApi('PUT', `/experiments/${experimentId}`, outboundExperiment)
-  return await experimentFullSchema.validate(returnedExperiment)
+  return await experimentFullSchema.validate(await fetchApi('PUT', `/experiments/${experimentId}`, outboundExperiment))
 }
 
 /**
@@ -50,7 +48,7 @@ async function put(experimentId: number, experiment: ExperimentFullNew) {
  *
  * Note: Be sure to handle any errors that may be thrown.
  */
-async function patch(experimentId: number, experimentPatch: Partial<ExperimentFull>) {
+async function patch(experimentId: number, experimentPatch: Partial<ExperimentFull>): Promise<ExperimentFull> {
   // We dynamically construct a schema for validation, but we do this simply and shallowly
   const dynamicValidationSchema = yupPick(experimentFullSchema, Object.keys(experimentPatch))
   const validatedExperimentPatch = await dynamicValidationSchema.validate(experimentPatch, { abortEarly: false })
@@ -59,11 +57,12 @@ async function patch(experimentId: number, experimentPatch: Partial<ExperimentFu
   const dynamicOutboundCastSchema = yupPick(experimentFullSchema, Object.keys(experimentPatch)).snakeCase()
   const outboundExperimentPatch = dynamicOutboundCastSchema.cast(validatedExperimentPatch)
 
-  const returnedExperiment = await fetchApi('PATCH', `/experiments/${experimentId}`, outboundExperimentPatch)
-  return await experimentFullSchema.validate(returnedExperiment)
+  return await experimentFullSchema.validate(
+    await fetchApi('PATCH', `/experiments/${experimentId}`, outboundExperimentPatch),
+  )
 }
 
-async function changeStatus(experimentId: number, status: Status) {
+async function changeStatus(experimentId: number, status: Status): Promise<void> {
   await fetchApi('PUT', `/experiments/${experimentId}/status`, { status })
 }
 
@@ -78,7 +77,10 @@ async function changeStatus(experimentId: number, status: Status) {
  * @param experiment A full experiment object, needed to fill in the existing metricAssignments, will be removed in the future.
  * @param metricAssignment The new metricAssignment.
  */
-async function assignMetric(experiment: ExperimentFull, metricAssignment: MetricAssignmentNew) {
+async function assignMetric(
+  experiment: ExperimentFull,
+  metricAssignment: MetricAssignmentNew,
+): Promise<ExperimentFull> {
   const validatedMetricAssignment = await metricAssignmentNewSchema.validate(metricAssignment)
   const outboundMetricAssignment = metricAssignmentNewOutboundSchema.cast(validatedMetricAssignment)
 
@@ -93,10 +95,11 @@ async function assignMetric(experiment: ExperimentFull, metricAssignment: Metric
 
   const metricAssignments = [...outboundExistingMetricAssignments, outboundMetricAssignment]
 
-  const returnedExperiment = await fetchApi('PATCH', `/experiments/${experiment.experimentId}`, {
-    metric_assignments: metricAssignments,
-  })
-  return await experimentFullSchema.validate(returnedExperiment)
+  return await experimentFullSchema.validate(
+    await fetchApi('PATCH', `/experiments/${experiment.experimentId}`, {
+      metric_assignments: metricAssignments,
+    }),
+  )
 }
 
 /**
@@ -107,9 +110,11 @@ async function assignMetric(experiment: ExperimentFull, metricAssignment: Metric
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<ExperimentBare[]> {
-  // istanbul ignore next; debug only
-  const { experiments } = await fetchApi('GET', isDebugMode() ? '/experiments?debug=true' : '/experiments')
-  return await yup.array(experimentBareSchema).defined().validate(experiments, { abortEarly: false })
+  const { experiments } = await experimentSummaryResponse.validate(
+    await fetchApi('GET', isDebugMode() ? '/experiments?debug=true' : '/experiments'),
+    { abortEarly: false },
+  )
+  return experiments
 }
 
 /**
@@ -118,8 +123,7 @@ async function findAll(): Promise<ExperimentBare[]> {
  * @param id - The ID of the experiment to fetch.
  */
 async function findById(id: number): Promise<ExperimentFull> {
-  const experiment = await fetchApi('GET', `/experiments/${id}`)
-  return await experimentFullSchema.validate(experiment, { abortEarly: false })
+  return await experimentFullSchema.validate(await fetchApi('GET', `/experiments/${id}`), { abortEarly: false })
 }
 
 const ExperimentsApi = {

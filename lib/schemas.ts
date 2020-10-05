@@ -75,6 +75,12 @@ export const metricBareSchema = yup
   .camelCase()
 export type MetricBare = yup.InferType<typeof metricBareSchema>
 
+export const metricBareResponse = yup
+  .object({
+    metrics: yup.array(metricBareSchema).defined(),
+  })
+  .defined()
+
 export const metricFullSchema = metricBareSchema
   .shape({
     higherIsBetter: yup.boolean().defined(),
@@ -92,13 +98,16 @@ export const metricFullSchema = metricBareSchema
   .defined()
   .camelCase()
   .test('event-params-required', 'Event Params is required and must be valid JSON.', (metricFull) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return !(metricFull.parameterType === MetricParameterType.Conversion && !metricFull.eventParams)
   })
   .test('revenue-params-required', 'Revenue Params is required and must be valid JSON.', (metricFull) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return !(metricFull.parameterType === MetricParameterType.Revenue && !metricFull.revenueParams)
   })
   .test('exactly-one-params', 'Exactly one of eventParams or revenueParams must be defined.', (metricFull) => {
     // (Logical XOR)
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return !!metricFull.eventParams !== !!metricFull.revenueParams
   })
 export type MetricFull = yup.InferType<typeof metricFullSchema>
@@ -108,11 +117,14 @@ export const metricFullNewSchema = metricFullSchema.shape({
 export type MetricFullNew = yup.InferType<typeof metricFullNewSchema>
 export const metricFullNewOutboundSchema = metricFullNewSchema.snakeCase().transform(
   // istanbul ignore next; Tested by integration
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   (currentValue) => ({
     ...currentValue,
     revenueParams: undefined,
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     revenue_params: currentValue.revenue_params
-      ? metricRevenueParamsSchema.snakeCase().cast(currentValue.revenue_params)
+      ? // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        metricRevenueParamsSchema.snakeCase().cast(currentValue.revenue_params)
       : undefined,
   }),
 )
@@ -169,6 +181,11 @@ export const segmentSchema = yup
   .defined()
   .camelCase()
 export type Segment = yup.InferType<typeof segmentSchema>
+export const segmentResponseSchema = yup
+  .object({
+    segments: yup.array(segmentSchema).defined(),
+  })
+  .defined()
 
 export const segmentAssignmentNewSchema = yup
   .object({
@@ -246,6 +263,11 @@ export const experimentBareSchema = yup
   .defined()
   .camelCase()
 export type ExperimentBare = yup.InferType<typeof experimentBareSchema>
+export const experimentSummaryResponse = yup
+  .object({
+    experiments: yup.array(experimentBareSchema).defined(),
+  })
+  .defined()
 
 export const experimentFullSchema = experimentBareSchema
   .shape({
@@ -300,18 +322,23 @@ export const experimentFullNewOutboundSchema = experimentFullNewSchema
   .snakeCase()
   .transform(
     // istanbul ignore next; Tested by integration
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     (currentValue) => ({
       ...currentValue,
       // The P2 field gets incorrectly snake_cased so we fix it here
       p_2_url: undefined,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
       p2_url: currentValue.p_2_url,
       // These two only seem to work down here rather then above?
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       metric_assignments: yup.array(metricAssignmentNewOutboundSchema).defined().cast(currentValue.metric_assignments),
       segment_assignments: yup
         .array(segmentAssignmentNewOutboundSchema)
         .defined()
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         .cast(currentValue.segment_assignments),
       // Converting EventNew to Event
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
       exposure_events: currentValue.exposure_events.map(
         (event: EventNew): Event => ({
           event: event.event,
