@@ -114,7 +114,7 @@ const ExperimentForm = ({
   initialExperiment: ExperimentFormData
   completionBag: CompletionBag
   onSubmit: (formData: unknown) => Promise<void>
-}) => {
+}): JSX.Element => {
   const classes = useStyles()
 
   const rootRef = useRef<HTMLDivElement>(null)
@@ -157,7 +157,7 @@ const ExperimentForm = ({
 
         const changeStage = (stageId: StageId) => {
           setActiveStageId(stageId)
-          updateStageState(stages[currentStageIndex])
+          void updateStageState(stages[currentStageIndex])
 
           if (stageId === StageId.Submit) {
             stages.map(updateStageState)

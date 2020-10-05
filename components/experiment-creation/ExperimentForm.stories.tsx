@@ -13,7 +13,7 @@ import ExperimentForm from './ExperimentForm'
 
 export default { title: 'ExperimentCreation' }
 
-export const Form = () => {
+export const Form = (): JSX.Element => {
   const completionBag = {
     userCompletionDataSource: useDataSource(getUserCompletions, []),
   }
@@ -28,7 +28,7 @@ export const Form = () => {
   )
 }
 
-export const FormWithExistingExperiment = () => {
+export const FormWithExistingExperiment = (): JSX.Element => {
   const completionBag = {
     userCompletionDataSource: useDataSource(getUserCompletions, []),
   }

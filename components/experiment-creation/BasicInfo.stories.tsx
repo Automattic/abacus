@@ -8,7 +8,7 @@ import BasicInfo from './BasicInfo'
 
 export default { title: 'ExperimentCreation.Form Parts.BasicInfo' }
 
-export const FormPart = () => {
+export const FormPart = (): JSX.Element => {
   const completionBag = {
     userCompletionDataSource: useDataSource(getUserCompletions, []),
   }

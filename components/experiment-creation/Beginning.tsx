@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const Beginning = () => {
+const Beginning = (): JSX.Element => {
   const classes = useStyles()
 
   return (

@@ -18,7 +18,6 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Add, Clear } from '@material-ui/icons'
 import { Field, FieldArray, useField } from 'formik'
 import { Select, Switch, TextField } from 'formik-material-ui'
-import _ from 'lodash'
 import React, { useState } from 'react'
 
 import MoreMenu from '@/components/MoreMenu'
@@ -98,13 +97,13 @@ const createMetricAssignment = (metric: MetricBare) => {
   }
 }
 
-const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare> }) => {
+const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare> }): JSX.Element => {
   const classes = useStyles()
 
   // Metric Assignments
-  const [metricAssignmentsField, _metricAssignmentsFieldMetaProps, metricAssignmentsFieldHelperProps] = useField<
-    MetricAssignment[]
-  >('experiment.metricAssignments')
+  const [metricAssignmentsField, , metricAssignmentsFieldHelperProps] = useField<MetricAssignment[]>(
+    'experiment.metricAssignments',
+  )
   const [selectedMetricId, setSelectedMetricId] = useState<string>('')
   const onSelectedMetricChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setSelectedMetricId(event.target.value as string)
@@ -120,9 +119,7 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
   }
 
   // ### Exposure Events
-  const [exposureEventsField, _exposureEventsFieldMetaProps, _exposureEventsFieldHelperProps] = useField<EventNew[]>(
-    'experiment.exposureEvents',
-  )
+  const [exposureEventsField, ,] = useField<EventNew[]>('experiment.exposureEvents')
 
   return (
     <div className={classes.root}>
@@ -156,7 +153,7 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                       <TableCell>Attribution Window</TableCell>
                       <TableCell>Change Expected?</TableCell>
                       <TableCell>Minimum Difference</TableCell>
-                      <TableCell></TableCell>
+                      <TableCell />
                     </TableRow>
                   </TableHead>
                   <TableBody>

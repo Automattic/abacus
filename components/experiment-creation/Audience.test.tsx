@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import { Formik, FormikProps } from 'formik'
 import React from 'react'
@@ -11,7 +12,6 @@ import Audience from './Audience'
 document.createRange = () => ({
   setStart: () => undefined,
   setEnd: () => undefined,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore; This is just for mocking
   commonAncestorContainer: {
     nodeName: 'BODY',

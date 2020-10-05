@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/require-await,@typescript-eslint/ban-ts-comment */
 
 import { act, fireEvent, screen, waitFor } from '@testing-library/react'
 import _ from 'lodash'
@@ -30,8 +30,7 @@ window.HTMLElement.prototype.scrollIntoView = noop
 document.createRange = () => ({
   setStart: () => undefined,
   setEnd: () => undefined,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore; This is just for mocking
+  // @ts-ignore
   commonAncestorContainer: {
     nodeName: 'BODY',
     ownerDocument: document,
@@ -181,9 +180,7 @@ test('sections should be browsable by the section buttons', async () => {
     />,
   )
 
-  const _startSectionButton = screen.getByRole('button', { name: /Start/ })
   const basicInfoSectionButton = screen.getByRole('button', { name: /Basic Info/ })
-  const _audienceSectionButton = screen.getByRole('button', { name: /Audience/ })
   const metricsSectionButton = screen.getByRole('button', { name: /Metrics/ })
   const submitSectionButton = screen.getByRole('button', { name: /Submit/ })
 
@@ -584,14 +581,18 @@ test('form submits an edited experiment without any changes', async () => {
 
   // We need to remove Ids, status, conclusion data, reformat exposure events to make it like new
   const newShapedExperiment = _.clone(experiment)
-  delete newShapedExperiment.experimentId
-  delete newShapedExperiment.status
+  newShapedExperiment.experimentId = (undefined as unknown) as number
+  newShapedExperiment.status = (undefined as unknown) as Status
   delete newShapedExperiment.conclusionUrl
   delete newShapedExperiment.deployedVariationId
   delete newShapedExperiment.endReason
-  newShapedExperiment.metricAssignments.forEach((metricAssignment) => delete metricAssignment.metricAssignmentId)
-  newShapedExperiment.segmentAssignments.forEach((segmentAssignment) => delete segmentAssignment.segmentAssignmentId)
-  newShapedExperiment.variations.forEach((variation) => delete variation.variationId)
+  newShapedExperiment.metricAssignments.forEach(
+    (metricAssignment) => (metricAssignment.metricAssignmentId = (undefined as unknown) as number),
+  )
+  newShapedExperiment.segmentAssignments.forEach(
+    (segmentAssignment) => (segmentAssignment.segmentAssignmentId = (undefined as unknown) as number),
+  )
+  newShapedExperiment.variations.forEach((variation) => (variation.variationId = (undefined as unknown) as number))
   newShapedExperiment.exposureEvents?.forEach((exposureEvent) => {
     if (exposureEvent.props) {
       exposureEvent.props = _.toPairs(exposureEvent.props).map(([key, value]) => ({ key, value }))

@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const BasicInfo = ({ completionBag: { userCompletionDataSource } }: { completionBag: CompletionBag }) => {
+const BasicInfo = ({ completionBag: { userCompletionDataSource } }: { completionBag: CompletionBag }): JSX.Element => {
   const classes = useStyles()
 
   const [startDateField] = useField('experiment.startDatetime')

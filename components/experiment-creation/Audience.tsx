@@ -71,6 +71,7 @@ const SegmentsAutocomplete = (
 ) => {
   const {
     form: { setFieldValue },
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     field: { name, value: outerValue },
     segmentExclusionState,
   } = props
@@ -116,7 +117,7 @@ const Audience = ({
 }: {
   indexedSegments: Record<number, Segment>
   formikProps: FormikProps<{ experiment: ExperimentFormData }>
-}) => {
+}): JSX.Element => {
   const classes = useStyles()
 
   // The segmentExclusion code is currently split between here and SegmentAutocomplete
@@ -216,11 +217,13 @@ const Audience = ({
             options={Object.values(indexedSegments)}
             // TODO: Error state, see https://stackworx.github.io/formik-material-ui/docs/api/material-ui-lab
             renderInput={(params: AutocompleteRenderInputParams) => (
+              /* eslint-disable @typescript-eslint/no-unsafe-member-access */
               <MuiTextField
                 {...params}
                 variant='outlined'
                 placeholder={segmentAssignmentsField.value.length === 0 ? 'Search and select to customize' : undefined}
               />
+              /* eslint-enable @typescript-eslint/no-unsafe-member-access */
             )}
             segmentExclusionState={segmentExclusionState}
             indexedSegments={indexedSegments}
