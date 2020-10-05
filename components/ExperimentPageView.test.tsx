@@ -48,9 +48,11 @@ const renderExperimentPageView = async ({ experiment: experimentOverrides = {} }
   const analyses = Fixtures.createAnalyses()
   mockedAnalysesApi.findByExperimentId.mockImplementationOnce(async () => analyses)
 
+  const debug = view === ExperimentView.Debug
+
   // This `act` is needed to fix warnings:
   await act(async () => {
-    render(<ExperimentPageView experimentId={experiment.experimentId} view={view} debugMode={false} />)
+    render(<ExperimentPageView experimentId={experiment.experimentId} view={view} debugMode={debug} />)
   })
 }
 
@@ -84,6 +86,10 @@ test('experiment page view renders results without crashing', async () => {
 
 test('experiment page view renders code-setup without crashing', async () => {
   await renderExperimentPageView({}, ExperimentView.CodeSetup)
+})
+
+test('experiment pages view renders debug view', async () => {
+  await renderExperimentPageView({}, ExperimentView.Debug)
 })
 
 test('experiment page view renders with null experimentId without crashing', async () => {

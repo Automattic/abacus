@@ -94,6 +94,28 @@ describe('utils/data-loading.ts module', () => {
       void act(() => resolve(123))
 
       expect((console.error as jest.Mock).mock.calls.length).toBe(0)
+      expect(renderResult.result.current.data).toBeNull()
+
+      console.error = originalConsoleError
+    })
+
+    it('should reject promise after unmount without logging an error', async () => {
+      const originalConsoleError = console.error
+      console.error = jest.fn((d) => originalConsoleError(d))
+
+      const { reject, promise } = createControllablePromise()
+
+      const renderResult = renderHook(() => {
+        return useDataSource(() => promise, [])
+      })
+
+      renderResult.unmount()
+
+      // this actually triggers a promise but will run synchronously
+      void act(() => reject(new Error('test')))
+
+      expect((console.error as jest.Mock).mock.calls.length).toBe(0)
+      expect(renderResult.result.current.error).toBeNull()
 
       console.error = originalConsoleError
     })

@@ -10,7 +10,7 @@ import RenderErrorBoundary from '@/components/RenderErrorBoundary'
 import RenderErrorView from '@/components/RenderErrorView'
 import { config } from '@/config'
 import ThemeProvider from '@/styles/ThemeProvider'
-import { getExperimentsAuthInfo } from '@/utils/auth'
+import { getExperimentsAuthInfoFromDefaultStorage as getExperimentsAuthInfo } from '@/utils/auth'
 
 const debug = debugFactory('abacus:pages/_app.tsx')
 
