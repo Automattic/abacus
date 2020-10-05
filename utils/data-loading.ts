@@ -2,10 +2,10 @@ import { noop } from 'lodash'
 import { useSnackbar } from 'notistack'
 import { DependencyList, MutableRefObject, useEffect, useRef, useState } from 'react'
 
-export interface DataSourceResult<T> {
+export interface DataSourceResult<T, E extends Error = Error> {
   data: T | null
   isLoading: boolean
-  error: Error | null
+  error: E | null
   reloadRef: MutableRefObject<() => void>
 }
 
@@ -20,7 +20,7 @@ export interface DataSourceResult<T> {
 export function useDataSource<Data, Deps extends DependencyList | undefined, E extends Error>(
   createDataPromise: () => Promise<Data>,
   deps: Deps,
-): DataSourceResult<Data> {
+): DataSourceResult<Data, E> {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [data, setData] = useState<Data | null>(null)
   const [error, setError] = useState<E | null>(null)
