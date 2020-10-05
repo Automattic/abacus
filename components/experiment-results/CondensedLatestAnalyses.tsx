@@ -102,9 +102,11 @@ export default function CondensedLatestAnalyses({
 
   // ### Result Summary Visualizations
 
-  const primaryMetricAssignmentAnalysesData = allMetricAssignmentAnalysesData.find(({ metricAssignment: { isPrimary }}) => isPrimary) as MetricAssignmentAnalysesData
+  const primaryMetricAssignmentAnalysesData = allMetricAssignmentAnalysesData.find(
+    ({ metricAssignment: { isPrimary } }) => isPrimary,
+  ) as MetricAssignmentAnalysesData
   const strategy = Experiments.getDefaultAnalysisStrategy(experiment)
-  const analyses= primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc[strategy]
+  const analyses = primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc[strategy]
   const dates = analyses.map(({ analysisDatetime }) => analysisDatetime.toISOString())
 
   const plotlyDataParticipantGraph: Array<Partial<PlotData>> = [
@@ -276,7 +278,6 @@ function AnalysisDetailPanel({
   experiment: ExperimentFull
 }) {
   const classes = useAnalysisDetailStyles()
-  const theme = useTheme()
 
   const isConversion = metric.parameterType === MetricParameterType.Conversion
   const estimateTransform: (estimate: number | null) => number | null = isConversion

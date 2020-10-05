@@ -14,20 +14,19 @@ export const exposedParticipantsColor = '#33a02c88'
 
 // Unused internal colors: #fb9a9988, #e31a1c88, #fdbf6f88, #cab2d688, #b2df8a88
 
-
 // ## Plotly Setup
 
 export const plotlyLayoutDefault = {
-    autosize: true,
-    showlegend: false,
-    hoverlabel: {
-        // Don't restrict name lengths
-        namelength: -1,
-    },
-    margin: {
-      l: theme.spacing(4),
-      r: theme.spacing(2),
-      t: theme.spacing(8),
-      b: theme.spacing(6),
-    },
+  autosize: true,
+  showlegend: false,
+  hoverlabel: {
+    // Don't restrict name lengths
+    namelength: -1,
+  },
+  margin: {
+    l: theme.spacing(4),
+    r: theme.spacing(2),
+    t: theme.spacing(8),
+    b: theme.spacing(6),
+  },
 }
