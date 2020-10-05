@@ -110,6 +110,7 @@ async function assignMetric(
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<ExperimentBare[]> {
+  // istanbul ignore next; debug only
   const { experiments } = await experimentSummaryResponse.validate(
     await fetchApi('GET', isDebugMode() ? '/experiments?debug=true' : '/experiments'),
     { abortEarly: false },

@@ -26,7 +26,7 @@ import React, { useCallback, useState } from 'react'
 
 import { PlatformToHuman } from '@/lib/experiments'
 import { ExperimentFormData } from '@/lib/form-data'
-import { Platform, Segment, SegmentAssignmentNew, VariationNew } from '@/lib/schemas'
+import { Platform, Segment, SegmentAssignmentNew } from '@/lib/schemas'
 import { SegmentTypeToHuman } from '@/lib/segments'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -248,7 +248,7 @@ const Audience = ({
                 </TableRow>
               </TableHead>
               <TableBody>
-                {(formikProps.values.experiment.variations as VariationNew[]).map((variation, index) => {
+                {formikProps.values.experiment.variations.map((variation, index) => {
                   return (
                     // The key here needs to be changed for variable variations
                     <TableRow key={variation.name}>

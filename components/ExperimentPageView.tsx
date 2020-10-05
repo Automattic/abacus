@@ -1,3 +1,4 @@
+// istanbul ignore file; Even though it sits with components this is a "page" component
 import {
   Button,
   createStyles,

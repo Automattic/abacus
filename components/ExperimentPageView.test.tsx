@@ -92,6 +92,17 @@ test('experiment pages view renders debug view', async () => {
   await renderExperimentPageView({}, ExperimentView.Debug)
 })
 
+test('renders with an unknown experiment name', async () => {
+  await renderExperimentPageView(
+    {
+      experiment: {
+        name: null,
+      },
+    },
+    ExperimentView.Overview,
+  )
+})
+
 test('experiment page view renders with null experimentId without crashing', async () => {
   const metrics = Fixtures.createMetricBares(10)
   mockedMetricsApi.findAll.mockImplementationOnce(async () => metrics)

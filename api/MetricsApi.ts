@@ -47,6 +47,7 @@ async function put(metricId: number, newMetric: MetricFullNew): Promise<MetricFu
  * @throws UnauthorizedError
  */
 async function findAll(): Promise<MetricBare[]> {
+  // istanbul ignore next; debug only
   const { metrics } = await metricBareResponse.validate(
     await fetchApi('GET', isDebugMode() ? '/metrics?debug=true' : '/metrics'),
     {

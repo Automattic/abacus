@@ -12,7 +12,7 @@ interface ExperimentsAuthInfo {
 /**
  * Returns the saved Experiments authorization info if available and has not expired.
  */
-const getExperimentsAuthInfo = (localStorage: Storage): ExperimentsAuthInfo | null => {
+const getExperimentsAuthInfo = (): ExperimentsAuthInfo | null => {
   try {
     const experimentsAuthInfo = JSON.parse(
       localStorage.getItem('experiments_auth_info') || 'null',
@@ -21,20 +21,20 @@ const getExperimentsAuthInfo = (localStorage: Storage): ExperimentsAuthInfo | nu
       return experimentsAuthInfo
     }
   } catch (err) {
+    /* istanbul ignore next */
     console.error(err)
   }
   return null
 }
 
-const getExperimentsAuthInfoFromDefaultStorage = (): ExperimentsAuthInfo | null => getExperimentsAuthInfo(localStorage)
-
 /**
  * Saves the Experiments authorization info for later retrieval.
  *
  * @param {ExperimentsAuthInfo} experimentsAuthInfo
- * @param localStorage The localstorage implementation to use
  */
-const saveExperimentsAuthInfo = (experimentsAuthInfo: ExperimentsAuthInfo | null, localStorage: Storage): void => {
+const saveExperimentsAuthInfo: (experimentsAuthInfo: ExperimentsAuthInfo | null) => void = (
+  experimentsAuthInfo: ExperimentsAuthInfo | null,
+) => {
   if (experimentsAuthInfo === null) {
     localStorage.removeItem('experiments_auth_info')
   } else {
@@ -42,12 +42,4 @@ const saveExperimentsAuthInfo = (experimentsAuthInfo: ExperimentsAuthInfo | null
   }
 }
 
-const saveExperimentsAuthInfoToDefaultStorage = (experimentsAuthInfo: ExperimentsAuthInfo | null): void =>
-  saveExperimentsAuthInfo(experimentsAuthInfo, localStorage)
-
-export {
-  getExperimentsAuthInfo,
-  saveExperimentsAuthInfo,
-  getExperimentsAuthInfoFromDefaultStorage,
-  saveExperimentsAuthInfoToDefaultStorage,
-}
+export { getExperimentsAuthInfo, saveExperimentsAuthInfo }
