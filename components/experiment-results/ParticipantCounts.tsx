@@ -1,4 +1,4 @@
-import { last } from 'lodash'
+import _, { last } from 'lodash'
 import MaterialTable from 'material-table'
 import React from 'react'
 
@@ -38,7 +38,7 @@ export default function ParticipantCounts({
   return (
     <MaterialTable
       columns={tableColumns}
-      data={latestPrimaryMetricAnalyses}
+      data={_.sortBy(latestPrimaryMetricAnalyses, 'analysisStrategy')}
       options={createStaticTableOptions(latestPrimaryMetricAnalyses.length)}
     />
   )

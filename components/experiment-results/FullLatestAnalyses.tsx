@@ -86,7 +86,7 @@ export default function FullLatestAnalyses({
           </Typography>
           <MaterialTable
             columns={tableColumns}
-            data={latestAnalyses}
+            data={_.sortBy(latestAnalyses, 'analysisStrategy')}
             options={createStaticTableOptions(latestAnalyses.length)}
           />
           <br />
