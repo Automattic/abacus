@@ -120,8 +120,8 @@ export default function CondensedLatestAnalyses({
           line: {
             color: Visualizations.variantColors[index],
           },
-          mode: 'lines' as 'lines',
-          type: 'scatter' as 'scatter',
+          mode: 'lines' as const,
+          type: 'scatter' as const,
         },
       ]
     }),
