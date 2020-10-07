@@ -101,9 +101,9 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
   const classes = useStyles()
 
   // Metric Assignments
-  const [metricAssignmentsField, , metricAssignmentsFieldHelperProps] = useField<MetricAssignment[]>(
-    'experiment.metricAssignments',
-  )
+  const [metricAssignmentsField, _metricAssignmentsFieldMetaProps, metricAssignmentsFieldHelperProps] = useField<
+    MetricAssignment[]
+  >('experiment.metricAssignments')
   const [selectedMetricId, setSelectedMetricId] = useState<string>('')
   const onSelectedMetricChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setSelectedMetricId(event.target.value as string)
@@ -119,7 +119,9 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
   }
 
   // ### Exposure Events
-  const [exposureEventsField, ,] = useField<EventNew[]>('experiment.exposureEvents')
+  const [exposureEventsField, _exposureEventsFieldMetaProps, _exposureEventsFieldHelperProps] = useField<EventNew[]>(
+    'experiment.exposureEvents',
+  )
 
   return (
     <div className={classes.root}>
