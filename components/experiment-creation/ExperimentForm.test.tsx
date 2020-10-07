@@ -581,18 +581,19 @@ test('form submits an edited experiment without any changes', async () => {
 
   // We need to remove Ids, status, conclusion data, reformat exposure events to make it like new
   const newShapedExperiment = _.clone(experiment)
-  newShapedExperiment.experimentId = (undefined as unknown) as number
-  newShapedExperiment.status = (undefined as unknown) as Status
+  // @ts-ignore
+  delete newShapedExperiment.experimentId
+  // @ts-ignore
+  delete newShapedExperiment.status
   delete newShapedExperiment.conclusionUrl
   delete newShapedExperiment.deployedVariationId
   delete newShapedExperiment.endReason
-  newShapedExperiment.metricAssignments.forEach(
-    (metricAssignment) => (metricAssignment.metricAssignmentId = (undefined as unknown) as number),
-  )
-  newShapedExperiment.segmentAssignments.forEach(
-    (segmentAssignment) => (segmentAssignment.segmentAssignmentId = (undefined as unknown) as number),
-  )
-  newShapedExperiment.variations.forEach((variation) => (variation.variationId = (undefined as unknown) as number))
+  // @ts-ignore
+  newShapedExperiment.metricAssignments.forEach((metricAssignment) => delete metricAssignment.metricAssignmentId)
+  // @ts-ignore
+  newShapedExperiment.segmentAssignments.forEach((segmentAssignment) => delete segmentAssignment.segmentAssignmentId)
+  // @ts-ignore
+  newShapedExperiment.variations.forEach((variation) => delete variation.variationId)
   newShapedExperiment.exposureEvents?.forEach((exposureEvent) => {
     if (exposureEvent.props) {
       exposureEvent.props = _.toPairs(exposureEvent.props).map(([key, value]) => ({ key, value }))
