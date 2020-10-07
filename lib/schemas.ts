@@ -76,12 +76,6 @@ export const metricBareSchema = yup
   .camelCase()
 export type MetricBare = yup.InferType<typeof metricBareSchema>
 
-export const metricBareResponse = yup
-  .object({
-    metrics: yup.array(metricBareSchema).defined(),
-  })
-  .defined()
-
 export const metricFullSchema = metricBareSchema
   .shape({
     higherIsBetter: yup.boolean().defined(),
@@ -182,11 +176,6 @@ export const segmentSchema = yup
   .defined()
   .camelCase()
 export type Segment = yup.InferType<typeof segmentSchema>
-export const segmentResponseSchema = yup
-  .object({
-    segments: yup.array(segmentSchema).defined(),
-  })
-  .defined()
 
 export const segmentAssignmentNewSchema = yup
   .object({

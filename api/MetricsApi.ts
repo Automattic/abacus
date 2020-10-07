@@ -1,8 +1,9 @@
 import _ from 'lodash'
+import * as yup from 'yup'
 
 import {
   MetricBare,
-  metricBareResponse,
+  metricBareSchema,
   MetricFull,
   MetricFullNew,
   metricFullNewOutboundSchema,
@@ -48,12 +49,12 @@ async function put(metricId: number, newMetric: MetricFullNew): Promise<MetricFu
  */
 async function findAll(): Promise<MetricBare[]> {
   // istanbul ignore next; debug only
-  const { metrics } = await metricBareResponse.validate(
-    await fetchApi('GET', isDebugMode() ? '/metrics?debug=true' : '/metrics'),
-    {
+  const { metrics } = await yup
+    .object({ metrics: yup.array(metricBareSchema).defined() })
+    .defined()
+    .validate(await fetchApi('GET', isDebugMode() ? '/metrics?debug=true' : '/metrics'), {
       abortEarly: false,
-    },
-  )
+    })
   return metrics
 }
 
