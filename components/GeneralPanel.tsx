@@ -148,7 +148,7 @@ function GeneralPanel({
         <Typography className={classes.title} color='textPrimary' variant='h3'>
           General
         </Typography>
-        <Tooltip title={canEdit ? '' : 'Use \\"Edit in Wizard\\" for staging experiments.'}>
+        <Tooltip title={canEdit ? '' : 'Use "Edit in Wizard" for staging experiments.'}>
           <div>
             <Button onClick={onEdit} variant='outlined' disabled={!canEdit} aria-label='Edit Experiment General Data'>
               <Edit />

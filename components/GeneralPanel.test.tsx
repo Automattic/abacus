@@ -45,7 +45,7 @@ test('renders as expected', () => {
           </h3>
           <div
             class=""
-            title="Use \\\\\\"Edit in Wizard\\\\\\" for staging experiments."
+            title="Use \\"Edit in Wizard\\" for staging experiments."
           >
             <button
               aria-label="Edit Experiment General Data"
