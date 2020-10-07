@@ -1,5 +1,4 @@
 import { Button, Dialog, DialogActions, DialogContent, Tooltip, Typography } from '@material-ui/core'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 
@@ -8,12 +7,6 @@ import { ExperimentFull, Status } from '@/lib/schemas'
 
 import LoadingButtonContainer from './LoadingButtonContainer'
 
-const useStyles = makeStyles((_theme: Theme) =>
-  createStyles({
-    root: {},
-  }),
-)
-
 const ExperimentRunButton = ({
   experiment,
   experimentReloadRef,
@@ -21,8 +14,6 @@ const ExperimentRunButton = ({
   experiment: ExperimentFull | null
   experimentReloadRef: React.MutableRefObject<() => void>
 }): JSX.Element => {
-  useStyles()
-
   const { enqueueSnackbar } = useSnackbar()
 
   const canRunExperiment = experiment && experiment.status === Status.Staging
