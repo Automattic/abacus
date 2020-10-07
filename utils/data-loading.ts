@@ -35,11 +35,17 @@ export function useDataSource<Data, Deps extends DependencyList | undefined, E e
       setIsLoading(true)
       try {
         const data = await createDataPromise()
-        if (isSubscribed) setData(data)
+        if (isSubscribed) {
+          setData(data)
+        }
       } catch (error) {
-        if (isSubscribed) setError(error)
+        if (isSubscribed) {
+          setError(error)
+        }
       } finally {
-        if (isSubscribed) setIsLoading(false)
+        if (isSubscribed) {
+          setIsLoading(false)
+        }
       }
     }
     reloadRef.current()
