@@ -7,6 +7,7 @@ import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
 
+import { CompletionBag } from '@/api/AutocompleteApi'
 import { experimentToFormData } from '@/lib/form-data'
 import * as Normalizers from '@/lib/normalizers'
 import { experimentFullNewSchema, Status } from '@/lib/schemas'
@@ -46,7 +47,7 @@ function isSectionComplete(sectionButton: HTMLElement) {
   return !!sectionButton.querySelector('.MuiStepIcon-completed')
 }
 
-const completionBag = {
+const completionBag: CompletionBag = {
   userCompletionDataSource: {
     isLoading: false,
     error: null,

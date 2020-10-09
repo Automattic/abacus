@@ -131,7 +131,7 @@ const EventEditor = ({
   exposureEvent: EventNew
 }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const { isLoading, data: propList } = useDataSource(getPropNameCompletions(exposureEvent.event), [
+  const { isLoading, data: propList } = useDataSource(() => getPropNameCompletions(exposureEvent.event), [
     exposureEvent.event,
   ])
   const onRemoveExposureEvent = () => {
