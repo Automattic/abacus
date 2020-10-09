@@ -18,7 +18,7 @@ import {
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Add, Clear } from '@material-ui/icons'
 import { AutocompleteRenderInputParams } from '@material-ui/lab'
-import { Field, FieldArray, FieldArrayRenderProps, useField } from 'formik'
+import { Field, FieldArray, useField } from 'formik'
 import { Select, Switch, TextField } from 'formik-material-ui'
 import React, { useState } from 'react'
 
@@ -32,18 +32,6 @@ import { useDataSource } from '@/utils/data-loading'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
-    addMetric: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'flex-end',
-      margin: theme.spacing(3, 0, 2),
-    },
-    addMetricAddSymbol: {
-      position: 'relative',
-      top: -3,
-      marginRight: theme.spacing(2),
-      color: theme.palette.text.disabled,
-    },
     addMetricPlaceholder: {
       fontFamily: theme.typography.fontFamily,
     },
@@ -72,6 +60,30 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(4),
     },
+  }),
+)
+
+const useMetricEditorStyles = makeStyles((theme) =>
+  createStyles({
+    root: {},
+    addMetric: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+      margin: theme.spacing(3, 0, 2),
+    },
+    addMetricAddSymbol: {
+      position: 'relative',
+      top: -3,
+      marginRight: theme.spacing(2),
+      color: theme.palette.text.disabled,
+    },
+  }),
+)
+
+const useEventEditorStyles = makeStyles((theme) =>
+  createStyles({
+    root: {},
     exposureEventsEventNameCell: {
       display: 'flex',
       alignItems: 'center',
@@ -107,39 +119,22 @@ const createMetricAssignment = (metric: MetricBare) => {
 }
 
 const EventEditor = ({
-  arrayHelpers,
   index,
-  classes,
   completionBag: { eventCompletionDataSource },
-  exposureEvent,
+  exposureEvent: { event: name, props: propList },
+  onRemoveExposureEvent,
 }: {
-  arrayHelpers: FieldArrayRenderProps
   index: number
-  // todo: is this ok, or taboo?
-  classes: Record<
-    | 'exposureEventsEventNameCell'
-    | 'exposureEventsEventName'
-    | 'exposureEventsEventRemoveButton'
-    | 'exposureEventsEventPropertiesRow'
-    | 'addMetric'
-    | 'addMetricAddSymbol'
-    | 'exposureEventsEventPropertiesKey'
-    | 'exposureEventsEventPropertiesKeyAutoComplete',
-    string
-  >
   completionBag: CompletionBag
   exposureEvent: EventNew
+  onRemoveExposureEvent: () => void
 }) => {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const { isLoading, data: propList } = useDataSource(() => getPropNameCompletions(exposureEvent.event), [
-    exposureEvent.event,
-  ])
-  const onRemoveExposureEvent = () => {
-    arrayHelpers.remove(index)
-  }
+  const classes = useEventEditorStyles()
+  const metricClasses = useMetricEditorStyles()
+  const { isLoading, data: propCompletions } = useDataSource(() => getPropNameCompletions(name), [name])
 
   return (
-    <TableRow key={index}>
+    <TableRow>
       <TableCell>
         <div className={classes.exposureEventsEventNameCell}>
           <Field
@@ -186,8 +181,8 @@ const EventEditor = ({
             return (
               <div>
                 <div>
-                  {exposureEvent.props &&
-                    exposureEvent.props.map((_prop: unknown, propIndex: number) => {
+                  {propList &&
+                    propList.map((_prop: unknown, propIndex: number) => {
                       const onRemoveExposureEventProperty = () => {
                         arrayHelpers.remove(propIndex)
                       }
@@ -198,7 +193,7 @@ const EventEditor = ({
                             component={AbacusAutocomplete}
                             name={`experiment.exposureEvents[${index}].props[${propIndex}].key`}
                             id={`experiment.exposureEvents[${index}].props[${propIndex}].key`}
-                            options={propList}
+                            options={propCompletions}
                             loading={isLoading}
                             freeSolo={true}
                             className={classes.exposureEventsEventPropertiesKeyAutoComplete}
@@ -247,8 +242,8 @@ const EventEditor = ({
                       )
                     })}
                 </div>
-                <div className={classes.addMetric}>
-                  <Add className={classes.addMetricAddSymbol} />
+                <div className={metricClasses.addMetric}>
+                  <Add className={metricClasses.addMetricAddSymbol} />
                   <Button
                     variant='contained'
                     onClick={onAddExposureEventProperty}
@@ -276,6 +271,7 @@ const Metrics = ({
   completionBag: CompletionBag
 }): JSX.Element => {
   const classes = useStyles()
+  const metricEditorClasses = useMetricEditorStyles()
 
   // Metric Assignments
   const [metricAssignmentsField, _metricAssignmentsFieldMetaProps, metricAssignmentsFieldHelperProps] = useField<
@@ -444,8 +440,8 @@ const Metrics = ({
                   </TableBody>
                 </Table>
               </TableContainer>
-              <div className={classes.addMetric}>
-                <Add className={classes.addMetricAddSymbol} />
+              <div className={metricEditorClasses.addMetric}>
+                <Add className={metricEditorClasses.addMetricAddSymbol} />
                 <FormControl className={classes.addMetricSelect}>
                   <MuiSelect
                     labelId='add-metric-label'
@@ -492,7 +488,11 @@ const Metrics = ({
                 <Table>
                   <TableBody>
                     {exposureEventsField.value.map((exposureEvent, index) => (
-                      <EventEditor key={index} {...{ arrayHelpers, index, classes, completionBag, exposureEvent }} />
+                      <EventEditor
+                        key={index}
+                        {...{ arrayHelpers, index, classes, completionBag, exposureEvent }}
+                        onRemoveExposureEvent={() => arrayHelpers.remove(index)}
+                      />
                     ))}
                     {exposureEventsField.value.length === 0 && (
                       <TableRow>
@@ -506,8 +506,8 @@ const Metrics = ({
                   </TableBody>
                 </Table>
               </TableContainer>
-              <div className={classes.addMetric}>
-                <Add className={classes.addMetricAddSymbol} />
+              <div className={metricEditorClasses.addMetric}>
+                <Add className={metricEditorClasses.addMetricAddSymbol} />
                 <Button
                   variant='contained'
                   disableElevation
