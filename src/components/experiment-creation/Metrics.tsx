@@ -20,9 +20,9 @@ import { Field, FieldArray, useField } from 'formik'
 import { Select, Switch, TextField } from 'formik-material-ui'
 import React, { useState } from 'react'
 
-import MoreMenu from '@/components/MoreMenu'
-import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
-import { EventNew, MetricAssignment, MetricBare, MetricParameterType } from '@/lib/schemas'
+import MoreMenu from 'src/components/MoreMenu'
+import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
+import { EventNew, MetricAssignment, MetricBare, MetricParameterType } from 'src/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

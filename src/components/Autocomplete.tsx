@@ -3,7 +3,7 @@ import { Autocomplete } from '@material-ui/lab'
 import { AutocompleteProps, AutocompleteRenderInputParams, fieldToAutocomplete } from 'formik-material-ui-lab'
 import React, { useCallback } from 'react'
 
-import { AutocompleteItem } from '@/lib/schemas'
+import { AutocompleteItem } from 'src/lib/schemas'
 
 // We need to handle the cases where the form is initialized with a string, or when we have a specific value selected.
 // Also, it's possible that the option is null, though typescript asserts that it isn't possible.

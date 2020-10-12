@@ -1,8 +1,8 @@
 import React from 'react'
 
-import ExperimentDebug from '@/components/experiment-results/ExperimentDebug'
-import Fixtures from '@/test-helpers/fixtures'
-import { render } from '@/test-helpers/test-utils'
+import ExperimentDebug from 'src/components/experiment-results/ExperimentDebug'
+import Fixtures from 'src/test-helpers/fixtures'
+import { render } from 'src/test-helpers/test-utils'
 
 const experiment = Fixtures.createExperimentFull()
 const metrics = Fixtures.createMetricBares()

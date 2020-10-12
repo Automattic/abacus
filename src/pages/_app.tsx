@@ -6,11 +6,11 @@ import qs from 'querystring'
 import React from 'react'
 import * as yup from 'yup'
 
-import RenderErrorBoundary from '@/components/RenderErrorBoundary'
-import RenderErrorView from '@/components/RenderErrorView'
-import { config } from '@/config'
-import ThemeProvider from '@/styles/ThemeProvider'
-import { getExperimentsAuthInfo } from '@/utils/auth'
+import RenderErrorBoundary from 'src/components/RenderErrorBoundary'
+import RenderErrorView from 'src/components/RenderErrorView'
+import { config } from 'src/config'
+import ThemeProvider from 'src/styles/ThemeProvider'
+import { getExperimentsAuthInfo } from 'src/utils/auth'
 
 const debug = debugFactory('abacus:pages/_app.tsx')
 

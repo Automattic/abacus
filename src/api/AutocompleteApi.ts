@@ -1,6 +1,6 @@
-import { fetchApi } from '@/api/utils'
-import { AutocompleteItem, autocompleteSchema } from '@/lib/schemas'
-import { DataSourceResult } from '@/utils/data-loading'
+import { fetchApi } from 'src/api/utils'
+import { AutocompleteItem, autocompleteSchema } from 'src/lib/schemas'
+import { DataSourceResult } from 'src/utils/data-loading'
 
 export interface CompletionBag {
   userCompletionDataSource: DataSourceResult<AutocompleteItem[]>

@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-import Fixtures from '@/test-helpers/fixtures'
+import Fixtures from 'src/test-helpers/fixtures'
 
 import * as MetricAssignments from './metric-assignments'
 import { AttributionWindowSeconds } from './schemas'

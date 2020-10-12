@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/require-await */
 import MockDate from 'mockdate'
 
-import ExperimentsApi from '@/api/ExperimentsApi'
-import * as Utils from '@/api/utils'
-import Fixtures from '@/test-helpers/fixtures'
-import { validationErrorDisplayer } from '@/test-helpers/test-utils'
+import ExperimentsApi from 'src/api/ExperimentsApi'
+import * as Utils from 'src/api/utils'
+import Fixtures from 'src/test-helpers/fixtures'
+import { validationErrorDisplayer } from 'src/test-helpers/test-utils'
 
 MockDate.set('2020-08-13')
 
-jest.mock('@/api/utils')
+jest.mock('src/api/utils')
 const mockedUtils = Utils as jest.Mocked<typeof Utils>
 
 describe('ExperimentsApi.ts module', () => {

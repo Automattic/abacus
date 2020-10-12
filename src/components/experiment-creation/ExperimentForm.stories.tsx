@@ -2,12 +2,12 @@
 
 import React from 'react'
 
-import { getUserCompletions } from '@/api/AutocompleteApi'
-import { experimentToFormData } from '@/lib/form-data'
-import * as Normalizers from '@/lib/normalizers'
-import { Platform, Status } from '@/lib/schemas'
-import Fixtures from '@/test-helpers/fixtures'
-import { useDataSource } from '@/utils/data-loading'
+import { getUserCompletions } from 'src/api/AutocompleteApi'
+import { experimentToFormData } from 'src/lib/form-data'
+import * as Normalizers from 'src/lib/normalizers'
+import { Platform, Status } from 'src/lib/schemas'
+import Fixtures from 'src/test-helpers/fixtures'
+import { useDataSource } from 'src/utils/data-loading'
 
 import ExperimentForm from './ExperimentForm'
 

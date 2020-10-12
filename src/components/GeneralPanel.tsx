@@ -21,12 +21,12 @@ import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 import * as yup from 'yup'
 
-import ExperimentsApi from '@/api/ExperimentsApi'
-import DatetimeText from '@/components/DatetimeText'
-import ExperimentStatus from '@/components/ExperimentStatus'
-import LabelValueTable from '@/components/LabelValueTable'
-import { ExperimentFull, experimentFullSchema, Status, yupPick } from '@/lib/schemas'
-import { formatIsoDate } from '@/utils/time'
+import ExperimentsApi from 'src/api/ExperimentsApi'
+import DatetimeText from 'src/components/DatetimeText'
+import ExperimentStatus from 'src/components/ExperimentStatus'
+import LabelValueTable from 'src/components/LabelValueTable'
+import { ExperimentFull, experimentFullSchema, Status, yupPick } from 'src/lib/schemas'
+import { formatIsoDate } from 'src/utils/time'
 
 import LoadingButtonContainer from './LoadingButtonContainer'
 

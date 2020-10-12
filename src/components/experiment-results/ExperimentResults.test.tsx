@@ -2,10 +2,10 @@ import { fireEvent, getAllByText, getByText, waitFor } from '@testing-library/re
 import React from 'react'
 import Plot from 'react-plotly.js'
 
-import ExperimentResults from '@/components/experiment-results/ExperimentResults'
-import { MetricParameterType } from '@/lib/schemas'
-import Fixtures from '@/test-helpers/fixtures'
-import { render } from '@/test-helpers/test-utils'
+import ExperimentResults from 'src/components/experiment-results/ExperimentResults'
+import { MetricParameterType } from 'src/lib/schemas'
+import Fixtures from 'src/test-helpers/fixtures'
+import { render } from 'src/test-helpers/test-utils'
 
 // Unfortunately Plotly doesn't produce graphs with deterministic IDs so we have to mock it
 jest.mock('react-plotly.js')

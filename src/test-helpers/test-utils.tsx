@@ -5,7 +5,7 @@ import { Formik, FormikValues } from 'formik'
 import React from 'react'
 import { ValidationError } from 'yup'
 
-import ThemeProvider from '@/styles/ThemeProvider'
+import ThemeProvider from 'src/styles/ThemeProvider'
 
 /**
  * A wrapped unit-test react-renderer, useful for adding React Contexts globally.

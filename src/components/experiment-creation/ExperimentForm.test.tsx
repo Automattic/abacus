@@ -7,12 +7,12 @@ import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
 
-import { experimentToFormData } from '@/lib/form-data'
-import * as Normalizers from '@/lib/normalizers'
-import { experimentFullNewSchema, Status } from '@/lib/schemas'
-import Fixtures from '@/test-helpers/fixtures'
-import { changeFieldByRole, render, validationErrorDisplayer } from '@/test-helpers/test-utils'
-import { formatIsoDate } from '@/utils/time'
+import { experimentToFormData } from 'src/lib/form-data'
+import * as Normalizers from 'src/lib/normalizers'
+import { experimentFullNewSchema, Status } from 'src/lib/schemas'
+import Fixtures from 'src/test-helpers/fixtures'
+import { changeFieldByRole, render, validationErrorDisplayer } from 'src/test-helpers/test-utils'
+import { formatIsoDate } from 'src/utils/time'
 
 import ExperimentForm from './ExperimentForm'
 

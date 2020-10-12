@@ -1,10 +1,10 @@
 import MockDate from 'mockdate'
 
-import ExperimentsApi from '@/api/ExperimentsApi'
-import { ExperimentFull, ExperimentFullNew, experimentFullNewOutboundSchema, Status } from '@/lib/schemas'
-import Fixtures from '@/test-helpers/fixtures'
-import { validationErrorDisplayer } from '@/test-helpers/test-utils'
-import { formatIsoDate } from '@/utils/time'
+import ExperimentsApi from 'src/api/ExperimentsApi'
+import { ExperimentFull, ExperimentFullNew, experimentFullNewOutboundSchema, Status } from 'src/lib/schemas'
+import Fixtures from 'src/test-helpers/fixtures'
+import { validationErrorDisplayer } from 'src/test-helpers/test-utils'
+import { formatIsoDate } from 'src/utils/time'
 
 MockDate.set('2020-08-13')
 

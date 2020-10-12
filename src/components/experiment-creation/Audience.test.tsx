@@ -3,8 +3,8 @@ import { act, fireEvent, render, screen } from '@testing-library/react'
 import { Formik, FormikProps } from 'formik'
 import React from 'react'
 
-import { ExperimentFormData, experimentToFormData } from '@/lib/form-data'
-import { Segment, SegmentType } from '@/lib/schemas'
+import { ExperimentFormData, experimentToFormData } from 'src/lib/form-data'
+import { Segment, SegmentType } from 'src/lib/schemas'
 
 import Audience from './Audience'
 

@@ -1,5 +1,5 @@
-import AnalysesApi from '@/api/AnalysesApi'
-import { validationErrorDisplayer } from '@/test-helpers/test-utils'
+import AnalysesApi from 'src/api/AnalysesApi'
+import { validationErrorDisplayer } from 'src/test-helpers/test-utils'
 
 describe('AnalysesApi.ts module', () => {
   describe('findByExperimentId', () => {

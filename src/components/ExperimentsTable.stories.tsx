@@ -1,7 +1,7 @@
 import addToDate from 'date-fns/add'
 import React from 'react'
 
-import { ExperimentBare, Platform, Status } from '@/lib/schemas'
+import { ExperimentBare, Platform, Status } from 'src/lib/schemas'
 
 import ExperimentsTable from './ExperimentsTable'
 

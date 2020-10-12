@@ -4,15 +4,15 @@ import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
 
-import ExperimentsApi from '@/api/ExperimentsApi'
-import Fixtures from '@/test-helpers/fixtures'
-import { render } from '@/test-helpers/test-utils'
+import ExperimentsApi from 'src/api/ExperimentsApi'
+import Fixtures from 'src/test-helpers/fixtures'
+import { render } from 'src/test-helpers/test-utils'
 
 import ExperimentDisableButton from './ExperimentDisableButton'
 
 MockDate.set('2020-07-21')
 
-jest.mock('@/api/ExperimentsApi')
+jest.mock('src/api/ExperimentsApi')
 const mockedExperimentsApi = ExperimentsApi as jest.Mocked<typeof ExperimentsApi>
 
 jest.mock('notistack')

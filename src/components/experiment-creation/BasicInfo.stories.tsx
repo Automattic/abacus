@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { getUserCompletions } from '@/api/AutocompleteApi'
-import { MockFormik } from '@/test-helpers/test-utils'
-import { useDataSource } from '@/utils/data-loading'
+import { getUserCompletions } from 'src/api/AutocompleteApi'
+import { MockFormik } from 'src/test-helpers/test-utils'
+import { useDataSource } from 'src/utils/data-loading'
 
 import BasicInfo from './BasicInfo'
 

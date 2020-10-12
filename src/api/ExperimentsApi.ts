@@ -14,8 +14,8 @@ import {
   metricAssignmentNewSchema,
   Status,
   yupPick,
-} from '@/lib/schemas'
-import { isDebugMode } from '@/utils/general'
+} from 'src/lib/schemas'
+import { isDebugMode } from 'src/utils/general'
 
 import { fetchApi } from './utils'
 

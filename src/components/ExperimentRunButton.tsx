@@ -2,8 +2,8 @@ import { Button, Dialog, DialogActions, DialogContent, Tooltip, Typography } fro
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 
-import ExperimentsApi from '@/api/ExperimentsApi'
-import { ExperimentFull, Status } from '@/lib/schemas'
+import ExperimentsApi from 'src/api/ExperimentsApi'
+import { ExperimentFull, Status } from 'src/lib/schemas'
 
 import LoadingButtonContainer from './LoadingButtonContainer'
 

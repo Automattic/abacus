@@ -4,7 +4,7 @@ import { toInt } from 'qc-to_int'
 import qs from 'querystring'
 import React, { useEffect, useState } from 'react'
 
-import { saveExperimentsAuthInfo } from '@/utils/auth'
+import { saveExperimentsAuthInfo } from 'src/utils/auth'
 
 const debug = debugFactory('abacus:pages/auth.tsx')
 

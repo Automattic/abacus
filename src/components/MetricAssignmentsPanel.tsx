@@ -28,10 +28,10 @@ import { useSnackbar } from 'notistack'
 import React, { useMemo, useState } from 'react'
 import * as yup from 'yup'
 
-import ExperimentsApi from '@/api/ExperimentsApi'
-import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
-import * as MetricAssignments from '@/lib/metric-assignments'
-import { indexMetrics } from '@/lib/normalizers'
+import ExperimentsApi from 'src/api/ExperimentsApi'
+import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
+import * as MetricAssignments from 'src/lib/metric-assignments'
+import { indexMetrics } from 'src/lib/normalizers'
 import {
   ExperimentFull,
   MetricAssignment,
@@ -40,8 +40,8 @@ import {
   MetricBare,
   MetricParameterType,
   Status,
-} from '@/lib/schemas'
-import { formatBoolean, formatUsCurrencyDollar } from '@/utils/formatters'
+} from 'src/lib/schemas'
+import { formatBoolean, formatUsCurrencyDollar } from 'src/utils/formatters'
 
 import LoadingButtonContainer from './LoadingButtonContainer'
 

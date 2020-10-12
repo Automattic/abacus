@@ -4,8 +4,8 @@ import { Field, FormikProps } from 'formik'
 import { fieldToTextField, RadioGroup, Switch, TextField, TextFieldProps } from 'formik-material-ui'
 import React, { useEffect } from 'react'
 
-import { MetricFormData } from '@/lib/form-data'
-import { MetricParameterType } from '@/lib/schemas'
+import { MetricFormData } from 'src/lib/form-data'
+import { MetricParameterType } from 'src/lib/schemas'
 
 import DebugOutput from './DebugOutput'
 

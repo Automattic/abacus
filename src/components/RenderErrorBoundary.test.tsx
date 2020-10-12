@@ -2,8 +2,8 @@
 import { fireEvent } from '@testing-library/react'
 import React from 'react'
 
-import BadComponent from '@/test-helpers/BadComponent'
-import { render } from '@/test-helpers/test-utils'
+import BadComponent from 'src/test-helpers/BadComponent'
+import { render } from 'src/test-helpers/test-utils'
 
 import RenderErrorBoundary from './RenderErrorBoundary'
 

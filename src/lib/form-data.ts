@@ -1,4 +1,4 @@
-import { formatIsoDate } from '@/utils/time'
+import { formatIsoDate } from 'src/utils/time'
 
 import {
   Event,

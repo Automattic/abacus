@@ -1,6 +1,6 @@
 import React from 'react'
 
-import MetricsTable from '@/components/MetricsTable'
+import MetricsTable from 'src/components/MetricsTable'
 
 import Fixtures from '../test-helpers/fixtures'
 

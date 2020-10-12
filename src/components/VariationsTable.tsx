@@ -7,8 +7,8 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import React from 'react'
 
-import { ExperimentFull, nameSchema } from '@/lib/schemas'
-import * as Variations from '@/lib/variations'
+import { ExperimentFull, nameSchema } from 'src/lib/schemas'
+import * as Variations from 'src/lib/variations'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

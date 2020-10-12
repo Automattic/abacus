@@ -1,5 +1,5 @@
-import { config } from '@/config'
-import { getExperimentsAuthInfo } from '@/utils/auth'
+import { config } from 'src/config'
+import { getExperimentsAuthInfo } from 'src/utils/auth'
 
 import NotFoundError from './NotFoundError'
 import UnauthorizedError from './UnauthorizedError'

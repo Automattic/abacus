@@ -18,10 +18,10 @@ import { PlotData } from 'plotly.js'
 import React from 'react'
 import Plot from 'react-plotly.js'
 
-import DatetimeText from '@/components/DatetimeText'
-import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from '@/lib/analyses'
-import * as Experiments from '@/lib/experiments'
-import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
+import DatetimeText from 'src/components/DatetimeText'
+import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from 'src/lib/analyses'
+import * as Experiments from 'src/lib/experiments'
+import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
 import {
   Analysis,
   AnalysisStrategy,
@@ -29,10 +29,10 @@ import {
   MetricAssignment,
   MetricBare,
   MetricParameterType,
-} from '@/lib/schemas'
-import * as Variations from '@/lib/variations'
-import * as Visualizations from '@/lib/visualizations'
-import { createStaticTableOptions } from '@/utils/material-table'
+} from 'src/lib/schemas'
+import * as Variations from 'src/lib/variations'
+import * as Visualizations from 'src/lib/visualizations'
+import { createStaticTableOptions } from 'src/utils/material-table'
 
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
 import RecommendationString from './RecommendationString'

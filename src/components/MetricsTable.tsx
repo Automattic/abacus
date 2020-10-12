@@ -14,11 +14,11 @@ import debugFactory from 'debug'
 import MaterialTable from 'material-table'
 import React from 'react'
 
-import MetricsApi from '@/api/MetricsApi'
-import { MetricBare } from '@/lib/schemas'
-import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
-import { formatBoolean } from '@/utils/formatters'
-import { defaultTableOptions } from '@/utils/material-table'
+import MetricsApi from 'src/api/MetricsApi'
+import { MetricBare } from 'src/lib/schemas'
+import { useDataLoadingError, useDataSource } from 'src/utils/data-loading'
+import { formatBoolean } from 'src/utils/formatters'
+import { defaultTableOptions } from 'src/utils/material-table'
 
 const debug = debugFactory('abacus:components/MetricsTable.tsx')
 

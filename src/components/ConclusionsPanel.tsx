@@ -22,11 +22,11 @@ import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 import * as yup from 'yup'
 
-import ExperimentsApi from '@/api/ExperimentsApi'
-import LabelValueTable from '@/components/LabelValueTable'
-import LoadingButtonContainer from '@/components/LoadingButtonContainer'
-import * as Experiments from '@/lib/experiments'
-import { ExperimentFull, experimentFullSchema, yupPick } from '@/lib/schemas'
+import ExperimentsApi from 'src/api/ExperimentsApi'
+import LabelValueTable from 'src/components/LabelValueTable'
+import LoadingButtonContainer from 'src/components/LoadingButtonContainer'
+import * as Experiments from 'src/lib/experiments'
+import { ExperimentFull, experimentFullSchema, yupPick } from 'src/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

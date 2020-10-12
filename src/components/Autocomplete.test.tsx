@@ -9,9 +9,9 @@ import AbacusAutocomplete, {
   autocompleteAttributes,
   autocompleteInputProps,
   getOptionValue,
-} from '@/components/Autocomplete'
-import { AutocompleteItem } from '@/lib/schemas'
-import { changeFieldByRole, MockFormik } from '@/test-helpers/test-utils'
+} from 'src/components/Autocomplete'
+import { AutocompleteItem } from 'src/lib/schemas'
+import { changeFieldByRole, MockFormik } from 'src/test-helpers/test-utils'
 
 // Needed for testing the autocomplete popper
 document.createRange = () => ({

@@ -24,10 +24,10 @@ import { AutocompleteProps, AutocompleteRenderInputParams, fieldToAutocomplete }
 import _ from 'lodash'
 import React, { useCallback, useState } from 'react'
 
-import { PlatformToHuman } from '@/lib/experiments'
-import { ExperimentFormData } from '@/lib/form-data'
-import { Platform, Segment, SegmentAssignmentNew } from '@/lib/schemas'
-import { SegmentTypeToHuman } from '@/lib/segments'
+import { PlatformToHuman } from 'src/lib/experiments'
+import { ExperimentFormData } from 'src/lib/form-data'
+import { Platform, Segment, SegmentAssignmentNew } from 'src/lib/schemas'
+import { SegmentTypeToHuman } from 'src/lib/segments'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

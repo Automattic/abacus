@@ -1,8 +1,8 @@
-import MetricsApi from '@/api/MetricsApi'
-import NotFoundError from '@/api/NotFoundError'
-import { metricFullNewOutboundSchema, TransactionTypes } from '@/lib/schemas'
-import Fixtures from '@/test-helpers/fixtures'
-import { validationErrorDisplayer } from '@/test-helpers/test-utils'
+import MetricsApi from 'src/api/MetricsApi'
+import NotFoundError from 'src/api/NotFoundError'
+import { metricFullNewOutboundSchema, TransactionTypes } from 'src/lib/schemas'
+import Fixtures from 'src/test-helpers/fixtures'
+import { validationErrorDisplayer } from 'src/test-helpers/test-utils'
 
 describe('MetricsApi.ts module', () => {
   describe('outbound form', () => {

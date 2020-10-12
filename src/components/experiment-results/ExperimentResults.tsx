@@ -1,9 +1,9 @@
 import _ from 'lodash'
 import React from 'react'
 
-import * as MetricAssignments from '@/lib/metric-assignments'
-import { indexMetrics } from '@/lib/normalizers'
-import { Analysis, AnalysisStrategy, ExperimentFull, MetricAssignment, MetricBare } from '@/lib/schemas'
+import * as MetricAssignments from 'src/lib/metric-assignments'
+import { indexMetrics } from 'src/lib/normalizers'
+import { Analysis, AnalysisStrategy, ExperimentFull, MetricAssignment, MetricBare } from 'src/lib/schemas'
 
 import CondensedLatestAnalyses from './CondensedLatestAnalyses'
 

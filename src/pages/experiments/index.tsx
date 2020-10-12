@@ -2,10 +2,10 @@ import { LinearProgress } from '@material-ui/core'
 import debugFactory from 'debug'
 import React from 'react'
 
-import ExperimentsApi from '@/api/ExperimentsApi'
-import ExperimentsTable from '@/components/ExperimentsTable'
-import Layout from '@/components/Layout'
-import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
+import ExperimentsApi from 'src/api/ExperimentsApi'
+import ExperimentsTable from 'src/components/ExperimentsTable'
+import Layout from 'src/components/Layout'
+import { useDataLoadingError, useDataSource } from 'src/utils/data-loading'
 
 const debug = debugFactory('abacus:pages/experiments/index.tsx')
 

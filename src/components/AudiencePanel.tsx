@@ -3,11 +3,11 @@ import { TableCellProps } from '@material-ui/core/TableCell'
 import _ from 'lodash'
 import React, { useMemo } from 'react'
 
-import LabelValueTable from '@/components/LabelValueTable'
-import SegmentsTable from '@/components/SegmentsTable'
-import VariationsTable from '@/components/VariationsTable'
-import { ExperimentFull, Segment, SegmentAssignment, SegmentType } from '@/lib/schemas'
-import theme from '@/styles/theme'
+import LabelValueTable from 'src/components/LabelValueTable'
+import SegmentsTable from 'src/components/SegmentsTable'
+import VariationsTable from 'src/components/VariationsTable'
+import { ExperimentFull, Segment, SegmentAssignment, SegmentType } from 'src/lib/schemas'
+import theme from 'src/styles/theme'
 
 /**
  * Resolves the segment ID of the segment assignment with the actual segment.

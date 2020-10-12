@@ -1,8 +1,8 @@
 import React from 'react'
 
-import RenderErrorBoundary from '@/components/RenderErrorBoundary'
-import Fixtures from '@/test-helpers/fixtures'
-import { render } from '@/test-helpers/test-utils'
+import RenderErrorBoundary from 'src/components/RenderErrorBoundary'
+import Fixtures from 'src/test-helpers/fixtures'
+import { render } from 'src/test-helpers/test-utils'
 
 import AudiencePanel from './AudiencePanel'
 

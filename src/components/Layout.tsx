@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { ReactNode } from 'react'
 
-import { isTestingProductionConfigInDevelopment } from '@/config'
-import { isDebugMode, toggleDebugMode } from '@/utils/general'
+import { isTestingProductionConfigInDevelopment } from 'src/config'
+import { isDebugMode, toggleDebugMode } from 'src/utils/general'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

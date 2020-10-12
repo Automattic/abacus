@@ -1,11 +1,11 @@
 import _ from 'lodash'
 import React from 'react'
 
-import DebugOutput from '@/components/DebugOutput'
-import * as Experiments from '@/lib/experiments'
-import * as MetricAssignments from '@/lib/metric-assignments'
-import { indexMetrics } from '@/lib/normalizers'
-import { Analysis, AnalysisStrategy, ExperimentFull, MetricBare } from '@/lib/schemas'
+import DebugOutput from 'src/components/DebugOutput'
+import * as Experiments from 'src/lib/experiments'
+import * as MetricAssignments from 'src/lib/metric-assignments'
+import { indexMetrics } from 'src/lib/normalizers'
+import { Analysis, AnalysisStrategy, ExperimentFull, MetricBare } from 'src/lib/schemas'
 
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
 import FullLatestAnalyses from './FullLatestAnalyses'

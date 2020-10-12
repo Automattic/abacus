@@ -24,7 +24,7 @@ import {
   SegmentType,
   Status,
   TransactionTypes,
-} from '@/lib/schemas'
+} from 'src/lib/schemas'
 
 function createAnalysis(fieldOverrides: Partial<Analysis>): Analysis {
   return {

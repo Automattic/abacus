@@ -2,13 +2,13 @@ import { fireEvent, getByText, getDefaultNormalizer, screen, waitFor } from '@te
 import * as notistack from 'notistack'
 import React from 'react'
 
-import MetricsApi from '@/api/MetricsApi'
-import Fixtures from '@/test-helpers/fixtures'
-import { render } from '@/test-helpers/test-utils'
+import MetricsApi from 'src/api/MetricsApi'
+import Fixtures from 'src/test-helpers/fixtures'
+import { render } from 'src/test-helpers/test-utils'
 
 import MetricsTable from './MetricsTable'
 
-jest.mock('@/api/MetricsApi')
+jest.mock('src/api/MetricsApi')
 const mockedMetricsApi = (MetricsApi as unknown) as jest.Mocked<typeof MetricsApi>
 
 jest.mock('notistack')

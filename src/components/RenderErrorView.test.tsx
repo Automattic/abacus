@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react'
 
-import { render } from '@/test-helpers/test-utils'
+import { render } from 'src/test-helpers/test-utils'
 
 import RenderErrorView from './RenderErrorView'
 

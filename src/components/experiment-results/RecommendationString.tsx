@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ExperimentFull, Recommendation } from '@/lib/schemas'
+import { ExperimentFull, Recommendation } from 'src/lib/schemas'
 
 /**
  * Convert a recommendation's endExperiment and chosenVariationId fields to a human-friendly description.

@@ -3,9 +3,9 @@ import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
 
-import { Status } from '@/lib/schemas'
-import Fixtures from '@/test-helpers/fixtures'
-import { createMatchMedia, render } from '@/test-helpers/test-utils'
+import { Status } from 'src/lib/schemas'
+import Fixtures from 'src/test-helpers/fixtures'
+import { createMatchMedia, render } from 'src/test-helpers/test-utils'
 
 import ExperimentDetails from './ExperimentDetails'
 

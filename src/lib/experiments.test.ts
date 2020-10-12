@@ -1,4 +1,4 @@
-import Fixtures from '@/test-helpers/fixtures'
+import Fixtures from 'src/test-helpers/fixtures'
 
 import * as Experiments from './experiments'
 import { AnalysisStrategy } from './schemas'

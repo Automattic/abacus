@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Status } from '@/lib/schemas'
+import { Status } from 'src/lib/schemas'
 
 import ExperimentStatus from './ExperimentStatus'
 

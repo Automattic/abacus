@@ -1,6 +1,6 @@
 import { Options } from 'material-table'
 
-import theme from '@/styles/theme'
+import theme from 'src/styles/theme'
 
 /**
  * Default table options for dynamic MaterialTable instances.

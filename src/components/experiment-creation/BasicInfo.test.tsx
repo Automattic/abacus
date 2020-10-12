@@ -2,9 +2,9 @@ import { act, fireEvent, getByLabelText, render } from '@testing-library/react'
 import MockDate from 'mockdate'
 import React from 'react'
 
-import { AutocompleteItem } from '@/lib/schemas'
-import { MockFormik } from '@/test-helpers/test-utils'
-import { DataSourceResult } from '@/utils/data-loading'
+import { AutocompleteItem } from 'src/lib/schemas'
+import { MockFormik } from 'src/test-helpers/test-utils'
+import { DataSourceResult } from 'src/utils/data-loading'
 
 import BasicInfo from './BasicInfo'
 

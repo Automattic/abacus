@@ -3,12 +3,12 @@ import _, { last } from 'lodash'
 import MaterialTable from 'material-table'
 import React from 'react'
 
-import DatetimeText from '@/components/DatetimeText'
-import RecommendationString from '@/components/experiment-results/RecommendationString'
-import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from '@/lib/analyses'
-import { AttributionWindowSecondsToHuman } from '@/lib/metric-assignments'
-import { Analysis, ExperimentFull } from '@/lib/schemas'
-import { createStaticTableOptions } from '@/utils/material-table'
+import DatetimeText from 'src/components/DatetimeText'
+import RecommendationString from 'src/components/experiment-results/RecommendationString'
+import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from 'src/lib/analyses'
+import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
+import { Analysis, ExperimentFull } from 'src/lib/schemas'
+import { createStaticTableOptions } from 'src/utils/material-table'
 
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
 

@@ -1,6 +1,6 @@
 import MockDate from 'mockdate'
 
-import Fixtures from '@/test-helpers/fixtures'
+import Fixtures from 'src/test-helpers/fixtures'
 
 import { experimentToFormData, metricToFormData } from './form-data'
 

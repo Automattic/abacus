@@ -2,10 +2,10 @@ import _, { last } from 'lodash'
 import MaterialTable from 'material-table'
 import React from 'react'
 
-import { AnalysisStrategyToHuman } from '@/lib/analyses'
-import { Analysis, ExperimentFull } from '@/lib/schemas'
-import * as Variations from '@/lib/variations'
-import { createStaticTableOptions } from '@/utils/material-table'
+import { AnalysisStrategyToHuman } from 'src/lib/analyses'
+import { Analysis, ExperimentFull } from 'src/lib/schemas'
+import * as Variations from 'src/lib/variations'
+import { createStaticTableOptions } from 'src/utils/material-table'
 
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
 

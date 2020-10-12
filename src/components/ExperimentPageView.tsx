@@ -15,22 +15,22 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import React from 'react'
 
-import AnalysesApi from '@/api/AnalysesApi'
-import ExperimentsApi from '@/api/ExperimentsApi'
-import MetricsApi from '@/api/MetricsApi'
-import SegmentsApi from '@/api/SegmentsApi'
-import ExperimentCodeSetup from '@/components/ExperimentCodeSetup'
-import ExperimentDetails from '@/components/ExperimentDetails'
-import ExperimentDisableButton from '@/components/ExperimentDisableButton'
-import Layout from '@/components/Layout'
-import { Analysis, ExperimentFull, Status } from '@/lib/schemas'
-import { useDataLoadingError, useDataSource } from '@/utils/data-loading'
-import { createUnresolvingPromise, or } from '@/utils/general'
+import AnalysesApi from 'src/api/AnalysesApi'
+import ExperimentsApi from 'src/api/ExperimentsApi'
+import MetricsApi from 'src/api/MetricsApi'
+import SegmentsApi from 'src/api/SegmentsApi'
+import ExperimentCodeSetup from 'src/components/ExperimentCodeSetup'
+import ExperimentDetails from 'src/components/ExperimentDetails'
+import ExperimentDisableButton from 'src/components/ExperimentDisableButton'
+import Layout from 'src/components/Layout'
+import { Analysis, ExperimentFull, Status } from 'src/lib/schemas'
+import { useDataLoadingError, useDataSource } from 'src/utils/data-loading'
+import { createUnresolvingPromise, or } from 'src/utils/general'
 
 import ExperimentDebug from './experiment-results/ExperimentDebug'
 import ExperimentRunButton from './ExperimentRunButton'
 
-const NoSsrExperimentResults = dynamic(() => import('@/components/experiment-results/ExperimentResults'), {
+const NoSsrExperimentResults = dynamic(() => import('src/components/experiment-results/ExperimentResults'), {
   ssr: false,
 })
 

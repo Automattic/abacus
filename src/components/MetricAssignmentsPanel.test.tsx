@@ -4,14 +4,14 @@ import { noop } from 'lodash'
 import * as notistack from 'notistack'
 import React from 'react'
 
-import ExperimentsApi from '@/api/ExperimentsApi'
-import { Status } from '@/lib/schemas'
-import Fixtures from '@/test-helpers/fixtures'
-import { changeFieldByRole, render } from '@/test-helpers/test-utils'
+import ExperimentsApi from 'src/api/ExperimentsApi'
+import { Status } from 'src/lib/schemas'
+import Fixtures from 'src/test-helpers/fixtures'
+import { changeFieldByRole, render } from 'src/test-helpers/test-utils'
 
 import MetricAssignmentsPanel from './MetricAssignmentsPanel'
 
-jest.mock('@/api/ExperimentsApi')
+jest.mock('src/api/ExperimentsApi')
 const mockedExperimentsApi = ExperimentsApi as jest.Mocked<typeof ExperimentsApi>
 
 jest.mock('notistack')

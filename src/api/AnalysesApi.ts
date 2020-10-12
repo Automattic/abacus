@@ -1,4 +1,4 @@
-import { Analysis, analysisResponseSchema } from '@/lib/schemas'
+import { Analysis, analysisResponseSchema } from 'src/lib/schemas'
 
 import { fetchApi } from './utils'
 

@@ -1,6 +1,6 @@
 import * as yup from 'yup'
 
-import { Segment, segmentSchema } from '@/lib/schemas'
+import { Segment, segmentSchema } from 'src/lib/schemas'
 
 import { fetchApi } from './utils'
 

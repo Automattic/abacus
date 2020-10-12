@@ -4,28 +4,28 @@ import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
 
-import AnalysesApi from '@/api/AnalysesApi'
-import ExperimentsApi from '@/api/ExperimentsApi'
-import MetricsApi from '@/api/MetricsApi'
-import SegmentsApi from '@/api/SegmentsApi'
-import { Status } from '@/lib/schemas'
-import Fixtures from '@/test-helpers/fixtures'
-import { render } from '@/test-helpers/test-utils'
+import AnalysesApi from 'src/api/AnalysesApi'
+import ExperimentsApi from 'src/api/ExperimentsApi'
+import MetricsApi from 'src/api/MetricsApi'
+import SegmentsApi from 'src/api/SegmentsApi'
+import { Status } from 'src/lib/schemas'
+import Fixtures from 'src/test-helpers/fixtures'
+import { render } from 'src/test-helpers/test-utils'
 
 import ExperimentPageView, { ExperimentView } from './ExperimentPageView'
 
 MockDate.set('2020-07-21')
 
-jest.mock('@/api/ExperimentsApi')
+jest.mock('src/api/ExperimentsApi')
 const mockedExperimentsApi = ExperimentsApi as jest.Mocked<typeof ExperimentsApi>
 
-jest.mock('@/api/MetricsApi')
+jest.mock('src/api/MetricsApi')
 const mockedMetricsApi = MetricsApi as jest.Mocked<typeof MetricsApi>
 
-jest.mock('@/api/SegmentsApi')
+jest.mock('src/api/SegmentsApi')
 const mockedSegmentsApi = SegmentsApi as jest.Mocked<typeof SegmentsApi>
 
-jest.mock('@/api/AnalysesApi')
+jest.mock('src/api/AnalysesApi')
 const mockedAnalysesApi = AnalysesApi as jest.Mocked<typeof AnalysesApi>
 
 jest.mock('notistack')

@@ -6,13 +6,13 @@ import { Field, useField } from 'formik'
 import { TextField } from 'formik-material-ui'
 import React from 'react'
 
-import { CompletionBag } from '@/api/AutocompleteApi'
-import AbacusAutocomplete, { autocompleteInputProps } from '@/components/Autocomplete'
+import { CompletionBag } from 'src/api/AutocompleteApi'
+import AbacusAutocomplete, { autocompleteInputProps } from 'src/components/Autocomplete'
 import {
   MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS,
   MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS,
-} from '@/lib/schemas'
-import { formatIsoDate } from '@/utils/time'
+} from 'src/lib/schemas'
+import { formatIsoDate } from 'src/utils/time'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

@@ -4,11 +4,11 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import debugFactory from 'debug'
 import React from 'react'
 
-import AudiencePanel from '@/components/AudiencePanel'
-import ConclusionsPanel from '@/components/ConclusionsPanel'
-import GeneralPanel from '@/components/GeneralPanel'
-import MetricAssignmentsPanel from '@/components/MetricAssignmentsPanel'
-import { ExperimentFull, MetricBare, Segment, Status } from '@/lib/schemas'
+import AudiencePanel from 'src/components/AudiencePanel'
+import ConclusionsPanel from 'src/components/ConclusionsPanel'
+import GeneralPanel from 'src/components/GeneralPanel'
+import MetricAssignmentsPanel from 'src/components/MetricAssignmentsPanel'
+import { ExperimentFull, MetricBare, Segment, Status } from 'src/lib/schemas'
 
 const debug = debugFactory('abacus:components/ExperimentDetails.tsx')
 

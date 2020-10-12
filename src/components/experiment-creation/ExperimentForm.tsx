@@ -5,9 +5,9 @@ import _ from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
 import * as yup from 'yup'
 
-import { CompletionBag } from '@/api/AutocompleteApi'
-import { ExperimentFormData } from '@/lib/form-data'
-import { experimentFullNewSchema, MetricBare, Segment } from '@/lib/schemas'
+import { CompletionBag } from 'src/api/AutocompleteApi'
+import { ExperimentFormData } from 'src/lib/form-data'
+import { experimentFullNewSchema, MetricBare, Segment } from 'src/lib/schemas'
 
 import LoadingButtonContainer from '../LoadingButtonContainer'
 import Audience from './Audience'
