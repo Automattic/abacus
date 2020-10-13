@@ -5,15 +5,15 @@ module.exports = {
     '**/*.{ts,tsx}',
     '!**/*stories.tsx',
     '!**/node_modules/**',
-    '!<rootDir>/api/**', // We test these with integration tests.
-    '!<rootDir>/coverage/**',
     '!<rootDir>/e2e/**',
-    '!<rootDir>/pages/**', // We test these with e2e tests.
-    '!<rootDir>/public/**',
-    '!<rootDir>/styles/**',
     '!<rootDir>/templates/**',
-    '!<rootDir>/test-helpers/**',
-    '!<rootDir>/__tests__/**',
+    '!<rootDir>/src/api/**', // We test these with integration tests.
+    '!<rootDir>/src/coverage/**',
+    '!<rootDir>/src/pages/**', // We test these with e2e tests.
+    '!<rootDir>/src/public/**',
+    '!<rootDir>/src/styles/**',
+    '!<rootDir>/src/test-helpers/**',
+    '!<rootDir>/src/__tests__/**',
   ],
   coverageThreshold: {
     global: {
@@ -34,12 +34,12 @@ module.exports = {
     },
   },
   moduleNameMapper: {
-    '@/(.*)': '<rootDir>/$1',
+    'src/(.*)': '<rootDir>/src/$1',
   },
   preset: 'ts-jest',
   // Adds special extended assertions to Jest, thus simplifying the tests.
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', '<rootDir>/test-helpers/unit-test-setup.ts'],
-  testPathIgnorePatterns: ['/__tests__/', '/e2e/', '/node_modules/'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', '<rootDir>/src/test-helpers/unit-test-setup.ts'],
+  testPathIgnorePatterns: ['/src/__tests__/', '/e2e/', '/node_modules/'],
   testTimeout: 180000,
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
