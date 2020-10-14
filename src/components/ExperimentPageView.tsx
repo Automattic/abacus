@@ -11,7 +11,6 @@ import {
   Typography,
 } from '@material-ui/core'
 import { Skeleton } from '@material-ui/lab'
-import dynamic from 'next/dynamic'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -28,11 +27,8 @@ import { useDataLoadingError, useDataSource } from 'src/utils/data-loading'
 import { createUnresolvingPromise, or } from 'src/utils/general'
 
 import ExperimentDebug from './experiment-results/ExperimentDebug'
+import ExperimentResults from './experiment-results/ExperimentResults'
 import ExperimentRunButton from './ExperimentRunButton'
-
-const NoSsrExperimentResults = dynamic(() => import('src/components/experiment-results/ExperimentResults'), {
-  ssr: false,
-})
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -189,9 +185,7 @@ export default function ExperimentPageView({
             {view === ExperimentView.Overview && (
               <ExperimentDetails {...{ experiment, metrics, segments, experimentReloadRef }} />
             )}
-            {view === ExperimentView.Results && (
-              <NoSsrExperimentResults {...{ experiment, metrics, analyses, debugMode }} />
-            )}
+            {view === ExperimentView.Results && <ExperimentResults {...{ experiment, metrics, analyses, debugMode }} />}
             {view === ExperimentView.Debug && debugMode && (
               <ExperimentDebug {...{ experiment, metrics, analyses, debugMode }} />
             )}
