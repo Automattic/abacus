@@ -117,7 +117,27 @@ module.exports = {
       },
     ],
 
-    'simple-import-sort/sort': 'error',
+    'simple-import-sort/sort': [
+      'error',
+      {
+        // We are extending the default groups here to support /src
+        groups: [
+          // Side effect imports.
+          ['^\\u0000'],
+          // Packages.
+          // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
+          ['^@?\\w'],
+          // Absolute imports and other imports such as Vue-style `@/foo`.
+          // Anything that does not start with a dot.
+          ['^[^.]'],
+          // src/ imports
+          ['^src/'],
+          // Relative imports.
+          // Anything that starts with a dot.
+          ['^\\.'],
+        ],
+      },
+    ],
 
     // Off because it is deprecated and favoring @typescript-eslint/naming-convention
     // instead.
@@ -175,7 +195,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       alias: {
-        map: [['@', './']],
+        map: [['src', './src']],
         extensions: ['.ts', '.json', '.tsx'],
       },
     },

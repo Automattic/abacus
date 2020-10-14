@@ -1,0 +1,16 @@
+import { fetchApi } from 'src/api/utils'
+import { AutocompleteItem, autocompleteSchema } from 'src/lib/schemas'
+import { DataSourceResult } from 'src/utils/data-loading'
+
+export interface CompletionBag {
+  userCompletionDataSource: DataSourceResult<AutocompleteItem[]>
+}
+
+async function getCompletion(name: string) {
+  const autocompleteData = await fetchApi('GET', `/autocomplete/${name}`)
+  return await autocompleteSchema.validate(autocompleteData, { abortEarly: false })
+}
+
+export async function getUserCompletions(): Promise<AutocompleteItem[]> {
+  return (await getCompletion('users')).completions
+}
