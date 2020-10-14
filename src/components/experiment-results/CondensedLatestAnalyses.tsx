@@ -434,7 +434,7 @@ function AnalysisDetailPanel({
         <Plot
           layout={{
             ...Visualizations.plotlyLayoutDefault,
-            title: isConversion ? `Conversion rate estimates by variation [%]` : `Revenue estimates by variation [$]`,
+            title: isConversion ? `Conversion rate estimates by variation (%)` : `Revenue estimates by variation ($)`,
           }}
           data={plotlyDataVariationGraph}
           className={classes.metricEstimatePlot}
@@ -442,7 +442,7 @@ function AnalysisDetailPanel({
         <Plot
           layout={{
             ...Visualizations.plotlyLayoutDefault,
-            title: isConversion ? `Conversion rate difference estimates [%]` : `Revenue difference estimates [$]`,
+            title: isConversion ? `Conversion rate difference estimates (%)` : `Revenue difference estimates ($)`,
           }}
           data={plotlyDataDifferenceGraph}
           className={classes.metricEstimatePlot}
