@@ -13,7 +13,7 @@ import Metrics from 'src/pages-real/Metrics'
  * - Get all your route information at the top level.
  * - Try not to delete or change an existing route: comment a route as deprecated and redirect.
  */
-export default function Routes(): JSX.Element {
+function Routes(): JSX.Element {
   return (
     <Router>
       <Switch>
@@ -47,3 +47,6 @@ export default function Routes(): JSX.Element {
     </Router>
   )
 }
+
+// NextJS: Allows this to not unmount between routes
+export default React.memo(Routes)
