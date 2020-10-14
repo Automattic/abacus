@@ -312,6 +312,8 @@ function AnalysisDetailPanel({
           line: {
             color: Visualizations.variantColors[index],
           },
+          fill: 'tonexty' as const,
+          fillcolor: Visualizations.variantColors[index],
           mode: 'lines' as const,
           type: 'scatter' as const,
         },

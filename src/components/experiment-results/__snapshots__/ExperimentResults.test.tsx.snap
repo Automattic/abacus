@@ -510,6 +510,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             ],
           },
           Object {
+            "fill": "tonexty",
+            "fillcolor": "#1f78b488",
             "line": Object {
               "color": "#1f78b488",
             },
@@ -538,6 +540,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             ],
           },
           Object {
+            "fill": "tonexty",
+            "fillcolor": "#ff7f0088",
             "line": Object {
               "color": "#ff7f0088",
             },
@@ -1197,6 +1201,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             ],
           },
           Object {
+            "fill": "tonexty",
+            "fillcolor": "#1f78b488",
             "line": Object {
               "color": "#1f78b488",
             },
@@ -1225,6 +1231,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             ],
           },
           Object {
+            "fill": "tonexty",
+            "fillcolor": "#ff7f0088",
             "line": Object {
               "color": "#ff7f0088",
             },
