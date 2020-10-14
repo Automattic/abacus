@@ -1,11 +1,10 @@
 import { LinearProgress } from '@material-ui/core'
 import debugFactory from 'debug'
 import _ from 'lodash'
-import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import { toIntOrNull } from 'qc-to_int'
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 
 import { getUserCompletions } from 'src/api/AutocompleteApi'
 import ExperimentsApi from 'src/api/ExperimentsApi'
@@ -23,7 +22,7 @@ const debug = debugFactory('abacus:pages/experiments/[id]/results.tsx')
 
 export default function WizardEditPage(): JSX.Element {
   const { experimentId: experimentIdRaw } = useParams<{ experimentId: string; view: string }>()
-  const router = useRouter()
+  const history = useHistory()
   const experimentId = toIntOrNull(experimentIdRaw) as number | null
   debug(`ExperimentWizardEdit#render ${experimentId ?? 'null'}`)
 
@@ -56,7 +55,7 @@ export default function WizardEditPage(): JSX.Element {
       const { experiment } = formData as { experiment: ExperimentFullNew }
       await ExperimentsApi.put(experimentId, experiment)
       enqueueSnackbar('Experiment Updated!', { variant: 'success' })
-      await router.push('/experiments/[id]?freshly_wizard_edited', `/experiments/${experimentId}?freshly_wizard_edited`)
+      history.push(`/experiments/${experimentId}?freshly_wizard_edited`)
     } catch (error) {
       enqueueSnackbar('Failed to update experiment 😨 (Form data logged to console.)', { variant: 'error' })
       console.error(error)
