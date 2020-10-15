@@ -7,6 +7,7 @@ import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
 
+import * as AutocompleteApi from 'src/api/AutocompleteApi'
 import { CompletionBag } from 'src/api/AutocompleteApi'
 import { experimentToFormData } from 'src/lib/form-data'
 import * as Normalizers from 'src/lib/normalizers'
@@ -16,6 +17,13 @@ import { changeFieldByRole, render, validationErrorDisplayer } from 'src/test-he
 import { formatIsoDate } from 'src/utils/time'
 
 import ExperimentForm from './ExperimentForm'
+
+jest.mock('src/api/AutocompleteApi')
+const mockedAutocompleteApi = AutocompleteApi as jest.Mocked<typeof AutocompleteApi>
+mockedAutocompleteApi.getPropNameCompletions.mockImplementationOnce(async () => null)
+mockedAutocompleteApi.getPropNameCompletions.mockImplementationOnce(async () => [
+  { name: 'prop key name', value: 'prop_key_value' },
+])
 
 jest.mock('notistack')
 const mockedNotistack = notistack as jest.Mocked<typeof notistack>
@@ -467,7 +475,7 @@ test('form submits with valid fields', async () => {
   })
   // enter the prop value
   await act(async () => {
-    await changeFieldByRole('textbox', /Key/, 'key')
+    await changeFieldByRole('textbox', /Key/, 'prop_key_value')
   })
   await changeFieldByRole('textbox', /Property Value/, 'value')
 
@@ -505,7 +513,7 @@ test('form submits with valid fields', async () => {
           event: 'event_name',
           props: [
             {
-              key: 'key',
+              key: 'prop_key_value',
               value: 'value',
             },
           ],
