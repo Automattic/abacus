@@ -510,6 +510,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             ],
           },
           Object {
+            "fill": "tonexty",
+            "fillcolor": "#1f78b488",
             "line": Object {
               "color": "#1f78b488",
             },
@@ -538,6 +540,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             ],
           },
           Object {
+            "fill": "tonexty",
+            "fillcolor": "#ff7f0088",
             "line": Object {
               "color": "#ff7f0088",
             },
@@ -565,7 +569,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             "t": 64,
           },
           "showlegend": false,
-          "title": "Conversion rate estimates by variation [%]",
+          "title": "Conversion rate estimates by variation (%)",
         },
         "style": Object {
           "display": "inline-block",
@@ -659,7 +663,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             "t": 64,
           },
           "showlegend": false,
-          "title": "Conversion rate difference estimates [%]",
+          "title": "Conversion rate difference estimates (%)",
         },
         "style": Object {
           "display": "inline-block",
@@ -1197,6 +1201,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             ],
           },
           Object {
+            "fill": "tonexty",
+            "fillcolor": "#1f78b488",
             "line": Object {
               "color": "#1f78b488",
             },
@@ -1225,6 +1231,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             ],
           },
           Object {
+            "fill": "tonexty",
+            "fillcolor": "#ff7f0088",
             "line": Object {
               "color": "#ff7f0088",
             },
@@ -1252,7 +1260,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             "t": 64,
           },
           "showlegend": false,
-          "title": "Revenue estimates by variation [$]",
+          "title": "Revenue estimates by variation ($)",
         },
         "style": Object {
           "display": "inline-block",
@@ -1346,7 +1354,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             "t": 64,
           },
           "showlegend": false,
-          "title": "Revenue difference estimates [$]",
+          "title": "Revenue difference estimates ($)",
         },
         "style": Object {
           "display": "inline-block",
