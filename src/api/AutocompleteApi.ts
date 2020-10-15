@@ -33,9 +33,11 @@ export async function getPropNameCompletions(eventName: string): Promise<Autocom
       value: p.name,
     }))
   } catch (error) {
+    // istanbul ignore else; Forced to use the else here to prevent two istanbul ignores
     if (error instanceof NotFoundError) {
       return null
+    } else {
+      throw error
     }
-    throw error
   }
 }

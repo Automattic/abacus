@@ -69,26 +69,12 @@ test('it retrieves event details from the api', async () => {
 })
 
 test('an empty event name returns a useful error message', async () => {
-  expect(await getPropNameCompletions('')).toMatchInlineSnapshot(`
-    Array [
-      Object {
-        "name": "Enter an event name",
-        "value": "",
-      },
-    ]
-  `)
+  await expect(getPropNameCompletions('')).rejects.toThrow()
 })
 
 test('a nonexistent event name returns a useful error message', async () => {
   mockedUtils.fetchApi.mockImplementation(async () => {
     throw new NotFoundError()
   })
-  expect(await getPropNameCompletions('no_exist')).toMatchInlineSnapshot(`
-    Array [
-      Object {
-        "name": "No props found for this event",
-        "value": "",
-      },
-    ]
-  `)
+  expect(await getPropNameCompletions('no_exist')).toMatchInlineSnapshot(`null`)
 })
