@@ -131,7 +131,7 @@ const EventEditor = ({
 }) => {
   const classes = useEventEditorStyles()
   const metricClasses = useMetricEditorStyles()
-  const { isLoading, data: propCompletions } = useDataSource(() => getPropNameCompletions(name), [name])
+  const { isLoading, data: propCompletions } = useDataSource(async () => name && getPropNameCompletions(name), [name])
 
   return (
     <TableRow>
@@ -193,7 +193,7 @@ const EventEditor = ({
                             component={AbacusAutocomplete}
                             name={`experiment.exposureEvents[${index}].props[${propIndex}].key`}
                             id={`experiment.exposureEvents[${index}].props[${propIndex}].key`}
-                            options={propCompletions}
+                            options={propCompletions || []}
                             loading={isLoading}
                             freeSolo={true}
                             className={classes.exposureEventsEventPropertiesKeyAutoComplete}

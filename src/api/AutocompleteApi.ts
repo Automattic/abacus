@@ -2,6 +2,8 @@ import { fetchApi } from 'src/api/utils'
 import { AutocompleteItem, autocompleteSchema, eventDetailsSchema } from 'src/lib/schemas'
 import { DataSourceResult } from 'src/utils/data-loading'
 
+import NotFoundError from './NotFoundError'
+
 export interface CompletionBag {
   userCompletionDataSource: DataSourceResult<AutocompleteItem[]>
   eventCompletionDataSource: DataSourceResult<AutocompleteItem[]>
@@ -19,9 +21,9 @@ export async function getEventNameCompletions(): Promise<AutocompleteItem[]> {
   return (await getCompletion('events')).completions
 }
 
-export async function getPropNameCompletions(eventName: string): Promise<AutocompleteItem[]> {
-  if (eventName === '') {
-    return [{ name: 'Enter an event name', value: '' }]
+export async function getPropNameCompletions(eventName: string): Promise<AutocompleteItem[] | null> {
+  if (!eventName) {
+    throw new Error('No eventName to getPropNameCompletions of.')
   }
 
   try {
@@ -30,7 +32,10 @@ export async function getPropNameCompletions(eventName: string): Promise<Autocom
       name: p.name,
       value: p.name,
     }))
-  } catch (er) {
-    return [{ name: 'No props found for this event', value: '' }]
+  } catch (error) {
+    if (error instanceof NotFoundError) {
+      return null
+    }
+    throw error
   }
 }
