@@ -410,16 +410,14 @@ export const autocompleteItemSchema = yup
   .required()
 export type AutocompleteItem = yup.InferType<typeof autocompleteItemSchema>
 
+/**
+ * @deprecated We want schemas for data types, not for request shapes. Use inline yup schemas instead.
+ */
 export const autocompleteSchema = yup
   .object({
     completions: yup.array<AutocompleteItem>(autocompleteItemSchema).defined(),
   })
   .defined()
-export type UserCompletions = yup.InferType<typeof autocompleteSchema>
-export type EventCompletions = yup.InferType<typeof autocompleteSchema>
-export type TransactionTypeCompletions = yup.InferType<typeof autocompleteSchema>
-export type ProductCompletions = yup.InferType<typeof autocompleteSchema>
-export type Autocompletions = UserCompletions | EventCompletions | TransactionTypeCompletions | ProductCompletions
 
 export const eventPropsSchema = yup
   .object({
