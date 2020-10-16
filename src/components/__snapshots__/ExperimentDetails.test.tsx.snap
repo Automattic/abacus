@@ -1,0 +1,2889 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders as expected at large width 1`] = `
+<div>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-7"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-title-2 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                General
+              </h3>
+              <div
+                class=""
+                title="Use \\"Edit in Wizard\\" for staging experiments."
+              >
+                <button
+                  aria-label="Edit Experiment General Data"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-outlined Mui-disabled Mui-disabled"
+                  disabled=""
+                  tabindex="-1"
+                  type="button"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                    Edit
+                  </span>
+                </button>
+              </div>
+            </div>
+            <table
+              class="MuiTable-root"
+            >
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Status
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-root-6"
+                    >
+                      <span
+                        class="makeStyles-statusDot-11 makeStyles-staging-9"
+                      />
+                       
+                      staging
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Dates
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-root-12"
+                      title="20/09/2020, 20:00:00"
+                    >
+                      2020-09-21
+                    </span>
+                    <span
+                      class="makeStyles-to-1"
+                    >
+                      to
+                    </span>
+                    <span
+                      class="makeStyles-root-12"
+                      title="20/11/2020, 19:00:00"
+                    >
+                      2020-11-21
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Description
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-5"
+                    >
+                      Experiment with things. Change stuff. Profit.
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Owner
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-5"
+                    >
+                      owner-nickname
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    P2 Link
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <a
+                      class="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-monospace-5 MuiTypography-colorPrimary"
+                      href="https://wordpress.com/experiment_1"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      https://wordpress.com/experiment_1
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-title-15 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Metrics
+              </h3>
+              <div
+                class=""
+                title="Use \\"Edit in Wizard\\" for staging experiments."
+              >
+                <button
+                  class="MuiButtonBase-root MuiButton-root MuiButton-outlined Mui-disabled Mui-disabled"
+                  disabled=""
+                  tabindex="-1"
+                  type="button"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                      />
+                    </svg>
+                    Assign Metric
+                  </span>
+                </button>
+              </div>
+            </div>
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Name
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Attribution Window
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Changes Expected
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Minimum Difference
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    metric_1
+                    <br />
+                    <div
+                      aria-disabled="true"
+                      class="MuiChip-root makeStyles-primaryChip-19 MuiChip-outlined Mui-disabled"
+                    >
+                      <span
+                        class="MuiChip-label"
+                      >
+                        Primary
+                      </span>
+                    </div>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    1 week
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    <span>
+                      0.1 pp
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    metric_2
+                    <br />
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    1 hour
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    <span>
+                      $0.50
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    metric_2
+                    <br />
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    4 weeks
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    <span>
+                      $10.50
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    metric_3
+                    <br />
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    6 hours
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
+                  >
+                    <span>
+                      12 pp
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-lg-5"
+    >
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div
+          class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+        >
+          <h3
+            class="MuiTypography-root makeStyles-title-20 MuiTypography-h3 MuiTypography-colorTextPrimary"
+          >
+            Audience
+          </h3>
+        </div>
+        <table
+          class="MuiTable-root"
+        >
+          <tbody
+            class="MuiTableBody-root"
+          >
+            <tr
+              class="MuiTableRow-root"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="cell"
+                scope="row"
+              >
+                Platform
+              </th>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <span
+                  class="makeStyles-monospace-21"
+                >
+                  calypso
+                </span>
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="cell"
+                scope="row"
+              >
+                User Type
+              </th>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <span
+                  class="makeStyles-monospace-21"
+                >
+                  New users only
+                </span>
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="cell"
+                scope="row"
+              >
+                Variations
+              </th>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <table
+                  class="MuiTable-root makeStyles-root-22"
+                >
+                  <thead
+                    class="MuiTableHead-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-head"
+                    >
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head"
+                        role="columnheader"
+                        scope="col"
+                      >
+                        Name
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head"
+                        role="columnheader"
+                        scope="col"
+                      >
+                        Percent
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    class="MuiTableBody-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-27"
+                      >
+                        <span
+                          class="makeStyles-variation-25"
+                        >
+                          control
+                        </span>
+                         
+                        <div
+                          aria-disabled="true"
+                          class="MuiChip-root MuiChip-outlined Mui-disabled"
+                        >
+                          <span
+                            class="MuiChip-label"
+                          >
+                            Default
+                          </span>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-27"
+                      >
+                        60
+                        %
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-27"
+                      >
+                        <span
+                          class="makeStyles-variation-25"
+                        >
+                          test
+                        </span>
+                         
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-27"
+                      >
+                        40
+                        %
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="cell"
+                scope="row"
+              >
+                Segments
+              </th>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <table
+                  class="MuiTable-root makeStyles-root-28"
+                >
+                  <thead
+                    class="MuiTableHead-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-head"
+                    >
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head"
+                        role="columnheader"
+                        scope="col"
+                      >
+                        Locales
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    class="MuiTableBody-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-30"
+                      >
+                        segment_1
+                         
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table
+                  class="MuiTable-root makeStyles-root-28"
+                >
+                  <thead
+                    class="MuiTableHead-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-head"
+                    >
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head"
+                        role="columnheader"
+                        scope="col"
+                      >
+                        Countries
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    class="MuiTableBody-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-30"
+                      >
+                        segment_2
+                         
+                        <div
+                          aria-disabled="true"
+                          class="MuiChip-root MuiChip-outlined Mui-disabled"
+                        >
+                          <span
+                            class="MuiChip-label"
+                          >
+                            Excluded
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="cell"
+                scope="row"
+              >
+                Exposure Events
+              </th>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <div
+                  class="makeStyles-eventList-33"
+                >
+                  <p
+                    class="MuiTypography-root makeStyles-monospace-34 MuiTypography-body1"
+                  >
+                    <span
+                      class="makeStyles-eventName-32"
+                    >
+                      event_name
+                    </span>
+                    <span
+                      class="makeStyles-entry-31"
+                    >
+                      additionalProp1
+                      : 
+                      prop1Value
+                    </span>
+                    <span
+                      class="makeStyles-entry-31"
+                    >
+                      additionalProp2
+                      : 
+                      prop2Value
+                    </span>
+                    <span
+                      class="makeStyles-entry-31"
+                    >
+                      additionalProp3
+                      : 
+                      prop3Value
+                    </span>
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders as expected at small width 1`] = `
+<div>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-7"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-title-36 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                General
+              </h3>
+              <div
+                class=""
+                title="Use \\"Edit in Wizard\\" for staging experiments."
+              >
+                <button
+                  aria-label="Edit Experiment General Data"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-outlined Mui-disabled Mui-disabled"
+                  disabled=""
+                  tabindex="-1"
+                  type="button"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                    Edit
+                  </span>
+                </button>
+              </div>
+            </div>
+            <table
+              class="MuiTable-root"
+            >
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Status
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-root-40"
+                    >
+                      <span
+                        class="makeStyles-statusDot-45 makeStyles-staging-43"
+                      />
+                       
+                      staging
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Dates
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-root-46"
+                      title="20/09/2020, 20:00:00"
+                    >
+                      2020-09-21
+                    </span>
+                    <span
+                      class="makeStyles-to-35"
+                    >
+                      to
+                    </span>
+                    <span
+                      class="makeStyles-root-46"
+                      title="20/11/2020, 19:00:00"
+                    >
+                      2020-11-21
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Description
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-39"
+                    >
+                      Experiment with things. Change stuff. Profit.
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Owner
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-39"
+                    >
+                      owner-nickname
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    P2 Link
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <a
+                      class="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-monospace-39 MuiTypography-colorPrimary"
+                      href="https://wordpress.com/experiment_1"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      https://wordpress.com/experiment_1
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-title-54 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Audience
+              </h3>
+            </div>
+            <table
+              class="MuiTable-root"
+            >
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Platform
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-55"
+                    >
+                      calypso
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    User Type
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-55"
+                    >
+                      New users only
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Variations
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <table
+                      class="MuiTable-root makeStyles-root-56"
+                    >
+                      <thead
+                        class="MuiTableHead-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root MuiTableRow-head"
+                        >
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Name
+                          </th>
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Percent
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        class="MuiTableBody-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root"
+                        >
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-61"
+                          >
+                            <span
+                              class="makeStyles-variation-59"
+                            >
+                              control
+                            </span>
+                             
+                            <div
+                              aria-disabled="true"
+                              class="MuiChip-root MuiChip-outlined Mui-disabled"
+                            >
+                              <span
+                                class="MuiChip-label"
+                              >
+                                Default
+                              </span>
+                            </div>
+                          </td>
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-61"
+                          >
+                            60
+                            %
+                          </td>
+                        </tr>
+                        <tr
+                          class="MuiTableRow-root"
+                        >
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-61"
+                          >
+                            <span
+                              class="makeStyles-variation-59"
+                            >
+                              test
+                            </span>
+                             
+                          </td>
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-61"
+                          >
+                            40
+                            %
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Segments
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <table
+                      class="MuiTable-root makeStyles-root-62"
+                    >
+                      <thead
+                        class="MuiTableHead-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root MuiTableRow-head"
+                        >
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Locales
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        class="MuiTableBody-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root"
+                        >
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-64"
+                          >
+                            segment_1
+                             
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table
+                      class="MuiTable-root makeStyles-root-62"
+                    >
+                      <thead
+                        class="MuiTableHead-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root MuiTableRow-head"
+                        >
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Countries
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        class="MuiTableBody-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root"
+                        >
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-64"
+                          >
+                            segment_2
+                             
+                            <div
+                              aria-disabled="true"
+                              class="MuiChip-root MuiChip-outlined Mui-disabled"
+                            >
+                              <span
+                                class="MuiChip-label"
+                              >
+                                Excluded
+                              </span>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Exposure Events
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <div
+                      class="makeStyles-eventList-67"
+                    >
+                      <p
+                        class="MuiTypography-root makeStyles-monospace-68 MuiTypography-body1"
+                      >
+                        <span
+                          class="makeStyles-eventName-66"
+                        >
+                          event_name
+                        </span>
+                        <span
+                          class="makeStyles-entry-65"
+                        >
+                          additionalProp1
+                          : 
+                          prop1Value
+                        </span>
+                        <span
+                          class="makeStyles-entry-65"
+                        >
+                          additionalProp2
+                          : 
+                          prop2Value
+                        </span>
+                        <span
+                          class="makeStyles-entry-65"
+                        >
+                          additionalProp3
+                          : 
+                          prop3Value
+                        </span>
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-title-49 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Metrics
+              </h3>
+              <div
+                class=""
+                title="Use \\"Edit in Wizard\\" for staging experiments."
+              >
+                <button
+                  class="MuiButtonBase-root MuiButton-root MuiButton-outlined Mui-disabled Mui-disabled"
+                  disabled=""
+                  tabindex="-1"
+                  type="button"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                      />
+                    </svg>
+                    Assign Metric
+                  </span>
+                </button>
+              </div>
+            </div>
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Name
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Attribution Window
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Changes Expected
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Minimum Difference
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    metric_1
+                    <br />
+                    <div
+                      aria-disabled="true"
+                      class="MuiChip-root makeStyles-primaryChip-53 MuiChip-outlined Mui-disabled"
+                    >
+                      <span
+                        class="MuiChip-label"
+                      >
+                        Primary
+                      </span>
+                    </div>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    1 week
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    <span>
+                      0.1 pp
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    metric_2
+                    <br />
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    1 hour
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    <span>
+                      $0.50
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    metric_2
+                    <br />
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    4 weeks
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    <span>
+                      $10.50
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    metric_3
+                    <br />
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    6 hours
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-48"
+                  >
+                    <span>
+                      12 pp
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders as expected with conclusion data 1`] = `
+<div>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-7"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-title-70 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                General
+              </h3>
+              <div
+                class=""
+                title=""
+              >
+                <button
+                  aria-label="Edit Experiment General Data"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                    Edit
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </div>
+            <table
+              class="MuiTable-root"
+            >
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Status
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-root-74"
+                    >
+                      <span
+                        class="makeStyles-statusDot-79 makeStyles-disabled-78"
+                      />
+                       
+                      disabled
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Dates
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-root-80"
+                      title="20/09/2020, 20:00:00"
+                    >
+                      2020-09-21
+                    </span>
+                    <span
+                      class="makeStyles-to-69"
+                    >
+                      to
+                    </span>
+                    <span
+                      class="makeStyles-root-80"
+                      title="20/11/2020, 19:00:00"
+                    >
+                      2020-11-21
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Description
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-73"
+                    >
+                      Experiment with things. Change stuff. Profit.
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Owner
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-73"
+                    >
+                      owner-nickname
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    P2 Link
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <a
+                      class="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-monospace-73 MuiTypography-colorPrimary"
+                      href="https://wordpress.com/experiment_1"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      https://wordpress.com/experiment_1
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-title-90 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Audience
+              </h3>
+            </div>
+            <table
+              class="MuiTable-root"
+            >
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Platform
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-91"
+                    >
+                      calypso
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    User Type
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-91"
+                    >
+                      New users only
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Variations
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <table
+                      class="MuiTable-root makeStyles-root-92"
+                    >
+                      <thead
+                        class="MuiTableHead-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root MuiTableRow-head"
+                        >
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Name
+                          </th>
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Percent
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        class="MuiTableBody-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root"
+                        >
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-97"
+                          >
+                            <span
+                              class="makeStyles-variation-95"
+                            >
+                              control
+                            </span>
+                             
+                            <div
+                              aria-disabled="true"
+                              class="MuiChip-root MuiChip-outlined Mui-disabled"
+                            >
+                              <span
+                                class="MuiChip-label"
+                              >
+                                Default
+                              </span>
+                            </div>
+                          </td>
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-97"
+                          >
+                            60
+                            %
+                          </td>
+                        </tr>
+                        <tr
+                          class="MuiTableRow-root"
+                        >
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-97"
+                          >
+                            <span
+                              class="makeStyles-variation-95"
+                            >
+                              test
+                            </span>
+                             
+                          </td>
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-97"
+                          >
+                            40
+                            %
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Segments
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <table
+                      class="MuiTable-root makeStyles-root-98"
+                    >
+                      <thead
+                        class="MuiTableHead-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root MuiTableRow-head"
+                        >
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Locales
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        class="MuiTableBody-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root"
+                        >
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-100"
+                          >
+                            segment_1
+                             
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table
+                      class="MuiTable-root makeStyles-root-98"
+                    >
+                      <thead
+                        class="MuiTableHead-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root MuiTableRow-head"
+                        >
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Countries
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        class="MuiTableBody-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root"
+                        >
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-100"
+                          >
+                            segment_2
+                             
+                            <div
+                              aria-disabled="true"
+                              class="MuiChip-root MuiChip-outlined Mui-disabled"
+                            >
+                              <span
+                                class="MuiChip-label"
+                              >
+                                Excluded
+                              </span>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Exposure Events
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <div
+                      class="makeStyles-eventList-103"
+                    >
+                      <p
+                        class="MuiTypography-root makeStyles-monospace-104 MuiTypography-body1"
+                      >
+                        <span
+                          class="makeStyles-eventName-102"
+                        >
+                          event_name
+                        </span>
+                        <span
+                          class="makeStyles-entry-101"
+                        >
+                          additionalProp1
+                          : 
+                          prop1Value
+                        </span>
+                        <span
+                          class="makeStyles-entry-101"
+                        >
+                          additionalProp2
+                          : 
+                          prop2Value
+                        </span>
+                        <span
+                          class="makeStyles-entry-101"
+                        >
+                          additionalProp3
+                          : 
+                          prop3Value
+                        </span>
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-title-83 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Metrics
+              </h3>
+              <div
+                class=""
+                title=""
+              >
+                <button
+                  class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                      />
+                    </svg>
+                    Assign Metric
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </div>
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Name
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Attribution Window
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Changes Expected
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Minimum Difference
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    metric_1
+                    <br />
+                    <div
+                      aria-disabled="true"
+                      class="MuiChip-root makeStyles-primaryChip-87 MuiChip-outlined Mui-disabled"
+                    >
+                      <span
+                        class="MuiChip-label"
+                      >
+                        Primary
+                      </span>
+                    </div>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    1 week
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    <span>
+                      0.1 pp
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    metric_2
+                    <br />
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    1 hour
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    <span>
+                      $0.50
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    metric_2
+                    <br />
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    4 weeks
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    <span>
+                      $10.50
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    metric_3
+                    <br />
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    6 hours
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-82"
+                  >
+                    <span>
+                      12 pp
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-title-88 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Conclusions
+              </h3>
+              <button
+                aria-label="Edit Conclusion"
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    />
+                  </svg>
+                  Edit
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <table
+              class="MuiTable-root"
+            >
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Reason the experiment ended
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    Ran its course.
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Conclusion URL
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <a
+                      href="https://betterexperiments.wordpress.com/experiment_1/conclusion"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      https://betterexperiments.wordpress.com/experiment_1/conclusion
+                    </a>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Deployed variation
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    test
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders as expected without conclusion data 1`] = `
+<div>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-lg-7"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-title-106 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                General
+              </h3>
+              <div
+                class=""
+                title="Use \\"Edit in Wizard\\" for staging experiments."
+              >
+                <button
+                  aria-label="Edit Experiment General Data"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-outlined Mui-disabled Mui-disabled"
+                  disabled=""
+                  tabindex="-1"
+                  type="button"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                    Edit
+                  </span>
+                </button>
+              </div>
+            </div>
+            <table
+              class="MuiTable-root"
+            >
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Status
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-root-110"
+                    >
+                      <span
+                        class="makeStyles-statusDot-115 makeStyles-staging-113"
+                      />
+                       
+                      staging
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Dates
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-root-116"
+                      title="20/09/2020, 20:00:00"
+                    >
+                      2020-09-21
+                    </span>
+                    <span
+                      class="makeStyles-to-105"
+                    >
+                      to
+                    </span>
+                    <span
+                      class="makeStyles-root-116"
+                      title="20/11/2020, 19:00:00"
+                    >
+                      2020-11-21
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Description
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-109"
+                    >
+                      Experiment with things. Change stuff. Profit.
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Owner
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-109"
+                    >
+                      owner-nickname
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    P2 Link
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <a
+                      class="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-monospace-109 MuiTypography-colorPrimary"
+                      href="https://wordpress.com/experiment_1"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      https://wordpress.com/experiment_1
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-title-124 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Audience
+              </h3>
+            </div>
+            <table
+              class="MuiTable-root"
+            >
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Platform
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-125"
+                    >
+                      calypso
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    User Type
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-125"
+                    >
+                      New users only
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Variations
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <table
+                      class="MuiTable-root makeStyles-root-126"
+                    >
+                      <thead
+                        class="MuiTableHead-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root MuiTableRow-head"
+                        >
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Name
+                          </th>
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Percent
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        class="MuiTableBody-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root"
+                        >
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-131"
+                          >
+                            <span
+                              class="makeStyles-variation-129"
+                            >
+                              control
+                            </span>
+                             
+                            <div
+                              aria-disabled="true"
+                              class="MuiChip-root MuiChip-outlined Mui-disabled"
+                            >
+                              <span
+                                class="MuiChip-label"
+                              >
+                                Default
+                              </span>
+                            </div>
+                          </td>
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-131"
+                          >
+                            60
+                            %
+                          </td>
+                        </tr>
+                        <tr
+                          class="MuiTableRow-root"
+                        >
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-131"
+                          >
+                            <span
+                              class="makeStyles-variation-129"
+                            >
+                              test
+                            </span>
+                             
+                          </td>
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-131"
+                          >
+                            40
+                            %
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Segments
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <table
+                      class="MuiTable-root makeStyles-root-132"
+                    >
+                      <thead
+                        class="MuiTableHead-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root MuiTableRow-head"
+                        >
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Locales
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        class="MuiTableBody-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root"
+                        >
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-134"
+                          >
+                            segment_1
+                             
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table
+                      class="MuiTable-root makeStyles-root-132"
+                    >
+                      <thead
+                        class="MuiTableHead-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root MuiTableRow-head"
+                        >
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Countries
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        class="MuiTableBody-root"
+                      >
+                        <tr
+                          class="MuiTableRow-root"
+                        >
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-134"
+                          >
+                            segment_2
+                             
+                            <div
+                              aria-disabled="true"
+                              class="MuiChip-root MuiChip-outlined Mui-disabled"
+                            >
+                              <span
+                                class="MuiChip-label"
+                              >
+                                Excluded
+                              </span>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Exposure Events
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <div
+                      class="makeStyles-eventList-137"
+                    >
+                      <p
+                        class="MuiTypography-root makeStyles-monospace-138 MuiTypography-body1"
+                      >
+                        <span
+                          class="makeStyles-eventName-136"
+                        >
+                          event_name
+                        </span>
+                        <span
+                          class="makeStyles-entry-135"
+                        >
+                          additionalProp1
+                          : 
+                          prop1Value
+                        </span>
+                        <span
+                          class="makeStyles-entry-135"
+                        >
+                          additionalProp2
+                          : 
+                          prop2Value
+                        </span>
+                        <span
+                          class="makeStyles-entry-135"
+                        >
+                          additionalProp3
+                          : 
+                          prop3Value
+                        </span>
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-title-119 MuiTypography-h3 MuiTypography-colorTextPrimary"
+              >
+                Metrics
+              </h3>
+              <div
+                class=""
+                title="Use \\"Edit in Wizard\\" for staging experiments."
+              >
+                <button
+                  class="MuiButtonBase-root MuiButton-root MuiButton-outlined Mui-disabled Mui-disabled"
+                  disabled=""
+                  tabindex="-1"
+                  type="button"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                      />
+                    </svg>
+                    Assign Metric
+                  </span>
+                </button>
+              </div>
+            </div>
+            <table
+              class="MuiTable-root"
+            >
+              <thead
+                class="MuiTableHead-root"
+              >
+                <tr
+                  class="MuiTableRow-root MuiTableRow-head"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Name
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Attribution Window
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Changes Expected
+                  </th>
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="columnheader"
+                    scope="col"
+                  >
+                    Minimum Difference
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="MuiTableBody-root"
+              >
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    metric_1
+                    <br />
+                    <div
+                      aria-disabled="true"
+                      class="MuiChip-root makeStyles-primaryChip-123 MuiChip-outlined Mui-disabled"
+                    >
+                      <span
+                        class="MuiChip-label"
+                      >
+                        Primary
+                      </span>
+                    </div>
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    1 week
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    <span>
+                      0.1 pp
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    metric_2
+                    <br />
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    1 hour
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    <span>
+                      $0.50
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    metric_2
+                    <br />
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    4 weeks
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    No
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    <span>
+                      $10.50
+                    </span>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    metric_3
+                    <br />
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    6 hours
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    Yes
+                  </td>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-118"
+                  >
+                    <span>
+                      12 pp
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

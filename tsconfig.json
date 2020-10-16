@@ -11,9 +11,6 @@
     "moduleResolution": "node",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "@/*": ["./*"]
-    },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,

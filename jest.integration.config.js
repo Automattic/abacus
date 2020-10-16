@@ -1,15 +1,15 @@
 module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
-    '<rootDir>/api/**/*.ts',
-    '!<rootDir>/api/**/*.test.ts',
+    '<rootDir>/src/api/**/*.ts',
+    '!<rootDir>/src/api/**/*.test.ts',
     '!**/node_modules/**',
     // FIXME: TODO: Get tests on the following. This is related to issues 52 and 64.
     // Currently we are unable to test the following because the code won't hit the
     // code branch that leads to this error being thrown. If we test against the
     // production API or a more sophisticated mock, then we may be able.
-    '!<rootDir>/api/UnauthorizedError.ts',
-    '!<rootDir>/test-helpers/**',
+    '!<rootDir>/src/api/UnauthorizedError.ts',
+    '!<rootDir>/src/test-helpers/**',
   ],
   coverageThreshold: {
     global: {
@@ -30,7 +30,7 @@ module.exports = {
     },
   },
   moduleNameMapper: {
-    '@/(.*)': '<rootDir>/$1',
+    'src/(.*)': '<rootDir>/src/$1',
   },
   preset: 'ts-jest',
   setupFilesAfterEnv: ['isomorphic-fetch'],
