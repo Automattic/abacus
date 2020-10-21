@@ -162,6 +162,22 @@ export const metricAssignmentSchema = metricAssignmentNewSchema
   .camelCase()
 export type MetricAssignment = yup.InferType<typeof metricAssignmentSchema>
 
+export const tagSchema = yup
+  .object({
+    tagId: idSchema.defined(),
+    namespace: nameSchema.defined(),
+    name: nameSchema.defined(),
+    description: yup.string().defined(),
+  })
+  .defined()
+  .camelCase()
+export type Tag = yup.InferType<typeof tagSchema>
+export const tagNewSchema = tagSchema.shape({
+  tagId: idSchema.nullable(),
+})
+export type TagNew = yup.InferType<typeof tagNewSchema>
+export const tagNewOutboundSchema = tagNewSchema.snakeCase()
+
 export enum SegmentType {
   Country = 'country',
   Locale = 'locale',
