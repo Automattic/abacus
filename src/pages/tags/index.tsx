@@ -10,7 +10,7 @@ import {
   Theme,
 } from '@material-ui/core'
 import debugFactory from 'debug'
-import { Formik, FormikProps } from 'formik'
+import { Formik } from 'formik'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 import * as yup from 'yup'
@@ -121,7 +121,7 @@ const TagsIndexPage = (): JSX.Element => {
             {(formikProps) => (
               <form onSubmit={formikProps.handleSubmit} noValidate>
                 <DialogContent>
-                  <TagFormFields formikProps={formikProps as FormikProps<{ tag: TagFormData }>} />
+                  <TagFormFields />
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={onCancelEditTag} color='primary'>
@@ -153,7 +153,7 @@ const TagsIndexPage = (): JSX.Element => {
           {(formikProps) => (
             <form onSubmit={formikProps.handleSubmit} noValidate>
               <DialogContent>
-                <TagFormFields formikProps={formikProps as FormikProps<{ tag: TagFormData }>} />
+                <TagFormFields />
               </DialogContent>
               <DialogActions>
                 <Button onClick={onCancelAddTag} color='primary'>
