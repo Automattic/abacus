@@ -162,7 +162,7 @@ export const metricAssignmentSchema = metricAssignmentNewSchema
   .camelCase()
 export type MetricAssignment = yup.InferType<typeof metricAssignmentSchema>
 
-export const tagSchema = yup
+export const tagBareSchema = yup
   .object({
     tagId: idSchema.defined(),
     namespace: nameSchema.defined(),
@@ -171,12 +171,15 @@ export const tagSchema = yup
   })
   .defined()
   .camelCase()
-export type Tag = yup.InferType<typeof tagSchema>
-export const tagNewSchema = tagSchema.shape({
+export type TagBare = yup.InferType<typeof tagBareSchema>
+// For consistency and openness:
+export const tagFullSchema = tagBareSchema
+export type TagFull = yup.InferType<typeof tagFullSchema>
+export const tagFullNewSchema = tagFullSchema.shape({
   tagId: idSchema.nullable(),
 })
-export type TagNew = yup.InferType<typeof tagNewSchema>
-export const tagNewOutboundSchema = tagNewSchema.snakeCase()
+export type TagFullNew = yup.InferType<typeof tagFullNewSchema>
+export const tagFullNewOutboundSchema = tagFullNewSchema.snakeCase()
 
 export enum SegmentType {
   Country = 'country',

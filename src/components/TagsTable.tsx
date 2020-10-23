@@ -3,7 +3,7 @@ import debugFactory from 'debug'
 import MaterialTable from 'material-table'
 import React from 'react'
 
-import { Tag } from 'src/lib/schemas'
+import { TagBare } from 'src/lib/schemas'
 import { defaultTableOptions } from 'src/utils/material-table'
 
 const debug = debugFactory('abacus:components/TagsTable.tsx')
@@ -14,7 +14,7 @@ const debug = debugFactory('abacus:components/TagsTable.tsx')
  * @param tags An array of tags.
  * @param onEditTag A Callback. Setting this will show the edit action in the table.
  */
-const TagsTable = ({ tags, onEditTag }: { tags: Tag[]; onEditTag?: (tagId: number) => void }): JSX.Element => {
+const TagsTable = ({ tags, onEditTag }: { tags: TagBare[]; onEditTag?: (tagId: number) => void }): JSX.Element => {
   debug('TagsTable#render')
 
   const theme = useTheme()
@@ -25,7 +25,7 @@ const TagsTable = ({ tags, onEditTag }: { tags: Tag[]; onEditTag?: (tagId: numbe
         fontFamily: theme.custom.fonts.monospace,
         fontWeight: theme.custom.fontWeights.monospaceBold,
       },
-      render: (tag: Tag) => `${tag.namespace}/${tag.name}`,
+      render: (tag: TagBare) => `${tag.namespace}/${tag.name}`,
     },
     {
       title: 'Description',
@@ -45,7 +45,7 @@ const TagsTable = ({ tags, onEditTag }: { tags: Tag[]; onEditTag?: (tagId: numbe
                 icon: 'edit',
                 tooltip: 'Edit Tag',
                 onClick: (_event, rowData) => {
-                  onEditTag((rowData as Tag).tagId)
+                  onEditTag((rowData as TagBare).tagId)
                 },
               },
             ]
@@ -53,7 +53,6 @@ const TagsTable = ({ tags, onEditTag }: { tags: Tag[]; onEditTag?: (tagId: numbe
       }
       columns={tableColumns}
       data={tags}
-      onRowClick={(_event, _rowData, togglePanel) => togglePanel && togglePanel()}
       options={{
         ...defaultTableOptions,
         actionsColumnIndex: 3,

@@ -1,7 +1,15 @@
 import _ from 'lodash'
 import * as yup from 'yup'
 
-import { Tag, TagNew, tagNewOutboundSchema, tagNewSchema, tagSchema } from 'src/lib/schemas'
+import {
+  TagBare,
+  tagBareSchema,
+  TagFull,
+  TagFullNew,
+  tagFullNewOutboundSchema,
+  tagFullNewSchema,
+  tagFullSchema,
+} from 'src/lib/schemas'
 import { isDebugMode } from 'src/utils/general'
 
 import { fetchApi } from './utils'
@@ -11,10 +19,10 @@ import { fetchApi } from './utils'
  *
  * Note: Be sure to handle any errors that may be thrown.
  */
-async function create(newTag: TagNew): Promise<Tag> {
-  const validatedNewTag = await tagNewSchema.validate(newTag, { abortEarly: false })
-  const outboundNewTag = tagNewOutboundSchema.cast(validatedNewTag)
-  return await tagSchema.validate(await fetchApi('POST', '/tags', outboundNewTag))
+async function create(newTag: TagFullNew): Promise<TagBare> {
+  const validatedNewTag = await tagFullNewSchema.validate(newTag, { abortEarly: false })
+  const outboundNewTag = tagFullNewOutboundSchema.cast(validatedNewTag)
+  return await tagBareSchema.validate(await fetchApi('POST', '/tags', outboundNewTag))
 }
 
 /**
@@ -22,14 +30,14 @@ async function create(newTag: TagNew): Promise<Tag> {
  *
  * Note: Be sure to handle any errors that may be thrown.
  */
-async function put(tagId: number, newTag: TagNew): Promise<Tag> {
+async function put(tagId: number, newTag: TagFullNew): Promise<TagBare> {
   // istanbul ignore next; Shouldn't happen
   if (!_.isNumber(tagId)) {
     throw new Error('Invalid tagId.')
   }
-  const validatedNewTag = await tagNewSchema.validate(newTag, { abortEarly: false })
-  const outboundNewTag = tagNewOutboundSchema.cast(validatedNewTag)
-  return await tagSchema.validate(await fetchApi('PUT', `/tags/${tagId}`, outboundNewTag))
+  const validatedNewTag = await tagFullNewSchema.validate(newTag, { abortEarly: false })
+  const outboundNewTag = tagFullNewOutboundSchema.cast(validatedNewTag)
+  return await tagBareSchema.validate(await fetchApi('PUT', `/tags/${tagId}`, outboundNewTag))
 }
 
 /**
@@ -39,10 +47,10 @@ async function put(tagId: number, newTag: TagNew): Promise<Tag> {
  *
  * @throws UnauthorizedError
  */
-async function findAll(): Promise<Tag[]> {
+async function findAll(): Promise<TagBare[]> {
   // istanbul ignore next; debug only
   const { tags } = await yup
-    .object({ tags: yup.array(tagSchema).defined() })
+    .object({ tags: yup.array(tagBareSchema).defined() })
     .defined()
     .validate(await fetchApi('GET', isDebugMode() ? '/tags?debug=true' : '/tags'), {
       abortEarly: false,
@@ -57,8 +65,8 @@ async function findAll(): Promise<Tag[]> {
  *
  * @throws UnauthorizedError
  */
-async function findById(tagId: number): Promise<Tag> {
-  return await tagSchema.validate(await fetchApi('GET', `/tags/${tagId}`), { abortEarly: false })
+async function findById(tagId: number): Promise<TagFull> {
+  return await tagFullSchema.validate(await fetchApi('GET', `/tags/${tagId}`), { abortEarly: false })
 }
 
 const TagsApi = {

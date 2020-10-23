@@ -21,7 +21,7 @@ import LoadingButtonContainer from 'src/components/LoadingButtonContainer'
 import TagFormFields from 'src/components/TagFormFields'
 import TagsTable from 'src/components/TagsTable'
 import { TagFormData, tagToFormData } from 'src/lib/form-data'
-import { TagNew, tagNewSchema } from 'src/lib/schemas'
+import { TagFullNew, tagFullNewSchema } from 'src/lib/schemas'
 import { useDataLoadingError, useDataSource } from 'src/utils/data-loading'
 import { isDebugMode } from 'src/utils/general'
 
@@ -66,7 +66,7 @@ const TagsIndexPage = (): JSX.Element => {
       if (!editTagTagId) {
         throw new Error(`Missing tagId, this shouldn't happen.`)
       }
-      await TagsApi.put(editTagTagId, (tag as unknown) as TagNew)
+      await TagsApi.put(editTagTagId, (tag as unknown) as TagFullNew)
       enqueueSnackbar('Tag Edited!', { variant: 'success' })
       reloadRef.current()
       setEditTagTagId(null)
@@ -84,7 +84,7 @@ const TagsIndexPage = (): JSX.Element => {
   }
   const onSubmitAddTag = async ({ tag }: { tag: TagFormData }) => {
     try {
-      await TagsApi.create((tag as unknown) as TagNew)
+      await TagsApi.create((tag as unknown) as TagFullNew)
       enqueueSnackbar('Tag Added!', { variant: 'success' })
       reloadRef.current()
       setIsAddingTag(false)
@@ -116,7 +116,7 @@ const TagsIndexPage = (): JSX.Element => {
           <Formik
             initialValues={{ tag: tagToFormData(editTagInitialTag) }}
             onSubmit={onSubmitEditTag}
-            validationSchema={yup.object({ tag: tagNewSchema })}
+            validationSchema={yup.object({ tag: tagFullNewSchema })}
           >
             {(formikProps) => (
               <form onSubmit={formikProps.handleSubmit} noValidate>
@@ -148,7 +148,7 @@ const TagsIndexPage = (): JSX.Element => {
         <Formik
           initialValues={{ tag: tagToFormData({}) }}
           onSubmit={onSubmitAddTag}
-          validationSchema={yup.object({ tag: tagNewSchema })}
+          validationSchema={yup.object({ tag: tagFullNewSchema })}
         >
           {(formikProps) => (
             <form onSubmit={formikProps.handleSubmit} noValidate>
