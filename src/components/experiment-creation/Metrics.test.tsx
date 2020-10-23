@@ -2,6 +2,7 @@ import { act, fireEvent, screen } from '@testing-library/react'
 import { Formik } from 'formik'
 import React from 'react'
 
+import { CompletionBag } from 'src/api/AutocompleteApi'
 import { experimentToFormData } from 'src/lib/form-data'
 import { MetricBare, MetricParameterType } from 'src/lib/schemas'
 import { render } from 'src/test-helpers/test-utils'
@@ -22,6 +23,25 @@ const indexedMetrics: Record<number, MetricBare> = {
     parameterType: MetricParameterType.Conversion,
   },
 }
+const completionBag: CompletionBag = {
+  eventCompletionDataSource: {
+    isLoading: false,
+    data: [
+      {
+        name: 'event_name',
+        value: 'event_name',
+      },
+    ],
+    error: null,
+    reloadRef: { current: () => undefined },
+  },
+  userCompletionDataSource: {
+    isLoading: false,
+    data: [],
+    error: null,
+    reloadRef: { current: () => undefined },
+  },
+}
 
 test('renders as expected', () => {
   const { container } = render(
@@ -32,7 +52,7 @@ test('renders as expected', () => {
         () => undefined
       }
     >
-      {() => <Metrics indexedMetrics={indexedMetrics} />}
+      {() => <Metrics indexedMetrics={indexedMetrics} completionBag={completionBag} />}
     </Formik>,
   )
   expect(container).toMatchSnapshot()
@@ -47,7 +67,7 @@ test('allows adding, editing and removing a Metric Assignment', async () => {
         () => undefined
       }
     >
-      {() => <Metrics indexedMetrics={indexedMetrics} />}
+      {() => <Metrics indexedMetrics={indexedMetrics} completionBag={completionBag} />}
     </Formik>,
   )
   expect(container).toMatchSnapshot()

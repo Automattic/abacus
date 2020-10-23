@@ -269,7 +269,7 @@ function createExperimentFullNew(fieldOverrides: Partial<ExperimentFullNew> = {}
     startDatetime,
     endDatetime,
     platform: Platform.Calypso,
-    ownerLogin: 'test_a11n',
+    ownerLogin: 'owner-nickname',
     description: 'Experiment with things. Change stuff. Profit.',
     existingUsersAllowed: false,
     p2Url: 'https://wordpress.com/experiment_1',
@@ -407,7 +407,7 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
     ],
     exposureEvents: [
       {
-        event: 'eventName',
+        event: 'event_name',
         props: {
           additionalProp1: 'prop1Value',
           additionalProp2: 'prop2Value',

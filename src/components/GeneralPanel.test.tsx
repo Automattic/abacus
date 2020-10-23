@@ -170,7 +170,7 @@ test('renders as expected', () => {
                 <span
                   class="makeStyles-monospace-5"
                 >
-                  test_a11n
+                  owner-nickname
                 </span>
               </td>
             </tr>
@@ -219,7 +219,7 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
   await changeFieldByRole('textbox', /Experiment description/, 'Edited description.')
   // This date was picked as it is after the fixture start date.
   fireEvent.change(screen.getByLabelText(/End date/), { target: { value: '2020-10-20' } })
-  await changeFieldByRole('textbox', /Owner/, 'changed_test_a11n')
+  await changeFieldByRole('textbox', /Owner/, 'changed_owner-nickname')
 
   const saveButton = screen.getByRole('button', { name: /Save/ })
   fireEvent.click(saveButton)
@@ -234,7 +234,7 @@ test('opens, submits and cancels edit dialog with running experiment', async () 
           Object {
             "description": "Edited description.",
             "endDatetime": "2020-10-20",
-            "ownerLogin": "changed_test_a11n",
+            "ownerLogin": "changed_owner-nickname",
           },
         ],
       ],
@@ -272,7 +272,7 @@ test('checks edit dialog does not allow end datetime changes with disabled exper
 
   await changeFieldByRole('textbox', /Experiment description/, 'Edited description.')
   expect(screen.getByLabelText(/End date/)).toBeDisabled()
-  await changeFieldByRole('textbox', /Owner/, 'changed_test_a11n')
+  await changeFieldByRole('textbox', /Owner/, 'changed_owner-nickname')
 
   const saveButton = screen.getByRole('button', { name: /Save/ })
   fireEvent.click(saveButton)
@@ -286,7 +286,7 @@ test('checks edit dialog does not allow end datetime changes with disabled exper
           1,
           Object {
             "description": "Edited description.",
-            "ownerLogin": "changed_test_a11n",
+            "ownerLogin": "changed_owner-nickname",
           },
         ],
       ],

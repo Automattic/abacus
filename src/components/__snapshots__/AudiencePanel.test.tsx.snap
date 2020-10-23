@@ -1123,7 +1123,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
                 <span
                   class="makeStyles-eventName-43"
                 >
-                  eventName
+                  event_name
                 </span>
                 <span
                   class="makeStyles-entry-42"
@@ -1416,7 +1416,7 @@ exports[`renders as expected with existing users allowed 1`] = `
                 <span
                   class="makeStyles-eventName-28"
                 >
-                  eventName
+                  event_name
                 </span>
                 <span
                   class="makeStyles-entry-27"
@@ -1709,7 +1709,7 @@ exports[`renders as expected with no segment assignments 1`] = `
                 <span
                   class="makeStyles-eventName-13"
                 >
-                  eventName
+                  event_name
                 </span>
                 <span
                   class="makeStyles-entry-12"

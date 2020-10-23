@@ -6,7 +6,7 @@ import { useSnackbar } from 'notistack'
 import { toIntOrNull } from 'qc-to_int'
 import React from 'react'
 
-import { getUserCompletions } from 'src/api/AutocompleteApi'
+import { getEventNameCompletions, getUserCompletions } from 'src/api/AutocompleteApi'
 import ExperimentsApi from 'src/api/ExperimentsApi'
 import MetricsApi from 'src/api/MetricsApi'
 import SegmentsApi from 'src/api/SegmentsApi'
@@ -65,6 +65,7 @@ export default function WizardEditPage(): JSX.Element {
   const initialExperiment = experiment && experimentToFormData(experiment)
   const completionBag = {
     userCompletionDataSource: useDataSource(getUserCompletions, []),
+    eventCompletionDataSource: useDataSource(getEventNameCompletions, []),
   }
 
   return (

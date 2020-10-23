@@ -41,6 +41,9 @@ export default function AbacusAutocomplete(
     field: { name },
   } = props
 
+  // Can't destructure this as it is of type any
+  const value = props.field.value as unknown
+
   const onChange = useCallback(
     (ev, option: AutocompleteItem | string | null) => {
       setFieldValue(name, getOptionValue(option))
@@ -48,5 +51,12 @@ export default function AbacusAutocomplete(
     [setFieldValue, name],
   )
 
-  return <Autocomplete {...fieldToAutocomplete(props)} {...autocompleteAttributes} onChange={onChange} />
+  // Autocomplete doesn't like it when it is set to a value which isn't available as a option.
+  // So we add it here like this and it works well enough.
+  const options =
+    value === null || value === '' ? [{ name: 'Select an Option', value: '' }, ...props.options] : props.options
+
+  return (
+    <Autocomplete {...fieldToAutocomplete({ ...props, options })} {...autocompleteAttributes} onChange={onChange} />
+  )
 }

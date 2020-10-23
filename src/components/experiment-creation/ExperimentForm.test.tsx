@@ -7,6 +7,8 @@ import MockDate from 'mockdate'
 import * as notistack from 'notistack'
 import React from 'react'
 
+import * as AutocompleteApi from 'src/api/AutocompleteApi'
+import { CompletionBag } from 'src/api/AutocompleteApi'
 import { experimentToFormData } from 'src/lib/form-data'
 import * as Normalizers from 'src/lib/normalizers'
 import { experimentFullNewSchema, Status } from 'src/lib/schemas'
@@ -15,6 +17,13 @@ import { changeFieldByRole, render, validationErrorDisplayer } from 'src/test-he
 import { formatIsoDate } from 'src/utils/time'
 
 import ExperimentForm from './ExperimentForm'
+
+jest.mock('src/api/AutocompleteApi')
+const mockedAutocompleteApi = AutocompleteApi as jest.Mocked<typeof AutocompleteApi>
+mockedAutocompleteApi.getPropNameCompletions.mockImplementationOnce(async () => null)
+mockedAutocompleteApi.getPropNameCompletions.mockImplementationOnce(async () => [
+  { name: 'prop key name', value: 'prop_key_value' },
+])
 
 jest.mock('notistack')
 const mockedNotistack = notistack as jest.Mocked<typeof notistack>
@@ -46,7 +55,7 @@ function isSectionComplete(sectionButton: HTMLElement) {
   return !!sectionButton.querySelector('.MuiStepIcon-completed')
 }
 
-const completionBag = {
+const completionBag: CompletionBag = {
   userCompletionDataSource: {
     isLoading: false,
     error: null,
@@ -54,6 +63,17 @@ const completionBag = {
       {
         name: 'testing (owner-nickname)',
         value: 'owner-nickname',
+      },
+    ],
+    reloadRef: { current: () => undefined },
+  },
+  eventCompletionDataSource: {
+    isLoading: false,
+    error: null,
+    data: [
+      {
+        name: 'event_name',
+        value: 'event_name',
       },
     ],
     reloadRef: { current: () => undefined },
@@ -445,8 +465,18 @@ test('form submits with valid fields', async () => {
   await act(async () => {
     fireEvent.click(await screen.findByRole('button', { name: /Add Property/ }))
   })
-  await changeFieldByRole('textbox', /Event Name/, 'event_name')
-  await changeFieldByRole('textbox', /Property Key/, 'key')
+  // search for the event
+  await act(async () => {
+    await changeFieldByRole('textbox', /Event Name/, 'event_name')
+  })
+  // click the selected event
+  await act(async () => {
+    fireEvent.click(screen.getByText('event_name'))
+  })
+  // enter the prop value
+  await act(async () => {
+    await changeFieldByRole('textbox', /Key/, 'prop_key_value')
+  })
   await changeFieldByRole('textbox', /Property Value/, 'value')
 
   await act(async () => {
@@ -483,7 +513,7 @@ test('form submits with valid fields', async () => {
           event: 'event_name',
           props: [
             {
-              key: 'key',
+              key: 'prop_key_value',
               value: 'value',
             },
           ],

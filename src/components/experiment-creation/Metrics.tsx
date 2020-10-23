@@ -11,34 +11,27 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TextField as MuiTextField,
   Tooltip,
   Typography,
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Add, Clear } from '@material-ui/icons'
+import { AutocompleteRenderInputParams } from '@material-ui/lab'
 import { Field, FieldArray, useField } from 'formik'
 import { Select, Switch, TextField } from 'formik-material-ui'
 import React, { useState } from 'react'
 
+import { CompletionBag, getPropNameCompletions } from 'src/api/AutocompleteApi'
+import AbacusAutocomplete, { autocompleteInputProps } from 'src/components/Autocomplete'
 import MoreMenu from 'src/components/MoreMenu'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
 import { EventNew, MetricAssignment, MetricBare, MetricParameterType } from 'src/lib/schemas'
+import { useDataSource } from 'src/utils/data-loading'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
-    addMetric: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'flex-end',
-      margin: theme.spacing(3, 0, 2),
-    },
-    addMetricAddSymbol: {
-      position: 'relative',
-      top: -3,
-      marginRight: theme.spacing(2),
-      color: theme.palette.text.disabled,
-    },
     addMetricPlaceholder: {
       fontFamily: theme.typography.fontFamily,
     },
@@ -67,6 +60,30 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(4),
     },
+  }),
+)
+
+const useMetricEditorStyles = makeStyles((theme) =>
+  createStyles({
+    root: {},
+    addMetric: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+      margin: theme.spacing(3, 0, 2),
+    },
+    addMetricAddSymbol: {
+      position: 'relative',
+      top: -3,
+      marginRight: theme.spacing(2),
+      color: theme.palette.text.disabled,
+    },
+  }),
+)
+
+const useEventEditorStyles = makeStyles((theme) =>
+  createStyles({
+    root: {},
     exposureEventsEventNameCell: {
       display: 'flex',
       alignItems: 'center',
@@ -84,6 +101,10 @@ const useStyles = makeStyles((theme: Theme) =>
     exposureEventsEventPropertiesKey: {
       marginRight: theme.spacing(1),
     },
+    exposureEventsEventPropertiesKeyAutoComplete: {
+      display: 'inline-flex',
+      minWidth: '40%',
+    },
   }),
 )
 
@@ -97,8 +118,160 @@ const createMetricAssignment = (metric: MetricBare) => {
   }
 }
 
-const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare> }): JSX.Element => {
+const EventEditor = ({
+  index,
+  completionBag: { eventCompletionDataSource },
+  exposureEvent: { event: name, props: propList },
+  onRemoveExposureEvent,
+}: {
+  index: number
+  completionBag: CompletionBag
+  exposureEvent: EventNew
+  onRemoveExposureEvent: () => void
+}) => {
+  const classes = useEventEditorStyles()
+  const metricClasses = useMetricEditorStyles()
+  const { isLoading, data: propCompletions } = useDataSource(async () => name && getPropNameCompletions(name), [name])
+
+  return (
+    <TableRow>
+      <TableCell>
+        <div className={classes.exposureEventsEventNameCell}>
+          <Field
+            component={AbacusAutocomplete}
+            name={`experiment.exposureEvents[${index}].event`}
+            className={classes.exposureEventsEventName}
+            id={`experiment.exposureEvents[${index}].event`}
+            options={eventCompletionDataSource.data}
+            loading={eventCompletionDataSource.isLoading}
+            renderInput={(params: AutocompleteRenderInputParams) => (
+              <MuiTextField
+                {...params}
+                label='Event Name'
+                placeholder='event_name'
+                variant='outlined'
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                InputProps={{
+                  ...autocompleteInputProps(params, eventCompletionDataSource.isLoading),
+                  'aria-label': 'Event Name',
+                }}
+              />
+            )}
+          />
+          <IconButton
+            className={classes.exposureEventsEventRemoveButton}
+            onClick={onRemoveExposureEvent}
+            aria-label='Remove exposure event'
+          >
+            <Clear />
+          </IconButton>
+        </div>
+        <FieldArray
+          name={`experiment.exposureEvents[${index}].props`}
+          render={(arrayHelpers) => {
+            const onAddExposureEventProperty = () => {
+              arrayHelpers.push({
+                key: '',
+                value: '',
+              })
+            }
+
+            return (
+              <div>
+                <div>
+                  {propList &&
+                    propList.map((_prop: unknown, propIndex: number) => {
+                      const onRemoveExposureEventProperty = () => {
+                        arrayHelpers.remove(propIndex)
+                      }
+
+                      return (
+                        <div className={classes.exposureEventsEventPropertiesRow} key={propIndex}>
+                          <Field
+                            component={AbacusAutocomplete}
+                            name={`experiment.exposureEvents[${index}].props[${propIndex}].key`}
+                            id={`experiment.exposureEvents[${index}].props[${propIndex}].key`}
+                            options={propCompletions || []}
+                            loading={isLoading}
+                            freeSolo={true}
+                            className={classes.exposureEventsEventPropertiesKeyAutoComplete}
+                            renderInput={(params: AutocompleteRenderInputParams) => (
+                              <MuiTextField
+                                {...params}
+                                className={classes.exposureEventsEventPropertiesKey}
+                                label='Key'
+                                placeholder='key'
+                                variant='outlined'
+                                size='small'
+                                InputProps={{
+                                  ...autocompleteInputProps(params, isLoading),
+                                  'aria-label': 'Property Key',
+                                }}
+                                InputLabelProps={{
+                                  shrink: true,
+                                }}
+                              />
+                            )}
+                          />
+                          <Field
+                            component={TextField}
+                            name={`experiment.exposureEvents[${index}].props[${propIndex}].value`}
+                            id={`experiment.exposureEvents[${index}].props[${propIndex}].value`}
+                            type='text'
+                            variant='outlined'
+                            placeholder='value'
+                            label='Value'
+                            size='small'
+                            inputProps={{
+                              'aria-label': 'Property Value',
+                            }}
+                            InputLabelProps={{
+                              shrink: true,
+                            }}
+                          />
+                          <IconButton
+                            className={classes.exposureEventsEventRemoveButton}
+                            onClick={onRemoveExposureEventProperty}
+                            aria-label='Remove exposure event property'
+                          >
+                            <Clear />
+                          </IconButton>
+                        </div>
+                      )
+                    })}
+                </div>
+                <div className={metricClasses.addMetric}>
+                  <Add className={metricClasses.addMetricAddSymbol} />
+                  <Button
+                    variant='contained'
+                    onClick={onAddExposureEventProperty}
+                    disableElevation
+                    size='small'
+                    aria-label='Add Property'
+                  >
+                    Add Property
+                  </Button>
+                </div>
+              </div>
+            )
+          }}
+        />
+      </TableCell>
+    </TableRow>
+  )
+}
+
+const Metrics = ({
+  indexedMetrics,
+  completionBag,
+}: {
+  indexedMetrics: Record<number, MetricBare>
+  completionBag: CompletionBag
+}): JSX.Element => {
   const classes = useStyles()
+  const metricEditorClasses = useMetricEditorStyles()
 
   // Metric Assignments
   const [metricAssignmentsField, _metricAssignmentsFieldMetaProps, metricAssignmentsFieldHelperProps] = useField<
@@ -267,8 +440,8 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                   </TableBody>
                 </Table>
               </TableContainer>
-              <div className={classes.addMetric}>
-                <Add className={classes.addMetricAddSymbol} />
+              <div className={metricEditorClasses.addMetric}>
+                <Add className={metricEditorClasses.addMetricAddSymbol} />
                 <FormControl className={classes.addMetricSelect}>
                   <MuiSelect
                     labelId='add-metric-label'
@@ -314,124 +487,13 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
               <TableContainer>
                 <Table>
                   <TableBody>
-                    {exposureEventsField.value.map((exposureEvent, index) => {
-                      const onRemoveExposureEvent = () => {
-                        arrayHelpers.remove(index)
-                      }
-
-                      return (
-                        <TableRow key={index}>
-                          <TableCell>
-                            <div className={classes.exposureEventsEventNameCell}>
-                              <Field
-                                component={TextField}
-                                name={`experiment.exposureEvents[${index}].event`}
-                                className={classes.exposureEventsEventName}
-                                id={`experiment.exposureEvents[${index}].event`}
-                                type='text'
-                                variant='outlined'
-                                placeholder='event_name'
-                                label='Event'
-                                inputProps={{
-                                  'aria-label': 'Event Name',
-                                }}
-                                InputLabelProps={{
-                                  shrink: true,
-                                }}
-                              />
-                              <IconButton
-                                className={classes.exposureEventsEventRemoveButton}
-                                onClick={onRemoveExposureEvent}
-                                aria-label='Remove exposure event'
-                              >
-                                <Clear />
-                              </IconButton>
-                            </div>
-                            <FieldArray
-                              name={`experiment.exposureEvents[${index}].props`}
-                              render={(arrayHelpers) => {
-                                const onAddExposureEventProperty = () => {
-                                  arrayHelpers.push({
-                                    key: '',
-                                    value: '',
-                                  })
-                                }
-
-                                return (
-                                  <div>
-                                    <div>
-                                      {exposureEvent.props &&
-                                        exposureEvent.props.map((_prop: unknown, propIndex: number) => {
-                                          const onRemoveExposureEventProperty = () => {
-                                            arrayHelpers.remove(propIndex)
-                                          }
-
-                                          return (
-                                            <div className={classes.exposureEventsEventPropertiesRow} key={propIndex}>
-                                              <Field
-                                                component={TextField}
-                                                className={classes.exposureEventsEventPropertiesKey}
-                                                name={`experiment.exposureEvents[${index}].props[${propIndex}].key`}
-                                                id={`experiment.exposureEvents[${index}].props[${propIndex}].key`}
-                                                type='text'
-                                                variant='outlined'
-                                                placeholder='key'
-                                                label='Key'
-                                                size='small'
-                                                inputProps={{
-                                                  'aria-label': 'Property Key',
-                                                }}
-                                                InputLabelProps={{
-                                                  shrink: true,
-                                                }}
-                                              />
-                                              <Field
-                                                component={TextField}
-                                                name={`experiment.exposureEvents[${index}].props[${propIndex}].value`}
-                                                id={`experiment.exposureEvents[${index}].props[${propIndex}].value`}
-                                                type='text'
-                                                variant='outlined'
-                                                placeholder='value'
-                                                label='Value'
-                                                size='small'
-                                                inputProps={{
-                                                  'aria-label': 'Property Value',
-                                                }}
-                                                InputLabelProps={{
-                                                  shrink: true,
-                                                }}
-                                              />
-                                              <IconButton
-                                                className={classes.exposureEventsEventRemoveButton}
-                                                onClick={onRemoveExposureEventProperty}
-                                                aria-label='Remove exposure event property'
-                                              >
-                                                <Clear />
-                                              </IconButton>
-                                            </div>
-                                          )
-                                        })}
-                                    </div>
-                                    <div className={classes.addMetric}>
-                                      <Add className={classes.addMetricAddSymbol} />
-                                      <Button
-                                        variant='contained'
-                                        onClick={onAddExposureEventProperty}
-                                        disableElevation
-                                        size='small'
-                                        aria-label='Add Property'
-                                      >
-                                        Add Property
-                                      </Button>
-                                    </div>
-                                  </div>
-                                )
-                              }}
-                            />
-                          </TableCell>
-                        </TableRow>
-                      )
-                    })}
+                    {exposureEventsField.value.map((exposureEvent, index) => (
+                      <EventEditor
+                        key={index}
+                        {...{ arrayHelpers, index, classes, completionBag, exposureEvent }}
+                        onRemoveExposureEvent={() => arrayHelpers.remove(index)}
+                      />
+                    ))}
                     {exposureEventsField.value.length === 0 && (
                       <TableRow>
                         <TableCell colSpan={1}>
@@ -444,8 +506,8 @@ const Metrics = ({ indexedMetrics }: { indexedMetrics: Record<number, MetricBare
                   </TableBody>
                 </Table>
               </TableContainer>
-              <div className={classes.addMetric}>
-                <Add className={classes.addMetricAddSymbol} />
+              <div className={metricEditorClasses.addMetric}>
+                <Add className={metricEditorClasses.addMetricAddSymbol} />
                 <Button
                   variant='contained'
                   disableElevation

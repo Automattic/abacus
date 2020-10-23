@@ -47,7 +47,7 @@ describe('lib/form-data.test.ts module', () => {
           "existingUsersAllowed": "false",
           "exposureEvents": Array [
             Object {
-              "event": "eventName",
+              "event": "event_name",
               "props": Array [
                 Object {
                   "key": "additionalProp1",
@@ -95,7 +95,7 @@ describe('lib/form-data.test.ts module', () => {
             },
           ],
           "name": "experiment_1",
-          "ownerLogin": "test_a11n",
+          "ownerLogin": "owner-nickname",
           "p2Url": "https://wordpress.com/experiment_1",
           "platform": "calypso",
           "segmentAssignments": Array [

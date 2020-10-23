@@ -28,7 +28,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "lodash": "^4.17.19",
     "material-table": "^1.59.0",
-    "next": "^9.3.6",
+    "next": "^9.5.4",
     "normalizr": "^3.6.0",
     "notistack": "^1.0.0",
     "plotly.js": "^1.55.2",
