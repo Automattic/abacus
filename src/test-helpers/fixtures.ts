@@ -23,6 +23,7 @@ import {
   SegmentAssignment,
   SegmentType,
   Status,
+  TagBare,
   TransactionTypes,
 } from 'src/lib/schemas'
 
@@ -452,6 +453,21 @@ function createMetricFull(id: number): MetricFull {
   }
 }
 
+function createTagBare(id: number): TagBare {
+  return {
+    tagId: id,
+    namespace: `tag_namespace_${id}`,
+    name: `tag_${id}`,
+    description: `This is tag ${id}`,
+  }
+}
+
+function createTagBares(numTags = 3): TagBare[] {
+  return _.range(1, numTags + 1).map(createTagBare)
+}
+
+const createTagFull = createTagBare
+
 function createSegment(id: number): Segment {
   return {
     segmentId: id,
@@ -483,6 +499,8 @@ const Fixtures = {
   createMetricAssignment,
   createMetricBares,
   createMetricFull,
+  createTagBares,
+  createTagFull,
   createSegmentAssignment,
   createSegments,
 }
