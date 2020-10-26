@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
+
 // Schema documentation lives at:
 // https://app.swaggerhub.com/apis/yanir/experiments/0.1.0
 
