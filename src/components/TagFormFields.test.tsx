@@ -1,75 +1,47 @@
 /* eslint-disable @typescript-eslint/require-await */
-import { act, fireEvent, screen } from '@testing-library/react'
-import { Formik, FormikProps } from 'formik'
+import { Formik } from 'formik'
 import MockDate from 'mockdate'
 import React from 'react'
 
-import { MetricFormData, metricToFormData } from 'src/lib/form-data'
+import { tagToFormData } from 'src/lib/form-data'
 import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'
 
-import MetricFormFields from './MetricFormFields'
+import TagFormFields from './TagFormFields'
 
 MockDate.set('2020-07-21')
 
-test('renders as expected for conversion metric', async () => {
-  const metric = Fixtures.createMetricFull(1)
+test('renders as expected for an existing tag', async () => {
+  const tag = Fixtures.createTagFull(1)
   const { container } = render(
     <Formik
       initialValues={{
-        metric: metricToFormData(metric),
+        tag: tagToFormData(tag),
       }}
       onSubmit={
         /* istanbul ignore next; This is unused */
         () => undefined
       }
     >
-      {(formikProps: FormikProps<{ metric: MetricFormData }>) => <MetricFormFields formikProps={formikProps} />}
+      {() => <TagFormFields />}
     </Formik>,
   )
 
   expect(container).toMatchSnapshot()
-
-  await act(async () => {
-    fireEvent.click(screen.getByRole('radio', { name: 'Revenue' }))
-  })
 })
 
-test('renders as expected for revenue metric', async () => {
-  const metric = Fixtures.createMetricFull(2)
+test('renders as expected for a new tag', () => {
   const { container } = render(
     <Formik
       initialValues={{
-        metric: metricToFormData(metric),
+        tag: tagToFormData({}),
       }}
       onSubmit={
         /* istanbul ignore next; This is unused */
         () => undefined
       }
     >
-      {(formikProps: FormikProps<{ metric: MetricFormData }>) => <MetricFormFields formikProps={formikProps} />}
-    </Formik>,
-  )
-
-  expect(container).toMatchSnapshot()
-
-  await act(async () => {
-    fireEvent.click(screen.getByRole('radio', { name: 'Conversion' }))
-  })
-})
-
-test('renders as expected for new metric', () => {
-  const { container } = render(
-    <Formik
-      initialValues={{
-        metric: metricToFormData({}),
-      }}
-      onSubmit={
-        /* istanbul ignore next; This is unused */
-        () => undefined
-      }
-    >
-      {(formikProps: FormikProps<{ metric: MetricFormData }>) => <MetricFormFields formikProps={formikProps} />}
+      {() => <TagFormFields />}
     </Formik>,
   )
 

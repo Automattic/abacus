@@ -1,15 +1,11 @@
-import { fireEvent, getByText, getDefaultNormalizer, screen, waitFor } from '@testing-library/react'
+import { fireEvent, getByText, screen } from '@testing-library/react'
 import * as notistack from 'notistack'
 import React from 'react'
 
-import MetricsApi from 'src/api/MetricsApi'
 import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'
 
-import MetricsTable from './MetricsTable'
-
-jest.mock('src/api/MetricsApi')
-const mockedMetricsApi = (MetricsApi as unknown) as jest.Mocked<typeof MetricsApi>
+import TagsTable from './TagsTable'
 
 jest.mock('notistack')
 const mockedNotistack = notistack as jest.Mocked<typeof notistack>
@@ -18,66 +14,33 @@ mockedNotistack.useSnackbar.mockImplementation(() => ({
   closeSnackbar: jest.fn(),
 }))
 
-test('with no metrics, renders an empty table', () => {
-  const { container, getByText } = render(<MetricsTable metrics={[]} />)
+test('with no tags, renders an empty table', () => {
+  const { container, getByText } = render(<TagsTable tags={[]} />)
 
-  expect(getByText('Name')).toBeInTheDocument()
+  expect(getByText('Tag')).toBeInTheDocument()
   expect(getByText('Description')).toBeInTheDocument()
-  expect(getByText('Parameter Type')).toBeInTheDocument()
 
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
   expect(tBodyElmt).toHaveTextContent('')
 })
 
-test('with some metrics, renders a table', () => {
-  const { container } = render(<MetricsTable metrics={Fixtures.createMetricBares(2)} />)
+test('with some tags, renders a table', () => {
+  const { container } = render(<TagsTable tags={Fixtures.createTagBares(2)} />)
 
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
-  expect(getByText(tBodyElmt, 'metric_1', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getByText(tBodyElmt, 'This is metric 1', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getByText(tBodyElmt, 'revenue', { selector: 'tr > td' })).toBeInTheDocument()
-  expect(getByText(tBodyElmt, 'conversion', { selector: 'tr > td' })).toBeInTheDocument()
+  expect(getByText(tBodyElmt, 'tag_namespace_1/tag_1', { selector: 'tr > td' })).toBeInTheDocument()
+  expect(getByText(tBodyElmt, 'This is tag 1', { selector: 'tr > td' })).toBeInTheDocument()
 })
 
-test('with some metrics, loads and opens metric details', async () => {
-  const { container } = render(<MetricsTable metrics={Fixtures.createMetricBares(2)} />)
-  const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
-  expect(tBodyElmt).not.toBeNull()
+test('with some tags and canEditTags can click on the edit button', () => {
+  const onEditTag = jest.fn()
+  render(<TagsTable tags={Fixtures.createTagBares(2)} onEditTag={onEditTag} />)
 
-  for (let i = 1; i < 7; i++) {
-    const metricFull = Fixtures.createMetricFull(i)
-    mockedMetricsApi.findById.mockResolvedValueOnce(metricFull)
-
-    // Open metric details
-    fireEvent.click(getByText(container, /metric_1/))
-
-    await waitFor(() => getByText(container, /Higher is Better/), { container })
-    metricFull.higherIsBetter ? getByText(container, /Yes/) : getByText(container, /No/)
-    getByText(container, /Parameters/)
-    getByText(
-      container,
-      JSON.stringify(
-        metricFull.parameterType === 'conversion' ? metricFull.eventParams : metricFull.revenueParams,
-        null,
-        4,
-      ),
-      { normalizer: getDefaultNormalizer({ trim: true, collapseWhitespace: false }) },
-    )
-
-    // Close metric details
-    fireEvent.click(getByText(container, /metric_1/))
-  }
-})
-
-test('with some metrics and canEditMetrics can click on the edit button', () => {
-  const onEditMetric = jest.fn()
-  render(<MetricsTable metrics={Fixtures.createMetricBares(2)} onEditMetric={onEditMetric} />)
-
-  const edits = screen.getAllByRole('button', { name: 'Edit Metric' })
+  const edits = screen.getAllByRole('button', { name: 'Edit Tag' })
 
   fireEvent.click(edits[0])
 
-  expect(onEditMetric.mock.calls.length).toBe(1)
+  expect(onEditTag.mock.calls.length).toBe(1)
 })

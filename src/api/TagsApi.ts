@@ -2,78 +2,78 @@ import _ from 'lodash'
 import * as yup from 'yup'
 
 import {
-  MetricBare,
-  metricBareSchema,
-  MetricFull,
-  MetricFullNew,
-  metricFullNewOutboundSchema,
-  metricFullNewSchema,
-  metricFullSchema,
+  TagBare,
+  tagBareSchema,
+  TagFull,
+  TagFullNew,
+  tagFullNewOutboundSchema,
+  tagFullNewSchema,
+  tagFullSchema,
 } from 'src/lib/schemas'
 import { isDebugMode } from 'src/utils/general'
 
 import { fetchApi } from './utils'
 
 /**
- * Attempts to create a new metric.
+ * Attempts to create a new tag.
  *
  * Note: Be sure to handle any errors that may be thrown.
  */
-async function create(newMetric: MetricFullNew): Promise<MetricFull> {
-  const validatedNewMetric = await metricFullNewSchema.validate(newMetric, { abortEarly: false })
-  const outboundNewMetric = metricFullNewOutboundSchema.cast(validatedNewMetric)
-  return await metricFullSchema.validate(await fetchApi('POST', '/metrics', outboundNewMetric))
+async function create(newTag: TagFullNew): Promise<TagBare> {
+  const validatedNewTag = await tagFullNewSchema.validate(newTag, { abortEarly: false })
+  const outboundNewTag = tagFullNewOutboundSchema.cast(validatedNewTag)
+  return await tagBareSchema.validate(await fetchApi('POST', '/tags', outboundNewTag))
 }
 
 /**
- * Attempts to put a new metric.
+ * Attempts to put a new tag.
  *
  * Note: Be sure to handle any errors that may be thrown.
  */
-async function put(metricId: number, newMetric: MetricFullNew): Promise<MetricFull> {
+async function put(tagId: number, newTag: TagFullNew): Promise<TagBare> {
   // istanbul ignore next; Shouldn't happen
-  if (!_.isNumber(metricId)) {
-    throw new Error('Invalid metricId.')
+  if (!_.isNumber(tagId)) {
+    throw new Error('Invalid tagId.')
   }
-  const validatedNewMetric = await metricFullNewSchema.validate(newMetric, { abortEarly: false })
-  const outboundNewMetric = metricFullNewOutboundSchema.cast(validatedNewMetric)
-  return await metricFullSchema.validate(await fetchApi('PUT', `/metrics/${metricId}`, outboundNewMetric))
+  const validatedNewTag = await tagFullNewSchema.validate(newTag, { abortEarly: false })
+  const outboundNewTag = tagFullNewOutboundSchema.cast(validatedNewTag)
+  return await tagBareSchema.validate(await fetchApi('PUT', `/tags/${tagId}`, outboundNewTag))
 }
 
 /**
- * Finds all the available metrics.
+ * Finds all the available tags.
  *
  * Note: Be sure to handle any errors that may be thrown.
  *
  * @throws UnauthorizedError
  */
-async function findAll(): Promise<MetricBare[]> {
+async function findAll(): Promise<TagBare[]> {
   // istanbul ignore next; debug only
-  const { metrics } = await yup
-    .object({ metrics: yup.array(metricBareSchema).defined() })
+  const { tags } = await yup
+    .object({ tags: yup.array(tagBareSchema).defined() })
     .defined()
-    .validate(await fetchApi('GET', isDebugMode() ? '/metrics?debug=true' : '/metrics'), {
+    .validate(await fetchApi('GET', isDebugMode() ? '/tags?debug=true' : '/tags'), {
       abortEarly: false,
     })
-  return metrics
+  return tags
 }
 
 /**
- * Find the metric by ID.
+ * Find the tag by ID.
  *
  * Note: Be sure to handle any errors that may be thrown.
  *
  * @throws UnauthorizedError
  */
-async function findById(metricId: number): Promise<MetricFull> {
-  return await metricFullSchema.validate(await fetchApi('GET', `/metrics/${metricId}`), { abortEarly: false })
+async function findById(tagId: number): Promise<TagFull> {
+  return await tagFullSchema.validate(await fetchApi('GET', `/tags/${tagId}`), { abortEarly: false })
 }
 
-const MetricsApi = {
+const TagsApi = {
   create,
   put,
   findAll,
   findById,
 }
 
-export default MetricsApi
+export default TagsApi

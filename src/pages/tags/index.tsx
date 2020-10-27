@@ -10,22 +10,22 @@ import {
   Theme,
 } from '@material-ui/core'
 import debugFactory from 'debug'
-import { Formik, FormikProps } from 'formik'
+import { Formik } from 'formik'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 import * as yup from 'yup'
 
-import MetricsApi from 'src/api/MetricsApi'
+import TagsApi from 'src/api/TagsApi'
 import Layout from 'src/components/Layout'
 import LoadingButtonContainer from 'src/components/LoadingButtonContainer'
-import MetricFormFields from 'src/components/MetricFormFields'
-import MetricsTable from 'src/components/MetricsTable'
-import { MetricFormData, metricToFormData } from 'src/lib/form-data'
-import { MetricFullNew, metricFullNewSchema } from 'src/lib/schemas'
+import TagFormFields from 'src/components/TagFormFields'
+import TagsTable from 'src/components/TagsTable'
+import { TagFormData, tagToFormData } from 'src/lib/form-data'
+import { TagFullNew, tagFullNewSchema } from 'src/lib/schemas'
 import { useDataLoadingError, useDataSource } from 'src/utils/data-loading'
 import { isDebugMode } from 'src/utils/general'
 
-const debug = debugFactory('abacus:pages/metrics/index.tsx')
+const debug = debugFactory('abacus:pages/tags/index.tsx')
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,98 +37,94 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const MetricsIndexPage = (): JSX.Element => {
-  debug('MetricsIndexPage#render')
+const TagsIndexPage = (): JSX.Element => {
+  debug('TagsIndexPage#render')
   const classes = useStyles()
 
-  const { isLoading, data: metrics, error, reloadRef } = useDataSource(() => MetricsApi.findAll(), [])
-  useDataLoadingError(error, 'Metrics')
+  const { isLoading, data: tags, error, reloadRef } = useDataSource(() => TagsApi.findAll(), [])
+  useDataLoadingError(error, 'Tags')
 
   const debugMode = isDebugMode()
 
   const { enqueueSnackbar } = useSnackbar()
 
-  // Edit Metric Modal
-  const [editMetricMetricId, setEditMetricMetricId] = useState<number | null>(null)
-  const isEditingMetric = editMetricMetricId !== null
-  const {
-    isLoading: editMetricIsLoading,
-    data: editMetricInitialMetric,
-    error: editMetricError,
-  } = useDataSource(async () => {
-    return editMetricMetricId === null ? null : await MetricsApi.findById(editMetricMetricId)
-  }, [editMetricMetricId])
-  useDataLoadingError(editMetricError, 'Metric to edit')
-  const onEditMetric = (metricId: number) => {
-    setEditMetricMetricId(metricId)
+  // Edit Tag Modal
+  const [editTagTagId, setEditTagTagId] = useState<number | null>(null)
+  const isEditingTag = editTagTagId !== null
+  const { isLoading: editTagIsLoading, data: editTagInitialTag, error: editTagError } = useDataSource(async () => {
+    return editTagTagId === null ? null : await TagsApi.findById(editTagTagId)
+  }, [editTagTagId])
+  useDataLoadingError(editTagError, 'Tag to edit')
+  const onEditTag = (tagId: number) => {
+    setEditTagTagId(tagId)
   }
-  const onCancelEditMetric = () => {
-    setEditMetricMetricId(null)
+  const onCancelEditTag = () => {
+    setEditTagTagId(null)
   }
-  const onSubmitEditMetric = async ({ metric }: { metric: MetricFormData }) => {
+  const onSubmitEditTag = async ({ tag }: { tag: TagFormData }) => {
     try {
-      if (!editMetricMetricId) {
-        throw new Error(`Missing metricId, this shouldn't happen.`)
+      if (!editTagTagId) {
+        throw new Error(`Missing tagId, this shouldn't happen.`)
       }
-      await MetricsApi.put(editMetricMetricId, (metric as unknown) as MetricFullNew)
-      enqueueSnackbar('Metric Edited!', { variant: 'success' })
+      await TagsApi.put(editTagTagId, (tag as unknown) as TagFullNew)
+      enqueueSnackbar('Tag Edited!', { variant: 'success' })
       reloadRef.current()
-      setEditMetricMetricId(null)
+      setEditTagTagId(null)
     } catch (e) /* istanbul ignore next; Shouldn't happen */ {
       console.error(e)
-      enqueueSnackbar('Oops! Something went wrong while trying to update your metric.', { variant: 'error' })
+      enqueueSnackbar('Oops! Something went wrong while trying to update your tag.', { variant: 'error' })
     }
   }
 
-  // Add Metric Modal
-  const [isAddingMetric, setIsAddingMetric] = useState<boolean>(false)
-  const onAddMetric = () => setIsAddingMetric(true)
-  const onCancelAddMetric = () => {
-    setIsAddingMetric(false)
+  // Add Tag Modal
+  const [isAddingTag, setIsAddingTag] = useState<boolean>(false)
+  const onAddTag = () => setIsAddingTag(true)
+  const onCancelAddTag = () => {
+    setIsAddingTag(false)
   }
-  const onSubmitAddMetric = async ({ metric }: { metric: MetricFormData }) => {
+  const onSubmitAddTag = async ({ tag }: { tag: TagFormData }) => {
     try {
-      await MetricsApi.create((metric as unknown) as MetricFullNew)
-      enqueueSnackbar('Metric Added!', { variant: 'success' })
+      await TagsApi.create((tag as unknown) as TagFullNew)
+      enqueueSnackbar('Tag Added!', { variant: 'success' })
       reloadRef.current()
-      setIsAddingMetric(false)
+      setIsAddingTag(false)
     } catch (e) /* istanbul ignore next; Shouldn't happen */ {
       console.error(e)
-      enqueueSnackbar('Oops! Something went wrong while trying to add your metric.', { variant: 'error' })
+      enqueueSnackbar('Oops! Something went wrong while trying to add your tag.', { variant: 'error' })
     }
   }
 
   return (
-    <Layout title='Metrics'>
+    <Layout title='Tags'>
       {isLoading && <LinearProgress />}
-      {metrics && (
+      {tags && (
         <>
-          <MetricsTable metrics={metrics || []} onEditMetric={debugMode ? onEditMetric : undefined} />
+          <TagsTable tags={tags || []} onEditTag={debugMode ? onEditTag : undefined} />
           {debugMode && (
             <div className={classes.actions}>
-              <Button variant='contained' color='secondary' onClick={onAddMetric}>
-                Add Metric
+              <Button variant='contained' color='secondary' onClick={onAddTag}>
+                Add Tag
               </Button>
             </div>
           )}
         </>
       )}
-      <Dialog open={isEditingMetric} fullWidth aria-labelledby='edit-metric-form-dialog-title'>
-        <DialogTitle id='edit-metric-form-dialog-title'>Edit Metric</DialogTitle>
-        {editMetricIsLoading && <LinearProgress />}
-        {editMetricInitialMetric && (
+      <Dialog open={isEditingTag} fullWidth aria-labelledby='edit-tag-form-dialog-title'>
+        <DialogTitle id='edit-tag-form-dialog-title'>Edit Tag</DialogTitle>
+        {editTagIsLoading && <LinearProgress />}
+        {editTagInitialTag && (
           <Formik
-            initialValues={{ metric: metricToFormData(editMetricInitialMetric) }}
-            onSubmit={onSubmitEditMetric}
-            validationSchema={yup.object({ metric: metricFullNewSchema })}
+            initialValues={{ tag: tagToFormData(editTagInitialTag) }}
+            onSubmit={onSubmitEditTag}
+            validationSchema={yup.object({ tag: tagFullNewSchema })}
           >
             {(formikProps) => (
               <form onSubmit={formikProps.handleSubmit} noValidate>
                 <DialogContent>
-                  <MetricFormFields formikProps={formikProps as FormikProps<{ metric: MetricFormData }>} />
+                  <TagFormFields />
                 </DialogContent>
                 <DialogActions>
-                  <Button onClick={onCancelEditMetric} color='primary'>
+                  <Button onClick={onCancelEditTag} color='primary'>
                     Cancel
                   </Button>
                   <LoadingButtonContainer isLoading={formikProps.isSubmitting}>
@@ -147,20 +143,20 @@ const MetricsIndexPage = (): JSX.Element => {
           </Formik>
         )}
       </Dialog>
-      <Dialog open={isAddingMetric} fullWidth aria-labelledby='add-metric-form-dialog-title'>
-        <DialogTitle id='add-metric-form-dialog-title'>Add Metric</DialogTitle>
+      <Dialog open={isAddingTag} fullWidth aria-labelledby='add-tag-form-dialog-title'>
+        <DialogTitle id='add-tag-form-dialog-title'>Add Tag</DialogTitle>
         <Formik
-          initialValues={{ metric: metricToFormData({}) }}
-          onSubmit={onSubmitAddMetric}
-          validationSchema={yup.object({ metric: metricFullNewSchema })}
+          initialValues={{ tag: tagToFormData({}) }}
+          onSubmit={onSubmitAddTag}
+          validationSchema={yup.object({ tag: tagFullNewSchema })}
         >
           {(formikProps) => (
             <form onSubmit={formikProps.handleSubmit} noValidate>
               <DialogContent>
-                <MetricFormFields formikProps={formikProps as FormikProps<{ metric: MetricFormData }>} />
+                <TagFormFields />
               </DialogContent>
               <DialogActions>
-                <Button onClick={onCancelAddMetric} color='primary'>
+                <Button onClick={onCancelAddTag} color='primary'>
                   Cancel
                 </Button>
                 <LoadingButtonContainer isLoading={formikProps.isSubmitting}>
@@ -182,4 +178,4 @@ const MetricsIndexPage = (): JSX.Element => {
   )
 }
 
-export default MetricsIndexPage
+export default TagsIndexPage

@@ -8,6 +8,7 @@ import {
   MetricParameterType,
   Platform,
   SegmentAssignment,
+  TagBare,
   Variation,
 } from './schemas'
 
@@ -134,3 +135,18 @@ export const metricToFormData: (
   revenueParams: metric.revenueParams ? JSON.stringify(metric.revenueParams, null, 2) : undefined,
 })
 export type MetricFormData = ReturnType<typeof metricToFormData>
+
+/**
+ * Convert a tag for use as form data in Formik.
+ */
+export const tagToFormData: (
+  tag: Partial<TagBare>,
+) => {
+  name: string
+  description: string
+} = (tag: Partial<TagBare>) => ({
+  namespace: tag.namespace ?? '',
+  name: tag.name ?? '',
+  description: tag.description ?? '',
+})
+export type TagFormData = ReturnType<typeof tagToFormData>

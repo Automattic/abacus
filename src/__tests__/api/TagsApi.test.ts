@@ -1,80 +1,61 @@
-import MetricsApi from 'src/api/MetricsApi'
 import NotFoundError from 'src/api/NotFoundError'
-import { metricFullNewOutboundSchema, TransactionTypes } from 'src/lib/schemas'
+import TagsApi from 'src/api/TagsApi'
+import { tagFullNewOutboundSchema } from 'src/lib/schemas'
 import Fixtures from 'src/test-helpers/fixtures'
 import { validationErrorDisplayer } from 'src/test-helpers/test-utils'
 
-describe('MetricsApi.ts module', () => {
+describe('TagsApi.ts module', () => {
   describe('outbound form', () => {
-    it(`should transform a metric into an outbound form`, () => {
-      expect(metricFullNewOutboundSchema.cast(Fixtures.createMetricFull(1))).toEqual({
-        description: 'This is metric 1',
-        event_params: [
-          {
-            event: 'event_name',
-            props: {
-              has_blocks: 'true',
-            },
-          },
-        ],
-        higher_is_better: false,
-        metric_id: 1,
-        name: 'metric_1',
-        parameter_type: 'conversion',
-        revenue_params: undefined,
+    it(`should transform a tag into an outbound form`, () => {
+      expect(tagFullNewOutboundSchema.cast(Fixtures.createTagFull(1))).toEqual({
+        description: 'This is tag 1',
+        tag_id: 1,
+        name: 'tag_1',
+        namespace: 'tag_namespace_1',
       })
 
-      expect(metricFullNewOutboundSchema.cast(Fixtures.createMetricFull(2))).toEqual({
-        description: 'This is metric 2',
-        event_params: undefined,
-        higher_is_better: false,
-        metric_id: 2,
-        name: 'metric_2',
-        parameter_type: 'revenue',
-        revenue_params: {
-          refund_days: 4,
-          product_slugs: ['xx-bundles'],
-          transaction_types: [TransactionTypes.NewPurchase],
-        },
+      expect(tagFullNewOutboundSchema.cast(Fixtures.createTagFull(2))).toEqual({
+        description: 'This is tag 2',
+        tag_id: 2,
+        name: 'tag_2',
+        namespace: 'tag_namespace_2',
       })
     })
   })
 
   describe('create', () => {
-    it(`should create a new metric`, async () => {
-      const returnedMetric = await validationErrorDisplayer(MetricsApi.create(Fixtures.createMetricFull(1)))
-      expect(returnedMetric.metricId).toBeGreaterThan(0)
+    it(`should create a new tag`, async () => {
+      const returnedTag = await validationErrorDisplayer(TagsApi.create(Fixtures.createTagFull(1)))
+      expect(returnedTag.tagId).toBeGreaterThan(0)
     })
   })
 
   describe('put', () => {
-    it(`should put a metric`, async () => {
-      const returnedMetric = await validationErrorDisplayer(MetricsApi.put(1, Fixtures.createMetricFull(1)))
-      expect(returnedMetric.metricId).toBeGreaterThan(0)
+    it(`should put a tag`, async () => {
+      const returnedTag = await validationErrorDisplayer(TagsApi.put(1, Fixtures.createTagFull(1)))
+      expect(returnedTag.tagId).toBeGreaterThan(0)
     })
   })
 
   describe('findAll', () => {
-    it('should return a set of metrics with the expected metric shape', async () => {
-      const metrics = await validationErrorDisplayer(MetricsApi.findAll())
-      expect(metrics.length).toBeGreaterThan(0)
+    it('should return a set of tags with the expected tag shape', async () => {
+      const tags = await validationErrorDisplayer(TagsApi.findAll())
+      expect(tags.length).toBeGreaterThan(0)
     })
   })
 
   describe('findById', () => {
-    it('should return the metric with the expected metric shape', async () => {
-      // TODO: Test different metrics with different parameter types (conversion and
-      // revenue). Can't do it now because only one metric is available to test.
-      const metric = await validationErrorDisplayer(MetricsApi.findById(31))
-      expect(metric.metricId).toBeGreaterThan(0)
+    it('should return the tag with the expected tag shape', async () => {
+      const tag = await validationErrorDisplayer(TagsApi.findById(31))
+      expect(tag.tagId).toBeGreaterThan(0)
     })
 
-    // TODO: Unskip this once the mock API stops returning the mock metric regardless
+    // TODO: Unskip this once the mock API stops returning the mock tag regardless
     // of the given ID. Also, remove the `instanbul ignore` comment from NotFoundError
     // and in `api/utils.ts` above the `if (response.status === 404)`.
-    it.skip('called with an unknown metric ID should throw a NotFoundError', async () => {
+    it.skip('called with an unknown tag ID should throw a NotFoundError', async () => {
       try {
-        await MetricsApi.findById(0)
+        await TagsApi.findById(0)
         expect(false).toBe(true) // This should never be reached.
       } catch (err) {
         expect(err).toBeInstanceOf(NotFoundError)
