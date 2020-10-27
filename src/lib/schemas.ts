@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
-
 // Schema documentation lives at:
 // https://app.swaggerhub.com/apis/yanir/experiments/0.1.0
 
@@ -27,7 +25,7 @@ export const eventSchema = yup
   })
   .defined()
   .camelCase()
-export interface Event extends yup.InferType<typeof eventSchema> {}
+export type Event = yup.InferType<typeof eventSchema>
 
 export const eventNewSchema = yup
   .object({
@@ -36,7 +34,7 @@ export const eventNewSchema = yup
   })
   .defined()
   .camelCase()
-export interface EventNew extends yup.InferType<typeof eventNewSchema> {}
+export type EventNew = yup.InferType<typeof eventNewSchema>
 
 export enum TransactionTypes {
   NewPurchase = 'new purchase',
@@ -60,7 +58,7 @@ export const metricRevenueParamsSchema = yup
   })
   .defined()
   .camelCase()
-export interface MetricRevenueParams extends yup.InferType<typeof metricRevenueParamsSchema> {}
+export type MetricRevenueParams = yup.InferType<typeof metricRevenueParamsSchema>
 
 export enum MetricParameterType {
   Conversion = 'conversion',
@@ -76,7 +74,7 @@ export const metricBareSchema = yup
   })
   .defined()
   .camelCase()
-export interface MetricBare extends yup.InferType<typeof metricBareSchema> {}
+export type MetricBare = yup.InferType<typeof metricBareSchema>
 
 export const metricFullSchema = metricBareSchema
   .shape({
@@ -107,11 +105,11 @@ export const metricFullSchema = metricBareSchema
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return !!metricFull.eventParams !== !!metricFull.revenueParams
   })
-export interface MetricFull extends yup.InferType<typeof metricFullSchema> {}
+export type MetricFull = yup.InferType<typeof metricFullSchema>
 export const metricFullNewSchema = metricFullSchema.shape({
   metricId: idSchema.nullable(),
 })
-export interface MetricFullNew extends yup.InferType<typeof metricFullNewSchema> {}
+export type MetricFullNew = yup.InferType<typeof metricFullNewSchema>
 export const metricFullNewOutboundSchema = metricFullNewSchema.snakeCase().transform(
   // istanbul ignore next; Tested by integration
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
@@ -153,7 +151,7 @@ export const metricAssignmentNewSchema = yup
   })
   .defined()
   .camelCase()
-export interface MetricAssignmentNew extends yup.InferType<typeof metricAssignmentNewSchema> {}
+export type MetricAssignmentNew = yup.InferType<typeof metricAssignmentNewSchema>
 export const metricAssignmentNewOutboundSchema = metricAssignmentNewSchema.snakeCase()
 
 export const metricAssignmentSchema = metricAssignmentNewSchema
@@ -162,7 +160,7 @@ export const metricAssignmentSchema = metricAssignmentNewSchema
   })
   .defined()
   .camelCase()
-export interface MetricAssignment extends yup.InferType<typeof metricAssignmentSchema> {}
+export type MetricAssignment = yup.InferType<typeof metricAssignmentSchema>
 
 export const tagBareSchema = yup
   .object({
@@ -173,14 +171,14 @@ export const tagBareSchema = yup
   })
   .defined()
   .camelCase()
-export interface TagBare extends yup.InferType<typeof tagBareSchema> {}
+export type TagBare = yup.InferType<typeof tagBareSchema>
 // For consistency and openness:
 export const tagFullSchema = tagBareSchema
-export interface TagFull extends yup.InferType<typeof tagFullSchema> {}
+export type TagFull = yup.InferType<typeof tagFullSchema>
 export const tagFullNewSchema = tagFullSchema.shape({
   tagId: idSchema.nullable(),
 })
-export interface TagFullNew extends yup.InferType<typeof tagFullNewSchema> {}
+export type TagFullNew = yup.InferType<typeof tagFullNewSchema>
 export const tagFullNewOutboundSchema = tagFullNewSchema.snakeCase()
 
 export enum SegmentType {
@@ -196,7 +194,7 @@ export const segmentSchema = yup
   })
   .defined()
   .camelCase()
-export interface Segment extends yup.InferType<typeof segmentSchema> {}
+export type Segment = yup.InferType<typeof segmentSchema>
 
 export const segmentAssignmentNewSchema = yup
   .object({
@@ -205,7 +203,7 @@ export const segmentAssignmentNewSchema = yup
   })
   .defined()
   .camelCase()
-export interface SegmentAssignmentNew extends yup.InferType<typeof segmentAssignmentNewSchema> {}
+export type SegmentAssignmentNew = yup.InferType<typeof segmentAssignmentNewSchema>
 export const segmentAssignmentNewOutboundSchema = segmentAssignmentNewSchema.snakeCase()
 
 export const segmentAssignmentSchema = segmentAssignmentNewSchema
@@ -214,7 +212,7 @@ export const segmentAssignmentSchema = segmentAssignmentNewSchema
   })
   .defined()
   .camelCase()
-export interface SegmentAssignment extends yup.InferType<typeof segmentAssignmentSchema> {}
+export type SegmentAssignment = yup.InferType<typeof segmentAssignmentSchema>
 
 export const variationNewSchema = yup
   .object({
@@ -224,7 +222,7 @@ export const variationNewSchema = yup
   })
   .defined()
   .camelCase()
-export interface VariationNew extends yup.InferType<typeof variationNewSchema> {}
+export type VariationNew = yup.InferType<typeof variationNewSchema>
 export const variationNewOutboundSchema = variationNewSchema.snakeCase()
 
 export const variationSchema = variationNewSchema
@@ -233,7 +231,7 @@ export const variationSchema = variationNewSchema
   })
   .defined()
   .camelCase()
-export interface Variation extends yup.InferType<typeof variationSchema> {}
+export type Variation = yup.InferType<typeof variationSchema>
 
 export enum Platform {
   Calypso = 'calypso',
@@ -273,7 +271,7 @@ export const experimentBareSchema = yup
   })
   .defined()
   .camelCase()
-export interface ExperimentBare extends yup.InferType<typeof experimentBareSchema> {}
+export type ExperimentBare = yup.InferType<typeof experimentBareSchema>
 export const experimentSummaryResponse = yup
   .object({
     experiments: yup.array(experimentBareSchema).defined(),
@@ -295,7 +293,7 @@ export const experimentFullSchema = experimentBareSchema
   })
   .defined()
   .camelCase()
-export interface ExperimentFull extends yup.InferType<typeof experimentFullSchema> {}
+export type ExperimentFull = yup.InferType<typeof experimentFullSchema>
 
 const now = new Date()
 export const experimentFullNewSchema = experimentFullSchema.shape({
@@ -321,7 +319,7 @@ export const experimentFullNewSchema = experimentFullSchema.shape({
   segmentAssignments: yup.array(segmentAssignmentNewSchema).defined(),
   variations: yup.array<VariationNew>(variationNewSchema).defined().min(2),
 })
-export interface ExperimentFullNew extends yup.InferType<typeof experimentFullNewSchema> {}
+export type ExperimentFullNew = yup.InferType<typeof experimentFullNewSchema>
 /**
  * For casting use only.
  */
@@ -382,7 +380,7 @@ export const recommendationSchema = yup
   })
   .defined()
   .camelCase()
-export interface Recommendation extends yup.InferType<typeof recommendationSchema> {}
+export type Recommendation = yup.InferType<typeof recommendationSchema>
 
 export const metricEstimateSchema = yup
   .object({
@@ -392,7 +390,7 @@ export const metricEstimateSchema = yup
   })
   .defined()
   .camelCase()
-export interface MetricEstimate extends yup.InferType<typeof metricEstimateSchema> {}
+export type MetricEstimate = yup.InferType<typeof metricEstimateSchema>
 
 export enum AnalysisStrategy {
   IttPure = 'itt_pure',
@@ -414,14 +412,14 @@ export const analysisSchema = yup
   })
   .defined()
   .camelCase()
-export interface Analysis extends yup.InferType<typeof analysisSchema> {}
+export type Analysis = yup.InferType<typeof analysisSchema>
 
 export const analysisResponseSchema = yup
   .object({
     analyses: yup.array(analysisSchema).defined(),
   })
   .defined()
-export interface AnalysisResponse extends yup.InferType<typeof analysisResponseSchema> {}
+export type AnalysisResponse = yup.InferType<typeof analysisResponseSchema>
 
 export const autocompleteItemSchema = yup
   .object({
@@ -429,7 +427,7 @@ export const autocompleteItemSchema = yup
     value: yup.string().defined(),
   })
   .required()
-export interface AutocompleteItem extends yup.InferType<typeof autocompleteItemSchema> {}
+export type AutocompleteItem = yup.InferType<typeof autocompleteItemSchema>
 
 /**
  * @deprecated We want schemas for data types, not for request shapes. Use inline yup schemas instead.
@@ -446,7 +444,7 @@ export const eventPropsSchema = yup
     description: yup.string().defined(),
   })
   .defined()
-export interface EventProp extends yup.InferType<typeof eventPropsSchema> {}
+export type EventProp = yup.InferType<typeof eventPropsSchema>
 
 export const eventDetailsSchema = yup
   .object({
@@ -458,7 +456,7 @@ export const eventDetailsSchema = yup
     props: yup.array<EventProp>(eventPropsSchema).defined(),
   })
   .defined()
-export interface EventDetails extends yup.InferType<typeof eventDetailsSchema> {}
+export type EventDetails = yup.InferType<typeof eventDetailsSchema>
 
 /**
  * The yup equivalant of _.pick, produces a subset of the original schema.
