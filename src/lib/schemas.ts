@@ -8,7 +8,7 @@ import _ from 'lodash'
 import * as yup from 'yup'
 import { ObjectSchema } from 'yup'
 
-const idSchema = yup.number().integer().positive()
+export const idSchema = yup.number().integer().positive()
 export const nameSchema = yup
   .string()
   .max(128)

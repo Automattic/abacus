@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom'
 
 import DatetimeText from 'src/components/DatetimeText'
 import { ExperimentBare } from 'src/lib/schemas'
+import { createIdSlug } from 'src/utils/general'
 import { defaultTableOptions } from 'src/utils/material-table'
 
 import ExperimentStatus from './ExperimentStatus'
@@ -22,10 +23,10 @@ const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }): J
 
   /* istanbul ignore next; to be handled by an e2e test */
   const handleRowClick = (event?: React.MouseEvent, rowData?: ExperimentBare) => {
-    if (!rowData?.experimentId) {
+    if (!rowData) {
       throw new Error('Missing experimentId')
     }
-    history.push(`/experiments/${rowData.experimentId}`)
+    history.push(`/experiments/${createIdSlug(rowData.experimentId, rowData.name)}`)
   }
 
   return (

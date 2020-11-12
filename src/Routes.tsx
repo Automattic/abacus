@@ -35,17 +35,17 @@ export default function Routes(): JSX.Element {
           <ExperimentNew />
         </Route>
         <Route
-          path='/experiments/:experimentId'
+          path='/experiments/:experimentIdSlug'
           render={({ location, history }) => {
             history.replace(`${location.pathname}/overview`)
             return undefined
           }}
           exact
         />
-        <Route path='/experiments/:experimentId/wizard-edit' exact>
+        <Route path='/experiments/:experimentIdSlug/wizard-edit' exact>
           <ExperimentWizardEdit />
         </Route>
-        <Route path='/experiments/:experimentId/:view' exact>
+        <Route path='/experiments/:experimentIdSlug/:view' exact>
           <Experiment />
         </Route>
 
