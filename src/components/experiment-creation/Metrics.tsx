@@ -60,6 +60,11 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(4),
     },
+    tooltipped: {
+      borderBottomWidth: 1,
+      borderBottomStyle: 'dashed',
+      borderBottomColor: theme.palette.grey[500],
+    },
   }),
 )
 
@@ -406,7 +411,11 @@ const Metrics = ({
                                       endAdornment: (
                                         <InputAdornment position='end'>
                                           <Tooltip title='Percentage Points'>
-                                            <Typography variant='body1' color='textSecondary'>
+                                            <Typography
+                                              variant='body1'
+                                              color='textSecondary'
+                                              className={classes.tooltipped}
+                                            >
                                               pp
                                             </Typography>
                                           </Tooltip>

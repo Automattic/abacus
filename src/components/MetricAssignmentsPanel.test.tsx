@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/require-await, no-irregular-whitespace */
 import { act, fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import { noop } from 'lodash'
 import * as notistack from 'notistack'
@@ -143,7 +143,14 @@ test('renders as expected with all metrics resolvable', () => {
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 <span>
-                  0.1 pp
+                  0.1
+                   
+                  <span
+                    class="makeStyles-tooltipped-8"
+                    title="Percentage Points"
+                  >
+                    pp
+                  </span>
                 </span>
               </td>
             </tr>
@@ -224,7 +231,14 @@ test('renders as expected with all metrics resolvable', () => {
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 <span>
-                  12 pp
+                  12
+                   
+                  <span
+                    class="makeStyles-tooltipped-8"
+                    title="Percentage Points"
+                  >
+                    pp
+                  </span>
                 </span>
               </td>
             </tr>

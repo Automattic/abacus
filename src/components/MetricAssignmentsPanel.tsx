@@ -100,6 +100,11 @@ const useStyles = makeStyles((theme: Theme) =>
     primaryChip: {
       marginTop: theme.spacing(1),
     },
+    tooltipped: {
+      borderBottomWidth: 1,
+      borderBottomStyle: 'dashed',
+      borderBottomColor: theme.palette.grey[500],
+    },
   }),
 )
 
@@ -208,9 +213,16 @@ function MetricAssignmentsPanel({
               </TableCell>
               <TableCell className={classes.monospace}>
                 <span>
-                  {resolvedMetricAssignment.metric.parameterType === MetricParameterType.Revenue
-                    ? formatUsCurrencyDollar(resolvedMetricAssignment.minDifference)
-                    : `${resolvedMetricAssignment.minDifference} pp`}
+                  {resolvedMetricAssignment.metric.parameterType === MetricParameterType.Revenue ? (
+                    formatUsCurrencyDollar(resolvedMetricAssignment.minDifference)
+                  ) : (
+                    <>
+                      {resolvedMetricAssignment.minDifference}&nbsp;
+                      <Tooltip title='Percentage Points'>
+                        <span className={classes.tooltipped}>pp</span>
+                      </Tooltip>
+                    </>
+                  )}
                 </span>
               </TableCell>
             </TableRow>
@@ -341,7 +353,7 @@ function MetricAssignmentsPanel({
                               endAdornment: (
                                 <InputAdornment position='end'>
                                   <Tooltip title='Percentage Points'>
-                                    <Typography variant='body1' color='textSecondary'>
+                                    <Typography variant='body1' color='textSecondary' className={classes.tooltipped}>
                                       pp
                                     </Typography>
                                   </Tooltip>
