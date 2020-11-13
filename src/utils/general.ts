@@ -46,7 +46,6 @@ export function toggleDebugMode(): void {
 export function parseIdSlug(idSlug: string): number {
   const results = /^\d+/.exec(idSlug)
   const id = results && idSchema.defined().validateSync(results[0])
-  // istanbul ignore next; Should not occur
   if (!id) {
     throw new Error('Could not retrieve ID from idSlug.')
   }
