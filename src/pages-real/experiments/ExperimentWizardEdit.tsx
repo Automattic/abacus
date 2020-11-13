@@ -1,10 +1,10 @@
 import { LinearProgress } from '@material-ui/core'
 import debugFactory from 'debug'
 import _ from 'lodash'
-import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
-import { toIntOrNull } from 'qc-to_int'
 import React from 'react'
+import { useHistory, useParams } from 'react-router-dom'
+import * as yup from 'yup'
 
 import { getEventNameCompletions, getUserCompletions } from 'src/api/AutocompleteApi'
 import ExperimentsApi from 'src/api/ExperimentsApi'
@@ -21,9 +21,10 @@ import { createUnresolvingPromise, or } from 'src/utils/general'
 const debug = debugFactory('abacus:pages/experiments/[id]/results.tsx')
 
 export default function WizardEditPage(): JSX.Element {
-  const router = useRouter()
-  const experimentId = toIntOrNull(router.query.id) as number | null
-  debug(`ExperimentWizardEdit#render ${experimentId ?? 'null'}`)
+  const history = useHistory()
+  const { experimentId: experimentIdRaw } = useParams<{ experimentId: string }>()
+  const experimentId = yup.number().integer().defined().validateSync(experimentIdRaw)
+  debug(`ExperimentWizardEdit#render ${experimentId}`)
 
   const { isLoading: experimentIsLoading, data: experiment, error: experimentError } = useDataSource(
     () => (experimentId ? ExperimentsApi.findById(experimentId) : createUnresolvingPromise<ExperimentFull>()),
@@ -54,7 +55,7 @@ export default function WizardEditPage(): JSX.Element {
       const { experiment } = formData as { experiment: ExperimentFullNew }
       await ExperimentsApi.put(experimentId, experiment)
       enqueueSnackbar('Experiment Updated!', { variant: 'success' })
-      await router.push('/experiments/[id]?freshly_wizard_edited', `/experiments/${experimentId}?freshly_wizard_edited`)
+      history.push(`/experiments/${experimentId}?freshly_wizard_edited`)
     } catch (error) {
       enqueueSnackbar('Failed to update experiment 😨 (Form data logged to console.)', { variant: 'error' })
       console.error(error)

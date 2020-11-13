@@ -1,8 +1,8 @@
 import { createStyles, LinearProgress, makeStyles, Theme, Typography } from '@material-ui/core'
 import debugFactory from 'debug'
-import { useRouter } from 'next/router'
 import { useSnackbar } from 'notistack'
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { getEventNameCompletions, getUserCompletions } from 'src/api/AutocompleteApi'
 import ExperimentsApi from 'src/api/ExperimentsApi'
@@ -49,17 +49,14 @@ const ExperimentsNewPage = function (): JSX.Element {
 
   const isLoading = or(metricsIsLoading, segmentsIsLoading)
 
-  const router = useRouter()
+  const history = useHistory()
   const { enqueueSnackbar } = useSnackbar()
   const onSubmit = async (formData: unknown) => {
     try {
       const { experiment } = formData as { experiment: ExperimentFullNew }
       const receivedExperiment = await ExperimentsApi.create(experiment)
       enqueueSnackbar('Experiment Created!', { variant: 'success' })
-      await router.push(
-        '/experiments/[id]/code-setup?freshly_created',
-        `/experiments/${receivedExperiment.experimentId}/code-setup?freshly_created`,
-      )
+      history.push(`/experiments/${receivedExperiment.experimentId}/code-setup?freshly_created`)
     } catch (error) {
       enqueueSnackbar('Failed to create experiment 😨 (Form data logged to console.)', { variant: 'error' })
       console.error(error)

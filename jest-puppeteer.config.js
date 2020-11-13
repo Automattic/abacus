@@ -1,9 +1,8 @@
 require('dotenv').config()
-const { toBool } = require('qc-to_bool')
 
 module.exports = {
   launch: {
-    headless: toBool(process.env.PUPPETEER_HEADLESS, true),
+    headless: process.env.PUPPETEER_HEADLESS === 'false' ? false : true,
   },
   server: {
     command:

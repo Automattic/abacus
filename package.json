@@ -33,8 +33,6 @@
     "normalizr": "^3.6.0",
     "notistack": "^1.0.0",
     "plotly.js": "^1.55.2",
-    "qc-to_bool": "^1.1.2",
-    "qc-to_int": "^1.0.1",
     "querystring": "^0.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

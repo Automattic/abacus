@@ -70,7 +70,7 @@ const renderExperimentPageView = async ({ experiment: experimentOverrides = {} }
  * - null: not on screen
  */
 const getButtonStates = () => {
-  const editInWizard = screen.getByRole('link', { name: /Edit In Wizard/ })
+  const editInWizard = screen.getByRole('button', { name: /Edit In Wizard/ })
   const run = screen.getByRole('button', { name: /Run/ })
   const disable = screen.getByRole('button', { name: /Disable/ })
   const generalPanelEdit = screen.getByRole('button', { name: /Edit Experiment General Data/ })
