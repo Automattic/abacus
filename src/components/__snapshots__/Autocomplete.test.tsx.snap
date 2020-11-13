@@ -1,5 +1,1320 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`A multiple entry autocomplete component can be rendered 1`] = `
+<div>
+  <div
+    aria-expanded="false"
+    class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
+    name="name"
+    role="combobox"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
+        data-shrink="true"
+        for="name"
+        id="name-label"
+      >
+        Owner
+        <span
+          aria-hidden="true"
+          class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+      >
+        <div
+          class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            @
+          </p>
+        </div>
+        <input
+          aria-autocomplete="list"
+          aria-describedby="name-helper-text"
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+          id="name"
+          placeholder="wp_username"
+          required=""
+          spellcheck="false"
+          type="text"
+          value=""
+        />
+        <div
+          class="MuiAutocomplete-endAdornment"
+        >
+          <button
+            aria-label="Clear"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator"
+            tabindex="-1"
+            title="Clear"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-label="Open"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
+            tabindex="-1"
+            title="Open"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
+          >
+            <span>
+              Owner
+               *
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+      <p
+        class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+        id="name-helper-text"
+      >
+        Use WordPress.com username.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A multiple entry autocomplete component can be rendered 6`] = `
+<div>
+  <div
+    aria-expanded="false"
+    class="MuiAutocomplete-root Mui-focused MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
+    name="name"
+    role="combobox"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-focused Mui-focused Mui-required Mui-required"
+        data-shrink="true"
+        for="name"
+        id="name-label"
+      >
+        Owner
+        <span
+          aria-hidden="true"
+          class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth Mui-focused Mui-focused MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+      >
+        <div
+          class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            @
+          </p>
+        </div>
+        <input
+          aria-autocomplete="list"
+          aria-describedby="name-helper-text"
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+          id="name"
+          placeholder="wp_username"
+          required=""
+          spellcheck="false"
+          type="text"
+          value=""
+        />
+        <div
+          class="MuiAutocomplete-endAdornment"
+        >
+          <button
+            aria-label="Clear"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
+            tabindex="-1"
+            title="Clear"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-label="Open"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
+            tabindex="-1"
+            title="Open"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
+          >
+            <span>
+              Owner
+               *
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+      <p
+        class="MuiFormHelperText-root MuiFormHelperText-contained Mui-focused Mui-required"
+        id="name-helper-text"
+      >
+        Use WordPress.com username.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A multiple entry autocomplete component can be rendered 9`] = `
+<div>
+  <div
+    aria-expanded="false"
+    class="MuiAutocomplete-root Mui-focused MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
+    name="name"
+    role="combobox"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-focused Mui-focused Mui-required Mui-required"
+        data-shrink="true"
+        for="name"
+        id="name-label"
+      >
+        Owner
+        <span
+          aria-hidden="true"
+          class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth Mui-focused Mui-focused MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+      >
+        <div
+          class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            @
+          </p>
+        </div>
+        <input
+          aria-autocomplete="list"
+          aria-describedby="name-helper-text"
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+          id="name"
+          placeholder="wp_username"
+          required=""
+          spellcheck="false"
+          type="text"
+          value=""
+        />
+        <div
+          class="MuiAutocomplete-endAdornment"
+        >
+          <button
+            aria-label="Clear"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
+            tabindex="-1"
+            title="Clear"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-label="Open"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
+            tabindex="-1"
+            title="Open"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
+          >
+            <span>
+              Owner
+               *
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+      <p
+        class="MuiFormHelperText-root MuiFormHelperText-contained Mui-focused Mui-required"
+        id="name-helper-text"
+      >
+        Use WordPress.com username.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A multiple entry autocomplete component can be rendered 11`] = `
+<div>
+  <div
+    aria-expanded="false"
+    class="MuiAutocomplete-root Mui-focused MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
+    name="name"
+    role="combobox"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-focused Mui-focused Mui-required Mui-required"
+        data-shrink="true"
+        for="name"
+        id="name-label"
+      >
+        Owner
+        <span
+          aria-hidden="true"
+          class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth Mui-focused Mui-focused MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+      >
+        <div
+          class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            @
+          </p>
+        </div>
+        <input
+          aria-autocomplete="list"
+          aria-describedby="name-helper-text"
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+          id="name"
+          placeholder="wp_username"
+          required=""
+          spellcheck="false"
+          type="text"
+          value=""
+        />
+        <div
+          class="MuiAutocomplete-endAdornment"
+        >
+          <button
+            aria-label="Clear"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator"
+            tabindex="-1"
+            title="Clear"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-label="Open"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
+            tabindex="-1"
+            title="Open"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
+          >
+            <span>
+              Owner
+               *
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+      <p
+        class="MuiFormHelperText-root MuiFormHelperText-contained Mui-focused Mui-required"
+        id="name-helper-text"
+      >
+        Use WordPress.com username.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A multiple entry autocomplete component can be rendered: clicked result 1`] = `
+<div>
+  <div
+    aria-expanded="false"
+    class="MuiAutocomplete-root Mui-focused MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
+    name="name"
+    role="combobox"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-focused Mui-focused Mui-required Mui-required"
+        data-shrink="true"
+        for="name"
+        id="name-label"
+      >
+        Owner
+        <span
+          aria-hidden="true"
+          class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth Mui-focused Mui-focused MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+      >
+        <div
+          class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            @
+          </p>
+        </div>
+        <input
+          aria-autocomplete="list"
+          aria-describedby="name-helper-text"
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+          id="name"
+          placeholder="wp_username"
+          required=""
+          spellcheck="false"
+          type="text"
+          value=""
+        />
+        <div
+          class="MuiAutocomplete-endAdornment"
+        >
+          <button
+            aria-label="Clear"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
+            tabindex="-1"
+            title="Clear"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-label="Open"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
+            tabindex="-1"
+            title="Open"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
+          >
+            <span>
+              Owner
+               *
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+      <p
+        class="MuiFormHelperText-root MuiFormHelperText-contained Mui-focused Mui-required"
+        id="name-helper-text"
+      >
+        Use WordPress.com username.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A multiple entry autocomplete component can be rendered: clicked textbox 1`] = `
+<div>
+  <div
+    aria-expanded="false"
+    class="MuiAutocomplete-root Mui-focused MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
+    name="name"
+    role="combobox"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-focused Mui-focused Mui-required Mui-required"
+        data-shrink="true"
+        for="name"
+        id="name-label"
+      >
+        Owner
+        <span
+          aria-hidden="true"
+          class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth Mui-focused Mui-focused MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+      >
+        <div
+          class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            @
+          </p>
+        </div>
+        <input
+          aria-autocomplete="list"
+          aria-describedby="name-helper-text"
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+          id="name"
+          placeholder="wp_username"
+          required=""
+          spellcheck="false"
+          type="text"
+          value=""
+        />
+        <div
+          class="MuiAutocomplete-endAdornment"
+        >
+          <button
+            aria-label="Clear"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator"
+            tabindex="-1"
+            title="Clear"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-label="Open"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
+            tabindex="-1"
+            title="Open"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
+          >
+            <span>
+              Owner
+               *
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+      <p
+        class="MuiFormHelperText-root MuiFormHelperText-contained Mui-focused Mui-required"
+        id="name-helper-text"
+      >
+        Use WordPress.com username.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A multiple entry autocomplete component can be rendered: entered value 1`] = `
+<div>
+  <div
+    aria-expanded="true"
+    aria-owns="name-popup"
+    class="MuiAutocomplete-root Mui-focused MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
+    name="name"
+    role="combobox"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-focused Mui-focused Mui-required Mui-required"
+        data-shrink="true"
+        for="name"
+        id="name-label"
+      >
+        Owner
+        <span
+          aria-hidden="true"
+          class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth Mui-focused Mui-focused MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+      >
+        <div
+          class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            @
+          </p>
+        </div>
+        <input
+          aria-autocomplete="list"
+          aria-controls="name-popup"
+          aria-describedby="name-helper-text"
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+          id="name"
+          placeholder="wp_username"
+          required=""
+          spellcheck="false"
+          type="text"
+          value="stuff"
+        />
+        <div
+          class="MuiAutocomplete-endAdornment"
+        >
+          <button
+            aria-label="Clear"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator"
+            tabindex="-1"
+            title="Clear"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-label="Close"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator MuiAutocomplete-popupIndicatorOpen"
+            tabindex="-1"
+            title="Close"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
+          >
+            <span>
+              Owner
+               *
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+      <p
+        class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-focused Mui-required"
+        id="name-helper-text"
+      >
+        Use WordPress.com username.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A multiple entry autocomplete component can be rendered: entered value 2`] = `
+<div>
+  <div
+    aria-expanded="true"
+    aria-owns="name-popup"
+    class="MuiAutocomplete-root Mui-focused MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
+    name="name"
+    role="combobox"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-focused Mui-focused Mui-required Mui-required"
+        data-shrink="true"
+        for="name"
+        id="name-label"
+      >
+        Owner
+        <span
+          aria-hidden="true"
+          class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth Mui-focused Mui-focused MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+      >
+        <div
+          class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            @
+          </p>
+        </div>
+        <input
+          aria-activedescendant="name-option-0"
+          aria-autocomplete="list"
+          aria-controls="name-popup"
+          aria-describedby="name-helper-text"
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+          id="name"
+          placeholder="wp_username"
+          required=""
+          spellcheck="false"
+          type="text"
+          value="stuff"
+        />
+        <div
+          class="MuiAutocomplete-endAdornment"
+        >
+          <button
+            aria-label="Clear"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
+            tabindex="-1"
+            title="Clear"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-label="Close"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator MuiAutocomplete-popupIndicatorOpen"
+            tabindex="-1"
+            title="Close"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
+          >
+            <span>
+              Owner
+               *
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+      <p
+        class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-focused Mui-required"
+        id="name-helper-text"
+      >
+        Use WordPress.com username.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`An autocomplete component can be rendered 1`] = `
+<div>
+  <div
+    aria-expanded="false"
+    class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
+    name="name"
+    role="combobox"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
+        data-shrink="true"
+        for="name"
+        id="name-label"
+      >
+        Owner
+        <span
+          aria-hidden="true"
+          class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+      >
+        <div
+          class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            @
+          </p>
+        </div>
+        <input
+          aria-autocomplete="list"
+          aria-describedby="name-helper-text"
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+          id="name"
+          placeholder="wp_username"
+          required=""
+          spellcheck="false"
+          type="text"
+          value=""
+        />
+        <div
+          class="MuiAutocomplete-endAdornment"
+        >
+          <button
+            aria-label="Clear"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
+            tabindex="-1"
+            title="Clear"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-label="Open"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
+            tabindex="-1"
+            title="Open"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
+          >
+            <span>
+              Owner
+               *
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+      <p
+        class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+        id="name-helper-text"
+      >
+        Use WordPress.com username.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`An autocomplete component can be rendered 8`] = `
+<div>
+  <div
+    aria-expanded="false"
+    class="MuiAutocomplete-root Mui-focused MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
+    name="name"
+    role="combobox"
+  >
+    <div
+      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-focused Mui-focused Mui-required Mui-required"
+        data-shrink="true"
+        for="name"
+        id="name-label"
+      >
+        Owner
+        <span
+          aria-hidden="true"
+          class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth Mui-focused Mui-focused MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+      >
+        <div
+          class="MuiInputAdornment-root MuiInputAdornment-positionStart"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+          >
+            @
+          </p>
+        </div>
+        <input
+          aria-autocomplete="list"
+          aria-describedby="name-helper-text"
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+          id="name"
+          placeholder="wp_username"
+          required=""
+          spellcheck="false"
+          type="text"
+          value=""
+        />
+        <div
+          class="MuiAutocomplete-endAdornment"
+        >
+          <button
+            aria-label="Clear"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
+            tabindex="-1"
+            title="Clear"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-label="Open"
+            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
+            tabindex="-1"
+            title="Open"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
+          >
+            <span>
+              Owner
+               *
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+      <p
+        class="MuiFormHelperText-root MuiFormHelperText-contained Mui-focused Mui-required"
+        id="name-helper-text"
+      >
+        Use WordPress.com username.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`An autocomplete component can be rendered: clicked result 1`] = `
 <div>
   <div
@@ -50,7 +1365,7 @@ exports[`An autocomplete component can be rendered: clicked result 1`] = `
           required=""
           spellcheck="false"
           type="text"
-          value="stuff"
+          value="Stuff"
         />
         <div
           class="MuiAutocomplete-endAdornment"
@@ -143,7 +1458,7 @@ exports[`An autocomplete component can be rendered: clicked textbox 1`] = `
       class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
     >
       <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-focused Mui-focused Mui-required Mui-required"
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-focused Mui-focused Mui-required Mui-required"
         data-shrink="true"
         for="name"
         id="name-label"
@@ -181,7 +1496,7 @@ exports[`An autocomplete component can be rendered: clicked textbox 1`] = `
           required=""
           spellcheck="false"
           type="text"
-          value="other_stuff"
+          value=""
         />
         <div
           class="MuiAutocomplete-endAdornment"
@@ -252,7 +1567,7 @@ exports[`An autocomplete component can be rendered: clicked textbox 1`] = `
         </fieldset>
       </div>
       <p
-        class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-focused Mui-required"
+        class="MuiFormHelperText-root MuiFormHelperText-contained Mui-focused Mui-required"
         id="name-helper-text"
       >
         Use WordPress.com username.
@@ -312,7 +1627,7 @@ exports[`An autocomplete component can be rendered: ensure stuff is selected 1`]
           required=""
           spellcheck="false"
           type="text"
-          value="stuff"
+          value="Stuff"
         />
         <div
           class="MuiAutocomplete-endAdornment"
@@ -433,7 +1748,6 @@ exports[`An autocomplete component can be rendered: entered value 1`] = `
           </p>
         </div>
         <input
-          aria-activedescendant="name-option-1"
           aria-autocomplete="list"
           aria-controls="name-popup"
           aria-describedby="name-helper-text"
@@ -518,137 +1832,6 @@ exports[`An autocomplete component can be rendered: entered value 1`] = `
       </div>
       <p
         class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-focused Mui-required"
-        id="name-helper-text"
-      >
-        Use WordPress.com username.
-      </p>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`An autocomplete component can be rendered: initial render 1`] = `
-<div>
-  <div
-    aria-expanded="false"
-    class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
-    name="name"
-    role="combobox"
-  >
-    <div
-      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required"
-        data-shrink="true"
-        for="name"
-        id="name-label"
-      >
-        Owner
-        <span
-          aria-hidden="true"
-          class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-        >
-           
-          *
-        </span>
-      </label>
-      <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedStart MuiOutlinedInput-adornedStart MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
-      >
-        <div
-          class="MuiInputAdornment-root MuiInputAdornment-positionStart"
-        >
-          <p
-            class="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
-          >
-            @
-          </p>
-        </div>
-        <input
-          aria-autocomplete="list"
-          aria-describedby="name-helper-text"
-          aria-invalid="false"
-          autocapitalize="none"
-          autocomplete="off"
-          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
-          id="name"
-          placeholder="wp_username"
-          required=""
-          spellcheck="false"
-          type="text"
-          value="other_stuff"
-        />
-        <div
-          class="MuiAutocomplete-endAdornment"
-        >
-          <button
-            aria-label="Clear"
-            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
-            tabindex="-1"
-            title="Clear"
-            type="button"
-          >
-            <span
-              class="MuiIconButton-label"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                />
-              </svg>
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            aria-label="Open"
-            class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
-            tabindex="-1"
-            title="Open"
-            type="button"
-          >
-            <span
-              class="MuiIconButton-label"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 10l5 5 5-5z"
-                />
-              </svg>
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-        </div>
-        <fieldset
-          aria-hidden="true"
-          class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
-        >
-          <legend
-            class="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
-          >
-            <span>
-              Owner
-               *
-            </span>
-          </legend>
-        </fieldset>
-      </div>
-      <p
-        class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
         id="name-helper-text"
       >
         Use WordPress.com username.
@@ -785,10 +1968,10 @@ exports[`it shows as loading data: loading 1`] = `
         </div>
         <fieldset
           aria-hidden="true"
-          class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
+          class="PrivateNotchedOutline-root-9 MuiOutlinedInput-notchedOutline"
         >
           <legend
-            class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
+            class="PrivateNotchedOutline-legendLabelled-11 PrivateNotchedOutline-legendNotched-12"
           >
             <span>
               Owner
@@ -916,10 +2099,10 @@ exports[`null is a valid value: selected no value 1`] = `
         </div>
         <fieldset
           aria-hidden="true"
-          class="PrivateNotchedOutline-root-9 MuiOutlinedInput-notchedOutline"
+          class="PrivateNotchedOutline-root-13 MuiOutlinedInput-notchedOutline"
         >
           <legend
-            class="PrivateNotchedOutline-legendLabelled-11 PrivateNotchedOutline-legendNotched-12"
+            class="PrivateNotchedOutline-legendLabelled-15 PrivateNotchedOutline-legendNotched-16"
           >
             <span>
               Owner
