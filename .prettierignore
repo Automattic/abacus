@@ -12,3 +12,5 @@
 coverage/
 
 templates/
+
+/build

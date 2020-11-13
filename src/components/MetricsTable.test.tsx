@@ -1,5 +1,4 @@
 import { fireEvent, getByText, getDefaultNormalizer, screen, waitFor } from '@testing-library/react'
-import * as notistack from 'notistack'
 import React from 'react'
 
 import MetricsApi from 'src/api/MetricsApi'
@@ -10,13 +9,6 @@ import MetricsTable from './MetricsTable'
 
 jest.mock('src/api/MetricsApi')
 const mockedMetricsApi = (MetricsApi as unknown) as jest.Mocked<typeof MetricsApi>
-
-jest.mock('notistack')
-const mockedNotistack = notistack as jest.Mocked<typeof notistack>
-mockedNotistack.useSnackbar.mockImplementation(() => ({
-  enqueueSnackbar: jest.fn(),
-  closeSnackbar: jest.fn(),
-}))
 
 test('with no metrics, renders an empty table', () => {
   const { container, getByText } = render(<MetricsTable metrics={[]} />)

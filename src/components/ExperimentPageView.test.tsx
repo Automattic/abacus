@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/require-await */
 import { act, screen, waitFor } from '@testing-library/react'
 import MockDate from 'mockdate'
-import * as notistack from 'notistack'
 import React from 'react'
 
 import AnalysesApi from 'src/api/AnalysesApi'
@@ -31,13 +30,6 @@ const mockedAnalysesApi = AnalysesApi as jest.Mocked<typeof AnalysesApi>
 
 jest.mock('src/api/TagsApi')
 const mockedTagsApi = TagsApi as jest.Mocked<typeof TagsApi>
-
-jest.mock('notistack')
-const mockedNotistack = notistack as jest.Mocked<typeof notistack>
-mockedNotistack.useSnackbar.mockImplementation(() => ({
-  enqueueSnackbar: jest.fn(),
-  closeSnackbar: jest.fn(),
-}))
 
 const renderExperimentPageView = async ({ experiment: experimentOverrides = {} }, view: ExperimentView) => {
   const experiment = Fixtures.createExperimentFull(experimentOverrides)
@@ -70,7 +62,7 @@ const renderExperimentPageView = async ({ experiment: experimentOverrides = {} }
  * - null: not on screen
  */
 const getButtonStates = () => {
-  const editInWizard = screen.getByRole('link', { name: /Edit In Wizard/ })
+  const editInWizard = screen.getByRole('button', { name: /Edit In Wizard/ })
   const run = screen.getByRole('button', { name: /Run/ })
   const disable = screen.getByRole('button', { name: /Disable/ })
   const generalPanelEdit = screen.getByRole('button', { name: /Edit Experiment General Data/ })

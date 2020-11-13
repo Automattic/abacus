@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/require-await, no-irregular-whitespace */
 import { act, fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import { noop } from 'lodash'
-import * as notistack from 'notistack'
 import React from 'react'
 
 import ExperimentsApi from 'src/api/ExperimentsApi'
@@ -13,13 +12,6 @@ import MetricAssignmentsPanel from './MetricAssignmentsPanel'
 
 jest.mock('src/api/ExperimentsApi')
 const mockedExperimentsApi = ExperimentsApi as jest.Mocked<typeof ExperimentsApi>
-
-jest.mock('notistack')
-const mockedNotistack = notistack as jest.Mocked<typeof notistack>
-mockedNotistack.useSnackbar.mockImplementation(() => ({
-  enqueueSnackbar: jest.fn(),
-  closeSnackbar: jest.fn(),
-}))
 
 test('renders as expected with all metrics resolvable', () => {
   const metrics = Fixtures.createMetricBares()
@@ -143,7 +135,14 @@ test('renders as expected with all metrics resolvable', () => {
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 <span>
-                  0.1 pp
+                  0.1
+                   
+                  <span
+                    class="makeStyles-tooltipped-8"
+                    title="Percentage Points"
+                  >
+                    pp
+                  </span>
                 </span>
               </td>
             </tr>
@@ -224,7 +223,14 @@ test('renders as expected with all metrics resolvable', () => {
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
                 <span>
-                  12 pp
+                  12
+                   
+                  <span
+                    class="makeStyles-tooltipped-8"
+                    title="Percentage Points"
+                  >
+                    pp
+                  </span>
                 </span>
               </td>
             </tr>

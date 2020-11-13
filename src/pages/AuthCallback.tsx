@@ -1,10 +1,10 @@
 import { CircularProgress, Container, createStyles, makeStyles, Theme, Typography } from '@material-ui/core'
 import debugFactory from 'debug'
-import { toInt } from 'qc-to_int'
 import qs from 'querystring'
 import React, { useEffect, useState } from 'react'
+import * as yup from 'yup'
 
-import { saveExperimentsAuthInfo } from 'src/utils/auth'
+import { ExperimentsAuthInfo, saveExperimentsAuthInfo } from 'src/utils/auth'
 
 const debug = debugFactory('abacus:pages/auth.tsx')
 
@@ -37,11 +37,6 @@ const AuthPage = function AuthPage(): JSX.Element {
 
   const [error, setError] = useState<null | string>(null)
   useEffect(() => {
-    // This is needed because of server-side rendering
-    if (typeof window === 'undefined') {
-      return
-    }
-
     if (!window.location.hash || window.location.hash.length === 0) {
       console.error('Authentication Error:', 'Missing hash in auth callback url.')
       setError(`An unknown error has occurred: Missing hash in auth callback url.`)
@@ -88,13 +83,18 @@ const AuthPage = function AuthPage(): JSX.Element {
       return
     }
 
-    const expiresInSeconds = toInt(authInfo.expires_in, 0) as unknown
-    const experimentsAuthInfo = {
+    const experimentsAuthInfo: ExperimentsAuthInfo = {
       accessToken: authInfo.access_token as string,
-      expiresAt: typeof expiresInSeconds === 'number' ? Date.now() + expiresInSeconds * 1000 : null,
+      expiresAt: null,
       scope: 'global',
       type: 'bearer',
     }
+
+    if (authInfo.expires_in) {
+      const expiresInSeconds = yup.number().integer().defined().validateSync(authInfo.expires_in)
+      experimentsAuthInfo.expiresAt = Date.now() + expiresInSeconds * 1000
+    }
+
     saveExperimentsAuthInfo(experimentsAuthInfo)
 
     window.location.replace(window.location.origin)

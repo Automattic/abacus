@@ -2,7 +2,7 @@
 // config. Note: This can be removed once something is being imported.
 export {}
 
-jest.setTimeout(30000)
+page.setDefaultNavigationTimeout(300000)
 
 describe('Dashboard', () => {
   // This test is disabled as it is susceptible to race conditions

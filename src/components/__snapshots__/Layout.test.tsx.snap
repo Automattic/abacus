@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders layout without title with children 1`] = `
+<div>
+  <div
+    class="makeStyles-root-1"
+  >
+    <header
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary makeStyles-appBar-4 MuiPaper-elevation4"
+    >
+      <div
+        class="makeStyles-appBarTop-6"
+      >
+        <a
+          class="MuiContainer-root makeStyles-appLogotype-8 MuiContainer-maxWidthLg"
+          href="/"
+        >
+          <img
+            alt="logo"
+            class="makeStyles-appLogo-7"
+            src="/img/logo.png"
+          />
+          <span
+            class="makeStyles-appName-9"
+          >
+            Abacus
+          </span>
+        </a>
+      </div>
+      <div
+        class="makeStyles-appBarBottom-5"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <nav
+            class="makeStyles-appNav-10"
+          >
+            <a
+              href="/experiments"
+            >
+              Experiments
+            </a>
+            <a
+              href="/experiments/new"
+            >
+              Create Experiment
+            </a>
+            <a
+              href="/metrics"
+            >
+              Metrics
+            </a>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <div
+      class="MuiContainer-root makeStyles-content-11 MuiContainer-maxWidthLg"
+    >
+      A child.
+    </div>
+    <footer
+      class="makeStyles-footer-13"
+    >
+      <div
+        class="MuiContainer-root MuiContainer-maxWidthLg"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1"
+        >
+          The Abacus footer. Brought to you by Automattic.
+        </p>
+      </div>
+    </footer>
+  </div>
+</div>
+`;

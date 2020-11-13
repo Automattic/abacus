@@ -1,18 +1,10 @@
 import { fireEvent, getByText, screen } from '@testing-library/react'
-import * as notistack from 'notistack'
 import React from 'react'
 
 import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'
 
 import TagsTable from './TagsTable'
-
-jest.mock('notistack')
-const mockedNotistack = notistack as jest.Mocked<typeof notistack>
-mockedNotistack.useSnackbar.mockImplementation(() => ({
-  enqueueSnackbar: jest.fn(),
-  closeSnackbar: jest.fn(),
-}))
 
 test('with no tags, renders an empty table', () => {
   const { container, getByText } = render(<TagsTable tags={[]} />)

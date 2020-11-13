@@ -4,7 +4,6 @@ import { act, fireEvent, screen, waitFor } from '@testing-library/react'
 import _ from 'lodash'
 import noop from 'lodash/noop'
 import MockDate from 'mockdate'
-import * as notistack from 'notistack'
 import React from 'react'
 
 import * as AutocompleteApi from 'src/api/AutocompleteApi'
@@ -24,13 +23,6 @@ mockedAutocompleteApi.getPropNameCompletions.mockImplementationOnce(async () => 
 mockedAutocompleteApi.getPropNameCompletions.mockImplementationOnce(async () => [
   { name: 'prop key name', value: 'prop_key_value' },
 ])
-
-jest.mock('notistack')
-const mockedNotistack = notistack as jest.Mocked<typeof notistack>
-mockedNotistack.useSnackbar.mockImplementation(() => ({
-  enqueueSnackbar: jest.fn(),
-  closeSnackbar: jest.fn(),
-}))
 
 // As jest doesn't include scrollIntoView
 window.HTMLElement.prototype.scrollIntoView = noop

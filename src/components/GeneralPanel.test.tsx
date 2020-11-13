@@ -2,7 +2,6 @@
 import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import { noop } from 'lodash'
 import MockDate from 'mockdate'
-import * as notistack from 'notistack'
 import React from 'react'
 
 import ExperimentsApi from 'src/api/ExperimentsApi'
@@ -16,13 +15,6 @@ MockDate.set('2020-07-21')
 
 jest.mock('src/api/ExperimentsApi')
 const mockedExperimentsApi = ExperimentsApi as jest.Mocked<typeof ExperimentsApi>
-
-jest.mock('notistack')
-const mockedNotistack = notistack as jest.Mocked<typeof notistack>
-mockedNotistack.useSnackbar.mockImplementation(() => ({
-  enqueueSnackbar: jest.fn(),
-  closeSnackbar: jest.fn(),
-}))
 
 const experimentReloadRef: React.MutableRefObject<() => void> = { current: noop }
 

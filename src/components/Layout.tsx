@@ -1,9 +1,7 @@
 import { AppBar, Container, Theme, Typography } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
-import Head from 'next/head'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import { isTestingProductionConfigInDevelopment } from 'src/config'
 import { isDebugMode, toggleDebugMode } from 'src/utils/general'
@@ -96,23 +94,21 @@ const Layout = ({
   children?: ReactNode
 }): JSX.Element => {
   const classes = useStyles()
-  const router = useRouter()
 
   // istanbul ignore next; debug mode only
   const onToggleDebugMode = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     if (e.shiftKey) {
       toggleDebugMode()
-      router.reload()
+      window.location.reload()
     }
   }
 
+  useEffect(() => {
+    document.title = `${title ?? headTitle ?? 'Abacus'} | Abacus`
+  }, [title, headTitle])
+
   return (
     <div className={classes.root}>
-      <Head>
-        <title>{title ?? /* istanbul ignore next; trivial */ headTitle} | Abacus</title>
-        <meta charSet='utf-8' />
-        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-      </Head>
       <AppBar position='relative' className={classes.appBar}>
         {
           /* istanbul ignore next; Development mode only */
@@ -139,15 +135,9 @@ const Layout = ({
         <div className={classes.appBarBottom}>
           <Container>
             <nav className={classes.appNav}>
-              <Link href='/experiments'>
-                <a>Experiments</a>
-              </Link>
-              <Link href='/experiments/new'>
-                <a>Create Experiment</a>
-              </Link>
-              <Link href='/metrics'>
-                <a>Metrics</a>
-              </Link>
+              <Link to='/experiments'>Experiments</Link>
+              <Link to='/experiments/new'>Create Experiment</Link>
+              <Link to='/metrics'>Metrics</Link>
             </nav>
           </Container>
         </div>

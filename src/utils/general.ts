@@ -19,11 +19,6 @@ const debugModeLocalStorageKey = 'abacus-debug-mode'
 
 // istanbul ignore next; Debug only
 export function isDebugMode(): boolean {
-  // NextJS SSR...
-  if (typeof localStorage === 'undefined') {
-    return false
-  }
-
   return localStorage.getItem(debugModeLocalStorageKey) === 'true'
 }
 

@@ -2,7 +2,7 @@
  * Experiments authorization info, as returned from OAuth call. See
  * https://developer.wordpress.com/docs/oauth2/.
  */
-interface ExperimentsAuthInfo {
+export interface ExperimentsAuthInfo {
   accessToken: string
   expiresAt: number | null
   scope: string

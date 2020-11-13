@@ -7,10 +7,10 @@ import ExperimentsTable from 'src/components/ExperimentsTable'
 import Layout from 'src/components/Layout'
 import { useDataLoadingError, useDataSource } from 'src/utils/data-loading'
 
-const debug = debugFactory('abacus:pages/experiments/index.tsx')
+const debug = debugFactory('abacus:pages/experiments/Experiments.tsx')
 
-const ExperimentsIndexPage = function (): JSX.Element {
-  debug('ExperimentsIndexPage#render')
+const Experiments = function (): JSX.Element {
+  debug('ExperimentsPage#render')
 
   const { isLoading, data: experiments, error } = useDataSource(() => ExperimentsApi.findAll(), [])
 
@@ -23,4 +23,4 @@ const ExperimentsIndexPage = function (): JSX.Element {
   )
 }
 
-export default ExperimentsIndexPage
+export default Experiments

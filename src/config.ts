@@ -17,27 +17,25 @@ const mockConfig = {
 }
 
 /**
- * Our own NODE_ENV.
- *
- * We should be using this throughout our codebase rather than process.env.NODE_ENV
- *
- * Not guaranteed to match process.env.NODE_ENV
- *
- * This is needed as NextJS under some circumstances doesn't allow applying a different NODE_ENV.
- * Particularly for `next build` where we need to pass in `NODE_ENV=test` for E2E testing
+ * Allows us to test out the production API locally while developing.
  */
-export /* istanbul ignore next; Development only */ const NODE_ENV =
-  process.env.NEXT_PUBLIC_NODE_ENV_OVERRIDE ?? process.env.NODE_ENV ?? 'development'
+export const isE2eTestBuild = process.env.REACT_APP_E2E_TEST_BUILD === 'true'
 
 /**
  * Allows us to test out the production API locally while developing.
  *
- * Simply set `NEXT_PUBLIC_PRODUCTION_CONFIG_IN_DEVELOPMENT=true` before spinning up the app.
+ * Simply set `REACT_APP_PRODUCTION_CONFIG_IN_DEVELOPMENT=true` before spinning up the app.
  *
  * You may need to clear your localstorage to get the app to reauth.
  */
-export const isTestingProductionConfigInDevelopment =
-  process.env.NEXT_PUBLIC_PRODUCTION_CONFIG_IN_DEVELOPMENT === 'true'
+export const isTestingProductionConfigInDevelopment = process.env.REACT_APP_PRODUCTION_CONFIG_IN_DEVELOPMENT === 'true'
+
+// istanbul ignore next; Development only
+if (isE2eTestBuild && isTestingProductionConfigInDevelopment) {
+  throw new Error('Invalid config switch combination: isE2ETestBuild && isTestingProductionConfigInDevelopment')
+}
 
 export /* istanbul ignore next; Development only */ const config =
-  NODE_ENV === 'production' || isTestingProductionConfigInDevelopment ? productionConfig : mockConfig
+  (process.env.NODE_ENV === 'production' || isTestingProductionConfigInDevelopment) && !isE2eTestBuild
+    ? productionConfig
+    : mockConfig

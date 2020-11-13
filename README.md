@@ -99,7 +99,7 @@ Since we don't have a mock server it is important to test on the Production conf
 To do so, spin up your dev server like this:
 
 ```bash
-NEXT_PUBLIC_PRODUCTION_CONFIG_IN_DEVELOPMENT=true npm run dev
+REACT_APP_PRODUCTION_CONFIG_IN_DEVELOPMENT=true npm run dev
 ```
 
 See `/config.ts` for more info.

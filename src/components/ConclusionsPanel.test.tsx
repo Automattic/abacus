@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/require-await */
 import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import { noop } from 'lodash'
-import * as notistack from 'notistack'
 import React from 'react'
 
 import ExperimentsApi from 'src/api/ExperimentsApi'
@@ -9,13 +8,6 @@ import Fixtures from 'src/test-helpers/fixtures'
 import { changeFieldByRole, render } from 'src/test-helpers/test-utils'
 
 import ConclusionsPanel from './ConclusionsPanel'
-
-jest.mock('notistack')
-const mockedNotistack = notistack as jest.Mocked<typeof notistack>
-mockedNotistack.useSnackbar.mockImplementation(() => ({
-  enqueueSnackbar: jest.fn(),
-  closeSnackbar: jest.fn(),
-}))
 
 jest.mock('src/api/ExperimentsApi')
 const mockedExperimentsApi = ExperimentsApi as jest.Mocked<typeof ExperimentsApi>
