@@ -1,9 +1,8 @@
 require('dotenv').config()
 
-module.exports = {
-  launch: {
-    headless: process.env.PUPPETEER_HEADLESS === 'false' ? false : true,
-  },
+const developmentMode = process.env.PUPPETEER_HEADLESS === 'false'
+
+const defaultConfig = {
   server: {
     command:
       'echo "Building app..." && NEXT_PUBLIC_NODE_ENV_OVERRIDE=test npm run build && echo "Starting app..." && npm run start -- -p 3001',
@@ -12,3 +11,19 @@ module.exports = {
     port: 3001,
   },
 }
+
+const developmentConfig = {
+  ...defaultConfig,
+  launch: {
+    headless: false,
+    slowMo: 500,
+    devtools: true,
+  },
+  server: {
+    ...defaultConfig.server,
+    // We only start the app, so it doesn't have to get built every time:
+    command: `echo && echo "E2E Development Mode: SKIPPING BUILD!" && echo "Run 'NEXT_PUBLIC_NODE_ENV_OVERRIDE=test npm run build' to rebuild" && echo && echo "Starting app..." && npm run start -- -p 3001`,
+  },
+}
+
+module.exports = developmentMode ? developmentConfig : defaultConfig
