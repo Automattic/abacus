@@ -296,7 +296,7 @@ exports[`renders as expected 1`] = `
             >
               <button
                 aria-label="Clear"
-                class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator"
+                class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                 tabindex="-1"
                 title="Clear"
                 type="button"
@@ -670,7 +670,7 @@ exports[`renders date validation errors as expected 1`] = `
             >
               <button
                 aria-label="Clear"
-                class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator"
+                class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                 tabindex="-1"
                 title="Clear"
                 type="button"
@@ -1044,7 +1044,7 @@ exports[`renders date validation errors as expected 2`] = `
             >
               <button
                 aria-label="Clear"
-                class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator"
+                class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                 tabindex="-1"
                 title="Clear"
                 type="button"
@@ -1418,7 +1418,7 @@ exports[`renders date validation errors as expected 3`] = `
             >
               <button
                 aria-label="Clear"
-                class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator"
+                class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                 tabindex="-1"
                 title="Clear"
                 type="button"
@@ -1792,7 +1792,7 @@ exports[`renders date validation errors as expected 4`] = `
             >
               <button
                 aria-label="Clear"
-                class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator"
+                class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                 tabindex="-1"
                 title="Clear"
                 type="button"
@@ -2166,7 +2166,7 @@ exports[`renders sensible dates as expected 1`] = `
             >
               <button
                 aria-label="Clear"
-                class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator"
+                class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
                 tabindex="-1"
                 title="Clear"
                 type="button"

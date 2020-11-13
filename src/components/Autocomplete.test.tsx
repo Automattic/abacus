@@ -1,15 +1,11 @@
 /* eslint-disable @typescript-eslint/require-await,@typescript-eslint/ban-ts-comment */
 import { InputAdornment, TextField as MuiTextField } from '@material-ui/core'
 import { act, fireEvent, render, screen } from '@testing-library/react'
-import { Field } from 'formik'
+import { Field, Formik } from 'formik'
 import { Autocomplete, AutocompleteRenderInputParams } from 'formik-material-ui-lab'
 import React from 'react'
 
-import AbacusAutocomplete, {
-  autocompleteAttributes,
-  autocompleteInputProps,
-  getOptionValue,
-} from 'src/components/Autocomplete'
+import AbacusAutocomplete, { autocompleteInputProps } from 'src/components/Autocomplete'
 import { AutocompleteItem } from 'src/lib/schemas'
 import { changeFieldByRole, MockFormik } from 'src/test-helpers/test-utils'
 
@@ -37,92 +33,257 @@ test('An autocomplete component can be rendered', async () => {
     },
   ]
 
+  let formValues = null
+
   const { container } = render(
-    <MockFormik initialValues={{ name: 'other_stuff' }}>
-      <Field
-        component={AbacusAutocomplete}
-        name='name'
-        id='name'
-        fullWidth
-        options={options}
-        loading={isLoading}
-        renderInput={(params: AutocompleteRenderInputParams) => {
-          return (
-            <MuiTextField
-              {...params}
-              placeholder='wp_username'
-              helperText='Use WordPress.com username.'
-              variant='outlined'
-              required
-              label='Owner'
-              InputProps={{
-                ...autocompleteInputProps(params, isLoading),
-                startAdornment: <InputAdornment position='start'>@</InputAdornment>,
-              }}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          )
-        }}
-      />
-    </MockFormik>,
+    <Formik
+      initialValues={{ name: '' }}
+      /* istanbul ignore next; This is unused */
+      onSubmit={() => undefined}
+    >
+      {({ values }) => (
+        <>
+          {((formValues = values), undefined)}
+          <Field
+            component={AbacusAutocomplete}
+            name='name'
+            id='name'
+            fullWidth
+            options={options}
+            loading={isLoading}
+            renderInput={(params: AutocompleteRenderInputParams) => {
+              return (
+                <MuiTextField
+                  {...params}
+                  placeholder='wp_username'
+                  helperText='Use WordPress.com username.'
+                  variant='outlined'
+                  required
+                  label='Owner'
+                  InputProps={{
+                    ...autocompleteInputProps(params, isLoading),
+                    startAdornment: <InputAdornment position='start'>@</InputAdornment>,
+                  }}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              )
+            }}
+          />
+        </>
+      )}
+    </Formik>,
   )
-  expect(container).toMatchSnapshot('initial render')
+  expect(container).toMatchSnapshot()
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": "",
+    }
+  `)
 
   const textbox = screen.getByRole('textbox')
-  expect(textbox).toMatchInlineSnapshot(`
-    <input
-      aria-autocomplete="list"
-      aria-describedby="name-helper-text"
-      aria-invalid="false"
-      autocapitalize="none"
-      autocomplete="off"
-      class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
-      id="name"
-      placeholder="wp_username"
-      required=""
-      spellcheck="false"
-      type="text"
-      value="other_stuff"
-    />
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": "",
+    }
   `)
 
   await act(async () => {
     fireEvent.click(textbox)
   })
   expect(container).toMatchSnapshot('clicked textbox')
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": "",
+    }
+  `)
 
   await act(async () => {
     await changeFieldByRole('textbox', /Owner/, 'stuff')
   })
   expect(container).toMatchSnapshot('entered value')
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": "",
+    }
+  `)
 
   await act(async () => {
     fireEvent.click(screen.getByText('Stuff'))
   })
   expect(container).toMatchSnapshot('clicked result')
-  expect(textbox).toMatchInlineSnapshot(`
-    <input
-      aria-autocomplete="list"
-      aria-describedby="name-helper-text"
-      aria-invalid="false"
-      autocapitalize="none"
-      autocomplete="off"
-      class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedStart MuiOutlinedInput-inputAdornedStart MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
-      id="name"
-      placeholder="wp_username"
-      required=""
-      spellcheck="false"
-      type="text"
-      value="stuff"
-    />
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": "stuff",
+    }
   `)
 
   await act(async () => {
     fireEvent.click(textbox)
   })
   expect(container).toMatchSnapshot('ensure stuff is selected')
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": "stuff",
+    }
+  `)
+
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: 'Clear' }))
+  })
+  expect(container).toMatchSnapshot()
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": "",
+    }
+  `)
+})
+
+test('A multiple entry autocomplete component can be rendered', async () => {
+  const isLoading = false
+  const options = [
+    {
+      value: 'stuff',
+      name: 'Stuff',
+    },
+    {
+      value: 'other_stuff',
+      name: 'Other Stuff',
+    },
+  ]
+
+  let formValues = null
+
+  const { container } = render(
+    <Formik
+      initialValues={{ name: '' }}
+      /* istanbul ignore next; This is unused */
+      onSubmit={() => undefined}
+    >
+      {({ values }) => (
+        <>
+          {((formValues = values), undefined)}
+          <Field
+            component={AbacusAutocomplete}
+            name='name'
+            id='name'
+            fullWidth
+            options={options}
+            loading={isLoading}
+            multiple
+            renderInput={(params: AutocompleteRenderInputParams) => {
+              return (
+                <MuiTextField
+                  {...params}
+                  placeholder='wp_username'
+                  helperText='Use WordPress.com username.'
+                  variant='outlined'
+                  required
+                  label='Owner'
+                  InputProps={{
+                    ...autocompleteInputProps(params, isLoading),
+                    startAdornment: <InputAdornment position='start'>@</InputAdornment>,
+                  }}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              )
+            }}
+          />
+        </>
+      )}
+    </Formik>,
+  )
+
+  const textbox = screen.getByRole('textbox')
+
+  expect(container).toMatchSnapshot()
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": "",
+    }
+  `)
+
+  await act(async () => {
+    fireEvent.click(textbox)
+  })
+  expect(container).toMatchSnapshot('clicked textbox')
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": "",
+    }
+  `)
+
+  await act(async () => {
+    await changeFieldByRole('textbox', /Owner/, 'stuff')
+  })
+  expect(container).toMatchSnapshot('entered value')
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": "",
+    }
+  `)
+
+  await act(async () => {
+    fireEvent.click(screen.getByText('Stuff'))
+  })
+  expect(container).toMatchSnapshot('clicked result')
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": Array [
+        "stuff",
+      ],
+    }
+  `)
+
+  await act(async () => {
+    fireEvent.click(textbox)
+  })
+  expect(container).toMatchSnapshot()
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": Array [
+        "stuff",
+      ],
+    }
+  `)
+
+  await act(async () => {
+    await changeFieldByRole('textbox', /Owner/, 'stuff')
+  })
+  expect(container).toMatchSnapshot('entered value')
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": Array [
+        "stuff",
+      ],
+    }
+  `)
+
+  await act(async () => {
+    fireEvent.click(screen.getByText('Other Stuff'))
+  })
+  expect(container).toMatchSnapshot()
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": Array [
+        "stuff",
+        "other_stuff",
+      ],
+    }
+  `)
+
+  await act(async () => {
+    fireEvent.click(screen.getByRole('button', { name: 'Clear' }))
+  })
+  expect(container).toMatchSnapshot()
+  expect(formValues).toMatchInlineSnapshot(`
+    Object {
+      "name": Array [],
+    }
+  `)
 })
 
 test('it shows as loading data', () => {
@@ -206,32 +367,4 @@ test('null is a valid value', async () => {
     fireEvent.click(screen.getByRole('textbox'))
   })
   expect(container).toMatchSnapshot('selected no value')
-})
-
-test('attributes handle labels correctly', () => {
-  const attributes = autocompleteAttributes
-
-  expect(attributes.getOptionLabel('opt1')).toStrictEqual('opt1')
-  expect(attributes.getOptionLabel({ name: 'Opt1', value: 'opt1' })).toStrictEqual('Opt1')
-  expect(attributes.getOptionLabel(null)).toStrictEqual('')
-})
-
-test('attributes handle selection correctly', () => {
-  const attributes = autocompleteAttributes
-  const option = {
-    name: 'Hello World',
-    value: 'hello_world',
-  }
-  expect(attributes.getOptionSelected(option, '')).toBe(false)
-  expect(attributes.getOptionSelected(option, option)).toBe(true)
-})
-
-test('get option value works', () => {
-  const option = {
-    name: 'Hello World',
-    value: 'hello_world',
-  }
-  expect(getOptionValue(option)).toStrictEqual('hello_world')
-  expect(getOptionValue('hello')).toStrictEqual('hello')
-  expect(getOptionValue(null)).toStrictEqual('')
 })
