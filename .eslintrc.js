@@ -1,6 +1,10 @@
 // Most of this file is based on
 // https://dev.to/robertcoopercode/using-eslint-and-prettier-in-a-typescript-project-53jb.
 
+// This allows us to show eslint rules as warnings in development, giving better a better dev experience.
+// This will only apply when we are running a development build and won't apply when we run our formatters or linters on their own or as part of CI
+const productionOnlyError = process.env.NODE_ENV === 'development' ? 'warn' : 'error'
+
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
@@ -60,7 +64,7 @@ module.exports = {
     camelcase: 'off',
 
     'comma-dangle': [
-      'error',
+      productionOnlyError,
       {
         arrays: 'always-multiline',
         exports: 'always-multiline',
@@ -69,7 +73,7 @@ module.exports = {
         objects: 'always-multiline',
       },
     ],
-    'no-multiple-empty-lines': ['error', { max: 2, maxBOF: 1, maxEOF: 1 }],
+    'no-multiple-empty-lines': [productionOnlyError, { max: 2, maxBOF: 1, maxEOF: 1 }],
 
     'import/no-anonymous-default-export': 'off',
 
@@ -79,7 +83,7 @@ module.exports = {
 
     'padded-blocks': 'off',
 
-    'promise/catch-or-return': ['error', { allowFinally: true }],
+    'promise/catch-or-return': [productionOnlyError, { allowFinally: true }],
 
     // Off because we are using `simple-import-sort` instead.
     'sort-imports': 'off',
@@ -91,7 +95,7 @@ module.exports = {
     // component which in our case is a Next.js Link component.
     // See https://github.com/evcohen/eslint-plugin-jsx-a11y/issues/402#issuecomment-368305051.
     'jsx-a11y/anchor-is-valid': [
-      'error',
+      productionOnlyError,
       {
         aspects: ['invalidHref', 'preferButton'],
         components: ['Link'],
@@ -99,30 +103,37 @@ module.exports = {
       },
     ],
 
+    'prettier/prettier': productionOnlyError,
+    '@typescript-eslint/ban-types': productionOnlyError,
+    '@typescript-eslint/restrict-template-expressions': productionOnlyError,
+    '@typescript-eslint/no-unsafe-assignment': productionOnlyError,
+    '@typescript-eslint/no-unsafe-assignment': productionOnlyError,
+    '@typescript-eslint/no-unsafe-member-access': productionOnlyError,
+
     'react/display-name': 'off',
-    'react/jsx-child-element-spacing': 'error',
-    'react/jsx-closing-bracket-location': 'error',
-    'react/jsx-closing-tag-location': 'error',
-    'react/jsx-curly-newline': 'error',
-    'react/jsx-curly-spacing': ['error', { when: 'never', children: true }],
-    'react/jsx-equals-spacing': 'error',
-    'react/jsx-indent': ['error', 2],
-    'react/jsx-indent-props': ['error', 2],
-    'react/jsx-tag-spacing': 'error',
-    'react/no-unsafe': ['error', { checkAliases: true }],
+    'react/jsx-child-element-spacing': productionOnlyError,
+    'react/jsx-closing-bracket-location': productionOnlyError,
+    'react/jsx-closing-tag-location': productionOnlyError,
+    'react/jsx-curly-newline': productionOnlyError,
+    'react/jsx-curly-spacing': [productionOnlyError, { when: 'never', children: true }],
+    'react/jsx-equals-spacing': productionOnlyError,
+    'react/jsx-indent': [productionOnlyError, 2],
+    'react/jsx-indent-props': [productionOnlyError, 2],
+    'react/jsx-tag-spacing': productionOnlyError,
+    'react/no-unsafe': [productionOnlyError, { checkAliases: true }],
 
     // Off because we are using TypeScript which expects us to declare the props.
     'react/prop-types': 'off',
 
     'react-hooks/exhaustive-deps': [
-      'error',
+      productionOnlyError,
       {
         additionalHooks: 'useDataSource',
       },
     ],
 
     'simple-import-sort/sort': [
-      'error',
+      productionOnlyError,
       {
         // We are extending the default groups here to support /src
         groups: [
@@ -152,7 +163,7 @@ module.exports = {
     // The Experiment API uses snake_case, so we decided to disable enforcing
     // camelcase.
     '@typescript-eslint/naming-convention': [
-      'error',
+      productionOnlyError,
       {
         selector: 'default',
         format: ['strictCamelCase'],
@@ -194,7 +205,7 @@ module.exports = {
       },
     ],
 
-    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+    '@typescript-eslint/no-unused-vars': [productionOnlyError, { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
   },
   settings: {
     'import/resolver': {
