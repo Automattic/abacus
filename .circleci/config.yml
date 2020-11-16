@@ -33,8 +33,6 @@ jobs:
     executor:
       name: node/default
       tag: '12.18.4'
-    # See https://circleci.com/docs/2.0/configuration-reference/#resource_class
-    resource_class: medium+ # 3vcpu and 6gb memory
     steps:
       - checkout
       - node/install-packages
@@ -96,7 +94,7 @@ jobs:
           command: npm run test:integration -- --ci
       - run:
           name: End-to-End Testing
-          command: npm run test:e2e -- --ci
+          command: GENERATE_SOURCEMAP=false npm run test:e2e -- --ci
 
 workflows:
   build-and-test:
