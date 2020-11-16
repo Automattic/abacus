@@ -139,7 +139,7 @@ export default function ExperimentPageView({
               label='Overview'
               value={ExperimentView.Overview}
               component={Link}
-              to={`/experiments/${experimentId}`}
+              to={`/experiments/${experimentId}/overview`}
             />
             <Tab
               className={classes.topBarTab}
