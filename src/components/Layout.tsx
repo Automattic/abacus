@@ -138,6 +138,10 @@ const Layout = ({
               <Link to='/experiments'>Experiments</Link>
               <Link to='/experiments/new'>Create Experiment</Link>
               <Link to='/metrics'>Metrics</Link>
+              {
+                /* istanbul ignore next; Development mode only */
+                isDebugMode() && <Link to='/tags'>Tags</Link>
+              }
             </nav>
           </Container>
         </div>

@@ -4,7 +4,6 @@ import _ from 'lodash'
 import { useSnackbar } from 'notistack'
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import * as yup from 'yup'
 
 import { getEventNameCompletions, getUserCompletions } from 'src/api/AutocompleteApi'
 import ExperimentsApi from 'src/api/ExperimentsApi'
@@ -16,14 +15,14 @@ import { experimentToFormData } from 'src/lib/form-data'
 import * as Normalizers from 'src/lib/normalizers'
 import { ExperimentFull, ExperimentFullNew } from 'src/lib/schemas'
 import { useDataLoadingError, useDataSource } from 'src/utils/data-loading'
-import { createUnresolvingPromise, or } from 'src/utils/general'
+import { createUnresolvingPromise, or, parseIdSlug } from 'src/utils/general'
 
 const debug = debugFactory('abacus:pages/experiments/[id]/results.tsx')
 
 export default function WizardEditPage(): JSX.Element {
   const history = useHistory()
-  const { experimentId: experimentIdRaw } = useParams<{ experimentId: string }>()
-  const experimentId = yup.number().integer().defined().validateSync(experimentIdRaw)
+  const { experimentIdSlug } = useParams<{ experimentIdSlug: string }>()
+  const experimentId = parseIdSlug(experimentIdSlug)
   debug(`ExperimentWizardEdit#render ${experimentId}`)
 
   const { isLoading: experimentIsLoading, data: experiment, error: experimentError } = useDataSource(

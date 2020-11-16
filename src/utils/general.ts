@@ -1,3 +1,5 @@
+import { idSchema } from 'src/lib/schemas'
+
 // TODO: Consider using a more extensive lib like Rambda that covers these
 /**
  * Coerces values to booleans and performs an `or` operation across them.
@@ -29,4 +31,35 @@ export function toggleDebugMode(): void {
   } else {
     localStorage.setItem(debugModeLocalStorageKey, 'true')
   }
+}
+
+/**
+ * Parses an "id slug", a slug used in urls that contain an ID and a name, e.g.:
+ * 46-explat-test-monthly-experiment
+ *
+ * The idea here is that we can use these for permalinks because even if the name changes
+ * all we care about is the ID.
+ *
+ * @param idSlug string The idSlug
+ * @returns integer The id from the id slug
+ */
+export function parseIdSlug(idSlug: string): number {
+  const results = /^\d+/.exec(idSlug)
+  const id = results && idSchema.defined().validateSync(results[0])
+  if (!id) {
+    throw new Error('Could not retrieve ID from idSlug.')
+  }
+  return id
+}
+
+/**
+ * Creates an idSlug.
+ *
+ * @param id integer
+ * @param name number
+ *
+ * @returns string The idSlug
+ */
+export function createIdSlug(id: number, name: string): string {
+  return `${id}-${name.replace(/_/g, '-')}`
 }
