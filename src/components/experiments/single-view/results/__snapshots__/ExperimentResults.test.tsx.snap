@@ -597,7 +597,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               "2020-05-10T00:00:00.000Z",
             ],
             "y": Array [
-              1,
+              -1,
             ],
           },
           Object {
@@ -616,7 +616,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               "2020-05-10T00:00:00.000Z",
             ],
             "y": Array [
-              -1,
+              1,
             ],
           },
           Object {
@@ -1288,7 +1288,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               "2020-05-10T00:00:00.000Z",
             ],
             "y": Array [
-              0.01,
+              -0.01,
             ],
           },
           Object {
@@ -1307,7 +1307,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               "2020-05-10T00:00:00.000Z",
             ],
             "y": Array [
-              -0.01,
+              0.01,
             ],
           },
           Object {

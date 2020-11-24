@@ -110,7 +110,29 @@ export default function ExperimentPageView({
   useDataLoadingError(tagsError, 'Tags')
 
   const { isLoading: analysesIsLoading, data: analyses, error: analysesError } = useDataSource(
-    () => (experimentId ? AnalysesApi.findByExperimentId(experimentId) : createUnresolvingPromise<Analysis[]>()),
+    async () => {
+      if (!experimentId) {
+        return createUnresolvingPromise<Analysis[]>()
+      } 
+      const analyses = await AnalysesApi.findByExperimentId(experimentId)
+
+      // NOTE: Estimates are the wrong way round coming from the backend so we invert them here as a workaround
+      // until that is fixed.
+      // TODO: Fix in backend.
+      return analyses.map(analysis => ({
+        ...analysis,
+        metricEstimates: {
+          ...analysis.metricEstimates,
+          ...(analysis.metricEstimates?.diff && ({
+            diff: {
+              top: -1 * analysis.metricEstimates.diff.top,
+              estimate: -1 * analysis.metricEstimates.diff.estimate,
+              bottom: -1 * analysis.metricEstimates.diff.bottom,
+            }
+          }))
+        },
+      }))
+    },
     [experimentId],
   )
   useDataLoadingError(analysesError, 'Analyses')
