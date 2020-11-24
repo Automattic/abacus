@@ -326,8 +326,7 @@ function AnalysisDetailPanel({
       name: `difference: lower bound`,
       x: dates,
       y: analyses
-        // NOTE: Here we are inverting the diff estimate until the diff estimate is fixed in the backend
-        .map(({ metricEstimates }) => metricEstimates && -1 * metricEstimates['diff'].bottom)
+        .map(({ metricEstimates }) => metricEstimates && metricEstimates['diff'].bottom)
         .map(estimateTransform),
       line: { width: 0 },
       marker: { color: '444' },
@@ -338,8 +337,7 @@ function AnalysisDetailPanel({
       name: `difference: upper bound`,
       x: dates,
       y: analyses
-        // NOTE: Here we are inverting the diff estimate until the diff estimate is fixed in the backend
-        .map(({ metricEstimates }) => metricEstimates && -1 * metricEstimates['diff'].top)
+        .map(({ metricEstimates }) => metricEstimates && metricEstimates['diff'].top)
         .map(estimateTransform),
       fill: 'tonexty',
       fillcolor: 'rgba(0,0,0,.2)',
