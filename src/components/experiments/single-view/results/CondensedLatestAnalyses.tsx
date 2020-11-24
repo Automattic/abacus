@@ -336,9 +336,7 @@ function AnalysisDetailPanel({
     {
       name: `difference: upper bound`,
       x: dates,
-      y: analyses
-        .map(({ metricEstimates }) => metricEstimates && metricEstimates['diff'].top)
-        .map(estimateTransform),
+      y: analyses.map(({ metricEstimates }) => metricEstimates && metricEstimates['diff'].top).map(estimateTransform),
       fill: 'tonexty',
       fillcolor: 'rgba(0,0,0,.2)',
       line: { width: 0 },
