@@ -25,7 +25,7 @@ import ExperimentDetails from 'src/components/experiments/single-view/overview/E
 import Layout from 'src/components/page-parts/Layout'
 import { Analysis, ExperimentFull, Status } from 'src/lib/schemas'
 import { useDataLoadingError, useDataSource } from 'src/utils/data-loading'
-import { createUnresolvingPromise, or } from 'src/utils/general'
+import { createIdSlug, createUnresolvingPromise, or } from 'src/utils/general'
 
 import ExperimentRunButton from './ExperimentRunButton'
 import ExperimentDebug from './results/ExperimentDebug'
@@ -119,6 +119,8 @@ export default function ExperimentPageView({
 
   const canEditInWizard = experiment && experiment.status === Status.Staging
 
+  const experimentIdSlug = createIdSlug(experimentId, experiment?.name || '')
+
   return (
     <Layout headTitle={`${experiment?.name ?? 'unknown'} - Experiment`}>
       <>
@@ -139,14 +141,14 @@ export default function ExperimentPageView({
               label='Overview'
               value={ExperimentView.Overview}
               component={Link}
-              to={`/experiments/${experimentId}/overview`}
+              to={`/experiments/${experimentIdSlug}/overview`}
             />
             <Tab
               className={classes.topBarTab}
               label='Results'
               value={ExperimentView.Results}
               component={Link}
-              to={`/experiments/${experimentId}/results`}
+              to={`/experiments/${experimentIdSlug}/results`}
             />
             {debugMode && (
               <Tab
@@ -154,7 +156,7 @@ export default function ExperimentPageView({
                 label='Debug'
                 value={ExperimentView.Debug}
                 component={Link}
-                to={`/experiments/${experimentId}/debug`}
+                to={`/experiments/${experimentIdSlug}/debug`}
               />
             )}
             <Tab
@@ -162,7 +164,7 @@ export default function ExperimentPageView({
               label='Code Setup'
               value={ExperimentView.CodeSetup}
               component={Link}
-              to={`/experiments/${experimentId}/code-setup`}
+              to={`/experiments/${experimentIdSlug}/code-setup`}
             />
           </Tabs>
           <div className={classes.topBarActions}>
@@ -172,7 +174,7 @@ export default function ExperimentPageView({
                   variant='outlined'
                   color='primary'
                   component={Link}
-                  to={`/experiments/${experimentId}/wizard-edit`}
+                  to={`/experiments/${experimentIdSlug}/wizard-edit`}
                   disabled={!canEditInWizard}
                 >
                   Edit In Wizard
