@@ -361,8 +361,8 @@ export const experimentFullNewOutboundSchema = experimentFullNewSchema
           props: event.props ? _.fromPairs(event.props.map(({ key, value }) => [key, value])) : undefined,
         }),
       ),
-      // The backend doesn't support exclusion groups (it will crash if this is an empty array) so we disable it here:
-      exclusion_group_tag_ids: undefined,
+      // // The backend doesn't support exclusion groups (it will crash if this is an empty array) so we disable it here:
+      // exclusion_group_tag_ids: undefined,
     }),
   )
 
