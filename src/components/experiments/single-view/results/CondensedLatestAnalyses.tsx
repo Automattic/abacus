@@ -88,14 +88,21 @@ export default function CondensedLatestAnalyses({
             _.last(analyses)?.recommendation,
         )
         .filter((recommendation) => !!recommendation)
-      const recommendationConflict = _.uniq(recommendations.map((recommendation) => recommendation.chosenVariationId)) > 1
+      const recommendedChosenVariationIds = recommendations.map((recommendation) => {
+        // istanbul ignore next; typeguard
+        if (!recommendation) {
+          throw new Error(`Missing Recommendation - this should never occur`)
+        }
+        return recommendation.chosenVariationId
+      })
+      const recommendationConflict = _.uniq(recommendedChosenVariationIds).length > 1
 
       return {
         metricAssignment,
         metric,
         analysesByStrategyDateAsc,
         latestDefaultAnalysis: _.last(analysesByStrategyDateAsc[defaultAnalysisStrategy]),
-        recommendationConflict: uniqueRecommendations.length > 1,
+        recommendationConflict,
       }
     },
   )
