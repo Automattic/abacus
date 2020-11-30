@@ -187,6 +187,9 @@ export default function ExperimentPageView({
             />
           </Tabs>
           <div className={classes.topBarActions}>
+            <Button variant='outlined' color='primary' component={Link} to={`/experiments/${experimentIdSlug}/clone`}>
+              Clone
+            </Button>{' '}
             <Tooltip title={canEditInWizard ? '' : 'Only available for staging experiments.'}>
               <span>
                 <Button

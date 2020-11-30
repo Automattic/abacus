@@ -23,6 +23,19 @@ const debug = debugFactory('abacus:pages/experiments/[id]/wizard-edit.tsx')
 export enum ExperimentWizardMode {
   Create = 'create',
   Edit = 'edit',
+  Clone = 'clone',
+}
+
+/**
+ * Takes an experiment to clone and returns the initial data for the clone.
+ *
+ * @param experiment The experiment to clone
+ */
+function clonedExperiment(experiment: ExperimentFull): ExperimentFull {
+  return {
+    ...experiment,
+    name: ``,
+  }
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -104,6 +117,18 @@ export default function WizardEdit({
         console.info('Form data:', formData)
       }
     },
+    [ExperimentWizardMode.Clone]: async (formData: unknown) => {
+      try {
+        const { experiment } = formData as { experiment: ExperimentFullNew }
+        const receivedExperiment = await ExperimentsApi.create(experiment)
+        enqueueSnackbar('Experiment cloned!', { variant: 'success' })
+        history.push(`/experiments/${receivedExperiment.experimentId}/code-setup`)
+      } catch (error) {
+        enqueueSnackbar('Failed to clone experiment 😨 (Form data logged to console.)', { variant: 'error' })
+        console.error(error)
+        console.info('Form data:', formData)
+      }
+    },
     [ExperimentWizardMode.Edit]: async (formData: unknown) => {
       try {
         if (!_.isNumber(experimentId)) {
@@ -122,11 +147,12 @@ export default function WizardEdit({
   }
   const onSubmit = onSubmitByExperimentWizardMode[experimentWizardMode]
 
-  const initialExperiment = experiment && experimentToFormData(experiment)
+  const initialExperiment = experiment && experimentToFormData(clonedExperiment(experiment))
 
   const titleByExperimentWizardMode: Record<ExperimentWizardMode, string> = {
     [ExperimentWizardMode.Create]: 'Create an Experiment',
     [ExperimentWizardMode.Edit]: experiment ? `Editing Experiment: ${experiment?.name || ''}` : '',
+    [ExperimentWizardMode.Clone]: experiment ? `Cloning Experiment: ${experiment?.name || ''}` : '',
   }
   const title = titleByExperimentWizardMode[experimentWizardMode]
 
