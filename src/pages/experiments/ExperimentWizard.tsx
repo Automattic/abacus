@@ -12,7 +12,7 @@ import SegmentsApi from 'src/api/SegmentsApi'
 import TagsApi from 'src/api/TagsApi'
 import ExperimentForm from 'src/components/experiments/wizard/ExperimentForm'
 import Layout from 'src/components/page-parts/Layout'
-import { experimentToFormData } from 'src/lib/form-data'
+import { ExperimentFormData, experimentToFormData } from 'src/lib/form-data'
 import * as Normalizers from 'src/lib/normalizers'
 import { ExperimentFull, ExperimentFullNew, TagNamespace } from 'src/lib/schemas'
 import { useDataLoadingError, useDataSource } from 'src/utils/data-loading'
@@ -147,7 +147,21 @@ export default function WizardEdit({
   }
   const onSubmit = onSubmitByExperimentWizardMode[experimentWizardMode]
 
-  const initialExperiment = experiment && experimentToFormData(clonedExperiment(experiment))
+  let initialExperiment: null | ExperimentFormData = null
+  switch (experimentWizardMode) {
+    case ExperimentWizardMode.Create: {
+      initialExperiment = experimentToFormData({})
+      break
+    }
+    case ExperimentWizardMode.Edit: {
+      initialExperiment = experiment && experimentToFormData(experiment)
+      break
+    }
+    case ExperimentWizardMode.Clone: {
+      initialExperiment = experiment && experimentToFormData(clonedExperiment(experiment))
+      break
+    }
+  }
 
   const titleByExperimentWizardMode: Record<ExperimentWizardMode, string> = {
     [ExperimentWizardMode.Create]: 'Create an Experiment',
