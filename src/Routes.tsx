@@ -44,6 +44,9 @@ export default function Routes(): JSX.Element {
         <Route path='/experiments/:experimentIdSlug/wizard-edit' exact>
           <ExperimentWizard experimentWizardMode={ExperimentWizardMode.Edit} />
         </Route>
+        <Route path='/experiments/:experimentIdSlug/clone' exact>
+          <ExperimentWizard experimentWizardMode={ExperimentWizardMode.Clone} />
+        </Route>
         <Route path='/experiments/:experimentIdSlug/:view' exact>
           <Experiment />
         </Route>

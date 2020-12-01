@@ -124,9 +124,9 @@ export default function ExperimentPageView({
         ...analysis.metricEstimates,
         ...(analysis.metricEstimates?.diff && {
           diff: {
-            top: -1 * analysis.metricEstimates.diff.top,
+            top: -1 * analysis.metricEstimates.diff.bottom,
             estimate: -1 * analysis.metricEstimates.diff.estimate,
-            bottom: -1 * analysis.metricEstimates.diff.bottom,
+            bottom: -1 * analysis.metricEstimates.diff.top,
           },
         }),
       },
@@ -187,6 +187,9 @@ export default function ExperimentPageView({
             />
           </Tabs>
           <div className={classes.topBarActions}>
+            <Button variant='outlined' color='primary' component={Link} to={`/experiments/${experimentIdSlug}/clone`}>
+              Clone
+            </Button>{' '}
             <Tooltip title={canEditInWizard ? '' : 'Only available for staging experiments.'}>
               <span>
                 <Button

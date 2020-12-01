@@ -29,6 +29,7 @@ import {
   MetricAssignment,
   MetricBare,
   MetricParameterType,
+  Recommendation,
 } from 'src/lib/schemas'
 import * as Variations from 'src/lib/variations'
 import * as Visualizations from 'src/lib/visualizations'
@@ -87,15 +88,15 @@ export default function CondensedLatestAnalyses({
             //  istanbul ignore next; We don't need to test empty analyses as we filter out all undefined values
             _.last(analyses)?.recommendation,
         )
-        .filter((recommendation) => !!recommendation)
-      const uniqueRecommendations = _.uniq(recommendations.map((recommendation) => JSON.stringify(recommendation)))
+        .filter((recommendation) => !!recommendation) as Array<Recommendation>
+      const recommendationConflict = _.uniq(_.map(recommendations, 'chosenVariationId')).length > 1
 
       return {
         metricAssignment,
         metric,
         analysesByStrategyDateAsc,
         latestDefaultAnalysis: _.last(analysesByStrategyDateAsc[defaultAnalysisStrategy]),
-        recommendationConflict: uniqueRecommendations.length > 1,
+        recommendationConflict,
       }
     },
   )
