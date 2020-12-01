@@ -124,9 +124,9 @@ export default function ExperimentPageView({
         ...analysis.metricEstimates,
         ...(analysis.metricEstimates?.diff && {
           diff: {
-            top: -1 * analysis.metricEstimates.diff.top,
+            top: -1 * analysis.metricEstimates.diff.bottom,
             estimate: -1 * analysis.metricEstimates.diff.estimate,
-            bottom: -1 * analysis.metricEstimates.diff.bottom,
+            bottom: -1 * analysis.metricEstimates.diff.top,
           },
         }),
       },
