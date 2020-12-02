@@ -414,9 +414,13 @@ export const analysisSchema = yup
     metricAssignmentId: idSchema.defined(),
     analysisDatetime: dateSchema.defined(),
     analysisStrategy: yup.string().oneOf(Object.values(AnalysisStrategy)).defined(),
-    // TODO: Provide better validation for these
-    participantStats: yup.object().defined() as yup.Schema<Record<string, number>>,
-    metricEstimates: yup.object().nullable().defined() as yup.Schema<Record<string, MetricEstimate> | null>,
+    // Using yup.lazy to Record types in yup:
+    participantStats: yup.lazy((participantStats: Record<string, number>) => 
+      yup.object(_.mapValues(participantStats, () => yup.number().positive().integer().defined())).defined()
+    ) as yup.Schema<Record<string, number>>,
+    metricEstimates: yup.lazy((metricEstimates: Record<string, MetricEstimate | null>) => {
+      return yup.object(_.mapValues(metricEstimates, () => metricEstimateSchema.nullable())).defined()
+    }) as yup.Schema<Record<string, MetricEstimate | null>>,
     recommendation: recommendationSchema.nullable().defined(),
   })
   .defined()
