@@ -292,7 +292,7 @@ function AnalysisDetailPanel({
   const strategy = Experiments.getDefaultAnalysisStrategy(experiment)
   // It is possible some analyses don't have metricEstimates, we filter them out here by checking for the
   // existence of 'diff' metricEstimates which should always exist:
-  const analyses = analysesByStrategyDateAsc[strategy].filter((analyses) => !!analyses.metricEstimates['diff'])
+  const analyses = analysesByStrategyDateAsc[strategy].filter((analyses) => !!analyses.metricEstimates)
   const dates = analyses.map(({ analysisDatetime }) => analysisDatetime.toISOString())
 
   const plotlyDataVariationGraph: Array<Partial<PlotData>> = [
@@ -303,7 +303,7 @@ function AnalysisDetailPanel({
           name: `${variation.name}: lower bound`,
           x: dates,
           y: analyses
-            .map(({ metricEstimates }) => metricEstimates && metricEstimates[variationKey]?.bottom)
+            .map(({ metricEstimates }) => metricEstimates && metricEstimates[variationKey].bottom)
             .map(estimateTransform),
           line: {
             color: Visualizations.variantColors[index],
@@ -315,7 +315,7 @@ function AnalysisDetailPanel({
           name: `${variation.name}: upper bound`,
           x: dates,
           y: analyses
-            .map(({ metricEstimates }) => metricEstimates && metricEstimates[variationKey]?.top)
+            .map(({ metricEstimates }) => metricEstimates && metricEstimates[variationKey].top)
             .map(estimateTransform),
           line: {
             color: Visualizations.variantColors[index],
@@ -334,7 +334,7 @@ function AnalysisDetailPanel({
       name: `difference: lower bound`,
       x: dates,
       y: analyses
-        .map(({ metricEstimates }) => metricEstimates && metricEstimates['diff']?.bottom)
+        .map(({ metricEstimates }) => metricEstimates && metricEstimates['diff'].bottom)
         .map(estimateTransform),
       line: { width: 0 },
       marker: { color: '444' },
@@ -344,7 +344,7 @@ function AnalysisDetailPanel({
     {
       name: `difference: upper bound`,
       x: dates,
-      y: analyses.map(({ metricEstimates }) => metricEstimates && metricEstimates['diff']?.top).map(estimateTransform),
+      y: analyses.map(({ metricEstimates }) => metricEstimates && metricEstimates['diff'].top).map(estimateTransform),
       fill: 'tonexty',
       fillcolor: 'rgba(0,0,0,.2)',
       line: { width: 0 },
@@ -411,33 +411,31 @@ function AnalysisDetailPanel({
               )
             </TableCell>
           </TableRow>
-          {latestDefaultAnalysis.metricEstimates &&
-            latestDefaultAnalysis.metricEstimates.diff &&
-            latestDefaultAnalysis.recommendation && (
-              <>
+          {latestDefaultAnalysis.metricEstimates && latestDefaultAnalysis.recommendation && (
+            <>
+              <TableRow>
+                <TableCell component='th' scope='row' variant='head'>
+                  Difference interval
+                </TableCell>
+                <TableCell className={classes.dataCell}>
+                  [{_.round(latestDefaultAnalysis.metricEstimates.diff.bottom, 4)},
+                  {_.round(latestDefaultAnalysis.metricEstimates.diff.top, 4)}]
+                </TableCell>
+              </TableRow>
+              {latestDefaultAnalysis.recommendation.warnings.length > 0 && (
                 <TableRow>
                   <TableCell component='th' scope='row' variant='head'>
-                    Difference interval
+                    Warnings
                   </TableCell>
                   <TableCell className={classes.dataCell}>
-                    [{_.round(latestDefaultAnalysis.metricEstimates.diff.bottom, 4)},
-                    {_.round(latestDefaultAnalysis.metricEstimates.diff.top, 4)}]
+                    {latestDefaultAnalysis.recommendation.warnings.map((warning) => (
+                      <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
+                    ))}
                   </TableCell>
                 </TableRow>
-                {latestDefaultAnalysis.recommendation.warnings.length > 0 && (
-                  <TableRow>
-                    <TableCell component='th' scope='row' variant='head'>
-                      Warnings
-                    </TableCell>
-                    <TableCell className={classes.dataCell}>
-                      {latestDefaultAnalysis.recommendation.warnings.map((warning) => (
-                        <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
-                      ))}
-                    </TableCell>
-                  </TableRow>
-                )}
-              </>
-            )}
+              )}
+            </>
+          )}
         </TableBody>
       </Table>
       <div className={classes.metricEstimatePlots}>

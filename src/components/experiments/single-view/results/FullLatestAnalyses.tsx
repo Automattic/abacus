@@ -42,7 +42,7 @@ export default function FullLatestAnalyses({
     {
       title: 'Difference interval',
       render: ({ metricEstimates }: Analysis) =>
-        metricEstimates && metricEstimates.diff
+        metricEstimates
           ? `[${_.round(metricEstimates.diff.bottom, 4)}, ${_.round(metricEstimates.diff.top, 4)}]`
           : 'N/A',
     },
