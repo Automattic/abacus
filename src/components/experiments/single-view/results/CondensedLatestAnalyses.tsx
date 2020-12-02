@@ -411,31 +411,33 @@ function AnalysisDetailPanel({
               )
             </TableCell>
           </TableRow>
-          {latestDefaultAnalysis.metricEstimates && latestDefaultAnalysis.metricEstimates.diff && latestDefaultAnalysis.recommendation && (
-            <>
-              <TableRow>
-                <TableCell component='th' scope='row' variant='head'>
-                  Difference interval
-                </TableCell>
-                <TableCell className={classes.dataCell}>
-                  [{_.round(latestDefaultAnalysis.metricEstimates.diff.bottom, 4)},
-                  {_.round(latestDefaultAnalysis.metricEstimates.diff.top, 4)}]
-                </TableCell>
-              </TableRow>
-              {latestDefaultAnalysis.recommendation.warnings.length > 0 && (
+          {latestDefaultAnalysis.metricEstimates &&
+            latestDefaultAnalysis.metricEstimates.diff &&
+            latestDefaultAnalysis.recommendation && (
+              <>
                 <TableRow>
                   <TableCell component='th' scope='row' variant='head'>
-                    Warnings
+                    Difference interval
                   </TableCell>
                   <TableCell className={classes.dataCell}>
-                    {latestDefaultAnalysis.recommendation.warnings.map((warning) => (
-                      <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
-                    ))}
+                    [{_.round(latestDefaultAnalysis.metricEstimates.diff.bottom, 4)},
+                    {_.round(latestDefaultAnalysis.metricEstimates.diff.top, 4)}]
                   </TableCell>
                 </TableRow>
-              )}
-            </>
-          )}
+                {latestDefaultAnalysis.recommendation.warnings.length > 0 && (
+                  <TableRow>
+                    <TableCell component='th' scope='row' variant='head'>
+                      Warnings
+                    </TableCell>
+                    <TableCell className={classes.dataCell}>
+                      {latestDefaultAnalysis.recommendation.warnings.map((warning) => (
+                        <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
+                      ))}
+                    </TableCell>
+                  </TableRow>
+                )}
+              </>
+            )}
         </TableBody>
       </Table>
       <div className={classes.metricEstimatePlots}>
