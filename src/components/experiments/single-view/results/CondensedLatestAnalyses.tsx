@@ -413,9 +413,6 @@ function AnalysisDetailPanel({
           </TableRow>
           {latestDefaultAnalysis.metricEstimates &&
             latestDefaultAnalysis.metricEstimates.diff &&
-            // Thanks typescript:
-            latestDefaultAnalysis.metricEstimates.diff.top &&
-            latestDefaultAnalysis.metricEstimates.diff.bottom &&
             latestDefaultAnalysis.recommendation && (
               <>
                 <TableRow>
