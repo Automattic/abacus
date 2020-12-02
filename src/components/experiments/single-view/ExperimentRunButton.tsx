@@ -16,7 +16,8 @@ const ExperimentRunButton = ({
 }): JSX.Element => {
   const { enqueueSnackbar } = useSnackbar()
 
-  const canRunExperiment = experiment && experiment.status === Status.Staging
+  const canRunExperiment =
+    experiment && experiment.status === Status.Staging && experiment.name !== 'nav_unification_v2'
   const [isAskingToConfirmRunExperiment, setIsAskingToConfirmRunExperiment] = useState<boolean>(false)
   const onAskToConfirmRunExperiment = () => setIsAskingToConfirmRunExperiment(true)
   const onCancelRunExperiment = () => setIsAskingToConfirmRunExperiment(false)
