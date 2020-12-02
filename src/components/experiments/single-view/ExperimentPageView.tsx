@@ -124,15 +124,15 @@ export default function ExperimentPageView({
       }
 
       return {
-      ...analysis,
-      metricEstimates: {
-        ...analysis.metricEstimates,
-        ...(analysis.metricEstimates?.diff && {
-          diff: {
-            top: -1 * analysis.metricEstimates.diff.bottom,
-            estimate: -1 * analysis.metricEstimates.diff.estimate,
-            bottom: -1 * analysis.metricEstimates.diff.top,
-          },
+        ...analysis,
+        metricEstimates: {
+          ...analysis.metricEstimates,
+          ...(analysis.metricEstimates?.diff && {
+            diff: {
+              top: -1 * analysis.metricEstimates.diff.bottom,
+              estimate: -1 * analysis.metricEstimates.diff.estimate,
+              bottom: -1 * analysis.metricEstimates.diff.top,
+            },
           }),
         },
       }
