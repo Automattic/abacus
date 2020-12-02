@@ -499,7 +499,7 @@ exports[`renders the full tables with some analyses in debug mode 1`] = `
       "not_final": 10,
       "variation_1": 10
     },
-    "metricEstimates": {},
+    "metricEstimates": null,
     "recommendation": null,
     "analysisDatetime": "2020-05-10T00:00:00.000Z",
     "tableData": {
