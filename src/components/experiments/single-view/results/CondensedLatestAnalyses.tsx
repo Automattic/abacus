@@ -12,7 +12,7 @@ import {
   useTheme,
 } from '@material-ui/core'
 import clsx from 'clsx'
-import _, { identity } from 'lodash'
+import _ from 'lodash'
 import MaterialTable from 'material-table'
 import { PlotData } from 'plotly.js'
 import React from 'react'
@@ -281,7 +281,7 @@ function AnalysisDetailPanel({
   const classes = useAnalysisDetailStyles()
 
   const isConversion = metric.parameterType === MetricParameterType.Conversion
-  const estimateTransform: (estimate: number | null | undefined ) => number | null = (estimate) => {
+  const estimateTransform: (estimate: number | null | undefined) => number | null = (estimate) => {
     if (!estimate) {
       return null
     }
@@ -290,9 +290,9 @@ function AnalysisDetailPanel({
   }
 
   const strategy = Experiments.getDefaultAnalysisStrategy(experiment)
-  // It is possible some analyses don't have metricEstimates, we filter them out here by checking for the 
+  // It is possible some analyses don't have metricEstimates, we filter them out here by checking for the
   // existence of 'diff' metricEstimates which should always exist:
-  const analyses = analysesByStrategyDateAsc[strategy].filter(analyses => !!analyses.metricEstimates['diff'])
+  const analyses = analysesByStrategyDateAsc[strategy].filter((analyses) => !!analyses.metricEstimates['diff'])
   const dates = analyses.map(({ analysisDatetime }) => analysisDatetime.toISOString())
 
   const plotlyDataVariationGraph: Array<Partial<PlotData>> = [
@@ -418,16 +418,14 @@ function AnalysisDetailPanel({
                   Difference interval
                 </TableCell>
                 <TableCell className={classes.dataCell}>
-                {latestDefaultAnalysis.metricEstimates.diff ? (
-                  <>
+                  {latestDefaultAnalysis.metricEstimates.diff ? (
+                    <>
                       [{_.round(latestDefaultAnalysis.metricEstimates.diff.bottom, 4)},
                       {_.round(latestDefaultAnalysis.metricEstimates.diff.top, 4)}]
-                  </>
-                ) : (
-                  <>
-                  Not analyzed yet
-                  </>
-                )}
+                    </>
+                  ) : (
+                    <>Not analyzed yet</>
+                  )}
                 </TableCell>
               </TableRow>
               {latestDefaultAnalysis.recommendation.warnings.length > 0 && (

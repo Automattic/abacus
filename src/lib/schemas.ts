@@ -414,7 +414,7 @@ export const analysisSchema = yup
     metricAssignmentId: idSchema.defined(),
     analysisDatetime: dateSchema.defined(),
     analysisStrategy: yup.string().oneOf(Object.values(AnalysisStrategy)).defined(),
-    // These can be validated further in yup but it isn't performant to do it simply (using lazy) and although 
+    // These can be validated further in yup but it isn't performant to do it simply (using lazy) and although
     // there is a performant way to do so (higher up lazy) it isn't worth it complexity wise.
     participantStats: yup.object().defined() as yup.Schema<Record<string, number>>,
     metricEstimates: yup.object().defined() as yup.Schema<Record<string, MetricEstimate | null>>,
