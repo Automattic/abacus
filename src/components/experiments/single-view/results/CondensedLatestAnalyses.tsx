@@ -411,21 +411,15 @@ function AnalysisDetailPanel({
               )
             </TableCell>
           </TableRow>
-          {latestDefaultAnalysis.metricEstimates && latestDefaultAnalysis.recommendation && (
+          {latestDefaultAnalysis.metricEstimates && latestDefaultAnalysis.metricEstimates.diff && latestDefaultAnalysis.recommendation && (
             <>
               <TableRow>
                 <TableCell component='th' scope='row' variant='head'>
                   Difference interval
                 </TableCell>
                 <TableCell className={classes.dataCell}>
-                  {latestDefaultAnalysis.metricEstimates.diff ? (
-                    <>
-                      [{_.round(latestDefaultAnalysis.metricEstimates.diff.bottom, 4)},
-                      {_.round(latestDefaultAnalysis.metricEstimates.diff.top, 4)}]
-                    </>
-                  ) : (
-                    <>Not analyzed yet</>
-                  )}
+                  [{_.round(latestDefaultAnalysis.metricEstimates.diff.bottom, 4)},
+                  {_.round(latestDefaultAnalysis.metricEstimates.diff.top, 4)}]
                 </TableCell>
               </TableRow>
               {latestDefaultAnalysis.recommendation.warnings.length > 0 && (
