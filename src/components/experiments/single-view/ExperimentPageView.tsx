@@ -118,7 +118,12 @@ export default function ExperimentPageView({
     // NOTE: Estimates are the wrong way round coming from the backend so we invert them here as a workaround
     // until that is fixed.
     // TODO: Fix in backend.
-    return analyses.map((analysis) => ({
+    return analyses.map((analysis) => {
+      if (!analysis.metricEstimates) {
+        return analysis
+      }
+
+      return {
       ...analysis,
       metricEstimates: {
         ...analysis.metricEstimates,
@@ -128,9 +133,10 @@ export default function ExperimentPageView({
             estimate: -1 * analysis.metricEstimates.diff.estimate,
             bottom: -1 * analysis.metricEstimates.diff.top,
           },
-        }),
-      },
-    }))
+          }),
+        },
+      }
+    })
   }, [experimentId])
   useDataLoadingError(analysesError, 'Analyses')
 
