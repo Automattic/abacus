@@ -12,7 +12,7 @@ import {
   useTheme,
 } from '@material-ui/core'
 import clsx from 'clsx'
-import _ from 'lodash'
+import _, { identity } from 'lodash'
 import MaterialTable from 'material-table'
 import { PlotData } from 'plotly.js'
 import React from 'react'
@@ -281,18 +281,11 @@ function AnalysisDetailPanel({
   const classes = useAnalysisDetailStyles()
 
   const isConversion = metric.parameterType === MetricParameterType.Conversion
-  const estimateTransform: (estimate: number | null | undefined) => number | null = (estimate) => {
-    if (!estimate) {
-      return null
-    }
-
-    return isConversion ? estimate * 100 : estimate
-  }
-
+  const estimateTransform: (estimate: number | null) => number | null = isConversion
+    ? (estimate: number | null) => estimate && estimate * 100
+    : identity
   const strategy = Experiments.getDefaultAnalysisStrategy(experiment)
-  // It is possible some analyses don't have metricEstimates, we filter them out here by checking for the
-  // existence of 'diff' metricEstimates which should always exist:
-  const analyses = analysesByStrategyDateAsc[strategy].filter((analyses) => !!analyses.metricEstimates)
+  const analyses = analysesByStrategyDateAsc[strategy]
   const dates = analyses.map(({ analysisDatetime }) => analysisDatetime.toISOString())
 
   const plotlyDataVariationGraph: Array<Partial<PlotData>> = [
