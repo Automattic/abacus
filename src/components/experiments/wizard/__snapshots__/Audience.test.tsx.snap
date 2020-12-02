@@ -39,7 +39,9 @@ exports[`renders as expected 1`] = `
             role="button"
             tabindex="0"
           >
-            WordPress.com Backend
+            wpcom
+            : 
+            WordPress.com back-end
           </div>
           <input
             name="experiment.platform"
@@ -736,7 +738,9 @@ exports[`renders as expected 2`] = `
             role="button"
             tabindex="0"
           >
-            WordPress.com Backend
+            wpcom
+            : 
+            WordPress.com back-end
           </div>
           <input
             name="experiment.platform"

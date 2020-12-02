@@ -241,6 +241,8 @@ export interface Variation extends yup.InferType<typeof variationSchema> {}
 
 export enum Platform {
   Calypso = 'calypso',
+  Email = 'email',
+  Pipe = 'pipe',
   Wpcom = 'wpcom',
 }
 

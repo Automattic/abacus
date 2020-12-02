@@ -163,7 +163,7 @@ const Audience = ({
           <Field component={Select} name='experiment.platform'>
             {Object.values(Platform).map((platform) => (
               <MenuItem key={platform} value={platform}>
-                {PlatformToHuman[platform]}
+                {platform}: {PlatformToHuman[platform]}
               </MenuItem>
             ))}
           </Field>
