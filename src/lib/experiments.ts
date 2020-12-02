@@ -39,6 +39,8 @@ export function getDefaultAnalysisStrategy(experiment: ExperimentFull): Analysis
 }
 
 export const PlatformToHuman: Record<Platform, string> = {
-  [Platform.Wpcom]: 'WordPress.com Backend',
-  [Platform.Calypso]: 'Calypso',
+  [Platform.Calypso]: 'Calypso front-end',
+  [Platform.Email]: 'Guides and other email systems',
+  [Platform.Pipe]: 'Machine learning pipeline',
+  [Platform.Wpcom]: 'WordPress.com back-end',
 }
