@@ -18,9 +18,11 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 const ExperimentDisableButton = ({
+  className,
   experiment,
   experimentReloadRef,
 }: {
+  className?: string
   experiment: ExperimentFull | null
   experimentReloadRef: React.MutableRefObject<() => void>
 }): JSX.Element => {
@@ -57,7 +59,7 @@ const ExperimentDisableButton = ({
   return (
     <>
       <Tooltip title={canDisableExperiment ? '' : 'This experiment is disabled.'}>
-        <span>
+        <span className={className}>
           <Button
             variant='outlined'
             classes={{ outlined: classes.buttonOutlined }}

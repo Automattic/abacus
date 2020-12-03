@@ -1,4 +1,14 @@
-import { Button, Dialog, DialogActions, DialogContent, Tooltip, Typography } from '@material-ui/core'
+import {
+  Button,
+  createStyles,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  makeStyles,
+  Theme,
+  Tooltip,
+  Typography,
+} from '@material-ui/core'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 
@@ -7,6 +17,15 @@ import { ExperimentFull, Status } from 'src/lib/schemas'
 
 import LoadingButtonContainer from '../../general/LoadingButtonContainer'
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    buttonOutlined: {
+      borderColor: theme.palette.error.dark,
+      color: theme.palette.error.dark,
+    },
+  }),
+)
+
 const ExperimentRunButton = ({
   experiment,
   experimentReloadRef,
@@ -14,6 +33,7 @@ const ExperimentRunButton = ({
   experiment: ExperimentFull | null
   experimentReloadRef: React.MutableRefObject<() => void>
 }): JSX.Element => {
+  const classes = useStyles()
   const { enqueueSnackbar } = useSnackbar()
 
   const canRunExperiment =
@@ -48,17 +68,17 @@ const ExperimentRunButton = ({
         <span>
           <Button
             variant='outlined'
-            color='secondary'
+            classes={{ outlined: classes.buttonOutlined }}
             disabled={!canRunExperiment}
             onClick={onAskToConfirmRunExperiment}
           >
-            Run
+            Deploy
           </Button>
         </span>
       </Tooltip>
       <Dialog open={isAskingToConfirmRunExperiment} aria-labelledby='confirm-run-experiment-dialog-title'>
         <DialogContent>
-          <Typography variant='body1'>Are you sure you want to run this experiment?</Typography>
+          <Typography variant='body1'>Are you sure you want to deploy this experiment?</Typography>
         </DialogContent>
         <DialogActions>
           <Button onClick={onCancelRunExperiment}>Cancel</Button>
@@ -69,7 +89,7 @@ const ExperimentRunButton = ({
               disabled={isSubmittingRunExperiment}
               onClick={onConfirmRunExperiment}
             >
-              Run
+              Deploy
             </Button>
           </LoadingButtonContainer>
         </DialogActions>

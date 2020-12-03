@@ -62,6 +62,9 @@ const useStyles = makeStyles((theme: Theme) =>
         marginBottom: 7,
       },
     },
+    disableButton: {
+      marginRight: theme.spacing(1),
+    },
   }),
 )
 
@@ -193,9 +196,8 @@ export default function ExperimentPageView({
             />
           </Tabs>
           <div className={classes.topBarActions}>
-            <Button variant='outlined' color='primary' component={Link} to={`/experiments/${experimentIdSlug}/clone`}>
-              Clone
-            </Button>{' '}
+            <ExperimentRunButton {...{ experiment, experimentReloadRef }} />{' '}
+            <ExperimentDisableButton {...{ experiment, experimentReloadRef }} className={classes.disableButton} />
             <Tooltip title={canEditInWizard ? '' : 'Only available for staging experiments.'}>
               <span>
                 <Button
@@ -209,8 +211,9 @@ export default function ExperimentPageView({
                 </Button>
               </span>
             </Tooltip>{' '}
-            <ExperimentRunButton {...{ experiment, experimentReloadRef }} />{' '}
-            <ExperimentDisableButton {...{ experiment, experimentReloadRef }} />
+            <Button variant='outlined' color='primary' component={Link} to={`/experiments/${experimentIdSlug}/clone`}>
+              Clone
+            </Button>
           </div>
         </div>
         {isLoading && <LinearProgress />}
