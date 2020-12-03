@@ -7,14 +7,14 @@ exports[`renders as expected 1`] = `
     title=""
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonOutlined-1"
       tabindex="0"
       type="button"
     >
       <span
         class="MuiButton-label"
       >
-        Run
+        Deploy
       </span>
       <span
         class="MuiTouchRipple-root"
@@ -33,14 +33,14 @@ exports[`runs an experiment 1`] = `
     title=""
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonOutlined-2"
       tabindex="0"
       type="button"
     >
       <span
         class="MuiButton-label"
       >
-        Run
+        Deploy
       </span>
       <span
         class="MuiTouchRipple-root"
