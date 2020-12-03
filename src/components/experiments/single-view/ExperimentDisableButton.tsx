@@ -28,7 +28,8 @@ const ExperimentDisableButton = ({
 
   const { enqueueSnackbar } = useSnackbar()
 
-  const canDisableExperiment = experiment && experiment.status !== Status.Disabled
+  const canDisableExperiment =
+    experiment && experiment.status !== Status.Disabled && experiment.name !== 'nav_unification_v2'
   const [isAskingToConfirmDisableExperiment, setIsAskingToConfirmDisableExperiment] = useState<boolean>(false)
   const onAskToConfirmDisableExperiment = () => setIsAskingToConfirmDisableExperiment(true)
   const onCancelDisableExperiment = () => setIsAskingToConfirmDisableExperiment(false)
