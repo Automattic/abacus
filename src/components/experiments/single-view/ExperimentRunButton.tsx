@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme: Theme) =>
         background: theme.palette.error.light,
       },
     },
+    actions: {
+      justifyContent: 'space-between',
+    },
   }),
 )
 
@@ -95,7 +98,7 @@ const ExperimentRunButton = ({
             It also initiates this experiment, which is irreversible.
           </Typography>
         </DialogContent>
-        <DialogActions>
+        <DialogActions className={classes.actions}>
           <LoadingButtonContainer isLoading={isSubmittingRunExperiment}>
             <Button
               variant='contained'
