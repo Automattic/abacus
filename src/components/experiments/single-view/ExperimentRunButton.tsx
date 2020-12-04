@@ -23,6 +23,13 @@ const useStyles = makeStyles((theme: Theme) =>
       borderColor: theme.palette.error.dark,
       color: theme.palette.error.dark,
     },
+    buttonContained: {
+      background: theme.palette.error.dark,
+      color: theme.palette.error.contrastText,
+      '&:hover': {
+        background: theme.palette.error.light,
+      },
+    },
   }),
 )
 
@@ -78,20 +85,30 @@ const ExperimentRunButton = ({
       </Tooltip>
       <Dialog open={isAskingToConfirmRunExperiment} aria-labelledby='confirm-run-experiment-dialog-title'>
         <DialogContent>
-          <Typography variant='body1'>Are you sure you want to deploy this experiment?</Typography>
+          <Typography variant='h5' gutterBottom>
+            Are you sure you want to deploy this experiment?
+          </Typography>
+          <Typography variant='body2' gutterBottom>
+            Deploying automatically triggers the release of experimental code to our users.
+          </Typography>
+          <Typography variant='body2' gutterBottom>
+            It also initiates this experiment, which is irreversible.
+          </Typography>
         </DialogContent>
         <DialogActions>
-          <Button onClick={onCancelRunExperiment}>Cancel</Button>
           <LoadingButtonContainer isLoading={isSubmittingRunExperiment}>
             <Button
               variant='contained'
-              color='primary'
+              classes={{ contained: classes.buttonContained }}
               disabled={isSubmittingRunExperiment}
               onClick={onConfirmRunExperiment}
             >
               Deploy
             </Button>
           </LoadingButtonContainer>
+          <Button variant='contained' color='primary' onClick={onCancelRunExperiment}>
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
     </>

@@ -14,6 +14,13 @@ const useStyles = makeStyles((theme: Theme) =>
       borderColor: theme.palette.error.dark,
       color: theme.palette.error.dark,
     },
+    buttonContained: {
+      background: theme.palette.error.dark,
+      color: theme.palette.error.contrastText,
+      '&:hover': {
+        background: theme.palette.error.light,
+      },
+    },
   }),
 )
 
@@ -72,20 +79,30 @@ const ExperimentDisableButton = ({
       </Tooltip>
       <Dialog open={isAskingToConfirmDisableExperiment} aria-labelledby='confirm-disable-experiment-dialog-title'>
         <DialogContent>
-          <Typography variant='body1'>Are you sure you want to disable this experiment?</Typography>
+          <Typography variant='h5' gutterBottom>
+            ️Are you sure you want to disable this experiment?
+          </Typography>
+          <Typography variant='body2' gutterBottom>
+            Disabling an experiment automatically triggers the default experience to our users.
+          </Typography>
+          <Typography variant='body2' gutterBottom>
+            It also immediately stops a running experiment, which is irreversible.{' '}
+          </Typography>
         </DialogContent>
         <DialogActions>
-          <Button onClick={onCancelDisableExperiment}>Cancel</Button>
           <LoadingButtonContainer isLoading={isSubmittingDisableExperiment}>
             <Button
               variant='contained'
-              color='primary'
+              classes={{ contained: classes.buttonContained }}
               disabled={isSubmittingDisableExperiment}
               onClick={onConfirmDisableExperiment}
             >
               Disable
             </Button>
           </LoadingButtonContainer>
+          <Button variant='contained' color='primary' onClick={onCancelDisableExperiment}>
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
     </>
