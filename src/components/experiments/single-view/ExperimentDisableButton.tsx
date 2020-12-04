@@ -80,7 +80,7 @@ const ExperimentDisableButton = ({
       <Dialog open={isAskingToConfirmDisableExperiment} aria-labelledby='confirm-disable-experiment-dialog-title'>
         <DialogContent>
           <Typography variant='h5' gutterBottom>
-            ️Are you sure you want to disable this experiment?
+            ️Are you sure you want to <strong>disable this experiment</strong>?
           </Typography>
           <Typography variant='body2' gutterBottom>
             Disabling an experiment automatically triggers the default experience to our users.

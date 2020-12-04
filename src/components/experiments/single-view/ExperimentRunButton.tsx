@@ -86,7 +86,7 @@ const ExperimentRunButton = ({
       <Dialog open={isAskingToConfirmRunExperiment} aria-labelledby='confirm-run-experiment-dialog-title'>
         <DialogContent>
           <Typography variant='h5' gutterBottom>
-            Are you sure you want to deploy this experiment?
+            Are you sure you want to <strong>deploy this experiment</strong>?
           </Typography>
           <Typography variant='body2' gutterBottom>
             Deploying automatically triggers the release of experimental code to our users.

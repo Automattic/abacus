@@ -9,7 +9,7 @@ exports[`disables an experiment 1`] = `
     title=""
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonOutlined-2"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonOutlined-3"
       tabindex="0"
       type="button"
     >
