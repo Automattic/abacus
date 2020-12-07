@@ -33,7 +33,7 @@ exports[`runs an experiment 1`] = `
     title=""
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonOutlined-4"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonOutlined-5"
       tabindex="0"
       type="button"
     >
