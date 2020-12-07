@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme: Theme) =>
     actions: {
       justifyContent: 'space-between',
     },
+    danger: {
+      textAlign: 'center',
+    },
   }),
 )
 
@@ -86,11 +89,14 @@ const ExperimentDisableButton = ({
             ️Are you sure you want to <strong>disable this experiment</strong>?
           </Typography>
           <Typography variant='body2' gutterBottom>
-            Disabling an experiment automatically triggers the default experience to our users.
+            Disabling an experiment automatically <strong>triggers the default experience</strong> to all users.
           </Typography>
           <Typography variant='body2' gutterBottom>
-            It also immediately stops a running experiment, which is irreversible.{' '}
+            It also immediately stops a running experiment, which is <strong>irreversible</strong>.{' '}
           </Typography>
+          <div className={classes.danger}>
+            <img src='/img/danger.gif' alt='DANGER!' />
+          </div>
         </DialogContent>
         <DialogActions className={classes.actions}>
           <LoadingButtonContainer isLoading={isSubmittingDisableExperiment}>

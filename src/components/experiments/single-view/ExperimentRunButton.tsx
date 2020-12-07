@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme: Theme) =>
     actions: {
       justifyContent: 'space-between',
     },
+    danger: {
+      textAlign: 'center',
+    },
   }),
 )
 
@@ -92,11 +95,14 @@ const ExperimentRunButton = ({
             Are you sure you want to <strong>deploy this experiment</strong>?
           </Typography>
           <Typography variant='body2' gutterBottom>
-            Deploying automatically triggers the release of experimental code to our users.
+            Deploying automatically <strong>triggers the release of experimental code</strong> to our users.
           </Typography>
           <Typography variant='body2' gutterBottom>
-            It also initiates this experiment, which is irreversible.
+            It also initiates this experiment, which is <strong>irreversible</strong>.
           </Typography>
+          <div className={classes.danger}>
+            <img src='/img/danger.gif' alt='DANGER!' />
+          </div>
         </DialogContent>
         <DialogActions className={classes.actions}>
           <LoadingButtonContainer isLoading={isSubmittingRunExperiment}>
