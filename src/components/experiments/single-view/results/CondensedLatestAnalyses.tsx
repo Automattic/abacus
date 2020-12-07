@@ -192,7 +192,7 @@ export default function CondensedLatestAnalyses({
       metric: MetricBare
       recommendationConflict?: boolean
     }) => {
-      let disabled = !latestDefaultAnalysis || recommendationConflict 
+      let disabled = !latestDefaultAnalysis || recommendationConflict
       // istanbul ignore next; debug only
       disabled = disabled && !isDebugMode()
       return {
