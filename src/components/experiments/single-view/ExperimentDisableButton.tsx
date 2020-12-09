@@ -1,5 +1,6 @@
-import { Button, Dialog, DialogActions, DialogContent, Tooltip, Typography } from '@material-ui/core'
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Tooltip, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import clsx from 'clsx'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 
@@ -21,11 +22,11 @@ const useStyles = makeStyles((theme: Theme) =>
         background: theme.palette.error.light,
       },
     },
-    actions: {
-      justifyContent: 'space-between',
-    },
     danger: {
       textAlign: 'center',
+    },
+    dangerBackdrop: {
+      backgroundColor: 'rgb(195 61 61 / 62%)',
     },
   }),
 )
@@ -69,6 +70,8 @@ const ExperimentDisableButton = ({
     }
   }
 
+  const isDisablingDangerous = experiment?.status === Status.Running || experiment?.status === Status.Completed
+
   return (
     <>
       <Tooltip title={canDisableExperiment ? '' : 'This experiment is disabled.'}>
@@ -83,22 +86,35 @@ const ExperimentDisableButton = ({
           </Button>
         </span>
       </Tooltip>
-      <Dialog open={isAskingToConfirmDisableExperiment} aria-labelledby='confirm-disable-experiment-dialog-title'>
+      <Dialog
+        open={isAskingToConfirmDisableExperiment}
+        aria-labelledby='confirm-disable-experiment-dialog-title'
+        BackdropProps={{ className: clsx(isDisablingDangerous && classes.dangerBackdrop) }}
+      >
+        <DialogTitle>
+          <Typography variant='h5'>
+            ️Are you sure you want to <strong>disable</strong> this experiment?
+          </Typography>
+        </DialogTitle>
         <DialogContent>
-          <Typography variant='h5' gutterBottom>
-            ️Are you sure you want to <strong>disable this experiment</strong>?
-          </Typography>
+          {isDisablingDangerous && (
+            <Typography variant='body2' gutterBottom>
+              Disabling an experiment will <strong>trigger the default experience to all users</strong>.
+            </Typography>
+          )}
           <Typography variant='body2' gutterBottom>
-            Disabling an experiment automatically <strong>triggers the default experience</strong> to all users.
+            Disabling changes an experiment&apos;s status to disabled, which is <strong>irreversible</strong>.
           </Typography>
-          <Typography variant='body2' gutterBottom>
-            It also immediately stops a running experiment, which is <strong>irreversible</strong>.{' '}
-          </Typography>
-          <div className={classes.danger}>
-            <img src='/img/danger.gif' alt='DANGER!' />
-          </div>
+          {isDisablingDangerous && (
+            <div className={classes.danger}>
+              <img src='/img/danger.gif' alt='DANGER!' />
+            </div>
+          )}
         </DialogContent>
-        <DialogActions className={classes.actions}>
+        <DialogActions>
+          <Button variant='contained' color='primary' onClick={onCancelDisableExperiment}>
+            Cancel
+          </Button>
           <LoadingButtonContainer isLoading={isSubmittingDisableExperiment}>
             <Button
               variant='contained'
@@ -109,9 +125,6 @@ const ExperimentDisableButton = ({
               Disable
             </Button>
           </LoadingButtonContainer>
-          <Button variant='contained' color='primary' onClick={onCancelDisableExperiment}>
-            Cancel
-          </Button>
         </DialogActions>
       </Dialog>
     </>

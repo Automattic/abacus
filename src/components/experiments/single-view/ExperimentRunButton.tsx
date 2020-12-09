@@ -4,6 +4,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
+  DialogTitle,
   makeStyles,
   Theme,
   Tooltip,
@@ -30,11 +31,11 @@ const useStyles = makeStyles((theme: Theme) =>
         background: theme.palette.error.light,
       },
     },
-    actions: {
-      justifyContent: 'space-between',
-    },
     danger: {
       textAlign: 'center',
+    },
+    dangerBackdrop: {
+      backgroundColor: 'rgb(195 61 61 / 62%)',
     },
   }),
 )
@@ -89,22 +90,31 @@ const ExperimentRunButton = ({
           </Button>
         </span>
       </Tooltip>
-      <Dialog open={isAskingToConfirmRunExperiment} aria-labelledby='confirm-run-experiment-dialog-title'>
+      <Dialog
+        open={isAskingToConfirmRunExperiment}
+        aria-labelledby='confirm-run-experiment-dialog-title'
+        BackdropProps={{ className: classes.dangerBackdrop }}
+      >
+        <DialogTitle>
+          <Typography variant='h5'>
+            Are you sure you want to <strong>deploy</strong> this experiment?
+          </Typography>
+        </DialogTitle>
         <DialogContent>
-          <Typography variant='h5' gutterBottom>
-            Are you sure you want to <strong>deploy this experiment</strong>?
+          <Typography variant='body2' gutterBottom>
+            Deploying will <strong>release experiment code to our users.</strong>
           </Typography>
           <Typography variant='body2' gutterBottom>
-            Deploying automatically <strong>triggers the release of experimental code</strong> to our users.
-          </Typography>
-          <Typography variant='body2' gutterBottom>
-            It also initiates this experiment, which is <strong>irreversible</strong>.
+            It also changes the experiment&apos;s status to running, which is <strong>irreversible</strong>.
           </Typography>
           <div className={classes.danger}>
             <img src='/img/danger.gif' alt='DANGER!' />
           </div>
         </DialogContent>
-        <DialogActions className={classes.actions}>
+        <DialogActions>
+          <Button variant='contained' color='primary' onClick={onCancelRunExperiment}>
+            Cancel
+          </Button>
           <LoadingButtonContainer isLoading={isSubmittingRunExperiment}>
             <Button
               variant='contained'
@@ -115,9 +125,6 @@ const ExperimentRunButton = ({
               Deploy
             </Button>
           </LoadingButtonContainer>
-          <Button variant='contained' color='primary' onClick={onCancelRunExperiment}>
-            Cancel
-          </Button>
         </DialogActions>
       </Dialog>
     </>
