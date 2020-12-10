@@ -33,6 +33,7 @@ import {
 } from 'src/lib/schemas'
 import * as Variations from 'src/lib/variations'
 import * as Visualizations from 'src/lib/visualizations'
+import { isDebugMode } from 'src/utils/general'
 import { createStaticTableOptions } from 'src/utils/material-table'
 
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
@@ -191,6 +192,9 @@ export default function CondensedLatestAnalyses({
       metric: MetricBare
       recommendationConflict?: boolean
     }) => {
+      let disabled = !latestDefaultAnalysis || recommendationConflict
+      // istanbul ignore next; debug only
+      disabled = disabled && !isDebugMode()
       return {
         render: () =>
           latestDefaultAnalysis && (
@@ -198,7 +202,7 @@ export default function CondensedLatestAnalyses({
               {...{ analysesByStrategyDateAsc, latestDefaultAnalysis, metricAssignment, metric, experiment }}
             />
           ),
-        disabled: !latestDefaultAnalysis || recommendationConflict,
+        disabled,
       }
     },
   ]
