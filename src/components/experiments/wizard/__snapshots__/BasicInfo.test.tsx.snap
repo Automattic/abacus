@@ -177,9 +177,9 @@ exports[`renders as expected 1`] = `
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
           id="experiment.startDatetime-helper-text"
         >
-          Automatic start date.
+          Automatic start date. 
           <br />
-          Use the UTC timezone.
+           Use the UTC timezone.
         </p>
       </div>
       <span
@@ -236,9 +236,9 @@ exports[`renders as expected 1`] = `
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
           id="experiment.endDatetime-helper-text"
         >
-          Automatic end date.
+          Automatic end date. 
           <br />
-          Use the UTC timezone.
+           Use the UTC timezone.
         </p>
       </div>
     </div>
@@ -553,9 +553,9 @@ exports[`renders date validation errors as expected 1`] = `
           class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
           id="experiment.startDatetime-helper-text"
         >
-          Automatic start date.
+          Automatic start date. 
           <br />
-          Use the UTC timezone.
+           Use the UTC timezone.
         </p>
       </div>
       <span
@@ -614,9 +614,9 @@ exports[`renders date validation errors as expected 1`] = `
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
           id="experiment.endDatetime-helper-text"
         >
-          Automatic end date.
+          Automatic end date. 
           <br />
-          Use the UTC timezone.
+           Use the UTC timezone.
         </p>
       </div>
     </div>
@@ -931,9 +931,9 @@ exports[`renders date validation errors as expected 2`] = `
           class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
           id="experiment.startDatetime-helper-text"
         >
-          Automatic start date.
+          Automatic start date. 
           <br />
-          Use the UTC timezone.
+           Use the UTC timezone.
         </p>
       </div>
       <span
@@ -992,9 +992,9 @@ exports[`renders date validation errors as expected 2`] = `
           class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
           id="experiment.endDatetime-helper-text"
         >
-          Automatic end date.
+          Automatic end date. 
           <br />
-          Use the UTC timezone.
+           Use the UTC timezone.
         </p>
       </div>
     </div>
@@ -1309,9 +1309,9 @@ exports[`renders date validation errors as expected 3`] = `
           class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
           id="experiment.startDatetime-helper-text"
         >
-          Automatic start date.
+          Automatic start date. 
           <br />
-          Use the UTC timezone.
+           Use the UTC timezone.
         </p>
       </div>
       <span
@@ -1370,9 +1370,9 @@ exports[`renders date validation errors as expected 3`] = `
           class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
           id="experiment.endDatetime-helper-text"
         >
-          Automatic end date.
+          Automatic end date. 
           <br />
-          Use the UTC timezone.
+           Use the UTC timezone.
         </p>
       </div>
     </div>
@@ -1687,9 +1687,9 @@ exports[`renders date validation errors as expected 4`] = `
           class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
           id="experiment.startDatetime-helper-text"
         >
-          Automatic start date.
+          Automatic start date. 
           <br />
-          Use the UTC timezone.
+           Use the UTC timezone.
         </p>
       </div>
       <span
@@ -1748,9 +1748,9 @@ exports[`renders date validation errors as expected 4`] = `
           class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
           id="experiment.endDatetime-helper-text"
         >
-          Automatic end date.
+          Automatic end date. 
           <br />
-          Use the UTC timezone.
+           Use the UTC timezone.
         </p>
       </div>
     </div>
@@ -2065,9 +2065,9 @@ exports[`renders sensible dates as expected 1`] = `
           class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
           id="experiment.startDatetime-helper-text"
         >
-          Automatic start date.
+          Automatic start date. 
           <br />
-          Use the UTC timezone.
+           Use the UTC timezone.
         </p>
       </div>
       <span
@@ -2126,9 +2126,9 @@ exports[`renders sensible dates as expected 1`] = `
           class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
           id="experiment.endDatetime-helper-text"
         >
-          Automatic end date.
+          Automatic end date. 
           <br />
-          Use the UTC timezone.
+           Use the UTC timezone.
         </p>
       </div>
     </div>

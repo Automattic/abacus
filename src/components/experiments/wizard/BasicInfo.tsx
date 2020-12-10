@@ -108,9 +108,7 @@ const BasicInfo = ({
           label='Start date'
           helperText={
             <>
-              Automatic start date.
-              <br />
-              Use the UTC timezone.
+              Automatic start date. <br /> Use the UTC timezone.
             </>
           }
           type='date'
@@ -133,9 +131,7 @@ const BasicInfo = ({
           label='End date'
           helperText={
             <>
-              Automatic end date.
-              <br />
-              Use the UTC timezone.
+              Automatic end date. <br /> Use the UTC timezone.
             </>
           }
           type='date'

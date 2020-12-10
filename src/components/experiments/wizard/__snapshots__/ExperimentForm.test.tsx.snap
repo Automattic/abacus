@@ -1247,9 +1247,9 @@ exports[`sections should be browsable by the section buttons 2`] = `
                     class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
                     id="experiment.startDatetime-helper-text"
                   >
-                    Automatic start date.
+                    Automatic start date. 
                     <br />
-                    Use the UTC timezone.
+                     Use the UTC timezone.
                   </p>
                 </div>
                 <span
@@ -1306,9 +1306,9 @@ exports[`sections should be browsable by the section buttons 2`] = `
                     class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
                     id="experiment.endDatetime-helper-text"
                   >
-                    Automatic end date.
+                    Automatic end date. 
                     <br />
-                    Use the UTC timezone.
+                     Use the UTC timezone.
                   </p>
                 </div>
               </div>
