@@ -31,7 +31,7 @@ test('renders as expected', () => {
           <strong>
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/abacus/wiki"
+              href="https://github.com/Automattic/experimentation-platform/wiki"
             >
               Our wiki is a great place to start
             </a>

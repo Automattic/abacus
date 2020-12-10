@@ -319,7 +319,7 @@ exports[`renders as expected 1`] = `
                 <strong>
                   <a
                     class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                    href="https://github.com/Automattic/abacus/wiki"
+                    href="https://github.com/Automattic/experimentation-platform/wiki"
                   >
                     Our wiki is a great place to start
                   </a>
@@ -709,7 +709,7 @@ exports[`sections should be browsable by the section buttons 1`] = `
                 <strong>
                   <a
                     class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                    href="https://github.com/Automattic/abacus/wiki"
+                    href="https://github.com/Automattic/experimentation-platform/wiki"
                   >
                     Our wiki is a great place to start
                   </a>
@@ -1753,7 +1753,7 @@ exports[`sections should be browsable by the section buttons 3`] = `
                
               <a
                 class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                href="https://github.com/Automattic/abacus/wiki"
+                href="https://github.com/Automattic/experimentation-platform/wiki"
               >
                 check our wiki's experiment creation checklist
               </a>
@@ -2596,7 +2596,7 @@ exports[`skipping to submit should check all sections 1`] = `
                
               <a
                 class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                href="https://github.com/Automattic/abacus/wiki"
+                href="https://github.com/Automattic/experimentation-platform/wiki"
               >
                 check our wiki's experiment creation checklist
               </a>
