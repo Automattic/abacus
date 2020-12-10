@@ -1,32 +1,19 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Tooltip, Typography } from '@material-ui/core'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { createStyles, makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 
 import ExperimentsApi from 'src/api/ExperimentsApi'
 import { ExperimentFull, Status } from 'src/lib/schemas'
+import { useDangerStyles } from 'src/styles/styles'
 
 import LoadingButtonContainer from '../../general/LoadingButtonContainer'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
-    buttonOutlined: {
-      borderColor: theme.palette.error.dark,
-      color: theme.palette.error.dark,
-    },
-    buttonContained: {
-      background: theme.palette.error.dark,
-      color: theme.palette.error.contrastText,
-      '&:hover': {
-        background: theme.palette.error.light,
-      },
-    },
-    danger: {
+    dangerImage: {
       textAlign: 'center',
-    },
-    dangerBackdrop: {
-      backgroundColor: 'rgb(195 61 61 / 62%)',
     },
   }),
 )
@@ -41,6 +28,7 @@ const ExperimentDisableButton = ({
   experimentReloadRef: React.MutableRefObject<() => void>
 }): JSX.Element => {
   const classes = useStyles()
+  const dangerClasses = useDangerStyles()
 
   const { enqueueSnackbar } = useSnackbar()
 
@@ -78,7 +66,7 @@ const ExperimentDisableButton = ({
         <span className={className}>
           <Button
             variant='outlined'
-            classes={{ outlined: classes.buttonOutlined }}
+            classes={{ outlined: dangerClasses.dangerButtonOutlined }}
             disabled={!canDisableExperiment}
             onClick={onAskToConfirmDisableExperiment}
           >
@@ -89,7 +77,7 @@ const ExperimentDisableButton = ({
       <Dialog
         open={isAskingToConfirmDisableExperiment}
         aria-labelledby='confirm-disable-experiment-dialog-title'
-        BackdropProps={{ className: clsx(isDisablingDangerous && classes.dangerBackdrop) }}
+        BackdropProps={{ className: clsx(isDisablingDangerous && dangerClasses.dangerBackdrop) }}
       >
         <DialogTitle>
           <Typography variant='h5'>
@@ -106,7 +94,7 @@ const ExperimentDisableButton = ({
             Disabling changes an experiment&apos;s status to disabled, which is <strong>irreversible</strong>.
           </Typography>
           {isDisablingDangerous && (
-            <div className={classes.danger}>
+            <div className={classes.dangerImage}>
               <img src='/img/danger.gif' alt='DANGER!' />
             </div>
           )}
@@ -118,7 +106,7 @@ const ExperimentDisableButton = ({
           <LoadingButtonContainer isLoading={isSubmittingDisableExperiment}>
             <Button
               variant='contained'
-              classes={{ contained: classes.buttonContained }}
+              classes={{ contained: dangerClasses.dangerButtonContained }}
               disabled={isSubmittingDisableExperiment}
               onClick={onConfirmDisableExperiment}
             >
