@@ -106,7 +106,13 @@ const BasicInfo = ({
           name='experiment.startDatetime'
           id='experiment.startDatetime'
           label='Start date'
-          helperText='Use the UTC timezone.'
+          helperText={
+            <>
+              Automatic start date.
+              <br />
+              Use the UTC timezone.
+            </>
+          }
           type='date'
           variant='outlined'
           required
@@ -125,7 +131,13 @@ const BasicInfo = ({
           name='experiment.endDatetime'
           id='experiment.endDatetime'
           label='End date'
-          helperText='Use the UTC timezone.'
+          helperText={
+            <>
+              Automatic end date.
+              <br />
+              Use the UTC timezone.
+            </>
+          }
           type='date'
           variant='outlined'
           required
