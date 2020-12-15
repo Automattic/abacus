@@ -1205,7 +1205,7 @@ exports[`sections should be browsable by the section buttons 2`] = `
                     for="experiment.startDatetime"
                     id="experiment.startDatetime-label"
                   >
-                    Start date
+                    Start date (UTC)
                     <span
                       aria-hidden="true"
                       class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -1218,7 +1218,6 @@ exports[`sections should be browsable by the section buttons 2`] = `
                     class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
                   >
                     <input
-                      aria-describedby="experiment.startDatetime-helper-text"
                       aria-invalid="false"
                       class="MuiInputBase-input MuiOutlinedInput-input"
                       id="experiment.startDatetime"
@@ -1237,18 +1236,12 @@ exports[`sections should be browsable by the section buttons 2`] = `
                         class="PrivateNotchedOutline-legendLabelled-124 PrivateNotchedOutline-legendNotched-125"
                       >
                         <span>
-                          Start date
+                          Start date (UTC)
                            *
                         </span>
                       </legend>
                     </fieldset>
                   </div>
-                  <p
-                    class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-                    id="experiment.startDatetime-helper-text"
-                  >
-                    Use the UTC timezone.
-                  </p>
                 </div>
                 <span
                   class="makeStyles-through-128"
@@ -1264,7 +1257,7 @@ exports[`sections should be browsable by the section buttons 2`] = `
                     for="experiment.endDatetime"
                     id="experiment.endDatetime-label"
                   >
-                    End date
+                    End date (UTC)
                     <span
                       aria-hidden="true"
                       class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -1277,7 +1270,6 @@ exports[`sections should be browsable by the section buttons 2`] = `
                     class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
                   >
                     <input
-                      aria-describedby="experiment.endDatetime-helper-text"
                       aria-invalid="false"
                       class="MuiInputBase-input MuiOutlinedInput-input"
                       id="experiment.endDatetime"
@@ -1294,18 +1286,12 @@ exports[`sections should be browsable by the section buttons 2`] = `
                         class="PrivateNotchedOutline-legendLabelled-124 PrivateNotchedOutline-legendNotched-125"
                       >
                         <span>
-                          End date
+                          End date (UTC)
                            *
                         </span>
                       </legend>
                     </fieldset>
                   </div>
-                  <p
-                    class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-                    id="experiment.endDatetime-helper-text"
-                  >
-                    Use the UTC timezone.
-                  </p>
                 </div>
               </div>
               <div

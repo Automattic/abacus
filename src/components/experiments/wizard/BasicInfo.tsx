@@ -105,8 +105,7 @@ const BasicInfo = ({
           className={classes.datePicker}
           name='experiment.startDatetime'
           id='experiment.startDatetime'
-          label='Start date'
-          helperText='Use the UTC timezone.'
+          label='Start date (UTC)'
           type='date'
           variant='outlined'
           required
@@ -124,8 +123,7 @@ const BasicInfo = ({
           className={classes.datePicker}
           name='experiment.endDatetime'
           id='experiment.endDatetime'
-          label='End date'
-          helperText='Use the UTC timezone.'
+          label='End date (UTC)'
           type='date'
           variant='outlined'
           required
