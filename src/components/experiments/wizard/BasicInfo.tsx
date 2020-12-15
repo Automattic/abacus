@@ -137,7 +137,7 @@ const BasicInfo = ({
         />
       </div>
       <Alert severity='info'>
-        The experiment will <strong>start and end automatically</strong> around midnight UTC on these dates.
+        The experiment will <strong>start and end automatically</strong> around 00:10 UTC on these dates.
       </Alert>
 
       <div className={classes.row}>

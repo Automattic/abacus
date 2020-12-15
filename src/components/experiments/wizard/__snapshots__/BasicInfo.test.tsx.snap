@@ -249,7 +249,7 @@ exports[`renders as expected 1`] = `
         <strong>
           start and end automatically
         </strong>
-         around midnight UTC on these dates.
+         around 00:10 UTC on these dates.
       </div>
     </div>
     <div
@@ -637,7 +637,7 @@ exports[`renders date validation errors as expected 1`] = `
         <strong>
           start and end automatically
         </strong>
-         around midnight UTC on these dates.
+         around 00:10 UTC on these dates.
       </div>
     </div>
     <div
@@ -1025,7 +1025,7 @@ exports[`renders date validation errors as expected 2`] = `
         <strong>
           start and end automatically
         </strong>
-         around midnight UTC on these dates.
+         around 00:10 UTC on these dates.
       </div>
     </div>
     <div
@@ -1413,7 +1413,7 @@ exports[`renders date validation errors as expected 3`] = `
         <strong>
           start and end automatically
         </strong>
-         around midnight UTC on these dates.
+         around 00:10 UTC on these dates.
       </div>
     </div>
     <div
@@ -1801,7 +1801,7 @@ exports[`renders date validation errors as expected 4`] = `
         <strong>
           start and end automatically
         </strong>
-         around midnight UTC on these dates.
+         around 00:10 UTC on these dates.
       </div>
     </div>
     <div
@@ -2189,7 +2189,7 @@ exports[`renders sensible dates as expected 1`] = `
         <strong>
           start and end automatically
         </strong>
-         around midnight UTC on these dates.
+         around 00:10 UTC on these dates.
       </div>
     </div>
     <div

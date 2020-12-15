@@ -1319,7 +1319,7 @@ exports[`sections should be browsable by the section buttons 2`] = `
                   <strong>
                     start and end automatically
                   </strong>
-                   around midnight UTC on these dates.
+                   around 00:10 UTC on these dates.
                 </div>
               </div>
               <div
