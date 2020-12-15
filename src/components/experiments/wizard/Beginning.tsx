@@ -32,8 +32,10 @@ const Beginning = (): JSX.Element => {
         <br />
         <br />
         <strong>
-          <Link href='https://github.com/Automattic/abacus/wiki'>Our wiki is a great place to start</Link>, it will
-          instruct you on creating a P2 post.
+          <Link href='https://github.com/Automattic/experimentation-platform/wiki'>
+            Our wiki is a great place to start
+          </Link>
+          , it will instruct you on creating a P2 post.
         </strong>
       </Typography>
       <Field

@@ -272,7 +272,7 @@ const ExperimentForm = ({
                       </Typography>
                       <Typography variant='body2' gutterBottom>
                         Now is a good time to{' '}
-                        <Link href='https://github.com/Automattic/abacus/wiki'>
+                        <Link href='https://github.com/Automattic/experimentation-platform/wiki'>
                           check our wiki&apos;s experiment creation checklist
                         </Link>{' '}
                         and confirm everything is in place.
