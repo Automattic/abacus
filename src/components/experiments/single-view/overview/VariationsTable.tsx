@@ -44,33 +44,36 @@ function assignmentHref(variationName: string, experimentName: string) {
   nameSchema.validateSync(experimentName)
   return `javascript:(async () => {
     const response = await fetch(
-        'https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments', 
-        {
-            credentials: 'include', 
-            method: 'PATCH', 
-            headers: {'Content-Type': 'application/json'}, 
-            body: JSON.stringify({variations: {${experimentName}: '${variationName}'}})
-        });
-     const obj = await response.json();
-     switch(obj.code) {
-        case 'variation_not_found':
-            alert('The variation was not found, please update your bookmark');
-            break;
-        case 'experiment_not_found':
-            alert('The experiment is disabled, please update your bookmark');
-            break;
-        case 'user_not_assignable':
-            alert('You must be proxied to use this bookmark');
-            break;
-        default:
-            if(!obj.variations) {
-                alert('An unknown error occurred: ' + obj.message);
-                break;
-            }
-            for (var key in obj.variations) {
-                var assignment = obj.variations[key];
-                alert('You have been ' + assignment.status + ' to ' + key + ':${variationName} for ' + Math.ceil(assignment.duration / 60 / 60) + ' hours by ' + assignment.storage_method);
-            }
+      'https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments', 
+      {
+        credentials: 'include', 
+        method: 'PATCH', 
+        headers: {'Content-Type': 'application/json'}, 
+        body: JSON.stringify({variations: {${experimentName}: '${variationName}'}})
+      }
+    );
+    const responseBody = await response.json();
+    switch (responseBody.code) {
+      case 'variation_not_found':
+        alert('The variation was not found, please update your bookmark');
+        break;
+      case 'experiment_not_found':
+        alert('The experiment is disabled, please update your bookmark');
+        break;
+      case 'user_not_assignable':
+        alert('You must be proxied to use this bookmark');
+        break;
+      default:
+        if (!responseBody.variations) {
+          alert('An unknown error occurred: ' + responseBody.message);
+          break;
+        }
+        const duration = responseBody.duration === 'unlimited' ?
+          responseBody.duration : Math.ceil(responseBody.duration / 60 / 60);
+        alert(
+          'You have been assigned to the following variations for ' + duration + ' hours by ' +
+          responseBody.storage_method + ': ' + JSON.stringify(responseBody.variations)
+        );
     }
 })()`
 }
