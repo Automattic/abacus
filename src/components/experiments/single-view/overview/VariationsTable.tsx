@@ -39,29 +39,55 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-function assignmentHref(variationName: string, experimentName: string, experimentPlatform: string) {
+function assignmentHref(variationName: string, experimentName: string) {
   nameSchema.validateSync(variationName)
   nameSchema.validateSync(experimentName)
-  nameSchema.validateSync(experimentPlatform)
-  return `javascript:(() => 
-        fetch('https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments/${encodeURIComponent(
-          experimentPlatform,
-        )}?${encodeURIComponent(experimentName)}=${encodeURIComponent(variationName)}', {credentials: 'include'})
-        .then(() => alert('Successfully set ' + decodeURIComponent('${encodeURIComponent(
-          experimentName,
-        )}') + ' to variation ' + decodeURIComponent('${encodeURIComponent(variationName)}')))
-        .catch((er) => alert('Unable to set variation: ' + er))
-    )()`
+  return `javascript:(async () => {
+    const token = JSON.parse(localStorage.getItem('experiments_auth_info'));
+    const headers = {'Content-Type': 'application/json'};
+    if(token && token.accessToken) {
+       headers.Authorization = 'Bearer ' + token['accessToken'];
+    }
+    const response = await fetch(
+      'https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments', 
+      {
+        credentials: 'include', 
+        method: 'PATCH', 
+        headers, 
+        body: JSON.stringify({variations: {${experimentName}: '${variationName}'}})
+      }
+    );
+    const responseBody = await response.json();
+    switch (responseBody.code) {
+      case 'variation_not_found':
+        alert('The variation was not found, please update your bookmark');
+        break;
+      case 'experiment_not_found':
+        alert('The experiment is disabled, please update your bookmark');
+        break;
+      case 'user_not_assignable':
+        alert('You must be proxied or sandboxed to use this bookmark');
+        break;
+      default:
+        if (!responseBody.variations) {
+          alert('An unknown error occurred: ' + responseBody.message);
+          break;
+        }
+        const duration = responseBody.duration === 'unlimited' ?
+          responseBody.duration : Math.ceil(responseBody.duration / 60 / 60);
+        if(responseBody.storage_method === 'user_attribute') {
+          alert('Your logged in user has been assigned to ' + responseBody.variations.${experimentName} + '. If you want to assign a different user, run this bookmarklet outside of Abacus.');
+        } else {
+          alert('Your current session has been assigned to ' + responseBody.variations.${experimentName} + ' for ' + duration + ' hours via cookie.');
+        }
+    }
+})()`
 }
 
-function dangerousAssignmentLink(variationName: string, experimentName: string, experimentPlatform: string) {
+function dangerousAssignmentLink(variationName: string, experimentName: string) {
   return {
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    __html: `<a href="${assignmentHref(
-      variationName,
-      experimentName,
-      experimentPlatform,
-    )}">${variationName} - ${experimentName}</a>`,
+    __html: `<a href="${assignmentHref(variationName, experimentName)}">${variationName} - ${experimentName}</a>`,
   }
 }
 
@@ -71,7 +97,7 @@ function dangerousAssignmentLink(variationName: string, experimentName: string, 
  * @param variations - The variations to render.
  */
 function VariationsTable({
-  experiment: { variations, name: experimentName, platform: experimentPlatform },
+  experiment: { variations, name: experimentName },
 }: {
   experiment: ExperimentFull
 }): JSX.Element {
@@ -108,11 +134,7 @@ function VariationsTable({
                       <Typography
                         color='inherit'
                         variant='body1'
-                        dangerouslySetInnerHTML={dangerousAssignmentLink(
-                          variation.name,
-                          experimentName,
-                          experimentPlatform,
-                        )}
+                        dangerouslySetInnerHTML={dangerousAssignmentLink(variation.name, experimentName)}
                       />
                     </>
                   }
