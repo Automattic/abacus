@@ -43,12 +43,17 @@ function assignmentHref(variationName: string, experimentName: string) {
   nameSchema.validateSync(variationName)
   nameSchema.validateSync(experimentName)
   return `javascript:(async () => {
+    const token = JSON.parse(localStorage.getItem('experiments_auth_info'));
+    const headers = {'Content-Type': 'application/json'};
+    if(token && token.accessToken) {
+       headers.Authorization = 'Bearer ' + token['accessToken'];
+    }
     const response = await fetch(
       'https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments', 
       {
         credentials: 'include', 
         method: 'PATCH', 
-        headers: {'Content-Type': 'application/json'}, 
+        headers, 
         body: JSON.stringify({variations: {${experimentName}: '${variationName}'}})
       }
     );
@@ -61,7 +66,7 @@ function assignmentHref(variationName: string, experimentName: string) {
         alert('The experiment is disabled, please update your bookmark');
         break;
       case 'user_not_assignable':
-        alert('You must be proxied to use this bookmark');
+        alert('You must be proxied or sandboxed to use this bookmark');
         break;
       default:
         if (!responseBody.variations) {
@@ -70,10 +75,11 @@ function assignmentHref(variationName: string, experimentName: string) {
         }
         const duration = responseBody.duration === 'unlimited' ?
           responseBody.duration : Math.ceil(responseBody.duration / 60 / 60);
-        alert(
-          'You have been assigned to the following variations for ' + duration + ' hours by ' +
-          responseBody.storage_method + ': ' + JSON.stringify(responseBody.variations)
-        );
+        if(responseBody.storage_method === 'user_attribute') {
+          alert('Your logged in user has been assigned to ' + responseBody.variations.${experimentName} + '. If you want to assign a different user, run this bookmarklet outside of Abacus.');
+        } else {
+          alert('Your current session has been assigned to ' + responseBody.variations.${experimentName} + ' for ' + duration + ' hours via cookie.');
+        }
     }
 })()`
 }
