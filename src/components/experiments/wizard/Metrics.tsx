@@ -3,6 +3,7 @@ import {
   FormControl,
   IconButton,
   InputAdornment,
+  Link,
   MenuItem,
   Select as MuiSelect,
   Table,
@@ -17,7 +18,7 @@ import {
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Add, Clear } from '@material-ui/icons'
-import { AutocompleteRenderInputParams } from '@material-ui/lab'
+import { Alert, AutocompleteRenderInputParams } from '@material-ui/lab'
 import { Field, FieldArray, useField } from 'formik'
 import { Select, Switch, TextField } from 'formik-material-ui'
 import React, { useState } from 'react'
@@ -58,9 +59,15 @@ const useStyles = makeStyles((theme: Theme) =>
     changeExpected: {
       textAlign: 'center',
     },
+    metricsInfo: {
+      marginTop: theme.spacing(4),
+    },
     exposureEventsTitle: {
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(4),
+    },
+    exposureEventsInfo: {
+      marginTop: theme.spacing(4),
     },
     tooltipped: {
       borderBottomWidth: 1,
@@ -480,7 +487,41 @@ const Metrics = ({
         }}
       />
 
-      <Typography variant='h4' gutterBottom className={classes.exposureEventsTitle}>
+      <Alert severity='info' className={classes.metricsInfo}>
+        <Link
+          underline='always'
+          href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-primary-metric"
+          target='_blank'
+        >
+          How do I choose a Primary Metric?
+        </Link>
+        &nbsp;
+        <Link
+          underline='always'
+          href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-minimum-difference-practically-equivalent-value-for-my-metrics"
+          target='_blank'
+        >
+          How do I choose a Minimum Difference?
+        </Link>
+        <br />
+        <Link
+          underline='always'
+          href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-does-change-expected-mean-for-a-metric"
+          target='_blank'
+        >
+          What is Change Expected?
+        </Link>
+        &nbsp;
+        <Link
+          underline='always'
+          href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-attribution-window-for-a-metric"
+          target='_blank'
+        >
+          What is an Attribution Window?
+        </Link>
+      </Alert>
+
+      <Typography variant='h4' className={classes.exposureEventsTitle}>
         Exposure Events (Optional)
       </Typography>
 
@@ -533,6 +574,16 @@ const Metrics = ({
           )
         }}
       />
+
+      <Alert severity='info' className={classes.exposureEventsInfo}>
+        <Link
+          underline='always'
+          href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-exposure-event-and-when-do-i-need-it"
+          target='_blank'
+        >
+          What is an Exposure Event? And when do I need it?
+        </Link>
+      </Alert>
     </div>
   )
 }
