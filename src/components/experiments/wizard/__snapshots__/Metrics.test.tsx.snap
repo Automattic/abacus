@@ -161,6 +161,7 @@ exports[`allows adding, editing and removing a Metric Assignment 1`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-primary-metric"
+          target="_blank"
         >
           How do I choose a Primary Metric?
         </a>
@@ -168,6 +169,7 @@ exports[`allows adding, editing and removing a Metric Assignment 1`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-minimum-difference-practically-equivalent-value-for-my-metrics"
+          target="_blank"
         >
           How do I choose a Minimum Difference?
         </a>
@@ -175,6 +177,7 @@ exports[`allows adding, editing and removing a Metric Assignment 1`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-does-change-expected-mean-for-a-metric"
+          target="_blank"
         >
           What is Change Expected?
         </a>
@@ -182,6 +185,7 @@ exports[`allows adding, editing and removing a Metric Assignment 1`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-attribution-window-for-a-metric"
+          target="_blank"
         >
           What is an Attribution Window?
         </a>
@@ -271,6 +275,7 @@ exports[`allows adding, editing and removing a Metric Assignment 1`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-exposure-event-and-when-do-i-need-it"
+          target="_blank"
         >
           What is an Exposure Event? And when do I need it?
         </a>
@@ -441,6 +446,7 @@ exports[`allows adding, editing and removing a Metric Assignment 2`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-primary-metric"
+          target="_blank"
         >
           How do I choose a Primary Metric?
         </a>
@@ -448,6 +454,7 @@ exports[`allows adding, editing and removing a Metric Assignment 2`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-minimum-difference-practically-equivalent-value-for-my-metrics"
+          target="_blank"
         >
           How do I choose a Minimum Difference?
         </a>
@@ -455,6 +462,7 @@ exports[`allows adding, editing and removing a Metric Assignment 2`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-does-change-expected-mean-for-a-metric"
+          target="_blank"
         >
           What is Change Expected?
         </a>
@@ -462,6 +470,7 @@ exports[`allows adding, editing and removing a Metric Assignment 2`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-attribution-window-for-a-metric"
+          target="_blank"
         >
           What is an Attribution Window?
         </a>
@@ -551,6 +560,7 @@ exports[`allows adding, editing and removing a Metric Assignment 2`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-exposure-event-and-when-do-i-need-it"
+          target="_blank"
         >
           What is an Exposure Event? And when do I need it?
         </a>
@@ -888,6 +898,7 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-primary-metric"
+          target="_blank"
         >
           How do I choose a Primary Metric?
         </a>
@@ -895,6 +906,7 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-minimum-difference-practically-equivalent-value-for-my-metrics"
+          target="_blank"
         >
           How do I choose a Minimum Difference?
         </a>
@@ -902,6 +914,7 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-does-change-expected-mean-for-a-metric"
+          target="_blank"
         >
           What is Change Expected?
         </a>
@@ -909,6 +922,7 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-attribution-window-for-a-metric"
+          target="_blank"
         >
           What is an Attribution Window?
         </a>
@@ -998,6 +1012,7 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-exposure-event-and-when-do-i-need-it"
+          target="_blank"
         >
           What is an Exposure Event? And when do I need it?
         </a>
@@ -1337,6 +1352,7 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-primary-metric"
+          target="_blank"
         >
           How do I choose a Primary Metric?
         </a>
@@ -1344,6 +1360,7 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-minimum-difference-practically-equivalent-value-for-my-metrics"
+          target="_blank"
         >
           How do I choose a Minimum Difference?
         </a>
@@ -1351,6 +1368,7 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-does-change-expected-mean-for-a-metric"
+          target="_blank"
         >
           What is Change Expected?
         </a>
@@ -1358,6 +1376,7 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-attribution-window-for-a-metric"
+          target="_blank"
         >
           What is an Attribution Window?
         </a>
@@ -1447,6 +1466,7 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-exposure-event-and-when-do-i-need-it"
+          target="_blank"
         >
           What is an Exposure Event? And when do I need it?
         </a>
@@ -1784,6 +1804,7 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-primary-metric"
+          target="_blank"
         >
           How do I choose a Primary Metric?
         </a>
@@ -1791,6 +1812,7 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-minimum-difference-practically-equivalent-value-for-my-metrics"
+          target="_blank"
         >
           How do I choose a Minimum Difference?
         </a>
@@ -1798,6 +1820,7 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-does-change-expected-mean-for-a-metric"
+          target="_blank"
         >
           What is Change Expected?
         </a>
@@ -1805,6 +1828,7 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-attribution-window-for-a-metric"
+          target="_blank"
         >
           What is an Attribution Window?
         </a>
@@ -1894,6 +1918,7 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-exposure-event-and-when-do-i-need-it"
+          target="_blank"
         >
           What is an Exposure Event? And when do I need it?
         </a>
@@ -2064,6 +2089,7 @@ exports[`allows adding, editing and removing a Metric Assignment 6`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-primary-metric"
+          target="_blank"
         >
           How do I choose a Primary Metric?
         </a>
@@ -2071,6 +2097,7 @@ exports[`allows adding, editing and removing a Metric Assignment 6`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-minimum-difference-practically-equivalent-value-for-my-metrics"
+          target="_blank"
         >
           How do I choose a Minimum Difference?
         </a>
@@ -2078,6 +2105,7 @@ exports[`allows adding, editing and removing a Metric Assignment 6`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-does-change-expected-mean-for-a-metric"
+          target="_blank"
         >
           What is Change Expected?
         </a>
@@ -2085,6 +2113,7 @@ exports[`allows adding, editing and removing a Metric Assignment 6`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-attribution-window-for-a-metric"
+          target="_blank"
         >
           What is an Attribution Window?
         </a>
@@ -2174,6 +2203,7 @@ exports[`allows adding, editing and removing a Metric Assignment 6`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-exposure-event-and-when-do-i-need-it"
+          target="_blank"
         >
           What is an Exposure Event? And when do I need it?
         </a>
@@ -2512,6 +2542,7 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-primary-metric"
+          target="_blank"
         >
           How do I choose a Primary Metric?
         </a>
@@ -2519,6 +2550,7 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-minimum-difference-practically-equivalent-value-for-my-metrics"
+          target="_blank"
         >
           How do I choose a Minimum Difference?
         </a>
@@ -2526,6 +2558,7 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-does-change-expected-mean-for-a-metric"
+          target="_blank"
         >
           What is Change Expected?
         </a>
@@ -2533,6 +2566,7 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-attribution-window-for-a-metric"
+          target="_blank"
         >
           What is an Attribution Window?
         </a>
@@ -2622,6 +2656,7 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-exposure-event-and-when-do-i-need-it"
+          target="_blank"
         >
           What is an Exposure Event? And when do I need it?
         </a>
@@ -2792,6 +2827,7 @@ exports[`renders as expected 1`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-primary-metric"
+          target="_blank"
         >
           How do I choose a Primary Metric?
         </a>
@@ -2799,6 +2835,7 @@ exports[`renders as expected 1`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-minimum-difference-practically-equivalent-value-for-my-metrics"
+          target="_blank"
         >
           How do I choose a Minimum Difference?
         </a>
@@ -2806,6 +2843,7 @@ exports[`renders as expected 1`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-does-change-expected-mean-for-a-metric"
+          target="_blank"
         >
           What is Change Expected?
         </a>
@@ -2813,6 +2851,7 @@ exports[`renders as expected 1`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-attribution-window-for-a-metric"
+          target="_blank"
         >
           What is an Attribution Window?
         </a>
@@ -2902,6 +2941,7 @@ exports[`renders as expected 1`] = `
         <a
           class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-exposure-event-and-when-do-i-need-it"
+          target="_blank"
         >
           What is an Exposure Event? And when do I need it?
         </a>

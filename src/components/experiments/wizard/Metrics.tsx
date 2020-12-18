@@ -491,6 +491,7 @@ const Metrics = ({
         <Link
           underline='always'
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-primary-metric"
+          target='_blank'
         >
           How do I choose a Primary Metric?
         </Link>
@@ -498,6 +499,7 @@ const Metrics = ({
         <Link
           underline='always'
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#how-do-i-choose-a-minimum-difference-practically-equivalent-value-for-my-metrics"
+          target='_blank'
         >
           How do I choose a Minimum Difference?
         </Link>
@@ -505,6 +507,7 @@ const Metrics = ({
         <Link
           underline='always'
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-does-change-expected-mean-for-a-metric"
+          target='_blank'
         >
           What is Change Expected?
         </Link>
@@ -512,6 +515,7 @@ const Metrics = ({
         <Link
           underline='always'
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-attribution-window-for-a-metric"
+          target='_blank'
         >
           What is an Attribution Window?
         </Link>
@@ -575,6 +579,7 @@ const Metrics = ({
         <Link
           underline='always'
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#what-is-an-exposure-event-and-when-do-i-need-it"
+          target='_blank'
         >
           What is an Exposure Event? And when do I need it?
         </Link>
