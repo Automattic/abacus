@@ -135,7 +135,7 @@ exports[`renders as expected 1`] = `
           for="experiment.startDatetime"
           id="experiment.startDatetime-label"
         >
-          Start date
+          Start date (UTC)
           <span
             aria-hidden="true"
             class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -148,7 +148,6 @@ exports[`renders as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.startDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
             id="experiment.startDatetime"
@@ -167,18 +166,12 @@ exports[`renders as expected 1`] = `
               class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
             >
               <span>
-                Start date
+                Start date (UTC)
                  *
               </span>
             </legend>
           </fieldset>
         </div>
-        <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-          id="experiment.startDatetime-helper-text"
-        >
-          Use the UTC timezone.
-        </p>
       </div>
       <span
         class="makeStyles-through-3"
@@ -194,7 +187,7 @@ exports[`renders as expected 1`] = `
           for="experiment.endDatetime"
           id="experiment.endDatetime-label"
         >
-          End date
+          End date (UTC)
           <span
             aria-hidden="true"
             class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -207,7 +200,6 @@ exports[`renders as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.endDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
             id="experiment.endDatetime"
@@ -224,18 +216,40 @@ exports[`renders as expected 1`] = `
               class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
             >
               <span>
-                End date
+                End date (UTC)
                  *
               </span>
             </legend>
           </fieldset>
         </div>
-        <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-          id="experiment.endDatetime-helper-text"
+      </div>
+    </div>
+    <div
+      class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo MuiPaper-elevation0"
+      role="alert"
+    >
+      <div
+        class="MuiAlert-icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+          focusable="false"
+          viewBox="0 0 24 24"
         >
-          Use the UTC timezone.
-        </p>
+          <path
+            d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20, 12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10, 10 0 0,0 12,2M11,17H13V11H11V17Z"
+          />
+        </svg>
+      </div>
+      <div
+        class="MuiAlert-message"
+      >
+        The experiment will 
+        <strong>
+          start and end automatically
+        </strong>
+         around 00:10 UTC on these dates.
       </div>
     </div>
     <div
@@ -507,7 +521,7 @@ exports[`renders date validation errors as expected 1`] = `
           for="experiment.startDatetime"
           id="experiment.startDatetime-label"
         >
-          Start date
+          Start date (UTC)
           <span
             aria-hidden="true"
             class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -520,7 +534,6 @@ exports[`renders date validation errors as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.startDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
             id="experiment.startDatetime"
@@ -539,18 +552,12 @@ exports[`renders date validation errors as expected 1`] = `
               class="PrivateNotchedOutline-legendLabelled-23 PrivateNotchedOutline-legendNotched-24"
             >
               <span>
-                Start date
+                Start date (UTC)
                  *
               </span>
             </legend>
           </fieldset>
         </div>
-        <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
-          id="experiment.startDatetime-helper-text"
-        >
-          Use the UTC timezone.
-        </p>
       </div>
       <span
         class="makeStyles-through-19"
@@ -566,7 +573,7 @@ exports[`renders date validation errors as expected 1`] = `
           for="experiment.endDatetime"
           id="experiment.endDatetime-label"
         >
-          End date
+          End date (UTC)
           <span
             aria-hidden="true"
             class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -579,7 +586,6 @@ exports[`renders date validation errors as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.endDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
             id="experiment.endDatetime"
@@ -598,18 +604,40 @@ exports[`renders date validation errors as expected 1`] = `
               class="PrivateNotchedOutline-legendLabelled-23 PrivateNotchedOutline-legendNotched-24"
             >
               <span>
-                End date
+                End date (UTC)
                  *
               </span>
             </legend>
           </fieldset>
         </div>
-        <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-          id="experiment.endDatetime-helper-text"
+      </div>
+    </div>
+    <div
+      class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo MuiPaper-elevation0"
+      role="alert"
+    >
+      <div
+        class="MuiAlert-icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+          focusable="false"
+          viewBox="0 0 24 24"
         >
-          Use the UTC timezone.
-        </p>
+          <path
+            d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20, 12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10, 10 0 0,0 12,2M11,17H13V11H11V17Z"
+          />
+        </svg>
+      </div>
+      <div
+        class="MuiAlert-message"
+      >
+        The experiment will 
+        <strong>
+          start and end automatically
+        </strong>
+         around 00:10 UTC on these dates.
       </div>
     </div>
     <div
@@ -881,7 +909,7 @@ exports[`renders date validation errors as expected 2`] = `
           for="experiment.startDatetime"
           id="experiment.startDatetime-label"
         >
-          Start date
+          Start date (UTC)
           <span
             aria-hidden="true"
             class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -894,7 +922,6 @@ exports[`renders date validation errors as expected 2`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.startDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
             id="experiment.startDatetime"
@@ -913,18 +940,12 @@ exports[`renders date validation errors as expected 2`] = `
               class="PrivateNotchedOutline-legendLabelled-23 PrivateNotchedOutline-legendNotched-24"
             >
               <span>
-                Start date
+                Start date (UTC)
                  *
               </span>
             </legend>
           </fieldset>
         </div>
-        <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
-          id="experiment.startDatetime-helper-text"
-        >
-          Use the UTC timezone.
-        </p>
       </div>
       <span
         class="makeStyles-through-19"
@@ -940,7 +961,7 @@ exports[`renders date validation errors as expected 2`] = `
           for="experiment.endDatetime"
           id="experiment.endDatetime-label"
         >
-          End date
+          End date (UTC)
           <span
             aria-hidden="true"
             class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -953,7 +974,6 @@ exports[`renders date validation errors as expected 2`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.endDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
             id="experiment.endDatetime"
@@ -972,18 +992,40 @@ exports[`renders date validation errors as expected 2`] = `
               class="PrivateNotchedOutline-legendLabelled-23 PrivateNotchedOutline-legendNotched-24"
             >
               <span>
-                End date
+                End date (UTC)
                  *
               </span>
             </legend>
           </fieldset>
         </div>
-        <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
-          id="experiment.endDatetime-helper-text"
+      </div>
+    </div>
+    <div
+      class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo MuiPaper-elevation0"
+      role="alert"
+    >
+      <div
+        class="MuiAlert-icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+          focusable="false"
+          viewBox="0 0 24 24"
         >
-          Use the UTC timezone.
-        </p>
+          <path
+            d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20, 12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10, 10 0 0,0 12,2M11,17H13V11H11V17Z"
+          />
+        </svg>
+      </div>
+      <div
+        class="MuiAlert-message"
+      >
+        The experiment will 
+        <strong>
+          start and end automatically
+        </strong>
+         around 00:10 UTC on these dates.
       </div>
     </div>
     <div
@@ -1255,7 +1297,7 @@ exports[`renders date validation errors as expected 3`] = `
           for="experiment.startDatetime"
           id="experiment.startDatetime-label"
         >
-          Start date
+          Start date (UTC)
           <span
             aria-hidden="true"
             class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -1268,7 +1310,6 @@ exports[`renders date validation errors as expected 3`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.startDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
             id="experiment.startDatetime"
@@ -1287,18 +1328,12 @@ exports[`renders date validation errors as expected 3`] = `
               class="PrivateNotchedOutline-legendLabelled-23 PrivateNotchedOutline-legendNotched-24"
             >
               <span>
-                Start date
+                Start date (UTC)
                  *
               </span>
             </legend>
           </fieldset>
         </div>
-        <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
-          id="experiment.startDatetime-helper-text"
-        >
-          Use the UTC timezone.
-        </p>
       </div>
       <span
         class="makeStyles-through-19"
@@ -1314,7 +1349,7 @@ exports[`renders date validation errors as expected 3`] = `
           for="experiment.endDatetime"
           id="experiment.endDatetime-label"
         >
-          End date
+          End date (UTC)
           <span
             aria-hidden="true"
             class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -1327,7 +1362,6 @@ exports[`renders date validation errors as expected 3`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.endDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
             id="experiment.endDatetime"
@@ -1346,18 +1380,40 @@ exports[`renders date validation errors as expected 3`] = `
               class="PrivateNotchedOutline-legendLabelled-23 PrivateNotchedOutline-legendNotched-24"
             >
               <span>
-                End date
+                End date (UTC)
                  *
               </span>
             </legend>
           </fieldset>
         </div>
-        <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
-          id="experiment.endDatetime-helper-text"
+      </div>
+    </div>
+    <div
+      class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo MuiPaper-elevation0"
+      role="alert"
+    >
+      <div
+        class="MuiAlert-icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+          focusable="false"
+          viewBox="0 0 24 24"
         >
-          Use the UTC timezone.
-        </p>
+          <path
+            d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20, 12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10, 10 0 0,0 12,2M11,17H13V11H11V17Z"
+          />
+        </svg>
+      </div>
+      <div
+        class="MuiAlert-message"
+      >
+        The experiment will 
+        <strong>
+          start and end automatically
+        </strong>
+         around 00:10 UTC on these dates.
       </div>
     </div>
     <div
@@ -1629,7 +1685,7 @@ exports[`renders date validation errors as expected 4`] = `
           for="experiment.startDatetime"
           id="experiment.startDatetime-label"
         >
-          Start date
+          Start date (UTC)
           <span
             aria-hidden="true"
             class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -1642,7 +1698,6 @@ exports[`renders date validation errors as expected 4`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.startDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
             id="experiment.startDatetime"
@@ -1661,18 +1716,12 @@ exports[`renders date validation errors as expected 4`] = `
               class="PrivateNotchedOutline-legendLabelled-23 PrivateNotchedOutline-legendNotched-24"
             >
               <span>
-                Start date
+                Start date (UTC)
                  *
               </span>
             </legend>
           </fieldset>
         </div>
-        <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
-          id="experiment.startDatetime-helper-text"
-        >
-          Use the UTC timezone.
-        </p>
       </div>
       <span
         class="makeStyles-through-19"
@@ -1688,7 +1737,7 @@ exports[`renders date validation errors as expected 4`] = `
           for="experiment.endDatetime"
           id="experiment.endDatetime-label"
         >
-          End date
+          End date (UTC)
           <span
             aria-hidden="true"
             class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -1701,7 +1750,6 @@ exports[`renders date validation errors as expected 4`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.endDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
             id="experiment.endDatetime"
@@ -1720,18 +1768,40 @@ exports[`renders date validation errors as expected 4`] = `
               class="PrivateNotchedOutline-legendLabelled-23 PrivateNotchedOutline-legendNotched-24"
             >
               <span>
-                End date
+                End date (UTC)
                  *
               </span>
             </legend>
           </fieldset>
         </div>
-        <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
-          id="experiment.endDatetime-helper-text"
+      </div>
+    </div>
+    <div
+      class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo MuiPaper-elevation0"
+      role="alert"
+    >
+      <div
+        class="MuiAlert-icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+          focusable="false"
+          viewBox="0 0 24 24"
         >
-          Use the UTC timezone.
-        </p>
+          <path
+            d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20, 12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10, 10 0 0,0 12,2M11,17H13V11H11V17Z"
+          />
+        </svg>
+      </div>
+      <div
+        class="MuiAlert-message"
+      >
+        The experiment will 
+        <strong>
+          start and end automatically
+        </strong>
+         around 00:10 UTC on these dates.
       </div>
     </div>
     <div
@@ -2003,7 +2073,7 @@ exports[`renders sensible dates as expected 1`] = `
           for="experiment.startDatetime"
           id="experiment.startDatetime-label"
         >
-          Start date
+          Start date (UTC)
           <span
             aria-hidden="true"
             class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -2016,7 +2086,6 @@ exports[`renders sensible dates as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.startDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
             id="experiment.startDatetime"
@@ -2035,18 +2104,12 @@ exports[`renders sensible dates as expected 1`] = `
               class="PrivateNotchedOutline-legendLabelled-15 PrivateNotchedOutline-legendNotched-16"
             >
               <span>
-                Start date
+                Start date (UTC)
                  *
               </span>
             </legend>
           </fieldset>
         </div>
-        <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
-          id="experiment.startDatetime-helper-text"
-        >
-          Use the UTC timezone.
-        </p>
       </div>
       <span
         class="makeStyles-through-11"
@@ -2062,7 +2125,7 @@ exports[`renders sensible dates as expected 1`] = `
           for="experiment.endDatetime"
           id="experiment.endDatetime-label"
         >
-          End date
+          End date (UTC)
           <span
             aria-hidden="true"
             class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
@@ -2075,7 +2138,6 @@ exports[`renders sensible dates as expected 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
         >
           <input
-            aria-describedby="experiment.endDatetime-helper-text"
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
             id="experiment.endDatetime"
@@ -2094,18 +2156,40 @@ exports[`renders sensible dates as expected 1`] = `
               class="PrivateNotchedOutline-legendLabelled-15 PrivateNotchedOutline-legendNotched-16"
             >
               <span>
-                End date
+                End date (UTC)
                  *
               </span>
             </legend>
           </fieldset>
         </div>
-        <p
-          class="MuiFormHelperText-root MuiFormHelperText-contained MuiFormHelperText-filled Mui-required"
-          id="experiment.endDatetime-helper-text"
+      </div>
+    </div>
+    <div
+      class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo MuiPaper-elevation0"
+      role="alert"
+    >
+      <div
+        class="MuiAlert-icon"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+          focusable="false"
+          viewBox="0 0 24 24"
         >
-          Use the UTC timezone.
-        </p>
+          <path
+            d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20, 12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10, 10 0 0,0 12,2M11,17H13V11H11V17Z"
+          />
+        </svg>
+      </div>
+      <div
+        class="MuiAlert-message"
+      >
+        The experiment will 
+        <strong>
+          start and end automatically
+        </strong>
+         around 00:10 UTC on these dates.
       </div>
     </div>
     <div

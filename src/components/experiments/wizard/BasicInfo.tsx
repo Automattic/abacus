@@ -1,6 +1,6 @@
 import { InputAdornment, TextField as MuiTextField, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import { AutocompleteRenderInputParams } from '@material-ui/lab'
+import { Alert, AutocompleteRenderInputParams } from '@material-ui/lab'
 import * as dateFns from 'date-fns'
 import { Field, useField } from 'formik'
 import { TextField } from 'formik-material-ui'
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
     row: {
-      margin: theme.spacing(5, 0),
+      margin: theme.spacing(5, 0, 1, 0),
       display: 'flex',
       alignItems: 'center',
       '&:first-of-type': {
@@ -105,8 +105,7 @@ const BasicInfo = ({
           className={classes.datePicker}
           name='experiment.startDatetime'
           id='experiment.startDatetime'
-          label='Start date'
-          helperText='Use the UTC timezone.'
+          label='Start date (UTC)'
           type='date'
           variant='outlined'
           required
@@ -124,8 +123,7 @@ const BasicInfo = ({
           className={classes.datePicker}
           name='experiment.endDatetime'
           id='experiment.endDatetime'
-          label='End date'
-          helperText='Use the UTC timezone.'
+          label='End date (UTC)'
           type='date'
           variant='outlined'
           required
@@ -138,6 +136,9 @@ const BasicInfo = ({
           }}
         />
       </div>
+      <Alert severity='info'>
+        The experiment will <strong>start and end automatically</strong> around 00:10 UTC on these dates.
+      </Alert>
 
       <div className={classes.row}>
         <Field
