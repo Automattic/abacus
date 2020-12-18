@@ -28,16 +28,38 @@ test('renders as expected', () => {
           We think one of the best ways to prevent a failed experiment is by documenting what you hope to learn.
           <br />
           <br />
-          <strong>
+        </p>
+        <div
+          class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo MuiPaper-elevation0"
+          role="alert"
+        >
+          <div
+            class="MuiAlert-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20, 12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10, 10 0 0,0 12,2M11,17H13V11H11V17Z"
+              />
+            </svg>
+          </div>
+          <div
+            class="MuiAlert-message"
+          >
             <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+              class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
               href="https://github.com/Automattic/experimentation-platform/wiki"
+              target="_blank"
             >
               Our wiki is a great place to start
             </a>
             , it will instruct you on creating a P2 post.
-          </strong>
-        </p>
+          </div>
+        </div>
         <div
           class="MuiFormControl-root MuiTextField-root makeStyles-p2EntryField-2"
         >

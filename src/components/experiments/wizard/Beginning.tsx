@@ -1,5 +1,6 @@
 import { Link, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { Alert } from '@material-ui/lab'
 import { Field } from 'formik'
 import { TextField } from 'formik-material-ui'
 import React from 'react'
@@ -31,13 +32,13 @@ const Beginning = (): JSX.Element => {
         We think one of the best ways to prevent a failed experiment is by documenting what you hope to learn.{/* */}
         <br />
         <br />
-        <strong>
-          <Link href='https://github.com/Automattic/experimentation-platform/wiki'>
-            Our wiki is a great place to start
-          </Link>
-          , it will instruct you on creating a P2 post.
-        </strong>
       </Typography>
+      <Alert severity='info'>
+        <Link underline='always' href='https://github.com/Automattic/experimentation-platform/wiki' target='_blank'>
+          Our wiki is a great place to start
+        </Link>
+        , it will instruct you on creating a P2 post.
+      </Alert>
       <Field
         className={classes.p2EntryField}
         component={TextField}
