@@ -38,6 +38,7 @@
     "react-plotly.js": "^2.5.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.0",
+    "wretch": "^1.7.4",
     "yup": "^0.29.1"
   },
   "@comment devDependencies": {
