@@ -56,7 +56,7 @@ export const exPlatWretcher = wretch()
       if (isWretcherError(error)) {
         // Due to non-standard responses:
         // istanbul ignore next; Main case is tested, edge cases shouldn't occur
-        const json = error.text === '' || error.text === undefined ? undefined : JSON.parse(error.text)
+        const json: unknown = error.text === '' || error.text === undefined ? undefined : JSON.parse(error.text)
         // Have to have this line separate as the semicolon interferes with istanbul:
         ;(error.json as unknown) = json
         throw wretcherErrorToHttpResponseError(error)
