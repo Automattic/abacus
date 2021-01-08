@@ -1,5 +1,6 @@
-import HttpResponseError from 'src/api/HttpResponseError'
 import fetchMock from 'fetch-mock-jest'
+
+import HttpResponseError from 'src/api/HttpResponseError'
 import { fetchApi } from 'src/api/utils'
 
 fetchMock.config.overwriteRoutes = true
@@ -39,17 +40,17 @@ describe('utils.ts module', () => {
       })
 
       try {
-        const resp = await fetchApi('GET', '/')
+        await fetchApi('GET', '/')
       } catch (error) {
         expect(error).toBeInstanceOf(HttpResponseError)
         if (error instanceof HttpResponseError) {
           expect(error.status).toBe(400)
           expect(error.json).toEqual({
-            "code": "invalid_name",
-            "data": {
-              "status": 400,
+            code: 'invalid_name',
+            data: {
+              status: 400,
             },
-            "message": "The experiment name is already taken",
+            message: 'The experiment name is already taken',
           })
         }
       }
