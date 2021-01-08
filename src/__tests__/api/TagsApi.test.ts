@@ -59,7 +59,9 @@ describe('TagsApi.ts module', () => {
         expect(false).toBe(true) // This should never be reached.
       } catch (err) {
         expect(err).toBeInstanceOf(HttpResponseError)
-        expect(err.status).toBe(404)
+        if (err instanceof HttpResponseError) {
+          expect(err.status).toBe(404)
+        }
       }
     })
   })

@@ -1,5 +1,6 @@
 import { fetchApi } from 'src/api/utils'
 import { AutocompleteItem, autocompleteSchema, eventDetailsSchema } from 'src/lib/schemas'
+
 import HttpResponseError from './HttpResponseError'
 
 async function getCompletion(name: string) {

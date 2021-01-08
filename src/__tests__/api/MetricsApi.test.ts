@@ -1,5 +1,5 @@
-import MetricsApi from 'src/api/MetricsApi'
 import HttpResponseError from 'src/api/HttpResponseError'
+import MetricsApi from 'src/api/MetricsApi'
 import { metricFullNewOutboundSchema, TransactionTypes } from 'src/lib/schemas'
 import Fixtures from 'src/test-helpers/fixtures'
 import { validationErrorDisplayer } from 'src/test-helpers/test-utils'

@@ -1,15 +1,23 @@
-import wretch from 'wretch'
+import wretch, { WretcherError } from 'wretch'
 
 import { config } from 'src/config'
 import { getExperimentsAuthInfo } from 'src/utils/auth'
 
-import UnauthorizedError from './UnauthorizedError'
 import { wretcherErrorToHttpResponseError } from './HttpResponseError'
+import UnauthorizedError from './UnauthorizedError'
+
+/**
+ * A typeguard specific to this file, do not use elsewhere.
+ * @param error
+ */
+function isWretcherError(error: unknown): error is WretcherError {
+  return typeof error === 'object' && error !== null && typeof (error as WretcherError).status === 'number'
+}
 
 /**
  * ExPlat API Wretcher (Fetch Wrapper)
  * See wretch docs for more info
- * 
+ *
  * Makes a request to the Experiment Platform's API with any necessary
  * authorization information, parses the response as JSON, and returns the parsed
  * response.
@@ -46,8 +54,8 @@ export const exPlatWretcher = wretch()
       }
     } catch (error) {
       // We wrap WretcherErrors here:
-      if (typeof error.status === 'number') {
-        error.json = error.text === '' ? undefined : JSON.parse(error.text)
+      if (isWretcherError(error)) {
+        ;(error.json as unknown) = error.text === '' || error.text === undefined ? undefined : JSON.parse(error.text)
         throw wretcherErrorToHttpResponseError(error)
       }
       throw error
@@ -57,7 +65,11 @@ export const exPlatWretcher = wretch()
 /**
  * Wrapper for the ExPlat Wretcher
  */
-export async function fetchApi(method: 'GET' | 'PUT' | 'POST' | 'PATCH' | 'DELETE', path: string, body: unknown | null = null): Promise<unknown> {
+export async function fetchApi(
+  method: 'GET' | 'PUT' | 'POST' | 'PATCH' | 'DELETE',
+  path: string,
+  body: unknown | null = null,
+): Promise<unknown> {
   if (method === 'GET' || method === 'DELETE') {
     return exPlatWretcher.url(path)[method.toLowerCase() as 'get' | 'delete']()
   } else {
