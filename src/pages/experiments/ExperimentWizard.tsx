@@ -2,7 +2,7 @@ import { createStyles, LinearProgress, makeStyles, Theme, Typography } from '@ma
 import debugFactory from 'debug'
 import _ from 'lodash'
 import { useSnackbar } from 'notistack'
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 
 import { getEventNameCompletions, getUserCompletions } from 'src/api/AutocompleteApi'
@@ -92,6 +92,7 @@ export default function WizardEdit({
   )
 
   const { enqueueSnackbar } = useSnackbar()
+  const [formSubmissionError, setFormSubmissionError] = useState<Error>()
   const onSubmitByExperimentWizardMode: Record<ExperimentWizardMode, (formData: unknown) => Promise<void>> = {
     [ExperimentWizardMode.Create]: async (formData: unknown) => {
       try {
@@ -100,7 +101,8 @@ export default function WizardEdit({
         enqueueSnackbar('Experiment Created!', { variant: 'success' })
         history.push(`/experiments/${receivedExperiment.experimentId}/code-setup`)
       } catch (error) {
-        enqueueSnackbar('Failed to create experiment 😨 (Form data logged to console.)', { variant: 'error' })
+        setFormSubmissionError(error)
+        enqueueSnackbar('Failed to create experiment 😨', { variant: 'error' })
         console.error(error)
         console.info('Form data:', formData)
       }
@@ -112,7 +114,8 @@ export default function WizardEdit({
         enqueueSnackbar('Experiment cloned!', { variant: 'success' })
         history.push(`/experiments/${receivedExperiment.experimentId}/code-setup`)
       } catch (error) {
-        enqueueSnackbar('Failed to clone experiment 😨 (Form data logged to console.)', { variant: 'error' })
+        setFormSubmissionError(error)
+        enqueueSnackbar('Failed to clone experiment 😨', { variant: 'error' })
         console.error(error)
         console.info('Form data:', formData)
       }
@@ -127,7 +130,8 @@ export default function WizardEdit({
         enqueueSnackbar('Experiment Updated!', { variant: 'success' })
         history.push(`/experiments/${experimentId}`)
       } catch (error) {
-        enqueueSnackbar(`Failed to update experiment 😨 (Form data logged to console.)`, { variant: 'error' })
+        setFormSubmissionError(error)
+        enqueueSnackbar(`Failed to update experiment 😨`, { variant: 'error' })
         console.error(error)
         console.info('Form data:', formData)
       }
@@ -153,7 +157,9 @@ export default function WizardEdit({
       </div>
       {isLoading && <LinearProgress className={classes.progress} />}
       {!isLoading && initialExperiment && indexedMetrics && indexedSegments && (
-        <ExperimentForm {...{ indexedMetrics, indexedSegments, initialExperiment, onSubmit, completionBag }} />
+        <ExperimentForm
+          {...{ indexedMetrics, indexedSegments, initialExperiment, onSubmit, completionBag, formSubmissionError }}
+        />
       )}
     </Layout>
   )

@@ -21,6 +21,7 @@ export default class HttpResponseError extends Error implements WretcherError {
     // @ts-ignore vendorSpecificParams
     super(`${status}`, ...vendorSpecificParams)
     this.status = status
+    this.response = new Response('Mock Response', { status })
   }
 }
 
