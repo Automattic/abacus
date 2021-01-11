@@ -15,6 +15,7 @@ import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 import * as yup from 'yup'
 
+import { serverErrorMessage } from 'src/api/HttpResponseError'
 import MetricsApi from 'src/api/MetricsApi'
 import LoadingButtonContainer from 'src/components/general/LoadingButtonContainer'
 import MetricFormFields from 'src/components/metrics/MetricFormFields'
@@ -76,7 +77,9 @@ const MetricsIndexPage = (): JSX.Element => {
       setEditMetricMetricId(null)
     } catch (e) /* istanbul ignore next; Shouldn't happen */ {
       console.error(e)
-      enqueueSnackbar('Oops! Something went wrong while trying to update your metric.', { variant: 'error' })
+      enqueueSnackbar(`Oops! Something went wrong while trying to update your metric. ${serverErrorMessage(e)}`, {
+        variant: 'error',
+      })
     }
   }
 
@@ -94,7 +97,9 @@ const MetricsIndexPage = (): JSX.Element => {
       setIsAddingMetric(false)
     } catch (e) /* istanbul ignore next; Shouldn't happen */ {
       console.error(e)
-      enqueueSnackbar('Oops! Something went wrong while trying to add your metric.', { variant: 'error' })
+      enqueueSnackbar(`Oops! Something went wrong while trying to add your metric. ${serverErrorMessage(e)}`, {
+        variant: 'error',
+      })
     }
   }
 

@@ -219,7 +219,7 @@ describe('utils/data-loading.ts module', () => {
       expect(mockedEnqueueSnackbar.mock.calls.length).toBe(1)
 
       expect(mockedEnqueueSnackbar.mock.calls[0]).toEqual([
-        'Oops! There was a problem loading some data.',
+        'Oops! There was a problem loading data. ',
         { variant: 'error', persist: true },
       ])
 
@@ -245,7 +245,7 @@ describe('utils/data-loading.ts module', () => {
       expect(mockedEnqueueSnackbar.mock.calls.length).toBe(1)
 
       expect(mockedEnqueueSnackbar.mock.calls[0]).toEqual([
-        `Oops! There was a problem loading some data of type: DataName.`,
+        `Oops! There was a problem loading: DataName. `,
         { variant: 'error', persist: true },
       ])
 

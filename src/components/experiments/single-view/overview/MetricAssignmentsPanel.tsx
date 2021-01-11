@@ -29,6 +29,7 @@ import React, { useMemo, useState } from 'react'
 import * as yup from 'yup'
 
 import ExperimentsApi from 'src/api/ExperimentsApi'
+import { serverErrorMessage } from 'src/api/HttpResponseError'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
 import * as MetricAssignments from 'src/lib/metric-assignments'
 import { indexMetrics } from 'src/lib/normalizers'
@@ -157,9 +158,12 @@ function MetricAssignmentsPanel({
       setIsAssigningMetric(false)
     } catch (e) /* istanbul ignore next; Shouldn't happen */ {
       console.error(e)
-      enqueueSnackbar('Oops! Something went wrong while trying to assign a metric to your experiment.', {
-        variant: 'error',
-      })
+      enqueueSnackbar(
+        `Oops! Something went wrong while trying to assign a metric to your experiment. ${serverErrorMessage(e)}`,
+        {
+          variant: 'error',
+        },
+      )
     }
   }
 

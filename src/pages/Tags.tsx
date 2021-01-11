@@ -15,6 +15,7 @@ import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 import * as yup from 'yup'
 
+import { serverErrorMessage } from 'src/api/HttpResponseError'
 import TagsApi from 'src/api/TagsApi'
 import LoadingButtonContainer from 'src/components/general/LoadingButtonContainer'
 import Layout from 'src/components/page-parts/Layout'
@@ -72,7 +73,9 @@ const TagsIndexPage = (): JSX.Element => {
       setEditTagTagId(null)
     } catch (e) /* istanbul ignore next; Shouldn't happen */ {
       console.error(e)
-      enqueueSnackbar('Oops! Something went wrong while trying to update your tag.', { variant: 'error' })
+      enqueueSnackbar(`Oops! Something went wrong while trying to update your tag. ${serverErrorMessage(e)}`, {
+        variant: 'error',
+      })
     }
   }
 
@@ -90,7 +93,9 @@ const TagsIndexPage = (): JSX.Element => {
       setIsAddingTag(false)
     } catch (e) /* istanbul ignore next; Shouldn't happen */ {
       console.error(e)
-      enqueueSnackbar('Oops! Something went wrong while trying to add your tag.', { variant: 'error' })
+      enqueueSnackbar(`Oops! Something went wrong while trying to add your tag. ${serverErrorMessage(e)}`, {
+        variant: 'error',
+      })
     }
   }
 
