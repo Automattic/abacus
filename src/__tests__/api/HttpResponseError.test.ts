@@ -17,6 +17,11 @@ describe('HttpResponseError.ts module', () => {
   })
 
   describe('serverErrorMessage', () => {
+    it('should return an empty message for an unknown error', () => {
+      const error = new Error()
+      expect(serverErrorMessage(error)).toBe('')
+    })
+
     it('should return a correct error message', () => {
       const error = new HttpResponseError(400)
       expect(serverErrorMessage(error)).toMatchInlineSnapshot(`"Server Error: 400: No server message"`)
