@@ -631,7 +631,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               "2020-05-10T00:00:00.000Z",
             ],
             "y": Array [
-              -1200,
+              -12,
             ],
           },
           Object {
@@ -646,7 +646,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               "2020-05-10T00:00:00.000Z",
             ],
             "y": Array [
-              1200,
+              12,
             ],
           },
         ],
@@ -663,7 +663,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             "t": 64,
           },
           "showlegend": false,
-          "title": "Conversion rate difference estimates (%)",
+          "title": "Conversion rate difference estimates (Percentage Points)",
         },
         "style": Object {
           "display": "inline-block",

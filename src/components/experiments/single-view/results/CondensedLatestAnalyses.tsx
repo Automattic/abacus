@@ -447,7 +447,9 @@ function AnalysisDetailPanel({
         <Plot
           layout={{
             ...Visualizations.plotlyLayoutDefault,
-            title: isConversion ? `Conversion rate difference estimates (Percentage Points)` : `Revenue difference estimates ($)`,
+            title: isConversion
+              ? `Conversion rate difference estimates (Percentage Points)`
+              : `Revenue difference estimates ($)`,
           }}
           data={plotlyDataDifferenceGraph}
           className={classes.metricEstimatePlot}
