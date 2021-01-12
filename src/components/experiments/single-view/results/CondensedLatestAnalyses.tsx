@@ -352,7 +352,7 @@ function AnalysisDetailPanel({
     {
       name: 'ROPE: lower bound',
       x: dates,
-      y: analyses.map((_) => -metricAssignment.minDifference).map(estimateTransform),
+      y: analyses.map((_) => -metricAssignment.minDifference),
       line: {
         color: 'rgba(0,0,0,.4)',
         dash: 'dash',
@@ -363,7 +363,7 @@ function AnalysisDetailPanel({
     {
       name: 'ROPE: upper bound',
       x: dates,
-      y: analyses.map((_) => metricAssignment.minDifference).map(estimateTransform),
+      y: analyses.map((_) => metricAssignment.minDifference),
       line: {
         color: 'rgba(0,0,0,.4)',
         dash: 'dash',
@@ -447,7 +447,7 @@ function AnalysisDetailPanel({
         <Plot
           layout={{
             ...Visualizations.plotlyLayoutDefault,
-            title: isConversion ? `Conversion rate difference estimates (%)` : `Revenue difference estimates ($)`,
+            title: isConversion ? `Conversion rate difference estimates (Percentage Points)` : `Revenue difference estimates ($)`,
           }}
           data={plotlyDataDifferenceGraph}
           className={classes.metricEstimatePlot}
