@@ -49,7 +49,11 @@ export const metricValueFormatData: Record<
  * @param metricParameterType
  * @param isDifference Is this an arithmetic difference between metric values
  */
-export function formatMetricValue(value: number, metricParameterType: MetricParameterType, isDifference?: boolean): string {
+export function formatMetricValue(
+  value: number,
+  metricParameterType: MetricParameterType,
+  isDifference?: boolean,
+): string {
   const format = metricValueFormatData[`${metricParameterType}${isDifference ? '_difference' : ''}`]
   return `${format.prefix}${_.round(format.transform(value), metricValueFormatPrecision)}${format.postfix}`
 }
