@@ -1,17 +1,55 @@
-const usCurrencyDollarFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+import _, { identity } from 'lodash'
+
+import { MetricParameterType } from 'src/lib/schemas'
 
 /**
  * Formats the boolean as Yes or No.
  */
-function formatBoolean(bool: boolean): 'Yes' | 'No' {
+export function formatBoolean(bool: boolean): 'Yes' | 'No' {
   return bool ? 'Yes' : 'No'
 }
 
 /**
- * Formats the number as US dollar.
+ * Precision to be inputed into _.round, to be used outside of graphs.
  */
-function formatUsCurrencyDollar(value: number): string {
-  return usCurrencyDollarFormatter.format(value)
+export const metricValueFormatPrecision = 4
+
+/**
+ * Metric Formatting Data
+ */
+export const metricValueFormatData: Record<
+  string,
+  { prefix: string; postfix: string; transform: (v: number) => number }
+> = {
+  conversion: {
+    prefix: '',
+    postfix: '%',
+    transform: (x: number): number => x * 100,
+  },
+  conversion_difference: {
+    prefix: '',
+    postfix: ' percentage points',
+    transform: (x: number): number => x * 100,
+  },
+  revenue: {
+    prefix: '$',
+    postfix: '',
+    transform: identity,
+  },
+  revenue_difference: {
+    prefix: '$',
+    postfix: '',
+    transform: identity,
+  },
 }
 
-export { formatBoolean, formatUsCurrencyDollar }
+/**
+ * Format a metric value to be used outside of a graph context.
+ * @param value The metric value
+ * @param metricParameterType
+ * @param isDifference Is this an arithmetic difference between metric values
+ */
+export function formatMetricValue(value: number, metricParameterType: MetricParameterType, isDifference?: boolean): string {
+  const format = metricValueFormatData[`${metricParameterType}${isDifference ? '_difference' : ''}`]
+  return `${format.prefix}${_.round(format.transform(value), metricValueFormatPrecision)}${format.postfix}`
+}

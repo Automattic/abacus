@@ -41,7 +41,7 @@ import {
   MetricParameterType,
   Status,
 } from 'src/lib/schemas'
-import { formatBoolean, formatUsCurrencyDollar } from 'src/utils/formatters'
+import { formatBoolean, formatMetricValue } from 'src/utils/formatters'
 
 import LoadingButtonContainer from '../../../general/LoadingButtonContainer'
 
@@ -213,15 +213,10 @@ function MetricAssignmentsPanel({
               </TableCell>
               <TableCell className={classes.monospace}>
                 <span>
-                  {resolvedMetricAssignment.metric.parameterType === MetricParameterType.Revenue ? (
-                    formatUsCurrencyDollar(resolvedMetricAssignment.minDifference)
-                  ) : (
-                    <>
-                      {resolvedMetricAssignment.minDifference}&nbsp;
-                      <Tooltip title='Percentage Points'>
-                        <span className={classes.tooltipped}>pp</span>
-                      </Tooltip>
-                    </>
+                  {formatMetricValue(
+                    resolvedMetricAssignment.minDifference,
+                    resolvedMetricAssignment.metric.parameterType,
+                    true,
                   )}
                 </span>
               </TableCell>

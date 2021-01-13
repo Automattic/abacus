@@ -9,6 +9,7 @@ import {
   TableContainer,
   TableRow,
   Theme,
+  Typography,
   useTheme,
 } from '@material-ui/core'
 import clsx from 'clsx'
@@ -33,6 +34,7 @@ import {
 } from 'src/lib/schemas'
 import * as Variations from 'src/lib/variations'
 import * as Visualizations from 'src/lib/visualizations'
+import { formatBoolean, formatMetricValue } from 'src/utils/formatters'
 import { isDebugMode } from 'src/utils/general'
 import { createStaticTableOptions } from 'src/utils/material-table'
 
@@ -122,7 +124,7 @@ export default function CondensedLatestAnalyses({
           line: {
             color: Visualizations.variantColors[index],
           },
-          mode: 'lines' as const,
+          mode: 'lines+markers' as const,
           type: 'scatter' as const,
         },
       ]
@@ -249,7 +251,7 @@ const useAnalysisDetailStyles = makeStyles((theme: Theme) =>
       width: '9rem',
       verticalAlign: 'top',
     },
-    dataCell: {
+    monospace: {
       fontFamily: theme.custom.fonts.monospace,
     },
     metricEstimatePlots: {
@@ -263,8 +265,14 @@ const useAnalysisDetailStyles = makeStyles((theme: Theme) =>
     },
     participantsPlot: {
       height: 400,
-      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(6),
       width: '100%',
+    },
+    tableHeader: {
+      margin: theme.spacing(3, 0, 1, 2),
+    },
+    rowHeader: {
+      verticalAlign: 'top',
     },
   }),
 )
@@ -373,8 +381,136 @@ function AnalysisDetailPanel({
     },
   ]
 
+  const latestEstimates = latestDefaultAnalysis.metricEstimates
+
+  // istanbul ignore next; Shouldn't occur
+  if (!latestEstimates) {
+    throw new Error('Missing analysis data.')
+  }
+
   return (
     <TableContainer className={clsx(classes.root, 'analysis-detail-panel')}>
+      <div className={classes.metricEstimatePlots}>
+        <Plot
+          layout={{
+            ...Visualizations.plotlyLayoutDefault,
+            title: isConversion ? `Conversion rate estimates by variation (%)` : `Revenue estimates by variation ($)`,
+          }}
+          data={plotlyDataVariationGraph}
+          className={classes.metricEstimatePlot}
+        />
+        <Plot
+          layout={{
+            ...Visualizations.plotlyLayoutDefault,
+            title: isConversion
+              ? `Conversion rate difference estimates (percentage points)`
+              : `Revenue difference estimates ($)`,
+          }}
+          data={plotlyDataDifferenceGraph}
+          className={classes.metricEstimatePlot}
+        />
+      </div>
+      <Typography variant='h4' className={classes.tableHeader}>
+        Latest Estimates
+      </Typography>
+      <Table>
+        <TableBody>
+          {experiment.variations.map((variation) => (
+            <React.Fragment key={variation.variationId}>
+              <TableRow>
+                <TableCell component='th' scope='row' variant='head' valign='top' className={classes.rowHeader}>
+                  <span className={classes.monospace}>{variation.name}</span>
+                </TableCell>
+                <TableCell className={classes.monospace}>
+                  [
+                  {formatMetricValue(
+                    latestEstimates[`variation_${variation.variationId}`].bottom,
+                    metric.parameterType,
+                  )}
+                  ,&nbsp;
+                  {formatMetricValue(latestEstimates[`variation_${variation.variationId}`].top, metric.parameterType)}
+                  ]
+                  <br />
+                  <br />
+                  <strong>Interpretation:</strong>
+                  <br />
+                  There is a 95% probability that the metric value for this variation is between{' '}
+                  {formatMetricValue(
+                    latestEstimates[`variation_${variation.variationId}`].bottom,
+                    metric.parameterType,
+                  )}{' '}
+                  and{' '}
+                  {formatMetricValue(latestEstimates[`variation_${variation.variationId}`].top, metric.parameterType)}.
+                </TableCell>
+              </TableRow>
+            </React.Fragment>
+          ))}
+          {latestDefaultAnalysis.metricEstimates && latestDefaultAnalysis.recommendation && (
+            <>
+              <TableRow>
+                <TableCell component='th' scope='row' variant='head' className={classes.rowHeader}>
+                  Difference
+                </TableCell>
+                <TableCell className={classes.monospace}>
+                  [{formatMetricValue(latestEstimates.diff.bottom, metric.parameterType, true)}
+                  ,&nbsp;
+                  {formatMetricValue(latestEstimates.diff.top, metric.parameterType, true)}
+                  ]
+                  <br />
+                  <br />
+                  <strong>Interpretation:</strong>
+                  <br />
+                  There is a 95% probability that the difference between variations is between{' '}
+                  {formatMetricValue(latestEstimates.diff.bottom, metric.parameterType, true)} and{' '}
+                  {formatMetricValue(latestEstimates.diff.top, metric.parameterType, true)}.
+                </TableCell>
+              </TableRow>
+              {latestDefaultAnalysis.recommendation.warnings.length > 0 && (
+                <TableRow>
+                  <TableCell component='th' scope='row' variant='head'>
+                    Warnings
+                  </TableCell>
+                  <TableCell className={classes.monospace}>
+                    {latestDefaultAnalysis.recommendation.warnings.map((warning) => (
+                      <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
+                    ))}
+                  </TableCell>
+                </TableRow>
+              )}
+            </>
+          )}
+        </TableBody>
+      </Table>
+      <Typography variant='h4' className={classes.tableHeader}>
+        Metric Assignment Details
+      </Typography>
+      <Table>
+        <TableBody>
+          <TableRow>
+            <TableCell component='th' scope='row' variant='head'>
+              Metric Description
+            </TableCell>
+            <TableCell className={classes.monospace}>{metric.description}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell component='th' scope='row' variant='head'>
+              Minimum Practical Difference
+            </TableCell>
+            <TableCell className={classes.monospace}>
+              {formatMetricValue(metricAssignment.minDifference, metric.parameterType, true)}
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell component='th' scope='row' variant='head'>
+              Change Expected
+            </TableCell>
+            <TableCell className={classes.monospace}>{formatBoolean(metricAssignment.changeExpected)}</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+      <Typography variant='h4' className={classes.tableHeader}>
+        Analysis Fine Print
+      </Typography>
       <Table>
         <TableBody>
           <TableRow>
@@ -389,7 +525,7 @@ function AnalysisDetailPanel({
             <TableCell component='th' scope='row' variant='head'>
               Analysis strategy
             </TableCell>
-            <TableCell className={classes.dataCell}>
+            <TableCell className={classes.monospace}>
               {AnalysisStrategyToHuman[latestDefaultAnalysis.analysisStrategy]}
             </TableCell>
           </TableRow>
@@ -397,7 +533,7 @@ function AnalysisDetailPanel({
             <TableCell component='th' scope='row' variant='head'>
               Analyzed participants
             </TableCell>
-            <TableCell className={classes.dataCell}>
+            <TableCell className={classes.monospace}>
               {latestDefaultAnalysis.participantStats.total} ({latestDefaultAnalysis.participantStats.not_final} not
               final
               {Variations.sort(experiment.variations).map(({ variationId, name }) => (
@@ -408,51 +544,8 @@ function AnalysisDetailPanel({
               )
             </TableCell>
           </TableRow>
-          {latestDefaultAnalysis.metricEstimates && latestDefaultAnalysis.recommendation && (
-            <>
-              <TableRow>
-                <TableCell component='th' scope='row' variant='head'>
-                  Difference interval
-                </TableCell>
-                <TableCell className={classes.dataCell}>
-                  [{_.round(latestDefaultAnalysis.metricEstimates.diff.bottom, 4)},
-                  {_.round(latestDefaultAnalysis.metricEstimates.diff.top, 4)}]
-                </TableCell>
-              </TableRow>
-              {latestDefaultAnalysis.recommendation.warnings.length > 0 && (
-                <TableRow>
-                  <TableCell component='th' scope='row' variant='head'>
-                    Warnings
-                  </TableCell>
-                  <TableCell className={classes.dataCell}>
-                    {latestDefaultAnalysis.recommendation.warnings.map((warning) => (
-                      <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
-                    ))}
-                  </TableCell>
-                </TableRow>
-              )}
-            </>
-          )}
         </TableBody>
       </Table>
-      <div className={classes.metricEstimatePlots}>
-        <Plot
-          layout={{
-            ...Visualizations.plotlyLayoutDefault,
-            title: isConversion ? `Conversion rate estimates by variation (%)` : `Revenue estimates by variation ($)`,
-          }}
-          data={plotlyDataVariationGraph}
-          className={classes.metricEstimatePlot}
-        />
-        <Plot
-          layout={{
-            ...Visualizations.plotlyLayoutDefault,
-            title: isConversion ? `Conversion rate difference estimates (%)` : `Revenue difference estimates ($)`,
-          }}
-          data={plotlyDataDifferenceGraph}
-          className={classes.metricEstimatePlot}
-        />
-      </div>
     </TableContainer>
   )
 }

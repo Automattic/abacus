@@ -300,14 +300,7 @@ exports[`renders as expected at large width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
                   >
                     <span>
-                      0.1
-                       
-                      <span
-                        class="makeStyles-tooltipped-20"
-                        title="Percentage Points"
-                      >
-                        pp
-                      </span>
+                      10 percentage points
                     </span>
                   </td>
                 </tr>
@@ -334,7 +327,7 @@ exports[`renders as expected at large width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
                   >
                     <span>
-                      $0.50
+                      $0.5
                     </span>
                   </td>
                 </tr>
@@ -361,7 +354,7 @@ exports[`renders as expected at large width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
                   >
                     <span>
-                      $10.50
+                      $10.5
                     </span>
                   </td>
                 </tr>
@@ -388,14 +381,7 @@ exports[`renders as expected at large width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-14"
                   >
                     <span>
-                      12
-                       
-                      <span
-                        class="makeStyles-tooltipped-20"
-                        title="Percentage Points"
-                      >
-                        pp
-                      </span>
+                      1200 percentage points
                     </span>
                   </td>
                 </tr>
@@ -1361,14 +1347,7 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-49"
                   >
                     <span>
-                      0.1
-                       
-                      <span
-                        class="makeStyles-tooltipped-55"
-                        title="Percentage Points"
-                      >
-                        pp
-                      </span>
+                      10 percentage points
                     </span>
                   </td>
                 </tr>
@@ -1395,7 +1374,7 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-49"
                   >
                     <span>
-                      $0.50
+                      $0.5
                     </span>
                   </td>
                 </tr>
@@ -1422,7 +1401,7 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-49"
                   >
                     <span>
-                      $10.50
+                      $10.5
                     </span>
                   </td>
                 </tr>
@@ -1449,14 +1428,7 @@ exports[`renders as expected at small width 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-49"
                   >
                     <span>
-                      12
-                       
-                      <span
-                        class="makeStyles-tooltipped-55"
-                        title="Percentage Points"
-                      >
-                        pp
-                      </span>
+                      1200 percentage points
                     </span>
                   </td>
                 </tr>
@@ -2100,14 +2072,7 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-84"
                   >
                     <span>
-                      0.1
-                       
-                      <span
-                        class="makeStyles-tooltipped-90"
-                        title="Percentage Points"
-                      >
-                        pp
-                      </span>
+                      10 percentage points
                     </span>
                   </td>
                 </tr>
@@ -2134,7 +2099,7 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-84"
                   >
                     <span>
-                      $0.50
+                      $0.5
                     </span>
                   </td>
                 </tr>
@@ -2161,7 +2126,7 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-84"
                   >
                     <span>
-                      $10.50
+                      $10.5
                     </span>
                   </td>
                 </tr>
@@ -2188,14 +2153,7 @@ exports[`renders as expected with conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-84"
                   >
                     <span>
-                      12
-                       
-                      <span
-                        class="makeStyles-tooltipped-90"
-                        title="Percentage Points"
-                      >
-                        pp
-                      </span>
+                      1200 percentage points
                     </span>
                   </td>
                 </tr>
@@ -2939,14 +2897,7 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-121"
                   >
                     <span>
-                      0.1
-                       
-                      <span
-                        class="makeStyles-tooltipped-127"
-                        title="Percentage Points"
-                      >
-                        pp
-                      </span>
+                      10 percentage points
                     </span>
                   </td>
                 </tr>
@@ -2973,7 +2924,7 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-121"
                   >
                     <span>
-                      $0.50
+                      $0.5
                     </span>
                   </td>
                 </tr>
@@ -3000,7 +2951,7 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-121"
                   >
                     <span>
-                      $10.50
+                      $10.5
                     </span>
                   </td>
                 </tr>
@@ -3027,14 +2978,7 @@ exports[`renders as expected without conclusion data 1`] = `
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-121"
                   >
                     <span>
-                      12
-                       
-                      <span
-                        class="makeStyles-tooltipped-127"
-                        title="Percentage Points"
-                      >
-                        pp
-                      </span>
+                      1200 percentage points
                     </span>
                   </td>
                 </tr>
