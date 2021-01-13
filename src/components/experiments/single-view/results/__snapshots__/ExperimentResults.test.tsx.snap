@@ -423,8 +423,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           There is a 95% probability that the difference between variations is between
            
           -1 percentage points
-           
-          and
+           and
            
           1 percentage points
           .
@@ -1285,8 +1284,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           There is a 95% probability that the difference between variations is between
            
           $-0.01
-           
-          and
+           and
            
           $0.01
           .
