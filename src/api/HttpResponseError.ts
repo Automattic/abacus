@@ -50,5 +50,5 @@ export function serverErrorMessage(error: Error | undefined | null): string {
 
   const message: string =
     error.json && typeof error.json === 'object' ? (error.json as Record<string, string>).message : 'No server message'
-  return `Server Error: ${error.status}: ${message}`
+  return `Server Error [${error.status}]: ${message}`
 }
