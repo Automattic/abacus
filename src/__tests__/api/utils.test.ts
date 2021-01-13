@@ -1,4 +1,5 @@
 import fetchMock from 'fetch-mock-jest'
+import { StatusCodes } from 'http-status-codes'
 
 import HttpResponseError from 'src/api/HttpResponseError'
 import { fetchApi } from 'src/api/utils'
@@ -9,7 +10,7 @@ describe('utils.ts module', () => {
   describe('fetchApi errors correctly', () => {
     it('should return no error for a good request', async () => {
       fetchMock.once('*', {
-        status: 200,
+        status: StatusCodes.OK,
         body: '{ "foo": 123 }',
       })
 

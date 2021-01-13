@@ -1,3 +1,5 @@
+import { StatusCodes } from 'http-status-codes'
+
 import HttpResponseError from 'src/api/HttpResponseError'
 import MetricsApi from 'src/api/MetricsApi'
 import { metricFullNewOutboundSchema, TransactionTypes } from 'src/lib/schemas'
@@ -78,7 +80,7 @@ describe('MetricsApi.ts module', () => {
         expect(false).toBe(true) // This should never be reached.
       } catch (err) {
         expect(err).toBeInstanceOf(HttpResponseError)
-        expect(err).toBe(404)
+        expect(err).toBe(StatusCodes.NOT_FOUND)
       }
     })
   })
