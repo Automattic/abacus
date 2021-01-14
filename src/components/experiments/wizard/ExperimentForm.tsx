@@ -5,7 +5,7 @@ import _ from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
 import * as yup from 'yup'
 
-import ServerErrorAlert from 'src/components/general/ServerErrorAlert'
+import GeneralErrorAlert from 'src/components/general/GeneralErrorAlert'
 import { ExperimentFormData } from 'src/lib/form-data'
 import { AutocompleteItem, experimentFullNewSchema, MetricBare, Segment } from 'src/lib/schemas'
 import { DataSourceResult } from 'src/utils/data-loading'
@@ -289,7 +289,7 @@ const ExperimentForm = ({
                         <strong> When you are ready, click the Submit button below.</strong>
                       </Typography>
                     </Paper>
-                    <ServerErrorAlert error={formSubmissionError} />
+                    <GeneralErrorAlert error={formSubmissionError} />
                     <div className={classes.formPartActions}>
                       <Button onClick={prevStage}>Previous</Button>
                       <LoadingButtonContainer isLoading={formikProps.isSubmitting}>
