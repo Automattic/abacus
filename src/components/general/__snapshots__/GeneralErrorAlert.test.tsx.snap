@@ -26,7 +26,7 @@ exports[`renders an HttpResponseError with server message in JSON 1`] = `
       <div
         class="MuiTypography-root MuiAlertTitle-root MuiTypography-body1 MuiTypography-gutterBottom"
       >
-        Server Error: 
+        Error Response: 
         400
          
         
@@ -63,7 +63,7 @@ exports[`renders an HttpResponseError without server message in JSON 1`] = `
       <div
         class="MuiTypography-root MuiAlertTitle-root MuiTypography-body1 MuiTypography-gutterBottom"
       >
-        Server Error: 
+        Error Response: 
         400
          
         
