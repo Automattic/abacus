@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/require-await */
+import { StatusCodes } from 'http-status-codes'
+
 import { getEventNameCompletions, getPropNameCompletions, getUserCompletions } from 'src/api/AutocompleteApi'
-import NotFoundError from 'src/api/NotFoundError'
+import HttpResponseError from 'src/api/HttpResponseError'
 import * as Utils from 'src/api/utils'
 
 jest.mock('src/api/utils')
@@ -74,7 +76,7 @@ test('an empty event name returns a useful error message', async () => {
 
 test('a nonexistent event name returns a useful error message', async () => {
   mockedUtils.fetchApi.mockImplementation(async () => {
-    throw new NotFoundError()
+    throw new HttpResponseError(StatusCodes.NOT_FOUND)
   })
   expect(await getPropNameCompletions('no_exist')).toMatchInlineSnapshot(`null`)
 })

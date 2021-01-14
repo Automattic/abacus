@@ -1,5 +1,7 @@
+import { StatusCodes } from 'http-status-codes'
+
+import HttpResponseError from 'src/api/HttpResponseError'
 import MetricsApi from 'src/api/MetricsApi'
-import NotFoundError from 'src/api/NotFoundError'
 import { metricFullNewOutboundSchema, TransactionTypes } from 'src/lib/schemas'
 import Fixtures from 'src/test-helpers/fixtures'
 import { validationErrorDisplayer } from 'src/test-helpers/test-utils'
@@ -77,7 +79,8 @@ describe('MetricsApi.ts module', () => {
         await MetricsApi.findById(0)
         expect(false).toBe(true) // This should never be reached.
       } catch (err) {
-        expect(err).toBeInstanceOf(NotFoundError)
+        expect(err).toBeInstanceOf(HttpResponseError)
+        expect((err as HttpResponseError).status).toBe(StatusCodes.NOT_FOUND)
       }
     })
   })

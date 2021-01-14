@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/require-await,@typescript-eslint/ban-ts-comment */
 
 import { act, fireEvent, screen, waitFor } from '@testing-library/react'
+import { StatusCodes } from 'http-status-codes'
 import _ from 'lodash'
 import noop from 'lodash/noop'
 import MockDate from 'mockdate'
@@ -354,7 +355,7 @@ test('form submits with valid fields', async () => {
   let submittedData: unknown = null
   const onSubmit = async (formData: unknown): Promise<undefined> => {
     // We need to add a timeout here so the loading indicator renders
-    await new Promise((resolve) => setTimeout(resolve, 200))
+    await new Promise((resolve) => setTimeout(resolve, StatusCodes.OK))
     submittedData = formData
     return
   }
@@ -565,7 +566,7 @@ test('form submits an edited experiment without any changes', async () => {
   let submittedData: unknown = null
   const onSubmit = async (formData: unknown): Promise<undefined> => {
     // We need to add a timeout here so the loading indicator renders
-    await new Promise((resolve) => setTimeout(resolve, 200))
+    await new Promise((resolve) => setTimeout(resolve, StatusCodes.OK))
     submittedData = formData
     return
   }

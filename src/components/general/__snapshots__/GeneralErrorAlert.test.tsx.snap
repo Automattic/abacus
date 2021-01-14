@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an HttpResponseError with server message in JSON 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiAlert-root MuiAlert-standardError makeStyles-root-2 MuiPaper-elevation0"
+    role="alert"
+  >
+    <div
+      class="MuiAlert-icon"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+        />
+      </svg>
+    </div>
+    <div
+      class="MuiAlert-message"
+    >
+      <div
+        class="MuiTypography-root MuiAlertTitle-root MuiTypography-body1 MuiTypography-gutterBottom"
+      >
+        Error Response: 
+        400
+         
+        
+      </div>
+      The experiment name is already taken
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders an HttpResponseError without server message in JSON 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiAlert-root MuiAlert-standardError makeStyles-root-3 MuiPaper-elevation0"
+    role="alert"
+  >
+    <div
+      class="MuiAlert-icon"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+        />
+      </svg>
+    </div>
+    <div
+      class="MuiAlert-message"
+    >
+      <div
+        class="MuiTypography-root MuiAlertTitle-root MuiTypography-body1 MuiTypography-gutterBottom"
+      >
+        Error Response: 
+        400
+         
+        
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders an generic Error 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiAlert-root MuiAlert-standardError makeStyles-root-4 MuiPaper-elevation0"
+    role="alert"
+  >
+    <div
+      class="MuiAlert-icon"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+        />
+      </svg>
+    </div>
+    <div
+      class="MuiAlert-message"
+    >
+      <div
+        class="MuiTypography-root MuiAlertTitle-root MuiTypography-body1 MuiTypography-gutterBottom"
+      >
+        Error
+        :
+      </div>
+      This is a generic error
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders nothing for no error 1`] = `<div />`;

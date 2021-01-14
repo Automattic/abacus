@@ -1,62 +1,81 @@
+import wretch, { WretcherError } from 'wretch'
+
 import { config } from 'src/config'
 import { getExperimentsAuthInfo } from 'src/utils/auth'
 
-import NotFoundError from './NotFoundError'
+import { wretcherErrorToHttpResponseError } from './HttpResponseError'
 import UnauthorizedError from './UnauthorizedError'
 
 /**
+ * A typeguard specific to this file, do not use elsewhere.
+ * @param error
+ */
+function isWretcherError(error: unknown): error is WretcherError {
+  return typeof error === 'object' && error !== null && typeof (error as WretcherError).status === 'number'
+}
+
+/**
+ * ExPlat API Wretcher (Fetch Wrapper)
+ * See wretch docs for more info
+ *
  * Makes a request to the Experiment Platform's API with any necessary
  * authorization information, parses the response as JSON, and returns the parsed
  * response.
  *
  * Note: Be sure to handle any errors that may be thrown.
  *
- * @throws UnauthorizedError
+ * @throws UnauthorizedError HttpResponseError
  */
-async function fetchApi(method: string, path: string, body: unknown | null = null): Promise<unknown> {
-  /* istanbul ignore next; code branch not reachable in integration tests -- we don't hit production */
-  const apiUrlRoot = config.experimentApi.rootUrl
-
-  const headers = new Headers()
-  /* istanbul ignore next; code branch not reachable in integration tests -- we don't hit production */
-  if (config.experimentApi.needsAuth) {
-    const accessToken = getExperimentsAuthInfo()?.accessToken
-    if (!accessToken) {
-      throw new UnauthorizedError()
+export const exPlatWretcher = wretch()
+  .url(config.experimentApi.rootUrl)
+  // Get access token at call time
+  .defer((wretcher) => {
+    /* istanbul ignore next; code branch not reachable in integration tests -- we don't hit production */
+    if (config.experimentApi.needsAuth) {
+      const accessToken = getExperimentsAuthInfo()?.accessToken
+      if (!accessToken) {
+        throw new UnauthorizedError()
+      }
+      return wretcher.auth(`Bearer ${accessToken}`)
     }
-    headers.append('Authorization', `Bearer ${accessToken}`)
-  }
-
-  if (body !== null) {
-    headers.append('Content-Type', 'application/json')
-  }
-
-  const response = await fetch(`${apiUrlRoot}${path}`, {
-    method,
-    headers,
-    body: body === null ? null : JSON.stringify(body),
+    return wretcher
+  })
+  // This would ideally be JSON but can't be due to the below reasons.
+  .errorType('text')
+  // This is messy as our responses are non-standard:
+  // Everything should ideally return JSON, and at least if it doesn't it should return 204 No-Content
+  .resolve(async (resolver) => {
+    try {
+      const textResponse = await (await resolver.res()).text()
+      if (textResponse === '') {
+        return undefined
+      } else {
+        return JSON.parse(textResponse) as unknown
+      }
+    } catch (error) {
+      if (isWretcherError(error)) {
+        // Due to non-standard responses:
+        // istanbul ignore next; Main case is tested, edge cases shouldn't occur
+        const json: unknown = error.text === '' || error.text === undefined ? undefined : JSON.parse(error.text)
+        // Have to have this line separate as the semicolon interferes with istanbul:
+        ;(error.json as unknown) = json
+        throw wretcherErrorToHttpResponseError(error)
+      }
+      throw error
+    }
   })
 
-  // istanbul ignore next; branch can't be reached with the current tests.
-  if (response.status === 404) {
-    throw new NotFoundError()
+/**
+ * Wrapper for the ExPlat Wretcher
+ */
+export async function fetchApi(
+  method: 'GET' | 'PUT' | 'POST' | 'PATCH' | 'DELETE',
+  path: string,
+  body: unknown | null = null,
+): Promise<unknown> {
+  if (method === 'GET' || method === 'DELETE') {
+    return exPlatWretcher.url(path)[method.toLowerCase() as 'get' | 'delete']()
+  } else {
+    return exPlatWretcher.url(path)[method.toLowerCase() as 'put' | 'post' | 'patch'](body)
   }
-
-  // istanbul ignore next; branch can't be reached with the current tests.
-  if (response.status >= 300 || response.status < 200) {
-    throw new Error('Received a non-2XX response from server.')
-  }
-
-  // Sometimes we don't have a JSON response but this abstraction was built as if all returns were JSON.
-  // This is unfortunately the best way I can see to deal with it.
-  // We lose the streaming parsing of fetch, but it shouldn't be a performance problem for now.
-  //
-  // TODO: Should return the response object so the function calling can decide how to parse the result.
-  const responseText = await response.text()
-  if (responseText === '') {
-    return
-  }
-  return JSON.parse(responseText) as unknown
 }
-
-export { fetchApi }

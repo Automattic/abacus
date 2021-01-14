@@ -5,6 +5,7 @@ import _ from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
 import * as yup from 'yup'
 
+import GeneralErrorAlert from 'src/components/general/GeneralErrorAlert'
 import { ExperimentFormData } from 'src/lib/form-data'
 import { AutocompleteItem, experimentFullNewSchema, MetricBare, Segment } from 'src/lib/schemas'
 import { DataSourceResult } from 'src/utils/data-loading'
@@ -114,12 +115,14 @@ const ExperimentForm = ({
   initialExperiment,
   onSubmit,
   completionBag,
+  formSubmissionError,
 }: {
   indexedMetrics: Record<number, MetricBare>
   indexedSegments: Record<number, Segment>
   initialExperiment: ExperimentFormData
   completionBag: ExperimentFormCompletionBag
   onSubmit: (formData: unknown) => Promise<void>
+  formSubmissionError?: Error
 }): JSX.Element => {
   const classes = useStyles()
 
@@ -286,6 +289,7 @@ const ExperimentForm = ({
                         <strong> When you are ready, click the Submit button below.</strong>
                       </Typography>
                     </Paper>
+                    <GeneralErrorAlert error={formSubmissionError} />
                     <div className={classes.formPartActions}>
                       <Button onClick={prevStage}>Previous</Button>
                       <LoadingButtonContainer isLoading={formikProps.isSubmitting}>

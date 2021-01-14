@@ -1,7 +1,9 @@
+import { StatusCodes } from 'http-status-codes'
+
 import { fetchApi } from 'src/api/utils'
 import { AutocompleteItem, autocompleteSchema, eventDetailsSchema } from 'src/lib/schemas'
 
-import NotFoundError from './NotFoundError'
+import HttpResponseError from './HttpResponseError'
 
 async function getCompletion(name: string) {
   return await autocompleteSchema.validate(await fetchApi('GET', `/autocomplete/${name}`), { abortEarly: false })
@@ -28,7 +30,7 @@ export async function getPropNameCompletions(eventName: string): Promise<Autocom
     }))
   } catch (error) {
     // istanbul ignore else; Forced to use the else here to prevent two istanbul ignores
-    if (error instanceof NotFoundError) {
+    if (error instanceof HttpResponseError && error.status === StatusCodes.NOT_FOUND) {
       return null
     } else {
       throw error

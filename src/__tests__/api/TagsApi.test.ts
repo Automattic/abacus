@@ -1,4 +1,6 @@
-import NotFoundError from 'src/api/NotFoundError'
+import { StatusCodes } from 'http-status-codes'
+
+import HttpResponseError from 'src/api/HttpResponseError'
 import TagsApi from 'src/api/TagsApi'
 import { tagFullNewOutboundSchema } from 'src/lib/schemas'
 import Fixtures from 'src/test-helpers/fixtures'
@@ -58,7 +60,8 @@ describe('TagsApi.ts module', () => {
         await TagsApi.findById(0)
         expect(false).toBe(true) // This should never be reached.
       } catch (err) {
-        expect(err).toBeInstanceOf(NotFoundError)
+        expect(err).toBeInstanceOf(HttpResponseError)
+        expect((err as HttpResponseError).status).toBe(StatusCodes.NOT_FOUND)
       }
     })
   })
