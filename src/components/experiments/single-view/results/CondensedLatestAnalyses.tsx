@@ -269,6 +269,10 @@ const useAnalysisDetailStyles = makeStyles((theme: Theme) =>
       marginBottom: theme.spacing(6),
       width: '100%',
     },
+    noPlotMessage: {
+      margin: theme.spacing(0, 0, 0, 2),
+      color: theme.palette.grey[600]
+    },
     tableHeader: {
       margin: theme.spacing(3, 0, 1, 2),
     },
@@ -391,6 +395,8 @@ function AnalysisDetailPanel({
 
   return (
     <TableContainer className={clsx(classes.root, 'analysis-detail-panel')}>
+      {dates.length > 1 ? (
+
       <div className={classes.metricEstimatePlots}>
         <Plot
           layout={{
@@ -410,12 +416,38 @@ function AnalysisDetailPanel({
           data={plotlyDataDifferenceGraph}
           className={classes.metricEstimatePlot}
         />
-      </div>
+      </div>) : (
+        <Typography variant="body1" className={classes.noPlotMessage}>
+        (Not enough data to plot.)
+        </Typography>
+      )}
       <Typography variant='h4' className={classes.tableHeader}>
         Latest Estimates
       </Typography>
       <Table>
         <TableBody>
+          {latestDefaultAnalysis.recommendation && (
+            <>
+              <TableRow>
+                <TableCell component='th' scope='row' variant='head' className={classes.rowHeader}>
+                  Difference
+                </TableCell>
+                <TableCell className={classes.monospace}>
+                  [<MetricValue value={ latestEstimates.diff.bottom } metricParameterType={ metric.parameterType } isDifference={true} />
+                  ,&nbsp;
+                  <MetricValue value={ latestEstimates.diff.top } metricParameterType={ metric.parameterType } isDifference={true} />
+                  ]
+                  <br />
+                  <br />
+                  <strong>Interpretation:</strong>
+                  <br />
+                  There is a 95% probability that the difference between variations is between{' '}
+                  <MetricValue value={latestEstimates.diff.bottom} metricParameterType={metric.parameterType} isDifference={true} /> and{' '}
+                  <MetricValue value={latestEstimates.diff.top} metricParameterType={metric.parameterType} isDifference={true} />.
+                </TableCell>
+              </TableRow>
+            </>
+          )}
           {experiment.variations.map((variation) => (
             <React.Fragment key={variation.variationId}>
               <TableRow>
@@ -440,39 +472,17 @@ function AnalysisDetailPanel({
               </TableRow>
             </React.Fragment>
           ))}
-          {latestDefaultAnalysis.metricEstimates && latestDefaultAnalysis.recommendation && (
-            <>
-              <TableRow>
-                <TableCell component='th' scope='row' variant='head' className={classes.rowHeader}>
-                  Difference
-                </TableCell>
-                <TableCell className={classes.monospace}>
-                  [<MetricValue value={ latestEstimates.diff.bottom } metricParameterType={ metric.parameterType } isDifference={true} />
-                  ,&nbsp;
-                  <MetricValue value={ latestEstimates.diff.top } metricParameterType={ metric.parameterType } isDifference={true} />
-                  ]
-                  <br />
-                  <br />
-                  <strong>Interpretation:</strong>
-                  <br />
-                  There is a 95% probability that the difference between variations is between{' '}
-                  <MetricValue value={latestEstimates.diff.bottom} metricParameterType={metric.parameterType} isDifference={true} /> and{' '}
-                  <MetricValue value={latestEstimates.diff.top} metricParameterType={metric.parameterType} isDifference={true} />.
-                </TableCell>
-              </TableRow>
-              {latestDefaultAnalysis.recommendation.warnings.length > 0 && (
-                <TableRow>
-                  <TableCell component='th' scope='row' variant='head'>
-                    ⚠️ Warnings
-                  </TableCell>
-                  <TableCell className={classes.monospace}>
-                    {latestDefaultAnalysis.recommendation.warnings.map((warning) => (
-                      <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
-                    ))}
-                  </TableCell>
-                </TableRow>
-              )}
-            </>
+          {latestDefaultAnalysis.recommendation && latestDefaultAnalysis.recommendation.warnings.length > 0 && (
+            <TableRow>
+              <TableCell component='th' scope='row' variant='head'>
+                <span role="img" aria-label="">⚠️</span> Warnings
+              </TableCell>
+              <TableCell className={classes.monospace}>
+                {latestDefaultAnalysis.recommendation.warnings.map((warning) => (
+                  <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
+                ))}
+              </TableCell>
+            </TableRow>
           )}
         </TableBody>
       </Table>
