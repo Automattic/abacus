@@ -19,7 +19,7 @@ export default function GeneralErrorAlert({ error }: { error?: Error }): JSX.Ele
     return (
       <Alert severity='error' className={classes.root}>
         <AlertTitle>
-          Server Error: {error.status} {error.response.statusText}
+          Error Response: {error.status} {error.response.statusText}
         </AlertTitle>
         {error.json && typeof error.json === 'object' && (error?.json as Record<string | number, unknown>).message}
       </Alert>
