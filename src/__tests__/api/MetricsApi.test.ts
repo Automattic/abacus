@@ -80,7 +80,7 @@ describe('MetricsApi.ts module', () => {
         expect(false).toBe(true) // This should never be reached.
       } catch (err) {
         expect(err).toBeInstanceOf(HttpResponseError)
-        expect(err).toBe(StatusCodes.NOT_FOUND)
+        expect((err as HttpResponseError).status).toBe(StatusCodes.NOT_FOUND)
       }
     })
   })
