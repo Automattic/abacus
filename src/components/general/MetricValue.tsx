@@ -40,7 +40,7 @@ const metricValueFormatData: Record<
   },
   conversion_difference: {
     prefix: '',
-    postfix: <DashedTooltip title="percentage points"><span>pp</span></DashedTooltip>,
+    postfix: <DashedTooltip title="Percentage points."><span>pp</span></DashedTooltip>,
     transform: (x: number): number => x * 100,
   },
   revenue: {
