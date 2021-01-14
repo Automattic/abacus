@@ -20,6 +20,7 @@ import React from 'react'
 import Plot from 'react-plotly.js'
 
 import DatetimeText from 'src/components/general/DatetimeText'
+import MetricValue from 'src/components/general/MetricValue'
 import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from 'src/lib/analyses'
 import * as Experiments from 'src/lib/experiments'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
@@ -34,7 +35,7 @@ import {
 } from 'src/lib/schemas'
 import * as Variations from 'src/lib/variations'
 import * as Visualizations from 'src/lib/visualizations'
-import { formatBoolean, formatMetricValue } from 'src/utils/formatters'
+import { formatBoolean, } from 'src/utils/formatters'
 import { isDebugMode } from 'src/utils/general'
 import { createStaticTableOptions } from 'src/utils/material-table'
 
@@ -423,24 +424,18 @@ function AnalysisDetailPanel({
                 </TableCell>
                 <TableCell className={classes.monospace}>
                   [
-                  {formatMetricValue(
-                    latestEstimates[`variation_${variation.variationId}`].bottom,
-                    metric.parameterType,
-                  )}
+                  <MetricValue value={ latestEstimates[`variation_${variation.variationId}`].bottom } metricParameterType={ metric.parameterType } />
                   ,&nbsp;
-                  {formatMetricValue(latestEstimates[`variation_${variation.variationId}`].top, metric.parameterType)}
+                  <MetricValue value={latestEstimates[`variation_${variation.variationId}`].top} metricParameterType={metric.parameterType} /> 
                   ]
                   <br />
                   <br />
                   <strong>Interpretation:</strong>
                   <br />
                   There is a 95% probability that the metric value for this variation is between{' '}
-                  {formatMetricValue(
-                    latestEstimates[`variation_${variation.variationId}`].bottom,
-                    metric.parameterType,
-                  )}{' '}
+                  <MetricValue value={latestEstimates[`variation_${variation.variationId}`].bottom} metricParameterType={metric.parameterType} />{' '}
                   and{' '}
-                  {formatMetricValue(latestEstimates[`variation_${variation.variationId}`].top, metric.parameterType)}.
+                  <MetricValue value={ latestEstimates[`variation_${variation.variationId}`].top } metricParameterType={ metric.parameterType } />
                 </TableCell>
               </TableRow>
             </React.Fragment>
@@ -452,23 +447,23 @@ function AnalysisDetailPanel({
                   Difference
                 </TableCell>
                 <TableCell className={classes.monospace}>
-                  [{formatMetricValue(latestEstimates.diff.bottom, metric.parameterType, true)}
+                  [<MetricValue value={ latestEstimates.diff.bottom } metricParameterType={ metric.parameterType } isDifference={true} />
                   ,&nbsp;
-                  {formatMetricValue(latestEstimates.diff.top, metric.parameterType, true)}
+                  <MetricValue value={ latestEstimates.diff.top } metricParameterType={ metric.parameterType } isDifference={true} />
                   ]
                   <br />
                   <br />
                   <strong>Interpretation:</strong>
                   <br />
                   There is a 95% probability that the difference between variations is between{' '}
-                  {formatMetricValue(latestEstimates.diff.bottom, metric.parameterType, true)} and{' '}
-                  {formatMetricValue(latestEstimates.diff.top, metric.parameterType, true)}.
+                  <MetricValue value={latestEstimates.diff.bottom} metricParameterType={metric.parameterType} isDifference={true} /> and{' '}
+                  <MetricValue value={latestEstimates.diff.top} metricParameterType={metric.parameterType} isDifference={true} />.
                 </TableCell>
               </TableRow>
               {latestDefaultAnalysis.recommendation.warnings.length > 0 && (
                 <TableRow>
                   <TableCell component='th' scope='row' variant='head'>
-                    Warnings
+                    ⚠️ Warnings
                   </TableCell>
                   <TableCell className={classes.monospace}>
                     {latestDefaultAnalysis.recommendation.warnings.map((warning) => (
@@ -497,7 +492,7 @@ function AnalysisDetailPanel({
               Minimum Practical Difference
             </TableCell>
             <TableCell className={classes.monospace}>
-              {formatMetricValue(metricAssignment.minDifference, metric.parameterType, true)}
+              <MetricValue value={metricAssignment.minDifference} metricParameterType={metric.parameterType} isDifference={true} /> 
             </TableCell>
           </TableRow>
           <TableRow>

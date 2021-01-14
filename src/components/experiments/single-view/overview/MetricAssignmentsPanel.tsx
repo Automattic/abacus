@@ -41,9 +41,10 @@ import {
   MetricParameterType,
   Status,
 } from 'src/lib/schemas'
-import { formatBoolean, formatMetricValue } from 'src/utils/formatters'
+import { formatBoolean, } from 'src/utils/formatters'
 
 import LoadingButtonContainer from '../../../general/LoadingButtonContainer'
+import MetricValue from 'src/components/general/MetricValue'
 
 /**
  * Resolves the metric ID of the metric assignment with the actual metric. If the
@@ -212,13 +213,7 @@ function MetricAssignmentsPanel({
                 {formatBoolean(resolvedMetricAssignment.changeExpected)}
               </TableCell>
               <TableCell className={classes.monospace}>
-                <span>
-                  {formatMetricValue(
-                    resolvedMetricAssignment.minDifference,
-                    resolvedMetricAssignment.metric.parameterType,
-                    true,
-                  )}
-                </span>
+                <MetricValue value={resolvedMetricAssignment.minDifference} metricParameterType={resolvedMetricAssignment.metric.parameterType} isDifference={true} /> 
               </TableCell>
             </TableRow>
           ))}

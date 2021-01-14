@@ -134,8 +134,13 @@ test('renders as expected with all metrics resolvable', () => {
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
-                <span>
-                  10 percentage points
+                
+                10
+                <span
+                  class="makeStyles-root-9"
+                  title="percentage points"
+                >
+                  pp
                 </span>
               </td>
             </tr>
@@ -161,9 +166,9 @@ test('renders as expected with all metrics resolvable', () => {
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
-                <span>
-                  $0.5
-                </span>
+                $
+                0.5
+                
               </td>
             </tr>
             <tr
@@ -188,9 +193,9 @@ test('renders as expected with all metrics resolvable', () => {
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
-                <span>
-                  $10.5
-                </span>
+                $
+                10.5
+                
               </td>
             </tr>
             <tr
@@ -215,8 +220,13 @@ test('renders as expected with all metrics resolvable', () => {
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
-                <span>
-                  1200 percentage points
+                
+                1200
+                <span
+                  class="makeStyles-root-9"
+                  title="percentage points"
+                >
+                  pp
                 </span>
               </td>
             </tr>
