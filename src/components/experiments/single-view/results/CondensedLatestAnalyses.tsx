@@ -249,7 +249,7 @@ const useAnalysisDetailStyles = makeStyles((theme: Theme) =>
     },
     headerCell: {
       fontWeight: 'bold',
-      width: '9rem',
+      width: '14rem',
       verticalAlign: 'top',
     },
     monospace: {
@@ -429,7 +429,12 @@ function AnalysisDetailPanel({
           {latestDefaultAnalysis.recommendation && (
             <>
               <TableRow>
-                <TableCell component='th' scope='row' variant='head' className={classes.rowHeader}>
+                <TableCell
+                  component='th'
+                  scope='row'
+                  variant='head'
+                  className={clsx(classes.rowHeader, classes.headerCell)}
+                >
                   Difference
                 </TableCell>
                 <TableCell className={classes.monospace}>
@@ -470,7 +475,13 @@ function AnalysisDetailPanel({
           {experiment.variations.map((variation) => (
             <React.Fragment key={variation.variationId}>
               <TableRow>
-                <TableCell component='th' scope='row' variant='head' valign='top' className={classes.rowHeader}>
+                <TableCell
+                  component='th'
+                  scope='row'
+                  variant='head'
+                  valign='top'
+                  className={clsx(classes.rowHeader, classes.headerCell)}
+                >
                   <span className={classes.monospace}>{variation.name}</span>
                 </TableCell>
                 <TableCell className={classes.monospace}>
@@ -505,7 +516,7 @@ function AnalysisDetailPanel({
           ))}
           {latestDefaultAnalysis.recommendation && latestDefaultAnalysis.recommendation.warnings.length > 0 && (
             <TableRow>
-              <TableCell component='th' scope='row' variant='head'>
+              <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
                 <span role='img' aria-label=''>
                   ⚠️
                 </span>{' '}
@@ -526,13 +537,13 @@ function AnalysisDetailPanel({
       <Table>
         <TableBody>
           <TableRow>
-            <TableCell component='th' scope='row' variant='head'>
+            <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
               Metric Description
             </TableCell>
             <TableCell className={classes.monospace}>{metric.description}</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell component='th' scope='row' variant='head'>
+            <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
               Minimum Practical Difference
             </TableCell>
             <TableCell className={classes.monospace}>
@@ -544,7 +555,7 @@ function AnalysisDetailPanel({
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell component='th' scope='row' variant='head'>
+            <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
               Change Expected
             </TableCell>
             <TableCell className={classes.monospace}>{formatBoolean(metricAssignment.changeExpected)}</TableCell>
@@ -557,7 +568,7 @@ function AnalysisDetailPanel({
       <Table>
         <TableBody>
           <TableRow>
-            <TableCell component='th' scope='row' variant='head'>
+            <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
               Last analyzed
             </TableCell>
             <TableCell>
@@ -565,7 +576,7 @@ function AnalysisDetailPanel({
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell component='th' scope='row' variant='head'>
+            <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
               Analysis strategy
             </TableCell>
             <TableCell className={classes.monospace}>
@@ -573,7 +584,7 @@ function AnalysisDetailPanel({
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell component='th' scope='row' variant='head'>
+            <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
               Analyzed participants
             </TableCell>
             <TableCell className={classes.monospace}>

@@ -324,7 +324,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-19"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-19 makeStyles-headerCell-12"
           role="cell"
           scope="row"
         >
@@ -386,7 +386,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-19"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-19 makeStyles-headerCell-12"
           role="cell"
           scope="row"
           valign="top"
@@ -432,7 +432,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-19"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-19 makeStyles-headerCell-12"
           role="cell"
           scope="row"
           valign="top"
@@ -478,7 +478,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-12"
           role="cell"
           scope="row"
         >
@@ -519,7 +519,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-12"
           role="cell"
           scope="row"
         >
@@ -535,7 +535,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-12"
           role="cell"
           scope="row"
         >
@@ -558,7 +558,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-12"
           role="cell"
           scope="row"
         >
@@ -587,7 +587,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-12"
           role="cell"
           scope="row"
         >
@@ -608,7 +608,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-12"
           role="cell"
           scope="row"
         >
@@ -624,7 +624,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-12"
           role="cell"
           scope="row"
         >
@@ -1048,7 +1048,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-40"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-40 makeStyles-headerCell-33"
           role="cell"
           scope="row"
         >
@@ -1110,7 +1110,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-40"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-40 makeStyles-headerCell-33"
           role="cell"
           scope="row"
           valign="top"
@@ -1156,7 +1156,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-40"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-40 makeStyles-headerCell-33"
           role="cell"
           scope="row"
           valign="top"
@@ -1202,7 +1202,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-33"
           role="cell"
           scope="row"
         >
@@ -1243,7 +1243,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-33"
           role="cell"
           scope="row"
         >
@@ -1259,7 +1259,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-33"
           role="cell"
           scope="row"
         >
@@ -1282,7 +1282,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-33"
           role="cell"
           scope="row"
         >
@@ -1311,7 +1311,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-33"
           role="cell"
           scope="row"
         >
@@ -1332,7 +1332,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-33"
           role="cell"
           scope="row"
         >
@@ -1348,7 +1348,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-33"
           role="cell"
           scope="row"
         >
@@ -1982,7 +1982,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-61"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-61 makeStyles-headerCell-54"
           role="cell"
           scope="row"
         >
@@ -2024,7 +2024,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-61"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-61 makeStyles-headerCell-54"
           role="cell"
           scope="row"
           valign="top"
@@ -2070,7 +2070,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-61"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-61 makeStyles-headerCell-54"
           role="cell"
           scope="row"
           valign="top"
@@ -2116,7 +2116,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-54"
           role="cell"
           scope="row"
         >
@@ -2157,7 +2157,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-54"
           role="cell"
           scope="row"
         >
@@ -2173,7 +2173,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-54"
           role="cell"
           scope="row"
         >
@@ -2191,7 +2191,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-54"
           role="cell"
           scope="row"
         >
@@ -2220,7 +2220,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-54"
           role="cell"
           scope="row"
         >
@@ -2241,7 +2241,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-54"
           role="cell"
           scope="row"
         >
@@ -2257,7 +2257,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-54"
           role="cell"
           scope="row"
         >
