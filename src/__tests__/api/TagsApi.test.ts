@@ -1,3 +1,5 @@
+import { StatusCodes } from 'http-status-codes'
+
 import HttpResponseError from 'src/api/HttpResponseError'
 import TagsApi from 'src/api/TagsApi'
 import { tagFullNewOutboundSchema } from 'src/lib/schemas'
@@ -59,9 +61,7 @@ describe('TagsApi.ts module', () => {
         expect(false).toBe(true) // This should never be reached.
       } catch (err) {
         expect(err).toBeInstanceOf(HttpResponseError)
-        if (err instanceof HttpResponseError) {
-          expect(err.status).toBe(404)
-        }
+        expect((err as HttpResponseError).status).toBe(StatusCodes.NOT_FOUND)
       }
     })
   })

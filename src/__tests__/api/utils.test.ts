@@ -1,4 +1,5 @@
 import fetchMock from 'fetch-mock-jest'
+import { StatusCodes } from 'http-status-codes'
 
 import HttpResponseError from 'src/api/HttpResponseError'
 import { fetchApi } from 'src/api/utils'
@@ -9,7 +10,7 @@ describe('utils.ts module', () => {
   describe('fetchApi errors correctly', () => {
     it('should return no error for a good request', async () => {
       fetchMock.once('*', {
-        status: 200,
+        status: StatusCodes.OK,
         body: '{ "foo": 123 }',
       })
 
@@ -35,7 +36,7 @@ describe('utils.ts module', () => {
     it('should return a correct HttpResponseError for a bad HTTP request', async () => {
       expect.assertions(3)
       fetchMock.once('*', {
-        status: 400,
+        status: StatusCodes.BAD_REQUEST,
         body: '{"code":"invalid_name","message":"The experiment name is already taken","data":{"status":400}}',
       })
 
@@ -44,11 +45,11 @@ describe('utils.ts module', () => {
       } catch (error) {
         expect(error).toBeInstanceOf(HttpResponseError)
         if (error instanceof HttpResponseError) {
-          expect(error.status).toBe(400)
+          expect(error.status).toBe(StatusCodes.BAD_REQUEST)
           expect(error.json).toEqual({
             code: 'invalid_name',
             data: {
-              status: 400,
+              status: StatusCodes.BAD_REQUEST,
             },
             message: 'The experiment name is already taken',
           })
