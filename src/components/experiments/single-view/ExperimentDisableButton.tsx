@@ -5,6 +5,7 @@ import { useSnackbar } from 'notistack'
 import React, { useState } from 'react'
 
 import ExperimentsApi from 'src/api/ExperimentsApi'
+import { serverErrorMessage } from 'src/api/HttpResponseError'
 import { ExperimentFull, Status } from 'src/lib/schemas'
 import { useDangerStyles } from 'src/styles/styles'
 
@@ -52,7 +53,9 @@ const ExperimentDisableButton = ({
       setIsAskingToConfirmDisableExperiment(false)
     } catch (e) /* istanbul ignore next; Shouldn't occur */ {
       console.log(e)
-      enqueueSnackbar('Oops! Something went wrong while trying to disable your experiment.', { variant: 'error' })
+      enqueueSnackbar(`Oops! Something went wrong while trying to disable your experiment. ${serverErrorMessage(e)}`, {
+        variant: 'error',
+      })
     } finally {
       setIsSubmittingDisableExperiment(false)
     }

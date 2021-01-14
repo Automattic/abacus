@@ -23,6 +23,7 @@ import React, { useState } from 'react'
 import * as yup from 'yup'
 
 import ExperimentsApi from 'src/api/ExperimentsApi'
+import { serverErrorMessage } from 'src/api/HttpResponseError'
 import LabelValueTable from 'src/components/general/LabelValueTable'
 import LoadingButtonContainer from 'src/components/general/LoadingButtonContainer'
 import * as Experiments from 'src/lib/experiments'
@@ -95,7 +96,9 @@ function ConclusionsPanel({
       setIsEditing(false)
     } catch (e) {
       // istanbul ignore next; shouldn't happen
-      enqueueSnackbar('Oops! Something went wrong while trying to update your experiment.', { variant: 'error' })
+      enqueueSnackbar(`Oops! Something went wrong while trying to update your experiment. ${serverErrorMessage(e)}`, {
+        variant: 'error',
+      })
     }
   }
 

@@ -42,3 +42,13 @@ export function wretcherErrorToHttpResponseError(wretcherError: WretcherError): 
   }
   return wretcherError
 }
+
+export function serverErrorMessage(error: Error | undefined | null): string {
+  if (!(error instanceof HttpResponseError)) {
+    return ''
+  }
+
+  const message: string =
+    error.json && typeof error.json === 'object' ? (error.json as Record<string, string>).message : 'No server message'
+  return `Response Error [${error.status}]: ${message}`
+}

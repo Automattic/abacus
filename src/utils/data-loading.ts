@@ -2,6 +2,8 @@ import { noop } from 'lodash'
 import { useSnackbar } from 'notistack'
 import { DependencyList, MutableRefObject, useEffect, useRef, useState } from 'react'
 
+import { serverErrorMessage } from 'src/api/HttpResponseError'
+
 export interface DataSourceResult<T, E extends Error = Error> {
   data: T | null
   isLoading: boolean
@@ -78,8 +80,8 @@ export function useDataLoadingError<E extends Error | null>(error: E, dataName?:
     if (error) {
       console.error('DataLoadingError', dataName, error)
       const userErrorMessage = dataName
-        ? `Oops! There was a problem loading some data of type: ${dataName}.`
-        : 'Oops! There was a problem loading some data.'
+        ? `Oops! There was a problem loading: ${dataName}. ${serverErrorMessage(error)}`
+        : `Oops! There was a problem loading data. ${serverErrorMessage(error)}`
       enqueueSnackbar(userErrorMessage, { variant: 'error', persist: true })
     }
   }, [error, enqueueSnackbar, dataName])

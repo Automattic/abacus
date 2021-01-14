@@ -1,7 +1,7 @@
 import { StatusCodes } from 'http-status-codes'
 import { WretcherError } from 'wretch'
 
-import HttpResponseError, { wretcherErrorToHttpResponseError } from '../../api/HttpResponseError'
+import HttpResponseError, { serverErrorMessage, wretcherErrorToHttpResponseError } from '../../api/HttpResponseError'
 
 describe('HttpResponseError.ts module', () => {
   describe('wretcherErrorToHttpResponseError', () => {
@@ -14,6 +14,22 @@ describe('HttpResponseError.ts module', () => {
       const httpResponseError = wretcherErrorToHttpResponseError(error)
       expect(httpResponseError).toBeInstanceOf(HttpResponseError)
       expect(httpResponseError).toMatchInlineSnapshot(`[HttpResponseError: 404 Not Found]`)
+    })
+  })
+
+  describe('serverErrorMessage', () => {
+    it('should return an empty message for an unknown error', () => {
+      const error = new Error()
+      expect(serverErrorMessage(error)).toBe('')
+    })
+
+    it('should return a correct error message', () => {
+      const error = new HttpResponseError(StatusCodes.BAD_REQUEST)
+      expect(serverErrorMessage(error)).toMatchInlineSnapshot(`"Response Error [400]: No server message"`)
+      error.json = { code: 'invalid_name', message: 'The experiment name is already taken', data: { status: 400 } }
+      expect(serverErrorMessage(error)).toMatchInlineSnapshot(
+        `"Response Error [400]: The experiment name is already taken"`,
+      )
     })
   })
 })
