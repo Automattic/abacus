@@ -1,6 +1,4 @@
-import { MetricParameterType } from 'src/lib/schemas'
-
-import { formatBoolean, formatMetricValue } from './formatters'
+import { formatBoolean } from './formatters'
 
 describe('utils/formatters.ts module', () => {
   describe('formatBoolean', () => {

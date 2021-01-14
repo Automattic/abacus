@@ -1,6 +1,6 @@
 import React from 'react'
-import { MetricParameterType } from 'src/lib/schemas'
 
+import { MetricParameterType } from 'src/lib/schemas'
 import { render } from 'src/test-helpers/test-utils'
 
 import MetricValue from './MetricValue'
@@ -31,7 +31,7 @@ test('renders metric values', () => {
       100
       <span
         class="makeStyles-root-1"
-        title="percentage points"
+        title="Percentage points."
       >
         pp
       </span>
@@ -46,7 +46,7 @@ test('renders metric values', () => {
       1
       <span
         class="makeStyles-root-1"
-        title="percentage points"
+        title="Percentage points."
       >
         pp
       </span>

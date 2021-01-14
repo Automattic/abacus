@@ -242,6 +242,17 @@ function createAnalyses(): Analysis[] {
         variation_2: 560,
       },
     }),
+    createAnalysis({
+      metricAssignmentId: 126,
+      analysisStrategy: AnalysisStrategy.PpNaive,
+      participantStats: {
+        total: 1200,
+        not_final: 140,
+        variation_1: 940,
+        variation_2: 660,
+      },
+      analysisDatetime: new Date(Date.UTC(2020, 5, 11)),
+    }),
   ]
 }
 
@@ -495,6 +506,7 @@ function createSegmentAssignment(fieldOverrides: Partial<SegmentAssignment>): Se
 
 const Fixtures = {
   createAnalyses,
+  createAnalysis,
   createExperimentFull,
   createExperimentFullNew,
   createMetricAssignment,

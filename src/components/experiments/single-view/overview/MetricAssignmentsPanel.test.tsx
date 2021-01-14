@@ -138,7 +138,7 @@ test('renders as expected with all metrics resolvable', () => {
                 10
                 <span
                   class="makeStyles-root-9"
-                  title="percentage points"
+                  title="Percentage points."
                 >
                   pp
                 </span>
@@ -224,7 +224,7 @@ test('renders as expected with all metrics resolvable', () => {
                 1200
                 <span
                   class="makeStyles-root-9"
-                  title="percentage points"
+                  title="Percentage points."
                 >
                   pp
                 </span>

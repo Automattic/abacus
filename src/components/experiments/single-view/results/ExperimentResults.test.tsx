@@ -3,7 +3,7 @@ import React from 'react'
 import Plot from 'react-plotly.js'
 
 import ExperimentResults from 'src/components/experiments/single-view/results/ExperimentResults'
-import { MetricParameterType } from 'src/lib/schemas'
+import { AnalysisStrategy, MetricParameterType } from 'src/lib/schemas'
 import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'
 
@@ -23,6 +23,31 @@ test('renders an appropriate message with no analyses', () => {
   expect(container).toHaveTextContent('No analyses yet for experiment_1.')
 
   expect(mockedPlot).toMatchInlineSnapshot(`[MockFunction]`)
+})
+
+test('renders correctly for 1 analysis datapoint', async () => {
+  const { container } = render(
+    <ExperimentResults
+      analyses={[Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.PpNaive })]}
+      experiment={experiment}
+      metrics={metrics}
+    />,
+  )
+
+  // In non-debug mode, we shouldn't have a <pre> element with the JSON.
+  expect(container.querySelector('.debug-json')).toBeNull()
+
+  // Check the table snapshot before expanding any metric.
+  expect(container.querySelector('.analysis-latest-results')).toMatchSnapshot()
+
+  // Clicking on metric_1 or metric_2 should have no effect on anything, but metric_3 should render the details.
+  fireEvent.click(getByText(container, /metric_1/))
+  fireEvent.click(getAllByText(container, /metric_2/)[0])
+  fireEvent.click(getByText(container, /metric_3/))
+  await waitFor(() => getByText(container, /Last analyzed/), { container })
+  expect(container.querySelector('.analysis-latest-results .analysis-detail-panel')).toMatchSnapshot()
+
+  expect(mockedPlot).toMatchSnapshot()
 })
 
 test('renders the condensed table with some analyses in non-debug mode for a Conversion Metric', async () => {

@@ -29,6 +29,7 @@ import React, { useMemo, useState } from 'react'
 import * as yup from 'yup'
 
 import ExperimentsApi from 'src/api/ExperimentsApi'
+import MetricValue from 'src/components/general/MetricValue'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
 import * as MetricAssignments from 'src/lib/metric-assignments'
 import { indexMetrics } from 'src/lib/normalizers'
@@ -41,10 +42,9 @@ import {
   MetricParameterType,
   Status,
 } from 'src/lib/schemas'
-import { formatBoolean, } from 'src/utils/formatters'
+import { formatBoolean } from 'src/utils/formatters'
 
 import LoadingButtonContainer from '../../../general/LoadingButtonContainer'
-import MetricValue from 'src/components/general/MetricValue'
 
 /**
  * Resolves the metric ID of the metric assignment with the actual metric. If the
@@ -213,7 +213,11 @@ function MetricAssignmentsPanel({
                 {formatBoolean(resolvedMetricAssignment.changeExpected)}
               </TableCell>
               <TableCell className={classes.monospace}>
-                <MetricValue value={resolvedMetricAssignment.minDifference} metricParameterType={resolvedMetricAssignment.metric.parameterType} isDifference={true} /> 
+                <MetricValue
+                  value={resolvedMetricAssignment.minDifference}
+                  metricParameterType={resolvedMetricAssignment.metric.parameterType}
+                  isDifference={true}
+                />
               </TableCell>
             </TableRow>
           ))}

@@ -112,7 +112,7 @@ exports[`renders the full tables with some analyses in debug mode 1`] = `
   <p
     class="MuiTypography-root makeStyles-label-10 MuiTypography-body1"
   >
-    All analysis objects (16)
+    All analysis objects (17)
   </p>
   <p
     class="MuiTypography-root makeStyles-pre-9 MuiTypography-body1"
@@ -701,7 +701,44 @@ exports[`renders the full tables with some analyses in debug mode 1`] = `
         "wide_ci"
       ]
     },
-    "analysisDatetime": "2020-05-10T00:00:00.000Z",
+    "analysisDatetime": "2020-05-10T00:00:00.000Z"
+  },
+  {
+    "metricAssignmentId": 126,
+    "analysisStrategy": "pp_naive",
+    "participantStats": {
+      "total": 1200,
+      "not_final": 140,
+      "variation_1": 940,
+      "variation_2": 660
+    },
+    "metricEstimates": {
+      "diff": {
+        "estimate": 0,
+        "bottom": -0.01,
+        "top": 0.01
+      },
+      "variation_1": {
+        "estimate": 0.12,
+        "bottom": 0,
+        "top": 10
+      },
+      "variation_2": {
+        "estimate": -0.12,
+        "bottom": -1.123,
+        "top": 1
+      }
+    },
+    "recommendation": {
+      "endExperiment": true,
+      "chosenVariationId": 2,
+      "reason": "ci_in_rope",
+      "warnings": [
+        "short_period",
+        "wide_ci"
+      ]
+    },
+    "analysisDatetime": "2020-06-11T00:00:00.000Z",
     "tableData": {
       "id": 4
     }
@@ -1746,7 +1783,7 @@ exports[`renders the full tables with some analyses in debug mode 3`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      1400 (140)
+                      1200 (140)
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"

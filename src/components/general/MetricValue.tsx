@@ -1,24 +1,23 @@
 import { createStyles, makeStyles, Theme, Tooltip } from '@material-ui/core'
 import clsx from 'clsx'
-import _ from 'lodash'
-import { identity } from 'lodash'
+import _, { identity } from 'lodash'
 import React from 'react'
 
 import { MetricParameterType } from 'src/lib/schemas'
 
 const useDashedTooltipStyles = makeStyles((theme: Theme) =>
   createStyles({
-      root: {
-          borderBottomWidth: 1,
-          borderBottomStyle: 'dashed',
-          borderBottomColor: theme.palette.grey[500],
-      },
+    root: {
+      borderBottomWidth: 1,
+      borderBottomStyle: 'dashed',
+      borderBottomColor: theme.palette.grey[500],
+    },
   }),
 )
 
 function DashedTooltip(props: Parameters<typeof Tooltip>[0]) {
-    const classes = useDashedTooltipStyles()
-    return <Tooltip className={clsx(classes.root, props.className)} {...props} />
+  const classes = useDashedTooltipStyles()
+  return <Tooltip className={clsx(classes.root, props.className)} {...props} />
 }
 
 /**
@@ -40,7 +39,11 @@ const metricValueFormatData: Record<
   },
   conversion_difference: {
     prefix: '',
-    postfix: <DashedTooltip title="Percentage points."><span>pp</span></DashedTooltip>,
+    postfix: (
+      <DashedTooltip title='Percentage points.'>
+        <span>pp</span>
+      </DashedTooltip>
+    ),
     transform: (x: number): number => x * 100,
   },
   revenue: {
@@ -62,14 +65,20 @@ const metricValueFormatData: Record<
  * @param isDifference Is this an arithmetic difference between metric values
  */
 export default function MetricValue({
-    value,
-    metricParameterType,
-    isDifference = false,
+  value,
+  metricParameterType,
+  isDifference = false,
 }: {
-    value: number,
-    metricParameterType: MetricParameterType,
-    isDifference?: boolean,
+  value: number
+  metricParameterType: MetricParameterType
+  isDifference?: boolean
 }): JSX.Element {
-    const format = metricValueFormatData[`${metricParameterType}${isDifference ? '_difference' : ''}`]
-    return <>{format.prefix}{_.round(format.transform(value), metricValueFormatPrecision)}{format.postfix}</>
+  const format = metricValueFormatData[`${metricParameterType}${isDifference ? '_difference' : ''}`]
+  return (
+    <>
+      {format.prefix}
+      {_.round(format.transform(value), metricValueFormatPrecision)}
+      {format.postfix}
+    </>
+  )
 }

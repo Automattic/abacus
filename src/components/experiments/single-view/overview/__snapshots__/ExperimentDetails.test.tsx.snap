@@ -303,7 +303,7 @@ exports[`renders as expected at large width 1`] = `
                     10
                     <span
                       class="makeStyles-root-21"
-                      title="percentage points"
+                      title="Percentage points."
                     >
                       pp
                     </span>
@@ -389,7 +389,7 @@ exports[`renders as expected at large width 1`] = `
                     1200
                     <span
                       class="makeStyles-root-21"
-                      title="percentage points"
+                      title="Percentage points."
                     >
                       pp
                     </span>
@@ -1360,7 +1360,7 @@ exports[`renders as expected at small width 1`] = `
                     10
                     <span
                       class="makeStyles-root-57"
-                      title="percentage points"
+                      title="Percentage points."
                     >
                       pp
                     </span>
@@ -1446,7 +1446,7 @@ exports[`renders as expected at small width 1`] = `
                     1200
                     <span
                       class="makeStyles-root-57"
-                      title="percentage points"
+                      title="Percentage points."
                     >
                       pp
                     </span>
@@ -2095,7 +2095,7 @@ exports[`renders as expected with conclusion data 1`] = `
                     10
                     <span
                       class="makeStyles-root-93"
-                      title="percentage points"
+                      title="Percentage points."
                     >
                       pp
                     </span>
@@ -2181,7 +2181,7 @@ exports[`renders as expected with conclusion data 1`] = `
                     1200
                     <span
                       class="makeStyles-root-93"
-                      title="percentage points"
+                      title="Percentage points."
                     >
                       pp
                     </span>
@@ -2930,7 +2930,7 @@ exports[`renders as expected without conclusion data 1`] = `
                     10
                     <span
                       class="makeStyles-root-131"
-                      title="percentage points"
+                      title="Percentage points."
                     >
                       pp
                     </span>
@@ -3016,7 +3016,7 @@ exports[`renders as expected without conclusion data 1`] = `
                     1200
                     <span
                       class="makeStyles-root-131"
-                      title="percentage points"
+                      title="Percentage points."
                     >
                       pp
                     </span>

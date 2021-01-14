@@ -35,7 +35,7 @@ import {
 } from 'src/lib/schemas'
 import * as Variations from 'src/lib/variations'
 import * as Visualizations from 'src/lib/visualizations'
-import { formatBoolean, } from 'src/utils/formatters'
+import { formatBoolean } from 'src/utils/formatters'
 import { isDebugMode } from 'src/utils/general'
 import { createStaticTableOptions } from 'src/utils/material-table'
 
@@ -271,7 +271,7 @@ const useAnalysisDetailStyles = makeStyles((theme: Theme) =>
     },
     noPlotMessage: {
       margin: theme.spacing(0, 0, 0, 2),
-      color: theme.palette.grey[600]
+      color: theme.palette.grey[600],
     },
     tableHeader: {
       margin: theme.spacing(3, 0, 1, 2),
@@ -396,29 +396,29 @@ function AnalysisDetailPanel({
   return (
     <TableContainer className={clsx(classes.root, 'analysis-detail-panel')}>
       {dates.length > 1 ? (
-
-      <div className={classes.metricEstimatePlots}>
-        <Plot
-          layout={{
-            ...Visualizations.plotlyLayoutDefault,
-            title: isConversion ? `Conversion rate estimates by variation (%)` : `Revenue estimates by variation ($)`,
-          }}
-          data={plotlyDataVariationGraph}
-          className={classes.metricEstimatePlot}
-        />
-        <Plot
-          layout={{
-            ...Visualizations.plotlyLayoutDefault,
-            title: isConversion
-              ? `Conversion rate difference estimates (percentage points)`
-              : `Revenue difference estimates ($)`,
-          }}
-          data={plotlyDataDifferenceGraph}
-          className={classes.metricEstimatePlot}
-        />
-      </div>) : (
-        <Typography variant="body1" className={classes.noPlotMessage}>
-        (Not enough data to plot.)
+        <div className={classes.metricEstimatePlots}>
+          <Plot
+            layout={{
+              ...Visualizations.plotlyLayoutDefault,
+              title: isConversion ? `Conversion rate estimates by variation (%)` : `Revenue estimates by variation ($)`,
+            }}
+            data={plotlyDataVariationGraph}
+            className={classes.metricEstimatePlot}
+          />
+          <Plot
+            layout={{
+              ...Visualizations.plotlyLayoutDefault,
+              title: isConversion
+                ? `Conversion rate difference estimates (percentage points)`
+                : `Revenue difference estimates ($)`,
+            }}
+            data={plotlyDataDifferenceGraph}
+            className={classes.metricEstimatePlot}
+          />
+        </div>
+      ) : (
+        <Typography variant='body1' className={classes.noPlotMessage}>
+          (Not enough data to plot.)
         </Typography>
       )}
       <Typography variant='h4' className={classes.tableHeader}>
@@ -433,17 +433,36 @@ function AnalysisDetailPanel({
                   Difference
                 </TableCell>
                 <TableCell className={classes.monospace}>
-                  [<MetricValue value={ latestEstimates.diff.bottom } metricParameterType={ metric.parameterType } isDifference={true} />
+                  [
+                  <MetricValue
+                    value={latestEstimates.diff.bottom}
+                    metricParameterType={metric.parameterType}
+                    isDifference={true}
+                  />
                   ,&nbsp;
-                  <MetricValue value={ latestEstimates.diff.top } metricParameterType={ metric.parameterType } isDifference={true} />
+                  <MetricValue
+                    value={latestEstimates.diff.top}
+                    metricParameterType={metric.parameterType}
+                    isDifference={true}
+                  />
                   ]
                   <br />
                   <br />
                   <strong>Interpretation:</strong>
                   <br />
                   There is a 95% probability that the difference between variations is between{' '}
-                  <MetricValue value={latestEstimates.diff.bottom} metricParameterType={metric.parameterType} isDifference={true} /> and{' '}
-                  <MetricValue value={latestEstimates.diff.top} metricParameterType={metric.parameterType} isDifference={true} />.
+                  <MetricValue
+                    value={latestEstimates.diff.bottom}
+                    metricParameterType={metric.parameterType}
+                    isDifference={true}
+                  />{' '}
+                  and{' '}
+                  <MetricValue
+                    value={latestEstimates.diff.top}
+                    metricParameterType={metric.parameterType}
+                    isDifference={true}
+                  />
+                  .
                 </TableCell>
               </TableRow>
             </>
@@ -456,18 +475,30 @@ function AnalysisDetailPanel({
                 </TableCell>
                 <TableCell className={classes.monospace}>
                   [
-                  <MetricValue value={ latestEstimates[`variation_${variation.variationId}`].bottom } metricParameterType={ metric.parameterType } />
+                  <MetricValue
+                    value={latestEstimates[`variation_${variation.variationId}`].bottom}
+                    metricParameterType={metric.parameterType}
+                  />
                   ,&nbsp;
-                  <MetricValue value={latestEstimates[`variation_${variation.variationId}`].top} metricParameterType={metric.parameterType} /> 
+                  <MetricValue
+                    value={latestEstimates[`variation_${variation.variationId}`].top}
+                    metricParameterType={metric.parameterType}
+                  />
                   ]
                   <br />
                   <br />
                   <strong>Interpretation:</strong>
                   <br />
                   There is a 95% probability that the metric value for this variation is between{' '}
-                  <MetricValue value={latestEstimates[`variation_${variation.variationId}`].bottom} metricParameterType={metric.parameterType} />{' '}
+                  <MetricValue
+                    value={latestEstimates[`variation_${variation.variationId}`].bottom}
+                    metricParameterType={metric.parameterType}
+                  />{' '}
                   and{' '}
-                  <MetricValue value={ latestEstimates[`variation_${variation.variationId}`].top } metricParameterType={ metric.parameterType } />
+                  <MetricValue
+                    value={latestEstimates[`variation_${variation.variationId}`].top}
+                    metricParameterType={metric.parameterType}
+                  />
                 </TableCell>
               </TableRow>
             </React.Fragment>
@@ -475,7 +506,10 @@ function AnalysisDetailPanel({
           {latestDefaultAnalysis.recommendation && latestDefaultAnalysis.recommendation.warnings.length > 0 && (
             <TableRow>
               <TableCell component='th' scope='row' variant='head'>
-                <span role="img" aria-label="">⚠️</span> Warnings
+                <span role='img' aria-label=''>
+                  ⚠️
+                </span>{' '}
+                Warnings
               </TableCell>
               <TableCell className={classes.monospace}>
                 {latestDefaultAnalysis.recommendation.warnings.map((warning) => (
@@ -502,7 +536,11 @@ function AnalysisDetailPanel({
               Minimum Practical Difference
             </TableCell>
             <TableCell className={classes.monospace}>
-              <MetricValue value={metricAssignment.minDifference} metricParameterType={metric.parameterType} isDifference={true} /> 
+              <MetricValue
+                value={metricAssignment.minDifference}
+                metricParameterType={metric.parameterType}
+                isDifference={true}
+              />
             </TableCell>
           </TableRow>
           <TableRow>
