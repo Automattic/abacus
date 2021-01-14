@@ -36,7 +36,7 @@ describe('utils.ts module', () => {
     it('should return a correct HttpResponseError for a bad HTTP request', async () => {
       expect.assertions(3)
       fetchMock.once('*', {
-        status: 400,
+        status: StatusCodes.BAD_REQUEST,
         body: '{"code":"invalid_name","message":"The experiment name is already taken","data":{"status":400}}',
       })
 
@@ -45,11 +45,11 @@ describe('utils.ts module', () => {
       } catch (error) {
         expect(error).toBeInstanceOf(HttpResponseError)
         if (error instanceof HttpResponseError) {
-          expect(error.status).toBe(400)
+          expect(error.status).toBe(StatusCodes.BAD_REQUEST)
           expect(error.json).toEqual({
             code: 'invalid_name',
             data: {
-              status: 400,
+              status: StatusCodes.BAD_REQUEST,
             },
             message: 'The experiment name is already taken',
           })
