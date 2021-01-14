@@ -25,10 +25,10 @@ describe('HttpResponseError.ts module', () => {
 
     it('should return a correct error message', () => {
       const error = new HttpResponseError(StatusCodes.BAD_REQUEST)
-      expect(serverErrorMessage(error)).toMatchInlineSnapshot(`"Server Error [400]: No server message"`)
+      expect(serverErrorMessage(error)).toMatchInlineSnapshot(`"Response Error [400]: No server message"`)
       error.json = { code: 'invalid_name', message: 'The experiment name is already taken', data: { status: 400 } }
       expect(serverErrorMessage(error)).toMatchInlineSnapshot(
-        `"Server Error [400]: The experiment name is already taken"`,
+        `"Response Error [400]: The experiment name is already taken"`,
       )
     })
   })
