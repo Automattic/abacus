@@ -64,7 +64,7 @@ function variationToFormData(variation: Variation): VariationFormData {
 function exposureEventToFormData(exposureEvent: Event): ExposureEventFormData {
   return {
     event: exposureEvent.event,
-    props: Object.entries(exposureEvent.props as Record<string, unknown>).map(([key, value]) => ({ key, value })),
+    props: Object.entries(exposureEvent.props || {}).map(([key, value]) => ({ key, value })),
   }
 }
 

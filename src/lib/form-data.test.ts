@@ -67,6 +67,10 @@ describe('lib/form-data.test.ts module', () => {
                 },
               ],
             },
+            Object {
+              "event": "event_without_props",
+              "props": Array [],
+            },
           ],
           "metricAssignments": Array [
             Object {

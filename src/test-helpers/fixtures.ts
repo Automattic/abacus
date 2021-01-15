@@ -414,6 +414,9 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
           additionalProp3: 'prop3Value',
         },
       },
+      {
+        event: 'event_without_props',
+      },
     ],
     exclusionGroupTagIds: [1],
     ...existingExperimentFieldOverrides,
