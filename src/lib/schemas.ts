@@ -360,7 +360,10 @@ export const experimentFullNewOutboundSchema = experimentFullNewSchema
       exposure_events: currentValue.exposure_events.map(
         (event: EventNew): Event => ({
           event: event.event,
-          props: event.props ? _.fromPairs(event.props.map(({ key, value }) => [key, value])) : undefined,
+          props:
+            event.props && event.props.length > 0
+              ? _.fromPairs(event.props.map(({ key, value }) => [key, value]))
+              : undefined,
         }),
       ),
     }),
