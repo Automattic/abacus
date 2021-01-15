@@ -1208,7 +1208,7 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
                     name="experiment.metricAssignments[0].minDifference"
                     placeholder="1.30"
                     type="number"
-                    value=""
+                    value="0.01"
                   />
                   <fieldset
                     aria-hidden="true"
@@ -1660,7 +1660,7 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
                     name="experiment.metricAssignments[0].minDifference"
                     placeholder="1.30"
                     type="number"
-                    value=""
+                    value="0.01"
                   />
                   <fieldset
                     aria-hidden="true"
@@ -2388,7 +2388,7 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
                     name="experiment.metricAssignments[0].minDifference"
                     placeholder="1.30"
                     type="number"
-                    value=""
+                    value="0"
                   />
                   <div
                     class="MuiInputAdornment-root MuiInputAdornment-positionEnd"

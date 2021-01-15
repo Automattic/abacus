@@ -29,6 +29,7 @@ import MoreMenu from 'src/components/general/MoreMenu'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
 import { EventNew, MetricAssignment, MetricBare, MetricParameterType } from 'src/lib/schemas'
 import { useDataSource } from 'src/utils/data-loading'
+import { formikFieldTransformer } from 'src/utils/formik'
 
 import { ExperimentFormCompletionBag } from './ExperimentForm'
 
@@ -277,6 +278,12 @@ const EventEditor = ({
   )
 }
 
+const ConversionMetricTextField = formikFieldTransformer(
+  TextField,
+  (outer: string) => String((parseFloat(outer) || 0) * 100),
+  (inner: string) => String((Number(inner) || 0) / 100),
+)
+
 const Metrics = ({
   indexedMetrics,
   completionBag,
@@ -403,7 +410,12 @@ const Metrics = ({
                           <TableCell>
                             <Field
                               className={classes.minDifferenceField}
-                              component={TextField}
+                              component={
+                                indexedMetrics[metricAssignment.metricId].parameterType ===
+                                MetricParameterType.Conversion
+                                  ? ConversionMetricTextField
+                                  : TextField
+                              }
                               name={`experiment.metricAssignments[${index}].minDifference`}
                               id={`experiment.metricAssignments[${index}].minDifference`}
                               type='number'

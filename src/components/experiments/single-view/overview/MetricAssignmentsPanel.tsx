@@ -44,6 +44,7 @@ import {
   Status,
 } from 'src/lib/schemas'
 import { formatBoolean } from 'src/utils/formatters'
+import { formikFieldTransformer } from 'src/utils/formik'
 
 import LoadingButtonContainer from '../../../general/LoadingButtonContainer'
 
@@ -72,6 +73,12 @@ function resolveMetricAssignments(metricAssignments: MetricAssignment[], metrics
     return { ...metricAssignment, metric }
   })
 }
+
+const ConversionMetricTextField = formikFieldTransformer(
+  TextField,
+  (outer: string) => String((parseFloat(outer) || 0) * 100),
+  (inner: string) => String((Number(inner) || 0) / 100),
+)
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -333,7 +340,13 @@ function MetricAssignmentsPanel({
                       Minimum Difference
                     </FormLabel>
                     <Field
-                      component={TextField}
+                      component={
+                        formikProps.values.metricAssignment.metricId &&
+                        indexedMetrics[(formikProps.values.metricAssignment.metricId as unknown) as number]
+                          .parameterType === MetricParameterType.Conversion
+                          ? ConversionMetricTextField
+                          : TextField
+                      }
                       name={`metricAssignment.minDifference`}
                       id={`metricAssignment.minDifference`}
                       type='number'
