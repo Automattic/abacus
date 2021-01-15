@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import React from 'react'
 
 import { MetricParameterType } from 'src/lib/schemas'
