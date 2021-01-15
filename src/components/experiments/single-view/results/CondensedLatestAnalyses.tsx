@@ -400,7 +400,9 @@ function AnalysisDetailPanel({
           <Plot
             layout={{
               ...Visualizations.plotlyLayoutDefault,
-              title: isConversion ? `Conversion rate estimates by variation (%)` : `Revenue estimates by variation ($)`,
+              title: isConversion
+                ? `Conversion rate estimates by variation (%)`
+                : `Revenue estimates by variation (USD)`,
             }}
             data={plotlyDataVariationGraph}
             className={classes.metricEstimatePlot}
@@ -410,7 +412,7 @@ function AnalysisDetailPanel({
               ...Visualizations.plotlyLayoutDefault,
               title: isConversion
                 ? `Conversion rate difference estimates (percentage points)`
-                : `Revenue difference estimates ($)`,
+                : `Revenue difference estimates (USD)`,
             }}
             data={plotlyDataDifferenceGraph}
             className={classes.metricEstimatePlot}
@@ -418,7 +420,7 @@ function AnalysisDetailPanel({
         </div>
       ) : (
         <Typography variant='body1' className={classes.noPlotMessage}>
-          (Not enough data to plot.)
+          Past values will be plotted once we have more than one day of results.
         </Typography>
       )}
       <Typography variant='h4' className={classes.tableHeader}>
@@ -510,6 +512,7 @@ function AnalysisDetailPanel({
                     value={latestEstimates[`variation_${variation.variationId}`].top}
                     metricParameterType={metric.parameterType}
                   />
+                  .
                 </TableCell>
               </TableRow>
             </React.Fragment>

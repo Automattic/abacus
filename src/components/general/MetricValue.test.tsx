@@ -22,6 +22,14 @@ test('renders metric values', () => {
       %
     </div>
   `)
+  expect(render(<MetricValue value={0.123456789} metricParameterType={MetricParameterType.Conversion} />).container)
+    .toMatchInlineSnapshot(`
+    <div>
+      
+      12.35
+      %
+    </div>
+  `)
   expect(
     render(<MetricValue value={1} metricParameterType={MetricParameterType.Conversion} isDifference={true} />)
       .container,
@@ -52,11 +60,26 @@ test('renders metric values', () => {
       </span>
     </div>
   `)
+  expect(
+    render(<MetricValue value={0.123456789} metricParameterType={MetricParameterType.Conversion} isDifference={true} />)
+      .container,
+  ).toMatchInlineSnapshot(`
+    <div>
+      
+      12.35
+      <span
+        class="makeStyles-root-1"
+        title="Percentage points."
+      >
+        pp
+      </span>
+    </div>
+  `)
 
   expect(render(<MetricValue value={1} metricParameterType={MetricParameterType.Revenue} />).container)
     .toMatchInlineSnapshot(`
     <div>
-      $
+      USD 
       1
       
     </div>
@@ -64,8 +87,16 @@ test('renders metric values', () => {
   expect(render(<MetricValue value={0.01} metricParameterType={MetricParameterType.Revenue} />).container)
     .toMatchInlineSnapshot(`
     <div>
-      $
+      USD 
       0.01
+      
+    </div>
+  `)
+  expect(render(<MetricValue value={0.123456789} metricParameterType={MetricParameterType.Revenue} />).container)
+    .toMatchInlineSnapshot(`
+    <div>
+      USD 
+      0.12
       
     </div>
   `)
@@ -73,7 +104,7 @@ test('renders metric values', () => {
     render(<MetricValue value={1} metricParameterType={MetricParameterType.Revenue} isDifference={true} />).container,
   ).toMatchInlineSnapshot(`
     <div>
-      $
+      USD 
       1
       
     </div>
@@ -83,8 +114,18 @@ test('renders metric values', () => {
       .container,
   ).toMatchInlineSnapshot(`
     <div>
-      $
+      USD 
       0.01
+      
+    </div>
+  `)
+  expect(
+    render(<MetricValue value={0.123456789} metricParameterType={MetricParameterType.Revenue} isDifference={true} />)
+      .container,
+  ).toMatchInlineSnapshot(`
+    <div>
+      USD 
+      0.12
       
     </div>
   `)
