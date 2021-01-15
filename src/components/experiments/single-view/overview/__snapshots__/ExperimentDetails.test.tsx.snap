@@ -694,6 +694,15 @@ exports[`renders as expected at large width 1`] = `
                       prop3Value
                     </span>
                   </p>
+                  <p
+                    class="MuiTypography-root makeStyles-monospace-35 MuiTypography-body1"
+                  >
+                    <span
+                      class="makeStyles-eventName-33"
+                    >
+                      event_without_props
+                    </span>
+                  </p>
                 </div>
               </td>
             </tr>
@@ -1205,6 +1214,15 @@ exports[`renders as expected at small width 1`] = `
                           additionalProp3
                           : 
                           prop3Value
+                        </span>
+                      </p>
+                      <p
+                        class="MuiTypography-root makeStyles-monospace-70 MuiTypography-body1"
+                      >
+                        <span
+                          class="makeStyles-eventName-68"
+                        >
+                          event_without_props
                         </span>
                       </p>
                     </div>
@@ -1938,6 +1956,15 @@ exports[`renders as expected with conclusion data 1`] = `
                           additionalProp3
                           : 
                           prop3Value
+                        </span>
+                      </p>
+                      <p
+                        class="MuiTypography-root makeStyles-monospace-107 MuiTypography-body1"
+                      >
+                        <span
+                          class="makeStyles-eventName-105"
+                        >
+                          event_without_props
                         </span>
                       </p>
                     </div>
@@ -2775,6 +2802,15 @@ exports[`renders as expected without conclusion data 1`] = `
                           additionalProp3
                           : 
                           prop3Value
+                        </span>
+                      </p>
+                      <p
+                        class="MuiTypography-root makeStyles-monospace-142 MuiTypography-body1"
+                      >
+                        <span
+                          class="makeStyles-eventName-140"
+                        >
+                          event_without_props
                         </span>
                       </p>
                     </div>

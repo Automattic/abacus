@@ -1225,6 +1225,15 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   prop3Value
                 </span>
               </p>
+              <p
+                class="MuiTypography-root makeStyles-monospace-60 MuiTypography-body1"
+              >
+                <span
+                  class="makeStyles-eventName-58"
+                >
+                  event_without_props
+                </span>
+              </p>
             </div>
           </td>
         </tr>
@@ -1542,6 +1551,15 @@ exports[`renders as expected with existing users allowed 1`] = `
                   additionalProp3
                   : 
                   prop3Value
+                </span>
+              </p>
+              <p
+                class="MuiTypography-root makeStyles-monospace-45 MuiTypography-body1"
+              >
+                <span
+                  class="makeStyles-eventName-43"
+                >
+                  event_without_props
                 </span>
               </p>
             </div>
@@ -1863,6 +1881,15 @@ exports[`renders as expected with no exclusion groups 1`] = `
                   prop3Value
                 </span>
               </p>
+              <p
+                class="MuiTypography-root makeStyles-monospace-30 MuiTypography-body1"
+              >
+                <span
+                  class="makeStyles-eventName-28"
+                >
+                  event_without_props
+                </span>
+              </p>
             </div>
           </td>
         </tr>
@@ -2154,6 +2181,15 @@ exports[`renders as expected with no segment assignments 1`] = `
                   additionalProp3
                   : 
                   prop3Value
+                </span>
+              </p>
+              <p
+                class="MuiTypography-root makeStyles-monospace-15 MuiTypography-body1"
+              >
+                <span
+                  class="makeStyles-eventName-13"
+                >
+                  event_without_props
                 </span>
               </p>
             </div>
