@@ -307,7 +307,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
   <p
     class="MuiTypography-root makeStyles-noPlotMessage-17 MuiTypography-body1"
   >
-    (Not enough data to plot.)
+    Past values will be plotted once we have more than one day of results.
   </p>
   <h4
     class="MuiTypography-root makeStyles-tableHeader-18 MuiTypography-h4"
@@ -426,6 +426,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
           
           100
           %
+          .
         </td>
       </tr>
       <tr
@@ -472,6 +473,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
           
           1000
           %
+          .
         </td>
       </tr>
       <tr
@@ -1150,6 +1152,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           
           100
           %
+          .
         </td>
       </tr>
       <tr
@@ -1196,6 +1199,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           
           1000
           %
+          .
         </td>
       </tr>
       <tr
@@ -1992,11 +1996,11 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-55"
         >
           [
-          $
+          USD 
           -0.01
           
           , 
-          $
+          USD 
           0.01
           
           ]
@@ -2008,13 +2012,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           <br />
           There is a 95% probability that the difference between variations is between
            
-          $
+          USD 
           -0.01
           
            
           and
            
-          $
+          USD 
           0.01
           
           .
@@ -2039,11 +2043,11 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-55"
         >
           [
-          $
+          USD 
           -1.12
           
           , 
-          $
+          USD 
           1
           
           ]
@@ -2055,15 +2059,16 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           <br />
           There is a 95% probability that the metric value for this variation is between
            
-          $
+          USD 
           -1.12
           
            
           and
            
-          $
+          USD 
           1
           
+          .
         </td>
       </tr>
       <tr
@@ -2085,11 +2090,11 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-55"
         >
           [
-          $
+          USD 
           0
           
           , 
-          $
+          USD 
           10
           
           ]
@@ -2101,15 +2106,16 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           <br />
           There is a 95% probability that the metric value for this variation is between
            
-          $
+          USD 
           0
           
            
           and
            
-          $
+          USD 
           10
           
+          .
         </td>
       </tr>
       <tr
@@ -2182,7 +2188,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         <td
           class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-55"
         >
-          $
+          USD 
           12
           
         </td>
@@ -2439,7 +2445,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             "t": 64,
           },
           "showlegend": false,
-          "title": "Revenue estimates by variation ($)",
+          "title": "Revenue estimates by variation (USD)",
         },
         "style": Object {
           "display": "inline-block",
@@ -2541,7 +2547,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             "t": 64,
           },
           "showlegend": false,
-          "title": "Revenue difference estimates ($)",
+          "title": "Revenue difference estimates (USD)",
         },
         "style": Object {
           "display": "inline-block",

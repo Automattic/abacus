@@ -47,12 +47,12 @@ const metricValueFormatData: Record<
     transform: (x: number): number => x * 100,
   },
   revenue: {
-    prefix: '$',
+    prefix: <>USD&nbsp;</>,
     postfix: '',
     transform: identity,
   },
   revenue_difference: {
-    prefix: '$',
+    prefix: <>USD&nbsp;</>,
     postfix: '',
     transform: identity,
   },
