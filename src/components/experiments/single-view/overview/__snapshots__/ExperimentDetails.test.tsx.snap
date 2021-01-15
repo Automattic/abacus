@@ -695,10 +695,10 @@ exports[`renders as expected at large width 1`] = `
                     </span>
                   </p>
                   <p
-                    class="MuiTypography-root makeStyles-monospace-35 MuiTypography-body1"
+                    class="MuiTypography-root makeStyles-monospace-36 MuiTypography-body1"
                   >
                     <span
-                      class="makeStyles-eventName-33"
+                      class="makeStyles-eventName-34"
                     >
                       event_without_props
                     </span>
@@ -1217,10 +1217,10 @@ exports[`renders as expected at small width 1`] = `
                         </span>
                       </p>
                       <p
-                        class="MuiTypography-root makeStyles-monospace-70 MuiTypography-body1"
+                        class="MuiTypography-root makeStyles-monospace-72 MuiTypography-body1"
                       >
                         <span
-                          class="makeStyles-eventName-68"
+                          class="makeStyles-eventName-70"
                         >
                           event_without_props
                         </span>
@@ -1959,10 +1959,10 @@ exports[`renders as expected with conclusion data 1`] = `
                         </span>
                       </p>
                       <p
-                        class="MuiTypography-root makeStyles-monospace-107 MuiTypography-body1"
+                        class="MuiTypography-root makeStyles-monospace-110 MuiTypography-body1"
                       >
                         <span
-                          class="makeStyles-eventName-105"
+                          class="makeStyles-eventName-108"
                         >
                           event_without_props
                         </span>
@@ -2805,10 +2805,10 @@ exports[`renders as expected without conclusion data 1`] = `
                         </span>
                       </p>
                       <p
-                        class="MuiTypography-root makeStyles-monospace-142 MuiTypography-body1"
+                        class="MuiTypography-root makeStyles-monospace-146 MuiTypography-body1"
                       >
                         <span
-                          class="makeStyles-eventName-140"
+                          class="makeStyles-eventName-144"
                         >
                           event_without_props
                         </span>
