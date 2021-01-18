@@ -2,7 +2,6 @@ import {
   Button,
   FormControl,
   IconButton,
-  InputAdornment,
   Link,
   MenuItem,
   Select as MuiSelect,
@@ -25,11 +24,11 @@ import React, { useState } from 'react'
 
 import { getPropNameCompletions } from 'src/api/AutocompleteApi'
 import AbacusAutocomplete, { autocompleteInputProps } from 'src/components/general/Autocomplete'
+import MetricDifferenceField from 'src/components/general/MetricDifferenceField'
 import MoreMenu from 'src/components/general/MoreMenu'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
-import { EventNew, MetricAssignment, MetricBare, MetricParameterType } from 'src/lib/schemas'
+import { EventNew, MetricAssignment, MetricBare } from 'src/lib/schemas'
 import { useDataSource } from 'src/utils/data-loading'
-import { formikFieldTransformer } from 'src/utils/formik'
 
 import { ExperimentFormCompletionBag } from './ExperimentForm'
 
@@ -69,11 +68,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     exposureEventsInfo: {
       marginTop: theme.spacing(4),
-    },
-    tooltipped: {
-      borderBottomWidth: 1,
-      borderBottomStyle: 'dashed',
-      borderBottomColor: theme.palette.grey[500],
     },
   }),
 )
@@ -278,12 +272,6 @@ const EventEditor = ({
   )
 }
 
-const ConversionMetricTextField = formikFieldTransformer(
-  TextField,
-  (outer: string) => String((parseFloat(outer) || 0) * 100),
-  (inner: string) => String((Number(inner) || 0) / 100),
-)
-
 const Metrics = ({
   indexedMetrics,
   completionBag,
@@ -408,45 +396,11 @@ const Metrics = ({
                             />
                           </TableCell>
                           <TableCell>
-                            <Field
+                            <MetricDifferenceField
                               className={classes.minDifferenceField}
-                              component={
-                                indexedMetrics[metricAssignment.metricId].parameterType ===
-                                MetricParameterType.Conversion
-                                  ? ConversionMetricTextField
-                                  : TextField
-                              }
                               name={`experiment.metricAssignments[${index}].minDifference`}
                               id={`experiment.metricAssignments[${index}].minDifference`}
-                              type='number'
-                              variant='outlined'
-                              placeholder='1.30'
-                              inputProps={{
-                                'aria-label': 'Min difference',
-                                min: '0',
-                              }}
-                              InputProps={
-                                indexedMetrics[metricAssignment.metricId].parameterType ===
-                                MetricParameterType.Conversion
-                                  ? {
-                                      endAdornment: (
-                                        <InputAdornment position='end'>
-                                          <Tooltip title='Percentage Points'>
-                                            <Typography
-                                              variant='body1'
-                                              color='textSecondary'
-                                              className={classes.tooltipped}
-                                            >
-                                              pp
-                                            </Typography>
-                                          </Tooltip>
-                                        </InputAdornment>
-                                      ),
-                                    }
-                                  : {
-                                      startAdornment: <InputAdornment position='start'>$</InputAdornment>,
-                                    }
-                              }
+                              metricParameterType={indexedMetrics[metricAssignment.metricId].parameterType}
                             />
                           </TableCell>
                           <TableCell>

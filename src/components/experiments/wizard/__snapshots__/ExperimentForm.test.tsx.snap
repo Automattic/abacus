@@ -415,10 +415,10 @@ exports[`renders as expected 1`] = `
 exports[`sections should be browsable by the section buttons 1`] = `
 <div>
   <div
-    class="makeStyles-root-119"
+    class="makeStyles-root-117"
   >
     <div
-      class="makeStyles-navigation-120"
+      class="makeStyles-navigation-118"
     >
       <div
         class="MuiPaper-root MuiStepper-root MuiStepper-vertical MuiPaper-elevation0"
@@ -705,17 +705,17 @@ exports[`sections should be browsable by the section buttons 1`] = `
     </div>
     <div>
       <form
-        class="makeStyles-form-121"
+        class="makeStyles-form-119"
         novalidate=""
       >
         <div
-          class="makeStyles-formPart-122"
+          class="makeStyles-formPart-120"
         >
           <div
-            class="MuiPaper-root makeStyles-paper-124 MuiPaper-elevation1 MuiPaper-rounded"
+            class="MuiPaper-root makeStyles-paper-122 MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              class="makeStyles-root-125"
+              class="makeStyles-root-123"
             >
               <h4
                 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -761,7 +761,7 @@ exports[`sections should be browsable by the section buttons 1`] = `
                 </div>
               </div>
               <div
-                class="MuiFormControl-root MuiTextField-root makeStyles-p2EntryField-126"
+                class="MuiFormControl-root MuiTextField-root makeStyles-p2EntryField-124"
               >
                 <label
                   class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
@@ -785,10 +785,10 @@ exports[`sections should be browsable by the section buttons 1`] = `
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="PrivateNotchedOutline-root-128 MuiOutlinedInput-notchedOutline"
+                    class="PrivateNotchedOutline-root-126 MuiOutlinedInput-notchedOutline"
                   >
                     <legend
-                      class="PrivateNotchedOutline-legendLabelled-130 PrivateNotchedOutline-legendNotched-131"
+                      class="PrivateNotchedOutline-legendLabelled-128 PrivateNotchedOutline-legendNotched-129"
                     >
                       <span>
                         Your Post's URL
@@ -800,7 +800,7 @@ exports[`sections should be browsable by the section buttons 1`] = `
             </div>
           </div>
           <div
-            class="makeStyles-formPartActions-123"
+            class="makeStyles-formPartActions-121"
           >
             <button
               class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
@@ -827,10 +827,10 @@ exports[`sections should be browsable by the section buttons 1`] = `
 exports[`sections should be browsable by the section buttons 2`] = `
 <div>
   <div
-    class="makeStyles-root-119"
+    class="makeStyles-root-117"
   >
     <div
-      class="makeStyles-navigation-120"
+      class="makeStyles-navigation-118"
     >
       <div
         class="MuiPaper-root MuiStepper-root MuiStepper-vertical MuiPaper-elevation0"
@@ -1107,17 +1107,17 @@ exports[`sections should be browsable by the section buttons 2`] = `
     </div>
     <div>
       <form
-        class="makeStyles-form-121"
+        class="makeStyles-form-119"
         novalidate=""
       >
         <div
-          class="makeStyles-formPart-122"
+          class="makeStyles-formPart-120"
         >
           <div
-            class="MuiPaper-root makeStyles-paper-124 MuiPaper-elevation1 MuiPaper-rounded"
+            class="MuiPaper-root makeStyles-paper-122 MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              class="makeStyles-root-132"
+              class="makeStyles-root-130"
             >
               <h4
                 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -1125,7 +1125,7 @@ exports[`sections should be browsable by the section buttons 2`] = `
                 Basic Info
               </h4>
               <div
-                class="makeStyles-row-133"
+                class="makeStyles-row-131"
               >
                 <div
                   class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -1161,10 +1161,10 @@ exports[`sections should be browsable by the section buttons 2`] = `
                     />
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-128 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-126 MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legendLabelled-130 PrivateNotchedOutline-legendNotched-131"
+                        class="PrivateNotchedOutline-legendLabelled-128 PrivateNotchedOutline-legendNotched-129"
                       >
                         <span>
                           Experiment name
@@ -1182,7 +1182,7 @@ exports[`sections should be browsable by the section buttons 2`] = `
                 </div>
               </div>
               <div
-                class="makeStyles-row-133"
+                class="makeStyles-row-131"
               >
                 <div
                   class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -1217,10 +1217,10 @@ exports[`sections should be browsable by the section buttons 2`] = `
                     />
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-128 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-126 MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legendLabelled-130 PrivateNotchedOutline-legendNotched-131"
+                        class="PrivateNotchedOutline-legendLabelled-128 PrivateNotchedOutline-legendNotched-129"
                       >
                         <span>
                           Experiment description
@@ -1238,10 +1238,10 @@ exports[`sections should be browsable by the section buttons 2`] = `
                 </div>
               </div>
               <div
-                class="makeStyles-row-133"
+                class="makeStyles-row-131"
               >
                 <div
-                  class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-135"
+                  class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-133"
                 >
                   <label
                     class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
@@ -1274,10 +1274,10 @@ exports[`sections should be browsable by the section buttons 2`] = `
                     />
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-128 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-126 MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legendLabelled-130 PrivateNotchedOutline-legendNotched-131"
+                        class="PrivateNotchedOutline-legendLabelled-128 PrivateNotchedOutline-legendNotched-129"
                       >
                         <span>
                           Start date (UTC)
@@ -1288,12 +1288,12 @@ exports[`sections should be browsable by the section buttons 2`] = `
                   </div>
                 </div>
                 <span
-                  class="makeStyles-through-134"
+                  class="makeStyles-through-132"
                 >
                    through 
                 </span>
                 <div
-                  class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-135"
+                  class="MuiFormControl-root MuiTextField-root makeStyles-datePicker-133"
                 >
                   <label
                     class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-required Mui-required"
@@ -1324,10 +1324,10 @@ exports[`sections should be browsable by the section buttons 2`] = `
                     />
                     <fieldset
                       aria-hidden="true"
-                      class="PrivateNotchedOutline-root-128 MuiOutlinedInput-notchedOutline"
+                      class="PrivateNotchedOutline-root-126 MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="PrivateNotchedOutline-legendLabelled-130 PrivateNotchedOutline-legendNotched-131"
+                        class="PrivateNotchedOutline-legendLabelled-128 PrivateNotchedOutline-legendNotched-129"
                       >
                         <span>
                           End date (UTC)
@@ -1367,7 +1367,7 @@ exports[`sections should be browsable by the section buttons 2`] = `
                 </div>
               </div>
               <div
-                class="makeStyles-row-133"
+                class="makeStyles-row-131"
               >
                 <div
                   aria-expanded="false"
@@ -1475,10 +1475,10 @@ exports[`sections should be browsable by the section buttons 2`] = `
                       </div>
                       <fieldset
                         aria-hidden="true"
-                        class="PrivateNotchedOutline-root-128 MuiOutlinedInput-notchedOutline"
+                        class="PrivateNotchedOutline-root-126 MuiOutlinedInput-notchedOutline"
                       >
                         <legend
-                          class="PrivateNotchedOutline-legendLabelled-130 PrivateNotchedOutline-legendNotched-131"
+                          class="PrivateNotchedOutline-legendLabelled-128 PrivateNotchedOutline-legendNotched-129"
                         >
                           <span>
                             Owner
@@ -1499,7 +1499,7 @@ exports[`sections should be browsable by the section buttons 2`] = `
             </div>
           </div>
           <div
-            class="makeStyles-formPartActions-123"
+            class="makeStyles-formPartActions-121"
           >
             <button
               class="MuiButtonBase-root MuiButton-root MuiButton-text"
@@ -1540,10 +1540,10 @@ exports[`sections should be browsable by the section buttons 2`] = `
 exports[`sections should be browsable by the section buttons 3`] = `
 <div>
   <div
-    class="makeStyles-root-119"
+    class="makeStyles-root-117"
   >
     <div
-      class="makeStyles-navigation-120"
+      class="makeStyles-navigation-118"
     >
       <div
         class="MuiPaper-root MuiStepper-root MuiStepper-vertical MuiPaper-elevation0"
@@ -1790,14 +1790,14 @@ exports[`sections should be browsable by the section buttons 3`] = `
     </div>
     <div>
       <form
-        class="makeStyles-form-121"
+        class="makeStyles-form-119"
         novalidate=""
       >
         <div
-          class="makeStyles-formPart-122"
+          class="makeStyles-formPart-120"
         >
           <div
-            class="MuiPaper-root makeStyles-paper-124 MuiPaper-elevation1 MuiPaper-rounded"
+            class="MuiPaper-root makeStyles-paper-122 MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h4
               class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -1832,7 +1832,7 @@ exports[`sections should be browsable by the section buttons 3`] = `
             </p>
           </div>
           <div
-            class="makeStyles-formPartActions-123"
+            class="makeStyles-formPartActions-121"
           >
             <button
               class="MuiButtonBase-root MuiButton-root MuiButton-text"
@@ -1849,7 +1849,7 @@ exports[`sections should be browsable by the section buttons 3`] = `
               />
             </button>
             <div
-              class="makeStyles-root-137"
+              class="makeStyles-root-135"
             >
               <button
                 class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary Mui-disabled Mui-disabled"
@@ -1875,10 +1875,10 @@ exports[`sections should be browsable by the section buttons 3`] = `
 exports[`sections should be browsable by the section buttons 4`] = `
 <div>
   <div
-    class="makeStyles-root-119"
+    class="makeStyles-root-117"
   >
     <div
-      class="makeStyles-navigation-120"
+      class="makeStyles-navigation-118"
     >
       <div
         class="MuiPaper-root MuiStepper-root MuiStepper-vertical MuiPaper-elevation0"
@@ -2135,17 +2135,17 @@ exports[`sections should be browsable by the section buttons 4`] = `
     </div>
     <div>
       <form
-        class="makeStyles-form-121"
+        class="makeStyles-form-119"
         novalidate=""
       >
         <div
-          class="makeStyles-formPart-122"
+          class="makeStyles-formPart-120"
         >
           <div
-            class="MuiPaper-root makeStyles-paper-124 MuiPaper-elevation1 MuiPaper-rounded"
+            class="MuiPaper-root makeStyles-paper-122 MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              class="makeStyles-root-139"
+              class="makeStyles-root-137"
             >
               <h4
                 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -2215,11 +2215,11 @@ exports[`sections should be browsable by the section buttons 4`] = `
                 </table>
               </div>
               <div
-                class="makeStyles-addMetric-152"
+                class="makeStyles-addMetric-149"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-153"
+                  class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-150"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -2228,7 +2228,7 @@ exports[`sections should be browsable by the section buttons 4`] = `
                   />
                 </svg>
                 <div
-                  class="MuiFormControl-root makeStyles-addMetricSelect-141"
+                  class="MuiFormControl-root makeStyles-addMetricSelect-139"
                 >
                   <div
                     class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
@@ -2242,7 +2242,7 @@ exports[`sections should be browsable by the section buttons 4`] = `
                       tabindex="0"
                     >
                       <span
-                        class="makeStyles-addMetricPlaceholder-140"
+                        class="makeStyles-addMetricPlaceholder-138"
                       >
                         Select a Metric
                       </span>
@@ -2280,7 +2280,7 @@ exports[`sections should be browsable by the section buttons 4`] = `
                 </button>
               </div>
               <div
-                class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo makeStyles-metricsInfo-147 MuiPaper-elevation0"
+                class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo makeStyles-metricsInfo-145 MuiPaper-elevation0"
                 role="alert"
               >
                 <div
@@ -2334,7 +2334,7 @@ exports[`sections should be browsable by the section buttons 4`] = `
                 </div>
               </div>
               <h4
-                class="MuiTypography-root makeStyles-exposureEventsTitle-148 MuiTypography-h4"
+                class="MuiTypography-root makeStyles-exposureEventsTitle-146 MuiTypography-h4"
               >
                 Exposure Events (Optional)
               </h4>
@@ -2365,11 +2365,11 @@ exports[`sections should be browsable by the section buttons 4`] = `
                 </table>
               </div>
               <div
-                class="makeStyles-addMetric-152"
+                class="makeStyles-addMetric-149"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-153"
+                  class="MuiSvgIcon-root makeStyles-addMetricAddSymbol-150"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -2394,7 +2394,7 @@ exports[`sections should be browsable by the section buttons 4`] = `
                 </button>
               </div>
               <div
-                class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo makeStyles-exposureEventsInfo-149 MuiPaper-elevation0"
+                class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo makeStyles-exposureEventsInfo-147 MuiPaper-elevation0"
                 role="alert"
               >
                 <div
@@ -2426,7 +2426,7 @@ exports[`sections should be browsable by the section buttons 4`] = `
             </div>
           </div>
           <div
-            class="makeStyles-formPartActions-123"
+            class="makeStyles-formPartActions-121"
           >
             <button
               class="MuiButtonBase-root MuiButton-root MuiButton-text"
@@ -2467,10 +2467,10 @@ exports[`sections should be browsable by the section buttons 4`] = `
 exports[`skipping to submit should check all sections 1`] = `
 <div>
   <div
-    class="makeStyles-root-178"
+    class="makeStyles-root-175"
   >
     <div
-      class="makeStyles-navigation-179"
+      class="makeStyles-navigation-176"
     >
       <div
         class="MuiPaper-root MuiStepper-root MuiStepper-vertical MuiPaper-elevation0"
@@ -2717,14 +2717,14 @@ exports[`skipping to submit should check all sections 1`] = `
     </div>
     <div>
       <form
-        class="makeStyles-form-180"
+        class="makeStyles-form-177"
         novalidate=""
       >
         <div
-          class="makeStyles-formPart-181"
+          class="makeStyles-formPart-178"
         >
           <div
-            class="MuiPaper-root makeStyles-paper-183 MuiPaper-elevation1 MuiPaper-rounded"
+            class="MuiPaper-root makeStyles-paper-180 MuiPaper-elevation1 MuiPaper-rounded"
           >
             <h4
               class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -2759,7 +2759,7 @@ exports[`skipping to submit should check all sections 1`] = `
             </p>
           </div>
           <div
-            class="makeStyles-formPartActions-182"
+            class="makeStyles-formPartActions-179"
           >
             <button
               class="MuiButtonBase-root MuiButton-root MuiButton-text"
@@ -2776,7 +2776,7 @@ exports[`skipping to submit should check all sections 1`] = `
               />
             </button>
             <div
-              class="makeStyles-root-192"
+              class="makeStyles-root-189"
             >
               <button
                 class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary Mui-disabled Mui-disabled"

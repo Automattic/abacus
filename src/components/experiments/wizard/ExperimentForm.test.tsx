@@ -446,7 +446,7 @@ test('form submits with valid fields', async () => {
     fireEvent.click(attributionWindowFieldOption)
   })
 
-  await changeFieldByRole('spinbutton', /Min difference/, '0.01')
+  await changeFieldByRole('spinbutton', /Minimum Difference/, '0.01')
 
   // #### Exposure Events
   await act(async () => {

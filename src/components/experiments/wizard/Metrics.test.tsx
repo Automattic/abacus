@@ -99,7 +99,7 @@ test('allows adding, editing and removing a Metric Assignment', async () => {
     fireEvent.click(changeExpectedSwitch)
   })
 
-  await changeFieldByRole('spinbutton', /Min difference/, '0.01')
+  await changeFieldByRole('spinbutton', /Minimum Difference/, '0.01')
 
   const moreMenu = screen.getByRole('button', { name: /more/ })
   fireEvent.click(moreMenu)
