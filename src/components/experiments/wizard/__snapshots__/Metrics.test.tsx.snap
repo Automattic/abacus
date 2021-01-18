@@ -2387,7 +2387,7 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
                     max="100"
                     min="0"
                     name="experiment.metricAssignments[0].minDifference"
-                    placeholder="1.30"
+                    placeholder="5.4"
                     type="number"
                     value="0"
                   />

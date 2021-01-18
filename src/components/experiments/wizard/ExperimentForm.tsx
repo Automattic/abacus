@@ -269,7 +269,6 @@ const ExperimentForm = ({
                 )}
                 {currentStageId === StageId.Submit && (
                   <div className={classes.formPart}>
-                    {console.log(formikProps.errors?.experiment?.metricAssignments)}
                     <Paper className={classes.paper}>
                       <Typography variant='h4' gutterBottom>
                         Confirm and Submit Your Experiment
