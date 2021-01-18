@@ -4,7 +4,7 @@ import React from 'react'
 
 import { experimentToFormData } from 'src/lib/form-data'
 import { MetricBare, MetricParameterType } from 'src/lib/schemas'
-import { render } from 'src/test-helpers/test-utils'
+import { changeFieldByRole, render } from 'src/test-helpers/test-utils'
 
 import { ExperimentFormCompletionBag } from './ExperimentForm'
 import Metrics from './Metrics'
@@ -98,6 +98,8 @@ test('allows adding, editing and removing a Metric Assignment', async () => {
   await act(async () => {
     fireEvent.click(changeExpectedSwitch)
   })
+
+  await changeFieldByRole('spinbutton', /Minimum Difference/, '0.01')
 
   const moreMenu = screen.getByRole('button', { name: /more/ })
   fireEvent.click(moreMenu)

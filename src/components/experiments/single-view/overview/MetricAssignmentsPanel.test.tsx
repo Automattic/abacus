@@ -137,7 +137,7 @@ test('renders as expected with all metrics resolvable', () => {
                 
                 10
                 <span
-                  class="makeStyles-root-9"
+                  class="makeStyles-root-8"
                   title="Percentage points."
                 >
                   pp
@@ -223,7 +223,7 @@ test('renders as expected with all metrics resolvable', () => {
                 
                 1200
                 <span
-                  class="makeStyles-root-9"
+                  class="makeStyles-root-8"
                   title="Percentage points."
                 >
                   pp
@@ -300,7 +300,7 @@ test('opens, submits and cancels assign metric dialog', async () => {
     fireEvent.click(attributionWindowFieldOption)
   })
 
-  await changeFieldByRole('spinbutton', /Minimum Difference/, '0.01')
+  await changeFieldByRole('spinbutton', /Minimum Difference/, '1')
 
   fireEvent.click(assignButton)
   await waitForElementToBeRemoved(assignButton)
@@ -311,7 +311,7 @@ test('opens, submits and cancels assign metric dialog', async () => {
     changeExpected: false,
     isPrimary: false,
     metricId: 3,
-    minDifference: 0.01,
+    minDifference: '0.01',
   })
 
   fireEvent.click(startAssignButton)
