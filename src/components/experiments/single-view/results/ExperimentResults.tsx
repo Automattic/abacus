@@ -5,7 +5,7 @@ import * as MetricAssignments from 'src/lib/metric-assignments'
 import { indexMetrics } from 'src/lib/normalizers'
 import { Analysis, AnalysisStrategy, ExperimentFull, MetricAssignment, MetricBare } from 'src/lib/schemas'
 
-import CondensedLatestAnalyses from './CondensedLatestAnalyses'
+import ActualExperimentResults from './ActualExperimentResults'
 
 export type MetricAssignmentAnalysesData = {
   metricAssignment: MetricAssignment
@@ -48,7 +48,7 @@ export default function ExperimentResults({
 
   return (
     <div className='analysis-latest-results'>
-      <CondensedLatestAnalyses
+      <ActualExperimentResults
         experiment={experiment}
         allMetricAssignmentAnalysesData={allMetricAssignmentAnalysesData}
       />
