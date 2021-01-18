@@ -1,18 +1,35 @@
-import _ from 'lodash'
-import { makeStyles, Theme, createStyles, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from "@material-ui/core"
-import clsx from "clsx"
-import { identity } from "lodash"
-import { PlotData } from "plotly.js"
-import React from "react"
-import { RecommendationWarningToHuman, AnalysisStrategyToHuman } from "src/lib/analyses"
-import { Analysis, MetricAssignment, MetricBare, AnalysisStrategy, ExperimentFull, MetricParameterType } from "src/lib/schemas"
-import { formatBoolean } from "src/utils/formatters"
-import * as Experiments from 'src/lib/experiments'
-import * as Variations from 'src/lib/variations'
-import * as Visualizations from 'src/lib/visualizations'
+import {
+  createStyles,
+  makeStyles,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Theme,
+  Typography,
+} from '@material-ui/core'
+import clsx from 'clsx'
+import _, { identity } from 'lodash'
+import { PlotData } from 'plotly.js'
+import React from 'react'
 import Plot from 'react-plotly.js'
+
 import DatetimeText from 'src/components/general/DatetimeText'
 import MetricValue from 'src/components/general/MetricValue'
+import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from 'src/lib/analyses'
+import * as Experiments from 'src/lib/experiments'
+import {
+  Analysis,
+  AnalysisStrategy,
+  ExperimentFull,
+  MetricAssignment,
+  MetricBare,
+  MetricParameterType,
+} from 'src/lib/schemas'
+import * as Variations from 'src/lib/variations'
+import * as Visualizations from 'src/lib/visualizations'
+import { formatBoolean } from 'src/utils/formatters'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -67,7 +84,7 @@ export default function MetricAssignmentResults({
   metric: MetricBare
   analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
   experiment: ExperimentFull
-}) {
+}): JSX.Element {
   const classes = useStyles()
 
   const isConversion = metric.parameterType === MetricParameterType.Conversion

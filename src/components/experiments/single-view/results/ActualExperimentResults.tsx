@@ -1,12 +1,5 @@
-import {
-  Chip,
-  createStyles,
-  makeStyles,
-  Paper,
-  Theme,
-  useTheme,
-} from '@material-ui/core'
-import _  from 'lodash'
+import { Chip, createStyles, makeStyles, Paper, Theme, useTheme } from '@material-ui/core'
+import _ from 'lodash'
 import MaterialTable from 'material-table'
 import { PlotData } from 'plotly.js'
 import React from 'react'
