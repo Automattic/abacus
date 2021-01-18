@@ -41,32 +41,6 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'space-between',
       marginBottom: theme.spacing(2),
     },
-    summaryStatsPaper: {
-      padding: theme.spacing(4),
-      marginLeft: theme.spacing(2),
-    },
-    summaryStatsPart: {
-      marginBottom: theme.spacing(3),
-    },
-    summaryStatsPartStrategy: {
-      marginTop: theme.spacing(6),
-    },
-    summaryStatsTotalNumber: {
-      fontSize: '3rem',
-      fontWeight: 500,
-    },
-    summaryStatsFinalizedNumber: {
-      fontSize: '2rem',
-      fontWeight: 500,
-    },
-    summaryStatsStrategyTitle: {
-      fontSize: '1.25rem',
-      fontWeight: 600,
-    },
-    participantsPlotPaper: {
-      padding: theme.spacing(4, 4, 2),
-      flex: 1,
-    },
     participantsPlot: {
       width: '100%',
       height: 300,
