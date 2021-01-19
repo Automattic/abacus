@@ -16,10 +16,6 @@ test('renders an appropriate message with no analyses', () => {
 test('renders the full tables with some analyses in debug mode', () => {
   const { container } = render(<ExperimentDebug analyses={analyses} experiment={experiment} metrics={metrics} />)
 
-  // In debug mode, we should have a <pre> element with the JSON.
-  expect(container).toHaveTextContent(`All analysis objects (${analyses.length})`)
-  expect(container.querySelector('.debug-json')).toMatchSnapshot()
-
   // Table snapshots are somewhat verbose, but they will allow us to see if there are any expected changes to the
   // numbers in the tables.
   expect(container.querySelector('.analysis-participant-counts')).toMatchSnapshot()
