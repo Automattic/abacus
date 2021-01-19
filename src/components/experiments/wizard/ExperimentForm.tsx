@@ -190,7 +190,7 @@ const ExperimentForm = ({
 
         return (
           <div className={classes.root}>
-            <Prompt when={formikProps.dirty} message='You have unsaved data, are you sure you want to leave?' />
+            <Prompt when={formikProps.dirty && !formikProps.isSubmitting} message='You have unsaved data, are you sure you want to leave?' />
             <div className={classes.navigation}>
               <Stepper nonLinear activeStep={currentStageId} orientation='vertical'>
                 {stages.map((stage) => (
