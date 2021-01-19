@@ -3,6 +3,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Formik } from 'formik'
 import _ from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
+import { Prompt } from 'react-router-dom'
 import * as yup from 'yup'
 
 import GeneralErrorAlert from 'src/components/general/GeneralErrorAlert'
@@ -189,6 +190,7 @@ const ExperimentForm = ({
 
         return (
           <div className={classes.root}>
+            <Prompt when={formikProps.dirty} message='You have unsaved data, are you sure you want to leave?' />
             <div className={classes.navigation}>
               <Stepper nonLinear activeStep={currentStageId} orientation='vertical'>
                 {stages.map((stage) => (
