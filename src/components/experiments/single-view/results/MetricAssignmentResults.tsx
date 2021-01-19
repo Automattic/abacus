@@ -72,6 +72,9 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
+/**
+ * Display results for a MetricAssignment
+ */
 export default function MetricAssignmentResults({
   latestDefaultAnalysis,
   metricAssignment,

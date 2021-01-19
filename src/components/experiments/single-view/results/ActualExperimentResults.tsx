@@ -51,6 +51,8 @@ const useStyles = makeStyles((theme: Theme) =>
 /**
  * Render the latest analyses for the experiment for each metric assignment as a single condensed table, using only
  * the experiment's default analysis strategy.
+ *
+ * Should be merged with ExperimentResults
  */
 export default function ActualExperimentResults({
   experiment,
