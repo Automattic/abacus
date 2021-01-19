@@ -1,8 +1,19 @@
-import { Chip, createStyles, makeStyles, Paper, Theme, useTheme } from '@material-ui/core'
+import {
+  Chip,
+  createStyles,
+  FormControl,
+  InputLabel,
+  makeStyles,
+  MenuItem,
+  Paper,
+  Select,
+  Theme,
+  useTheme,
+} from '@material-ui/core'
 import _ from 'lodash'
 import MaterialTable from 'material-table'
 import { PlotData } from 'plotly.js'
-import React from 'react'
+import React, { useState } from 'react'
 import Plot from 'react-plotly.js'
 
 import { AnalysisStrategyToHuman } from 'src/lib/analyses'
@@ -41,6 +52,11 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'space-between',
       marginBottom: theme.spacing(2),
     },
+    advancedControls: {
+      margin: theme.spacing(2, 0),
+      padding: theme.spacing(2),
+      display: 'inline-flex',
+    },
     participantsPlot: {
       width: '100%',
       height: 300,
@@ -64,8 +80,15 @@ export default function ActualExperimentResults({
   const classes = useStyles()
   const theme = useTheme()
 
-  // Sort the assignments for consistency and collect the data we need to render the component.
-  const defaultAnalysisStrategy = Experiments.getDefaultAnalysisStrategy(experiment)
+  const [strategy, setStrategy] = useState<AnalysisStrategy>(() => Experiments.getDefaultAnalysisStrategy(experiment))
+  // istanbul ignore next; Debug only
+  const onStrategyChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    if (!Object.values(AnalysisStrategy).includes(event.target.value as AnalysisStrategy)) {
+      throw new Error('Invalid strategy')
+    }
+
+    setStrategy(event.target.value as AnalysisStrategy)
+  }
 
   // When will the Javascript pipe operator ever arrive... :'(
   const metricAssignmentSummaryData = allMetricAssignmentAnalysesData.map(
@@ -80,10 +103,11 @@ export default function ActualExperimentResults({
       const recommendationConflict = _.uniq(_.map(recommendations, 'chosenVariationId')).length > 1
 
       return {
+        strategy,
         metricAssignment,
         metric,
         analysesByStrategyDateAsc,
-        latestDefaultAnalysis: _.last(analysesByStrategyDateAsc[defaultAnalysisStrategy]),
+        latestDefaultAnalysis: _.last(analysesByStrategyDateAsc[strategy]),
         recommendationConflict,
       }
     },
@@ -94,7 +118,6 @@ export default function ActualExperimentResults({
   const primaryMetricAssignmentAnalysesData = allMetricAssignmentAnalysesData.find(
     ({ metricAssignment: { isPrimary } }) => isPrimary,
   ) as MetricAssignmentAnalysesData
-  const strategy = Experiments.getDefaultAnalysisStrategy(experiment)
   const analyses = primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc[strategy]
   const dates = analyses.map(({ analysisDatetime }) => analysisDatetime.toISOString())
 
@@ -167,12 +190,14 @@ export default function ActualExperimentResults({
 
   const DetailPanel = [
     ({
+      strategy,
       analysesByStrategyDateAsc,
       latestDefaultAnalysis,
       metricAssignment,
       metric,
       recommendationConflict,
     }: {
+      strategy: AnalysisStrategy
       analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
       latestDefaultAnalysis?: Analysis
       metricAssignment: MetricAssignment
@@ -186,7 +211,7 @@ export default function ActualExperimentResults({
         render: () =>
           latestDefaultAnalysis && (
             <MetricAssignmentResults
-              {...{ analysesByStrategyDateAsc, latestDefaultAnalysis, metricAssignment, metric, experiment }}
+              {...{ strategy, analysesByStrategyDateAsc, metricAssignment, metric, experiment }}
             />
           ),
         disabled,
@@ -196,6 +221,23 @@ export default function ActualExperimentResults({
 
   return (
     <div className={classes.root}>
+      {
+        // istanbul ignore next; Debug only
+        isDebugMode() && (
+          <Paper className={classes.advancedControls}>
+            <FormControl>
+              <InputLabel htmlFor='strategy-selector'>Strategy:</InputLabel>
+              <Select id='strategy-selector' value={strategy} onChange={onStrategyChange}>
+                {Object.values(AnalysisStrategy).map((strat) => (
+                  <MenuItem key={strat} value={strat}>
+                    {AnalysisStrategyToHuman[strat]}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Paper>
+        )
+      }
       <Paper className={classes.summary}>
         <Plot
           layout={{
