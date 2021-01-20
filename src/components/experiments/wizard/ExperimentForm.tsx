@@ -139,6 +139,25 @@ const ExperimentForm = ({
     rootRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
   }, [currentStageId])
 
+  // Preventing accidental non-react-router navigate-aways:
+  const preventSubmissionRef = useRef<boolean>(false)
+  useEffect(() => {
+    // istanbul ignore next; trivial
+    // Sure we can test that these lines run but what is really important is how they
+    // behave in browsers, which IMO is too complicated to write tests for in this case.
+    const eventListener = (event: BeforeUnloadEvent) => {
+      if (preventSubmissionRef.current) {
+        event.preventDefault()
+        // Chrome requires returnValue to be set
+        event.returnValue = ''
+      }
+    }
+    window.addEventListener('beforeunload', eventListener)
+    return () => {
+      window.removeEventListener('beforeunload', eventListener)
+    }
+  }, [])
+
   return (
     <Formik
       initialValues={{ experiment: initialExperiment }}
@@ -188,10 +207,13 @@ const ExperimentForm = ({
           nextStage()
         }
 
+        preventSubmissionRef.current = formikProps.dirty && !formikProps.isSubmitting
+
         return (
           <div className={classes.root}>
+            {/* This is required for React Router navigate-away prevention */}
             <Prompt
-              when={formikProps.dirty && !formikProps.isSubmitting}
+              when={preventSubmissionRef.current}
               message='You have unsaved data, are you sure you want to leave?'
             />
             <div className={classes.navigation}>
