@@ -18,6 +18,7 @@ import Plot from 'react-plotly.js'
 import DatetimeText from 'src/components/general/DatetimeText'
 import MetricValue from 'src/components/general/MetricValue'
 import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from 'src/lib/analyses'
+import * as Experiments from 'src/lib/experiments'
 import {
   Analysis,
   AnalysisStrategy,
@@ -75,13 +76,13 @@ const useStyles = makeStyles((theme: Theme) =>
  * Display results for a MetricAssignment
  */
 export default function MetricAssignmentResults({
-  strategy,
+  latestDefaultAnalysis,
   metricAssignment,
   metric,
   analysesByStrategyDateAsc,
   experiment,
 }: {
-  strategy: AnalysisStrategy
+  latestDefaultAnalysis: Analysis
   metricAssignment: MetricAssignment
   metric: MetricBare
   analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
@@ -93,8 +94,8 @@ export default function MetricAssignmentResults({
   const estimateTransform: (estimate: number | null) => number | null = isConversion
     ? (estimate: number | null) => estimate && estimate * 100
     : identity
+  const strategy = Experiments.getDefaultAnalysisStrategy(experiment)
   const analyses = analysesByStrategyDateAsc[strategy]
-  const latestAnalysis = _.last(analyses)
   const dates = analyses.map(({ analysisDatetime }) => analysisDatetime.toISOString())
 
   const plotlyDataVariationGraph: Array<Partial<PlotData>> = [
@@ -178,10 +179,10 @@ export default function MetricAssignmentResults({
     },
   ]
 
-  const latestEstimates = latestAnalysis?.metricEstimates
+  const latestEstimates = latestDefaultAnalysis.metricEstimates
 
   // istanbul ignore next; Shouldn't occur
-  if (!latestAnalysis || !latestEstimates) {
+  if (!latestEstimates) {
     throw new Error('Missing analysis data.')
   }
 
@@ -220,7 +221,7 @@ export default function MetricAssignmentResults({
       </Typography>
       <Table>
         <TableBody>
-          {latestAnalysis.recommendation && (
+          {latestDefaultAnalysis.recommendation && (
             <>
               <TableRow>
                 <TableCell
@@ -309,7 +310,7 @@ export default function MetricAssignmentResults({
               </TableRow>
             </React.Fragment>
           ))}
-          {latestAnalysis.recommendation && latestAnalysis.recommendation.warnings.length > 0 && (
+          {latestDefaultAnalysis.recommendation && latestDefaultAnalysis.recommendation.warnings.length > 0 && (
             <TableRow>
               <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
                 <span role='img' aria-label=''>
@@ -318,7 +319,7 @@ export default function MetricAssignmentResults({
                 Warnings
               </TableCell>
               <TableCell className={classes.monospace}>
-                {latestAnalysis.recommendation.warnings.map((warning) => (
+                {latestDefaultAnalysis.recommendation.warnings.map((warning) => (
                   <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
                 ))}
               </TableCell>
@@ -367,7 +368,7 @@ export default function MetricAssignmentResults({
               Last analyzed
             </TableCell>
             <TableCell>
-              <DatetimeText datetime={latestAnalysis.analysisDatetime} excludeTime={true} />
+              <DatetimeText datetime={latestDefaultAnalysis.analysisDatetime} excludeTime={true} />
             </TableCell>
           </TableRow>
           <TableRow>
@@ -375,7 +376,7 @@ export default function MetricAssignmentResults({
               Analysis strategy
             </TableCell>
             <TableCell className={classes.monospace}>
-              {AnalysisStrategyToHuman[latestAnalysis.analysisStrategy]}
+              {AnalysisStrategyToHuman[latestDefaultAnalysis.analysisStrategy]}
             </TableCell>
           </TableRow>
           <TableRow>
@@ -383,10 +384,11 @@ export default function MetricAssignmentResults({
               Analyzed participants
             </TableCell>
             <TableCell className={classes.monospace}>
-              {latestAnalysis.participantStats.total} ({latestAnalysis.participantStats.not_final} not final
+              {latestDefaultAnalysis.participantStats.total} ({latestDefaultAnalysis.participantStats.not_final} not
+              final
               {Variations.sort(experiment.variations).map(({ variationId, name }) => (
                 <span key={variationId}>
-                  ; {latestAnalysis.participantStats[`variation_${variationId}`]} in {name}
+                  ; {latestDefaultAnalysis.participantStats[`variation_${variationId}`]} in {name}
                 </span>
               ))}
               )
