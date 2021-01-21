@@ -384,13 +384,14 @@ export default function MetricAssignmentResults({
               Analyzed participants
             </TableCell>
             <TableCell className={classes.monospace}>
-              {latestDefaultAnalysis.participantStats.total} ({latestDefaultAnalysis.participantStats.not_final} not
-              final
-              {Variations.sort(experiment.variations).map(({ variationId, name }) => (
-                <span key={variationId}>
-                  ; {latestDefaultAnalysis.participantStats[`variation_${variationId}`]} in {name}
-                </span>
-              ))}
+              {latestDefaultAnalysis.participantStats.total} (
+              {_.join(
+                Variations.sort(experiment.variations).map(
+                  ({ variationId, name }) =>
+                    `${latestDefaultAnalysis.participantStats[`variation_${variationId}`]} in ${name}`,
+                ),
+                '; ',
+              )}
               )
             </TableCell>
           </TableRow>

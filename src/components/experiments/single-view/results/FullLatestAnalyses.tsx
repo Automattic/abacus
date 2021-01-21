@@ -36,8 +36,8 @@ export default function FullLatestAnalyses({
   const tableColumns = [
     { title: 'Strategy', render: ({ analysisStrategy }: Analysis) => AnalysisStrategyToHuman[analysisStrategy] },
     {
-      title: 'Participants (not final)',
-      render: ({ participantStats }: Analysis) => `${participantStats.total} (${participantStats.not_final})`,
+      title: 'Participants',
+      render: ({ participantStats }: Analysis) => `${participantStats.total}`,
     },
     {
       title: 'Difference interval',

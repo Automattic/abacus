@@ -33,7 +33,6 @@ function createAnalysis(fieldOverrides: Partial<Analysis>): Analysis {
     analysisStrategy: AnalysisStrategy.IttPure,
     participantStats: {
       total: 1000,
-      not_final: 100,
       variation_1: 600,
       variation_2: 400,
     },
@@ -60,7 +59,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.IttPure,
       participantStats: {
         total: 1000,
-        not_final: 100,
         variation_1: 600,
         variation_2: 400,
       },
@@ -69,7 +67,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.MittNoCrossovers,
       participantStats: {
         total: 900,
-        not_final: 90,
         variation_1: 540,
         variation_2: 360,
       },
@@ -84,7 +81,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.MittNoSpammers,
       participantStats: {
         total: 850,
-        not_final: 85,
         variation_1: 510,
         variation_2: 340,
       },
@@ -99,7 +95,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
       participantStats: {
         total: 800,
-        not_final: 80,
         variation_1: 480,
         variation_2: 320,
       },
@@ -108,7 +103,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.PpNaive,
       participantStats: {
         total: 700,
-        not_final: 70,
         variation_1: 420,
         variation_2: 280,
       },
@@ -119,7 +113,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.IttPure,
       participantStats: {
         total: 100,
-        not_final: 10,
         variation_1: 60,
         variation_2: 40,
       },
@@ -129,7 +122,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.MittNoCrossovers,
       participantStats: {
         total: 90,
-        not_final: 9,
         variation_1: 54,
         variation_2: 36,
       },
@@ -145,7 +137,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.MittNoSpammers,
       participantStats: {
         total: 85,
-        not_final: 8,
         variation_1: 51,
         variation_2: 34,
       },
@@ -161,7 +152,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
       participantStats: {
         total: 80,
-        not_final: 8,
         variation_1: 48,
         variation_2: 32,
       },
@@ -171,7 +161,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.PpNaive,
       participantStats: {
         total: 70,
-        not_final: 7,
         variation_1: 42,
         variation_2: 28,
       },
@@ -184,7 +173,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.IttPure,
       participantStats: {
         total: 10,
-        not_final: 10,
         variation_1: 10,
       },
       metricEstimates: null,
@@ -197,7 +185,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.IttPure,
       participantStats: {
         total: 2000,
-        not_final: 200,
         variation_1: 1200,
         variation_2: 800,
       },
@@ -207,7 +194,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.MittNoCrossovers,
       participantStats: {
         total: 1800,
-        not_final: 180,
         variation_1: 1080,
         variation_2: 720,
       },
@@ -217,7 +203,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.MittNoSpammers,
       participantStats: {
         total: 1700,
-        not_final: 170,
         variation_1: 920,
         variation_2: 780,
       },
@@ -227,7 +212,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
       participantStats: {
         total: 1600,
-        not_final: 160,
         variation_1: 960,
         variation_2: 640,
       },
@@ -237,7 +221,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.PpNaive,
       participantStats: {
         total: 1400,
-        not_final: 140,
         variation_1: 840,
         variation_2: 560,
       },
@@ -247,7 +230,6 @@ function createAnalyses(): Analysis[] {
       analysisStrategy: AnalysisStrategy.PpNaive,
       participantStats: {
         total: 1200,
-        not_final: 140,
         variation_1: 940,
         variation_2: 660,
       },

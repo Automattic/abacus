@@ -637,20 +637,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         >
           1000
            (
-          100
-           not final
-          <span>
-            ; 
-            600
-             in 
-            control
-          </span>
-          <span>
-            ; 
-            400
-             in 
-            test
-          </span>
+          600 in control; 400 in test
           )
         </td>
       </tr>
@@ -1363,20 +1350,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         >
           1200
            (
-          140
-           not final
-          <span>
-            ; 
-            940
-             in 
-            control
-          </span>
-          <span>
-            ; 
-            660
-             in 
-            test
-          </span>
+          940 in control; 660 in test
           )
         </td>
       </tr>
@@ -2274,20 +2248,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         >
           1200
            (
-          140
-           not final
-          <span>
-            ; 
-            940
-             in 
-            control
-          </span>
-          <span>
-            ; 
-            660
-             in 
-            test
-          </span>
+          940 in control; 660 in test
           )
         </td>
       </tr>
