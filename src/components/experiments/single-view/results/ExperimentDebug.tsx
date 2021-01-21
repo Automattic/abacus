@@ -1,7 +1,6 @@
 import _ from 'lodash'
 import React from 'react'
 
-import DebugOutput from 'src/components/general/DebugOutput'
 import * as Experiments from 'src/lib/experiments'
 import * as MetricAssignments from 'src/lib/metric-assignments'
 import { indexMetrics } from 'src/lib/normalizers'
@@ -68,9 +67,6 @@ export default function ExperimentDebug({
         <h3>Latest results by metric</h3>
         <FullLatestAnalyses experiment={experiment} allMetricAssignmentAnalysesData={allMetricAssignmentAnalysesData} />
       </div>
-
-      <p>Found {analyses.length} analysis objects in total.</p>
-      <DebugOutput label={`All analysis objects (${analyses.length})`} content={analyses} className='debug-json' />
     </>
   )
 }
