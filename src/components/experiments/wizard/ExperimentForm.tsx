@@ -3,6 +3,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Formik } from 'formik'
 import _ from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
+import { Prompt } from 'react-router-dom'
 import * as yup from 'yup'
 
 import GeneralErrorAlert from 'src/components/general/GeneralErrorAlert'
@@ -138,6 +139,25 @@ const ExperimentForm = ({
     rootRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
   }, [currentStageId])
 
+  // Preventing accidental non-react-router navigate-aways:
+  const preventSubmissionRef = useRef<boolean>(false)
+  useEffect(() => {
+    // istanbul ignore next; trivial
+    // Sure we can test that these lines run but what is really important is how they
+    // behave in browsers, which IMO is too complicated to write tests for in this case.
+    const eventListener = (event: BeforeUnloadEvent) => {
+      if (preventSubmissionRef.current) {
+        event.preventDefault()
+        // Chrome requires returnValue to be set
+        event.returnValue = ''
+      }
+    }
+    window.addEventListener('beforeunload', eventListener)
+    return () => {
+      window.removeEventListener('beforeunload', eventListener)
+    }
+  }, [])
+
   return (
     <Formik
       initialValues={{ experiment: initialExperiment }}
@@ -187,8 +207,15 @@ const ExperimentForm = ({
           nextStage()
         }
 
+        preventSubmissionRef.current = formikProps.dirty && !formikProps.isSubmitting
+
         return (
           <div className={classes.root}>
+            {/* This is required for React Router navigate-away prevention */}
+            <Prompt
+              when={preventSubmissionRef.current}
+              message='You have unsaved data, are you sure you want to leave?'
+            />
             <div className={classes.navigation}>
               <Stepper nonLinear activeStep={currentStageId} orientation='vertical'>
                 {stages.map((stage) => (
@@ -275,7 +302,7 @@ const ExperimentForm = ({
                       </Typography>
                       <Typography variant='body2' gutterBottom>
                         Now is a good time to{' '}
-                        <Link href='https://github.com/Automattic/experimentation-platform/wiki'>
+                        <Link href='https://github.com/Automattic/experimentation-platform/wiki' target='_blank'>
                           check our wiki&apos;s experiment creation checklist
                         </Link>{' '}
                         and confirm everything is in place.
