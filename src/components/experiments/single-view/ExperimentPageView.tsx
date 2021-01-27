@@ -145,7 +145,7 @@ export default function ExperimentPageView({
 
   const isLoading = or(experimentIsLoading, metricsIsLoading, segmentsIsLoading, tagsIsLoading, analysesIsLoading)
 
-  const canEditInWizard = experiment && experiment.status === Status.Staging && experiment.name !== 'nav_unification_v2'
+  const canEditInWizard = experiment && experiment.status === Status.Staging
 
   const experimentIdSlug = createIdSlug(experimentId, experiment?.name || '')
 

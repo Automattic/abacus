@@ -38,8 +38,7 @@ const ExperimentRunButton = ({
   const dangerClasses = useDangerStyles()
   const { enqueueSnackbar } = useSnackbar()
 
-  const canRunExperiment =
-    experiment && experiment.status === Status.Staging && experiment.name !== 'nav_unification_v2'
+  const canRunExperiment = experiment && experiment.status === Status.Staging
   const [isAskingToConfirmRunExperiment, setIsAskingToConfirmRunExperiment] = useState<boolean>(false)
   const onAskToConfirmRunExperiment = () => setIsAskingToConfirmRunExperiment(true)
   const onCancelRunExperiment = () => setIsAskingToConfirmRunExperiment(false)
