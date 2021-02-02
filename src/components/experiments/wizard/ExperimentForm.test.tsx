@@ -338,13 +338,13 @@ test('skipping to submit should check all sections', async () => {
 
   expect(isSectionError(startSectionButton)).toBe(true)
   expect(isSectionError(basicInfoSectionButton)).toBe(true)
-  expect(isSectionError(audienceSectionButton)).toBe(false)
+  expect(isSectionError(audienceSectionButton)).toBe(true)
   expect(isSectionError(metricsSectionButton)).toBe(true)
   expect(isSectionError(submitSectionButton)).toBe(false)
 
   expect(isSectionComplete(startSectionButton)).toBe(false)
   expect(isSectionComplete(basicInfoSectionButton)).toBe(false)
-  expect(isSectionComplete(audienceSectionButton)).toBe(true)
+  expect(isSectionComplete(audienceSectionButton)).toBe(false)
   expect(isSectionComplete(metricsSectionButton)).toBe(false)
   expect(isSectionComplete(submitSectionButton)).toBe(false)
 })
@@ -406,6 +406,19 @@ test('form submits with valid fields', async () => {
 
   // ### Audience
   screen.getByText(/Define Your Audience/)
+
+  const platformField = screen.getByRole('button', { name: /Select a Platform/ })
+  await act(async () => {
+    fireEvent.focus(platformField)
+  })
+  await act(async () => {
+    fireEvent.keyDown(platformField, { key: 'Enter' })
+  })
+  const platformOption = await screen.findByRole('option', { name: /wpcom/ })
+  await act(async () => {
+    fireEvent.click(platformOption)
+  })
+
   const targetingField = screen.getByRole('textbox', { name: /Targeting/ })
   fireEvent.change(targetingField, { target: { value: 'segment_3' } })
   const targetingOption = await screen.findByRole('option', { name: /Locale: segment_3/ })

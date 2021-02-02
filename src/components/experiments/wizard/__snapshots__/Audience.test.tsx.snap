@@ -17,7 +17,7 @@ exports[`renders as expected 1`] = `
         class="MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiFormLabel-filled Mui-required"
+          class="MuiFormLabel-root Mui-required"
         >
           Platform
           <span
@@ -39,14 +39,12 @@ exports[`renders as expected 1`] = `
             role="button"
             tabindex="0"
           >
-            wpcom
-            : 
-            WordPress.com back-end
+            Select a Platform
           </div>
           <input
             name="experiment.platform"
             type="hidden"
-            value="wpcom"
+            value=""
           />
           <svg
             aria-hidden="true"
@@ -716,7 +714,7 @@ exports[`renders as expected 2`] = `
         class="MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiFormLabel-filled Mui-required"
+          class="MuiFormLabel-root Mui-required"
         >
           Platform
           <span
@@ -738,14 +736,12 @@ exports[`renders as expected 2`] = `
             role="button"
             tabindex="0"
           >
-            wpcom
-            : 
-            WordPress.com back-end
+            Select a Platform
           </div>
           <input
             name="experiment.platform"
             type="hidden"
-            value="wpcom"
+            value=""
           />
           <svg
             aria-hidden="true"

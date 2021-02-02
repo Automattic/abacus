@@ -1643,7 +1643,7 @@ exports[`sections should be browsable by the section buttons 3`] = `
           />
         </div>
         <div
-          class="MuiStep-root MuiStep-vertical MuiStep-completed"
+          class="MuiStep-root MuiStep-vertical"
         >
           <button
             class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
@@ -1651,19 +1651,19 @@ exports[`sections should be browsable by the section buttons 3`] = `
             type="button"
           >
             <span
-              class="MuiStepLabel-root MuiStepLabel-vertical"
+              class="MuiStepLabel-root MuiStepLabel-vertical Mui-error"
             >
               <span
                 class="MuiStepLabel-iconContainer"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiStepIcon-root MuiStepIcon-completed"
+                  class="MuiSvgIcon-root MuiStepIcon-root Mui-error"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm-2 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"
+                    d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
                   />
                 </svg>
               </span>
@@ -1671,7 +1671,7 @@ exports[`sections should be browsable by the section buttons 3`] = `
                 class="MuiStepLabel-labelContainer"
               >
                 <span
-                  class="MuiTypography-root MuiStepLabel-label MuiStepLabel-completed MuiTypography-body2 MuiTypography-displayBlock"
+                  class="MuiTypography-root MuiStepLabel-label Mui-error MuiTypography-body2 MuiTypography-displayBlock"
                 >
                   Audience
                 </span>
@@ -1979,7 +1979,7 @@ exports[`sections should be browsable by the section buttons 4`] = `
           />
         </div>
         <div
-          class="MuiStep-root MuiStep-vertical MuiStep-completed"
+          class="MuiStep-root MuiStep-vertical"
         >
           <button
             class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
@@ -1987,19 +1987,19 @@ exports[`sections should be browsable by the section buttons 4`] = `
             type="button"
           >
             <span
-              class="MuiStepLabel-root MuiStepLabel-vertical"
+              class="MuiStepLabel-root MuiStepLabel-vertical Mui-error"
             >
               <span
                 class="MuiStepLabel-iconContainer"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiStepIcon-root MuiStepIcon-completed"
+                  class="MuiSvgIcon-root MuiStepIcon-root Mui-error"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm-2 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"
+                    d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
                   />
                 </svg>
               </span>
@@ -2007,7 +2007,7 @@ exports[`sections should be browsable by the section buttons 4`] = `
                 class="MuiStepLabel-labelContainer"
               >
                 <span
-                  class="MuiTypography-root MuiStepLabel-label MuiStepLabel-completed MuiTypography-body2 MuiTypography-displayBlock"
+                  class="MuiTypography-root MuiStepLabel-label Mui-error MuiTypography-body2 MuiTypography-displayBlock"
                 >
                   Audience
                 </span>
@@ -2571,7 +2571,7 @@ exports[`skipping to submit should check all sections 1`] = `
           />
         </div>
         <div
-          class="MuiStep-root MuiStep-vertical MuiStep-completed"
+          class="MuiStep-root MuiStep-vertical"
         >
           <button
             class="MuiButtonBase-root MuiStepButton-root MuiStepButton-vertical"
@@ -2579,19 +2579,19 @@ exports[`skipping to submit should check all sections 1`] = `
             type="button"
           >
             <span
-              class="MuiStepLabel-root MuiStepLabel-vertical"
+              class="MuiStepLabel-root MuiStepLabel-vertical Mui-error"
             >
               <span
                 class="MuiStepLabel-iconContainer"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiStepIcon-root MuiStepIcon-completed"
+                  class="MuiSvgIcon-root MuiStepIcon-root Mui-error"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm-2 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"
+                    d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
                   />
                 </svg>
               </span>
@@ -2599,7 +2599,7 @@ exports[`skipping to submit should check all sections 1`] = `
                 class="MuiStepLabel-labelContainer"
               >
                 <span
-                  class="MuiTypography-root MuiStepLabel-label MuiStepLabel-completed MuiTypography-body2 MuiTypography-displayBlock"
+                  class="MuiTypography-root MuiStepLabel-label Mui-error MuiTypography-body2 MuiTypography-displayBlock"
                 >
                   Audience
                 </span>

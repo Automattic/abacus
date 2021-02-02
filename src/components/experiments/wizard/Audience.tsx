@@ -160,7 +160,10 @@ const Audience = ({
       <div className={classes.row}>
         <FormControl component='fieldset'>
           <FormLabel required>Platform</FormLabel>
-          <Field component={Select} name='experiment.platform'>
+          <Field component={Select} name='experiment.platform' displayEmpty>
+            <MenuItem value='' disabled>
+              Select a Platform
+            </MenuItem>
             {Object.values(Platform).map((platform) => (
               <MenuItem key={platform} value={platform}>
                 {platform}: {PlatformToHuman[platform]}

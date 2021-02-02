@@ -20,7 +20,7 @@ describe('lib/form-data.test.ts module', () => {
           "name": "",
           "ownerLogin": "",
           "p2Url": "",
-          "platform": "wpcom",
+          "platform": "",
           "segmentAssignments": Array [],
           "startDatetime": "",
           "variations": Array [
