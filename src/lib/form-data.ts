@@ -6,7 +6,6 @@ import {
   MetricAssignment,
   MetricFull,
   MetricParameterType,
-  Platform,
   SegmentAssignment,
   TagBare,
   Variation,
