@@ -42,5 +42,7 @@ export const PlatformToHuman: Record<Platform, string> = {
   [Platform.Calypso]: 'Calypso front-end',
   [Platform.Email]: 'Guides and other email systems',
   [Platform.Pipe]: 'Machine learning pipeline',
+  [Platform.Wpandroid]: 'WordPress Android app',
   [Platform.Wpcom]: 'WordPress.com back-end',
+  [Platform.Wpios]: 'WordPress iOS app',
 }

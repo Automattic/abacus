@@ -243,7 +243,9 @@ export enum Platform {
   Calypso = 'calypso',
   Email = 'email',
   Pipe = 'pipe',
+  Wpandroid = 'wpandroid',
   Wpcom = 'wpcom',
+  Wpios = 'wpios',
 }
 
 export enum Status {
