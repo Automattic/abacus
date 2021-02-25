@@ -1,4 +1,4 @@
-import { AnalysisStrategy, ExperimentFull, Platform, Variation } from './schemas'
+import { AnalysisStrategy, AssignmentCacheStatus, ExperimentFull, Platform, Variation } from './schemas'
 
 /**
  * Return the deployed variation if one has been selected, otherwise `null`.
@@ -45,4 +45,10 @@ export const PlatformToHuman: Record<Platform, string> = {
   [Platform.Wpandroid]: 'WordPress Android app',
   [Platform.Wpcom]: 'WordPress.com back-end',
   [Platform.Wpios]: 'WordPress iOS app',
+}
+
+export const AssignmentCacheStatusToHuman: Record<AssignmentCacheStatus, string> = {
+  [AssignmentCacheStatus.Fresh]: 'Fresh: The cache matches the database for this experiment',
+  [AssignmentCacheStatus.Missing]: 'Missing: Expected for new or disabled experiments',
+  [AssignmentCacheStatus.Stale]: 'Stale: Recent changes take up to ten minutes to propagate',
 }

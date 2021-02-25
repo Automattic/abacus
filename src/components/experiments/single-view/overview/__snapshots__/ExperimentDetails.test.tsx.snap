@@ -179,6 +179,26 @@ exports[`renders as expected at large width 1`] = `
                     </a>
                   </td>
                 </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Assignment Cache Entry
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-5"
+                    >
+                      Fresh: The cache matches the database for this experiment
+                    </span>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -917,6 +937,26 @@ exports[`renders as expected at small width 1`] = `
                     >
                       https://wordpress.com/experiment_1
                     </a>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Assignment Cache Entry
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-40"
+                    >
+                      Fresh: The cache matches the database for this experiment
+                    </span>
                   </td>
                 </tr>
               </tbody>
@@ -1659,6 +1699,26 @@ exports[`renders as expected with conclusion data 1`] = `
                     >
                       https://wordpress.com/experiment_1
                     </a>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Assignment Cache Entry
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-75"
+                    >
+                      Fresh: The cache matches the database for this experiment
+                    </span>
                   </td>
                 </tr>
               </tbody>
@@ -2505,6 +2565,26 @@ exports[`renders as expected without conclusion data 1`] = `
                     >
                       https://wordpress.com/experiment_1
                     </a>
+                  </td>
+                </tr>
+                <tr
+                  class="MuiTableRow-root"
+                >
+                  <th
+                    class="MuiTableCell-root MuiTableCell-head"
+                    role="cell"
+                    scope="row"
+                  >
+                    Assignment Cache Entry
+                  </th>
+                  <td
+                    class="MuiTableCell-root MuiTableCell-body"
+                  >
+                    <span
+                      class="makeStyles-monospace-112"
+                    >
+                      Fresh: The cache matches the database for this experiment
+                    </span>
                   </td>
                 </tr>
               </tbody>

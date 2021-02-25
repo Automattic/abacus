@@ -189,6 +189,26 @@ test('renders as expected', () => {
                 </a>
               </td>
             </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="cell"
+                scope="row"
+              >
+                Assignment Cache Entry
+              </th>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                <span
+                  class="makeStyles-monospace-5"
+                >
+                  Fresh: The cache matches the database for this experiment
+                </span>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

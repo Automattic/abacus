@@ -9,6 +9,7 @@ import _ from 'lodash'
 import {
   Analysis,
   AnalysisStrategy,
+  AssignmentCacheStatus,
   AttributionWindowSeconds,
   ExperimentFull,
   ExperimentFullNew,
@@ -328,11 +329,13 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
     'metricAssignments',
     'segmentAssignments',
     'exposureEvents',
+    'assignmentCacheStatus',
   ]
   const newExperimentFieldOverrides = {
     ..._.omit(fieldOverrides, fieldsOnlyForExistingExperiments),
     exposureEvents: undefined,
     status: undefined,
+    assignmentCacheStatus: undefined,
   }
   const existingExperimentFieldOverrides = _.pick(fieldOverrides, fieldsOnlyForExistingExperiments)
 
@@ -412,6 +415,7 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
       },
     ],
     exclusionGroupTagIds: [1],
+    assignmentCacheStatus: AssignmentCacheStatus.Fresh,
     ...existingExperimentFieldOverrides,
   }
 }

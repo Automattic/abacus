@@ -29,6 +29,7 @@ import LabelValueTable from 'src/components/general/LabelValueTable'
 import { ExperimentFull, experimentFullSchema, Status, yupPick } from 'src/lib/schemas'
 import { formatIsoDate } from 'src/utils/time'
 
+import { AssignmentCacheStatusToHuman } from '../../../../lib/experiments'
 import LoadingButtonContainer from '../../../general/LoadingButtonContainer'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -99,6 +100,12 @@ function GeneralPanel({
         <Link href={experiment.p2Url} rel='noopener noreferrer' target='_blank' className={classes.monospace}>
           {experiment.p2Url}
         </Link>
+      ),
+    },
+    {
+      label: 'Assignment Cache Entry',
+      value: (
+        <span className={classes.monospace}>{AssignmentCacheStatusToHuman[experiment.assignmentCacheStatus]}</span>
       ),
     },
   ]

@@ -626,14 +626,15 @@ test('form submits an edited experiment without any changes', async () => {
   )
 
   // We need to remove Ids, status, conclusion data, reformat exposure events to make it like new
-  const newShapedExperiment = _.clone(experiment)
-  // @ts-ignore
-  delete newShapedExperiment.experimentId
-  // @ts-ignore
-  delete newShapedExperiment.status
-  delete newShapedExperiment.conclusionUrl
-  delete newShapedExperiment.deployedVariationId
-  delete newShapedExperiment.endReason
+  const newShapedExperiment = _.omit(
+    _.clone(experiment),
+    'experimentId',
+    'status',
+    'assignmentCacheStatus',
+    'conclusionUrl',
+    'deployedVariationId',
+    'endReason',
+  )
   // @ts-ignore
   newShapedExperiment.metricAssignments.forEach((metricAssignment) => delete metricAssignment.metricAssignmentId)
   // @ts-ignore

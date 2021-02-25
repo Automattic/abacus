@@ -255,6 +255,12 @@ export enum Status {
   Disabled = 'disabled',
 }
 
+export enum AssignmentCacheStatus {
+  Fresh = 'fresh',
+  Missing = 'missing',
+  Stale = 'stale',
+}
+
 export const MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS = 12
 export const MAX_DISTANCE_BETWEEN_START_AND_END_DATE_IN_MONTHS = 12
 export const experimentBareSchema = yup
@@ -301,16 +307,19 @@ export const experimentFullSchema = experimentBareSchema
     segmentAssignments: yup.array(segmentAssignmentSchema).defined(),
     variations: yup.array<Variation>(variationSchema).defined().min(2),
     exclusionGroupTagIds: yup.array(idSchema.defined()),
+    assignmentCacheStatus: yup.string().oneOf(Object.values(AssignmentCacheStatus)).defined(),
   })
   .defined()
   .camelCase()
 export interface ExperimentFull extends yup.InferType<typeof experimentFullSchema> {}
 
 const now = new Date()
+// The following definition is a bit hacky, but it effectively undefines a field from the parent schema.
+const yupUndefined = yup.mixed().oneOf([]).notRequired()
 export const experimentFullNewSchema = experimentFullSchema.shape({
   experimentId: idSchema.nullable(),
-  // This effectively makes status undefined (best I could do in yup)
-  status: yup.mixed().oneOf([]).notRequired(),
+  status: yupUndefined,
+  assignmentCacheStatus: yupUndefined,
   startDatetime: dateSchema
     .defined()
     .test(
