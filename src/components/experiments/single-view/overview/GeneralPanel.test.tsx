@@ -205,7 +205,7 @@ test('renders as expected', () => {
                 <span
                   class="makeStyles-monospace-5"
                 >
-                  Fresh: The cache matches the database for this experiment
+                  ✅ Fresh: The cache matches the database for this experiment
                    (
                   <a
                     class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"

@@ -195,7 +195,7 @@ exports[`renders as expected at large width 1`] = `
                     <span
                       class="makeStyles-monospace-5"
                     >
-                      Fresh: The cache matches the database for this experiment
+                      ✅ Fresh: The cache matches the database for this experiment
                        (
                       <a
                         class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
@@ -965,7 +965,7 @@ exports[`renders as expected at small width 1`] = `
                     <span
                       class="makeStyles-monospace-40"
                     >
-                      Fresh: The cache matches the database for this experiment
+                      ✅ Fresh: The cache matches the database for this experiment
                        (
                       <a
                         class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
@@ -1737,7 +1737,7 @@ exports[`renders as expected with conclusion data 1`] = `
                     <span
                       class="makeStyles-monospace-75"
                     >
-                      Fresh: The cache matches the database for this experiment
+                      ✅ Fresh: The cache matches the database for this experiment
                        (
                       <a
                         class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
@@ -2613,7 +2613,7 @@ exports[`renders as expected without conclusion data 1`] = `
                     <span
                       class="makeStyles-monospace-112"
                     >
-                      Fresh: The cache matches the database for this experiment
+                      ✅ Fresh: The cache matches the database for this experiment
                        (
                       <a
                         class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
