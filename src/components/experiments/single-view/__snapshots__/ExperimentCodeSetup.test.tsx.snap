@@ -14,7 +14,8 @@ exports[`renders as expected 1`] = `
     <p
       class="MuiTypography-root MuiTypography-body1"
     >
-      See 
+      See
+       
       <a
         class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
         href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#writing-the-controlvariant-code-experiences"
@@ -23,7 +24,8 @@ exports[`renders as expected 1`] = `
       >
         the wiki
       </a>
-       for platform-specific instructions.
+       
+      for platform-specific instructions.
     </p>
     <p
       class="MuiTypography-root MuiTypography-body1"
@@ -44,7 +46,7 @@ exports[`renders as expected 1`] = `
       >
         svn up
       </code>
-       to manually update your sandbox copy of the cache to see the latest changes.
+       to update your sandbox copy of the cache to reflect the latest changes.
     </p>
   </div>
 </div>
