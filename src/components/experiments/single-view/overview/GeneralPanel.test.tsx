@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/require-await, no-irregular-whitespace */
 import { fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import { noop } from 'lodash'
 import MockDate from 'mockdate'
@@ -206,6 +206,16 @@ test('renders as expected', () => {
                   class="makeStyles-monospace-5"
                 >
                   Fresh: The cache matches the database for this experiment
+                   (
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#the-file-system-cache"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    learn more
+                  </a>
+                  )
                 </span>
               </td>
             </tr>

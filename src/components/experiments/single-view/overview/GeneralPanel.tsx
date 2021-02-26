@@ -105,7 +105,18 @@ function GeneralPanel({
     {
       label: 'Assignment Cache Entry',
       value: (
-        <span className={classes.monospace}>{AssignmentCacheStatusToHuman[experiment.assignmentCacheStatus]}</span>
+        <span className={classes.monospace}>
+          {AssignmentCacheStatusToHuman[experiment.assignmentCacheStatus]}&nbsp;(
+          <Link
+            href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#the-file-system-cache"
+            rel='noopener noreferrer'
+            target='_blank'
+            underline='always'
+          >
+            learn more
+          </Link>
+          )
+        </span>
       ),
     },
   ]

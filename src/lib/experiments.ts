@@ -49,6 +49,6 @@ export const PlatformToHuman: Record<Platform, string> = {
 
 export const AssignmentCacheStatusToHuman: Record<AssignmentCacheStatus, string> = {
   [AssignmentCacheStatus.Fresh]: 'Fresh: The cache matches the database for this experiment',
-  [AssignmentCacheStatus.Missing]: 'Missing: Expected for new or disabled experiments',
+  [AssignmentCacheStatus.Missing]: 'Missing: Expected for new, renamed, or disabled experiments',
   [AssignmentCacheStatus.Stale]: 'Stale: Recent changes take up to ten minutes to propagate',
 }
