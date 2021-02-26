@@ -5,6 +5,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Link,
   makeStyles,
   Tooltip,
   Typography,
@@ -91,10 +92,19 @@ const ExperimentRunButton = ({
         </DialogTitle>
         <DialogContent>
           <Typography variant='body2' gutterBottom>
-            Deploying will <strong>release experiment code to our users.</strong>
+            Deploying will <strong>release experiment code to our users.</strong> This may take up to ten minutes to
+            propagate to all servers due to{' '}
+            <Link
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#the-file-system-cache"
+              rel='noopener noreferrer'
+              target='_blank'
+            >
+              the file system assignment cache
+            </Link>
+            .
           </Typography>
           <Typography variant='body2' gutterBottom>
-            It also changes the experiment&apos;s status to running, which is <strong>irreversible</strong>.
+            Deploying also changes the experiment&apos;s status to running, which is <strong>irreversible</strong>.
           </Typography>
           <div className={classes.dangerImage}>
             <img src='/img/danger.gif' alt='DANGER!' />
