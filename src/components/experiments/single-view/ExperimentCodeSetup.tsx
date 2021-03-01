@@ -29,8 +29,9 @@ export default function ExperimentCodeSetup(): JSX.Element {
         </Link>{' '}
         for platform-specific instructions.
       </Typography>
+      <br />
       <Typography variant='body1'>
-        When testing manually, note that changes may take up to ten minutes to propagate due to{' '}
+        When testing manually, note that <strong>changes may take up to ten minutes to propagate</strong> due to{' '}
         <Link
           href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#the-file-system-cache"
           rel='noopener noreferrer'

@@ -27,10 +27,15 @@ exports[`renders as expected 1`] = `
        
       for platform-specific instructions.
     </p>
+    <br />
     <p
       class="MuiTypography-root MuiTypography-body1"
     >
-      When testing manually, note that changes may take up to ten minutes to propagate due to
+      When testing manually, note that 
+      <strong>
+        changes may take up to ten minutes to propagate
+      </strong>
+       due to
        
       <a
         class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
