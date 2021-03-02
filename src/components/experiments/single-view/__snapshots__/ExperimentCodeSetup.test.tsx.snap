@@ -10,42 +10,48 @@ exports[`renders as expected 1`] = `
     >
       Experiment Code Setup
     </h4>
-    <h6
-      class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-gutterBottom"
-    >
-      Connect this experiment to your code.
-    </h6>
     <br />
-    <h5
-      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
-    >
-      Using React
-    </h5>
     <p
       class="MuiTypography-root MuiTypography-body1"
     >
+      See
+       
       <a
-        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-        href="https://github.com/Automattic/wp-calypso/tree/master/client/components/experiment"
+        class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
+        href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#writing-the-controlvariant-code-experiences"
+        rel="noopener noreferrer"
+        target="_blank"
       >
-        See this Readme
+        the wiki
       </a>
+       
+      for platform-specific instructions.
     </p>
     <br />
-    <h5
-      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
-    >
-      Using PHP
-    </h5>
     <p
       class="MuiTypography-root MuiTypography-body1"
     >
-      See 
+      When testing manually, note that 
+      <strong>
+        changes may take up to ten minutes to propagate
+      </strong>
+       due to
+       
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineAlways MuiTypography-colorPrimary"
+        href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#the-file-system-cache"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        the file system assignment cache
+      </a>
+      . As specified in the wiki, you will need to run 
       <code
         class="MuiTypography-root makeStyles-root-2 MuiTypography-body1"
       >
-        wp-content/lib/wpcom-abtest/wpcom-experiment.php
+        svn up
       </code>
+       to update your sandbox copy of the cache to reflect the latest changes.
     </p>
   </div>
 </div>

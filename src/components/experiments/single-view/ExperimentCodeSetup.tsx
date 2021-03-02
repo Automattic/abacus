@@ -16,24 +16,32 @@ export default function ExperimentCodeSetup(): JSX.Element {
   return (
     <Paper className={classes.root}>
       <Typography variant='h4'>Experiment Code Setup</Typography>
-      <Typography variant='subtitle1' gutterBottom>
-        Connect this experiment to your code.
+      <br />
+      <Typography variant='body1'>
+        See{' '}
+        <Link
+          href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#writing-the-controlvariant-code-experiences"
+          rel='noopener noreferrer'
+          target='_blank'
+          underline='always'
+        >
+          the wiki
+        </Link>{' '}
+        for platform-specific instructions.
       </Typography>
       <br />
-      <Typography variant='h5' gutterBottom>
-        Using React
-      </Typography>
       <Typography variant='body1'>
-        <Link href='https://github.com/Automattic/wp-calypso/tree/master/client/components/experiment'>
-          See this Readme
+        When testing manually, note that <strong>changes may take up to ten minutes to propagate</strong> due to{' '}
+        <Link
+          href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#the-file-system-cache"
+          rel='noopener noreferrer'
+          target='_blank'
+          underline='always'
+        >
+          the file system assignment cache
         </Link>
-      </Typography>
-      <br />
-      <Typography variant='h5' gutterBottom>
-        Using PHP
-      </Typography>
-      <Typography variant='body1'>
-        See <Code>wp-content/lib/wpcom-abtest/wpcom-experiment.php</Code>
+        . As specified in the wiki, you will need to run <Code>svn up</Code> to update your sandbox copy of the cache to
+        reflect the latest changes.
       </Typography>
     </Paper>
   )

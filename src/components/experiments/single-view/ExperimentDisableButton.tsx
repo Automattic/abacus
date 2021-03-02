@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Tooltip, Typography } from '@material-ui/core'
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Link, Tooltip, Typography } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import { useSnackbar } from 'notistack'
@@ -89,7 +89,16 @@ const ExperimentDisableButton = ({
         <DialogContent>
           {isDisablingDangerous && (
             <Typography variant='body2' gutterBottom>
-              Disabling an experiment will <strong>trigger the default experience to all users</strong>.
+              Disabling an experiment will <strong>trigger the default experience to all users</strong>. Due to{' '}
+              <Link
+                href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#the-file-system-cache"
+                rel='noopener noreferrer'
+                target='_blank'
+              >
+                the file system assignment cache
+              </Link>
+              , changes may take up to ten minutes to propagate to all servers (and possibly longer to all clients).
+              Consider deploying code changes if this is an emergency.
             </Typography>
           )}
           <Typography variant='body2' gutterBottom>
