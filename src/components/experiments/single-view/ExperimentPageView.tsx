@@ -170,6 +170,7 @@ export default function ExperimentPageView({
               value={ExperimentView.Overview}
               component={Link}
               to={`/experiments/${experimentIdSlug}/overview`}
+              replace
             />
             <Tab
               className={classes.topBarTab}
@@ -177,6 +178,7 @@ export default function ExperimentPageView({
               value={ExperimentView.Results}
               component={Link}
               to={`/experiments/${experimentIdSlug}/results`}
+              replace
             />
             {debugMode && (
               <Tab
@@ -185,6 +187,7 @@ export default function ExperimentPageView({
                 value={ExperimentView.Debug}
                 component={Link}
                 to={`/experiments/${experimentIdSlug}/debug`}
+              replace
               />
             )}
             <Tab
@@ -193,6 +196,7 @@ export default function ExperimentPageView({
               value={ExperimentView.CodeSetup}
               component={Link}
               to={`/experiments/${experimentIdSlug}/code-setup`}
+              replace
             />
           </Tabs>
           <div className={classes.topBarActions}>
