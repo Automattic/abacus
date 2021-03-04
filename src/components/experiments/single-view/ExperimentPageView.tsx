@@ -187,7 +187,7 @@ export default function ExperimentPageView({
                 value={ExperimentView.Debug}
                 component={Link}
                 to={`/experiments/${experimentIdSlug}/debug`}
-              replace
+                replace
               />
             )}
             <Tab
