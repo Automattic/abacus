@@ -240,8 +240,10 @@ export const variationSchema = variationNewSchema
 export interface Variation extends yup.InferType<typeof variationSchema> {}
 
 export enum Platform {
+  Akismet = 'akismet',
   Calypso = 'calypso',
   Email = 'email',
+  Lohp = 'lohp',
   Pipe = 'pipe',
   Wpandroid = 'wpandroid',
   Wpcom = 'wpcom',

@@ -39,8 +39,10 @@ export function getDefaultAnalysisStrategy(experiment: ExperimentFull): Analysis
 }
 
 export const PlatformToHuman: Record<Platform, string> = {
+  [Platform.Akismet]: 'Spam protection for WordPress',
   [Platform.Calypso]: 'Calypso front-end',
   [Platform.Email]: 'Guides and other email systems',
+  [Platform.Lohp]: 'WordPress.com logged out homepage',
   [Platform.Pipe]: 'Machine learning pipeline',
   [Platform.Wpandroid]: 'WordPress Android app',
   [Platform.Wpcom]: 'WordPress.com back-end',
