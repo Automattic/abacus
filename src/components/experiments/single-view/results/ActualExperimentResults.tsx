@@ -8,6 +8,7 @@ import {
   Paper,
   Select,
   Theme,
+  Typography,
   useTheme,
 } from '@material-ui/core'
 import _ from 'lodash'
@@ -30,10 +31,32 @@ import {
 import * as Visualizations from 'src/lib/visualizations'
 import { isDebugMode } from 'src/utils/general'
 import { createStaticTableOptions } from 'src/utils/material-table'
+import { formatIsoDate } from 'src/utils/time'
 
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
 import MetricAssignmentResults from './MetricAssignmentResults'
 import RecommendationString from './RecommendationString'
+
+/**
+ * This should probably be cleaned up by creating a new type wrapping Recommendation e.g. named AggregateRecommendation
+ */
+const AggregateRecommendation = ({
+  latestDefaultAnalysis,
+  recommendationConflict,
+  experiment,
+}: {
+  latestDefaultAnalysis?: Analysis
+  recommendationConflict?: boolean
+  experiment: ExperimentFull
+}): JSX.Element => {
+  if (recommendationConflict) {
+    return <>Manual analysis required</>
+  }
+  if (!latestDefaultAnalysis?.recommendation) {
+    return <>Not analyzed yet</>
+  }
+  return <RecommendationString recommendation={latestDefaultAnalysis.recommendation} experiment={experiment} />
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -47,7 +70,6 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: theme.spacing(1),
     },
     summary: {
-      padding: theme.spacing(2),
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: theme.spacing(2),
@@ -56,6 +78,47 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(2, 0),
       padding: theme.spacing(2),
       display: 'inline-flex',
+    },
+    healthStats: {
+      margin: theme.spacing(2, 0),
+      padding: theme.spacing(2),
+    },
+    healthStatsOutput: {
+      display: 'inline-flex',
+    },
+    summaryColumn: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    summaryStatsPaper: {
+      padding: theme.spacing(4),
+      marginLeft: theme.spacing(2),
+      marginBottom: theme.spacing(2),
+    },
+    summaryStatsPart: {
+      marginBottom: theme.spacing(2),
+      '&:last-child': {
+        marginBottom: 0,
+      },
+    },
+    summaryStatsPartStrategy: {
+      marginTop: theme.spacing(6),
+    },
+    summaryStatsStat: {
+      fontSize: '2rem',
+      fontWeight: 500,
+    },
+    summaryHealthPaper: {
+      padding: theme.spacing(4),
+      marginLeft: theme.spacing(2),
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      flex: 1,
+    },
+    participantsPlotPaper: {
+      padding: theme.spacing(4, 4, 2),
+      flex: 1,
     },
     participantsPlot: {
       width: '100%',
@@ -139,6 +202,25 @@ export default function ActualExperimentResults({
     }),
   ]
 
+  // ### Top Level Stats
+
+  const primaryMetricLatestAnalysesByStrategy = _.mapValues(
+    primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc,
+    _.last.bind(null),
+  )
+
+  const totalParticipants = Object.values(primaryMetricLatestAnalysesByStrategy)
+    .map(
+      (x) =>
+        // istanbul ignore next; trivial
+        x?.participantStats?.['total'] ?? 0,
+    )
+    .reduce((acc, cur) => Math.max(acc, cur))
+
+  const latestPrimaryMetricAnalysis = _.last(primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc[strategy])
+
+  const primaryMetricSummaryData = metricAssignmentSummaryData.find((x) => x.metricAssignment.isPrimary)
+
   // ### Metric Assignments Table
 
   const tableColumns = [
@@ -174,13 +256,7 @@ export default function ActualExperimentResults({
         latestDefaultAnalysis?: Analysis
         recommendationConflict?: boolean
       }) => {
-        if (recommendationConflict) {
-          return <>Manual analysis required</>
-        }
-        if (!latestDefaultAnalysis?.recommendation) {
-          return <>Not analyzed yet</>
-        }
-        return <RecommendationString recommendation={latestDefaultAnalysis.recommendation} experiment={experiment} />
+        return <AggregateRecommendation {...{ latestDefaultAnalysis, recommendationConflict, experiment }} />
       },
       cellStyle: {
         fontFamily: theme.custom.fonts.monospace,
@@ -238,16 +314,56 @@ export default function ActualExperimentResults({
           </Paper>
         )
       }
-      <Paper className={classes.summary}>
-        <Plot
-          layout={{
-            ...Visualizations.plotlyLayoutDefault,
-            title: `Participants (${AnalysisStrategyToHuman[strategy]})`,
-          }}
-          data={plotlyDataParticipantGraph}
-          className={classes.participantsPlot}
-        />
-      </Paper>
+      <div className={classes.summary}>
+        <Paper className={classes.participantsPlotPaper}>
+          <Typography variant='h3' gutterBottom>
+            Participants by Variation
+          </Typography>
+          <Plot
+            layout={{
+              ...Visualizations.plotlyLayoutDefault,
+              margin: {
+                l: theme.spacing(4),
+                r: theme.spacing(2),
+                t: 0,
+                b: theme.spacing(6),
+              },
+            }}
+            data={plotlyDataParticipantGraph}
+            className={classes.participantsPlot}
+          />
+        </Paper>
+        <div className={classes.summaryColumn}>
+          <Paper className={classes.summaryStatsPaper}>
+            {latestPrimaryMetricAnalysis && (
+              <>
+                <div className={classes.summaryStatsPart}>
+                  <Typography variant='h3' className={classes.summaryStatsStat} color='primary'>
+                    {totalParticipants.toLocaleString('en', { useGrouping: true })}
+                  </Typography>
+                  <Typography variant='subtitle1'>
+                    <strong>total participants</strong> as at{' '}
+                    {formatIsoDate(latestPrimaryMetricAnalysis.analysisDatetime)}
+                  </Typography>
+                </div>
+                <div className={classes.summaryStatsPart}>
+                  <Typography variant='h3' className={classes.summaryStatsStat} color='primary'>
+                    <AggregateRecommendation
+                      latestDefaultAnalysis={primaryMetricSummaryData?.latestDefaultAnalysis}
+                      recommendationConflict={primaryMetricSummaryData?.recommendationConflict}
+                      {...{ experiment }}
+                    />
+                  </Typography>
+                  <Typography variant='subtitle1'>
+                    <strong>primary metric</strong> recommendation
+                  </Typography>
+                </div>
+              </>
+            )}
+          </Paper>
+          <Paper className={classes.summaryHealthPaper}></Paper>
+        </div>
+      </div>
       <MaterialTable
         columns={tableColumns}
         data={metricAssignmentSummaryData}
