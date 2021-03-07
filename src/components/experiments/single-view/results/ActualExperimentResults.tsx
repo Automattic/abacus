@@ -211,9 +211,15 @@ export default function ActualExperimentResults({
 
   const totalParticipants = Object.values(primaryMetricLatestAnalysesByStrategy)
     .map(
-      (x) =>
-        // istanbul ignore next; trivial
-        x?.participantStats?.['total'] ?? 0,
+      (primaryMetricLatestAnalysis) => {
+        // istanbul ignore next; trivial: If there is a missing strategy, count it as zero.
+        if (!primaryMetricLatestAnalysis) {
+          return 0
+        }
+
+        // istanbul ignore next; trivial: If there is no total, we count it as zero.
+        return primaryMetricLatestAnalysis.participantStats['total'] ?? 0
+      }
     )
     .reduce((acc, cur) => Math.max(acc, cur))
 
