@@ -130,22 +130,19 @@ export default function ActualExperimentResults({
     setStrategy(event.target.value as AnalysisStrategy)
   }
 
-  // When will the Javascript pipe operator ever arrive... :'(
   const metricAssignmentSummaryData = allMetricAssignmentAnalysesData.map(
-    ({ metricAssignment, metric, analysesByStrategyDateAsc }) => {
-      return {
-        experiment,
-        strategy,
-        metricAssignment,
-        metric,
-        analysesByStrategyDateAsc,
-        aggregateRecommendation: getAggregateRecommendation(
-          Object.values(analysesByStrategyDateAsc)
-            .map(_.last.bind(null))
-            .filter((x) => x !== undefined) as Analysis[],
-        ),
-      }
-    },
+    ({ metricAssignment, metric, analysesByStrategyDateAsc }) => ({
+      experiment,
+      strategy,
+      metricAssignment,
+      metric,
+      analysesByStrategyDateAsc,
+      aggregateRecommendation: getAggregateRecommendation(
+        Object.values(analysesByStrategyDateAsc)
+          .map(_.last.bind(null))
+          .filter((x) => x !== undefined) as Analysis[],
+      ),
+    }),
   )
 
   // ### Result Summary Visualizations
