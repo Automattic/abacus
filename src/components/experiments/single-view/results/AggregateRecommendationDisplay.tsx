@@ -33,8 +33,8 @@ export default function AggregateRecommendationDisplay({
 
       return <>Deploy {chosenVariation.name}</>
     }
+    // istanbul ignore next; Shouldn't occur
     default: 
-      // istanbul ignore next; Shouldn't occur
       throw new Error('Missing AggregateRecommendationType.')
   }
 }

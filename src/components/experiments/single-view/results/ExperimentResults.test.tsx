@@ -34,7 +34,6 @@ test('renders correctly for 1 analysis datapoint', async () => {
       metrics={metrics}
     />,
   )
-  console.log('HEREEE', getAggregateRecommendation([ Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.PpNaive })]), Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.PpNaive }).metricAssignmentId)
 
   // Check the table snapshot before expanding any metric.
   expect(container.querySelector('.analysis-latest-results')).toMatchSnapshot()
@@ -62,7 +61,7 @@ test('renders the condensed table with some analyses in non-debug mode for a Con
   fireEvent.click(getByText(container, /metric_1/))
   fireEvent.click(getAllByText(container, /metric_2/)[0])
   fireEvent.click(getByText(container, /metric_3/))
-  await waitFor(() => getByText(container, /Last analyzed/), { container })
+  await waitFor(() => getAllByText(container, /Last analyzed/), { container })
   expect(container.querySelector('.analysis-latest-results .analysis-detail-panel')).toMatchSnapshot()
 
   expect(mockedPlot).toMatchSnapshot()
@@ -86,7 +85,7 @@ test('renders the condensed table with some analyses in non-debug mode for a Rev
   fireEvent.click(getByText(container, /metric_1/))
   fireEvent.click(getAllByText(container, /metric_2/)[0])
   fireEvent.click(getByText(container, /metric_3/))
-  await waitFor(() => getByText(container, /Last analyzed/), { container })
+  await waitFor(() => getAllByText(container, /Last analyzed/), { container })
   expect(container.querySelector('.analysis-latest-results .analysis-detail-panel')).toMatchSnapshot()
 
   expect(mockedPlot).toMatchSnapshot()

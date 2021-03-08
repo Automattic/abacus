@@ -255,13 +255,15 @@ export default function ActualExperimentResults({
       metric: MetricBare
       aggregateRecommendation: AggregateRecommendation
     }) => {
+      let disabled = aggregateRecommendation.type === AggregateRecommendationType.ManualAnalysisRequired 
+      // istanbul ignore next; debug only
+      disabled = disabled && !isDebugMode()
       return {
         render: () =>
             <MetricAssignmentResults
               {...{ strategy, analysesByStrategyDateAsc, metricAssignment, metric, experiment }}
             />,
-        // istanbul ignore next; debug only
-        disabled: aggregateRecommendation.type === AggregateRecommendationType.ManualAnalysisRequired && !isDebugMode() ? true : undefined,
+        disabled, 
       }
     },
   ]
@@ -339,9 +341,14 @@ export default function ActualExperimentResults({
           const { aggregateRecommendation } = rowData as {
             aggregateRecommendation: AggregateRecommendation
           }
-          if (togglePanel && (aggregateRecommendation.type !== AggregateRecommendationType.ManualAnalysisRequired || isDebugMode())) {
+          let disabled = aggregateRecommendation.type === AggregateRecommendationType.ManualAnalysisRequired 
+          // istanbul ignore next; debug only
+          disabled = disabled && !isDebugMode()
+
+          // istanbul ignore else; trivial
+          if (togglePanel && !disabled) {
             togglePanel()
-          }
+          } 
         }}
         detailPanel={DetailPanel}
       />
