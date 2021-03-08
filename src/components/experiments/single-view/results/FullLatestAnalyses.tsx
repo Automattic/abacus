@@ -3,9 +3,9 @@ import _, { last } from 'lodash'
 import MaterialTable from 'material-table'
 import React from 'react'
 
-import RecommendationString from 'src/components/experiments/single-view/results/RecommendationString'
+import AggregateRecommendationDisplay from 'src/components/experiments/single-view/results/AggregateRecommendationDisplay'
 import DatetimeText from 'src/components/general/DatetimeText'
-import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from 'src/lib/analyses'
+import { AnalysisStrategyToHuman, getAggregateRecommendation, RecommendationWarningToHuman } from 'src/lib/analyses'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
 import { Analysis, ExperimentFull } from 'src/lib/schemas'
 import { createStaticTableOptions } from 'src/utils/material-table'
@@ -48,8 +48,7 @@ export default function FullLatestAnalyses({
     },
     {
       title: 'Recommendation',
-      render: ({ recommendation }: Analysis) =>
-        recommendation && <RecommendationString recommendation={recommendation} experiment={experiment} />,
+      render: (analysis: Analysis) => <AggregateRecommendationDisplay aggregateRecommendation={getAggregateRecommendation([analysis])} experiment={experiment} />,
     },
     {
       title: 'Warnings',

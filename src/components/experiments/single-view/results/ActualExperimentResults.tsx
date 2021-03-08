@@ -17,7 +17,7 @@ import { PlotData } from 'plotly.js'
 import React, { useState } from 'react'
 import Plot from 'react-plotly.js'
 
-import { AnalysisStrategyToHuman } from 'src/lib/analyses'
+import { AggregateRecommendation as IAggregateRecommendation, AggregateRecommendationType, AnalysisStrategyToHuman, getAggregateRecommendation } from 'src/lib/analyses'
 import * as Experiments from 'src/lib/experiments'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
 import {
@@ -26,7 +26,6 @@ import {
   ExperimentFull,
   MetricAssignment,
   MetricBare,
-  Recommendation,
 } from 'src/lib/schemas'
 import * as Visualizations from 'src/lib/visualizations'
 import { isDebugMode } from 'src/utils/general'
@@ -35,28 +34,7 @@ import { formatIsoDate } from 'src/utils/time'
 
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
 import MetricAssignmentResults from './MetricAssignmentResults'
-import RecommendationString from './RecommendationString'
-
-/**
- * This should probably be cleaned up by creating a new type wrapping Recommendation e.g. named AggregateRecommendation
- */
-const AggregateRecommendation = ({
-  latestDefaultAnalysis,
-  recommendationConflict,
-  experiment,
-}: {
-  latestDefaultAnalysis?: Analysis
-  recommendationConflict?: boolean
-  experiment: ExperimentFull
-}): JSX.Element => {
-  if (recommendationConflict) {
-    return <>Manual analysis required</>
-  }
-  if (!latestDefaultAnalysis?.recommendation) {
-    return <>Not analyzed yet</>
-  }
-  return <RecommendationString recommendation={latestDefaultAnalysis.recommendation} experiment={experiment} />
-}
+import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -156,22 +134,15 @@ export default function ActualExperimentResults({
   // When will the Javascript pipe operator ever arrive... :'(
   const metricAssignmentSummaryData = allMetricAssignmentAnalysesData.map(
     ({ metricAssignment, metric, analysesByStrategyDateAsc }) => {
-      const recommendations = Object.values(analysesByStrategyDateAsc)
-        .map(
-          (analyses) =>
-            //  istanbul ignore next; We don't need to test empty analyses as we filter out all undefined values
-            _.last(analyses)?.recommendation,
-        )
-        .filter((recommendation) => !!recommendation) as Array<Recommendation>
-      const recommendationConflict = _.uniq(_.map(recommendations, 'chosenVariationId')).length > 1
-
       return {
+        experiment,
         strategy,
         metricAssignment,
         metric,
         analysesByStrategyDateAsc,
-        latestDefaultAnalysis: _.last(analysesByStrategyDateAsc[strategy]),
-        recommendationConflict,
+        aggregateRecommendation: getAggregateRecommendation(
+          Object.values(analysesByStrategyDateAsc).map(_.last).filter(x => x !== undefined) as Analysis[]
+        )
       }
     },
   )
@@ -225,7 +196,7 @@ export default function ActualExperimentResults({
 
   const latestPrimaryMetricAnalysis = _.last(primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc[strategy])
 
-  const primaryMetricSummaryData = metricAssignmentSummaryData.find((x) => x.metricAssignment.isPrimary)
+  const primaryMetricAggregateRecommendation = getAggregateRecommendation(Object.values(primaryMetricLatestAnalysesByStrategy).filter(x => x) as Analysis[])
 
   // ### Metric Assignments Table
 
@@ -256,13 +227,13 @@ export default function ActualExperimentResults({
     {
       title: 'Recommendation',
       render: ({
-        latestDefaultAnalysis,
-        recommendationConflict,
+        experiment,
+        aggregateRecommendation,
       }: {
-        latestDefaultAnalysis?: Analysis
-        recommendationConflict?: boolean
+        experiment: ExperimentFull,
+        aggregateRecommendation: IAggregateRecommendation,
       }) => {
-        return <AggregateRecommendation {...{ latestDefaultAnalysis, recommendationConflict, experiment }} />
+        return <AggregateRecommendationDisplay {...{ experiment, aggregateRecommendation }}/>
       },
       cellStyle: {
         fontFamily: theme.custom.fonts.monospace,
@@ -274,29 +245,25 @@ export default function ActualExperimentResults({
     ({
       strategy,
       analysesByStrategyDateAsc,
-      latestDefaultAnalysis,
       metricAssignment,
       metric,
-      recommendationConflict,
+      aggregateRecommendation,
     }: {
       strategy: AnalysisStrategy
       analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
-      latestDefaultAnalysis?: Analysis
       metricAssignment: MetricAssignment
       metric: MetricBare
-      recommendationConflict?: boolean
+      aggregateRecommendation: IAggregateRecommendation
     }) => {
-      let disabled = !latestDefaultAnalysis || recommendationConflict
-      // istanbul ignore next; debug only
-      disabled = disabled && !isDebugMode()
       return {
         render: () =>
-          latestDefaultAnalysis && (
+          _.last(analysesByStrategyDateAsc[strategy]) && (
             <MetricAssignmentResults
               {...{ strategy, analysesByStrategyDateAsc, metricAssignment, metric, experiment }}
             />
           ),
-        disabled,
+        // istanbul ignore next; debug only
+        disabled: aggregateRecommendation.type === AggregateRecommendationType.ManualAnalysisRequired && !isDebugMode(),
       }
     },
   ]
@@ -354,11 +321,7 @@ export default function ActualExperimentResults({
                 </div>
                 <div className={classes.summaryStatsPart}>
                   <Typography variant='h3' className={classes.summaryStatsStat} color='primary'>
-                    <AggregateRecommendation
-                      latestDefaultAnalysis={primaryMetricSummaryData?.latestDefaultAnalysis}
-                      recommendationConflict={primaryMetricSummaryData?.recommendationConflict}
-                      {...{ experiment }}
-                    />
+                    <AggregateRecommendationDisplay {...{ experiment, aggregateRecommendation: primaryMetricAggregateRecommendation}} />
                   </Typography>
                   <Typography variant='subtitle1'>
                     <strong>primary metric</strong> recommendation
