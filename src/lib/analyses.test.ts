@@ -18,8 +18,8 @@ describe('getAggregateRecommendation', () => {
     expect(Analyses.getAggregateRecommendation([{ recommendation: { endExperiment: true } }])).toEqual({
       type: Analyses.AggregateRecommendationType.DeployEither,
     })
-    // @ts-ignore
     expect(
+      // @ts-ignore
       Analyses.getAggregateRecommendation([{ recommendation: { endExperiment: true, chosenVariationId: 123 } }]),
     ).toEqual({
       type: Analyses.AggregateRecommendationType.Deploy,
