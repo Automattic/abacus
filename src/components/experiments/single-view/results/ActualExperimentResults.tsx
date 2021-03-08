@@ -17,24 +17,23 @@ import { PlotData } from 'plotly.js'
 import React, { useState } from 'react'
 import Plot from 'react-plotly.js'
 
-import { AggregateRecommendation, AggregateRecommendationType, AnalysisStrategyToHuman, getAggregateRecommendation } from 'src/lib/analyses'
+import {
+  AggregateRecommendation,
+  AggregateRecommendationType,
+  AnalysisStrategyToHuman,
+  getAggregateRecommendation,
+} from 'src/lib/analyses'
 import * as Experiments from 'src/lib/experiments'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
-import {
-  Analysis,
-  AnalysisStrategy,
-  ExperimentFull,
-  MetricAssignment,
-  MetricBare,
-} from 'src/lib/schemas'
+import { Analysis, AnalysisStrategy, ExperimentFull, MetricAssignment, MetricBare } from 'src/lib/schemas'
 import * as Visualizations from 'src/lib/visualizations'
 import { isDebugMode } from 'src/utils/general'
 import { createStaticTableOptions } from 'src/utils/material-table'
 import { formatIsoDate } from 'src/utils/time'
 
+import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
 import MetricAssignmentResults from './MetricAssignmentResults'
-import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -141,8 +140,10 @@ export default function ActualExperimentResults({
         metric,
         analysesByStrategyDateAsc,
         aggregateRecommendation: getAggregateRecommendation(
-          Object.values(analysesByStrategyDateAsc).map(_.last.bind(null)).filter(x => x !== undefined) as Analysis[]
-        )
+          Object.values(analysesByStrategyDateAsc)
+            .map(_.last.bind(null))
+            .filter((x) => x !== undefined) as Analysis[],
+        ),
       }
     },
   )
@@ -181,22 +182,22 @@ export default function ActualExperimentResults({
   )
 
   const totalParticipants = Object.values(primaryMetricLatestAnalysesByStrategy)
-    .map(
-      (primaryMetricLatestAnalysis) => {
-        // istanbul ignore next; trivial: If there is a missing strategy, count it as zero.
-        if (!primaryMetricLatestAnalysis) {
-          return 0
-        }
-
-        // istanbul ignore next; trivial: If there is no total, we count it as zero.
-        return primaryMetricLatestAnalysis.participantStats['total'] ?? 0
+    .map((primaryMetricLatestAnalysis) => {
+      // istanbul ignore next; trivial: If there is a missing strategy, count it as zero.
+      if (!primaryMetricLatestAnalysis) {
+        return 0
       }
-    )
+
+      // istanbul ignore next; trivial: If there is no total, we count it as zero.
+      return primaryMetricLatestAnalysis.participantStats['total'] ?? 0
+    })
     .reduce((acc, cur) => Math.max(acc, cur))
 
   const latestPrimaryMetricAnalysis = _.last(primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc[strategy])
 
-  const primaryMetricAggregateRecommendation = getAggregateRecommendation(Object.values(primaryMetricLatestAnalysesByStrategy).filter(x => x) as Analysis[])
+  const primaryMetricAggregateRecommendation = getAggregateRecommendation(
+    Object.values(primaryMetricLatestAnalysesByStrategy).filter((x) => x) as Analysis[],
+  )
 
   // ### Metric Assignments Table
 
@@ -230,10 +231,10 @@ export default function ActualExperimentResults({
         experiment,
         aggregateRecommendation,
       }: {
-        experiment: ExperimentFull,
-        aggregateRecommendation: AggregateRecommendation,
+        experiment: ExperimentFull
+        aggregateRecommendation: AggregateRecommendation
       }) => {
-        return <AggregateRecommendationDisplay {...{ experiment, aggregateRecommendation }}/>
+        return <AggregateRecommendationDisplay {...{ experiment, aggregateRecommendation }} />
       },
       cellStyle: {
         fontFamily: theme.custom.fonts.monospace,
@@ -255,15 +256,14 @@ export default function ActualExperimentResults({
       metric: MetricBare
       aggregateRecommendation: AggregateRecommendation
     }) => {
-      let disabled = aggregateRecommendation.type === AggregateRecommendationType.ManualAnalysisRequired 
+      let disabled = aggregateRecommendation.type === AggregateRecommendationType.ManualAnalysisRequired
       // istanbul ignore next; debug only
       disabled = disabled && !isDebugMode()
       return {
-        render: () =>
-            <MetricAssignmentResults
-              {...{ strategy, analysesByStrategyDateAsc, metricAssignment, metric, experiment }}
-            />,
-        disabled, 
+        render: () => (
+          <MetricAssignmentResults {...{ strategy, analysesByStrategyDateAsc, metricAssignment, metric, experiment }} />
+        ),
+        disabled,
       }
     },
   ]
@@ -321,7 +321,9 @@ export default function ActualExperimentResults({
                 </div>
                 <div className={classes.summaryStatsPart}>
                   <Typography variant='h3' className={classes.summaryStatsStat} color='primary'>
-                    <AggregateRecommendationDisplay {...{ experiment, aggregateRecommendation: primaryMetricAggregateRecommendation}} />
+                    <AggregateRecommendationDisplay
+                      {...{ experiment, aggregateRecommendation: primaryMetricAggregateRecommendation }}
+                    />
                   </Typography>
                   <Typography variant='subtitle1'>
                     <strong>primary metric</strong> recommendation
@@ -341,14 +343,14 @@ export default function ActualExperimentResults({
           const { aggregateRecommendation } = rowData as {
             aggregateRecommendation: AggregateRecommendation
           }
-          let disabled = aggregateRecommendation.type === AggregateRecommendationType.ManualAnalysisRequired 
+          let disabled = aggregateRecommendation.type === AggregateRecommendationType.ManualAnalysisRequired
           // istanbul ignore next; debug only
           disabled = disabled && !isDebugMode()
 
           // istanbul ignore else; trivial
           if (togglePanel && !disabled) {
             togglePanel()
-          } 
+          }
         }}
         detailPanel={DetailPanel}
       />

@@ -3,7 +3,6 @@ import React from 'react'
 import Plot from 'react-plotly.js'
 
 import ExperimentResults from 'src/components/experiments/single-view/results/ExperimentResults'
-import { getAggregateRecommendation } from 'src/lib/analyses'
 import { AnalysisStrategy, MetricParameterType } from 'src/lib/schemas'
 import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'

@@ -1,5 +1,6 @@
-import { Analysis, AnalysisStrategy, RecommendationWarning } from './schemas'
 import _ from 'lodash'
+
+import { Analysis, AnalysisStrategy, RecommendationWarning } from './schemas'
 
 /**
  * Mapping from AnalysisStrategy to human-friendly descriptions.
@@ -30,8 +31,8 @@ export enum AggregateRecommendationType {
 }
 
 export interface AggregateRecommendation {
-  type: AggregateRecommendationType,
-  variationId?: number,
+  type: AggregateRecommendationType
+  variationId?: number
 }
 
 /**
@@ -39,40 +40,40 @@ export interface AggregateRecommendation {
  * @param analyses Analyses of different strategies for the same day.
  */
 export function getAggregateRecommendation(analyses: Analysis[]): AggregateRecommendation {
-      const recommendationChosenVariationIds = analyses
-        .map(analysis => analysis.recommendation?.chosenVariationId)
-        .filter(Number)
-      const recommendationConflict = _.uniq(recommendationChosenVariationIds).length > 1
-      if (recommendationConflict) {
-        return {
-          type: AggregateRecommendationType.ManualAnalysisRequired,
-        }
-      }
+  const recommendationChosenVariationIds = analyses
+    .map((analysis) => analysis.recommendation?.chosenVariationId)
+    .filter(Number)
+  const recommendationConflict = _.uniq(recommendationChosenVariationIds).length > 1
+  if (recommendationConflict) {
+    return {
+      type: AggregateRecommendationType.ManualAnalysisRequired,
+    }
+  }
 
-      let recommendation = analyses.find(analysis => analysis.recommendation?.chosenVariationId)?.recommendation
-      if (!recommendation) {
-        recommendation = analyses.find(analysis => analysis.recommendation)?.recommendation
-      }
-      if (!recommendation) {
-        return {
-          type: AggregateRecommendationType.NotAnalyzedYet,
-        }
-      }
+  let recommendation = analyses.find((analysis) => analysis.recommendation?.chosenVariationId)?.recommendation
+  if (!recommendation) {
+    recommendation = analyses.find((analysis) => analysis.recommendation)?.recommendation
+  }
+  if (!recommendation) {
+    return {
+      type: AggregateRecommendationType.NotAnalyzedYet,
+    }
+  }
 
-      if (!recommendation.endExperiment) {
-        return {
-          type: AggregateRecommendationType.Inconclusive,
-        }
-      }
+  if (!recommendation.endExperiment) {
+    return {
+      type: AggregateRecommendationType.Inconclusive,
+    }
+  }
 
-      if (!recommendation.chosenVariationId) {
-        return {
-          type: AggregateRecommendationType.DeployEither
-        }
-      }
+  if (!recommendation.chosenVariationId) {
+    return {
+      type: AggregateRecommendationType.DeployEither,
+    }
+  }
 
-      return {
-        type: AggregateRecommendationType.Deploy,
-        variationId: recommendation.chosenVariationId
-      }
+  return {
+    type: AggregateRecommendationType.Deploy,
+    variationId: recommendation.chosenVariationId,
+  }
 }
