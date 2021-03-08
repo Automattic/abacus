@@ -22,7 +22,7 @@ export default function AggregateRecommendationDisplay({
       return <>Inconclusive</>
     case AggregateRecommendationType.DeployEither:
       return <>Deploy Either Variation</>
-    case AggregateRecommendationType.Deploy:
+    case AggregateRecommendationType.Deploy: {
       const chosenVariation = experiment.variations.find(
         (variation) => variation.variationId === aggregateRecommendation.variationId,
       )
@@ -32,6 +32,7 @@ export default function AggregateRecommendationDisplay({
       }
 
       return <>Deploy {chosenVariation.name}</>
+    }
     default: 
       // istanbul ignore next; Shouldn't occur
       throw new Error('Missing AggregateRecommendationType.')
