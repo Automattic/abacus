@@ -17,7 +17,7 @@ import { PlotData } from 'plotly.js'
 import React, { useState } from 'react'
 import Plot from 'react-plotly.js'
 
-import { AggregateRecommendation as IAggregateRecommendation, AggregateRecommendationType, AnalysisStrategyToHuman, getAggregateRecommendation } from 'src/lib/analyses'
+import { AggregateRecommendation, AggregateRecommendationType, AnalysisStrategyToHuman, getAggregateRecommendation } from 'src/lib/analyses'
 import * as Experiments from 'src/lib/experiments'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
 import {
@@ -141,7 +141,7 @@ export default function ActualExperimentResults({
         metric,
         analysesByStrategyDateAsc,
         aggregateRecommendation: getAggregateRecommendation(
-          Object.values(analysesByStrategyDateAsc).map(_.last).filter(x => x !== undefined) as Analysis[]
+          Object.values(analysesByStrategyDateAsc).map(_.last.bind(null)).filter(x => x !== undefined) as Analysis[]
         )
       }
     },
@@ -231,7 +231,7 @@ export default function ActualExperimentResults({
         aggregateRecommendation,
       }: {
         experiment: ExperimentFull,
-        aggregateRecommendation: IAggregateRecommendation,
+        aggregateRecommendation: AggregateRecommendation,
       }) => {
         return <AggregateRecommendationDisplay {...{ experiment, aggregateRecommendation }}/>
       },
@@ -253,17 +253,15 @@ export default function ActualExperimentResults({
       analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
       metricAssignment: MetricAssignment
       metric: MetricBare
-      aggregateRecommendation: IAggregateRecommendation
+      aggregateRecommendation: AggregateRecommendation
     }) => {
       return {
         render: () =>
-          _.last(analysesByStrategyDateAsc[strategy]) && (
             <MetricAssignmentResults
               {...{ strategy, analysesByStrategyDateAsc, metricAssignment, metric, experiment }}
-            />
-          ),
+            />,
         // istanbul ignore next; debug only
-        disabled: aggregateRecommendation.type === AggregateRecommendationType.ManualAnalysisRequired && !isDebugMode(),
+        disabled: aggregateRecommendation.type === AggregateRecommendationType.ManualAnalysisRequired && !isDebugMode() ? true : undefined,
       }
     },
   ]
@@ -338,11 +336,10 @@ export default function ActualExperimentResults({
         data={metricAssignmentSummaryData}
         options={createStaticTableOptions(metricAssignmentSummaryData.length)}
         onRowClick={(_event, rowData, togglePanel) => {
-          const { latestDefaultAnalysis, recommendationConflict } = rowData as {
-            latestDefaultAnalysis?: Analysis
-            recommendationConflict?: boolean
+          const { aggregateRecommendation } = rowData as {
+            aggregateRecommendation: AggregateRecommendation
           }
-          if (togglePanel && latestDefaultAnalysis && !recommendationConflict) {
+          if (togglePanel && (aggregateRecommendation.type !== AggregateRecommendationType.ManualAnalysisRequired || isDebugMode())) {
             togglePanel()
           }
         }}

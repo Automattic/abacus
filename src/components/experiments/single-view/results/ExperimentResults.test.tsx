@@ -3,6 +3,7 @@ import React from 'react'
 import Plot from 'react-plotly.js'
 
 import ExperimentResults from 'src/components/experiments/single-view/results/ExperimentResults'
+import { getAggregateRecommendation } from 'src/lib/analyses'
 import { AnalysisStrategy, MetricParameterType } from 'src/lib/schemas'
 import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'
@@ -33,9 +34,7 @@ test('renders correctly for 1 analysis datapoint', async () => {
       metrics={metrics}
     />,
   )
-
-  // In non-debug mode, we shouldn't have a <pre> element with the JSON.
-  expect(container.querySelector('.debug-json')).toBeNull()
+  console.log('HEREEE', getAggregateRecommendation([ Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.PpNaive })]), Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.PpNaive }).metricAssignmentId)
 
   // Check the table snapshot before expanding any metric.
   expect(container.querySelector('.analysis-latest-results')).toMatchSnapshot()

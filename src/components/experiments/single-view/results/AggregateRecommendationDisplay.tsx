@@ -1,5 +1,5 @@
 import React from 'react'
-import { AggregateRecommendation as IAggregateRecommendation, AggregateRecommendationType } from 'src/lib/analyses'
+import { AggregateRecommendation, AggregateRecommendationType } from 'src/lib/analyses'
 
 import { ExperimentFull } from 'src/lib/schemas'
 
@@ -10,7 +10,7 @@ export default function AggregateRecommendationDisplay({
   aggregateRecommendation,
   experiment,
 }: {
-  aggregateRecommendation: IAggregateRecommendation
+  aggregateRecommendation: AggregateRecommendation
   experiment: ExperimentFull
 }): JSX.Element {
   switch (aggregateRecommendation.type) {

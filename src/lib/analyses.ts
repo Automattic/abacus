@@ -22,11 +22,11 @@ export const RecommendationWarningToHuman = {
 }
 
 export enum AggregateRecommendationType {
-  ManualAnalysisRequired,
-  NotAnalyzedYet,
-  Inconclusive,
-  DeployEither,
-  Deploy,
+  ManualAnalysisRequired = 'ManualAnalysisRequired',
+  NotAnalyzedYet = 'NotAnalyzedYet',
+  Inconclusive = 'Inconclusive',
+  DeployEither = 'DeployEither',
+  Deploy = 'Deploy',
 }
 
 export interface AggregateRecommendation {
