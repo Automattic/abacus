@@ -8,6 +8,7 @@ import {
   Paper,
   Select,
   Theme,
+  Typography,
   useTheme,
 } from '@material-ui/core'
 import _ from 'lodash'
@@ -28,6 +29,7 @@ import { Analysis, AnalysisStrategy, ExperimentFull, MetricAssignment, MetricBar
 import * as Visualizations from 'src/lib/visualizations'
 import { isDebugMode } from 'src/utils/general'
 import { createStaticTableOptions } from 'src/utils/material-table'
+import { formatIsoDate } from 'src/utils/time'
 
 import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
@@ -45,7 +47,6 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: theme.spacing(1),
     },
     summary: {
-      padding: theme.spacing(2),
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: theme.spacing(2),
@@ -54,6 +55,47 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(2, 0),
       padding: theme.spacing(2),
       display: 'inline-flex',
+    },
+    healthStats: {
+      margin: theme.spacing(2, 0),
+      padding: theme.spacing(2),
+    },
+    healthStatsOutput: {
+      display: 'inline-flex',
+    },
+    summaryColumn: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    summaryStatsPaper: {
+      padding: theme.spacing(4),
+      marginLeft: theme.spacing(2),
+      marginBottom: theme.spacing(2),
+    },
+    summaryStatsPart: {
+      marginBottom: theme.spacing(2),
+      '&:last-child': {
+        marginBottom: 0,
+      },
+    },
+    summaryStatsPartStrategy: {
+      marginTop: theme.spacing(6),
+    },
+    summaryStatsStat: {
+      fontSize: '2rem',
+      fontWeight: 500,
+    },
+    summaryHealthPaper: {
+      padding: theme.spacing(4),
+      marginLeft: theme.spacing(2),
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      flex: 1,
+    },
+    participantsPlotPaper: {
+      padding: theme.spacing(4, 4, 2),
+      flex: 1,
     },
     participantsPlot: {
       width: '100%',
@@ -129,6 +171,31 @@ export default function ActualExperimentResults({
       ]
     }),
   ]
+
+  // ### Top Level Stats
+
+  const primaryMetricLatestAnalysesByStrategy = _.mapValues(
+    primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc,
+    _.last.bind(null),
+  )
+
+  const totalParticipants = Object.values(primaryMetricLatestAnalysesByStrategy)
+    .map((primaryMetricLatestAnalysis) => {
+      // istanbul ignore next; trivial: If there is a missing strategy, count it as zero.
+      if (!primaryMetricLatestAnalysis) {
+        return 0
+      }
+
+      // istanbul ignore next; trivial: If there is no total, we count it as zero.
+      return primaryMetricLatestAnalysis.participantStats['total'] ?? 0
+    })
+    .reduce((acc, cur) => Math.max(acc, cur))
+
+  const latestPrimaryMetricAnalysis = _.last(primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc[strategy])
+
+  const primaryMetricAggregateRecommendation = getAggregateRecommendation(
+    Object.values(primaryMetricLatestAnalysesByStrategy).filter((x) => x) as Analysis[],
+  )
 
   // ### Metric Assignments Table
 
@@ -218,16 +285,54 @@ export default function ActualExperimentResults({
           </Paper>
         )
       }
-      <Paper className={classes.summary}>
-        <Plot
-          layout={{
-            ...Visualizations.plotlyLayoutDefault,
-            title: `Participants (${AnalysisStrategyToHuman[strategy]})`,
-          }}
-          data={plotlyDataParticipantGraph}
-          className={classes.participantsPlot}
-        />
-      </Paper>
+      <div className={classes.summary}>
+        <Paper className={classes.participantsPlotPaper}>
+          <Typography variant='h3' gutterBottom>
+            Participants by Variation
+          </Typography>
+          <Plot
+            layout={{
+              ...Visualizations.plotlyLayoutDefault,
+              margin: {
+                l: theme.spacing(4),
+                r: theme.spacing(2),
+                t: 0,
+                b: theme.spacing(6),
+              },
+            }}
+            data={plotlyDataParticipantGraph}
+            className={classes.participantsPlot}
+          />
+        </Paper>
+        <div className={classes.summaryColumn}>
+          <Paper className={classes.summaryStatsPaper}>
+            {latestPrimaryMetricAnalysis && (
+              <>
+                <div className={classes.summaryStatsPart}>
+                  <Typography variant='h3' className={classes.summaryStatsStat} color='primary'>
+                    {totalParticipants.toLocaleString('en', { useGrouping: true })}
+                  </Typography>
+                  <Typography variant='subtitle1'>
+                    <strong>total participants</strong> as at{' '}
+                    {formatIsoDate(latestPrimaryMetricAnalysis.analysisDatetime)}
+                  </Typography>
+                </div>
+                <div className={classes.summaryStatsPart}>
+                  <Typography variant='h3' className={classes.summaryStatsStat} color='primary'>
+                    <AggregateRecommendationDisplay
+                      {...{ experiment, aggregateRecommendation: primaryMetricAggregateRecommendation }}
+                    />
+                  </Typography>
+                  <Typography variant='subtitle1'>
+                    <strong>primary metric</strong> recommendation
+                  </Typography>
+                </div>
+              </>
+            )}
+          </Paper>
+          {/* <Paper className={classes.summaryHealthPaper}></Paper> */}
+        </div>
+      </div>
       <MaterialTable
         columns={tableColumns}
         data={metricAssignmentSummaryData}
