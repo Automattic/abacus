@@ -1,4 +1,6 @@
-import { Analysis, AnalysisStrategy, RecommendationWarning } from './schemas'
+import _ from 'lodash'
+
+import { Analysis, AnalysisStrategy, ExperimentFull, RecommendationWarning } from './schemas'
 
 /**
  * Mapping from AnalysisStrategy to human-friendly descriptions.
@@ -75,5 +77,24 @@ export function getAggregateRecommendation(
   return {
     decision: AggregateRecommendationDecision.DeployChosenVariation,
     chosenVariationId: recommendation.chosenVariationId,
+  }
+}
+
+function getParticipantCountsForParticipantStatsKey(participantStatsKey: string, analysesByStrategy: Record<AnalysisStrategy, Analysis>) {
+  const assignedParticipants = analysesByStrategy[AnalysisStrategy.IttPure].participantStats[participantStatsKey]
+  return {
+    assignedParticipants,
+    assignedParticipantCrossovers: assignedParticipants - analysesByStrategy[AnalysisStrategy.MittNoCrossovers].participantStats[participantStatsKey],
+    assignedParticipantSpammers: assignedParticipants - analysesByStrategy[AnalysisStrategy.MittNoSpammers].participantStats[participantStatsKey],
+    exposedParticipants: analysesByStrategy[AnalysisStrategy.PpNaive]?.participantStats[participantStatsKey] ?? 0,
+  }
+}
+
+export function getParticipantCounts(experiment: ExperimentFull, analysesByStrategy: Record<AnalysisStrategy, Analysis>) {
+  return {
+    total: getParticipantCountsForParticipantStatsKey('total', analysesByStrategy),
+    variations: Object.fromEntries(experiment.variations.map(({ variationId }) => (
+      [variationId, getParticipantCountsForParticipantStatsKey(`variation_${variationId}`, analysesByStrategy)]
+    ))),
   }
 }
