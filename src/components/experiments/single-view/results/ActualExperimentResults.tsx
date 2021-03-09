@@ -16,24 +16,22 @@ import { PlotData } from 'plotly.js'
 import React, { useState } from 'react'
 import Plot from 'react-plotly.js'
 
-import { AnalysisStrategyToHuman } from 'src/lib/analyses'
+import {
+  AggregateRecommendation,
+  AggregateRecommendationType,
+  AnalysisStrategyToHuman,
+  getAggregateRecommendation,
+} from 'src/lib/analyses'
 import * as Experiments from 'src/lib/experiments'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
-import {
-  Analysis,
-  AnalysisStrategy,
-  ExperimentFull,
-  MetricAssignment,
-  MetricBare,
-  Recommendation,
-} from 'src/lib/schemas'
+import { Analysis, AnalysisStrategy, ExperimentFull, MetricAssignment, MetricBare } from 'src/lib/schemas'
 import * as Visualizations from 'src/lib/visualizations'
 import { isDebugMode } from 'src/utils/general'
 import { createStaticTableOptions } from 'src/utils/material-table'
 
+import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
 import MetricAssignmentResults from './MetricAssignmentResults'
-import RecommendationString from './RecommendationString'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -90,27 +88,19 @@ export default function ActualExperimentResults({
     setStrategy(event.target.value as AnalysisStrategy)
   }
 
-  // When will the Javascript pipe operator ever arrive... :'(
   const metricAssignmentSummaryData = allMetricAssignmentAnalysesData.map(
-    ({ metricAssignment, metric, analysesByStrategyDateAsc }) => {
-      const recommendations = Object.values(analysesByStrategyDateAsc)
-        .map(
-          (analyses) =>
-            //  istanbul ignore next; We don't need to test empty analyses as we filter out all undefined values
-            _.last(analyses)?.recommendation,
-        )
-        .filter((recommendation) => !!recommendation) as Array<Recommendation>
-      const recommendationConflict = _.uniq(_.map(recommendations, 'chosenVariationId')).length > 1
-
-      return {
-        strategy,
-        metricAssignment,
-        metric,
-        analysesByStrategyDateAsc,
-        latestDefaultAnalysis: _.last(analysesByStrategyDateAsc[strategy]),
-        recommendationConflict,
-      }
-    },
+    ({ metricAssignment, metric, analysesByStrategyDateAsc }) => ({
+      experiment,
+      strategy,
+      metricAssignment,
+      metric,
+      analysesByStrategyDateAsc,
+      aggregateRecommendation: getAggregateRecommendation(
+        Object.values(analysesByStrategyDateAsc)
+          .map(_.last.bind(null))
+          .filter((x) => x !== undefined) as Analysis[],
+      ),
+    }),
   )
 
   // ### Result Summary Visualizations
@@ -168,19 +158,13 @@ export default function ActualExperimentResults({
     {
       title: 'Recommendation',
       render: ({
-        latestDefaultAnalysis,
-        recommendationConflict,
+        experiment,
+        aggregateRecommendation,
       }: {
-        latestDefaultAnalysis?: Analysis
-        recommendationConflict?: boolean
+        experiment: ExperimentFull
+        aggregateRecommendation: AggregateRecommendation
       }) => {
-        if (recommendationConflict) {
-          return <>Manual analysis required</>
-        }
-        if (!latestDefaultAnalysis?.recommendation) {
-          return <>Not analyzed yet</>
-        }
-        return <RecommendationString recommendation={latestDefaultAnalysis.recommendation} experiment={experiment} />
+        return <AggregateRecommendationDisplay {...{ experiment, aggregateRecommendation }} />
       },
       cellStyle: {
         fontFamily: theme.custom.fonts.monospace,
@@ -192,28 +176,23 @@ export default function ActualExperimentResults({
     ({
       strategy,
       analysesByStrategyDateAsc,
-      latestDefaultAnalysis,
       metricAssignment,
       metric,
-      recommendationConflict,
+      aggregateRecommendation,
     }: {
       strategy: AnalysisStrategy
       analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
-      latestDefaultAnalysis?: Analysis
       metricAssignment: MetricAssignment
       metric: MetricBare
-      recommendationConflict?: boolean
+      aggregateRecommendation: AggregateRecommendation
     }) => {
-      let disabled = !latestDefaultAnalysis || recommendationConflict
+      let disabled = aggregateRecommendation.type === AggregateRecommendationType.ManualAnalysisRequired
       // istanbul ignore next; debug only
       disabled = disabled && !isDebugMode()
       return {
-        render: () =>
-          latestDefaultAnalysis && (
-            <MetricAssignmentResults
-              {...{ strategy, analysesByStrategyDateAsc, metricAssignment, metric, experiment }}
-            />
-          ),
+        render: () => (
+          <MetricAssignmentResults {...{ strategy, analysesByStrategyDateAsc, metricAssignment, metric, experiment }} />
+        ),
         disabled,
       }
     },
@@ -253,11 +232,15 @@ export default function ActualExperimentResults({
         data={metricAssignmentSummaryData}
         options={createStaticTableOptions(metricAssignmentSummaryData.length)}
         onRowClick={(_event, rowData, togglePanel) => {
-          const { latestDefaultAnalysis, recommendationConflict } = rowData as {
-            latestDefaultAnalysis?: Analysis
-            recommendationConflict?: boolean
+          const { aggregateRecommendation } = rowData as {
+            aggregateRecommendation: AggregateRecommendation
           }
-          if (togglePanel && latestDefaultAnalysis && !recommendationConflict) {
+          let disabled = aggregateRecommendation.type === AggregateRecommendationType.ManualAnalysisRequired
+          // istanbul ignore next; debug only
+          disabled = disabled && !isDebugMode()
+
+          // istanbul ignore else; trivial
+          if (togglePanel && !disabled) {
             togglePanel()
           }
         }}

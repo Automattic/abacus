@@ -86,7 +86,7 @@ export default function MetricAssignmentResults({
   metric: MetricBare
   analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
   experiment: ExperimentFull
-}): JSX.Element {
+}): JSX.Element | null {
   const classes = useStyles()
 
   const isConversion = metric.parameterType === MetricParameterType.Conversion
@@ -95,6 +95,10 @@ export default function MetricAssignmentResults({
     : identity
   const analyses = analysesByStrategyDateAsc[strategy]
   const latestAnalysis = _.last(analyses)
+  if (!latestAnalysis) {
+    return null
+  }
+
   const dates = analyses.map(({ analysisDatetime }) => analysisDatetime.toISOString())
 
   const plotlyDataVariationGraph: Array<Partial<PlotData>> = [
