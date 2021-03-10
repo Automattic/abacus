@@ -6,7 +6,7 @@ import { render } from 'src/test-helpers/test-utils'
 
 import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
 
-test('renders NotAnalyzedYet correctly', () => {
+test('renders MissingAnalysis correctly', () => {
   const { container } = render(
     <AggregateRecommendationDisplay
       aggregateRecommendation={{
