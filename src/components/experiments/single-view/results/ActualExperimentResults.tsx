@@ -18,7 +18,7 @@ import Plot from 'react-plotly.js'
 
 import {
   AggregateRecommendation,
-  AggregateRecommendationType,
+  AggregateRecommendationDecision,
   AnalysisStrategyToHuman,
   getAggregateRecommendation,
 } from 'src/lib/analyses'
@@ -99,6 +99,7 @@ export default function ActualExperimentResults({
         Object.values(analysesByStrategyDateAsc)
           .map(_.last.bind(null))
           .filter((x) => x !== undefined) as Analysis[],
+        strategy,
       ),
     }),
   )
@@ -186,7 +187,7 @@ export default function ActualExperimentResults({
       metric: MetricBare
       aggregateRecommendation: AggregateRecommendation
     }) => {
-      let disabled = aggregateRecommendation.type === AggregateRecommendationType.ManualAnalysisRequired
+      let disabled = aggregateRecommendation.decision === AggregateRecommendationDecision.ManualAnalysisRequired
       // istanbul ignore next; debug only
       disabled = disabled && !isDebugMode()
       return {
@@ -235,7 +236,7 @@ export default function ActualExperimentResults({
           const { aggregateRecommendation } = rowData as {
             aggregateRecommendation: AggregateRecommendation
           }
-          let disabled = aggregateRecommendation.type === AggregateRecommendationType.ManualAnalysisRequired
+          let disabled = aggregateRecommendation.decision === AggregateRecommendationDecision.ManualAnalysisRequired
           // istanbul ignore next; debug only
           disabled = disabled && !isDebugMode()
 
