@@ -15,13 +15,13 @@ export default function AggregateRecommendationDisplay({
 }): JSX.Element {
   switch (aggregateRecommendation.type) {
     case AggregateRecommendationType.ManualAnalysisRequired:
-      return <>Manual Analysis Required</>
+      return <>Manual analysis required</>
     case AggregateRecommendationType.NotAnalyzedYet:
-      return <>Not Analyzed Yet</>
+      return <>Not analyzed yet</>
     case AggregateRecommendationType.Inconclusive:
       return <>Inconclusive</>
     case AggregateRecommendationType.DeployEither:
-      return <>Deploy Either Variation</>
+      return <>Deploy either variation</>
     case AggregateRecommendationType.Deploy: {
       const chosenVariation = experiment.variations.find(
         (variation) => variation.variationId === aggregateRecommendation.variationId,

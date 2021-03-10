@@ -18,7 +18,7 @@ test('renders NotAnalyzedYet correctly', () => {
   )
   expect(container).toMatchInlineSnapshot(`
     <div>
-      Not Analyzed Yet
+      Not analyzed yet
     </div>
   `)
 })
@@ -35,7 +35,7 @@ test('renders ManualAnalysisRequired correctly', () => {
   )
   expect(container).toMatchInlineSnapshot(`
     <div>
-      Manual Analysis Required
+      Manual analysis required
     </div>
   `)
 })
@@ -69,7 +69,7 @@ test('renders DeployEither correctly', () => {
   )
   expect(container).toMatchInlineSnapshot(`
     <div>
-      Deploy Either Variation
+      Deploy either variation
     </div>
   `)
 })
