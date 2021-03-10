@@ -182,7 +182,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Not Analyzed Yet
+                      Not analyzed yet
                     </td>
                   </tr>
                   <tr
@@ -237,7 +237,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Not Analyzed Yet
+                      Not analyzed yet
                     </td>
                   </tr>
                   <tr
@@ -292,7 +292,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Not Analyzed Yet
+                      Not analyzed yet
                     </td>
                   </tr>
                 </tbody>
@@ -799,9 +799,10 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                         style="width: 42px; text-align: center; display: flex;"
                       >
                         <button
-                          class="MuiButtonBase-root MuiIconButton-root"
+                          class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                          disabled=""
                           style="transition: all ease 200ms; transform: none;"
-                          tabindex="0"
+                          tabindex="-1"
                           type="button"
                         >
                           <span
@@ -814,9 +815,6 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                               chevron_right
                             </span>
                           </span>
-                          <span
-                            class="MuiTouchRipple-root"
-                          />
                         </button>
                       </div>
                     </td>
@@ -847,8 +845,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Deploy 
-                      test
+                      Manual analysis required
                     </td>
                   </tr>
                   <tr
@@ -903,7 +900,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Not Analyzed Yet
+                      Not analyzed yet
                     </td>
                   </tr>
                   <tr
@@ -958,7 +955,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Not Analyzed Yet
+                      Not analyzed yet
                     </td>
                   </tr>
                   <tr
@@ -1256,7 +1253,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         <td
           class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-36"
         >
-          This is metric 1
+          This is metric 3
         </td>
       </tr>
       <tr
@@ -1273,7 +1270,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-36"
         >
           
-          10
+          1200
           <span
             class="makeStyles-root-43"
             title="Percentage points."
@@ -1326,9 +1323,9 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         >
           <span
             class="makeStyles-root-44"
-            title="09/05/2020, 20:00:00"
+            title="10/06/2020, 20:00:00"
           >
-            2020-05-10
+            2020-06-11
           </span>
         </td>
       </tr>
@@ -1361,9 +1358,9 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         <td
           class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-36"
         >
-          700
+          1200
            (
-          420 in control; 280 in test
+          940 in control; 660 in test
           )
         </td>
       </tr>
@@ -1426,204 +1423,6 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           },
           "showlegend": false,
           "title": "Participants (Exposed without crossovers and spammers)",
-        },
-        "style": Object {
-          "display": "inline-block",
-          "position": "relative",
-        },
-        "useResizeHandler": false,
-      },
-      Object {},
-    ],
-    Array [
-      Object {
-        "className": "makeStyles-metricEstimatePlot-38",
-        "data": Array [
-          Object {
-            "line": Object {
-              "color": "#1f78b488",
-            },
-            "mode": "lines",
-            "name": "test: lower bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              -112.3,
-              -112.3,
-            ],
-          },
-          Object {
-            "fill": "tonexty",
-            "fillcolor": "#1f78b488",
-            "line": Object {
-              "color": "#1f78b488",
-            },
-            "mode": "lines",
-            "name": "test: upper bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              100,
-              100,
-            ],
-          },
-          Object {
-            "line": Object {
-              "color": "#ff7f0088",
-            },
-            "mode": "lines",
-            "name": "control: lower bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              0,
-              0,
-            ],
-          },
-          Object {
-            "fill": "tonexty",
-            "fillcolor": "#ff7f0088",
-            "line": Object {
-              "color": "#ff7f0088",
-            },
-            "mode": "lines",
-            "name": "control: upper bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              1000,
-              1000,
-            ],
-          },
-        ],
-        "debug": false,
-        "layout": Object {
-          "autosize": true,
-          "hoverlabel": Object {
-            "namelength": -1,
-          },
-          "margin": Object {
-            "b": 48,
-            "l": 32,
-            "r": 16,
-            "t": 64,
-          },
-          "showlegend": false,
-          "title": "Conversion rate estimates by variation (%)",
-        },
-        "style": Object {
-          "display": "inline-block",
-          "position": "relative",
-        },
-        "useResizeHandler": false,
-      },
-      Object {},
-    ],
-    Array [
-      Object {
-        "className": "makeStyles-metricEstimatePlot-38",
-        "data": Array [
-          Object {
-            "line": Object {
-              "width": 0,
-            },
-            "marker": Object {
-              "color": "444",
-            },
-            "mode": "lines",
-            "name": "difference: lower bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              -1,
-              -1,
-            ],
-          },
-          Object {
-            "fill": "tonexty",
-            "fillcolor": "rgba(0,0,0,.2)",
-            "line": Object {
-              "width": 0,
-            },
-            "marker": Object {
-              "color": "444",
-            },
-            "mode": "lines",
-            "name": "difference: upper bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              1,
-              1,
-            ],
-          },
-          Object {
-            "line": Object {
-              "color": "rgba(0,0,0,.4)",
-              "dash": "dash",
-            },
-            "mode": "lines",
-            "name": "ROPE: lower bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              -10,
-              -10,
-            ],
-          },
-          Object {
-            "line": Object {
-              "color": "rgba(0,0,0,.4)",
-              "dash": "dash",
-            },
-            "mode": "lines",
-            "name": "ROPE: upper bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              10,
-              10,
-            ],
-          },
-        ],
-        "debug": false,
-        "layout": Object {
-          "autosize": true,
-          "hoverlabel": Object {
-            "namelength": -1,
-          },
-          "margin": Object {
-            "b": 48,
-            "l": 32,
-            "r": 16,
-            "t": 64,
-          },
-          "showlegend": false,
-          "title": "Conversion rate difference estimates (percentage points)",
         },
         "style": Object {
           "display": "inline-block",
@@ -1845,14 +1644,6 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       "type": "return",
       "value": undefined,
     },
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
   ],
 }
 `;
@@ -1935,9 +1726,10 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                         style="width: 42px; text-align: center; display: flex;"
                       >
                         <button
-                          class="MuiButtonBase-root MuiIconButton-root"
+                          class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                          disabled=""
                           style="transition: all ease 200ms; transform: none;"
-                          tabindex="0"
+                          tabindex="-1"
                           type="button"
                         >
                           <span
@@ -1950,9 +1742,6 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                               chevron_right
                             </span>
                           </span>
-                          <span
-                            class="MuiTouchRipple-root"
-                          />
                         </button>
                       </div>
                     </td>
@@ -1983,8 +1772,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Deploy 
-                      test
+                      Manual analysis required
                     </td>
                   </tr>
                   <tr
@@ -2039,7 +1827,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Not Analyzed Yet
+                      Not analyzed yet
                     </td>
                   </tr>
                   <tr
@@ -2094,7 +1882,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Not Analyzed Yet
+                      Not analyzed yet
                     </td>
                   </tr>
                   <tr
@@ -2372,7 +2160,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         <td
           class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
         >
-          This is metric 1
+          This is metric 3
         </td>
       </tr>
       <tr
@@ -2389,7 +2177,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
         >
           USD 
-          0.1
+          12
           
         </td>
       </tr>
@@ -2437,9 +2225,9 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         >
           <span
             class="makeStyles-root-65"
-            title="09/05/2020, 20:00:00"
+            title="10/06/2020, 20:00:00"
           >
-            2020-05-10
+            2020-06-11
           </span>
         </td>
       </tr>
@@ -2472,9 +2260,9 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         <td
           class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
         >
-          700
+          1200
            (
-          420 in control; 280 in test
+          940 in control; 660 in test
           )
         </td>
       </tr>
@@ -2537,204 +2325,6 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           },
           "showlegend": false,
           "title": "Participants (Exposed without crossovers and spammers)",
-        },
-        "style": Object {
-          "display": "inline-block",
-          "position": "relative",
-        },
-        "useResizeHandler": false,
-      },
-      Object {},
-    ],
-    Array [
-      Object {
-        "className": "makeStyles-metricEstimatePlot-60",
-        "data": Array [
-          Object {
-            "line": Object {
-              "color": "#1f78b488",
-            },
-            "mode": "lines",
-            "name": "test: lower bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              -1.123,
-              -1.123,
-            ],
-          },
-          Object {
-            "fill": "tonexty",
-            "fillcolor": "#1f78b488",
-            "line": Object {
-              "color": "#1f78b488",
-            },
-            "mode": "lines",
-            "name": "test: upper bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              1,
-              1,
-            ],
-          },
-          Object {
-            "line": Object {
-              "color": "#ff7f0088",
-            },
-            "mode": "lines",
-            "name": "control: lower bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              0,
-              0,
-            ],
-          },
-          Object {
-            "fill": "tonexty",
-            "fillcolor": "#ff7f0088",
-            "line": Object {
-              "color": "#ff7f0088",
-            },
-            "mode": "lines",
-            "name": "control: upper bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              10,
-              10,
-            ],
-          },
-        ],
-        "debug": false,
-        "layout": Object {
-          "autosize": true,
-          "hoverlabel": Object {
-            "namelength": -1,
-          },
-          "margin": Object {
-            "b": 48,
-            "l": 32,
-            "r": 16,
-            "t": 64,
-          },
-          "showlegend": false,
-          "title": "Revenue estimates by variation (USD)",
-        },
-        "style": Object {
-          "display": "inline-block",
-          "position": "relative",
-        },
-        "useResizeHandler": false,
-      },
-      Object {},
-    ],
-    Array [
-      Object {
-        "className": "makeStyles-metricEstimatePlot-60",
-        "data": Array [
-          Object {
-            "line": Object {
-              "width": 0,
-            },
-            "marker": Object {
-              "color": "444",
-            },
-            "mode": "lines",
-            "name": "difference: lower bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              -0.01,
-              -0.01,
-            ],
-          },
-          Object {
-            "fill": "tonexty",
-            "fillcolor": "rgba(0,0,0,.2)",
-            "line": Object {
-              "width": 0,
-            },
-            "marker": Object {
-              "color": "444",
-            },
-            "mode": "lines",
-            "name": "difference: upper bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              0.01,
-              0.01,
-            ],
-          },
-          Object {
-            "line": Object {
-              "color": "rgba(0,0,0,.4)",
-              "dash": "dash",
-            },
-            "mode": "lines",
-            "name": "ROPE: lower bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              -0.1,
-              -0.1,
-            ],
-          },
-          Object {
-            "line": Object {
-              "color": "rgba(0,0,0,.4)",
-              "dash": "dash",
-            },
-            "mode": "lines",
-            "name": "ROPE: upper bound",
-            "type": "scatter",
-            "x": Array [
-              "2020-05-09T00:00:00.000Z",
-              "2020-05-10T00:00:00.000Z",
-            ],
-            "y": Array [
-              0.1,
-              0.1,
-            ],
-          },
-        ],
-        "debug": false,
-        "layout": Object {
-          "autosize": true,
-          "hoverlabel": Object {
-            "namelength": -1,
-          },
-          "margin": Object {
-            "b": 48,
-            "l": 32,
-            "r": 16,
-            "t": 64,
-          },
-          "showlegend": false,
-          "title": "Revenue difference estimates (USD)",
         },
         "style": Object {
           "display": "inline-block",
@@ -2944,14 +2534,6 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
   ],
   "results": Array [
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
     Object {
       "type": "return",
       "value": undefined,
