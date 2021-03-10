@@ -70,7 +70,7 @@ test('renders DeployAnyVariation correctly', () => {
   `)
 })
 
-test('renders Deploy correctly', () => {
+test('renders DeployChosenVariation correctly', () => {
   const { container } = render(
     <AggregateRecommendationDisplay
       aggregateRecommendation={{
