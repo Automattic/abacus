@@ -54,7 +54,7 @@ test('renders Inconclusive correctly', () => {
   `)
 })
 
-test('renders DeployEither correctly', () => {
+test('renders DeployAnyVariation correctly', () => {
   const { container } = render(
     <AggregateRecommendationDisplay
       aggregateRecommendation={{
