@@ -81,7 +81,7 @@ test('renders DeployChosenVariation correctly', () => {
         variations: [
           {
             variationId: 123,
-            name: 'varition_name_123',
+            name: 'variation_name_123',
             allocatedPercentage: 1,
             isDefault: false,
           },
