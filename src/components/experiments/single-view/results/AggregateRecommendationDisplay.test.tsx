@@ -92,7 +92,7 @@ test('renders DeployChosenVariation correctly', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       Deploy 
-      varition_name_123
+      variation_name_123
     </div>
   `)
 })
