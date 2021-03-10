@@ -50,7 +50,7 @@ export default function FullLatestAnalyses({
       title: 'Recommendation',
       render: (analysis: Analysis) => (
         <AggregateRecommendationDisplay
-          aggregateRecommendation={getAggregateRecommendation([analysis])}
+          aggregateRecommendation={getAggregateRecommendation([analysis], analysis.analysisStrategy)}
           experiment={experiment}
         />
       ),
