@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react'
 
 import { AggregateRecommendationType } from 'src/lib/analyses'
+import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'
 
 import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
@@ -12,8 +12,7 @@ test('renders NotAnalyzedYet correctly', () => {
       aggregateRecommendation={{
         type: AggregateRecommendationType.NotAnalyzedYet,
       }}
-      // @ts-ignore
-      experiment={{}}
+      experiment={Fixtures.createExperimentFull()}
     />,
   )
   expect(container).toMatchInlineSnapshot(`
@@ -29,8 +28,7 @@ test('renders ManualAnalysisRequired correctly', () => {
       aggregateRecommendation={{
         type: AggregateRecommendationType.ManualAnalysisRequired,
       }}
-      // @ts-ignore
-      experiment={{}}
+      experiment={Fixtures.createExperimentFull()}
     />,
   )
   expect(container).toMatchInlineSnapshot(`
@@ -46,8 +44,7 @@ test('renders Inconclusive correctly', () => {
       aggregateRecommendation={{
         type: AggregateRecommendationType.Inconclusive,
       }}
-      // @ts-ignore
-      experiment={{}}
+      experiment={Fixtures.createExperimentFull()}
     />,
   )
   expect(container).toMatchInlineSnapshot(`
@@ -63,8 +60,7 @@ test('renders DeployEither correctly', () => {
       aggregateRecommendation={{
         type: AggregateRecommendationType.DeployEither,
       }}
-      // @ts-ignore
-      experiment={{}}
+      experiment={Fixtures.createExperimentFull()}
     />,
   )
   expect(container).toMatchInlineSnapshot(`
@@ -81,14 +77,64 @@ test('renders Deploy correctly', () => {
         type: AggregateRecommendationType.Deploy,
         variationId: 123,
       }}
-      // @ts-ignore
-      experiment={{ variations: [{ variationId: 123, name: 'variation_name_123' }] }}
+      experiment={Fixtures.createExperimentFull({
+        variations: [
+          {
+            variationId: 123,
+            name: 'varition_name_123',
+            allocatedPercentage: 1,
+            isDefault: false,
+          },
+        ],
+      })}
     />,
   )
   expect(container).toMatchInlineSnapshot(`
     <div>
       Deploy 
-      variation_name_123
+      varition_name_123
     </div>
   `)
+})
+
+test('throws error for missing varitionId', () => {
+  // Prevent an uncaught error warning due to React + TestingLibrary
+  const originalConsoleError = console.error
+  console.error = jest.fn()
+  expect(() =>
+    render(
+      <AggregateRecommendationDisplay
+        aggregateRecommendation={{
+          type: AggregateRecommendationType.Deploy,
+          variationId: 123,
+        }}
+        experiment={Fixtures.createExperimentFull({
+          variations: [],
+        })}
+      />,
+    ),
+  ).toThrowErrorMatchingInlineSnapshot(`"No match for chosenVariationId among variations in experiment."`)
+  console.error = originalConsoleError
+})
+
+test('throws error for uncovered AggregateRecommendation', () => {
+  // Prevent an uncaught error warning due to React + TestingLibrary
+  const originalConsoleError = console.error
+  console.error = jest.fn()
+  expect(() =>
+    render(
+      <AggregateRecommendationDisplay
+        aggregateRecommendation={{
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          type: 'Unknown AggregateRecommendationType',
+          variationId: 123,
+        }}
+        experiment={Fixtures.createExperimentFull({
+          variations: [],
+        })}
+      />,
+    ),
+  ).toThrowErrorMatchingInlineSnapshot(`"Missing AggregateRecommendationType."`)
+  console.error = originalConsoleError
 })

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import Fixtures from 'src/test-helpers/fixtures'
 
 import * as Analyses from './analyses'
@@ -121,7 +120,10 @@ describe('getAggregateRecommendation', () => {
               warnings: [],
             },
           }),
-          Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers, recommendation: null }),
+          Fixtures.createAnalysis({
+            analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
+            recommendation: null,
+          }),
         ],
         AnalysisStrategy.PpNaive,
       ),
@@ -142,7 +144,10 @@ describe('getAggregateRecommendation', () => {
               warnings: [],
             },
           }),
-          Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers, recommendation: null }),
+          Fixtures.createAnalysis({
+            analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
+            recommendation: null,
+          }),
         ],
         AnalysisStrategy.PpNaive,
       ),
