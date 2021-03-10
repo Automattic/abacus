@@ -1,5 +1,3 @@
-import _ from 'lodash'
-
 import { Analysis, AnalysisStrategy, RecommendationWarning } from './schemas'
 
 /**
@@ -38,23 +36,24 @@ export interface AggregateRecommendation {
 /**
  * Returns the aggregate recommendation over analyses of different analysis strategies.
  * @param analyses Analyses of different strategies for the same day.
+ * @param defaultStrategy Default strategy in the context of an aggregateRecommendation..
  */
-export function getAggregateRecommendation(analyses: Analysis[]): AggregateRecommendation {
+export function getAggregateRecommendation(
+  analyses: Analysis[],
+  defaultStrategy: AnalysisStrategy,
+): AggregateRecommendation {
   const recommendationChosenVariationIds = analyses
     .map((analysis) => analysis.recommendation)
-    .filter(x => x)
-    .map(recommendation => recommendation?.chosenVariationId)
-  const recommendationConflict = _.uniq(recommendationChosenVariationIds).length > 1
+    .filter((x) => x)
+    .map((recommendation) => recommendation?.chosenVariationId)
+  const recommendationConflict = [...new Set(recommendationChosenVariationIds)].length > 1
   if (recommendationConflict) {
     return {
       type: AggregateRecommendationType.ManualAnalysisRequired,
     }
   }
 
-  let recommendation = analyses.find((analysis) => analysis.recommendation?.chosenVariationId)?.recommendation
-  if (!recommendation) {
-    recommendation = analyses.find((analysis) => analysis.recommendation)?.recommendation
-  }
+  const recommendation = analyses.find((analysis) => analysis.analysisStrategy === defaultStrategy)?.recommendation
   if (!recommendation) {
     return {
       type: AggregateRecommendationType.NotAnalyzedYet,
