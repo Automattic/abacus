@@ -179,11 +179,12 @@ export default function ActualExperimentResults({
     _.last.bind(null),
   )
   // We want the max participants so we use IttPure
-  const totalParticipants = primaryMetricLatestAnalysesByStrategy[AnalysisStrategy.IttPure]?.participantStats['total'] ?? 0
+  const totalParticipants =
+    primaryMetricLatestAnalysesByStrategy[AnalysisStrategy.IttPure]?.participantStats['total'] ?? 0
   const latestPrimaryMetricAnalysis = _.last(primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc[strategy])
   const primaryMetricAggregateRecommendation = getAggregateRecommendation(
     Object.values(primaryMetricLatestAnalysesByStrategy).filter((x) => x) as Analysis[],
-    strategy
+    strategy,
   )
 
   // ### Metric Assignments Table
