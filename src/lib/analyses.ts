@@ -41,8 +41,9 @@ export interface AggregateRecommendation {
  */
 export function getAggregateRecommendation(analyses: Analysis[]): AggregateRecommendation {
   const recommendationChosenVariationIds = analyses
-    .map((analysis) => analysis.recommendation?.chosenVariationId)
-    .filter(Number)
+    .map((analysis) => analysis.recommendation)
+    .filter(x => x)
+    .map(recommendation => recommendation?.chosenVariationId)
   const recommendationConflict = _.uniq(recommendationChosenVariationIds).length > 1
   if (recommendationConflict) {
     return {

@@ -11,11 +11,11 @@ describe('getAggregateRecommendation', () => {
       type: Analyses.AggregateRecommendationType.NotAnalyzedYet,
     })
     // @ts-ignore
-    expect(Analyses.getAggregateRecommendation([{ recommendation: {} }])).toEqual({
+    expect(Analyses.getAggregateRecommendation([{ recommendation: { endExperiment: false, chosenVariationId: null} }])).toEqual({
       type: Analyses.AggregateRecommendationType.Inconclusive,
     })
     // @ts-ignore
-    expect(Analyses.getAggregateRecommendation([{ recommendation: { endExperiment: true } }])).toEqual({
+    expect(Analyses.getAggregateRecommendation([{ recommendation: { endExperiment: true, chosenVariationId: null } }])).toEqual({
       type: Analyses.AggregateRecommendationType.DeployEither,
     })
     expect(
@@ -45,34 +45,11 @@ describe('getAggregateRecommendation', () => {
         // @ts-ignore
         { recommendation: { endExperiment: true, chosenVariationId: 123 } },
         // @ts-ignore
-        { recommendation: {} },
-      ]),
-    ).toEqual({
-      type: Analyses.AggregateRecommendationType.Deploy,
-      variationId: 123,
-    })
-
-    expect(
-      Analyses.getAggregateRecommendation([
-        // @ts-ignore
-        { recommendation: { endExperiment: true, chosenVariationId: 123 } },
-        // @ts-ignore
         {},
       ]),
     ).toEqual({
       type: Analyses.AggregateRecommendationType.Deploy,
       variationId: 123,
-    })
-
-    expect(
-      Analyses.getAggregateRecommendation([
-        // @ts-ignore
-        { recommendation: { endExperiment: true } },
-        // @ts-ignore
-        { recommendation: {} },
-      ]),
-    ).toEqual({
-      type: Analyses.AggregateRecommendationType.DeployEither,
     })
 
     expect(
@@ -103,9 +80,20 @@ describe('getAggregateRecommendation', () => {
         // @ts-ignore
         { recommendation: { endExperiment: true, chosenVariationId: 123 } },
         // @ts-ignore
+        { recommendation: { endExperiment: true, chosenVariationId: null } },
+      ]),
+    ).toEqual({
+      type: Analyses.AggregateRecommendationType.ManualAnalysisRequired,
+    })
+
+    expect(
+      Analyses.getAggregateRecommendation([
+        // @ts-ignore
+        { recommendation: { endExperiment: true, chosenVariationId: 123 } },
+        // @ts-ignore
         { recommendation: { endExperiment: true, chosenVariationId: 456 } },
         // @ts-ignore
-        { recommendation: {} },
+        { recommendation: { endExperiment: false, chosenVariationId: null } },
         // @ts-ignore
         {},
       ]),
