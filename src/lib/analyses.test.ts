@@ -304,3 +304,207 @@ describe('getAggregateRecommendation', () => {
     })
   })
 })
+
+describe('getParticipantCounts', () => {
+  it('should work correctly', () => {
+    expect(
+      Analyses.getParticipantCounts(
+        Fixtures.createExperimentFull({
+          variations: [
+            { variationId: 1, allocatedPercentage: 50, isDefault: true, name: 'variation_name_1' },
+            { variationId: 2, allocatedPercentage: 50, isDefault: false, name: 'variation_name_2' },
+          ],
+        }),
+        {
+          [AnalysisStrategy.IttPure]: Fixtures.createAnalysis({
+            participantStats: {
+              total: 100,
+              variation_1: 40,
+              variation_2: 70,
+            },
+          }),
+          [AnalysisStrategy.MittNoCrossovers]: Fixtures.createAnalysis({
+            participantStats: {
+              total: 90,
+              variation_1: 35,
+              variation_2: 55,
+            },
+          }),
+          [AnalysisStrategy.MittNoSpammers]: Fixtures.createAnalysis({
+            participantStats: {
+              total: 85,
+              variation_1: 40,
+              variation_2: 45,
+            },
+          }),
+          [AnalysisStrategy.MittNoSpammersNoCrossovers]: Fixtures.createAnalysis({
+            participantStats: {
+              total: 60,
+              variation_1: 25,
+              variation_2: 35,
+            },
+          }),
+          [AnalysisStrategy.PpNaive]: Fixtures.createAnalysis({
+            participantStats: {
+              total: 40,
+              variation_1: 15,
+              variation_2: 25,
+            },
+          }),
+        },
+      ),
+    ).toEqual({
+      total: {
+        assigned: 100,
+        assignedCrossovers: 10,
+        assignedSpammers: 15,
+        exposed: 40,
+      },
+      variations: {
+        '1': {
+          assigned: 40,
+          assignedCrossovers: 5,
+          assignedSpammers: 0,
+          exposed: 15,
+        },
+        '2': {
+          assigned: 70,
+          assignedCrossovers: 15,
+          assignedSpammers: 25,
+          exposed: 25,
+        },
+      },
+    })
+  })
+
+  it('should work correctly without any analyses', () => {
+    expect(
+      Analyses.getParticipantCounts(
+        Fixtures.createExperimentFull({
+          variations: [
+            { variationId: 1, allocatedPercentage: 50, isDefault: true, name: 'variation_name_1' },
+            { variationId: 2, allocatedPercentage: 50, isDefault: false, name: 'variation_name_2' },
+          ],
+        }),
+        {},
+      ),
+    ).toEqual(
+      {
+        total: {
+          assigned: 0,
+          assignedCrossovers: 0,
+          assignedSpammers: 0,
+          exposed: 0,
+        },
+        variations: {
+          '1': {
+            assigned: 0,
+            assignedCrossovers: 0,
+            assignedSpammers: 0,
+            exposed: 0,
+          },
+          '2': {
+            assigned: 0,
+            assignedCrossovers: 0,
+            assignedSpammers: 0,
+            exposed: 0,
+          },
+        },
+      },
+    )
+  })
+})
+
+describe('getExperimentHealthStats', () => {
+  it('should work correctly', () => {
+    expect(
+      Analyses.getExperimentHealthStats(
+        Fixtures.createExperimentFull({
+          variations: [
+            { variationId: 1, allocatedPercentage: 50, isDefault: true, name: 'variation_name_1' },
+            { variationId: 2, allocatedPercentage: 50, isDefault: false, name: 'variation_name_2' },
+          ],
+        }),
+        {
+          [AnalysisStrategy.IttPure]: Fixtures.createAnalysis({
+            participantStats: {
+              total: 130,
+              variation_1: 40,
+              variation_2: 70,
+            },
+          }),
+          [AnalysisStrategy.MittNoCrossovers]: Fixtures.createAnalysis({
+            participantStats: {
+              total: 90,
+              variation_1: 35,
+              variation_2: 55,
+            },
+          }),
+          [AnalysisStrategy.MittNoSpammers]: Fixtures.createAnalysis({
+            participantStats: {
+              total: 85,
+              variation_1: 40,
+              variation_2: 45,
+            },
+          }),
+          [AnalysisStrategy.MittNoSpammersNoCrossovers]: Fixtures.createAnalysis({
+            participantStats: {
+              total: 60,
+              variation_1: 25,
+              variation_2: 35,
+            },
+          }),
+          [AnalysisStrategy.PpNaive]: Fixtures.createAnalysis({
+            participantStats: {
+              total: 40,
+              variation_1: 15,
+              variation_2: 27,
+            },
+          }),
+        },
+      ),
+    ).toEqual({
+      probabilities: {
+        variations: {
+          '1': {
+            assignedDistributionMatchingAllocated: 0.000011583130623216142,
+            assignedSpammersDistributionMatchingAllocated: 1.970346108493004e-11,
+            exposedDistributionMatchingAllocated: 0.11384629800665802,
+          },
+          '2': {
+            assignedDistributionMatchingAllocated: 0.3804551252503884,
+            assignedSpammersDistributionMatchingAllocated: 0.4560565402502559,
+            exposedDistributionMatchingAllocated: 0.026856695507524453,
+          },
+        },
+      },
+      ratios: {
+        overall: {
+          assignedCrossoversToAssigned: 0.3076923076923077,
+          assignedSpammersToAssigned: 0.34615384615384615,
+          exposedToAssigned: 0.3076923076923077,
+        },
+        variations: {
+          '1': {
+            assignedCrossoversToAssigned: 0.125,
+            assignedCrossoversToTotalAssignedCrossovers: 0.125,
+            assignedSpammersToAssigned: 0,
+            assignedSpammersToTotalAssignedSpammers: 0,
+            assignedToTotalAssigned: 0.3076923076923077,
+            exposedToAssigned: 0.375,
+            exposedToTotalExposed: 0.375,
+          },
+          '2': {
+            assignedCrossoversToAssigned: 0.21428571428571427,
+            assignedCrossoversToTotalAssignedCrossovers: 0.375,
+            assignedSpammersToAssigned: 0.35714285714285715,
+            assignedSpammersToTotalAssignedSpammers: 0.5555555555555556,
+            assignedToTotalAssigned: 0.5384615384615384,
+            exposedToAssigned: 0.38571428571428573,
+            exposedToTotalExposed: 0.675,
+          },
+        },
+      },
+    })
+  })
+})
