@@ -80,21 +80,59 @@ export function getAggregateRecommendation(
   }
 }
 
-function getParticipantCountsForParticipantStatsKey(participantStatsKey: string, analysesByStrategy: Record<AnalysisStrategy, Analysis>) {
-  const assignedParticipants = analysesByStrategy[AnalysisStrategy.IttPure].participantStats[participantStatsKey]
+type AnalysesByStrategy = Record<AnalysisStrategy, Analysis>
+
+interface CountsSet {
+    assigned: number,
+    assignedCrossovers: number,
+    assignedSpammers: number,
+    exposed: number,
+}
+
+function getParticipantCountsSetForParticipantStatsKey(participantStatsKey: string, analysesByStrategy: AnalysesByStrategy): CountsSet {
+  const assigned = analysesByStrategy[AnalysisStrategy.IttPure].participantStats[participantStatsKey]
   return {
-    assignedParticipants,
-    assignedParticipantCrossovers: assignedParticipants - analysesByStrategy[AnalysisStrategy.MittNoCrossovers].participantStats[participantStatsKey],
-    assignedParticipantSpammers: assignedParticipants - analysesByStrategy[AnalysisStrategy.MittNoSpammers].participantStats[participantStatsKey],
-    exposedParticipants: analysesByStrategy[AnalysisStrategy.PpNaive]?.participantStats[participantStatsKey] ?? 0,
+    assigned: assigned,
+    assignedCrossovers: assigned - analysesByStrategy[AnalysisStrategy.MittNoCrossovers].participantStats[participantStatsKey],
+    assignedSpammers: assigned - analysesByStrategy[AnalysisStrategy.MittNoSpammers].participantStats[participantStatsKey],
+    exposed: analysesByStrategy[AnalysisStrategy.PpNaive]?.participantStats[participantStatsKey] ?? 0,
   }
 }
 
-export function getParticipantCounts(experiment: ExperimentFull, analysesByStrategy: Record<AnalysisStrategy, Analysis>) {
+export function getParticipantCounts(experiment: ExperimentFull, analysesByStrategy: AnalysesByStrategy): { total: CountsSet, variations: Record<number, CountsSet> } {
   return {
-    total: getParticipantCountsForParticipantStatsKey('total', analysesByStrategy),
+    total: getParticipantCountsSetForParticipantStatsKey('total', analysesByStrategy),
     variations: Object.fromEntries(experiment.variations.map(({ variationId }) => (
-      [variationId, getParticipantCountsForParticipantStatsKey(`variation_${variationId}`, analysesByStrategy)]
+      [variationId, getParticipantCountsSetForParticipantStatsKey(`variation_${variationId}`, analysesByStrategy)]
     ))),
+  }
+}
+
+
+export function getExperimentHealthStats(experiment: ExperimentFull, analysesByStrategy: AnalysesByStrategy) {
+  const participantCounts = getParticipantCounts(experiment, analysesByStrategy)
+
+  const ratios = {
+    overall: {
+      exposedToAssigned: participantCounts.total.exposed / participantCounts.total.assigned,
+      assignedSpammersToAssigned: participantCounts.total.assignedSpammers / participantCounts.total.assigned,
+      assignedCrossoversToAssigned: participantCounts.total.assignedCrossovers / participantCounts.total.assigned,
+    },
+    variations: Object.fromEntries(Object.entries(participantCounts.variations).map(([variationId, variationCountsSet]) => {
+      return [variationId, {
+        exposedToAssigned: variationCountsSet.exposed / variationCountsSet.assigned,
+        assignedSpammersToAssigned: variationCountsSet.assignedSpammers / variationCountsSet.assigned,
+        assignedCrossoversToAssigned: variationCountsSet.assignedCrossovers / variationCountsSet.assigned,
+        exposedToTotalExposed: variationCountsSet.exposed / participantCounts.total.exposed,
+        assignedToTotalAssigned: variationCountsSet.assigned / participantCounts.total.assigned,
+        assignedSpammersToTotalAssignedSpammers: variationCountsSet.assignedSpammers / participantCounts.total.assignedSpammers,
+        assignedCrossoversToTotalAssignedCrossovers: variationCountsSet.assignedCrossovers / participantCounts.total.assignedCrossovers,
+      }]
+    }))
+  }
+
+  return {
+    participantCounts,
+    ratios,
   }
 }
