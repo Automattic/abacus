@@ -97,7 +97,7 @@ test('renders DeployChosenVariation correctly', () => {
   `)
 })
 
-test('throws error for missing varitionId', () => {
+test('throws error for missing chosenVariationId', () => {
   // Prevent an uncaught error warning due to React + TestingLibrary
   const originalConsoleError = console.error
   console.error = jest.fn()
