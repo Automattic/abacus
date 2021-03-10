@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { AggregateRecommendation, AggregateRecommendationType } from 'src/lib/analyses'
+import { AggregateRecommendation, AggregateRecommendationDecision } from 'src/lib/analyses'
 import { ExperimentFull } from 'src/lib/schemas'
 
 /**
@@ -13,28 +13,26 @@ export default function AggregateRecommendationDisplay({
   aggregateRecommendation: AggregateRecommendation
   experiment: ExperimentFull
 }): JSX.Element {
-  switch (aggregateRecommendation.type) {
-    case AggregateRecommendationType.ManualAnalysisRequired:
+  switch (aggregateRecommendation.decision) {
+    case AggregateRecommendationDecision.ManualAnalysisRequired:
       return <>Manual analysis required</>
-    case AggregateRecommendationType.NotAnalyzedYet:
+    case AggregateRecommendationDecision.MissingAnalysis:
       return <>Not analyzed yet</>
-    case AggregateRecommendationType.Inconclusive:
+    case AggregateRecommendationDecision.Inconclusive:
       return <>Inconclusive</>
-    case AggregateRecommendationType.DeployEither:
+    case AggregateRecommendationDecision.DeployAnyVariation:
       return <>Deploy either variation</>
-    case AggregateRecommendationType.Deploy: {
+    case AggregateRecommendationDecision.DeployChosenVariation: {
       const chosenVariation = experiment.variations.find(
-        (variation) => variation.variationId === aggregateRecommendation.variationId,
+        (variation) => variation.variationId === aggregateRecommendation.chosenVariationId,
       )
-      // istanbul ignore next; Typeguard
       if (!chosenVariation) {
         throw new Error('No match for chosenVariationId among variations in experiment.')
       }
 
       return <>Deploy {chosenVariation.name}</>
     }
-    // istanbul ignore next; Shouldn't occur
     default:
-      throw new Error('Missing AggregateRecommendationType.')
+      throw new Error('Missing AggregateRecommendationDecision.')
   }
 }

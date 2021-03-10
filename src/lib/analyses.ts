@@ -20,17 +20,17 @@ export const RecommendationWarningToHuman = {
   [RecommendationWarning.WideCi]: 'The CI is too wide in comparison to the ROPE. Collect more data to be safer.',
 }
 
-export enum AggregateRecommendationType {
+export enum AggregateRecommendationDecision {
   ManualAnalysisRequired = 'ManualAnalysisRequired',
-  NotAnalyzedYet = 'NotAnalyzedYet',
+  MissingAnalysis = 'MissingAnalysis',
   Inconclusive = 'Inconclusive',
-  DeployEither = 'DeployEither',
-  Deploy = 'Deploy',
+  DeployAnyVariation = 'DeployAnyVariation',
+  DeployChosenVariation = 'DeployChosenVariation',
 }
 
 export interface AggregateRecommendation {
-  type: AggregateRecommendationType
-  variationId?: number
+  decision: AggregateRecommendationDecision
+  chosenVariationId?: number
 }
 
 /**
@@ -49,31 +49,31 @@ export function getAggregateRecommendation(
   const recommendationConflict = [...new Set(recommendationChosenVariationIds)].length > 1
   if (recommendationConflict) {
     return {
-      type: AggregateRecommendationType.ManualAnalysisRequired,
+      decision: AggregateRecommendationDecision.ManualAnalysisRequired,
     }
   }
 
   const recommendation = analyses.find((analysis) => analysis.analysisStrategy === defaultStrategy)?.recommendation
   if (!recommendation) {
     return {
-      type: AggregateRecommendationType.NotAnalyzedYet,
+      decision: AggregateRecommendationDecision.MissingAnalysis,
     }
   }
 
   if (!recommendation.endExperiment) {
     return {
-      type: AggregateRecommendationType.Inconclusive,
+      decision: AggregateRecommendationDecision.Inconclusive,
     }
   }
 
   if (!recommendation.chosenVariationId) {
     return {
-      type: AggregateRecommendationType.DeployEither,
+      decision: AggregateRecommendationDecision.DeployAnyVariation,
     }
   }
 
   return {
-    type: AggregateRecommendationType.Deploy,
-    variationId: recommendation.chosenVariationId,
+    decision: AggregateRecommendationDecision.DeployChosenVariation,
+    chosenVariationId: recommendation.chosenVariationId,
   }
 }

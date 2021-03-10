@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { AggregateRecommendationType } from 'src/lib/analyses'
+import { AggregateRecommendationDecision } from 'src/lib/analyses'
 import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'
 
@@ -10,7 +10,7 @@ test('renders NotAnalyzedYet correctly', () => {
   const { container } = render(
     <AggregateRecommendationDisplay
       aggregateRecommendation={{
-        type: AggregateRecommendationType.NotAnalyzedYet,
+        decision: AggregateRecommendationDecision.MissingAnalysis,
       }}
       experiment={Fixtures.createExperimentFull()}
     />,
@@ -26,7 +26,7 @@ test('renders ManualAnalysisRequired correctly', () => {
   const { container } = render(
     <AggregateRecommendationDisplay
       aggregateRecommendation={{
-        type: AggregateRecommendationType.ManualAnalysisRequired,
+        decision: AggregateRecommendationDecision.ManualAnalysisRequired,
       }}
       experiment={Fixtures.createExperimentFull()}
     />,
@@ -42,7 +42,7 @@ test('renders Inconclusive correctly', () => {
   const { container } = render(
     <AggregateRecommendationDisplay
       aggregateRecommendation={{
-        type: AggregateRecommendationType.Inconclusive,
+        decision: AggregateRecommendationDecision.Inconclusive,
       }}
       experiment={Fixtures.createExperimentFull()}
     />,
@@ -58,7 +58,7 @@ test('renders DeployEither correctly', () => {
   const { container } = render(
     <AggregateRecommendationDisplay
       aggregateRecommendation={{
-        type: AggregateRecommendationType.DeployEither,
+        decision: AggregateRecommendationDecision.DeployAnyVariation,
       }}
       experiment={Fixtures.createExperimentFull()}
     />,
@@ -74,8 +74,8 @@ test('renders Deploy correctly', () => {
   const { container } = render(
     <AggregateRecommendationDisplay
       aggregateRecommendation={{
-        type: AggregateRecommendationType.Deploy,
-        variationId: 123,
+        decision: AggregateRecommendationDecision.DeployChosenVariation,
+        chosenVariationId: 123,
       }}
       experiment={Fixtures.createExperimentFull({
         variations: [
@@ -105,8 +105,8 @@ test('throws error for missing varitionId', () => {
     render(
       <AggregateRecommendationDisplay
         aggregateRecommendation={{
-          type: AggregateRecommendationType.Deploy,
-          variationId: 123,
+          decision: AggregateRecommendationDecision.DeployChosenVariation,
+          chosenVariationId: 123,
         }}
         experiment={Fixtures.createExperimentFull({
           variations: [],
@@ -127,14 +127,14 @@ test('throws error for uncovered AggregateRecommendation', () => {
         aggregateRecommendation={{
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          type: 'Unknown AggregateRecommendationType',
-          variationId: 123,
+          decision: 'Unknown AggregateRecommendationDecision',
+          chosenVariationId: 123,
         }}
         experiment={Fixtures.createExperimentFull({
           variations: [],
         })}
       />,
     ),
-  ).toThrowErrorMatchingInlineSnapshot(`"Missing AggregateRecommendationType."`)
+  ).toThrowErrorMatchingInlineSnapshot(`"Missing AggregateRecommendationDecision."`)
   console.error = originalConsoleError
 })

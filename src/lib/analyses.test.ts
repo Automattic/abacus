@@ -6,7 +6,7 @@ import { AnalysisStrategy, RecommendationReason } from './schemas'
 describe('getAggregateRecommendation', () => {
   it('should work correctly for single analyses', () => {
     expect(Analyses.getAggregateRecommendation([], AnalysisStrategy.PpNaive)).toEqual({
-      type: Analyses.AggregateRecommendationType.NotAnalyzedYet,
+      decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -19,7 +19,7 @@ describe('getAggregateRecommendation', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
-      type: Analyses.AggregateRecommendationType.NotAnalyzedYet,
+      decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -37,7 +37,7 @@ describe('getAggregateRecommendation', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
-      type: Analyses.AggregateRecommendationType.Inconclusive,
+      decision: Analyses.AggregateRecommendationDecision.Inconclusive,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -55,7 +55,7 @@ describe('getAggregateRecommendation', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
-      type: Analyses.AggregateRecommendationType.DeployEither,
+      decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -73,8 +73,8 @@ describe('getAggregateRecommendation', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
-      type: Analyses.AggregateRecommendationType.Deploy,
-      variationId: 123,
+      decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
+      chosenVariationId: 123,
     })
   })
 
@@ -104,8 +104,8 @@ describe('getAggregateRecommendation', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
-      type: Analyses.AggregateRecommendationType.Deploy,
-      variationId: 123,
+      decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
+      chosenVariationId: 123,
     })
 
     expect(
@@ -128,8 +128,8 @@ describe('getAggregateRecommendation', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
-      type: Analyses.AggregateRecommendationType.Deploy,
-      variationId: 123,
+      decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
+      chosenVariationId: 123,
     })
 
     expect(
@@ -152,7 +152,7 @@ describe('getAggregateRecommendation', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
-      type: Analyses.AggregateRecommendationType.DeployEither,
+      decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
     })
 
     expect(
@@ -180,7 +180,7 @@ describe('getAggregateRecommendation', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
-      type: Analyses.AggregateRecommendationType.Inconclusive,
+      decision: Analyses.AggregateRecommendationDecision.Inconclusive,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -202,7 +202,7 @@ describe('getAggregateRecommendation', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
-      type: Analyses.AggregateRecommendationType.NotAnalyzedYet,
+      decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
     })
   })
   it('should work correctly for multiple analyses with conflict', () => {
@@ -231,7 +231,7 @@ describe('getAggregateRecommendation', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
-      type: Analyses.AggregateRecommendationType.ManualAnalysisRequired,
+      decision: Analyses.AggregateRecommendationDecision.ManualAnalysisRequired,
     })
 
     expect(
@@ -259,7 +259,7 @@ describe('getAggregateRecommendation', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
-      type: Analyses.AggregateRecommendationType.ManualAnalysisRequired,
+      decision: Analyses.AggregateRecommendationDecision.ManualAnalysisRequired,
     })
 
     expect(
@@ -300,7 +300,7 @@ describe('getAggregateRecommendation', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
-      type: Analyses.AggregateRecommendationType.ManualAnalysisRequired,
+      decision: Analyses.AggregateRecommendationDecision.ManualAnalysisRequired,
     })
   })
 })
