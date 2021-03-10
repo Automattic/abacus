@@ -178,23 +178,12 @@ export default function ActualExperimentResults({
     primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc,
     _.last.bind(null),
   )
-
-  const totalParticipants = Object.values(primaryMetricLatestAnalysesByStrategy)
-    .map((primaryMetricLatestAnalysis) => {
-      // istanbul ignore next; trivial: If there is a missing strategy, count it as zero.
-      if (!primaryMetricLatestAnalysis) {
-        return 0
-      }
-
-      // istanbul ignore next; trivial: If there is no total, we count it as zero.
-      return primaryMetricLatestAnalysis.participantStats['total'] ?? 0
-    })
-    .reduce((acc, cur) => Math.max(acc, cur))
-
+  // We want the max participants so we use IttPure
+  const totalParticipants = primaryMetricLatestAnalysesByStrategy[AnalysisStrategy.IttPure]?.participantStats['total'] ?? 0
   const latestPrimaryMetricAnalysis = _.last(primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc[strategy])
-
   const primaryMetricAggregateRecommendation = getAggregateRecommendation(
     Object.values(primaryMetricLatestAnalysesByStrategy).filter((x) => x) as Analysis[],
+    strategy
   )
 
   // ### Metric Assignments Table
