@@ -1,4 +1,5 @@
 import _ from 'lodash'
+
 import { binomialProbValue } from 'src/utils/math'
 
 import { Analysis, AnalysisStrategy, ExperimentFull, RecommendationWarning } from './schemas'
@@ -82,39 +83,49 @@ export function getAggregateRecommendation(
 }
 
 interface AnalysesByStrategy {
-  [AnalysisStrategy.IttPure]?: Analysis,
-  [AnalysisStrategy.MittNoCrossovers]?: Analysis,
-  [AnalysisStrategy.MittNoSpammers]?: Analysis,
-  [AnalysisStrategy.MittNoSpammersNoCrossovers]?: Analysis,
-  [AnalysisStrategy.PpNaive]?: Analysis,
+  [AnalysisStrategy.IttPure]?: Analysis
+  [AnalysisStrategy.MittNoCrossovers]?: Analysis
+  [AnalysisStrategy.MittNoSpammers]?: Analysis
+  [AnalysisStrategy.MittNoSpammersNoCrossovers]?: Analysis
+  [AnalysisStrategy.PpNaive]?: Analysis
 }
 
 interface CountsSet {
-    assigned: number,
-    assignedCrossovers: number,
-    assignedSpammers: number,
-    exposed: number,
+  assigned: number
+  assignedCrossovers: number
+  assignedSpammers: number
+  exposed: number
 }
 
-function getParticipantCountsSetForParticipantStatsKey(participantStatsKey: string, analysesByStrategy: AnalysesByStrategy): CountsSet {
+function getParticipantCountsSetForParticipantStatsKey(
+  participantStatsKey: string,
+  analysesByStrategy: AnalysesByStrategy,
+): CountsSet {
   const assigned = analysesByStrategy[AnalysisStrategy.IttPure]?.participantStats[participantStatsKey] ?? 0
   return {
     assigned: assigned,
-    assignedCrossovers: assigned - (analysesByStrategy[AnalysisStrategy.MittNoCrossovers]?.participantStats[participantStatsKey] ?? 0),
-    assignedSpammers: assigned - (analysesByStrategy[AnalysisStrategy.MittNoSpammers]?.participantStats[participantStatsKey] ?? 0),
+    assignedCrossovers:
+      assigned - (analysesByStrategy[AnalysisStrategy.MittNoCrossovers]?.participantStats[participantStatsKey] ?? 0),
+    assignedSpammers:
+      assigned - (analysesByStrategy[AnalysisStrategy.MittNoSpammers]?.participantStats[participantStatsKey] ?? 0),
     exposed: analysesByStrategy[AnalysisStrategy.PpNaive]?.participantStats[participantStatsKey] ?? 0,
   }
 }
 
-export function getParticipantCounts(experiment: ExperimentFull, analysesByStrategy: AnalysesByStrategy): { total: CountsSet, variations: Record<number, CountsSet> } {
+export function getParticipantCounts(
+  experiment: ExperimentFull,
+  analysesByStrategy: AnalysesByStrategy,
+): { total: CountsSet; variations: Record<number, CountsSet> } {
   return {
     total: getParticipantCountsSetForParticipantStatsKey('total', analysesByStrategy),
-    variations: Object.fromEntries(experiment.variations.map(({ variationId }) => (
-      [variationId, getParticipantCountsSetForParticipantStatsKey(`variation_${variationId}`, analysesByStrategy)]
-    ))),
+    variations: Object.fromEntries(
+      experiment.variations.map(({ variationId }) => [
+        variationId,
+        getParticipantCountsSetForParticipantStatsKey(`variation_${variationId}`, analysesByStrategy),
+      ]),
+    ),
   }
 }
-
 
 export function getExperimentHealthStats(experiment: ExperimentFull, analysesByStrategy: AnalysesByStrategy) {
   const participantCounts = getParticipantCounts(experiment, analysesByStrategy)
@@ -125,30 +136,56 @@ export function getExperimentHealthStats(experiment: ExperimentFull, analysesByS
       assignedSpammersToAssigned: participantCounts.total.assignedSpammers / participantCounts.total.assigned,
       assignedCrossoversToAssigned: participantCounts.total.assignedCrossovers / participantCounts.total.assigned,
     },
-    variations: Object.fromEntries(Object.entries(participantCounts.variations).map(([variationId, variationCountsSet]) => {
-      return [variationId, {
-        exposedToAssigned: variationCountsSet.exposed / variationCountsSet.assigned,
-        assignedSpammersToAssigned: variationCountsSet.assignedSpammers / variationCountsSet.assigned,
-        assignedCrossoversToAssigned: variationCountsSet.assignedCrossovers / variationCountsSet.assigned,
-        exposedToTotalExposed: variationCountsSet.exposed / participantCounts.total.exposed,
-        assignedToTotalAssigned: variationCountsSet.assigned / participantCounts.total.assigned,
-        assignedSpammersToTotalAssignedSpammers: variationCountsSet.assignedSpammers / participantCounts.total.assignedSpammers,
-        assignedCrossoversToTotalAssignedCrossovers: variationCountsSet.assignedCrossovers / participantCounts.total.assignedCrossovers,
-      }]
-    }))
+    variations: Object.fromEntries(
+      Object.entries(participantCounts.variations).map(([variationId, variationCountsSet]) => {
+        return [
+          variationId,
+          {
+            exposedToAssigned: variationCountsSet.exposed / variationCountsSet.assigned,
+            assignedSpammersToAssigned: variationCountsSet.assignedSpammers / variationCountsSet.assigned,
+            assignedCrossoversToAssigned: variationCountsSet.assignedCrossovers / variationCountsSet.assigned,
+            exposedToTotalExposed: variationCountsSet.exposed / participantCounts.total.exposed,
+            assignedToTotalAssigned: variationCountsSet.assigned / participantCounts.total.assigned,
+            assignedSpammersToTotalAssignedSpammers:
+              variationCountsSet.assignedSpammers / participantCounts.total.assignedSpammers,
+            assignedCrossoversToTotalAssignedCrossovers:
+              variationCountsSet.assignedCrossovers / participantCounts.total.assignedCrossovers,
+          },
+        ]
+      }),
+    ),
   }
 
-  const totalAllocatedPercentage = experiment.variations.map(({ allocatedPercentage }) => allocatedPercentage).reduce((acc, cur) => acc + cur)
+  const totalAllocatedPercentage = experiment.variations
+    .map(({ allocatedPercentage }) => allocatedPercentage)
+    .reduce((acc, cur) => acc + cur)
   // The probability of an equal or a more extreme outcome occuring.
   const probabilities = {
-    variations: Object.fromEntries(experiment.variations.map(({ variationId, allocatedPercentage }) => {
-      const variationCountsSet = participantCounts.variations[variationId]
-      return [variationId, {
-        exposedDistributionMatchingAllocated: binomialProbValue(variationCountsSet.exposed, participantCounts.total.exposed, allocatedPercentage / totalAllocatedPercentage),
-        assignedDistributionMatchingAllocated: binomialProbValue(variationCountsSet.assigned, participantCounts.total.assigned, allocatedPercentage / totalAllocatedPercentage),
-        assignedSpammersDistributionMatchingAllocated: binomialProbValue(variationCountsSet.assignedSpammers, participantCounts.total.assignedSpammers, allocatedPercentage / totalAllocatedPercentage),
-      }]
-    }))
+    variations: Object.fromEntries(
+      experiment.variations.map(({ variationId, allocatedPercentage }) => {
+        const variationCountsSet = participantCounts.variations[variationId]
+        return [
+          variationId,
+          {
+            exposedDistributionMatchingAllocated: binomialProbValue(
+              variationCountsSet.exposed,
+              participantCounts.total.exposed,
+              allocatedPercentage / totalAllocatedPercentage,
+            ),
+            assignedDistributionMatchingAllocated: binomialProbValue(
+              variationCountsSet.assigned,
+              participantCounts.total.assigned,
+              allocatedPercentage / totalAllocatedPercentage,
+            ),
+            assignedSpammersDistributionMatchingAllocated: binomialProbValue(
+              variationCountsSet.assignedSpammers,
+              participantCounts.total.assignedSpammers,
+              allocatedPercentage / totalAllocatedPercentage,
+            ),
+          },
+        ]
+      }),
+    ),
   }
 
   return {

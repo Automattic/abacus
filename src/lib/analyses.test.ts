@@ -388,30 +388,28 @@ describe('getParticipantCounts', () => {
         }),
         {},
       ),
-    ).toEqual(
-      {
-        total: {
+    ).toEqual({
+      total: {
+        assigned: 0,
+        assignedCrossovers: 0,
+        assignedSpammers: 0,
+        exposed: 0,
+      },
+      variations: {
+        '1': {
           assigned: 0,
           assignedCrossovers: 0,
           assignedSpammers: 0,
           exposed: 0,
         },
-        variations: {
-          '1': {
-            assigned: 0,
-            assignedCrossovers: 0,
-            assignedSpammers: 0,
-            exposed: 0,
-          },
-          '2': {
-            assigned: 0,
-            assignedCrossovers: 0,
-            assignedSpammers: 0,
-            exposed: 0,
-          },
+        '2': {
+          assigned: 0,
+          assignedCrossovers: 0,
+          assignedSpammers: 0,
+          exposed: 0,
         },
       },
-    )
+    })
   })
 })
 
