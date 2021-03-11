@@ -18,10 +18,14 @@ export function binomialProbValue({
 }): number {
   const mean = totalTrials * probabilityOfSuccess
   const variance = totalTrials * probabilityOfSuccess * (1 - probabilityOfSuccess)
-  // By the CLT, B ~ Binomial(n, p) is approximated well enough by X ~ N(mu, sigma)) for n > 30
+  // By the CLT, B ~ Binomial(n, p) is approximated well enough by X ~ N(mean, variance) for n > 30
+  // See also: https://en.wikipedia.org/wiki/Central_limit_theorem
+  //           https://en.wikipedia.org/wiki/Binomial_distribution#Normal_approximation
   // We don't care about the accuracy for n <= 30 so we let them be.
-  // And if Y ~ N(0, 1/2) then Y = (X - mu)/(2 * sigma)^(1/2)
+  // And if Y ~ N(0, 1/2) then Y = (X - mean)/(2 * variance)^(1/2)
+  // See also: https://en.wikipedia.org/wiki/Normal_distribution#Symmetries_and_derivatives
   const y = abs(successfulTrials - mean) / Math.sqrt(2 * variance)
   // Since erf gives the probabilty of [-y, y] on Y, and pValue is the union of [-inf, -y] and [y, inf]:
+  // See also: https://en.wikipedia.org/wiki/Error_function
   return 1 - erf(y)
 }
