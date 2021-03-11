@@ -7,7 +7,7 @@ import { abs, erf } from 'mathjs'
  * @param totalTrials number of total trials
  * @param probabilityOfSuccess probability of success
  */
-export function binomialProbValue(successfulTrials: number, totalTrials: number, probabilityOfSuccess: number): number {
+export function binomialProbValue( { successfulTrials, totalTrials, probabilityOfSuccess} : { successfulTrials: number, totalTrials: number, probabilityOfSuccess: number}): number {
   const mean = totalTrials * probabilityOfSuccess
   const variance = totalTrials * probabilityOfSuccess * (1 - probabilityOfSuccess)
   // By the CLT, B ~ Binomial(n, p) is approximated well enough by X ~ N(mu, sigma)) for n > 30

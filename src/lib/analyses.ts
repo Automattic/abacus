@@ -207,21 +207,21 @@ export function getExperimentHealthStats(experiment: ExperimentFull, analysesByS
         return [
           variationId,
           {
-            exposedDistributionMatchingAllocated: binomialProbValue(
-              variationCountsSet.exposed,
-              participantCounts.total.exposed,
-              allocatedPercentage / totalAllocatedPercentage,
-            ),
-            assignedDistributionMatchingAllocated: binomialProbValue(
-              variationCountsSet.assigned,
-              participantCounts.total.assigned,
-              allocatedPercentage / totalAllocatedPercentage,
-            ),
-            assignedSpammersDistributionMatchingAllocated: binomialProbValue(
-              variationCountsSet.assignedSpammers,
-              participantCounts.total.assignedSpammers,
-              allocatedPercentage / totalAllocatedPercentage,
-            ),
+            exposedDistributionMatchingAllocated: binomialProbValue({
+              successfulTrials: variationCountsSet.exposed,
+              totalTrials: participantCounts.total.exposed,
+              probabilityOfSuccess: allocatedPercentage / totalAllocatedPercentage,
+            }),
+            assignedDistributionMatchingAllocated: binomialProbValue({
+              successfulTrials: variationCountsSet.assigned,
+              totalTrials: participantCounts.total.assigned,
+              probabilityOfSuccess: allocatedPercentage / totalAllocatedPercentage,
+            }),
+            assignedSpammersDistributionMatchingAllocated: binomialProbValue({
+              successfulTrials: variationCountsSet.assignedSpammers,
+              totalTrials: participantCounts.total.assignedSpammers,
+              probabilityOfSuccess: allocatedPercentage / totalAllocatedPercentage,
+            }),
           },
         ]
       }),
