@@ -360,7 +360,7 @@ describe('getParticipantCounts', () => {
         assignedSpammers: 15,
         exposed: 40,
       },
-      variations: {
+      byVariationId: {
         '1': {
           assigned: 40,
           assignedCrossovers: 5,
@@ -395,7 +395,7 @@ describe('getParticipantCounts', () => {
         assignedSpammers: 0,
         exposed: 0,
       },
-      variations: {
+      byVariationId: {
         '1': {
           assigned: 0,
           assignedCrossovers: 0,
@@ -463,7 +463,7 @@ describe('getExperimentHealthStats', () => {
       ),
     ).toEqual({
       probabilities: {
-        variations: {
+        byVariationId: {
           '1': {
             assignedDistributionMatchingAllocated: 0.000011583130623216142,
             assignedSpammersDistributionMatchingAllocated: 1.970346108493004e-11,
@@ -482,7 +482,7 @@ describe('getExperimentHealthStats', () => {
           assignedSpammersToAssigned: 0.34615384615384615,
           exposedToAssigned: 0.3076923076923077,
         },
-        variations: {
+        byVariationId: {
           '1': {
             assignedCrossoversToAssigned: 0.125,
             assignedCrossoversToTotalAssignedCrossovers: 0.125,

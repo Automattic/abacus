@@ -114,9 +114,9 @@ function getParticipantCountsSetForParticipantStatsKey(
 
 /**
  * Gets participant counts for an Experiment
- * 
- * @param experiment 
- * @param analysesByStrategy 
+ *
+ * @param experiment
+ * @param analysesByStrategy
  */
 export function getParticipantCounts(
   experiment: ExperimentFull,
@@ -134,38 +134,41 @@ export function getParticipantCounts(
 }
 
 interface VariationRatios {
-  exposedToAssigned: number,
-  assignedSpammersToAssigned: number,
-  assignedCrossoversToAssigned: number,
-  exposedToTotalExposed: number,
-  assignedToTotalAssigned: number,
-  assignedSpammersToTotalAssignedSpammers: number,
-  assignedCrossoversToTotalAssignedCrossovers: number,
+  exposedToAssigned: number
+  assignedSpammersToAssigned: number
+  assignedCrossoversToAssigned: number
+  exposedToTotalExposed: number
+  assignedToTotalAssigned: number
+  assignedSpammersToTotalAssignedSpammers: number
+  assignedCrossoversToTotalAssignedCrossovers: number
 }
 
 interface VariationProbabilites {
-  exposedDistributionMatchingAllocated: number,
-  assignedDistributionMatchingAllocated: number,
-  assignedSpammersDistributionMatchingAllocated: number,
+  exposedDistributionMatchingAllocated: number
+  assignedDistributionMatchingAllocated: number
+  assignedSpammersDistributionMatchingAllocated: number
 }
 
 /**
  * Gets Experiment Health Stats for an experiment
- * 
- * @param experiment 
- * @param analysesByStrategy 
+ *
+ * @param experiment
+ * @param analysesByStrategy
  */
-export function getExperimentHealthStats(experiment: ExperimentFull, analysesByStrategy: AnalysesByStrategy) : {
+export function getExperimentHealthStats(
+  experiment: ExperimentFull,
+  analysesByStrategy: AnalysesByStrategy,
+): {
   ratios: {
     overall: {
-      exposedToAssigned: number,
-      assignedSpammersToAssigned: number,
-      assignedCrossoversToAssigned: number,
+      exposedToAssigned: number
+      assignedSpammersToAssigned: number
+      assignedCrossoversToAssigned: number
     }
-    byVariationId: Record<number, VariationRatios>,
-  },
+    byVariationId: Record<number, VariationRatios>
+  }
   probabilities: {
-    byVariationId: Record<number, VariationProbabilites>,
+    byVariationId: Record<number, VariationProbabilites>
   }
 } {
   const participantCounts = getParticipantCounts(experiment, analysesByStrategy)
