@@ -112,13 +112,19 @@ function getParticipantCountsSetForParticipantStatsKey(
   }
 }
 
+/**
+ * Gets participant counts for an Experiment
+ * 
+ * @param experiment 
+ * @param analysesByStrategy 
+ */
 export function getParticipantCounts(
   experiment: ExperimentFull,
   analysesByStrategy: AnalysesByStrategy,
-): { total: CountsSet; variations: Record<number, CountsSet> } {
+): { total: CountsSet; byVariationId: Record<number, CountsSet> } {
   return {
     total: getParticipantCountsSetForParticipantStatsKey('total', analysesByStrategy),
-    variations: Object.fromEntries(
+    byVariationId: Object.fromEntries(
       experiment.variations.map(({ variationId }) => [
         variationId,
         getParticipantCountsSetForParticipantStatsKey(`variation_${variationId}`, analysesByStrategy),
@@ -127,7 +133,41 @@ export function getParticipantCounts(
   }
 }
 
-export function getExperimentHealthStats(experiment: ExperimentFull, analysesByStrategy: AnalysesByStrategy) {
+interface VariationRatios {
+  exposedToAssigned: number,
+  assignedSpammersToAssigned: number,
+  assignedCrossoversToAssigned: number,
+  exposedToTotalExposed: number,
+  assignedToTotalAssigned: number,
+  assignedSpammersToTotalAssignedSpammers: number,
+  assignedCrossoversToTotalAssignedCrossovers: number,
+}
+
+interface VariationProbabilites {
+  exposedDistributionMatchingAllocated: number,
+  assignedDistributionMatchingAllocated: number,
+  assignedSpammersDistributionMatchingAllocated: number,
+}
+
+/**
+ * Gets Experiment Health Stats for an experiment
+ * 
+ * @param experiment 
+ * @param analysesByStrategy 
+ */
+export function getExperimentHealthStats(experiment: ExperimentFull, analysesByStrategy: AnalysesByStrategy) : {
+  ratios: {
+    overall: {
+      exposedToAssigned: number,
+      assignedSpammersToAssigned: number,
+      assignedCrossoversToAssigned: number,
+    }
+    byVariationId: Record<number, VariationRatios>,
+  },
+  probabilities: {
+    byVariationId: Record<number, VariationProbabilites>,
+  }
+} {
   const participantCounts = getParticipantCounts(experiment, analysesByStrategy)
 
   const ratios = {
@@ -136,8 +176,8 @@ export function getExperimentHealthStats(experiment: ExperimentFull, analysesByS
       assignedSpammersToAssigned: participantCounts.total.assignedSpammers / participantCounts.total.assigned,
       assignedCrossoversToAssigned: participantCounts.total.assignedCrossovers / participantCounts.total.assigned,
     },
-    variations: Object.fromEntries(
-      Object.entries(participantCounts.variations).map(([variationId, variationCountsSet]) => {
+    byVariationId: Object.fromEntries(
+      Object.entries(participantCounts.byVariationId).map(([variationId, variationCountsSet]) => {
         return [
           variationId,
           {
@@ -161,9 +201,9 @@ export function getExperimentHealthStats(experiment: ExperimentFull, analysesByS
     .reduce((acc, cur) => acc + cur)
   // The probability of an equal or a more extreme outcome occuring.
   const probabilities = {
-    variations: Object.fromEntries(
+    byVariationId: Object.fromEntries(
       experiment.variations.map(({ variationId, allocatedPercentage }) => {
-        const variationCountsSet = participantCounts.variations[variationId]
+        const variationCountsSet = participantCounts.byVariationId[variationId]
         return [
           variationId,
           {
