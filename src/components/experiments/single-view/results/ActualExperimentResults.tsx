@@ -178,10 +178,9 @@ export default function ActualExperimentResults({
     primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc,
     _.last.bind(null),
   )
-  // We want the max participants so we use IttPure
-  const totalParticipants =
-    primaryMetricLatestAnalysesByStrategy[AnalysisStrategy.IttPure]?.participantStats['total'] ?? 0
-  const latestPrimaryMetricAnalysis = _.last(primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc[strategy])
+  const latestPrimaryMetricAnalysis = primaryMetricLatestAnalysesByStrategy[strategy]
+  // istanbul ignore next; trivial
+  const totalParticipants = latestPrimaryMetricAnalysis?.participantStats['total'] ?? 0
   const primaryMetricAggregateRecommendation = getAggregateRecommendation(
     Object.values(primaryMetricLatestAnalysesByStrategy).filter((x) => x) as Analysis[],
     strategy,
@@ -303,7 +302,7 @@ export default function ActualExperimentResults({
                     {totalParticipants.toLocaleString('en', { useGrouping: true })}
                   </Typography>
                   <Typography variant='subtitle1'>
-                    <strong>total participants</strong> as at{' '}
+                    <strong>analyzed participants</strong> as at{' '}
                     {formatIsoDate(latestPrimaryMetricAnalysis.analysisDatetime)}
                   </Typography>
                 </div>
@@ -320,7 +319,6 @@ export default function ActualExperimentResults({
               </>
             )}
           </Paper>
-          {/* <Paper className={classes.summaryHealthPaper}></Paper> */}
         </div>
       </div>
       <MaterialTable
