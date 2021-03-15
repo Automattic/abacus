@@ -319,7 +319,6 @@ export default function ActualExperimentResults({
               </>
             )}
           </Paper>
-          {/* <Paper className={classes.summaryHealthPaper}></Paper> */}
         </div>
       </div>
       <MaterialTable
