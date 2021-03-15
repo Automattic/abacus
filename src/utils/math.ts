@@ -1,4 +1,4 @@
-import binomialTest from '@stdlib/stats/binomial-test';
+import binomialTest from '@stdlib/stats/binomial-test'
 
 /**
  * Assuming a distribution of X ~ Binomial(n, p), returns the probability of the number of trials being equal to x or more extreme than x.
