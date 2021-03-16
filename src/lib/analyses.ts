@@ -45,7 +45,7 @@ export interface AggregateRecommendation {
 
 /**
  * Returns the aggregate recommendation over analyses of different analysis strategies.
- * 
+ *
  * @param analyses Analyses of different strategies for the same day.
  * @param defaultStrategy Default strategy in the context of an aggregateRecommendation..
  */
@@ -219,12 +219,12 @@ export function getExperimentHealthStats(
             assignedDistributionMatchingAllocated: binomialTest(
               variationCountsSet.assigned,
               participantCounts.total.assigned,
-              { p: allocatedPercentage / totalAllocatedPercentage, }
+              { p: allocatedPercentage / totalAllocatedPercentage },
             ).pValue,
             assignedSpammersDistributionMatchingAllocated: binomialTest(
               variationCountsSet.assignedSpammers,
               participantCounts.total.assignedSpammers,
-              { p: allocatedPercentage / totalAllocatedPercentage, }
+              { p: allocatedPercentage / totalAllocatedPercentage },
             ).pValue,
           },
         ]
