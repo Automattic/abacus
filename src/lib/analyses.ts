@@ -45,6 +45,7 @@ export interface AggregateRecommendation {
 
 /**
  * Returns the aggregate recommendation over analyses of different analysis strategies.
+ * 
  * @param analyses Analyses of different strategies for the same day.
  * @param defaultStrategy Default strategy in the context of an aggregateRecommendation..
  */
@@ -120,9 +121,6 @@ function getParticipantCountsSetForParticipantStatsKey(
 
 /**
  * Gets participant counts for an Experiment
- *
- * @param experiment
- * @param analysesByStrategy
  */
 export function getParticipantCounts(
   experiment: ExperimentFull,
@@ -157,9 +155,6 @@ interface VariationProbabilites {
 
 /**
  * Gets Experiment Health Stats for an experiment
- *
- * @param experiment
- * @param analysesByStrategy
  */
 export function getExperimentHealthStats(
   experiment: ExperimentFull,
