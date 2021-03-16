@@ -19,7 +19,6 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@rehooks/component-size": "^1.0.3",
     "@stdlib/stdlib": "0.0.93",
-    "@types/mathjs": "^6.0.11",
     "@types/react-plotly.js": "^2.2.4",
     "@types/react-router-dom": "^5.1.6",
     "clsx": "^1.1.1",

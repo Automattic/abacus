@@ -465,14 +465,14 @@ describe('getExperimentHealthStats', () => {
       probabilities: {
         byVariationId: {
           '1': {
-            assignedDistributionMatchingAllocated: 0.000011583130623216142,
-            assignedSpammersDistributionMatchingAllocated: 1.970346108493004e-11,
-            exposedDistributionMatchingAllocated: 0.11384629800665802,
+            assignedDistributionMatchingAllocated: 0.000013715068445169529,
+            assignedSpammersDistributionMatchingAllocated: 5.684341886080802e-14,
+            exposedDistributionMatchingAllocated: 0.1538599441628321,
           },
           '2': {
-            assignedDistributionMatchingAllocated: 0.3804551252503884,
-            assignedSpammersDistributionMatchingAllocated: 0.4560565402502559,
-            exposedDistributionMatchingAllocated: 0.026856695507524453,
+            assignedDistributionMatchingAllocated: 0.43002088397534255,
+            assignedSpammersDistributionMatchingAllocated: 0.5514843298025198,
+            exposedDistributionMatchingAllocated: 0.03847730828420026,
           },
         },
       },
