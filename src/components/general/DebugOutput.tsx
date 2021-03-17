@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme: Theme) =>
       background: '#ffeecf',
       color: '#333',
       maxWidth: '80rem',
-      maxHeight: '30rem',
     },
     pre: {
       fontFamily: theme.custom.fonts.monospace,

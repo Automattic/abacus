@@ -16,12 +16,14 @@ import MaterialTable from 'material-table'
 import { PlotData } from 'plotly.js'
 import React, { useState } from 'react'
 import Plot from 'react-plotly.js'
+import DebugOutput from 'src/components/general/DebugOutput'
 
 import {
   AggregateRecommendation,
   AggregateRecommendationDecision,
   AnalysisStrategyToHuman,
   getAggregateRecommendation,
+  getExperimentHealthStats,
 } from 'src/lib/analyses'
 import * as Experiments from 'src/lib/experiments'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
@@ -340,6 +342,11 @@ export default function ActualExperimentResults({
         }}
         detailPanel={DetailPanel}
       />
+      {
+        // istanbul ignore next; debug only
+        isDebugMode() &&
+        <DebugOutput label="Health Stats" content={getExperimentHealthStats(experiment, primaryMetricLatestAnalysesByStrategy)} />
+      }
     </div>
   )
 }
