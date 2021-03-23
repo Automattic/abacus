@@ -402,7 +402,8 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
 
   return indicatorDefinitions.map(({ value, indicationBrackets, ...rest }) => ({
     value,
-    indication: (_.sortBy(indicationBrackets, 'max').find((bracket) => value <= bracket.max) as IndicationBracket).indication,
+    indication: (_.sortBy(indicationBrackets, 'max').find((bracket) => value <= bracket.max) as IndicationBracket)
+      .indication,
     ...rest,
   }))
 }
