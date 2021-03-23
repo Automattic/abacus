@@ -559,7 +559,7 @@ describe('getExperimentHealthIndicators', () => {
       ),
     ).toEqual([
       {
-        indication: 'CertainIssue',
+        indication: 'ProbableIssue',
         link: '',
         name: 'Assignment distribution matching allocated',
         unit: 'P-Value',
@@ -573,21 +573,21 @@ describe('getExperimentHealthIndicators', () => {
         value: 0.03847730828420026,
       },
       {
-        indication: 'CertainIssue',
+        indication: 'ProbableIssue',
         link: '',
         name: 'Spammer distribution matching allocated',
         unit: 'P-Value',
         value: 5.684341886080802e-14,
       },
       {
-        indication: 'CertainIssue',
+        indication: 'ProbableIssue',
         link: '',
         name: 'Total crossovers',
         unit: 'Ratio',
         value: 0.3076923076923077,
       },
       {
-        indication: 'CertainIssue',
+        indication: 'ProbableIssue',
         link: '',
         name: 'Total spammers',
         unit: 'Ratio',
