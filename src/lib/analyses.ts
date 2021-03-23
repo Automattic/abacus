@@ -243,7 +243,7 @@ export function getExperimentHealthStats(
 export enum HealthIndication {
   Nominal = 'Nominal',
   PossibleIssue = 'PossibleIssue',
-  CertainIssue = 'CertainIssue',
+  ProbableIssue = 'ProbableIssue',
 }
 
 export enum HealthIndicatorUnit {
@@ -306,7 +306,7 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
       indicationBrackets: [
         {
           max: 0.001,
-          indication: HealthIndication.CertainIssue,
+          indication: HealthIndication.ProbableIssue,
         },
         {
           max: 0.05,
@@ -326,7 +326,7 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
       indicationBrackets: [
         {
           max: 0.001,
-          indication: HealthIndication.CertainIssue,
+          indication: HealthIndication.ProbableIssue,
         },
         {
           max: 0.05,
@@ -346,7 +346,7 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
       indicationBrackets: [
         {
           max: 0.001,
-          indication: HealthIndication.CertainIssue,
+          indication: HealthIndication.ProbableIssue,
         },
         {
           max: 0.05,
@@ -374,7 +374,7 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
         },
         {
           max: 1,
-          indication: HealthIndication.CertainIssue,
+          indication: HealthIndication.ProbableIssue,
         },
       ],
     },
@@ -394,15 +394,15 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
         },
         {
           max: 1,
-          indication: HealthIndication.CertainIssue,
+          indication: HealthIndication.ProbableIssue,
         },
       ],
     },
   ]
 
-  return indicatorDefinitions.map(({ value, indicationBrackets: brackets, ...rest }) => ({
+  return indicatorDefinitions.map(({ value, indicationBrackets, ...rest }) => ({
     value,
-    indication: (_.sortBy(brackets, 'max').find((bracket) => value <= bracket.max) as IndicationBracket).indication,
+    indication: (_.sortBy(indicationBrackets, 'max').find((bracket) => value <= bracket.max) as IndicationBracket).indication,
     ...rest,
   }))
 }
