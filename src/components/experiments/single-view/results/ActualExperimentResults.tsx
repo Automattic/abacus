@@ -22,6 +22,8 @@ import {
   AggregateRecommendationDecision,
   AnalysisStrategyToHuman,
   getAggregateRecommendation,
+  getExperimentHealthIndicators,
+  getExperimentHealthStats,
 } from 'src/lib/analyses'
 import * as Experiments from 'src/lib/experiments'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
@@ -33,6 +35,7 @@ import { formatIsoDate } from 'src/utils/time'
 
 import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
+import HealthIndicators from './HealthIndicators'
 import MetricAssignmentResults from './MetricAssignmentResults'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -186,6 +189,9 @@ export default function ActualExperimentResults({
     strategy,
   )
 
+  const experimentHealthStats = getExperimentHealthStats(experiment, primaryMetricLatestAnalysesByStrategy)
+  const experimentHealthIndicators = getExperimentHealthIndicators(experimentHealthStats)
+
   // ### Metric Assignments Table
 
   const tableColumns = [
@@ -319,6 +325,7 @@ export default function ActualExperimentResults({
               </>
             )}
           </Paper>
+          <HealthIndicators indicators={experimentHealthIndicators} className={classes.summaryStatsPaper} />
         </div>
       </div>
       <MaterialTable
