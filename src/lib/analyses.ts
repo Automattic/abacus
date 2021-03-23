@@ -247,7 +247,7 @@ export enum HealthIndication {
 }
 
 export enum HealthIndicatorUnit {
-  Pvalue = 'Pvalue',
+  Pvalue = 'P-Value',
   Ratio = 'Ratio',
 }
 
