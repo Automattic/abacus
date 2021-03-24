@@ -79,7 +79,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
             >
               Assignment distribution matching allocated
             </a>
@@ -97,7 +97,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
             >
               Exposure event distribution matching allocated
             </a>
@@ -115,7 +115,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
             >
               Spammer distribution matching allocated
             </a>
@@ -133,7 +133,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
             >
               Total crossovers
             </a>
@@ -151,7 +151,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
             >
               Total spammers
             </a>
@@ -947,7 +947,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
             >
               Assignment distribution matching allocated
             </a>
@@ -965,7 +965,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
             >
               Exposure event distribution matching allocated
             </a>
@@ -983,7 +983,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
             >
               Spammer distribution matching allocated
             </a>
@@ -1001,7 +1001,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
             >
               Total crossovers
             </a>
@@ -1019,7 +1019,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
             >
               Total spammers
             </a>
@@ -2021,7 +2021,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
             >
               Assignment distribution matching allocated
             </a>
@@ -2039,7 +2039,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
             >
               Exposure event distribution matching allocated
             </a>
@@ -2057,7 +2057,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
             >
               Spammer distribution matching allocated
             </a>
@@ -2075,7 +2075,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
             >
               Total crossovers
             </a>
@@ -2093,7 +2093,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href=""
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
             >
               Total spammers
             </a>

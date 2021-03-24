@@ -302,7 +302,8 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
       name: 'Assignment distribution matching allocated',
       value: minVariationProbabilities.assignedDistributionMatchingAllocated,
       unit: HealthIndicatorUnit.Pvalue,
-      link: '',
+      link:
+        'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated',
       indicationBrackets: [
         {
           max: 0.001,
@@ -322,7 +323,8 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
       name: 'Exposure event distribution matching allocated',
       value: minVariationProbabilities.exposedDistributionMatchingAllocated,
       unit: HealthIndicatorUnit.Pvalue,
-      link: '',
+      link:
+        'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch',
       indicationBrackets: [
         {
           max: 0.001,
@@ -342,7 +344,8 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
       name: 'Spammer distribution matching allocated',
       value: minVariationProbabilities.assignedSpammersDistributionMatchingAllocated,
       unit: HealthIndicatorUnit.Pvalue,
-      link: '',
+      link:
+        'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated',
       indicationBrackets: [
         {
           max: 0.001,
@@ -362,7 +365,7 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
       name: 'Total crossovers',
       value: experimentHealthStats.ratios.overall.assignedCrossoversToAssigned,
       unit: HealthIndicatorUnit.Ratio,
-      link: '',
+      link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers',
       indicationBrackets: [
         {
           max: 0.01,
@@ -382,7 +385,7 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
       name: 'Total spammers',
       value: experimentHealthStats.ratios.overall.assignedSpammersToAssigned,
       unit: HealthIndicatorUnit.Ratio,
-      link: '',
+      link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers',
       indicationBrackets: [
         {
           max: 0.075,
