@@ -17,11 +17,13 @@ import { PlotData } from 'plotly.js'
 import React, { useState } from 'react'
 import Plot from 'react-plotly.js'
 
+import DebugOutput from 'src/components/general/DebugOutput'
 import {
   AggregateRecommendation,
   AggregateRecommendationDecision,
   AnalysisStrategyToHuman,
   getAggregateRecommendation,
+  getExperimentHealthStats,
 } from 'src/lib/analyses'
 import * as Experiments from 'src/lib/experiments'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
@@ -186,6 +188,8 @@ export default function ActualExperimentResults({
     strategy,
   )
 
+  const experimentHealthStats = getExperimentHealthStats(experiment, primaryMetricLatestAnalysesByStrategy)
+
   // ### Metric Assignments Table
 
   const tableColumns = [
@@ -340,6 +344,11 @@ export default function ActualExperimentResults({
         }}
         detailPanel={DetailPanel}
       />
+      {
+        // Displaying these temporarily:
+        // istanbul ignore next; debug only
+        isDebugMode() && <DebugOutput label='Health Stats' content={experimentHealthStats} />
+      }
     </div>
   )
 }
