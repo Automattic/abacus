@@ -68,7 +68,8 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
         >
           <div
             class=""
-            title="P-Value: 1.000000"
+            title="There is a 100.00% 
+              probability that this result occurred by random chance."
           >
             <span
               aria-label="Nominal"
@@ -86,7 +87,8 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
           </div>
           <div
             class=""
-            title="P-Value: 1.000000"
+            title="There is a 100.00% 
+              probability that this result occurred by random chance."
           >
             <span
               aria-label="Nominal"
@@ -104,7 +106,8 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
           </div>
           <div
             class=""
-            title="P-Value: 1.000000"
+            title="There is a 100.00% 
+              probability that this result occurred by random chance."
           >
             <span
               aria-label="Nominal"
@@ -936,7 +939,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         >
           <div
             class=""
-            title="P-Value: 1.000000"
+            title="There is a 100.00% 
+              probability that this result occurred by random chance."
           >
             <span
               aria-label="Nominal"
@@ -954,7 +958,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           </div>
           <div
             class=""
-            title="P-Value: 1.000000"
+            title="There is a 100.00% 
+              probability that this result occurred by random chance."
           >
             <span
               aria-label="Nominal"
@@ -972,7 +977,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           </div>
           <div
             class=""
-            title="P-Value: 1.000000"
+            title="There is a 100.00% 
+              probability that this result occurred by random chance."
           >
             <span
               aria-label="Nominal"
@@ -2010,7 +2016,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         >
           <div
             class=""
-            title="P-Value: 1.000000"
+            title="There is a 100.00% 
+              probability that this result occurred by random chance."
           >
             <span
               aria-label="Nominal"
@@ -2028,7 +2035,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           </div>
           <div
             class=""
-            title="P-Value: 1.000000"
+            title="There is a 100.00% 
+              probability that this result occurred by random chance."
           >
             <span
               aria-label="Nominal"
@@ -2046,7 +2054,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           </div>
           <div
             class=""
-            title="P-Value: 1.000000"
+            title="There is a 100.00% 
+              probability that this result occurred by random chance."
           >
             <span
               aria-label="Nominal"
