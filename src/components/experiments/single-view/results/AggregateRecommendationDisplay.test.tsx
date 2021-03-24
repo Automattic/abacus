@@ -33,7 +33,12 @@ test('renders ManualAnalysisRequired correctly', () => {
   )
   expect(container).toMatchInlineSnapshot(`
     <div>
-      Manual analysis required
+      <span
+        class="makeStyles-tooltipped-2"
+        title="Contact @experimentation-platform-project on #a8c-experiments"
+      >
+        Manual analysis required
+      </span>
     </div>
   `)
 })
