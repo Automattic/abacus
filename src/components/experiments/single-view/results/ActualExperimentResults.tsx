@@ -188,6 +188,8 @@ export default function ActualExperimentResults({
     strategy,
   )
 
+  const experimentHealthStats = getExperimentHealthStats(experiment, primaryMetricLatestAnalysesByStrategy)
+
   // ### Metric Assignments Table
 
   const tableColumns = [
@@ -343,13 +345,9 @@ export default function ActualExperimentResults({
         detailPanel={DetailPanel}
       />
       {
+        // Displaying these temporarily:
         // istanbul ignore next; debug only
-        isDebugMode() && (
-          <DebugOutput
-            label='Health Stats'
-            content={getExperimentHealthStats(experiment, primaryMetricLatestAnalysesByStrategy)}
-          />
-        )
+        isDebugMode() && <DebugOutput label='Health Stats' content={experimentHealthStats} />
       }
     </div>
   )
