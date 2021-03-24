@@ -240,15 +240,15 @@ export function getExperimentHealthStats(
   }
 }
 
-export enum HealthIndication {
-  Nominal = 'Nominal',
-  PossibleIssue = 'PossibleIssue',
-  ProbableIssue = 'ProbableIssue',
+export enum HealthLevel {
+  Unhealthy,
+  Suspicious,
+  Healthy,
 }
 
 export enum HealthIndicatorUnit {
-  Pvalue = 'P-Value',
-  Ratio = 'Ratio',
+  Pvalue,
+  Ratio,
 }
 
 /**
@@ -259,7 +259,7 @@ export interface HealthIndicator {
   value: number
   unit: HealthIndicatorUnit
   link?: string
-  indication: HealthIndication
+  indication: HealthLevel
 }
 
 /**
@@ -284,126 +284,60 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
     }),
   )
 
-  interface IndicationBracket {
-    max: number
-    indication: HealthIndication
-  }
-
   interface IndicatorDefinition {
     name: string
     value: number
     unit: HealthIndicatorUnit
     link?: string
-    indicationBrackets: Array<IndicationBracket>
+    sortedLevelThresholds: Array<number>
   }
 
+  const probabilityLevelThresholds = [0.001, 0.05, 1]
   const indicatorDefinitions: IndicatorDefinition[] = [
     {
       name: 'Assignment distribution matching allocated',
       value: minVariationProbabilities.assignedDistributionMatchingAllocated,
       unit: HealthIndicatorUnit.Pvalue,
       link: '',
-      indicationBrackets: [
-        {
-          max: 0.001,
-          indication: HealthIndication.ProbableIssue,
-        },
-        {
-          max: 0.05,
-          indication: HealthIndication.PossibleIssue,
-        },
-        {
-          max: 1,
-          indication: HealthIndication.Nominal,
-        },
-      ],
+      sortedLevelThresholds: probabilityLevelThresholds,
     },
     {
       name: 'Exposure event distribution matching allocated',
       value: minVariationProbabilities.exposedDistributionMatchingAllocated,
       unit: HealthIndicatorUnit.Pvalue,
       link: '',
-      indicationBrackets: [
-        {
-          max: 0.001,
-          indication: HealthIndication.ProbableIssue,
-        },
-        {
-          max: 0.05,
-          indication: HealthIndication.PossibleIssue,
-        },
-        {
-          max: 1,
-          indication: HealthIndication.Nominal,
-        },
-      ],
+      sortedLevelThresholds: probabilityLevelThresholds,
     },
     {
       name: 'Spammer distribution matching allocated',
       value: minVariationProbabilities.assignedSpammersDistributionMatchingAllocated,
       unit: HealthIndicatorUnit.Pvalue,
       link: '',
-      indicationBrackets: [
-        {
-          max: 0.001,
-          indication: HealthIndication.ProbableIssue,
-        },
-        {
-          max: 0.05,
-          indication: HealthIndication.PossibleIssue,
-        },
-        {
-          max: 1,
-          indication: HealthIndication.Nominal,
-        },
-      ],
+      sortedLevelThresholds: probabilityLevelThresholds,
     },
     {
       name: 'Total crossovers',
       value: experimentHealthStats.ratios.overall.assignedCrossoversToAssigned,
       unit: HealthIndicatorUnit.Ratio,
       link: '',
-      indicationBrackets: [
-        {
-          max: 0.01,
-          indication: HealthIndication.Nominal,
-        },
-        {
-          max: 0.05,
-          indication: HealthIndication.PossibleIssue,
-        },
-        {
-          max: 1,
-          indication: HealthIndication.ProbableIssue,
-        },
-      ],
+      sortedLevelThresholds: [0.01, 0.05, 1],
     },
     {
       name: 'Total spammers',
       value: experimentHealthStats.ratios.overall.assignedSpammersToAssigned,
       unit: HealthIndicatorUnit.Ratio,
       link: '',
-      indicationBrackets: [
-        {
-          max: 0.075,
-          indication: HealthIndication.Nominal,
-        },
-        {
-          max: 0.3,
-          indication: HealthIndication.PossibleIssue,
-        },
-        {
-          max: 1,
-          indication: HealthIndication.ProbableIssue,
-        },
-      ],
+      sortedLevelThresholds: [0.075, 0.3, 1],
     },
   ]
 
-  return indicatorDefinitions.map(({ value, indicationBrackets, ...rest }) => ({
+  return indicatorDefinitions.map(({ value, sortedLevelThresholds, unit, ...rest }) => ({
     value,
-    indication: (_.sortBy(indicationBrackets, 'max').find((bracket) => value <= bracket.max) as IndicationBracket)
-      .indication,
+    unit,
+    indication:
+      unit === HealthIndicatorUnit.Ratio
+        ? sortedLevelThresholds.length - _.sortedIndex(sortedLevelThresholds, value)
+        : _.sortedIndex(sortedLevelThresholds, value),
     ...rest,
   }))
 }

@@ -1,6 +1,7 @@
 import Fixtures from 'src/test-helpers/fixtures'
 
 import * as Analyses from './analyses'
+import { HealthIndicatorUnit, HealthLevel } from './analyses'
 import { AnalysisStrategy, RecommendationReason } from './schemas'
 
 describe('getAggregateRecommendation', () => {
@@ -559,38 +560,38 @@ describe('getExperimentHealthIndicators', () => {
       ),
     ).toEqual([
       {
-        indication: 'ProbableIssue',
+        indication: HealthLevel.Unhealthy,
         link: '',
         name: 'Assignment distribution matching allocated',
-        unit: 'P-Value',
+        unit: HealthIndicatorUnit.Pvalue,
         value: 0.000013715068445169529,
       },
       {
-        indication: 'PossibleIssue',
+        indication: HealthLevel.Suspicious,
         link: '',
         name: 'Exposure event distribution matching allocated',
-        unit: 'P-Value',
+        unit: HealthIndicatorUnit.Pvalue,
         value: 0.03847730828420026,
       },
       {
-        indication: 'ProbableIssue',
+        indication: HealthLevel.Unhealthy,
         link: '',
         name: 'Spammer distribution matching allocated',
-        unit: 'P-Value',
+        unit: HealthIndicatorUnit.Pvalue,
         value: 5.684341886080802e-14,
       },
       {
-        indication: 'ProbableIssue',
+        indication: HealthLevel.Suspicious,
         link: '',
         name: 'Total crossovers',
-        unit: 'Ratio',
+        unit: HealthIndicatorUnit.Ratio,
         value: 0.3076923076923077,
       },
       {
-        indication: 'ProbableIssue',
+        indication: HealthLevel.Suspicious,
         link: '',
         name: 'Total spammers',
-        unit: 'Ratio',
+        unit: HealthIndicatorUnit.Ratio,
         value: 0.34615384615384615,
       },
     ])
