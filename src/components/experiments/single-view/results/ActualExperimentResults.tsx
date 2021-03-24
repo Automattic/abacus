@@ -17,6 +17,7 @@ import { PlotData } from 'plotly.js'
 import React, { useState } from 'react'
 import Plot from 'react-plotly.js'
 
+import DebugOutput from 'src/components/general/DebugOutput'
 import {
   AggregateRecommendation,
   AggregateRecommendationDecision,
@@ -347,6 +348,11 @@ export default function ActualExperimentResults({
         }}
         detailPanel={DetailPanel}
       />
+      {
+        // Displaying these temporarily:
+        // istanbul ignore next; debug only
+        isDebugMode() && <DebugOutput label='Health Stats' content={experimentHealthStats} />
+      }
     </div>
   )
 }
