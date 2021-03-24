@@ -242,13 +242,13 @@ export function getExperimentHealthStats(
 
 export enum HealthLevel {
   Unhealthy,
-  Suspicious,
+  PossiblyUnhealthy,
   Healthy,
 }
 
 export enum HealthIndicatorUnit {
-  Pvalue,
-  Ratio,
+  Pvalue = 'P-Value',
+  Ratio = 'Ratio',
 }
 
 /**
@@ -259,7 +259,7 @@ export interface HealthIndicator {
   value: number
   unit: HealthIndicatorUnit
   link?: string
-  indication: HealthLevel
+  level: HealthLevel
 }
 
 /**
@@ -284,49 +284,36 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
     }),
   )
 
-  interface IndicatorDefinition {
-    name: string
-    value: number
-    unit: HealthIndicatorUnit
-    link?: string
-    sortedLevelThresholds: Array<number>
-  }
-
   const probabilityLevelThresholds = [0.001, 0.05, 1]
-  const indicatorDefinitions: IndicatorDefinition[] = [
+  const indicatorDefinitions = [
     {
       name: 'Assignment distribution matching allocated',
       value: minVariationProbabilities.assignedDistributionMatchingAllocated,
       unit: HealthIndicatorUnit.Pvalue,
-      link: '',
       sortedLevelThresholds: probabilityLevelThresholds,
     },
     {
       name: 'Exposure event distribution matching allocated',
       value: minVariationProbabilities.exposedDistributionMatchingAllocated,
       unit: HealthIndicatorUnit.Pvalue,
-      link: '',
       sortedLevelThresholds: probabilityLevelThresholds,
     },
     {
       name: 'Spammer distribution matching allocated',
       value: minVariationProbabilities.assignedSpammersDistributionMatchingAllocated,
       unit: HealthIndicatorUnit.Pvalue,
-      link: '',
       sortedLevelThresholds: probabilityLevelThresholds,
     },
     {
-      name: 'Total crossovers',
+      name: 'Total crossover ratio',
       value: experimentHealthStats.ratios.overall.assignedCrossoversToAssigned,
       unit: HealthIndicatorUnit.Ratio,
-      link: '',
       sortedLevelThresholds: [0.01, 0.05, 1],
     },
     {
-      name: 'Total spammers',
+      name: 'Total spammer ratio',
       value: experimentHealthStats.ratios.overall.assignedSpammersToAssigned,
       unit: HealthIndicatorUnit.Ratio,
-      link: '',
       sortedLevelThresholds: [0.075, 0.3, 1],
     },
   ]
@@ -334,7 +321,7 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
   return indicatorDefinitions.map(({ value, sortedLevelThresholds, unit, ...rest }) => ({
     value,
     unit,
-    indication:
+    level:
       unit === HealthIndicatorUnit.Ratio
         ? sortedLevelThresholds.length - _.sortedIndex(sortedLevelThresholds, value)
         : _.sortedIndex(sortedLevelThresholds, value),
