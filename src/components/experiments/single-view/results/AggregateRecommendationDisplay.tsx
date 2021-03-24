@@ -28,7 +28,7 @@ export default function AggregateRecommendationDisplay({
   switch (aggregateRecommendation.decision) {
     case AggregateRecommendationDecision.ManualAnalysisRequired:
       return (
-        <Tooltip title='Contact @experimentation-platform-project on #a8c-experiments'>
+        <Tooltip title='Contact @experimentation-review on #a8c-experiments'>
           <span className={classes.tooltipped}>Manual analysis required</span>
         </Tooltip>
       )

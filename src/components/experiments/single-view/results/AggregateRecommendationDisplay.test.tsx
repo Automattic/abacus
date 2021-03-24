@@ -35,7 +35,7 @@ test('renders ManualAnalysisRequired correctly', () => {
     <div>
       <span
         class="makeStyles-tooltipped-2"
-        title="Contact @experimentation-platform-project on #a8c-experiments"
+        title="Contact @experimentation-review on #a8c-experiments"
       >
         Manual analysis required
       </span>

@@ -924,7 +924,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             >
               <span
                 class="makeStyles-tooltipped-48"
-                title="Contact @experimentation-platform-project on #a8c-experiments"
+                title="Contact @experimentation-review on #a8c-experiments"
               >
                 Manual analysis required
               </span>
@@ -1154,7 +1154,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     >
                       <span
                         class="makeStyles-tooltipped-48"
-                        title="Contact @experimentation-platform-project on #a8c-experiments"
+                        title="Contact @experimentation-review on #a8c-experiments"
                       >
                         Manual analysis required
                       </span>
@@ -2011,7 +2011,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             >
               <span
                 class="makeStyles-tooltipped-81"
-                title="Contact @experimentation-platform-project on #a8c-experiments"
+                title="Contact @experimentation-review on #a8c-experiments"
               >
                 Manual analysis required
               </span>
@@ -2241,7 +2241,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     >
                       <span
                         class="makeStyles-tooltipped-81"
-                        title="Contact @experimentation-platform-project on #a8c-experiments"
+                        title="Contact @experimentation-review on #a8c-experiments"
                       >
                         Manual analysis required
                       </span>
