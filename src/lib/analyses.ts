@@ -40,7 +40,8 @@ export const RecommendationWarningToHuman = {
 export enum AggregateRecommendationDecision {
   ManualAnalysisRequired = 'ManualAnalysisRequired',
   MissingAnalysis = 'MissingAnalysis',
-  Inconclusive = 'Inconclusive',
+  TooShort = 'TooShort',
+  TooLong = 'TooLong',
   DeployAnyVariation = 'DeployAnyVariation',
   DeployChosenVariation = 'DeployChosenVariation',
 }
@@ -84,9 +85,20 @@ export function getAggregateRecommendation({
     }
   }
 
-  if (!recommendation.endExperiment) {
+  // Following the endExperiment+warnings description in experiments/recommender.py:Recommendation:
+  if (
+    !recommendation.endExperiment ||
+    recommendation.warnings.includes(RecommendationWarning.ShortPeriod) ||
+    recommendation.warnings.includes(RecommendationWarning.WideCi)
+  ) {
     return {
-      decision: AggregateRecommendationDecision.Inconclusive,
+      decision: AggregateRecommendationDecision.TooShort,
+    }
+  }
+
+  if (recommendation.warnings.includes(RecommendationWarning.LongPeriod)) {
+    return {
+      decision: AggregateRecommendationDecision.TooLong,
     }
   }
 

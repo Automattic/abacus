@@ -43,20 +43,28 @@ test('renders ManualAnalysisRequired correctly', () => {
   `)
 })
 
-test('renders Inconclusive correctly', () => {
+test('renders TooShort correctly', () => {
   const { container } = render(
     <AggregateRecommendationDisplay
       aggregateRecommendation={{
-        decision: AggregateRecommendationDecision.Inconclusive,
+        decision: AggregateRecommendationDecision.TooShort,
       }}
       experiment={Fixtures.createExperimentFull()}
     />,
   )
-  expect(container).toMatchInlineSnapshot(`
-    <div>
-      Inconclusive
-    </div>
-  `)
+  expect(container).toMatchInlineSnapshot()
+})
+
+test('renders TooLong correctly', () => {
+  const { container } = render(
+    <AggregateRecommendationDisplay
+      aggregateRecommendation={{
+        decision: AggregateRecommendationDecision.TooLong,
+      }}
+      experiment={Fixtures.createExperimentFull()}
+    />,
+  )
+  expect(container).toMatchInlineSnapshot()
 })
 
 test('renders DeployAnyVariation correctly', () => {

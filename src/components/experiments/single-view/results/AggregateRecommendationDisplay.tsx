@@ -33,9 +33,19 @@ export default function AggregateRecommendationDisplay({
         </Tooltip>
       )
     case AggregateRecommendationDecision.MissingAnalysis:
-      return <>Not analyzed yet</>
-    case AggregateRecommendationDecision.Inconclusive:
-      return <>Inconclusive</>
+      return (
+        <Tooltip title='It takes 24-48 hours for data to be analyzed.'>
+          <span className={classes.tooltipped}> Not analyzed yet </span>
+        </Tooltip>
+      )
+    case AggregateRecommendationDecision.TooShort:
+      return <>More data needed</>
+    case AggregateRecommendationDecision.TooLong:
+      return (
+        <Tooltip title='Experiments that run too long may be unsound.'>
+          <span className={classes.tooltipped}>Stop experiment</span>
+        </Tooltip>
+      )
     case AggregateRecommendationDecision.DeployAnyVariation:
       return <>Deploy either variation</>
     case AggregateRecommendationDecision.DeployChosenVariation: {
