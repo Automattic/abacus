@@ -47,6 +47,7 @@ export const PlatformToHuman: Record<Platform, string> = {
   [Platform.Wpandroid]: 'WordPress Android app',
   [Platform.Wpcom]: 'WordPress.com back-end',
   [Platform.Wpios]: 'WordPress iOS app',
+  [Platform.WooCommerce]: 'WooCommerce',
 }
 
 export const AssignmentCacheStatusToHuman: Record<AssignmentCacheStatus, string> = {

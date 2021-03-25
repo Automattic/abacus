@@ -245,6 +245,7 @@ export enum Platform {
   Email = 'email',
   Lohp = 'lohp',
   Pipe = 'pipe',
+  WooCommerce = 'woocommerce',
   Wpandroid = 'wpandroid',
   Wpcom = 'wpcom',
   Wpios = 'wpios',
