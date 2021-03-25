@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
       borderBottomStyle: 'dashed',
       borderBottomColor: theme.palette.grey[500],
     },
-    shouldStopAsterisk: {
+    shouldStop: {
       color: theme.palette.error.main,
     },
   }),
@@ -34,7 +34,7 @@ export default function AggregateRecommendationDisplay({
     <>
       <br />
       <Tooltip title='This experiment has run for too long.'>
-        <span className={clsx(classes.shouldStopAsterisk, classes.tooltipped)}>Stop Experiment</span>
+        <span className={clsx(classes.shouldStop, classes.tooltipped)}>Stop Experiment</span>
       </Tooltip>
     </>
   )
