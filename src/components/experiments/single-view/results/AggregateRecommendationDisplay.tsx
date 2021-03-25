@@ -1,4 +1,5 @@
 import { createStyles, makeStyles, Theme, Tooltip } from '@material-ui/core'
+import clsx from 'clsx'
 import React from 'react'
 
 import { AggregateRecommendation, AggregateRecommendationDecision } from 'src/lib/analyses'
@@ -10,6 +11,9 @@ const useStyles = makeStyles((theme: Theme) =>
       borderBottomWidth: 1,
       borderBottomStyle: 'dashed',
       borderBottomColor: theme.palette.grey[500],
+    },
+    shouldStopAsterisk: {
+      color: theme.palette.error.main,
     },
   }),
 )
@@ -25,6 +29,16 @@ export default function AggregateRecommendationDisplay({
   experiment: ExperimentFull
 }): JSX.Element {
   const classes = useStyles()
+
+  const maybeShouldStopAsterisk = aggregateRecommendation.shouldStop && (
+    <>
+      <br />
+      <Tooltip title='This experiment has run for too long.'>
+        <span className={clsx(classes.shouldStopAsterisk, classes.tooltipped)}>Stop Experiment</span>
+      </Tooltip>
+    </>
+  )
+
   switch (aggregateRecommendation.decision) {
     case AggregateRecommendationDecision.ManualAnalysisRequired:
       return (
@@ -40,14 +54,8 @@ export default function AggregateRecommendationDisplay({
       )
     case AggregateRecommendationDecision.TooShort:
       return <>More data needed</>
-    case AggregateRecommendationDecision.TooLong:
-      return (
-        <Tooltip title='Experiments that run too long may be unsound.'>
-          <span className={classes.tooltipped}>Stop experiment</span>
-        </Tooltip>
-      )
     case AggregateRecommendationDecision.DeployAnyVariation:
-      return <>Deploy either variation</>
+      return <>Deploy either variation{maybeShouldStopAsterisk}</>
     case AggregateRecommendationDecision.DeployChosenVariation: {
       const chosenVariation = experiment.variations.find(
         (variation) => variation.variationId === aggregateRecommendation.chosenVariationId,
@@ -56,9 +64,14 @@ export default function AggregateRecommendationDisplay({
         throw new Error('No match for chosenVariationId among variations in experiment.')
       }
 
-      return <>Deploy {chosenVariation.name}</>
+      return (
+        <>
+          Deploy {chosenVariation.name}
+          {maybeShouldStopAsterisk}
+        </>
+      )
     }
     default:
-      throw new Error('Missing AggregateRecommendationDecision.')
+      throw new Error(`Missing AggregateRecommendationDecision: ${aggregateRecommendation.decision}.`)
   }
 }

@@ -17,7 +17,12 @@ test('renders MissingAnalysis correctly', () => {
   )
   expect(container).toMatchInlineSnapshot(`
     <div>
-      Not analyzed yet
+      <span
+        class="makeStyles-tooltipped-1"
+        title="It takes 24-48 hours for data to be analyzed."
+      >
+         Not analyzed yet 
+      </span>
     </div>
   `)
 })
@@ -34,7 +39,7 @@ test('renders ManualAnalysisRequired correctly', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       <span
-        class="makeStyles-tooltipped-2"
+        class="makeStyles-tooltipped-3"
         title="Contact @experimentation-review on #a8c-experiments"
       >
         Manual analysis required
@@ -52,19 +57,11 @@ test('renders TooShort correctly', () => {
       experiment={Fixtures.createExperimentFull()}
     />,
   )
-  expect(container).toMatchInlineSnapshot()
-})
-
-test('renders TooLong correctly', () => {
-  const { container } = render(
-    <AggregateRecommendationDisplay
-      aggregateRecommendation={{
-        decision: AggregateRecommendationDecision.TooLong,
-      }}
-      experiment={Fixtures.createExperimentFull()}
-    />,
-  )
-  expect(container).toMatchInlineSnapshot()
+  expect(container).toMatchInlineSnapshot(`
+    <div>
+      More data needed
+    </div>
+  `)
 })
 
 test('renders DeployAnyVariation correctly', () => {
@@ -79,6 +76,30 @@ test('renders DeployAnyVariation correctly', () => {
   expect(container).toMatchInlineSnapshot(`
     <div>
       Deploy either variation
+    </div>
+  `)
+})
+
+test('renders DeployAnyVariation correctly with stopping recommendation', () => {
+  const { container } = render(
+    <AggregateRecommendationDisplay
+      aggregateRecommendation={{
+        decision: AggregateRecommendationDecision.DeployAnyVariation,
+        shouldStop: true,
+      }}
+      experiment={Fixtures.createExperimentFull()}
+    />,
+  )
+  expect(container).toMatchInlineSnapshot(`
+    <div>
+      Deploy either variation
+      <br />
+      <span
+        class="makeStyles-shouldStopAsterisk-10 makeStyles-tooltipped-9"
+        title="This experiment has run for too long."
+      >
+        Stop Experiment
+      </span>
     </div>
   `)
 })
@@ -148,6 +169,8 @@ test('throws error for uncovered AggregateRecommendation', () => {
         })}
       />,
     ),
-  ).toThrowErrorMatchingInlineSnapshot(`"Missing AggregateRecommendationDecision."`)
+  ).toThrowErrorMatchingInlineSnapshot(
+    `"Missing AggregateRecommendationDecision: Unknown AggregateRecommendationDecision."`,
+  )
   console.error = originalConsoleError
 })

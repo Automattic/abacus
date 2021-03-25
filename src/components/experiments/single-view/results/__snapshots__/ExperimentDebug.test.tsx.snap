@@ -12,7 +12,7 @@ exports[`renders the full tables with some analyses and a different primary metr
     style="position: relative;"
   >
     <div
-      class="Component-horizontalScrollContainer-13"
+      class="Component-horizontalScrollContainer-14"
       style="overflow-x: auto; position: relative;"
     >
       <div>
@@ -31,28 +31,28 @@ exports[`renders the full tables with some analyses and a different primary metr
                   class="MuiTableRow-root MuiTableRow-head"
                 >
                   <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-14 MuiTableCell-alignLeft"
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-15 MuiTableCell-alignLeft"
                     scope="col"
                     style="font-weight: 700; box-sizing: border-box;"
                   >
                     Strategy
                   </th>
                   <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-14 MuiTableCell-alignLeft"
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-15 MuiTableCell-alignLeft"
                     scope="col"
                     style="font-weight: 700; box-sizing: border-box;"
                   >
                     Total
                   </th>
                   <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-14 MuiTableCell-alignLeft"
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-15 MuiTableCell-alignLeft"
                     scope="col"
                     style="font-weight: 700; box-sizing: border-box;"
                   >
                     control
                   </th>
                   <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-14 MuiTableCell-alignLeft"
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-15 MuiTableCell-alignLeft"
                     scope="col"
                     style="font-weight: 700; box-sizing: border-box;"
                   >
@@ -459,8 +459,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      More data needed
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -503,7 +502,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Inconclusive
+                      More data needed
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -575,8 +574,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      More data needed
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -619,8 +617,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      More data needed
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -846,7 +843,12 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Not analyzed yet
+                      <span
+                        class="makeStyles-tooltipped-8"
+                        title="It takes 24-48 hours for data to be analyzed."
+                      >
+                         Not analyzed yet 
+                      </span>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -978,8 +980,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      More data needed
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1022,8 +1023,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      More data needed
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1066,8 +1066,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      More data needed
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1110,8 +1109,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      More data needed
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1154,8 +1152,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      More data needed
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"

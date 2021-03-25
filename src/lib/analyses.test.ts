@@ -1,7 +1,7 @@
 import Fixtures from 'src/test-helpers/fixtures'
 
 import * as Analyses from './analyses'
-import { AnalysisStrategy, RecommendationReason, RecommendationWarning } from './schemas'
+import { AnalysisStrategy, RecommendationReason, RecommendationWarning, Status } from './schemas'
 
 describe('getAggregateRecommendation', () => {
   it('should work correctly for single analyses', () => {
@@ -104,27 +104,6 @@ describe('getAggregateRecommendation', () => {
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
             recommendation: {
-              endExperiment: false,
-              chosenVariationId: null,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [RecommendationWarning.LongPeriod],
-            },
-          }),
-        ],
-        defaultStrategy: AnalysisStrategy.PpNaive,
-      }),
-    ).toEqual({
-      decision: Analyses.AggregateRecommendationDecision.TooLong,
-    })
-    expect(
-      Analyses.getAggregateRecommendation({
-        experiment: Fixtures.createExperimentFull(),
-        metric: Fixtures.createMetricBares(1)[0],
-        metricAssignment: Fixtures.createMetricAssignment(),
-        analyses: [
-          Fixtures.createAnalysis({
-            analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
               endExperiment: true,
               chosenVariationId: null,
               reason: RecommendationReason.CiGreaterThanRope,
@@ -136,6 +115,51 @@ describe('getAggregateRecommendation', () => {
       }),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
+      shouldStop: false,
+    })
+    expect(
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull({ status: Status.Running }),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
+          Fixtures.createAnalysis({
+            analysisStrategy: AnalysisStrategy.PpNaive,
+            recommendation: {
+              endExperiment: true,
+              chosenVariationId: null,
+              reason: RecommendationReason.CiGreaterThanRope,
+              warnings: [RecommendationWarning.LongPeriod],
+            },
+          }),
+        ],
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
+    ).toEqual({
+      decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
+      shouldStop: true,
+    })
+    expect(
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull({ status: Status.Disabled }),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
+          Fixtures.createAnalysis({
+            analysisStrategy: AnalysisStrategy.PpNaive,
+            recommendation: {
+              endExperiment: true,
+              chosenVariationId: null,
+              reason: RecommendationReason.CiGreaterThanRope,
+              warnings: [RecommendationWarning.LongPeriod],
+            },
+          }),
+        ],
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
+    ).toEqual({
+      decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
+      shouldStop: false,
     })
     expect(
       Analyses.getAggregateRecommendation({
@@ -158,6 +182,30 @@ describe('getAggregateRecommendation', () => {
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
       chosenVariationId: 123,
+      shouldStop: false,
+    })
+    expect(
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull(),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
+          Fixtures.createAnalysis({
+            analysisStrategy: AnalysisStrategy.PpNaive,
+            recommendation: {
+              endExperiment: true,
+              chosenVariationId: 123,
+              reason: RecommendationReason.CiGreaterThanRope,
+              warnings: [RecommendationWarning.LongPeriod],
+            },
+          }),
+        ],
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
+    ).toEqual({
+      decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
+      chosenVariationId: 123,
+      shouldStop: false,
     })
   })
 
@@ -192,6 +240,7 @@ describe('getAggregateRecommendation', () => {
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
       chosenVariationId: 123,
+      shouldStop: false,
     })
 
     expect(
@@ -219,6 +268,7 @@ describe('getAggregateRecommendation', () => {
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
       chosenVariationId: 123,
+      shouldStop: false,
     })
 
     expect(
@@ -245,6 +295,7 @@ describe('getAggregateRecommendation', () => {
       }),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
+      shouldStop: false,
     })
 
     expect(

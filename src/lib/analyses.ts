@@ -7,6 +7,7 @@ import {
   MetricAssignment,
   MetricBare,
   RecommendationWarning,
+  Status,
 } from './schemas'
 
 // I can't get stdlib to work as an import...:
@@ -49,6 +50,7 @@ export enum AggregateRecommendationDecision {
 export interface AggregateRecommendation {
   decision: AggregateRecommendationDecision
   chosenVariationId?: number
+  shouldStop?: boolean
 }
 
 /**
@@ -58,6 +60,7 @@ export interface AggregateRecommendation {
  * @param defaultStrategy Default strategy in the context of an aggregateRecommendation..
  */
 export function getAggregateRecommendation({
+  experiment,
   analyses,
   defaultStrategy,
 }: {
@@ -96,21 +99,20 @@ export function getAggregateRecommendation({
     }
   }
 
-  if (recommendation.warnings.includes(RecommendationWarning.LongPeriod)) {
-    return {
-      decision: AggregateRecommendationDecision.TooLong,
-    }
-  }
+  const shouldStop =
+    experiment.status === Status.Running && recommendation.warnings.includes(RecommendationWarning.LongPeriod)
 
   if (!recommendation.chosenVariationId) {
     return {
       decision: AggregateRecommendationDecision.DeployAnyVariation,
+      shouldStop,
     }
   }
 
   return {
     decision: AggregateRecommendationDecision.DeployChosenVariation,
     chosenVariationId: recommendation.chosenVariationId,
+    shouldStop,
   }
 }
 
