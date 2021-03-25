@@ -45,7 +45,7 @@ function assignmentHref(variationName: string, experimentName: string) {
   return `javascript:(async () => {
     const token = JSON.parse(localStorage.getItem('experiments_auth_info'));
     const headers = {'Content-Type': 'application/json'};
-    if(token && token.accessToken) {
+    if (token && token.accessToken) {
        headers.Authorization = 'Bearer ' + token['accessToken'];
     }
     const response = await fetch(
@@ -75,10 +75,10 @@ function assignmentHref(variationName: string, experimentName: string) {
         }
         const duration = responseBody.duration === 'unlimited' ?
           responseBody.duration : Math.ceil(responseBody.duration / 60 / 60);
-        if(responseBody.storage_method === 'user_attribute') {
-          alert('Your logged in user has been assigned to ' + responseBody.variations.${experimentName} + '. If you want to assign a different user, run this bookmarklet outside of Abacus.');
-        } else {
+        if (responseBody.storage_method === 'cookie') {
           alert('Your current session has been assigned to ' + responseBody.variations.${experimentName} + ' for ' + duration + ' hours via cookie.');
+        } else {
+          alert('Your logged in user has been assigned to ' + responseBody.variations.${experimentName} + '. If you want to assign a different user, run this bookmarklet outside of Abacus.');
         }
     }
 })()`

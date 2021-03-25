@@ -12,7 +12,7 @@ exports[`renders the full tables with some analyses and a different primary metr
     style="position: relative;"
   >
     <div
-      class="Component-horizontalScrollContainer-12"
+      class="Component-horizontalScrollContainer-13"
       style="overflow-x: auto; position: relative;"
     >
       <div>
@@ -31,28 +31,28 @@ exports[`renders the full tables with some analyses and a different primary metr
                   class="MuiTableRow-root MuiTableRow-head"
                 >
                   <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignLeft"
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-14 MuiTableCell-alignLeft"
                     scope="col"
                     style="font-weight: 700; box-sizing: border-box;"
                   >
                     Strategy
                   </th>
                   <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignLeft"
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-14 MuiTableCell-alignLeft"
                     scope="col"
                     style="font-weight: 700; box-sizing: border-box;"
                   >
                     Total
                   </th>
                   <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignLeft"
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-14 MuiTableCell-alignLeft"
                     scope="col"
                     style="font-weight: 700; box-sizing: border-box;"
                   >
                     control
                   </th>
                   <th
-                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-13 MuiTableCell-alignLeft"
+                    class="MuiTableCell-root MuiTableCell-head MTableHeader-header-14 MuiTableCell-alignLeft"
                     scope="col"
                     style="font-weight: 700; box-sizing: border-box;"
                   >
