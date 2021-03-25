@@ -141,12 +141,15 @@ export default function ActualExperimentResults({
       metricAssignment,
       metric,
       analysesByStrategyDateAsc,
-      aggregateRecommendation: getAggregateRecommendation(
-        Object.values(analysesByStrategyDateAsc)
+      aggregateRecommendation: getAggregateRecommendation({
+        experiment,
+        metric,
+        metricAssignment,
+        analyses: Object.values(analysesByStrategyDateAsc)
           .map(_.last.bind(null))
           .filter((x) => x !== undefined) as Analysis[],
-        strategy,
-      ),
+        defaultStrategy: strategy,
+      }),
     }),
   )
 
@@ -185,10 +188,13 @@ export default function ActualExperimentResults({
   const latestPrimaryMetricAnalysis = primaryMetricLatestAnalysesByStrategy[strategy]
   // istanbul ignore next; trivial
   const totalParticipants = latestPrimaryMetricAnalysis?.participantStats['total'] ?? 0
-  const primaryMetricAggregateRecommendation = getAggregateRecommendation(
-    Object.values(primaryMetricLatestAnalysesByStrategy).filter((x) => x) as Analysis[],
-    strategy,
-  )
+  const primaryMetricAggregateRecommendation = getAggregateRecommendation({
+    experiment,
+    metric: primaryMetricAssignmentAnalysesData.metric,
+    metricAssignment: primaryMetricAssignmentAnalysesData.metricAssignment,
+    analyses: Object.values(primaryMetricLatestAnalysesByStrategy).filter((x) => x) as Analysis[],
+    defaultStrategy: strategy,
+  })
 
   const experimentHealthStats = getExperimentHealthStats(experiment, primaryMetricLatestAnalysesByStrategy)
   const experimentHealthIndicators = getExperimentHealthIndicators(experimentHealthStats)

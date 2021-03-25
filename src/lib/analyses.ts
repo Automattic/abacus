@@ -1,6 +1,13 @@
 import _ from 'lodash'
 
-import { Analysis, AnalysisStrategy, ExperimentFull, RecommendationWarning } from './schemas'
+import {
+  Analysis,
+  AnalysisStrategy,
+  ExperimentFull,
+  MetricAssignment,
+  MetricBare,
+  RecommendationWarning,
+} from './schemas'
 
 // I can't get stdlib to work as an import...:
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -49,10 +56,16 @@ export interface AggregateRecommendation {
  * @param analyses Analyses of different strategies for the same day.
  * @param defaultStrategy Default strategy in the context of an aggregateRecommendation..
  */
-export function getAggregateRecommendation(
-  analyses: Analysis[],
-  defaultStrategy: AnalysisStrategy,
-): AggregateRecommendation {
+export function getAggregateRecommendation({
+  analyses,
+  defaultStrategy,
+}: {
+  experiment: ExperimentFull
+  metric: MetricBare
+  metricAssignment: MetricAssignment
+  analyses: Analysis[]
+  defaultStrategy: AnalysisStrategy
+}): AggregateRecommendation {
   const recommendationChosenVariationIds = analyses
     .map((analysis) => analysis.recommendation)
     .filter((x) => x)

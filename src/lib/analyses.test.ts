@@ -5,25 +5,39 @@ import { AnalysisStrategy, RecommendationReason } from './schemas'
 
 describe('getAggregateRecommendation', () => {
   it('should work correctly for single analyses', () => {
-    expect(Analyses.getAggregateRecommendation([], AnalysisStrategy.PpNaive)).toEqual({
+    expect(
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull(),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [],
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
+    ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
     })
     expect(
-      Analyses.getAggregateRecommendation(
-        [
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull(),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
             recommendation: undefined,
           }),
         ],
-        AnalysisStrategy.PpNaive,
-      ),
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
     })
     expect(
-      Analyses.getAggregateRecommendation(
-        [
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull(),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
             recommendation: {
@@ -34,14 +48,17 @@ describe('getAggregateRecommendation', () => {
             },
           }),
         ],
-        AnalysisStrategy.PpNaive,
-      ),
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.Inconclusive,
     })
     expect(
-      Analyses.getAggregateRecommendation(
-        [
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull(),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
             recommendation: {
@@ -52,14 +69,17 @@ describe('getAggregateRecommendation', () => {
             },
           }),
         ],
-        AnalysisStrategy.PpNaive,
-      ),
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
     })
     expect(
-      Analyses.getAggregateRecommendation(
-        [
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull(),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
             recommendation: {
@@ -70,8 +90,8 @@ describe('getAggregateRecommendation', () => {
             },
           }),
         ],
-        AnalysisStrategy.PpNaive,
-      ),
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
       chosenVariationId: 123,
@@ -80,8 +100,11 @@ describe('getAggregateRecommendation', () => {
 
   it('should work correctly for multiple analyses without conflict', () => {
     expect(
-      Analyses.getAggregateRecommendation(
-        [
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull(),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
             recommendation: {
@@ -101,16 +124,19 @@ describe('getAggregateRecommendation', () => {
             },
           }),
         ],
-        AnalysisStrategy.PpNaive,
-      ),
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
       chosenVariationId: 123,
     })
 
     expect(
-      Analyses.getAggregateRecommendation(
-        [
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull(),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
             recommendation: {
@@ -125,16 +151,19 @@ describe('getAggregateRecommendation', () => {
             recommendation: null,
           }),
         ],
-        AnalysisStrategy.PpNaive,
-      ),
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
       chosenVariationId: 123,
     })
 
     expect(
-      Analyses.getAggregateRecommendation(
-        [
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull(),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
             recommendation: {
@@ -149,15 +178,18 @@ describe('getAggregateRecommendation', () => {
             recommendation: null,
           }),
         ],
-        AnalysisStrategy.PpNaive,
-      ),
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
     })
 
     expect(
-      Analyses.getAggregateRecommendation(
-        [
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull(),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
             recommendation: {
@@ -177,14 +209,17 @@ describe('getAggregateRecommendation', () => {
             },
           }),
         ],
-        AnalysisStrategy.PpNaive,
-      ),
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.Inconclusive,
     })
     expect(
-      Analyses.getAggregateRecommendation(
-        [
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull(),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
             recommendation: null,
@@ -199,16 +234,19 @@ describe('getAggregateRecommendation', () => {
             },
           }),
         ],
-        AnalysisStrategy.PpNaive,
-      ),
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
     })
   })
   it('should work correctly for multiple analyses with conflict', () => {
     expect(
-      Analyses.getAggregateRecommendation(
-        [
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull(),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
             recommendation: {
@@ -228,15 +266,18 @@ describe('getAggregateRecommendation', () => {
             },
           }),
         ],
-        AnalysisStrategy.PpNaive,
-      ),
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.ManualAnalysisRequired,
     })
 
     expect(
-      Analyses.getAggregateRecommendation(
-        [
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull(),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
             recommendation: {
@@ -256,15 +297,18 @@ describe('getAggregateRecommendation', () => {
             },
           }),
         ],
-        AnalysisStrategy.PpNaive,
-      ),
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.ManualAnalysisRequired,
     })
 
     expect(
-      Analyses.getAggregateRecommendation(
-        [
+      Analyses.getAggregateRecommendation({
+        experiment: Fixtures.createExperimentFull(),
+        metric: Fixtures.createMetricBares(1)[0],
+        metricAssignment: Fixtures.createMetricAssignment(),
+        analyses: [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
             recommendation: {
@@ -297,8 +341,8 @@ describe('getAggregateRecommendation', () => {
             recommendation: null,
           }),
         ],
-        AnalysisStrategy.PpNaive,
-      ),
+        defaultStrategy: AnalysisStrategy.PpNaive,
+      }),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.ManualAnalysisRequired,
     })

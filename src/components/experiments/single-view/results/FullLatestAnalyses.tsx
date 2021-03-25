@@ -7,7 +7,7 @@ import AggregateRecommendationDisplay from 'src/components/experiments/single-vi
 import DatetimeText from 'src/components/general/DatetimeText'
 import { AnalysisStrategyToHuman, getAggregateRecommendation, RecommendationWarningToHuman } from 'src/lib/analyses'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
-import { Analysis, ExperimentFull } from 'src/lib/schemas'
+import { Analysis, ExperimentFull, MetricAssignment, MetricBare } from 'src/lib/schemas'
 import { createStaticTableOptions } from 'src/utils/material-table'
 
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
@@ -34,30 +34,47 @@ export default function FullLatestAnalyses({
   )
 
   const tableColumns = [
-    { title: 'Strategy', render: ({ analysisStrategy }: Analysis) => AnalysisStrategyToHuman[analysisStrategy] },
+    {
+      title: 'Strategy',
+      render: ({ analysis: { analysisStrategy } }: { analysis: Analysis }) => AnalysisStrategyToHuman[analysisStrategy],
+    },
     {
       title: 'Participants',
-      render: ({ participantStats }: Analysis) => `${participantStats.total}`,
+      render: ({ analysis: { participantStats } }: { analysis: Analysis }) => `${participantStats.total}`,
     },
     {
       title: 'Difference interval',
-      render: ({ metricEstimates }: Analysis) =>
+      render: ({ analysis: { metricEstimates } }: { analysis: Analysis }) =>
         metricEstimates
           ? `[${_.round(metricEstimates.diff.bottom, 4)}, ${_.round(metricEstimates.diff.top, 4)}]`
           : 'N/A',
     },
     {
       title: 'Recommendation',
-      render: (analysis: Analysis) => (
+      render: ({
+        analysis,
+        metric,
+        metricAssignment,
+      }: {
+        analysis: Analysis
+        metric: MetricBare
+        metricAssignment: MetricAssignment
+      }) => (
         <AggregateRecommendationDisplay
-          aggregateRecommendation={getAggregateRecommendation([analysis], analysis.analysisStrategy)}
+          aggregateRecommendation={getAggregateRecommendation({
+            experiment,
+            metric,
+            metricAssignment,
+            analyses: [analysis],
+            defaultStrategy: analysis.analysisStrategy,
+          })}
           experiment={experiment}
         />
       ),
     },
     {
       title: 'Warnings',
-      render: ({ recommendation }: Analysis) => {
+      render: ({ analysis: { recommendation } }: { analysis: Analysis }) => {
         if (!recommendation) {
           return ''
         }
@@ -90,7 +107,11 @@ export default function FullLatestAnalyses({
           </Typography>
           <MaterialTable
             columns={tableColumns}
-            data={_.sortBy(latestAnalyses, 'analysisStrategy')}
+            data={_.sortBy(latestAnalyses, 'analysisStrategy').map((analysis) => ({
+              analysis,
+              metric,
+              metricAssignment,
+            }))}
             options={createStaticTableOptions(latestAnalyses.length)}
           />
           <br />

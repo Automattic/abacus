@@ -239,7 +239,7 @@ function createAnalyses(): Analysis[] {
   ]
 }
 
-function createMetricAssignment(fieldOverrides: Partial<MetricAssignment>): MetricAssignment {
+function createMetricAssignment(fieldOverrides?: Partial<MetricAssignment>): MetricAssignment {
   return {
     metricAssignmentId: 123,
     metricId: 1,
