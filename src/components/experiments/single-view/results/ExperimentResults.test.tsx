@@ -28,7 +28,13 @@ test('renders an appropriate message with no analyses', () => {
 test('renders correctly for 1 analysis datapoint', async () => {
   const { container } = render(
     <ExperimentResults
-      analyses={[Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.PpNaive })]}
+      analyses={[
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.PpNaive }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.IttPure }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoCrossovers }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammers }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers }),
+      ]}
       experiment={experiment}
       metrics={metrics}
     />,

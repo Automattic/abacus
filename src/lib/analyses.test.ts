@@ -506,3 +506,96 @@ describe('getExperimentHealthStats', () => {
     })
   })
 })
+
+describe('getExperimentHealthIndicators', () => {
+  it('should work correctly', () => {
+    expect(
+      Analyses.getExperimentHealthIndicators(
+        Analyses.getExperimentHealthStats(
+          Fixtures.createExperimentFull({
+            variations: [
+              { variationId: 1, allocatedPercentage: 50, isDefault: true, name: 'variation_name_1' },
+              { variationId: 2, allocatedPercentage: 50, isDefault: false, name: 'variation_name_2' },
+            ],
+          }),
+          {
+            [AnalysisStrategy.IttPure]: Fixtures.createAnalysis({
+              participantStats: {
+                total: 130,
+                variation_1: 40,
+                variation_2: 70,
+              },
+            }),
+            [AnalysisStrategy.MittNoCrossovers]: Fixtures.createAnalysis({
+              participantStats: {
+                total: 90,
+                variation_1: 35,
+                variation_2: 55,
+              },
+            }),
+            [AnalysisStrategy.MittNoSpammers]: Fixtures.createAnalysis({
+              participantStats: {
+                total: 85,
+                variation_1: 40,
+                variation_2: 45,
+              },
+            }),
+            [AnalysisStrategy.MittNoSpammersNoCrossovers]: Fixtures.createAnalysis({
+              participantStats: {
+                total: 60,
+                variation_1: 25,
+                variation_2: 35,
+              },
+            }),
+            [AnalysisStrategy.PpNaive]: Fixtures.createAnalysis({
+              participantStats: {
+                total: 40,
+                variation_1: 15,
+                variation_2: 27,
+              },
+            }),
+          },
+        ),
+      ),
+    ).toEqual([
+      {
+        indication: 'ProbableIssue',
+        link:
+          'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated',
+        name: 'Assignment distribution matching allocated',
+        unit: 'P-Value',
+        value: 0.000013715068445169529,
+      },
+      {
+        indication: 'PossibleIssue',
+        link:
+          'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch',
+        name: 'Exposure event distribution matching allocated',
+        unit: 'P-Value',
+        value: 0.03847730828420026,
+      },
+      {
+        indication: 'ProbableIssue',
+        link:
+          'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated',
+        name: 'Spammer distribution matching allocated',
+        unit: 'P-Value',
+        value: 5.684341886080802e-14,
+      },
+      {
+        indication: 'ProbableIssue',
+        link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers',
+        name: 'Total crossovers',
+        unit: 'Ratio',
+        value: 0.3076923076923077,
+      },
+      {
+        indication: 'ProbableIssue',
+        link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers',
+        name: 'Total spammers',
+        unit: 'Ratio',
+        value: 0.34615384615384615,
+      },
+    ])
+  })
+})

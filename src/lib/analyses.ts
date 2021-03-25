@@ -147,19 +147,13 @@ interface VariationRatios {
   assignedCrossoversToTotalAssignedCrossovers: number
 }
 
-interface VariationProbabilites {
+interface VariationProbabilities {
   exposedDistributionMatchingAllocated: number
   assignedDistributionMatchingAllocated: number
   assignedSpammersDistributionMatchingAllocated: number
 }
 
-/**
- * Gets Experiment Health Stats for an experiment
- */
-export function getExperimentHealthStats(
-  experiment: ExperimentFull,
-  analysesByStrategy: AnalysesByStrategy,
-): {
+export interface ExperimentHealthStats {
   ratios: {
     overall: {
       exposedToAssigned: number
@@ -169,9 +163,17 @@ export function getExperimentHealthStats(
     byVariationId: Record<number, VariationRatios>
   }
   probabilities: {
-    byVariationId: Record<number, VariationProbabilites>
+    byVariationId: Record<number, VariationProbabilities>
   }
-} {
+}
+
+/**
+ * Gets Experiment Health Stats for an experiment
+ */
+export function getExperimentHealthStats(
+  experiment: ExperimentFull,
+  analysesByStrategy: AnalysesByStrategy,
+): ExperimentHealthStats {
   const participantCounts = getParticipantCounts(experiment, analysesByStrategy)
 
   const ratios = {
@@ -236,4 +238,175 @@ export function getExperimentHealthStats(
     ratios,
     probabilities,
   }
+}
+
+export enum HealthIndication {
+  Nominal = 'Nominal',
+  PossibleIssue = 'PossibleIssue',
+  ProbableIssue = 'ProbableIssue',
+}
+
+export enum HealthIndicatorUnit {
+  Pvalue = 'P-Value',
+  Ratio = 'Ratio',
+}
+
+/**
+ * Indicators are the important stats that give us clear direction on how an experiment is going.
+ */
+export interface HealthIndicator {
+  name: string
+  value: number
+  unit: HealthIndicatorUnit
+  link?: string
+  indication: HealthIndication
+}
+
+/**
+ * Returns indicators from experimentHealthStats.
+ */
+export function getExperimentHealthIndicators(experimentHealthStats: ExperimentHealthStats): HealthIndicator[] {
+  // Getting the min p-values across variations:
+  const minVariationProbabilities = Object.values(experimentHealthStats.probabilities.byVariationId).reduce(
+    (acc: VariationProbabilities, cur: VariationProbabilities) => ({
+      assignedDistributionMatchingAllocated: Math.min(
+        acc.assignedDistributionMatchingAllocated,
+        cur.assignedDistributionMatchingAllocated,
+      ),
+      assignedSpammersDistributionMatchingAllocated: Math.min(
+        acc.assignedSpammersDistributionMatchingAllocated,
+        cur.assignedSpammersDistributionMatchingAllocated,
+      ),
+      exposedDistributionMatchingAllocated: Math.min(
+        acc.exposedDistributionMatchingAllocated,
+        cur.exposedDistributionMatchingAllocated,
+      ),
+    }),
+  )
+
+  interface IndicationBracket {
+    max: number
+    indication: HealthIndication
+  }
+
+  interface IndicatorDefinition {
+    name: string
+    value: number
+    unit: HealthIndicatorUnit
+    link?: string
+    indicationBrackets: Array<IndicationBracket>
+  }
+
+  const indicatorDefinitions: IndicatorDefinition[] = [
+    {
+      name: 'Assignment distribution matching allocated',
+      value: minVariationProbabilities.assignedDistributionMatchingAllocated,
+      unit: HealthIndicatorUnit.Pvalue,
+      link:
+        'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated',
+      indicationBrackets: [
+        {
+          max: 0.001,
+          indication: HealthIndication.ProbableIssue,
+        },
+        {
+          max: 0.05,
+          indication: HealthIndication.PossibleIssue,
+        },
+        {
+          max: 1,
+          indication: HealthIndication.Nominal,
+        },
+      ],
+    },
+    {
+      name: 'Exposure event distribution matching allocated',
+      value: minVariationProbabilities.exposedDistributionMatchingAllocated,
+      unit: HealthIndicatorUnit.Pvalue,
+      link:
+        'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch',
+      indicationBrackets: [
+        {
+          max: 0.001,
+          indication: HealthIndication.ProbableIssue,
+        },
+        {
+          max: 0.05,
+          indication: HealthIndication.PossibleIssue,
+        },
+        {
+          max: 1,
+          indication: HealthIndication.Nominal,
+        },
+      ],
+    },
+    {
+      name: 'Spammer distribution matching allocated',
+      value: minVariationProbabilities.assignedSpammersDistributionMatchingAllocated,
+      unit: HealthIndicatorUnit.Pvalue,
+      link:
+        'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated',
+      indicationBrackets: [
+        {
+          max: 0.001,
+          indication: HealthIndication.ProbableIssue,
+        },
+        {
+          max: 0.05,
+          indication: HealthIndication.PossibleIssue,
+        },
+        {
+          max: 1,
+          indication: HealthIndication.Nominal,
+        },
+      ],
+    },
+    {
+      name: 'Total crossovers',
+      value: experimentHealthStats.ratios.overall.assignedCrossoversToAssigned,
+      unit: HealthIndicatorUnit.Ratio,
+      link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers',
+      indicationBrackets: [
+        {
+          max: 0.01,
+          indication: HealthIndication.Nominal,
+        },
+        {
+          max: 0.05,
+          indication: HealthIndication.PossibleIssue,
+        },
+        {
+          max: 1,
+          indication: HealthIndication.ProbableIssue,
+        },
+      ],
+    },
+    {
+      name: 'Total spammers',
+      value: experimentHealthStats.ratios.overall.assignedSpammersToAssigned,
+      unit: HealthIndicatorUnit.Ratio,
+      link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers',
+      indicationBrackets: [
+        {
+          max: 0.075,
+          indication: HealthIndication.Nominal,
+        },
+        {
+          max: 0.3,
+          indication: HealthIndication.PossibleIssue,
+        },
+        {
+          max: 1,
+          indication: HealthIndication.ProbableIssue,
+        },
+      ],
+    },
+  ]
+
+  return indicatorDefinitions.map(({ value, indicationBrackets, ...rest }) => ({
+    value,
+    indication: (_.sortBy(indicationBrackets, 'max').find((bracket) => value <= bracket.max) as IndicationBracket)
+      .indication,
+    ...rest,
+  }))
 }
