@@ -34,7 +34,7 @@ describe('getAggregateRecommendation', () => {
     })
     expect(
       Analyses.getAggregateRecommendation({
-        experiment: Fixtures.createExperimentFull({ status: Status.Running}),
+        experiment: Fixtures.createExperimentFull({ status: Status.Running }),
         metric: Fixtures.createMetricBares(1)[0],
         metricAssignment: Fixtures.createMetricAssignment(),
         analyses: [
@@ -55,7 +55,7 @@ describe('getAggregateRecommendation', () => {
     })
     expect(
       Analyses.getAggregateRecommendation({
-        experiment: Fixtures.createExperimentFull({ status: Status.Completed}),
+        experiment: Fixtures.createExperimentFull({ status: Status.Completed }),
         metric: Fixtures.createMetricBares(1)[0],
         metricAssignment: Fixtures.createMetricAssignment(),
         analyses: [
@@ -76,7 +76,7 @@ describe('getAggregateRecommendation', () => {
     })
     expect(
       Analyses.getAggregateRecommendation({
-        experiment: Fixtures.createExperimentFull({ status: Status.Disabled}),
+        experiment: Fixtures.createExperimentFull({ status: Status.Disabled }),
         metric: Fixtures.createMetricBares(1)[0],
         metricAssignment: Fixtures.createMetricAssignment(),
         analyses: [
