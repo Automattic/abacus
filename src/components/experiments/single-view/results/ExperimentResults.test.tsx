@@ -3,7 +3,13 @@ import React from 'react'
 import Plot from 'react-plotly.js'
 
 import ExperimentResults from 'src/components/experiments/single-view/results/ExperimentResults'
-import { AnalysisStrategy, MetricParameterType, RecommendationReason, RecommendationWarning, Status } from 'src/lib/schemas'
+import {
+  AnalysisStrategy,
+  MetricParameterType,
+  RecommendationReason,
+  RecommendationWarning,
+  Status,
+} from 'src/lib/schemas'
 import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'
 
@@ -53,12 +59,19 @@ test('renders correctly for 1 analysis datapoint', async () => {
   expect(mockedPlot).toMatchSnapshot()
 })
 
-test('renders correctly for 1 analysis datapoint for running experiment with long period warning', async () => {
+test('renders correctly for 1 analysis datapoint for running experiment with long period warning', () => {
   const { container } = render(
     <ExperimentResults
       analyses={[
-        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.PpNaive, recommendation: { 
-          endExperiment: false, reason: RecommendationReason.CiGreaterThanRope, chosenVariationId: null, warnings: [RecommendationWarning.LongPeriod] } }),
+        Fixtures.createAnalysis({
+          analysisStrategy: AnalysisStrategy.PpNaive,
+          recommendation: {
+            endExperiment: false,
+            reason: RecommendationReason.CiGreaterThanRope,
+            chosenVariationId: null,
+            warnings: [RecommendationWarning.LongPeriod],
+          },
+        }),
         Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.IttPure }),
         Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoCrossovers }),
         Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammers }),

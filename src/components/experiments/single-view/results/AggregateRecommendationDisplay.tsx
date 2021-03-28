@@ -1,5 +1,4 @@
 import { createStyles, makeStyles, Theme, Tooltip } from '@material-ui/core'
-import clsx from 'clsx'
 import React from 'react'
 
 import { AggregateRecommendation, AggregateRecommendationDecision } from 'src/lib/analyses'
@@ -61,6 +60,6 @@ export default function AggregateRecommendationDisplay({
       return <> Deploy {chosenVariation.name} </>
     }
     default:
-      throw new Error(`Missing AggregateRecommendationDecision: ${aggregateRecommendation.decision}.`)
+      throw new Error(`Missing AggregateRecommendationDecision: ${aggregateRecommendation.decision as string}.`)
   }
 }
