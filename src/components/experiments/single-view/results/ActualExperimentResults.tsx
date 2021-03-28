@@ -8,6 +8,7 @@ import {
   Paper,
   Select,
   Theme,
+  Tooltip,
   Typography,
   useTheme,
 } from '@material-ui/core'
@@ -66,6 +67,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     healthStatsOutput: {
       display: 'inline-flex',
+    },
+    stopExperiment: {
+      marginTop: theme.spacing(1),
     },
     summaryColumn: {
       display: 'flex',
@@ -325,6 +329,13 @@ export default function ActualExperimentResults({
                       {...{ experiment, aggregateRecommendation: primaryMetricAggregateRecommendation }}
                     />
                   </Typography>
+                  {primaryMetricAggregateRecommendation.shouldStop && (
+                    <Tooltip title='This experiment has run for over 28 days. Consider stopping.'>
+                      <Typography variant='body1' color='error' className={classes.stopExperiment}>
+                        Consider stopping experiment
+                      </Typography>
+                    </Tooltip>
+                  )}
                   <Typography variant='subtitle1'>
                     <strong>primary metric</strong> recommendation
                   </Typography>
