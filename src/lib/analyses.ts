@@ -51,7 +51,7 @@ export enum AggregateRecommendationDecision {
 export interface AggregateRecommendation {
   decision: AggregateRecommendationDecision
   chosenVariationId?: number
-  shouldStop?: boolean
+  shouldStop: boolean
 }
 
 /**
@@ -76,16 +76,22 @@ export function getAggregateRecommendation({
     .filter((x) => x)
     .map((recommendation) => recommendation?.chosenVariationId)
   const recommendationConflict = [...new Set(recommendationChosenVariationIds)].length > 1
-  if (recommendationConflict) {
-    return {
-      decision: AggregateRecommendationDecision.ManualAnalysisRequired,
-    }
-  }
 
   const recommendation = analyses.find((analysis) => analysis.analysisStrategy === defaultStrategy)?.recommendation
   if (!recommendation) {
     return {
       decision: AggregateRecommendationDecision.MissingAnalysis,
+      shouldStop: false,
+    }
+  }
+
+  const shouldStop =
+    [Status.Running, Status.Completed].includes(experiment.status) && recommendation.warnings.includes(RecommendationWarning.LongPeriod)
+
+  if (recommendationConflict) {
+    return {
+      decision: AggregateRecommendationDecision.ManualAnalysisRequired,
+      shouldStop,
     }
   }
 
@@ -100,16 +106,15 @@ export function getAggregateRecommendation({
     if (experiment.status === Status.Running) {
       return {
         decision: AggregateRecommendationDecision.MoreDataNeeded,
+        shouldStop,
       }
     } else {
       return {
         decision: AggregateRecommendationDecision.Inconclusive,
+        shouldStop,
       }
     }
   }
-
-  const shouldStop =
-    experiment.status === Status.Running && recommendation.warnings.includes(RecommendationWarning.LongPeriod)
 
   if (!recommendation.chosenVariationId) {
     return {

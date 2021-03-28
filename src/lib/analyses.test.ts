@@ -23,6 +23,7 @@ describe('getAggregateRecommendation', () => {
   it('should work correctly for single analyses', () => {
     expect(Analyses.getAggregateRecommendation(createAggregateRecommendationInput({}, []))).toEqual({
       decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
+      shouldStop: false,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -35,6 +36,7 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
+      shouldStop: false,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -52,6 +54,7 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.MoreDataNeeded,
+      shouldStop: false,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -74,6 +77,7 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.Inconclusive,
+      shouldStop: false,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -96,6 +100,7 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.Inconclusive,
+      shouldStop: false,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -118,6 +123,7 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.MoreDataNeeded,
+      shouldStop: false,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -164,6 +170,7 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.MoreDataNeeded,
+      shouldStop: false,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -371,6 +378,7 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.Inconclusive,
+      shouldStop: false,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -392,6 +400,7 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
+      shouldStop: false,
     })
   })
   it('should work correctly for multiple analyses with conflict', () => {
@@ -420,6 +429,7 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.ManualAnalysisRequired,
+      shouldStop: false,
     })
 
     expect(
@@ -447,6 +457,7 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.ManualAnalysisRequired,
+      shouldStop: false,
     })
 
     expect(
@@ -487,6 +498,7 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.ManualAnalysisRequired,
+      shouldStop: false,
     })
   })
 })
