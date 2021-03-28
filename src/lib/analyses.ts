@@ -1,5 +1,6 @@
 import _ from 'lodash'
 
+import * as Experiments from './experiments'
 import {
   Analysis,
   AnalysisStrategy,
@@ -89,9 +90,11 @@ export function getAggregateRecommendation({
   }
 
   // Following the endExperiment+warnings description in experiments/recommender.py:Recommendation:
+  // In the future we will move the recommendation logic here.
   if (
     !recommendation.endExperiment ||
-    recommendation.warnings.includes(RecommendationWarning.ShortPeriod) ||
+    (recommendation.warnings.includes(RecommendationWarning.ShortPeriod) &&
+      !Experiments.isExperimentAssignedUpfront(experiment)) ||
     recommendation.warnings.includes(RecommendationWarning.WideCi)
   ) {
     if (experiment.status === Status.Running) {

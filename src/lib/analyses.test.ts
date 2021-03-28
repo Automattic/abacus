@@ -5,6 +5,7 @@ import {
   Analysis,
   AnalysisStrategy,
   ExperimentFull,
+  Platform,
   RecommendationReason,
   RecommendationWarning,
   Status,
@@ -117,6 +118,30 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.MoreDataNeeded,
+    })
+    expect(
+      Analyses.getAggregateRecommendation(
+        createAggregateRecommendationInput(
+          {
+            status: Status.Running,
+            platform: Platform.Email,
+          },
+          [
+            Fixtures.createAnalysis({
+              analysisStrategy: AnalysisStrategy.PpNaive,
+              recommendation: {
+                endExperiment: true,
+                chosenVariationId: null,
+                reason: RecommendationReason.CiGreaterThanRope,
+                warnings: [RecommendationWarning.ShortPeriod],
+              },
+            }),
+          ],
+        ),
+      ),
+    ).toEqual({
+      decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
+      shouldStop: false,
     })
     expect(
       Analyses.getAggregateRecommendation(

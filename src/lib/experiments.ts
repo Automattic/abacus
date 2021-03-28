@@ -55,3 +55,14 @@ export const AssignmentCacheStatusToHuman: Record<AssignmentCacheStatus, string>
   [AssignmentCacheStatus.Missing]: '❌️ Missing: Expected for new, renamed, or disabled experiments',
   [AssignmentCacheStatus.Stale]: '❌️ Stale: Recent changes take up to ten minutes to propagate',
 }
+
+const platformsAssignedUpfront = [Platform.Email]
+
+/**
+ * An Assigned Upfront Experiment is an experiment where all assignments are performed up front,
+ * this means that there is no posibility of getting more data. E.g. email experiments where all
+ * emails are sent at once.
+ */
+export function isExperimentAssignedUpfront(experiment: ExperimentFull): boolean {
+  return platformsAssignedUpfront.includes(experiment.platform)
+}
