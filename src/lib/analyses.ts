@@ -7,6 +7,7 @@ import {
   MetricAssignment,
   MetricBare,
   RecommendationWarning,
+  Status,
 } from './schemas'
 
 // I can't get stdlib to work as an import...:
@@ -40,6 +41,7 @@ export const RecommendationWarningToHuman = {
 export enum AggregateRecommendationDecision {
   ManualAnalysisRequired = 'ManualAnalysisRequired',
   MissingAnalysis = 'MissingAnalysis',
+  MoreDataNeeded = 'MoreDataNeeded',
   Inconclusive = 'Inconclusive',
   DeployAnyVariation = 'DeployAnyVariation',
   DeployChosenVariation = 'DeployChosenVariation',
@@ -48,6 +50,7 @@ export enum AggregateRecommendationDecision {
 export interface AggregateRecommendation {
   decision: AggregateRecommendationDecision
   chosenVariationId?: number
+  shouldStop?: boolean
 }
 
 /**
@@ -57,6 +60,7 @@ export interface AggregateRecommendation {
  * @param defaultStrategy Default strategy in the context of an aggregateRecommendation..
  */
 export function getAggregateRecommendation({
+  experiment,
   analyses,
   defaultStrategy,
 }: {
@@ -84,21 +88,37 @@ export function getAggregateRecommendation({
     }
   }
 
-  if (!recommendation.endExperiment) {
-    return {
-      decision: AggregateRecommendationDecision.Inconclusive,
+  // Following the endExperiment+warnings description in experiments/recommender.py:Recommendation:
+  if (
+    !recommendation.endExperiment ||
+    recommendation.warnings.includes(RecommendationWarning.ShortPeriod) ||
+    recommendation.warnings.includes(RecommendationWarning.WideCi)
+  ) {
+    if (experiment.status === Status.Running) {
+      return {
+        decision: AggregateRecommendationDecision.MoreDataNeeded,
+      }
+    } else {
+      return {
+        decision: AggregateRecommendationDecision.Inconclusive,
+      }
     }
   }
+
+  const shouldStop =
+    experiment.status === Status.Running && recommendation.warnings.includes(RecommendationWarning.LongPeriod)
 
   if (!recommendation.chosenVariationId) {
     return {
       decision: AggregateRecommendationDecision.DeployAnyVariation,
+      shouldStop,
     }
   }
 
   return {
     decision: AggregateRecommendationDecision.DeployChosenVariation,
     chosenVariationId: recommendation.chosenVariationId,
+    shouldStop,
   }
 }
 

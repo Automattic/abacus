@@ -50,8 +50,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
             <h3
               class="MuiTypography-root makeStyles-summaryStatsStat-11 MuiTypography-h3 MuiTypography-colorPrimary"
             >
-              Deploy 
-              test
+              Inconclusive
             </h3>
             <h6
               class="MuiTypography-root MuiTypography-subtitle1"
@@ -278,8 +277,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Deploy 
-                      test
+                      Inconclusive
                     </td>
                   </tr>
                   <tr
@@ -1322,8 +1320,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Deploy 
-                      test
+                      Inconclusive
                     </td>
                   </tr>
                 </tbody>
@@ -2409,8 +2406,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Deploy 
-                      test
+                      Inconclusive
                     </td>
                   </tr>
                 </tbody>
