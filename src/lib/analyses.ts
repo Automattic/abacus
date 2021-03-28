@@ -86,7 +86,8 @@ export function getAggregateRecommendation({
   }
 
   const shouldStop =
-    [Status.Running, Status.Completed].includes(experiment.status) && recommendation.warnings.includes(RecommendationWarning.LongPeriod)
+    [Status.Running, Status.Completed].includes(experiment.status) &&
+    recommendation.warnings.includes(RecommendationWarning.LongPeriod)
 
   if (recommendationConflict) {
     return {
