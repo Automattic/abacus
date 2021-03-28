@@ -3,7 +3,7 @@ import React from 'react'
 import Plot from 'react-plotly.js'
 
 import ExperimentResults from 'src/components/experiments/single-view/results/ExperimentResults'
-import { AnalysisStrategy, MetricParameterType } from 'src/lib/schemas'
+import { AnalysisStrategy, MetricParameterType, RecommendationReason, RecommendationWarning, Status } from 'src/lib/schemas'
 import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'
 
@@ -51,6 +51,25 @@ test('renders correctly for 1 analysis datapoint', async () => {
   expect(container.querySelector('.analysis-latest-results .analysis-detail-panel')).toMatchSnapshot()
 
   expect(mockedPlot).toMatchSnapshot()
+})
+
+test('renders correctly for 1 analysis datapoint for running experiment with long period warning', async () => {
+  const { container } = render(
+    <ExperimentResults
+      analyses={[
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.PpNaive, recommendation: { 
+          endExperiment: false, reason: RecommendationReason.CiGreaterThanRope, chosenVariationId: null, warnings: [RecommendationWarning.LongPeriod] } }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.IttPure }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoCrossovers }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammers }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers }),
+      ]}
+      experiment={Fixtures.createExperimentFull({ status: Status.Running })}
+      metrics={metrics}
+    />,
+  )
+
+  expect(container).toMatchSnapshot()
 })
 
 test('renders the condensed table with some analyses in non-debug mode for a Conversion Metric', async () => {

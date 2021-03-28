@@ -459,7 +459,12 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Inconclusive
+                      <span
+                        class="makeStyles-tooltipped-8"
+                        title="There was not enough data to make a conclusion."
+                      >
+                         Inconclusive 
+                      </span>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -502,7 +507,12 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Inconclusive
+                      <span
+                        class="makeStyles-tooltipped-8"
+                        title="There was not enough data to make a conclusion."
+                      >
+                         Inconclusive 
+                      </span>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -574,7 +584,12 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Inconclusive
+                      <span
+                        class="makeStyles-tooltipped-8"
+                        title="There was not enough data to make a conclusion."
+                      >
+                         Inconclusive 
+                      </span>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -617,7 +632,12 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Inconclusive
+                      <span
+                        class="makeStyles-tooltipped-8"
+                        title="There was not enough data to make a conclusion."
+                      >
+                         Inconclusive 
+                      </span>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -843,7 +863,12 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Not analyzed yet
+                      <span
+                        class="makeStyles-tooltipped-8"
+                        title="It takes 24-48 hours for data to be analyzed."
+                      >
+                         Not analyzed yet 
+                      </span>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -975,7 +1000,12 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Inconclusive
+                      <span
+                        class="makeStyles-tooltipped-8"
+                        title="There was not enough data to make a conclusion."
+                      >
+                         Inconclusive 
+                      </span>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1018,7 +1048,12 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Inconclusive
+                      <span
+                        class="makeStyles-tooltipped-8"
+                        title="There was not enough data to make a conclusion."
+                      >
+                         Inconclusive 
+                      </span>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1061,7 +1096,12 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Inconclusive
+                      <span
+                        class="makeStyles-tooltipped-8"
+                        title="There was not enough data to make a conclusion."
+                      >
+                         Inconclusive 
+                      </span>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1104,7 +1144,12 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Inconclusive
+                      <span
+                        class="makeStyles-tooltipped-8"
+                        title="There was not enough data to make a conclusion."
+                      >
+                         Inconclusive 
+                      </span>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1147,7 +1192,12 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Inconclusive
+                      <span
+                        class="makeStyles-tooltipped-8"
+                        title="There was not enough data to make a conclusion."
+                      >
+                         Inconclusive 
+                      </span>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"

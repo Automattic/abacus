@@ -17,7 +17,12 @@ test('renders MissingAnalysis correctly', () => {
   )
   expect(container).toMatchInlineSnapshot(`
     <div>
-      Not analyzed yet
+      <span
+        class="makeStyles-tooltipped-1"
+        title="It takes 24-48 hours for data to be analyzed."
+      >
+         Not analyzed yet 
+      </span>
     </div>
   `)
 })
@@ -35,7 +40,7 @@ test('renders ManualAnalysisRequired correctly', () => {
     <div>
       <span
         class="makeStyles-tooltipped-2"
-        title="Contact @experimentation-review on #a8c-experiments"
+        title="Contact @experimentation-review on #a8c-experiments."
       >
         Manual analysis required
       </span>
@@ -43,18 +48,18 @@ test('renders ManualAnalysisRequired correctly', () => {
   `)
 })
 
-test('renders Inconclusive correctly', () => {
+test('renders TooShort correctly', () => {
   const { container } = render(
     <AggregateRecommendationDisplay
       aggregateRecommendation={{
-        decision: AggregateRecommendationDecision.Inconclusive,
+        decision: AggregateRecommendationDecision.MoreDataNeeded,
       }}
       experiment={Fixtures.createExperimentFull()}
     />,
   )
   expect(container).toMatchInlineSnapshot(`
     <div>
-      Inconclusive
+      More data needed
     </div>
   `)
 })
@@ -64,6 +69,23 @@ test('renders DeployAnyVariation correctly', () => {
     <AggregateRecommendationDisplay
       aggregateRecommendation={{
         decision: AggregateRecommendationDecision.DeployAnyVariation,
+      }}
+      experiment={Fixtures.createExperimentFull()}
+    />,
+  )
+  expect(container).toMatchInlineSnapshot(`
+    <div>
+      Deploy either variation
+    </div>
+  `)
+})
+
+test('renders DeployAnyVariation correctly with stopping recommendation', () => {
+  const { container } = render(
+    <AggregateRecommendationDisplay
+      aggregateRecommendation={{
+        decision: AggregateRecommendationDecision.DeployAnyVariation,
+        shouldStop: true,
       }}
       experiment={Fixtures.createExperimentFull()}
     />,
@@ -96,8 +118,9 @@ test('renders DeployChosenVariation correctly', () => {
   )
   expect(container).toMatchInlineSnapshot(`
     <div>
-      Deploy 
+       Deploy 
       variation_name_123
+       
     </div>
   `)
 })
@@ -140,6 +163,8 @@ test('throws error for uncovered AggregateRecommendation', () => {
         })}
       />,
     ),
-  ).toThrowErrorMatchingInlineSnapshot(`"Missing AggregateRecommendationDecision."`)
+  ).toThrowErrorMatchingInlineSnapshot(
+    `"Missing AggregateRecommendationDecision: Unknown AggregateRecommendationDecision."`,
+  )
   console.error = originalConsoleError
 })

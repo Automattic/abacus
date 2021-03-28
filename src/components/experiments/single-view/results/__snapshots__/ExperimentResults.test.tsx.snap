@@ -11,7 +11,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
       class="makeStyles-summary-3"
     >
       <div
-        class="MuiPaper-root makeStyles-participantsPlotPaper-13 MuiPaper-elevation1 MuiPaper-rounded"
+        class="MuiPaper-root makeStyles-participantsPlotPaper-14 MuiPaper-elevation1 MuiPaper-rounded"
       >
         <h3
           class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
@@ -20,16 +20,16 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
         </h3>
       </div>
       <div
-        class="makeStyles-summaryColumn-7"
+        class="makeStyles-summaryColumn-8"
       >
         <div
-          class="MuiPaper-root makeStyles-summaryStatsPaper-8 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryStatsPaper-9 MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="makeStyles-summaryStatsPart-9"
+            class="makeStyles-summaryStatsPart-10"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-11 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-12 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               1,000
             </h3>
@@ -45,12 +45,17 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
             </h6>
           </div>
           <div
-            class="makeStyles-summaryStatsPart-9"
+            class="makeStyles-summaryStatsPart-10"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-11 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-12 MuiTypography-h3 MuiTypography-colorPrimary"
             >
-              Inconclusive
+              <span
+                class="makeStyles-tooltipped-16"
+                title="There was not enough data to make a conclusion."
+              >
+                 Inconclusive 
+              </span>
             </h3>
             <h6
               class="MuiTypography-root MuiTypography-subtitle1"
@@ -63,7 +68,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
           </div>
         </div>
         <div
-          class="MuiPaper-root makeStyles-summaryStatsPaper-8 makeStyles-root-16 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryStatsPaper-9 makeStyles-root-17 MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
             class=""
@@ -166,7 +171,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
       style="position: relative;"
     >
       <div
-        class="Component-horizontalScrollContainer-21"
+        class="Component-horizontalScrollContainer-22"
         style="overflow-x: auto; position: relative;"
       >
         <div>
@@ -185,26 +190,26 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                     class="MuiTableRow-root MuiTableRow-head"
                   >
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-22 MuiTableCell-paddingNone"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-23 MuiTableCell-paddingNone"
                       scope="col"
                       style="font-weight: 700;"
                     />
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-22 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-23 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Metric
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-22 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-23 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Attribution window
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-22 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-23 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
@@ -277,7 +282,12 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Inconclusive
+                      <span
+                        class="makeStyles-tooltipped-16"
+                        title="There was not enough data to make a conclusion."
+                      >
+                         Inconclusive 
+                      </span>
                     </td>
                   </tr>
                   <tr
@@ -332,7 +342,12 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Not analyzed yet
+                      <span
+                        class="makeStyles-tooltipped-16"
+                        title="It takes 24-48 hours for data to be analyzed."
+                      >
+                         Not analyzed yet 
+                      </span>
                     </td>
                   </tr>
                   <tr
@@ -387,7 +402,12 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Not analyzed yet
+                      <span
+                        class="makeStyles-tooltipped-16"
+                        title="It takes 24-48 hours for data to be analyzed."
+                      >
+                         Not analyzed yet 
+                      </span>
                     </td>
                   </tr>
                   <tr
@@ -442,7 +462,12 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Not analyzed yet
+                      <span
+                        class="makeStyles-tooltipped-16"
+                        title="It takes 24-48 hours for data to be analyzed."
+                      >
+                         Not analyzed yet 
+                      </span>
                     </td>
                   </tr>
                 </tbody>
@@ -458,15 +483,15 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
 
 exports[`renders correctly for 1 analysis datapoint 2`] = `
 <div
-  class="MuiTableContainer-root makeStyles-root-23 analysis-detail-panel"
+  class="MuiTableContainer-root makeStyles-root-24 analysis-detail-panel"
 >
   <p
-    class="MuiTypography-root makeStyles-noPlotMessage-29 MuiTypography-body1"
+    class="MuiTypography-root makeStyles-noPlotMessage-30 MuiTypography-body1"
   >
     Past values will be plotted once we have more than one day of results.
   </p>
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-30 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-31 MuiTypography-h4"
   >
     Latest Estimates
   </h4>
@@ -480,20 +505,20 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-31 makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-32 makeStyles-headerCell-25"
           role="cell"
           scope="row"
         >
           Difference
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
         >
           [
           
           -1
           <span
-            class="makeStyles-root-32"
+            class="makeStyles-root-33"
             title="Percentage points."
           >
             pp
@@ -502,7 +527,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
           
           1
           <span
-            class="makeStyles-root-32"
+            class="makeStyles-root-33"
             title="Percentage points."
           >
             pp
@@ -519,7 +544,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
           
           -1
           <span
-            class="makeStyles-root-32"
+            class="makeStyles-root-33"
             title="Percentage points."
           >
             pp
@@ -530,7 +555,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
           
           1
           <span
-            class="makeStyles-root-32"
+            class="makeStyles-root-33"
             title="Percentage points."
           >
             pp
@@ -542,19 +567,19 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-31 makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-32 makeStyles-headerCell-25"
           role="cell"
           scope="row"
           valign="top"
         >
           <span
-            class="makeStyles-monospace-25"
+            class="makeStyles-monospace-26"
           >
             test
           </span>
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
         >
           [
           
@@ -589,19 +614,19 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-31 makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-32 makeStyles-headerCell-25"
           role="cell"
           scope="row"
           valign="top"
         >
           <span
-            class="makeStyles-monospace-25"
+            class="makeStyles-monospace-26"
           >
             control
           </span>
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
         >
           [
           
@@ -636,7 +661,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-25"
           role="cell"
           scope="row"
         >
@@ -650,7 +675,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
           Warnings
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
         >
           <div>
             Experiment period is too short. Wait a few days to be safer.
@@ -663,7 +688,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
     </tbody>
   </table>
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-30 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-31 MuiTypography-h4"
   >
     Metric Assignment Details
   </h4>
@@ -677,14 +702,14 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-25"
           role="cell"
           scope="row"
         >
           Metric Description
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
         >
           This is metric 1
         </td>
@@ -693,19 +718,19 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-25"
           role="cell"
           scope="row"
         >
           Minimum Practical Difference
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
         >
           
           10
           <span
-            class="makeStyles-root-32"
+            class="makeStyles-root-33"
             title="Percentage points."
           >
             pp
@@ -716,14 +741,14 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-25"
           role="cell"
           scope="row"
         >
           Change Expected
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
         >
           Yes
         </td>
@@ -731,7 +756,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
     </tbody>
   </table>
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-30 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-31 MuiTypography-h4"
   >
     Analysis Fine Print
   </h4>
@@ -745,7 +770,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-25"
           role="cell"
           scope="row"
         >
@@ -755,7 +780,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
           class="MuiTableCell-root MuiTableCell-body"
         >
           <span
-            class="makeStyles-root-33"
+            class="makeStyles-root-34"
             title="09/05/2020, 20:00:00"
           >
             2020-05-10
@@ -766,14 +791,14 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-25"
           role="cell"
           scope="row"
         >
           Analysis strategy
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
         >
           Exposed without crossovers and spammers
         </td>
@@ -782,14 +807,14 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-25"
           role="cell"
           scope="row"
         >
           Analyzed participants
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
         >
           1000
            (
@@ -807,7 +832,7 @@ exports[`renders correctly for 1 analysis datapoint 3`] = `
   "calls": Array [
     Array [
       Object {
-        "className": "makeStyles-participantsPlot-14",
+        "className": "makeStyles-participantsPlot-15",
         "data": Array [
           Object {
             "line": Object {
@@ -870,18 +895,505 @@ exports[`renders correctly for 1 analysis datapoint 3`] = `
 }
 `;
 
+exports[`renders correctly for 1 analysis datapoint for running experiment with long period warning 1`] = `
+<div>
+  <div
+    class="analysis-latest-results"
+  >
+    <div
+      class="makeStyles-root-35"
+    >
+      <div
+        class="makeStyles-summary-37"
+      >
+        <div
+          class="MuiPaper-root makeStyles-participantsPlotPaper-48 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <h3
+            class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
+          >
+            Participants by Variation
+          </h3>
+        </div>
+        <div
+          class="makeStyles-summaryColumn-42"
+        >
+          <div
+            class="MuiPaper-root makeStyles-summaryStatsPaper-43 MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="makeStyles-summaryStatsPart-44"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-summaryStatsStat-46 MuiTypography-h3 MuiTypography-colorPrimary"
+              >
+                1,000
+              </h3>
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle1"
+              >
+                <strong>
+                  analyzed participants
+                </strong>
+                 as at
+                 
+                2020-05-10
+              </h6>
+            </div>
+            <div
+              class="makeStyles-summaryStatsPart-44"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-summaryStatsStat-46 MuiTypography-h3 MuiTypography-colorPrimary"
+              >
+                <span
+                  class="makeStyles-tooltipped-50"
+                  title="Contact @experimentation-review on #a8c-experiments."
+                >
+                  Manual analysis required
+                </span>
+              </h3>
+              <p
+                class="MuiTypography-root makeStyles-stopExperiment-41 MuiTypography-body1 MuiTypography-colorError"
+                title="This experiment has run for over 28 days. Consider stopping."
+              >
+                Consider stopping experiment
+              </p>
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle1"
+              >
+                <strong>
+                  primary metric
+                </strong>
+                 recommendation
+              </h6>
+            </div>
+          </div>
+          <div
+            class="MuiPaper-root makeStyles-summaryStatsPaper-43 makeStyles-root-51 MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class=""
+              title="There is a 100.00% 
+              probability that this result occurred by random chance."
+            >
+              <span
+                aria-label="Nominal"
+                role="img"
+              >
+                🆗
+              </span>
+               
+              <a
+                class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
+              >
+                Assignment distribution matching allocated
+              </a>
+            </div>
+            <div
+              class=""
+              title="There is a 100.00% 
+              probability that this result occurred by random chance."
+            >
+              <span
+                aria-label="Nominal"
+                role="img"
+              >
+                🆗
+              </span>
+               
+              <a
+                class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
+              >
+                Exposure event distribution matching allocated
+              </a>
+            </div>
+            <div
+              class=""
+              title="There is a 100.00% 
+              probability that this result occurred by random chance."
+            >
+              <span
+                aria-label="Nominal"
+                role="img"
+              >
+                🆗
+              </span>
+               
+              <a
+                class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
+              >
+                Spammer distribution matching allocated
+              </a>
+            </div>
+            <div
+              class=""
+              title="Ratio: 0.000000"
+            >
+              <span
+                aria-label="Nominal"
+                role="img"
+              >
+                🆗
+              </span>
+               
+              <a
+                class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
+              >
+                Total crossovers
+              </a>
+            </div>
+            <div
+              class=""
+              title="Ratio: 0.000000"
+            >
+              <span
+                aria-label="Nominal"
+                role="img"
+              >
+                🆗
+              </span>
+               
+              <a
+                class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
+              >
+                Total spammers
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+        style="position: relative;"
+      >
+        <div
+          class="Component-horizontalScrollContainer-56"
+          style="overflow-x: auto; position: relative;"
+        >
+          <div>
+            <div
+              style="overflow-y: auto;"
+            >
+              <div>
+                <table
+                  class="MuiTable-root"
+                  style="table-layout: auto;"
+                >
+                  <thead
+                    class="MuiTableHead-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-head"
+                    >
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-57 MuiTableCell-paddingNone"
+                        scope="col"
+                        style="font-weight: 700;"
+                      />
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-57 MuiTableCell-alignLeft"
+                        scope="col"
+                        style="font-weight: 700; box-sizing: border-box;"
+                      >
+                        Metric
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-57 MuiTableCell-alignLeft"
+                        scope="col"
+                        style="font-weight: 700; box-sizing: border-box;"
+                      >
+                        Attribution window
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-57 MuiTableCell-alignLeft"
+                        scope="col"
+                        style="font-weight: 700; box-sizing: border-box;"
+                      >
+                        Recommendation
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    class="MuiTableBody-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-hover"
+                      index="0"
+                      level="0"
+                      path="0"
+                      style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                      >
+                        <div
+                          style="width: 42px; text-align: center; display: flex;"
+                        >
+                          <button
+                            class="MuiButtonBase-root MuiIconButton-root Mui-disabled Mui-disabled"
+                            disabled=""
+                            style="transition: all ease 200ms; transform: none;"
+                            tabindex="-1"
+                            type="button"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <span
+                                aria-hidden="true"
+                                class="material-icons MuiIcon-root"
+                              >
+                                chevron_right
+                              </span>
+                            </span>
+                          </button>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                      >
+                        metric_1
+                         
+                        <div
+                          aria-disabled="true"
+                          class="MuiChip-root makeStyles-primaryChip-36 MuiChip-outlined Mui-disabled"
+                        >
+                          <span
+                            class="MuiChip-label"
+                          >
+                            Primary
+                          </span>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        1 week
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        <span
+                          class="makeStyles-tooltipped-50"
+                          title="Contact @experimentation-review on #a8c-experiments."
+                        >
+                          Manual analysis required
+                        </span>
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-hover"
+                      index="1"
+                      level="0"
+                      path="1"
+                      style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                      >
+                        <div
+                          style="width: 42px; text-align: center; display: flex;"
+                        >
+                          <button
+                            class="MuiButtonBase-root MuiIconButton-root"
+                            style="transition: all ease 200ms; transform: none;"
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <span
+                                aria-hidden="true"
+                                class="material-icons MuiIcon-root"
+                              >
+                                chevron_right
+                              </span>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </button>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                      >
+                        metric_2
+                         
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        1 hour
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        <span
+                          class="makeStyles-tooltipped-50"
+                          title="It takes 24-48 hours for data to be analyzed."
+                        >
+                           Not analyzed yet 
+                        </span>
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-hover"
+                      index="2"
+                      level="0"
+                      path="2"
+                      style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                      >
+                        <div
+                          style="width: 42px; text-align: center; display: flex;"
+                        >
+                          <button
+                            class="MuiButtonBase-root MuiIconButton-root"
+                            style="transition: all ease 200ms; transform: none;"
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <span
+                                aria-hidden="true"
+                                class="material-icons MuiIcon-root"
+                              >
+                                chevron_right
+                              </span>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </button>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                      >
+                        metric_2
+                         
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        4 weeks
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        <span
+                          class="makeStyles-tooltipped-50"
+                          title="It takes 24-48 hours for data to be analyzed."
+                        >
+                           Not analyzed yet 
+                        </span>
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-hover"
+                      index="3"
+                      level="0"
+                      path="3"
+                      style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                      >
+                        <div
+                          style="width: 42px; text-align: center; display: flex;"
+                        >
+                          <button
+                            class="MuiButtonBase-root MuiIconButton-root"
+                            style="transition: all ease 200ms; transform: none;"
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <span
+                                aria-hidden="true"
+                                class="material-icons MuiIcon-root"
+                              >
+                                chevron_right
+                              </span>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </button>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                      >
+                        metric_3
+                         
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        6 hours
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        <span
+                          class="makeStyles-tooltipped-50"
+                          title="It takes 24-48 hours for data to be analyzed."
+                        >
+                           Not analyzed yet 
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`renders the condensed table with some analyses in non-debug mode for a Conversion Metric 1`] = `
 <div
   class="analysis-latest-results"
 >
   <div
-    class="makeStyles-root-34"
+    class="makeStyles-root-58"
   >
     <div
-      class="makeStyles-summary-36"
+      class="makeStyles-summary-60"
     >
       <div
-        class="MuiPaper-root makeStyles-participantsPlotPaper-46 MuiPaper-elevation1 MuiPaper-rounded"
+        class="MuiPaper-root makeStyles-participantsPlotPaper-71 MuiPaper-elevation1 MuiPaper-rounded"
       >
         <h3
           class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
@@ -890,16 +1402,16 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         </h3>
       </div>
       <div
-        class="makeStyles-summaryColumn-40"
+        class="makeStyles-summaryColumn-65"
       >
         <div
-          class="MuiPaper-root makeStyles-summaryStatsPaper-41 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryStatsPaper-66 MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="makeStyles-summaryStatsPart-42"
+            class="makeStyles-summaryStatsPart-67"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-44 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-69 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               700
             </h3>
@@ -915,14 +1427,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             </h6>
           </div>
           <div
-            class="makeStyles-summaryStatsPart-42"
+            class="makeStyles-summaryStatsPart-67"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-44 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-69 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               <span
-                class="makeStyles-tooltipped-48"
-                title="Contact @experimentation-review on #a8c-experiments"
+                class="makeStyles-tooltipped-73"
+                title="Contact @experimentation-review on #a8c-experiments."
               >
                 Manual analysis required
               </span>
@@ -938,7 +1450,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           </div>
         </div>
         <div
-          class="MuiPaper-root makeStyles-summaryStatsPaper-41 makeStyles-root-49 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryStatsPaper-66 makeStyles-root-74 MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
             class=""
@@ -1041,7 +1553,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       style="position: relative;"
     >
       <div
-        class="Component-horizontalScrollContainer-54"
+        class="Component-horizontalScrollContainer-79"
         style="overflow-x: auto; position: relative;"
       >
         <div>
@@ -1060,26 +1572,26 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     class="MuiTableRow-root MuiTableRow-head"
                   >
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-55 MuiTableCell-paddingNone"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-80 MuiTableCell-paddingNone"
                       scope="col"
                       style="font-weight: 700;"
                     />
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-55 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-80 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Metric
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-55 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-80 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Attribution window
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-55 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-80 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
@@ -1131,7 +1643,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                        
                       <div
                         aria-disabled="true"
-                        class="MuiChip-root makeStyles-primaryChip-35 MuiChip-outlined Mui-disabled"
+                        class="MuiChip-root makeStyles-primaryChip-59 MuiChip-outlined Mui-disabled"
                       >
                         <span
                           class="MuiChip-label"
@@ -1151,8 +1663,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       <span
-                        class="makeStyles-tooltipped-48"
-                        title="Contact @experimentation-review on #a8c-experiments"
+                        class="makeStyles-tooltipped-73"
+                        title="Contact @experimentation-review on #a8c-experiments."
                       >
                         Manual analysis required
                       </span>
@@ -1210,7 +1722,12 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Not analyzed yet
+                      <span
+                        class="makeStyles-tooltipped-73"
+                        title="It takes 24-48 hours for data to be analyzed."
+                      >
+                         Not analyzed yet 
+                      </span>
                     </td>
                   </tr>
                   <tr
@@ -1265,7 +1782,12 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Not analyzed yet
+                      <span
+                        class="makeStyles-tooltipped-73"
+                        title="It takes 24-48 hours for data to be analyzed."
+                      >
+                         Not analyzed yet 
+                      </span>
                     </td>
                   </tr>
                   <tr
@@ -1320,7 +1842,12 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Inconclusive
+                      <span
+                        class="makeStyles-tooltipped-73"
+                        title="There was not enough data to make a conclusion."
+                      >
+                         Inconclusive 
+                      </span>
                     </td>
                   </tr>
                 </tbody>
@@ -1336,13 +1863,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
 
 exports[`renders the condensed table with some analyses in non-debug mode for a Conversion Metric 2`] = `
 <div
-  class="MuiTableContainer-root makeStyles-root-56 analysis-detail-panel"
+  class="MuiTableContainer-root makeStyles-root-81 analysis-detail-panel"
 >
   <div
-    class="makeStyles-metricEstimatePlots-59"
+    class="makeStyles-metricEstimatePlots-84"
   />
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-63 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-88 MuiTypography-h4"
   >
     Latest Estimates
   </h4>
@@ -1356,20 +1883,20 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-64 makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-89 makeStyles-headerCell-82"
           role="cell"
           scope="row"
         >
           Difference
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83"
         >
           [
           
           -1
           <span
-            class="makeStyles-root-65"
+            class="makeStyles-root-90"
             title="Percentage points."
           >
             pp
@@ -1378,7 +1905,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           
           1
           <span
-            class="makeStyles-root-65"
+            class="makeStyles-root-90"
             title="Percentage points."
           >
             pp
@@ -1395,7 +1922,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           
           -1
           <span
-            class="makeStyles-root-65"
+            class="makeStyles-root-90"
             title="Percentage points."
           >
             pp
@@ -1406,7 +1933,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           
           1
           <span
-            class="makeStyles-root-65"
+            class="makeStyles-root-90"
             title="Percentage points."
           >
             pp
@@ -1418,19 +1945,19 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-64 makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-89 makeStyles-headerCell-82"
           role="cell"
           scope="row"
           valign="top"
         >
           <span
-            class="makeStyles-monospace-58"
+            class="makeStyles-monospace-83"
           >
             test
           </span>
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83"
         >
           [
           
@@ -1465,19 +1992,19 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-64 makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-89 makeStyles-headerCell-82"
           role="cell"
           scope="row"
           valign="top"
         >
           <span
-            class="makeStyles-monospace-58"
+            class="makeStyles-monospace-83"
           >
             control
           </span>
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83"
         >
           [
           
@@ -1512,7 +2039,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-82"
           role="cell"
           scope="row"
         >
@@ -1526,7 +2053,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           Warnings
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83"
         >
           <div>
             Experiment period is too short. Wait a few days to be safer.
@@ -1539,7 +2066,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     </tbody>
   </table>
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-63 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-88 MuiTypography-h4"
   >
     Metric Assignment Details
   </h4>
@@ -1553,14 +2080,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-82"
           role="cell"
           scope="row"
         >
           Metric Description
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83"
         >
           This is metric 3
         </td>
@@ -1569,19 +2096,19 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-82"
           role="cell"
           scope="row"
         >
           Minimum Practical Difference
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83"
         >
           
           1200
           <span
-            class="makeStyles-root-65"
+            class="makeStyles-root-90"
             title="Percentage points."
           >
             pp
@@ -1592,14 +2119,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-82"
           role="cell"
           scope="row"
         >
           Change Expected
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83"
         >
           Yes
         </td>
@@ -1607,7 +2134,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     </tbody>
   </table>
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-63 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-88 MuiTypography-h4"
   >
     Analysis Fine Print
   </h4>
@@ -1621,7 +2148,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-82"
           role="cell"
           scope="row"
         >
@@ -1631,7 +2158,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableCell-root MuiTableCell-body"
         >
           <span
-            class="makeStyles-root-66"
+            class="makeStyles-root-91"
             title="10/06/2020, 20:00:00"
           >
             2020-06-11
@@ -1642,14 +2169,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-82"
           role="cell"
           scope="row"
         >
           Analysis strategy
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83"
         >
           Exposed without crossovers and spammers
         </td>
@@ -1658,14 +2185,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-82"
           role="cell"
           scope="row"
         >
           Analyzed participants
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83"
         >
           1200
            (
@@ -1683,7 +2210,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   "calls": Array [
     Array [
       Object {
-        "className": "makeStyles-participantsPlot-47",
+        "className": "makeStyles-participantsPlot-72",
         "data": Array [
           Object {
             "line": Object {
@@ -1742,7 +2269,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-60",
+        "className": "makeStyles-metricEstimatePlot-85",
         "data": Array [
           Object {
             "line": Object {
@@ -1838,7 +2365,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-60",
+        "className": "makeStyles-metricEstimatePlot-85",
         "data": Array [
           Object {
             "line": Object {
@@ -1961,13 +2488,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   class="analysis-latest-results"
 >
   <div
-    class="makeStyles-root-67"
+    class="makeStyles-root-92"
   >
     <div
-      class="makeStyles-summary-69"
+      class="makeStyles-summary-94"
     >
       <div
-        class="MuiPaper-root makeStyles-participantsPlotPaper-79 MuiPaper-elevation1 MuiPaper-rounded"
+        class="MuiPaper-root makeStyles-participantsPlotPaper-105 MuiPaper-elevation1 MuiPaper-rounded"
       >
         <h3
           class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
@@ -1976,16 +2503,16 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         </h3>
       </div>
       <div
-        class="makeStyles-summaryColumn-73"
+        class="makeStyles-summaryColumn-99"
       >
         <div
-          class="MuiPaper-root makeStyles-summaryStatsPaper-74 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryStatsPaper-100 MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="makeStyles-summaryStatsPart-75"
+            class="makeStyles-summaryStatsPart-101"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-77 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-103 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               700
             </h3>
@@ -2001,14 +2528,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             </h6>
           </div>
           <div
-            class="makeStyles-summaryStatsPart-75"
+            class="makeStyles-summaryStatsPart-101"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-77 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-103 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               <span
-                class="makeStyles-tooltipped-81"
-                title="Contact @experimentation-review on #a8c-experiments"
+                class="makeStyles-tooltipped-107"
+                title="Contact @experimentation-review on #a8c-experiments."
               >
                 Manual analysis required
               </span>
@@ -2024,7 +2551,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           </div>
         </div>
         <div
-          class="MuiPaper-root makeStyles-summaryStatsPaper-74 makeStyles-root-82 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryStatsPaper-100 makeStyles-root-108 MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
             class=""
@@ -2127,7 +2654,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       style="position: relative;"
     >
       <div
-        class="Component-horizontalScrollContainer-87"
+        class="Component-horizontalScrollContainer-113"
         style="overflow-x: auto; position: relative;"
       >
         <div>
@@ -2146,26 +2673,26 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     class="MuiTableRow-root MuiTableRow-head"
                   >
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-88 MuiTableCell-paddingNone"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-114 MuiTableCell-paddingNone"
                       scope="col"
                       style="font-weight: 700;"
                     />
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-88 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-114 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Metric
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-88 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-114 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Attribution window
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-88 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-114 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
@@ -2217,7 +2744,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                        
                       <div
                         aria-disabled="true"
-                        class="MuiChip-root makeStyles-primaryChip-68 MuiChip-outlined Mui-disabled"
+                        class="MuiChip-root makeStyles-primaryChip-93 MuiChip-outlined Mui-disabled"
                       >
                         <span
                           class="MuiChip-label"
@@ -2237,8 +2764,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       <span
-                        class="makeStyles-tooltipped-81"
-                        title="Contact @experimentation-review on #a8c-experiments"
+                        class="makeStyles-tooltipped-107"
+                        title="Contact @experimentation-review on #a8c-experiments."
                       >
                         Manual analysis required
                       </span>
@@ -2296,7 +2823,12 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Not analyzed yet
+                      <span
+                        class="makeStyles-tooltipped-107"
+                        title="It takes 24-48 hours for data to be analyzed."
+                      >
+                         Not analyzed yet 
+                      </span>
                     </td>
                   </tr>
                   <tr
@@ -2351,7 +2883,12 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Not analyzed yet
+                      <span
+                        class="makeStyles-tooltipped-107"
+                        title="It takes 24-48 hours for data to be analyzed."
+                      >
+                         Not analyzed yet 
+                      </span>
                     </td>
                   </tr>
                   <tr
@@ -2406,7 +2943,12 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Inconclusive
+                      <span
+                        class="makeStyles-tooltipped-107"
+                        title="There was not enough data to make a conclusion."
+                      >
+                         Inconclusive 
+                      </span>
                     </td>
                   </tr>
                 </tbody>
@@ -2422,13 +2964,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
 
 exports[`renders the condensed table with some analyses in non-debug mode for a Revenue Metric 2`] = `
 <div
-  class="MuiTableContainer-root makeStyles-root-89 analysis-detail-panel"
+  class="MuiTableContainer-root makeStyles-root-115 analysis-detail-panel"
 >
   <div
-    class="makeStyles-metricEstimatePlots-92"
+    class="makeStyles-metricEstimatePlots-118"
   />
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-96 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-122 MuiTypography-h4"
   >
     Latest Estimates
   </h4>
@@ -2442,14 +2984,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-97 makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-123 makeStyles-headerCell-116"
           role="cell"
           scope="row"
         >
           Difference
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-117"
         >
           [
           USD 
@@ -2484,19 +3026,19 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-97 makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-123 makeStyles-headerCell-116"
           role="cell"
           scope="row"
           valign="top"
         >
           <span
-            class="makeStyles-monospace-91"
+            class="makeStyles-monospace-117"
           >
             test
           </span>
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-117"
         >
           [
           USD 
@@ -2531,19 +3073,19 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-97 makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-123 makeStyles-headerCell-116"
           role="cell"
           scope="row"
           valign="top"
         >
           <span
-            class="makeStyles-monospace-91"
+            class="makeStyles-monospace-117"
           >
             control
           </span>
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-117"
         >
           [
           USD 
@@ -2578,7 +3120,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-116"
           role="cell"
           scope="row"
         >
@@ -2592,7 +3134,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           Warnings
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-117"
         >
           <div>
             Experiment period is too short. Wait a few days to be safer.
@@ -2605,7 +3147,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     </tbody>
   </table>
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-96 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-122 MuiTypography-h4"
   >
     Metric Assignment Details
   </h4>
@@ -2619,14 +3161,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-116"
           role="cell"
           scope="row"
         >
           Metric Description
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-117"
         >
           This is metric 3
         </td>
@@ -2635,14 +3177,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-116"
           role="cell"
           scope="row"
         >
           Minimum Practical Difference
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-117"
         >
           USD 
           12
@@ -2653,14 +3195,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-116"
           role="cell"
           scope="row"
         >
           Change Expected
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-117"
         >
           Yes
         </td>
@@ -2668,7 +3210,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     </tbody>
   </table>
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-96 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-122 MuiTypography-h4"
   >
     Analysis Fine Print
   </h4>
@@ -2682,7 +3224,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-116"
           role="cell"
           scope="row"
         >
@@ -2692,7 +3234,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableCell-root MuiTableCell-body"
         >
           <span
-            class="makeStyles-root-98"
+            class="makeStyles-root-124"
             title="10/06/2020, 20:00:00"
           >
             2020-06-11
@@ -2703,14 +3245,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-116"
           role="cell"
           scope="row"
         >
           Analysis strategy
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-117"
         >
           Exposed without crossovers and spammers
         </td>
@@ -2719,14 +3261,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-116"
           role="cell"
           scope="row"
         >
           Analyzed participants
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-117"
         >
           1200
            (
@@ -2744,7 +3286,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   "calls": Array [
     Array [
       Object {
-        "className": "makeStyles-participantsPlot-80",
+        "className": "makeStyles-participantsPlot-106",
         "data": Array [
           Object {
             "line": Object {
@@ -2803,7 +3345,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-93",
+        "className": "makeStyles-metricEstimatePlot-119",
         "data": Array [
           Object {
             "line": Object {
@@ -2899,7 +3441,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-93",
+        "className": "makeStyles-metricEstimatePlot-119",
         "data": Array [
           Object {
             "line": Object {
