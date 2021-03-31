@@ -243,6 +243,7 @@ export enum Platform {
   Akismet = 'akismet',
   Calypso = 'calypso',
   Email = 'email',
+  Jetpack = 'jetpack',
   Lohp = 'lohp',
   Pipe = 'pipe',
   WooCommerce = 'woocommerce',
