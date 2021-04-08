@@ -95,9 +95,8 @@ const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }): J
             cellRendererFramework: ({ value: startDatetime }: { value: Date }) => {
               return <DatetimeText datetime={startDatetime} excludeTime />
             },
-            // defaultSort: 'desc',
             sortable: true,
-            filter: true,
+            filter: 'agDateColumnFilter',
             resizable: true,
           },
           {
@@ -107,7 +106,7 @@ const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }): J
               return <DatetimeText datetime={endDatetime} excludeTime />
             },
             sortable: true,
-            filter: true,
+            filter: 'agDateColumnFilter',
             resizable: true,
           },
         ]}
