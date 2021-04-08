@@ -31,7 +31,7 @@ export default function Routes(): JSX.Element {
           <Experiments />
         </Route>
 
-        <Route path='/experiments-ag-grid' exact>
+        <Route path='/experiments-ag' exact>
           <ExperimentsAgGrid />
         </Route>
 
