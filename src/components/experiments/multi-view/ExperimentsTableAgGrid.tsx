@@ -2,11 +2,11 @@
 import 'ag-grid-community/dist/styles/ag-grid.css'
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css'
 
-import { createStyles, makeStyles, Theme, useTheme } from '@material-ui/core'
+import { createStyles, Link, makeStyles, Theme, useTheme } from '@material-ui/core'
 import { AgGridReact } from 'ag-grid-react'
 import clsx from 'clsx'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 
 import DatetimeText from 'src/components/general/DatetimeText'
 import { ExperimentBare, Status } from 'src/lib/schemas'
@@ -51,7 +51,9 @@ const ExperimentsTable = ({ experiments }: { experiments: ExperimentBare[] }): J
               fontWeight: 600,
             },
             cellRendererFramework: ({ value: name, data }: { value: Status; data: ExperimentBare }) => (
-              <Link to={`/experiments/${createIdSlug(data.experimentId, data.name)}`}>{name}</Link>
+              <Link component={RouterLink} to={`/experiments/${createIdSlug(data.experimentId, data.name)}`}>
+                {name}
+              </Link>
             ),
             sortable: true,
             filter: true,
