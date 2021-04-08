@@ -31,7 +31,7 @@ const dateSchema = yup
  * See https://github.com/jquense/yup/issues/1330
  */
 export const extendedNumberSchema = yup
-  .mixed()
+  .mixed<number | undefined>()
   .transform((value: unknown, originalValue: unknown) => {
     if (originalValue === 'nan' || (typeof originalValue === 'number' && isNaN(originalValue))) {
       return NaN
