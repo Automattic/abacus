@@ -445,9 +445,20 @@ export interface Recommendation extends yup.InferType<typeof recommendationSchem
 
 export const metricEstimateSchema = yup
   .object({
+    /**
+     * @deprecated Misleading, use the CIs below.
+     */
     estimate: extendedNumberSchema.defined(),
+    // These are for 95% CI, and should become deprecated when top_95 and bottom_95 are used
     top: extendedNumberSchema.defined(),
     bottom: extendedNumberSchema.defined(),
+    // For future use:
+    top_99: extendedNumberSchema,
+    bottom_99: extendedNumberSchema,
+    top_95: extendedNumberSchema,
+    bottom_95: extendedNumberSchema,
+    top_50: extendedNumberSchema,
+    bottom_50: extendedNumberSchema,
   })
   .defined()
   .camelCase()
