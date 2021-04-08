@@ -20,6 +20,41 @@ const dateSchema = yup
     return new Date(originalValue)
   })
 
+/**
+ * A new number schema:
+ * - Accepts NaN.
+ * - Transforms 'nan', 'inf', '-inf' to their corresponding values.
+ *   The strings come from python string representations for the corresponding values.
+ *   This is necessary as JSON doesn't allow these special values forcing us to serialize them.
+ *
+ * Unfortunately I couldn't extend yup's number schema to allow NaN.
+ * See https://github.com/jquense/yup/issues/1330
+ */
+export const extendedNumberSchema = yup
+  .mixed()
+  .transform((value: unknown, originalValue: unknown) => {
+    if (originalValue === 'nan' || (typeof originalValue === 'number' && isNaN(originalValue))) {
+      return NaN
+    }
+    if (originalValue === 'inf') {
+      return Infinity
+    }
+    if (originalValue === '-inf') {
+      return -Infinity
+    }
+    if (originalValue === '' || originalValue === true || originalValue === false || originalValue === null) {
+      return null
+    }
+    const maybeNumber = Number(originalValue)
+    // NaN at this point means a parsing/data issue.
+    if (isNaN(maybeNumber)) {
+      return null
+    }
+    return maybeNumber
+  })
+  // eslint-disable-next-line no-template-curly-in-string
+  .test('is-number', '${path} is not a number', (value: unknown) => value === undefined || typeof value === 'number')
+
 export const eventSchema = yup
   .object({
     event: yup.string().defined(),
@@ -410,9 +445,9 @@ export interface Recommendation extends yup.InferType<typeof recommendationSchem
 
 export const metricEstimateSchema = yup
   .object({
-    estimate: yup.number().defined(),
-    top: yup.number().defined(),
-    bottom: yup.number().defined(),
+    estimate: extendedNumberSchema.defined(),
+    top: extendedNumberSchema.defined(),
+    bottom: extendedNumberSchema.defined(),
   })
   .defined()
   .camelCase()
