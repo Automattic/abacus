@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import AuthCallback from 'src/pages/AuthCallback'
 import Experiment from 'src/pages/experiments/Experiment'
 import Experiments from 'src/pages/experiments/Experiments'
+import ExperimentsAgGrid from 'src/pages/experiments/ExperimentsAgGrid'
 import ExperimentWizard, { ExperimentWizardMode } from 'src/pages/experiments/ExperimentWizard'
 import Metrics from 'src/pages/Metrics'
 import Tags from 'src/pages/Tags'
@@ -28,6 +29,10 @@ export default function Routes(): JSX.Element {
 
         <Route path='/experiments' exact>
           <Experiments />
+        </Route>
+
+        <Route path='/experiments-ag' exact>
+          <ExperimentsAgGrid />
         </Route>
 
         <Route path='/experiments/new' exact>

@@ -338,4 +338,49 @@ describe('lib/schemas.ts module', () => {
       }
     })
   })
+
+  describe('extendedNumberSchema', () => {
+    it('should work as expected with normal numbers', () => {
+      expect(Schemas.extendedNumberSchema.validateSync(Number.MIN_SAFE_INTEGER)).toBe(Number.MIN_SAFE_INTEGER)
+      expect(Schemas.extendedNumberSchema.validateSync(-1)).toBe(-1)
+      expect(Schemas.extendedNumberSchema.validateSync(0)).toBe(0)
+      expect(Schemas.extendedNumberSchema.validateSync(1)).toBe(1)
+      expect(Schemas.extendedNumberSchema.validateSync(Number.MIN_VALUE)).toBe(Number.MIN_VALUE)
+      expect(Schemas.extendedNumberSchema.validateSync(Number.MAX_SAFE_INTEGER)).toBe(Number.MAX_SAFE_INTEGER)
+    })
+    it('should work as expected with number extensions', () => {
+      expect(Schemas.extendedNumberSchema.validateSync(NaN)).toBe(NaN)
+      expect(Schemas.extendedNumberSchema.validateSync('nan')).toBe(NaN)
+      expect(Schemas.extendedNumberSchema.validateSync(Infinity)).toBe(Infinity)
+      expect(Schemas.extendedNumberSchema.validateSync('inf')).toBe(Infinity)
+      expect(Schemas.extendedNumberSchema.validateSync(-Infinity)).toBe(-Infinity)
+      expect(Schemas.extendedNumberSchema.validateSync('-inf')).toBe(-Infinity)
+    })
+    it('should throw validation errors for non extended-numbers', () => {
+      expect(() => Schemas.extendedNumberSchema.validateSync('')).toThrowErrorMatchingInlineSnapshot(
+        `"this is not a number"`,
+      )
+      expect(() => Schemas.extendedNumberSchema.validateSync('asdf')).toThrowErrorMatchingInlineSnapshot(
+        `"this is not a number"`,
+      )
+      expect(() => Schemas.extendedNumberSchema.validateSync({})).toThrowErrorMatchingInlineSnapshot(
+        `"this is not a number"`,
+      )
+      expect(() => Schemas.extendedNumberSchema.validateSync(true)).toThrowErrorMatchingInlineSnapshot(
+        `"this is not a number"`,
+      )
+      expect(() => Schemas.extendedNumberSchema.validateSync(false)).toThrowErrorMatchingInlineSnapshot(
+        `"this is not a number"`,
+      )
+      expect(() => Schemas.extendedNumberSchema.validateSync(null)).toThrowErrorMatchingInlineSnapshot(
+        `"this is not a number"`,
+      )
+    })
+    it('should respect undefined', () => {
+      expect(Schemas.extendedNumberSchema.validateSync(undefined)).toBe(undefined)
+      expect(() => Schemas.extendedNumberSchema.defined().validateSync(undefined)).toThrowErrorMatchingInlineSnapshot(
+        `"this must be defined"`,
+      )
+    })
+  })
 })
