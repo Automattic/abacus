@@ -240,16 +240,21 @@ export function getExperimentParticipantStats(
   }
 }
 
-export enum HealthIndication {
+export enum HealthIndicationCode {
   Nominal = 'Nominal',
   PossibleIssue = 'PossibleIssue',
   ProbableIssue = 'ProbableIssue',
+}
+
+interface HealthIndication {
+  code: HealthIndicationCode,
 }
 
 export enum HealthIndicatorUnit {
   Pvalue = 'P-Value',
   Ratio = 'Ratio',
 }
+
 
 /**
  * Indicators are the important stats that give us clear direction on how an experiment is going.
@@ -307,15 +312,21 @@ export function getExperimentParticipantHealthIndicators(experimentParticipantSt
       indicationBrackets: [
         {
           max: 0.001,
-          indication: HealthIndication.ProbableIssue,
+          indication: {
+            code: HealthIndicationCode.ProbableIssue,
+          }
         },
         {
           max: 0.05,
-          indication: HealthIndication.PossibleIssue,
+          indication: {
+            code: HealthIndicationCode.PossibleIssue,
+          }
         },
         {
           max: 1,
-          indication: HealthIndication.Nominal,
+          indication: {
+            code: HealthIndicationCode.Nominal,
+          }
         },
       ],
     },
@@ -328,15 +339,21 @@ export function getExperimentParticipantHealthIndicators(experimentParticipantSt
       indicationBrackets: [
         {
           max: 0.001,
-          indication: HealthIndication.ProbableIssue,
+          indication: {
+            code: HealthIndicationCode.ProbableIssue,
+          }
         },
         {
           max: 0.05,
-          indication: HealthIndication.PossibleIssue,
+          indication: {
+            code: HealthIndicationCode.PossibleIssue,
+          }
         },
         {
           max: 1,
-          indication: HealthIndication.Nominal,
+          indication: {
+            code: HealthIndicationCode.Nominal,
+          }
         },
       ],
     },
@@ -349,15 +366,21 @@ export function getExperimentParticipantHealthIndicators(experimentParticipantSt
       indicationBrackets: [
         {
           max: 0.001,
-          indication: HealthIndication.ProbableIssue,
+          indication: {
+            code: HealthIndicationCode.ProbableIssue,
+          }
         },
         {
           max: 0.05,
-          indication: HealthIndication.PossibleIssue,
+          indication: {
+            code: HealthIndicationCode.PossibleIssue,
+          }
         },
         {
           max: 1,
-          indication: HealthIndication.Nominal,
+          indication: {
+            code: HealthIndicationCode.Nominal,
+          }
         },
       ],
     },
@@ -369,15 +392,21 @@ export function getExperimentParticipantHealthIndicators(experimentParticipantSt
       indicationBrackets: [
         {
           max: 0.01,
-          indication: HealthIndication.Nominal,
+          indication: {
+            code: HealthIndicationCode.Nominal,
+          }
         },
         {
           max: 0.05,
-          indication: HealthIndication.PossibleIssue,
+          indication: {
+            code: HealthIndicationCode.PossibleIssue,
+          }
         },
         {
           max: 1,
-          indication: HealthIndication.ProbableIssue,
+          indication: {
+            code: HealthIndicationCode.ProbableIssue,
+          }
         },
       ],
     },
@@ -389,15 +418,21 @@ export function getExperimentParticipantHealthIndicators(experimentParticipantSt
       indicationBrackets: [
         {
           max: 0.075,
-          indication: HealthIndication.Nominal,
+          indication: {
+            code: HealthIndicationCode.Nominal,
+          }
         },
         {
           max: 0.3,
-          indication: HealthIndication.PossibleIssue,
+          indication: {
+            code: HealthIndicationCode.PossibleIssue,
+          }
         },
         {
           max: 1,
-          indication: HealthIndication.ProbableIssue,
+          indication: {
+            code: HealthIndicationCode.ProbableIssue,
+          }
         },
       ],
     },

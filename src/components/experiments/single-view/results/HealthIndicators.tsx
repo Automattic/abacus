@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import _ from 'lodash'
 import React from 'react'
 
-import { HealthIndication, HealthIndicator, HealthIndicatorUnit } from 'src/lib/analyses'
+import { HealthIndicationCode, HealthIndicator, HealthIndicatorUnit } from 'src/lib/analyses'
 
 const useStyles = makeStyles((_theme: Theme) =>
   createStyles({
@@ -13,18 +13,18 @@ const useStyles = makeStyles((_theme: Theme) =>
   }),
 )
 
-const indicationToMessage: Record<HealthIndication, React.ReactNode> = {
-  [HealthIndication.Nominal]: (
+const indicationCodeToMessage: Record<HealthIndicationCode, React.ReactNode> = {
+  [HealthIndicationCode.Nominal]: (
     <span role='img' aria-label='Nominal'>
       🆗
     </span>
   ),
-  [HealthIndication.PossibleIssue]: (
+  [HealthIndicationCode.PossibleIssue]: (
     <span role='img' aria-label='PossibleIssue'>
       ✴️
     </span>
   ),
-  [HealthIndication.ProbableIssue]: (
+  [HealthIndicationCode.ProbableIssue]: (
     <span role='img' aria-label='CertainIssue'>
       🆘
     </span>
@@ -54,7 +54,7 @@ export default function HealthIndicators({
           key={indicator.name}
         >
           <div>
-            {indicationToMessage[indicator.indication]} <Link href={indicator.link}>{indicator.name}</Link>
+            {indicationCodeToMessage[indicator.indication.code]} <Link href={indicator.link}>{indicator.name}</Link>
           </div>
         </Tooltip>
       ))}
