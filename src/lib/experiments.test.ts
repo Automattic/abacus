@@ -1,9 +1,9 @@
+import MockDate from 'mockdate'
+
 import Fixtures from 'src/test-helpers/fixtures'
 
 import * as Experiments from './experiments'
 import { AnalysisStrategy, Status } from './schemas'
-
-import MockDate from 'mockdate'
 
 describe('lib/experiments.ts module', () => {
   describe('getDeployedVariation', () => {
@@ -53,41 +53,51 @@ describe('lib/experiments.ts module', () => {
   describe('getExperimentDurationDays', () => {
     it('returns the correct number of days', () => {
       expect(
-        Experiments.getExperimentDurationDays(Fixtures.createExperimentFull({
-          status: Status.Staging,
-          startDatetime: new Date('2021-04-01T00:00:00Z'),
-          endDatetime: new Date('2021-04-05T00:00:00Z'),
-        }))
+        Experiments.getExperimentDurationDays(
+          Fixtures.createExperimentFull({
+            status: Status.Staging,
+            startDatetime: new Date('2021-04-01T00:00:00Z'),
+            endDatetime: new Date('2021-04-05T00:00:00Z'),
+          }),
+        ),
       ).toBe(0)
       MockDate.set('2021-04-04T00:00:00Z')
       expect(
-        Experiments.getExperimentDurationDays(Fixtures.createExperimentFull({
-          status: Status.Running,
-          startDatetime: new Date('2021-04-01T00:00:00Z'),
-          endDatetime: new Date('2021-04-05T00:00:00Z'),
-        }))
+        Experiments.getExperimentDurationDays(
+          Fixtures.createExperimentFull({
+            status: Status.Running,
+            startDatetime: new Date('2021-04-01T00:00:00Z'),
+            endDatetime: new Date('2021-04-05T00:00:00Z'),
+          }),
+        ),
       ).toBe(3)
       MockDate.set('2021-04-04T12:00:00Z')
       expect(
-        Experiments.getExperimentDurationDays(Fixtures.createExperimentFull({
-          status: Status.Running,
-          startDatetime: new Date('2021-04-01T00:00:00Z'),
-          endDatetime: new Date('2021-04-05T00:00:00Z'),
-        }))
+        Experiments.getExperimentDurationDays(
+          Fixtures.createExperimentFull({
+            status: Status.Running,
+            startDatetime: new Date('2021-04-01T00:00:00Z'),
+            endDatetime: new Date('2021-04-05T00:00:00Z'),
+          }),
+        ),
       ).toBe(3.5)
       expect(
-        Experiments.getExperimentDurationDays(Fixtures.createExperimentFull({
-          status: Status.Completed,
-          startDatetime: new Date('2021-04-01T00:00:00Z'),
-          endDatetime: new Date('2021-04-05T00:00:00Z'),
-        }))
+        Experiments.getExperimentDurationDays(
+          Fixtures.createExperimentFull({
+            status: Status.Completed,
+            startDatetime: new Date('2021-04-01T00:00:00Z'),
+            endDatetime: new Date('2021-04-05T00:00:00Z'),
+          }),
+        ),
       ).toBe(4)
       expect(
-        Experiments.getExperimentDurationDays(Fixtures.createExperimentFull({
-          status: Status.Disabled,
-          startDatetime: new Date('2021-04-01T00:00:00Z'),
-          endDatetime: new Date('2021-04-05T00:00:00Z'),
-        }))
+        Experiments.getExperimentDurationDays(
+          Fixtures.createExperimentFull({
+            status: Status.Disabled,
+            startDatetime: new Date('2021-04-01T00:00:00Z'),
+            endDatetime: new Date('2021-04-05T00:00:00Z'),
+          }),
+        ),
       ).toBe(4)
     })
   })

@@ -1,5 +1,6 @@
+import { differenceInHours } from 'date-fns'
+
 import { AnalysisStrategy, AssignmentCacheStatus, ExperimentFull, Platform, Status, Variation } from './schemas'
-import { differenceInHours } from'date-fns'
 
 /**
  * Return the deployed variation if one has been selected, otherwise `null`.
@@ -68,5 +69,5 @@ export function getExperimentDurationDays(experiment: ExperimentFull): number {
 
   const maybeEndDate = experiment.status === Status.Running ? new Date() : experiment.endDatetime
   // We use differenceInHours rather than differenceInDays so we can get partial days, useful for experimenters and debugging.
-  return differenceInHours(maybeEndDate, experiment.startDatetime)/24
+  return differenceInHours(maybeEndDate, experiment.startDatetime) / 24
 }
