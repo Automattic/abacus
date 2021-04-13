@@ -248,6 +248,7 @@ export enum HealthIndicationCode {
 
 interface HealthIndication {
   code: HealthIndicationCode,
+  reason: string,
 }
 
 export enum HealthIndicatorUnit {
@@ -265,6 +266,27 @@ export interface HealthIndicator {
   unit: HealthIndicatorUnit
   link?: string
   indication: HealthIndication
+} 
+
+interface IndicationBracket {
+  max: number,
+  indication: Omit<HealthIndication, 'reason'>,
+}
+
+/**
+ * Get indication from set of IndicatorBrackets, adding a reason string.
+ * Expects brackets to be sorted.
+ */
+function getIndicationFromBrackets(sortedBracketsMaxAsc: IndicationBracket[], value: number): HealthIndication {
+  const bracketIndex = sortedBracketsMaxAsc.findIndex((bracket) => value <= bracket.max)
+  const previousBracketMax = sortedBracketsMaxAsc[bracketIndex - 1]?.max ?? -Infinity
+  const bracket = sortedBracketsMaxAsc[bracketIndex]
+  const reason = `${previousBracketMax === -Infinity ? '−∞' : previousBracketMax} < x ≤ ${bracket.max}`
+
+  return {
+    ...bracket.indication,
+    reason,
+  }
 }
 
 /**
@@ -289,16 +311,7 @@ export function getExperimentParticipantHealthIndicators(experimentParticipantSt
     }),
   )
 
-  interface IndicationBracket {
-    max: number
-    indication: HealthIndication
-  }
-
-  interface IndicatorDefinition {
-    name: string
-    value: number
-    unit: HealthIndicatorUnit
-    link?: string
+  interface IndicatorDefinition extends Omit<HealthIndicator, 'indication'> {
     indicationBrackets: Array<IndicationBracket>
   }
 
@@ -440,8 +453,7 @@ export function getExperimentParticipantHealthIndicators(experimentParticipantSt
 
   return indicatorDefinitions.map(({ value, indicationBrackets, ...rest }) => ({
     value,
-    indication: (_.sortBy(indicationBrackets, 'max').find((bracket) => value <= bracket.max) as IndicationBracket)
-      .indication,
+    indication: getIndicationFromBrackets(indicationBrackets, value),
     ...rest,
   }))
 }
