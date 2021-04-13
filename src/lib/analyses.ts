@@ -247,15 +247,14 @@ export enum HealthIndicationCode {
 }
 
 interface HealthIndication {
-  code: HealthIndicationCode,
-  reason: string,
+  code: HealthIndicationCode
+  reason: string
 }
 
 export enum HealthIndicatorUnit {
   Pvalue = 'P-Value',
   Ratio = 'Ratio',
 }
-
 
 /**
  * Indicators are the important stats that give us clear direction on how an experiment is going.
@@ -266,11 +265,11 @@ export interface HealthIndicator {
   unit: HealthIndicatorUnit
   link?: string
   indication: HealthIndication
-} 
+}
 
 interface IndicationBracket {
-  max: number,
-  indication: Omit<HealthIndication, 'reason'>,
+  max: number
+  indication: Omit<HealthIndication, 'reason'>
 }
 
 /**
@@ -292,7 +291,9 @@ function getIndicationFromBrackets(sortedBracketsMaxAsc: IndicationBracket[], va
 /**
  * Returns indicators from experimentParticipantStats.
  */
-export function getExperimentParticipantHealthIndicators(experimentParticipantStats: ExperimentParticipantStats): HealthIndicator[] {
+export function getExperimentParticipantHealthIndicators(
+  experimentParticipantStats: ExperimentParticipantStats,
+): HealthIndicator[] {
   // Getting the min p-values across variations:
   const minVariationProbabilities = Object.values(experimentParticipantStats.probabilities.byVariationId).reduce(
     (acc: VariationProbabilities, cur: VariationProbabilities) => ({
@@ -327,19 +328,19 @@ export function getExperimentParticipantHealthIndicators(experimentParticipantSt
           max: 0.001,
           indication: {
             code: HealthIndicationCode.ProbableIssue,
-          }
+          },
         },
         {
           max: 0.05,
           indication: {
             code: HealthIndicationCode.PossibleIssue,
-          }
+          },
         },
         {
           max: 1,
           indication: {
             code: HealthIndicationCode.Nominal,
-          }
+          },
         },
       ],
     },
@@ -354,19 +355,19 @@ export function getExperimentParticipantHealthIndicators(experimentParticipantSt
           max: 0.001,
           indication: {
             code: HealthIndicationCode.ProbableIssue,
-          }
+          },
         },
         {
           max: 0.05,
           indication: {
             code: HealthIndicationCode.PossibleIssue,
-          }
+          },
         },
         {
           max: 1,
           indication: {
             code: HealthIndicationCode.Nominal,
-          }
+          },
         },
       ],
     },
@@ -381,19 +382,19 @@ export function getExperimentParticipantHealthIndicators(experimentParticipantSt
           max: 0.001,
           indication: {
             code: HealthIndicationCode.ProbableIssue,
-          }
+          },
         },
         {
           max: 0.05,
           indication: {
             code: HealthIndicationCode.PossibleIssue,
-          }
+          },
         },
         {
           max: 1,
           indication: {
             code: HealthIndicationCode.Nominal,
-          }
+          },
         },
       ],
     },
@@ -407,19 +408,19 @@ export function getExperimentParticipantHealthIndicators(experimentParticipantSt
           max: 0.01,
           indication: {
             code: HealthIndicationCode.Nominal,
-          }
+          },
         },
         {
           max: 0.05,
           indication: {
             code: HealthIndicationCode.PossibleIssue,
-          }
+          },
         },
         {
           max: 1,
           indication: {
             code: HealthIndicationCode.ProbableIssue,
-          }
+          },
         },
       ],
     },
@@ -433,19 +434,19 @@ export function getExperimentParticipantHealthIndicators(experimentParticipantSt
           max: 0.075,
           indication: {
             code: HealthIndicationCode.Nominal,
-          }
+          },
         },
         {
           max: 0.3,
           indication: {
             code: HealthIndicationCode.PossibleIssue,
-          }
+          },
         },
         {
           max: 1,
           indication: {
             code: HealthIndicationCode.ProbableIssue,
-          }
+          },
         },
       ],
     },

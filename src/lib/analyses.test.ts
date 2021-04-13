@@ -560,8 +560,8 @@ describe('getExperimentHealthIndicators', () => {
     ).toEqual([
       {
         indication: {
-            code: 'ProbableIssue',
-            reason: '−∞ < x ≤ 0.001',
+          code: 'ProbableIssue',
+          reason: '−∞ < x ≤ 0.001',
         },
         link:
           'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated',
