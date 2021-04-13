@@ -153,7 +153,7 @@ interface VariationProbabilities {
   assignedSpammersDistributionMatchingAllocated: number
 }
 
-export interface ExperimentHealthStats {
+export interface ExperimentParticipantStats {
   ratios: {
     overall: {
       exposedToAssigned: number
@@ -170,10 +170,10 @@ export interface ExperimentHealthStats {
 /**
  * Gets Experiment Health Stats for an experiment
  */
-export function getExperimentHealthStats(
+export function getExperimentParticipantStats(
   experiment: ExperimentFull,
   analysesByStrategy: AnalysesByStrategy,
-): ExperimentHealthStats {
+): ExperimentParticipantStats {
   const participantCounts = getParticipantCounts(experiment, analysesByStrategy)
 
   const ratios = {
@@ -263,11 +263,11 @@ export interface HealthIndicator {
 }
 
 /**
- * Returns indicators from experimentHealthStats.
+ * Returns indicators from experimentParticipantStats.
  */
-export function getExperimentHealthIndicators(experimentHealthStats: ExperimentHealthStats): HealthIndicator[] {
+export function getExperimentParticipantHealthIndicators(experimentParticipantStats: ExperimentParticipantStats): HealthIndicator[] {
   // Getting the min p-values across variations:
-  const minVariationProbabilities = Object.values(experimentHealthStats.probabilities.byVariationId).reduce(
+  const minVariationProbabilities = Object.values(experimentParticipantStats.probabilities.byVariationId).reduce(
     (acc: VariationProbabilities, cur: VariationProbabilities) => ({
       assignedDistributionMatchingAllocated: Math.min(
         acc.assignedDistributionMatchingAllocated,
@@ -363,7 +363,7 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
     },
     {
       name: 'Total crossovers',
-      value: experimentHealthStats.ratios.overall.assignedCrossoversToAssigned,
+      value: experimentParticipantStats.ratios.overall.assignedCrossoversToAssigned,
       unit: HealthIndicatorUnit.Ratio,
       link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers',
       indicationBrackets: [
@@ -383,7 +383,7 @@ export function getExperimentHealthIndicators(experimentHealthStats: ExperimentH
     },
     {
       name: 'Total spammers',
-      value: experimentHealthStats.ratios.overall.assignedSpammersToAssigned,
+      value: experimentParticipantStats.ratios.overall.assignedSpammersToAssigned,
       unit: HealthIndicatorUnit.Ratio,
       link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers',
       indicationBrackets: [

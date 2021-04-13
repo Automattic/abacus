@@ -23,8 +23,8 @@ import {
   AggregateRecommendationDecision,
   AnalysisStrategyToHuman,
   getAggregateRecommendation,
-  getExperimentHealthIndicators,
-  getExperimentHealthStats,
+  getExperimentParticipantHealthIndicators,
+  getExperimentParticipantStats,
 } from 'src/lib/analyses'
 import * as Experiments from 'src/lib/experiments'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
@@ -190,8 +190,8 @@ export default function ActualExperimentResults({
     strategy,
   )
 
-  const experimentHealthStats = getExperimentHealthStats(experiment, primaryMetricLatestAnalysesByStrategy)
-  const experimentHealthIndicators = getExperimentHealthIndicators(experimentHealthStats)
+  const experimentParticipantStats = getExperimentParticipantStats(experiment, primaryMetricLatestAnalysesByStrategy)
+  const experimentHealthIndicators = getExperimentParticipantHealthIndicators(experimentParticipantStats)
 
   // ### Metric Assignments Table
 
@@ -351,7 +351,7 @@ export default function ActualExperimentResults({
       {
         // Displaying these temporarily:
         // istanbul ignore next; debug only
-        isDebugMode() && <DebugOutput label='Health Stats' content={experimentHealthStats} />
+        isDebugMode() && <DebugOutput label='Health Stats' content={experimentParticipantStats} />
       }
     </div>
   )

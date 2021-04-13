@@ -413,10 +413,10 @@ describe('getParticipantCounts', () => {
   })
 })
 
-describe('getExperimentHealthStats', () => {
+describe('getExperimentParticipantStats', () => {
   it('should work correctly', () => {
     expect(
-      Analyses.getExperimentHealthStats(
+      Analyses.getExperimentParticipantStats(
         Fixtures.createExperimentFull({
           variations: [
             { variationId: 1, allocatedPercentage: 50, isDefault: true, name: 'variation_name_1' },
@@ -510,8 +510,8 @@ describe('getExperimentHealthStats', () => {
 describe('getExperimentHealthIndicators', () => {
   it('should work correctly', () => {
     expect(
-      Analyses.getExperimentHealthIndicators(
-        Analyses.getExperimentHealthStats(
+      Analyses.getExperimentParticipantHealthIndicators(
+        Analyses.getExperimentParticipantStats(
           Fixtures.createExperimentFull({
             variations: [
               { variationId: 1, allocatedPercentage: 50, isDefault: true, name: 'variation_name_1' },
