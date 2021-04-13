@@ -246,9 +246,16 @@ export enum HealthIndicationCode {
   ProbableIssue = 'ProbableIssue',
 }
 
+export enum HealthIndicationSeverity {
+  Clear = 'Clear',
+  Warning = 'Warning',
+  Error = 'Error',
+}
+
 interface HealthIndication {
   code: HealthIndicationCode
   reason: string
+  severity: HealthIndicationSeverity
 }
 
 export enum HealthIndicatorUnit {
@@ -328,18 +335,21 @@ export function getExperimentParticipantHealthIndicators(
           max: 0.001,
           indication: {
             code: HealthIndicationCode.ProbableIssue,
+            severity: HealthIndicationSeverity.Error,
           },
         },
         {
           max: 0.05,
           indication: {
             code: HealthIndicationCode.PossibleIssue,
+            severity: HealthIndicationSeverity.Warning,
           },
         },
         {
           max: 1,
           indication: {
             code: HealthIndicationCode.Nominal,
+            severity: HealthIndicationSeverity.Clear,
           },
         },
       ],
@@ -355,18 +365,21 @@ export function getExperimentParticipantHealthIndicators(
           max: 0.001,
           indication: {
             code: HealthIndicationCode.ProbableIssue,
+            severity: HealthIndicationSeverity.Error,
           },
         },
         {
           max: 0.05,
           indication: {
             code: HealthIndicationCode.PossibleIssue,
+            severity: HealthIndicationSeverity.Warning,
           },
         },
         {
           max: 1,
           indication: {
             code: HealthIndicationCode.Nominal,
+            severity: HealthIndicationSeverity.Clear,
           },
         },
       ],
@@ -382,18 +395,21 @@ export function getExperimentParticipantHealthIndicators(
           max: 0.001,
           indication: {
             code: HealthIndicationCode.ProbableIssue,
+            severity: HealthIndicationSeverity.Error,
           },
         },
         {
           max: 0.05,
           indication: {
             code: HealthIndicationCode.PossibleIssue,
+            severity: HealthIndicationSeverity.Warning,
           },
         },
         {
           max: 1,
           indication: {
             code: HealthIndicationCode.Nominal,
+            severity: HealthIndicationSeverity.Clear,
           },
         },
       ],
@@ -408,18 +424,21 @@ export function getExperimentParticipantHealthIndicators(
           max: 0.01,
           indication: {
             code: HealthIndicationCode.Nominal,
+            severity: HealthIndicationSeverity.Clear,
           },
         },
         {
           max: 0.05,
           indication: {
             code: HealthIndicationCode.PossibleIssue,
+            severity: HealthIndicationSeverity.Warning,
           },
         },
         {
           max: 1,
           indication: {
             code: HealthIndicationCode.ProbableIssue,
+            severity: HealthIndicationSeverity.Error,
           },
         },
       ],
@@ -434,18 +453,21 @@ export function getExperimentParticipantHealthIndicators(
           max: 0.075,
           indication: {
             code: HealthIndicationCode.Nominal,
+            severity: HealthIndicationSeverity.Clear,
           },
         },
         {
           max: 0.3,
           indication: {
             code: HealthIndicationCode.PossibleIssue,
+            severity: HealthIndicationSeverity.Warning,
           },
         },
         {
           max: 1,
           indication: {
             code: HealthIndicationCode.ProbableIssue,
+            severity: HealthIndicationSeverity.Error,
           },
         },
       ],

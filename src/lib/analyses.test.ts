@@ -562,6 +562,7 @@ describe('getExperimentHealthIndicators', () => {
         indication: {
           code: 'ProbableIssue',
           reason: '−∞ < x ≤ 0.001',
+          severity: Analyses.HealthIndicationSeverity.Error,
         },
         link:
           'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated',
@@ -573,6 +574,7 @@ describe('getExperimentHealthIndicators', () => {
         indication: {
           code: 'PossibleIssue',
           reason: '0.001 < x ≤ 0.05',
+          severity: Analyses.HealthIndicationSeverity.Warning,
         },
         link:
           'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch',
@@ -584,6 +586,7 @@ describe('getExperimentHealthIndicators', () => {
         indication: {
           code: 'ProbableIssue',
           reason: '−∞ < x ≤ 0.001',
+          severity: Analyses.HealthIndicationSeverity.Error,
         },
         link:
           'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated',
@@ -595,6 +598,7 @@ describe('getExperimentHealthIndicators', () => {
         indication: {
           code: 'ProbableIssue',
           reason: '0.05 < x ≤ 1',
+          severity: Analyses.HealthIndicationSeverity.Error,
         },
         link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers',
         name: 'Total crossovers',
@@ -605,6 +609,7 @@ describe('getExperimentHealthIndicators', () => {
         indication: {
           code: 'ProbableIssue',
           reason: '0.3 < x ≤ 1',
+          severity: Analyses.HealthIndicationSeverity.Error,
         },
         link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers',
         name: 'Total spammers',
