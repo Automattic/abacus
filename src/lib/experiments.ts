@@ -1,4 +1,5 @@
-import { AnalysisStrategy, AssignmentCacheStatus, ExperimentFull, Platform, Variation } from './schemas'
+import { AnalysisStrategy, AssignmentCacheStatus, ExperimentFull, Platform, Status, Variation } from './schemas'
+import { differenceInHours } from'date-fns'
 
 /**
  * Return the deployed variation if one has been selected, otherwise `null`.
@@ -55,4 +56,17 @@ export const AssignmentCacheStatusToHuman: Record<AssignmentCacheStatus, string>
   [AssignmentCacheStatus.Fresh]: '✅ Fresh: Production cache is up to date, but manual sandbox updates may be needed',
   [AssignmentCacheStatus.Missing]: '❌️ Missing: Expected for new, renamed, or disabled experiments',
   [AssignmentCacheStatus.Stale]: '❌️ Stale: Recent changes take up to ten minutes to propagate',
+}
+
+/**
+ * Returns an experiment's duration in days, with partial days as fractions.
+ */
+export function getExperimentDurationDays(experiment: ExperimentFull): number {
+  if (experiment.status === Status.Staging) {
+    return 0
+  }
+
+  const maybeEndDate = experiment.status === Status.Running ? new Date() : experiment.endDatetime
+  // We use differenceInHours rather than differenceInDays so we can get partial days, useful for experimenters and debugging.
+  return differenceInHours(maybeEndDate, experiment.startDatetime)/24
 }
