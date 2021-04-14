@@ -53,7 +53,7 @@ describe('lib/experiments.ts module', () => {
   describe('getExperimentDurationDays', () => {
     it('returns the correct number of days', () => {
       expect(
-        Experiments.getExperimentDurationDays(
+        Experiments.getExperimentRunHours(
           Fixtures.createExperimentFull({
             status: Status.Staging,
             startDatetime: new Date('2021-04-01T00:00:00Z'),
@@ -63,42 +63,42 @@ describe('lib/experiments.ts module', () => {
       ).toBe(0)
       MockDate.set('2021-04-04T00:00:00Z')
       expect(
-        Experiments.getExperimentDurationDays(
+        Experiments.getExperimentRunHours(
           Fixtures.createExperimentFull({
             status: Status.Running,
             startDatetime: new Date('2021-04-01T00:00:00Z'),
             endDatetime: new Date('2021-04-05T00:00:00Z'),
           }),
         ),
-      ).toBe(3)
+      ).toBe(72)
       MockDate.set('2021-04-04T12:00:00Z')
       expect(
-        Experiments.getExperimentDurationDays(
+        Experiments.getExperimentRunHours(
           Fixtures.createExperimentFull({
             status: Status.Running,
             startDatetime: new Date('2021-04-01T00:00:00Z'),
             endDatetime: new Date('2021-04-05T00:00:00Z'),
           }),
         ),
-      ).toBe(3.5)
+      ).toBe(84)
       expect(
-        Experiments.getExperimentDurationDays(
+        Experiments.getExperimentRunHours(
           Fixtures.createExperimentFull({
             status: Status.Completed,
             startDatetime: new Date('2021-04-01T00:00:00Z'),
             endDatetime: new Date('2021-04-05T00:00:00Z'),
           }),
         ),
-      ).toBe(4)
+      ).toBe(96)
       expect(
-        Experiments.getExperimentDurationDays(
+        Experiments.getExperimentRunHours(
           Fixtures.createExperimentFull({
             status: Status.Disabled,
             startDatetime: new Date('2021-04-01T00:00:00Z'),
             endDatetime: new Date('2021-04-05T00:00:00Z'),
           }),
         ),
-      ).toBe(4)
+      ).toBe(96)
     })
   })
 })

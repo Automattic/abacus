@@ -60,14 +60,13 @@ export const AssignmentCacheStatusToHuman: Record<AssignmentCacheStatus, string>
 }
 
 /**
- * Returns an experiment's duration in days, with partial days as fractions.
+ * Returns an experiment's run time in hours.
  */
-export function getExperimentDurationDays(experiment: ExperimentFull): number {
+export function getExperimentRunHours(experiment: ExperimentFull): number {
   if (experiment.status === Status.Staging) {
     return 0
   }
 
   const maybeEndDate = experiment.status === Status.Running ? new Date() : experiment.endDatetime
-  // We use differenceInHours rather than differenceInDays so we can get partial days, useful for experimenters and debugging.
-  return differenceInHours(maybeEndDate, experiment.startDatetime) / 24
+  return differenceInHours(maybeEndDate, experiment.startDatetime)
 }
