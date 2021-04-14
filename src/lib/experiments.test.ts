@@ -76,11 +76,11 @@ describe('lib/experiments.ts module', () => {
         Experiments.getExperimentRunHours(
           Fixtures.createExperimentFull({
             status: Status.Running,
-            startDatetime: new Date('2021-04-01T00:00:00Z'),
-            endDatetime: new Date('2021-04-05T00:00:00Z'),
+            startDatetime: new Date('2021-04-01T04:05:06Z'),
+            endDatetime: new Date('2021-04-05T03:02:01Z'),
           }),
         ),
-      ).toBe(84)
+      ).toBe(79)
       expect(
         Experiments.getExperimentRunHours(
           Fixtures.createExperimentFull({
