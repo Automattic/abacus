@@ -320,7 +320,9 @@ function getIndicationFromBrackets(sortedBracketsMaxAsc: IndicationBracket[], va
 
   const previousBracketMax = sortedBracketsMaxAsc[bracketIndex - 1]?.max ?? -Infinity
   const bracket = sortedBracketsMaxAsc[bracketIndex]
-  const reason = `${previousBracketMax === -Infinity ? '−∞' : previousBracketMax} < x ≤ ${bracket.max}`
+  const reason = `${previousBracketMax === -Infinity ? '−∞' : previousBracketMax} < x ≤ ${
+    bracket.max === Infinity ? '∞' : bracket.max
+  }`
 
   return {
     ...bracket.indication,
@@ -518,6 +520,68 @@ export function getExperimentParticipantHealthIndicators(
       ],
     },
   )
+
+  return indicatorDefinitions.map(({ value, indicationBrackets, ...rest }) => ({
+    value,
+    indication: getIndicationFromBrackets(indicationBrackets, value),
+    ...rest,
+  }))
+}
+
+export function getExperimentAnalysesHealthIndicators(
+  experiment: ExperimentFull,
+  analysesByStrategy: Record<AnalysisStrategy, Analysis>,
+  strategy: AnalysisStrategy,
+): HealthIndicator[] {
+  interface IndicatorDefinition extends Omit<HealthIndicator, 'indication'> {
+    indicationBrackets: Array<IndicationBracket>
+  }
+
+  const analysis = analysesByStrategy[strategy]
+  const metricAssignment = experiment.metricAssignments.find(
+    (metricAssignment) => metricAssignment.metricAssignmentId === analysis.metricAssignmentId,
+  )
+  // istanbul ignore next; shouldn't occur
+  if (!metricAssignment) {
+    throw new Error('Missing metricAssignment')
+  }
+  if (!analysis.metricEstimates) {
+    return []
+  }
+
+  const indicatorDefinitions: IndicatorDefinition[] = []
+
+  const diffCiWidth = Math.abs(analysis.metricEstimates.diff.top - analysis.metricEstimates.diff.bottom)
+  const ropeWidth = metricAssignment.minDifference * 2
+  indicatorDefinitions.push({
+    name: 'Kruschke Precision (CI to ROPE ratio)',
+    value: diffCiWidth / ropeWidth,
+    unit: HealthIndicatorUnit.Ratio,
+    link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio',
+    indicationBrackets: [
+      {
+        max: 0.8,
+        indication: {
+          code: HealthIndicationCode.Nominal,
+          severity: HealthIndicationSeverity.Clear,
+        },
+      },
+      {
+        max: 1.5,
+        indication: {
+          code: HealthIndicationCode.PossibleIssue,
+          severity: HealthIndicationSeverity.Warning,
+        },
+      },
+      {
+        max: Infinity,
+        indication: {
+          code: HealthIndicationCode.ProbableIssue,
+          severity: HealthIndicationSeverity.Error,
+        },
+      },
+    ],
+  })
 
   return indicatorDefinitions.map(({ value, indicationBrackets, ...rest }) => ({
     value,
