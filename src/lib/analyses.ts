@@ -247,7 +247,7 @@ export enum HealthIndicationCode {
 }
 
 export enum HealthIndicationSeverity {
-  Clear = 'Clear',
+  Ok = 'Ok',
   Warning = 'Warning',
   Error = 'Error',
 }
@@ -349,7 +349,7 @@ export function getExperimentParticipantHealthIndicators(
           max: 1,
           indication: {
             code: HealthIndicationCode.Nominal,
-            severity: HealthIndicationSeverity.Clear,
+            severity: HealthIndicationSeverity.Ok,
           },
         },
       ],
@@ -379,7 +379,7 @@ export function getExperimentParticipantHealthIndicators(
           max: 1,
           indication: {
             code: HealthIndicationCode.Nominal,
-            severity: HealthIndicationSeverity.Clear,
+            severity: HealthIndicationSeverity.Ok,
           },
         },
       ],
@@ -409,7 +409,7 @@ export function getExperimentParticipantHealthIndicators(
           max: 1,
           indication: {
             code: HealthIndicationCode.Nominal,
-            severity: HealthIndicationSeverity.Clear,
+            severity: HealthIndicationSeverity.Ok,
           },
         },
       ],
@@ -424,7 +424,7 @@ export function getExperimentParticipantHealthIndicators(
           max: 0.01,
           indication: {
             code: HealthIndicationCode.Nominal,
-            severity: HealthIndicationSeverity.Clear,
+            severity: HealthIndicationSeverity.Ok,
           },
         },
         {
@@ -453,7 +453,7 @@ export function getExperimentParticipantHealthIndicators(
           max: 0.075,
           indication: {
             code: HealthIndicationCode.Nominal,
-            severity: HealthIndicationSeverity.Clear,
+            severity: HealthIndicationSeverity.Ok,
           },
         },
         {
