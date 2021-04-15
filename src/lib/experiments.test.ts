@@ -1,7 +1,9 @@
+import MockDate from 'mockdate'
+
 import Fixtures from 'src/test-helpers/fixtures'
 
 import * as Experiments from './experiments'
-import { AnalysisStrategy } from './schemas'
+import { AnalysisStrategy, Status } from './schemas'
 
 describe('lib/experiments.ts module', () => {
   describe('getDeployedVariation', () => {
@@ -45,6 +47,58 @@ describe('lib/experiments.ts module', () => {
       expect(
         Experiments.getDefaultAnalysisStrategy(Fixtures.createExperimentFull({ exposureEvents: [{ event: 'ev1' }] })),
       ).toBe(AnalysisStrategy.PpNaive)
+    })
+  })
+
+  describe('getExperimentDurationDays', () => {
+    it('returns the correct number of days', () => {
+      expect(
+        Experiments.getExperimentRunHours(
+          Fixtures.createExperimentFull({
+            status: Status.Staging,
+            startDatetime: new Date('2021-04-01T00:00:00Z'),
+            endDatetime: new Date('2021-04-05T00:00:00Z'),
+          }),
+        ),
+      ).toBe(0)
+      MockDate.set('2021-04-04T00:00:00Z')
+      expect(
+        Experiments.getExperimentRunHours(
+          Fixtures.createExperimentFull({
+            status: Status.Running,
+            startDatetime: new Date('2021-04-01T00:00:00Z'),
+            endDatetime: new Date('2021-04-05T00:00:00Z'),
+          }),
+        ),
+      ).toBe(72)
+      MockDate.set('2021-04-04T12:00:00Z')
+      expect(
+        Experiments.getExperimentRunHours(
+          Fixtures.createExperimentFull({
+            status: Status.Running,
+            startDatetime: new Date('2021-04-01T04:05:06Z'),
+            endDatetime: new Date('2021-04-05T03:02:01Z'),
+          }),
+        ),
+      ).toBe(79)
+      expect(
+        Experiments.getExperimentRunHours(
+          Fixtures.createExperimentFull({
+            status: Status.Completed,
+            startDatetime: new Date('2021-04-01T00:00:00Z'),
+            endDatetime: new Date('2021-04-05T00:00:00Z'),
+          }),
+        ),
+      ).toBe(96)
+      expect(
+        Experiments.getExperimentRunHours(
+          Fixtures.createExperimentFull({
+            status: Status.Disabled,
+            startDatetime: new Date('2021-04-01T00:00:00Z'),
+            endDatetime: new Date('2021-04-05T00:00:00Z'),
+          }),
+        ),
+      ).toBe(96)
     })
   })
 })
