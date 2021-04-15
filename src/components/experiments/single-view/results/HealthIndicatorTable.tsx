@@ -82,7 +82,7 @@ export default function HealthIndicatorTable({
           {indicators.map((indicator) => (
             <TableRow key={indicator.name}>
               <TableCell scope='row'>
-                <Link href={indicator.link}>{indicator.name}</Link>
+                <Link href={indicator.link} target='_blank'>{indicator.name}</Link>
               </TableCell>
               <TableCell scope='row' className={clsx(classes.monospace,classes.deemphasized)}>
                 {indicator.unit === HealthIndicatorUnit.Pvalue ? (
