@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme: Theme) =>
     monospace: {
       fontFamily: theme.custom.fonts.monospace,
     },
+    deemphasized: {
+      color: theme.palette.grey[600],
+    },
     indication: {
       padding: theme.spacing(2),
     },
@@ -81,7 +84,7 @@ export default function HealthIndicatorTable({
               <TableCell scope='row'>
                 <Link href={indicator.link}>{indicator.name}</Link>
               </TableCell>
-              <TableCell scope='row' className={classes.monospace}>
+              <TableCell scope='row' className={clsx(classes.monospace,classes.deemphasized)}>
                 {indicator.unit === HealthIndicatorUnit.Pvalue ? (
                   <Tooltip title='The smaller the p-value the more likely there is an issue.'>
                     <span className={classes.tooltip}>p-value</span>
@@ -90,7 +93,7 @@ export default function HealthIndicatorTable({
                   <span>ratio</span>
                 )}
               </TableCell>
-              <TableCell scope='row' className={classes.monospace}>
+              <TableCell scope='row' className={clsx(classes.monospace,classes.deemphasized)}>
                 {indicator.value}
               </TableCell>
               <TableCell
@@ -105,7 +108,7 @@ export default function HealthIndicatorTable({
                   {indicator.indication.code} {severityEmoji[indicator.indication.severity]}
                 </span>
               </TableCell>
-              <TableCell scope='row' className={classes.monospace}>
+              <TableCell scope='row' className={clsx(classes.monospace,classes.deemphasized)}>
                 {indicator.indication.reason}
               </TableCell>
             </TableRow>
