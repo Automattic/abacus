@@ -242,6 +242,7 @@ export function getExperimentParticipantStats(
 
 export enum HealthIndicationCode {
   Nominal = 'Nominal',
+  IndicationError = 'IndicationError',
 
   // Probabilistic
   PossibleIssue = 'PossibleIssue',
@@ -296,6 +297,14 @@ function getIndicationFromBrackets(sortedBracketsMaxAsc: IndicationBracket[], va
   const previousBracketMax = sortedBracketsMaxAsc[bracketIndex - 1]?.max ?? -Infinity
   const bracket = sortedBracketsMaxAsc[bracketIndex]
   const reason = `${previousBracketMax === -Infinity ? '−∞' : previousBracketMax} < x ≤ ${bracket.max}`
+
+  if (bracketIndex === -1) {
+    return {
+      code: HealthIndicationCode.IndicationError,
+      severity: HealthIndicationSeverity.Error,
+      reason: 'Unexpected value',
+    }
+  }
 
   return {
     ...bracket.indication,
