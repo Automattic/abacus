@@ -242,8 +242,16 @@ export function getExperimentParticipantStats(
 
 export enum HealthIndicationCode {
   Nominal = 'Nominal',
+
+  // Probabilistic
   PossibleIssue = 'PossibleIssue',
   ProbableIssue = 'ProbableIssue',
+
+  // Proportional
+  VeryLow = 'VeryLow',
+  Low = 'Low',
+  High = 'High',
+  VeryHigh = 'VeryHigh',
 }
 
 export enum HealthIndicationSeverity {
@@ -430,14 +438,14 @@ export function getExperimentParticipantHealthIndicators(
         {
           max: 0.05,
           indication: {
-            code: HealthIndicationCode.PossibleIssue,
+            code: HealthIndicationCode.High,
             severity: HealthIndicationSeverity.Warning,
           },
         },
         {
           max: 1,
           indication: {
-            code: HealthIndicationCode.ProbableIssue,
+            code: HealthIndicationCode.VeryHigh,
             severity: HealthIndicationSeverity.Error,
           },
         },
@@ -459,14 +467,14 @@ export function getExperimentParticipantHealthIndicators(
         {
           max: 0.3,
           indication: {
-            code: HealthIndicationCode.PossibleIssue,
+            code: HealthIndicationCode.High,
             severity: HealthIndicationSeverity.Warning,
           },
         },
         {
           max: 1,
           indication: {
-            code: HealthIndicationCode.ProbableIssue,
+            code: HealthIndicationCode.VeryHigh,
             severity: HealthIndicationSeverity.Error,
           },
         },
