@@ -241,9 +241,9 @@ export function getExperimentParticipantStats(
 }
 
 export enum HealthIndicationCode {
-  Nominal = 'Nominal',
-  PossibleIssue = 'PossibleIssue',
-  ProbableIssue = 'ProbableIssue',
+  Nominal = 'nominal',
+  PossibleIssue = 'possible issue',
+  ProbableIssue = 'probable issue',
 }
 
 export enum HealthIndicationSeverity {

@@ -37,6 +37,7 @@ import { formatIsoDate } from 'src/utils/time'
 import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
 import HealthIndicators from './HealthIndicators'
+import HealthIndicatorTable from './HealthIndicatorTable'
 import MetricAssignmentResults from './MetricAssignmentResults'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -104,6 +105,12 @@ const useStyles = makeStyles((theme: Theme) =>
     participantsPlot: {
       width: '100%',
       height: 300,
+    },
+    healthReport: {
+      marginTop: theme.spacing(2),
+    },
+    healthReportTitle: {
+      padding: theme.spacing(2),
     },
   }),
 )
@@ -351,7 +358,14 @@ export default function ActualExperimentResults({
       {
         // Displaying these temporarily:
         // istanbul ignore next; debug only
-        isDebugMode() && <DebugOutput label='Health Stats' content={experimentParticipantStats} />
+        isDebugMode() && (
+          <Paper className={classes.healthReport}>
+            <Typography variant='h3' className={classes.healthReportTitle}>
+              Health Report
+            </Typography>
+            <HealthIndicatorTable indicators={experimentHealthIndicators} />
+          </Paper>
+        )
       }
     </div>
   )
