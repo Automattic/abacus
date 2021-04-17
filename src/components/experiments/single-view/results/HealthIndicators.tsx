@@ -19,6 +19,11 @@ const indicationCodeToMessage: Record<HealthIndicationCode, React.ReactNode> = {
       🆗
     </span>
   ),
+  [HealthIndicationCode.ValueError]: (
+    <span role='img' aria-label='ValueError'>
+      🆘
+    </span>
+  ),
   [HealthIndicationCode.PossibleIssue]: (
     <span role='img' aria-label='PossibleIssue'>
       ✴️
@@ -29,9 +34,27 @@ const indicationCodeToMessage: Record<HealthIndicationCode, React.ReactNode> = {
       🆘
     </span>
   ),
+  [HealthIndicationCode.VeryLow]: (
+    <span role='img' aria-label='Nominal'>
+      🆘
+    </span>
+  ),
+  [HealthIndicationCode.Low]: (
+    <span role='img' aria-label='PossibleIssue'>
+      ✴️
+    </span>
+  ),
+  [HealthIndicationCode.High]: (
+    <span role='img' aria-label='CertainIssue'>
+      ✴️
+    </span>
+  ),
+  [HealthIndicationCode.VeryHigh]: (
+    <span role='img' aria-label='CertainIssue'>
+      🆘
+    </span>
+  ),
 }
-
-// function formatIndicatorValue
 
 export default function HealthIndicators({
   className,
