@@ -294,9 +294,6 @@ interface IndicationBracket {
  */
 function getIndicationFromBrackets(sortedBracketsMaxAsc: IndicationBracket[], value: number): HealthIndication {
   const bracketIndex = sortedBracketsMaxAsc.findIndex((bracket) => value <= bracket.max)
-  const previousBracketMax = sortedBracketsMaxAsc[bracketIndex - 1]?.max ?? -Infinity
-  const bracket = sortedBracketsMaxAsc[bracketIndex]
-  const reason = `${previousBracketMax === -Infinity ? '−∞' : previousBracketMax} < x ≤ ${bracket.max}`
 
   if (bracketIndex === -1) {
     return {
@@ -305,6 +302,10 @@ function getIndicationFromBrackets(sortedBracketsMaxAsc: IndicationBracket[], va
       reason: 'Unexpected value',
     }
   }
+
+  const previousBracketMax = sortedBracketsMaxAsc[bracketIndex - 1]?.max ?? -Infinity
+  const bracket = sortedBracketsMaxAsc[bracketIndex]
+  const reason = `${previousBracketMax === -Infinity ? '−∞' : previousBracketMax} < x ≤ ${bracket.max}`
 
   return {
     ...bracket.indication,

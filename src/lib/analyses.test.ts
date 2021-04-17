@@ -596,7 +596,7 @@ describe('getExperimentHealthIndicators', () => {
       },
       {
         indication: {
-          code: 'ProbableIssue',
+          code: 'VeryHigh',
           reason: '0.05 < x ≤ 1',
           severity: Analyses.HealthIndicationSeverity.Error,
         },
@@ -607,7 +607,7 @@ describe('getExperimentHealthIndicators', () => {
       },
       {
         indication: {
-          code: 'ProbableIssue',
+          code: 'VeryHigh',
           reason: '0.3 < x ≤ 1',
           severity: Analyses.HealthIndicationSeverity.Error,
         },
@@ -617,5 +617,87 @@ describe('getExperimentHealthIndicators', () => {
         value: 0.34615384615384615,
       },
     ])
+  })
+
+  it('should handle bad values gracefully', () => {
+    expect(
+      Analyses.getExperimentParticipantHealthIndicators(
+        Analyses.getExperimentParticipantStats(
+          Fixtures.createExperimentFull({
+            variations: [
+              { variationId: 1, allocatedPercentage: 50, isDefault: true, name: 'variation_name_1' },
+              { variationId: 2, allocatedPercentage: 50, isDefault: false, name: 'variation_name_2' },
+            ],
+          }),
+          {
+            [AnalysisStrategy.IttPure]: Fixtures.createAnalysis({
+              participantStats: {
+                total: 0,
+                variation_1: 0,
+                variation_2: 0,
+              },
+            }),
+          },
+        ),
+      ),
+    ).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "indication": Object {
+            "code": "Nominal",
+            "reason": "0.05 < x ≤ 1",
+            "severity": "Ok",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated",
+          "name": "Assignment distribution matching allocated",
+          "unit": "P-Value",
+          "value": 1,
+        },
+        Object {
+          "indication": Object {
+            "code": "Nominal",
+            "reason": "0.05 < x ≤ 1",
+            "severity": "Ok",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch",
+          "name": "Exposure event distribution matching allocated",
+          "unit": "P-Value",
+          "value": 1,
+        },
+        Object {
+          "indication": Object {
+            "code": "Nominal",
+            "reason": "0.05 < x ≤ 1",
+            "severity": "Ok",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated",
+          "name": "Spammer distribution matching allocated",
+          "unit": "P-Value",
+          "value": 1,
+        },
+        Object {
+          "indication": Object {
+            "code": "ValueError",
+            "reason": "Unexpected value",
+            "severity": "Error",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers",
+          "name": "Total crossovers",
+          "unit": "Ratio",
+          "value": NaN,
+        },
+        Object {
+          "indication": Object {
+            "code": "ValueError",
+            "reason": "Unexpected value",
+            "severity": "Error",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers",
+          "name": "Total spammers",
+          "unit": "Ratio",
+          "value": NaN,
+        },
+      ]
+    `)
   })
 })

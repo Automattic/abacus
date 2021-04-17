@@ -1003,12 +1003,6 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             class=""
             title="Ratio: 0.100000"
           >
-            <span
-              aria-label="CertainIssue"
-              role="img"
-            >
-              🆘
-            </span>
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
@@ -1021,12 +1015,6 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             class=""
             title="Ratio: 0.150000"
           >
-            <span
-              aria-label="PossibleIssue"
-              role="img"
-            >
-              ✴️
-            </span>
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
@@ -2090,12 +2078,6 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             class=""
             title="Ratio: 0.100000"
           >
-            <span
-              aria-label="CertainIssue"
-              role="img"
-            >
-              🆘
-            </span>
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
@@ -2108,12 +2090,6 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             class=""
             title="Ratio: 0.150000"
           >
-            <span
-              aria-label="PossibleIssue"
-              role="img"
-            >
-              ✴️
-            </span>
              
             <a
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
