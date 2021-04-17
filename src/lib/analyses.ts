@@ -374,7 +374,7 @@ export function getExperimentParticipantHealthIndicators(
     ],
   })
 
-  if (experimentParticipantStats.ratios.overall.exposedToAssigned !== 0) {
+  if (experimentParticipantStats.ratios.overall.exposedToAssigned) {
     indicatorDefinitions.push({
       name: 'Exposure event distribution matching allocated',
       value: minVariationProbabilities.exposedDistributionMatchingAllocated,

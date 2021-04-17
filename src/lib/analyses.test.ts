@@ -637,10 +637,66 @@ describe('getExperimentHealthIndicators', () => {
                 variation_2: 0,
               },
             }),
+            [AnalysisStrategy.PpNaive]: Fixtures.createAnalysis({
+              participantStats: {
+                total: 0,
+                variation_1: 0,
+                variation_2: 0,
+              },
+            }),
           },
         ),
       ),
-    ).toMatchInlineSnapshot(`
+    ).toEqual(
+      [
+        {
+          indication: {
+            code: 'Nominal',
+            reason: '0.05 < x ≤ 1',
+            severity: 'Ok',
+          },
+          link:
+            'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated',
+          name: 'Assignment distribution matching allocated',
+          unit: 'P-Value',
+          value: 1,
+        },
+        {
+          indication: {
+            code: 'Nominal',
+            reason: '0.05 < x ≤ 1',
+            severity: 'Ok',
+          },
+          link:
+            'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated',
+          name: 'Spammer distribution matching allocated',
+          unit: 'P-Value',
+          value: 1,
+        },
+        {
+          indication: {
+            code: 'ValueError',
+            reason: 'Unexpected value',
+            severity: 'Error',
+          },
+          link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers',
+          name: 'Total crossovers',
+          unit: 'Ratio',
+          value: NaN,
+        },
+        {
+          indication: {
+            code: 'ValueError',
+            reason: 'Unexpected value',
+            severity: 'Error',
+          },
+          link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers',
+          name: 'Total spammers',
+          unit: 'Ratio',
+          value: NaN,
+        },
+      ],
+      `
       Array [
         Object {
           "indication": Object {
@@ -650,17 +706,6 @@ describe('getExperimentHealthIndicators', () => {
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated",
           "name": "Assignment distribution matching allocated",
-          "unit": "P-Value",
-          "value": 1,
-        },
-        Object {
-          "indication": Object {
-            "code": "Nominal",
-            "reason": "0.05 < x ≤ 1",
-            "severity": "Ok",
-          },
-          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch",
-          "name": "Exposure event distribution matching allocated",
           "unit": "P-Value",
           "value": 1,
         },
@@ -698,6 +743,7 @@ describe('getExperimentHealthIndicators', () => {
           "value": NaN,
         },
       ]
-    `)
+    `,
+    )
   })
 })
