@@ -647,103 +647,53 @@ describe('getExperimentHealthIndicators', () => {
           },
         ),
       ),
-    ).toEqual(
-      [
-        {
-          indication: {
-            code: 'Nominal',
-            reason: '0.05 < x ≤ 1',
-            severity: 'Ok',
-          },
-          link:
-            'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated',
-          name: 'Assignment distribution matching allocated',
-          unit: 'P-Value',
-          value: 1,
+    ).toEqual([
+      {
+        indication: {
+          code: 'Nominal',
+          reason: '0.05 < x ≤ 1',
+          severity: 'Ok',
         },
-        {
-          indication: {
-            code: 'Nominal',
-            reason: '0.05 < x ≤ 1',
-            severity: 'Ok',
-          },
-          link:
-            'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated',
-          name: 'Spammer distribution matching allocated',
-          unit: 'P-Value',
-          value: 1,
+        link:
+          'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated',
+        name: 'Assignment distribution matching allocated',
+        unit: 'P-Value',
+        value: 1,
+      },
+      {
+        indication: {
+          code: 'Nominal',
+          reason: '0.05 < x ≤ 1',
+          severity: 'Ok',
         },
-        {
-          indication: {
-            code: 'ValueError',
-            reason: 'Unexpected value',
-            severity: 'Error',
-          },
-          link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers',
-          name: 'Total crossovers',
-          unit: 'Ratio',
-          value: NaN,
+        link:
+          'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated',
+        name: 'Spammer distribution matching allocated',
+        unit: 'P-Value',
+        value: 1,
+      },
+      {
+        indication: {
+          code: 'ValueError',
+          reason: 'Unexpected value',
+          severity: 'Error',
         },
-        {
-          indication: {
-            code: 'ValueError',
-            reason: 'Unexpected value',
-            severity: 'Error',
-          },
-          link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers',
-          name: 'Total spammers',
-          unit: 'Ratio',
-          value: NaN,
+        link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers',
+        name: 'Total crossovers',
+        unit: 'Ratio',
+        value: NaN,
+      },
+      {
+        indication: {
+          code: 'ValueError',
+          reason: 'Unexpected value',
+          severity: 'Error',
         },
-      ],
-      `
-      Array [
-        Object {
-          "indication": Object {
-            "code": "Nominal",
-            "reason": "0.05 < x ≤ 1",
-            "severity": "Ok",
-          },
-          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated",
-          "name": "Assignment distribution matching allocated",
-          "unit": "P-Value",
-          "value": 1,
-        },
-        Object {
-          "indication": Object {
-            "code": "Nominal",
-            "reason": "0.05 < x ≤ 1",
-            "severity": "Ok",
-          },
-          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated",
-          "name": "Spammer distribution matching allocated",
-          "unit": "P-Value",
-          "value": 1,
-        },
-        Object {
-          "indication": Object {
-            "code": "ValueError",
-            "reason": "Unexpected value",
-            "severity": "Error",
-          },
-          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers",
-          "name": "Total crossovers",
-          "unit": "Ratio",
-          "value": NaN,
-        },
-        Object {
-          "indication": Object {
-            "code": "ValueError",
-            "reason": "Unexpected value",
-            "severity": "Error",
-          },
-          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers",
-          "name": "Total spammers",
-          "unit": "Ratio",
-          "value": NaN,
-        },
-      ]
-    `,
-    )
+        link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers',
+        name: 'Total spammers',
+        unit: 'Ratio',
+        value: NaN,
+      },
+    ])
   })
 })
