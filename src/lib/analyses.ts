@@ -373,7 +373,7 @@ export function getExperimentParticipantHealthIndicators(
     ],
   })
 
-  experimentParticipantStats.ratios.overall.exposedToAssigned !== 0 &&
+  if (experimentParticipantStats.ratios.overall.exposedToAssigned !== 0) {
     indicatorDefinitions.push({
       name: 'Exposure event distribution matching allocated',
       value: minVariationProbabilities.exposedDistributionMatchingAllocated,
@@ -404,96 +404,98 @@ export function getExperimentParticipantHealthIndicators(
         },
       ],
     })
+  }
 
-  indicatorDefinitions.push({
-    name: 'Spammer distribution matching allocated',
-    value: minVariationProbabilities.assignedSpammersDistributionMatchingAllocated,
-    unit: HealthIndicatorUnit.Pvalue,
-    link:
-      'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated',
-    indicationBrackets: [
-      {
-        max: 0.001,
-        indication: {
-          code: HealthIndicationCode.ProbableIssue,
-          severity: HealthIndicationSeverity.Error,
+  indicatorDefinitions.push(
+    {
+      name: 'Spammer distribution matching allocated',
+      value: minVariationProbabilities.assignedSpammersDistributionMatchingAllocated,
+      unit: HealthIndicatorUnit.Pvalue,
+      link:
+        'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated',
+      indicationBrackets: [
+        {
+          max: 0.001,
+          indication: {
+            code: HealthIndicationCode.ProbableIssue,
+            severity: HealthIndicationSeverity.Error,
+          },
         },
-      },
-      {
-        max: 0.05,
-        indication: {
-          code: HealthIndicationCode.PossibleIssue,
-          severity: HealthIndicationSeverity.Warning,
+        {
+          max: 0.05,
+          indication: {
+            code: HealthIndicationCode.PossibleIssue,
+            severity: HealthIndicationSeverity.Warning,
+          },
         },
-      },
-      {
-        max: 1,
-        indication: {
-          code: HealthIndicationCode.Nominal,
-          severity: HealthIndicationSeverity.Ok,
+        {
+          max: 1,
+          indication: {
+            code: HealthIndicationCode.Nominal,
+            severity: HealthIndicationSeverity.Ok,
+          },
         },
-      },
-    ],
-  })
-
-  indicatorDefinitions.push({
-    name: 'Total crossovers',
-    value: experimentParticipantStats.ratios.overall.assignedCrossoversToAssigned,
-    unit: HealthIndicatorUnit.Ratio,
-    link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers',
-    indicationBrackets: [
-      {
-        max: 0.01,
-        indication: {
-          code: HealthIndicationCode.Nominal,
-          severity: HealthIndicationSeverity.Ok,
+      ],
+    },
+    {
+      name: 'Total crossovers',
+      value: experimentParticipantStats.ratios.overall.assignedCrossoversToAssigned,
+      unit: HealthIndicatorUnit.Ratio,
+      link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers',
+      indicationBrackets: [
+        {
+          max: 0.01,
+          indication: {
+            code: HealthIndicationCode.Nominal,
+            severity: HealthIndicationSeverity.Ok,
+          },
         },
-      },
-      {
-        max: 0.05,
-        indication: {
-          code: HealthIndicationCode.High,
-          severity: HealthIndicationSeverity.Warning,
+        {
+          max: 0.05,
+          indication: {
+            code: HealthIndicationCode.High,
+            severity: HealthIndicationSeverity.Warning,
+          },
         },
-      },
-      {
-        max: 1,
-        indication: {
-          code: HealthIndicationCode.VeryHigh,
-          severity: HealthIndicationSeverity.Error,
+        {
+          max: 1,
+          indication: {
+            code: HealthIndicationCode.VeryHigh,
+            severity: HealthIndicationSeverity.Error,
+          },
         },
-      },
-    ],
-  })
-  indicatorDefinitions.push({
-    name: 'Total spammers',
-    value: experimentParticipantStats.ratios.overall.assignedSpammersToAssigned,
-    unit: HealthIndicatorUnit.Ratio,
-    link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers',
-    indicationBrackets: [
-      {
-        max: 0.075,
-        indication: {
-          code: HealthIndicationCode.Nominal,
-          severity: HealthIndicationSeverity.Ok,
+      ],
+    },
+    {
+      name: 'Total spammers',
+      value: experimentParticipantStats.ratios.overall.assignedSpammersToAssigned,
+      unit: HealthIndicatorUnit.Ratio,
+      link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers',
+      indicationBrackets: [
+        {
+          max: 0.075,
+          indication: {
+            code: HealthIndicationCode.Nominal,
+            severity: HealthIndicationSeverity.Ok,
+          },
         },
-      },
-      {
-        max: 0.3,
-        indication: {
-          code: HealthIndicationCode.High,
-          severity: HealthIndicationSeverity.Warning,
+        {
+          max: 0.3,
+          indication: {
+            code: HealthIndicationCode.High,
+            severity: HealthIndicationSeverity.Warning,
+          },
         },
-      },
-      {
-        max: 1,
-        indication: {
-          code: HealthIndicationCode.VeryHigh,
-          severity: HealthIndicationSeverity.Error,
+        {
+          max: 1,
+          indication: {
+            code: HealthIndicationCode.VeryHigh,
+            severity: HealthIndicationSeverity.Error,
+          },
         },
-      },
-    ],
-  })
+      ],
+    },
+  )
 
   return indicatorDefinitions.map(({ value, indicationBrackets, ...rest }) => ({
     value,
