@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
   Chip,
   createStyles,
@@ -16,8 +17,8 @@ import MaterialTable from 'material-table'
 import { PlotData } from 'plotly.js'
 import React, { useState } from 'react'
 import Plot from 'react-plotly.js'
+import clsx from 'clsx'
 
-import DebugOutput from 'src/components/general/DebugOutput'
 import * as Analyses from 'src/lib/analyses'
 import * as Experiments from 'src/lib/experiments'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
@@ -29,9 +30,10 @@ import { formatIsoDate } from 'src/utils/time'
 
 import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
-import HealthIndicators from './HealthIndicators'
 import HealthIndicatorTable from './HealthIndicatorTable'
 import MetricAssignmentResults from './MetricAssignmentResults'
+
+const indicationSeverityClassSymbol = (severity: Analyses.HealthIndicationSeverity) => `indicationSeverity${severity}`
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -90,6 +92,16 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column',
       justifyContent: 'center',
       flex: 1,
+      textDecoration: 'none',
+    },
+    [indicationSeverityClassSymbol(Analyses.HealthIndicationSeverity.Ok)]: {
+    },
+    [indicationSeverityClassSymbol(Analyses.HealthIndicationSeverity.Warning)]: {
+      background: '#fffad6',
+    },
+    [indicationSeverityClassSymbol(Analyses.HealthIndicationSeverity.Error)]: {
+      background: theme.palette.error.main,
+      color: theme.palette.error.contrastText,
     },
     participantsPlotPaper: {
       padding: theme.spacing(4, 4, 2),
@@ -99,11 +111,8 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
       height: 300,
     },
-    healthReport: {
-      marginTop: theme.spacing(2),
-    },
     healthReportTitle: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(3,2,2)
     },
   }),
 )
@@ -192,6 +201,17 @@ export default function ActualExperimentResults({
 
   const experimentParticipantStats = Analyses.getExperimentParticipantStats(experiment, primaryMetricLatestAnalysesByStrategy)
   const experimentHealthIndicators = Analyses.getExperimentParticipantHealthIndicators(experimentParticipantStats)
+
+  const maxIndicationSeverity = experimentHealthIndicators
+    .map(({ indication: { severity } }) => severity)
+    .sort((severityA, severityB) => Analyses.healthIndicationSeverityOrder.indexOf(severityA) - 
+      Analyses.healthIndicationSeverityOrder.indexOf(severityB))[0]
+
+  const maxIndicationSeverityMessage = {
+    [Analyses.HealthIndicationSeverity.Ok]: 'No issues detected',
+    [Analyses.HealthIndicationSeverity.Warning]: 'Potential issues',
+    [Analyses.HealthIndicationSeverity.Error]: 'Serious issues',
+  }
 
   // ### Metric Assignments Table
 
@@ -326,7 +346,21 @@ export default function ActualExperimentResults({
               </>
             )}
           </Paper>
-          <HealthIndicators indicators={experimentHealthIndicators} className={classes.summaryStatsPaper} />
+            <Paper 
+              className={clsx(classes.summaryHealthPaper, classes[indicationSeverityClassSymbol(maxIndicationSeverity)])}
+              component="a"
+              // @ts-ignore: Component extensions aren't appearing in types.
+              href="#health-report"
+              >
+              <div className={classes.summaryStats}>
+                <Typography variant='h3' className={clsx(classes.summaryStatsStat, classes[indicationSeverityClassSymbol(maxIndicationSeverity)])} color='primary'>
+                  {maxIndicationSeverityMessage[maxIndicationSeverity]}
+                </Typography>
+                <Typography variant='subtitle1'>
+                    see <strong>health report</strong>
+                </Typography>
+              </div>
+            </Paper>
         </div>
       </div>
       <MaterialTable
@@ -348,10 +382,10 @@ export default function ActualExperimentResults({
         }}
         detailPanel={DetailPanel}
       />
-      <Paper className={classes.healthReport}>
-        <Typography variant='h3' className={classes.healthReportTitle}>
-          Health Report
-        </Typography>
+      <Typography variant='h3' className={classes.healthReportTitle}>
+        Health Report
+      </Typography>
+      <Paper id="health-report">
         <HealthIndicatorTable indicators={experimentHealthIndicators} />
       </Paper>
     </div>
