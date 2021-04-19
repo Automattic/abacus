@@ -52,8 +52,8 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const severityEmoji: Record<HealthIndicationSeverity, React.ReactNode> = {
-  [HealthIndicationSeverity.Ok]: <>&nbsp;</>,
+const severityEmoji: Record<HealthIndicationSeverity, string> = {
+  [HealthIndicationSeverity.Ok]: '',
   [HealthIndicationSeverity.Warning]: 'ℹ️',
   [HealthIndicationSeverity.Error]: '🆘',
 }
@@ -74,6 +74,7 @@ export default function HealthIndicatorTable({
             <TableCell>Name</TableCell>
             <TableCell>Unit</TableCell>
             <TableCell>Value</TableCell>
+            <TableCell>{/* Indication Emoji */}</TableCell>
             <TableCell>Indication</TableCell>
             <TableCell>Indication Reason</TableCell>
           </TableRow>
@@ -98,6 +99,13 @@ export default function HealthIndicatorTable({
               </TableCell>
               <TableCell
                 scope='row'
+              >
+                <span>
+                  {severityEmoji[indicator.indication.severity]}
+                </span>
+              </TableCell>
+              <TableCell
+                scope='row'
                 className={clsx(
                   classes.indication,
                   classes[indicationSeverityClassSymbol(indicator.indication.severity)],
@@ -105,7 +113,7 @@ export default function HealthIndicatorTable({
                 )}
               >
                 <span>
-                  {severityEmoji[indicator.indication.severity]} {indicator.indication.code}
+                  {indicator.indication.code}
                 </span>
               </TableCell>
               <TableCell scope='row' className={clsx(classes.monospace,classes.deemphasized)}>
