@@ -560,7 +560,7 @@ describe('getExperimentHealthIndicators', () => {
     ).toEqual([
       {
         indication: {
-          code: 'ProbableIssue',
+          code: 'probable issue',
           reason: '−∞ < x ≤ 0.001',
           severity: Analyses.HealthIndicationSeverity.Error,
         },
@@ -572,7 +572,7 @@ describe('getExperimentHealthIndicators', () => {
       },
       {
         indication: {
-          code: 'PossibleIssue',
+          code: 'possible issue',
           reason: '0.001 < x ≤ 0.05',
           severity: Analyses.HealthIndicationSeverity.Warning,
         },
@@ -584,7 +584,7 @@ describe('getExperimentHealthIndicators', () => {
       },
       {
         indication: {
-          code: 'ProbableIssue',
+          code: 'probable issue',
           reason: '−∞ < x ≤ 0.001',
           severity: Analyses.HealthIndicationSeverity.Error,
         },
@@ -596,7 +596,7 @@ describe('getExperimentHealthIndicators', () => {
       },
       {
         indication: {
-          code: 'ProbableIssue',
+          code: 'probable issue',
           reason: '0.05 < x ≤ 1',
           severity: Analyses.HealthIndicationSeverity.Error,
         },
@@ -607,7 +607,7 @@ describe('getExperimentHealthIndicators', () => {
       },
       {
         indication: {
-          code: 'ProbableIssue',
+          code: 'probable issue',
           reason: '0.3 < x ≤ 1',
           severity: Analyses.HealthIndicationSeverity.Error,
         },
