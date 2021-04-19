@@ -18,14 +18,7 @@ import React, { useState } from 'react'
 import Plot from 'react-plotly.js'
 
 import DebugOutput from 'src/components/general/DebugOutput'
-import {
-  AggregateRecommendation,
-  AggregateRecommendationDecision,
-  AnalysisStrategyToHuman,
-  getAggregateRecommendation,
-  getExperimentParticipantHealthIndicators,
-  getExperimentParticipantStats,
-} from 'src/lib/analyses'
+import * as Analyses from 'src/lib/analyses'
 import * as Experiments from 'src/lib/experiments'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
 import { Analysis, AnalysisStrategy, ExperimentFull, MetricAssignment, MetricBare } from 'src/lib/schemas'
@@ -148,7 +141,7 @@ export default function ActualExperimentResults({
       metricAssignment,
       metric,
       analysesByStrategyDateAsc,
-      aggregateRecommendation: getAggregateRecommendation(
+      aggregateRecommendation: Analyses.getAggregateRecommendation(
         Object.values(analysesByStrategyDateAsc)
           .map(_.last.bind(null))
           .filter((x) => x !== undefined) as Analysis[],
@@ -192,13 +185,13 @@ export default function ActualExperimentResults({
   const latestPrimaryMetricAnalysis = primaryMetricLatestAnalysesByStrategy[strategy]
   // istanbul ignore next; trivial
   const totalParticipants = latestPrimaryMetricAnalysis?.participantStats['total'] ?? 0
-  const primaryMetricAggregateRecommendation = getAggregateRecommendation(
+  const primaryMetricAggregateRecommendation = Analyses.getAggregateRecommendation(
     Object.values(primaryMetricLatestAnalysesByStrategy).filter((x) => x) as Analysis[],
     strategy,
   )
 
-  const experimentParticipantStats = getExperimentParticipantStats(experiment, primaryMetricLatestAnalysesByStrategy)
-  const experimentHealthIndicators = getExperimentParticipantHealthIndicators(experimentParticipantStats)
+  const experimentParticipantStats = Analyses.getExperimentParticipantStats(experiment, primaryMetricLatestAnalysesByStrategy)
+  const experimentHealthIndicators = Analyses.getExperimentParticipantHealthIndicators(experimentParticipantStats)
 
   // ### Metric Assignments Table
 
@@ -233,7 +226,7 @@ export default function ActualExperimentResults({
         aggregateRecommendation,
       }: {
         experiment: ExperimentFull
-        aggregateRecommendation: AggregateRecommendation
+        aggregateRecommendation: Analyses.AggregateRecommendation
       }) => {
         return <AggregateRecommendationDisplay {...{ experiment, aggregateRecommendation }} />
       },
@@ -255,9 +248,9 @@ export default function ActualExperimentResults({
       analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
       metricAssignment: MetricAssignment
       metric: MetricBare
-      aggregateRecommendation: AggregateRecommendation
+      aggregateRecommendation: Analyses.AggregateRecommendation
     }) => {
-      let disabled = aggregateRecommendation.decision === AggregateRecommendationDecision.ManualAnalysisRequired
+      let disabled = aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.ManualAnalysisRequired
       // istanbul ignore next; debug only
       disabled = disabled && !isDebugMode()
       return {
@@ -280,7 +273,7 @@ export default function ActualExperimentResults({
               <Select id='strategy-selector' value={strategy} onChange={onStrategyChange}>
                 {Object.values(AnalysisStrategy).map((strat) => (
                   <MenuItem key={strat} value={strat}>
-                    {AnalysisStrategyToHuman[strat]}
+                    {Analyses.AnalysisStrategyToHuman[strat]}
                   </MenuItem>
                 ))}
               </Select>
@@ -342,9 +335,9 @@ export default function ActualExperimentResults({
         options={createStaticTableOptions(metricAssignmentSummaryData.length)}
         onRowClick={(_event, rowData, togglePanel) => {
           const { aggregateRecommendation } = rowData as {
-            aggregateRecommendation: AggregateRecommendation
+            aggregateRecommendation: Analyses.AggregateRecommendation
           }
-          let disabled = aggregateRecommendation.decision === AggregateRecommendationDecision.ManualAnalysisRequired
+          let disabled = aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.ManualAnalysisRequired
           // istanbul ignore next; debug only
           disabled = disabled && !isDebugMode()
 
@@ -355,18 +348,12 @@ export default function ActualExperimentResults({
         }}
         detailPanel={DetailPanel}
       />
-      {
-        // Displaying these temporarily:
-        // istanbul ignore next; debug only
-        isDebugMode() && (
-          <Paper className={classes.healthReport}>
-            <Typography variant='h3' className={classes.healthReportTitle}>
-              Health Report
-            </Typography>
-            <HealthIndicatorTable indicators={experimentHealthIndicators} />
-          </Paper>
-        )
-      }
+      <Paper className={classes.healthReport}>
+        <Typography variant='h3' className={classes.healthReportTitle}>
+          Health Report
+        </Typography>
+        <HealthIndicatorTable indicators={experimentHealthIndicators} />
+      </Paper>
     </div>
   )
 }
