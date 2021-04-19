@@ -56,13 +56,6 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(2),
       display: 'inline-flex',
     },
-    healthStats: {
-      margin: theme.spacing(2, 0),
-      padding: theme.spacing(2),
-    },
-    healthStatsOutput: {
-      display: 'inline-flex',
-    },
     summaryColumn: {
       display: 'flex',
       flexDirection: 'column',
