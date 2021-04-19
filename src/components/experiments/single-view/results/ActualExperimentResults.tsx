@@ -111,8 +111,8 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
       height: 300,
     },
-    healthReportTitle: {
-      padding: theme.spacing(3,2,2)
+    tableTitle: {
+      margin: theme.spacing(4,2,2)
     },
   }),
 )
@@ -363,6 +363,9 @@ export default function ActualExperimentResults({
             </Paper>
         </div>
       </div>
+      <Typography variant='h3' className={classes.tableTitle}>
+        Metric Assignment Results 
+      </Typography>
       <MaterialTable
         columns={tableColumns}
         data={metricAssignmentSummaryData}
@@ -382,7 +385,7 @@ export default function ActualExperimentResults({
         }}
         detailPanel={DetailPanel}
       />
-      <Typography variant='h3' className={classes.healthReportTitle}>
+      <Typography variant='h3' className={classes.tableTitle}>
         Health Report
       </Typography>
       <Paper id="health-report">
