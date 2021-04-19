@@ -116,7 +116,8 @@ function getParticipantCountsSetForParticipantStatsKey(
       assigned - (analysesByStrategy[AnalysisStrategy.MittNoCrossovers]?.participantStats[participantStatsKey] ?? 0),
     assignedSpammers:
       assigned - (analysesByStrategy[AnalysisStrategy.MittNoSpammers]?.participantStats[participantStatsKey] ?? 0),
-    assignedNoSpammersNoCrossovers: analysesByStrategy[AnalysisStrategy.MittNoSpammersNoCrossovers]?.participantStats[participantStatsKey] ?? 0,
+    assignedNoSpammersNoCrossovers:
+      analysesByStrategy[AnalysisStrategy.MittNoSpammersNoCrossovers]?.participantStats[participantStatsKey] ?? 0,
     exposed: analysesByStrategy[AnalysisStrategy.PpNaive]?.participantStats[participantStatsKey] ?? 0,
   }
 }
@@ -186,7 +187,8 @@ export function getExperimentParticipantStats(
       exposedToAssigned: participantCounts.total.exposed / participantCounts.total.assigned,
       assignedSpammersToAssigned: participantCounts.total.assignedSpammers / participantCounts.total.assigned,
       assignedCrossoversToAssigned: participantCounts.total.assignedCrossovers / participantCounts.total.assigned,
-      assignedNoSpammersNoCrossoversToAssigned: participantCounts.total.assignedNoSpammersNoCrossovers / participantCounts.total.assigned,
+      assignedNoSpammersNoCrossoversToAssigned:
+        participantCounts.total.assignedNoSpammersNoCrossovers / participantCounts.total.assigned,
     },
     byVariationId: Object.fromEntries(
       Object.entries(participantCounts.byVariationId).map(([variationId, variationCountsSet]) => {
@@ -196,7 +198,8 @@ export function getExperimentParticipantStats(
             exposedToAssigned: variationCountsSet.exposed / variationCountsSet.assigned,
             assignedSpammersToAssigned: variationCountsSet.assignedSpammers / variationCountsSet.assigned,
             assignedCrossoversToAssigned: variationCountsSet.assignedCrossovers / variationCountsSet.assigned,
-            assignedNoSpammersNoCrossoversToAssigned: variationCountsSet.assignedNoSpammersNoCrossovers / variationCountsSet.assigned,
+            assignedNoSpammersNoCrossoversToAssigned:
+              variationCountsSet.assignedNoSpammersNoCrossovers / variationCountsSet.assigned,
             exposedToTotalExposed: variationCountsSet.exposed / participantCounts.total.exposed,
             assignedToTotalAssigned: variationCountsSet.assigned / participantCounts.total.assigned,
             assignedSpammersToTotalAssignedSpammers:
@@ -359,69 +362,72 @@ export function getExperimentParticipantHealthIndicators(
 
   const indicatorDefinitions: IndicatorDefinition[] = []
 
-  indicatorDefinitions.push({
-    name: 'Assignment distribution matching allocated',
-    value: minVariationProbabilities.assignedDistributionMatchingAllocated,
-    unit: HealthIndicatorUnit.Pvalue,
-    link:
-      'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated',
-    indicationBrackets: [
-      {
-        max: 0.001,
-        indication: {
-          code: HealthIndicationCode.ProbableIssue,
-          severity: HealthIndicationSeverity.Error,
+  indicatorDefinitions.push(
+    {
+      name: 'Assignment distribution',
+      value: minVariationProbabilities.assignedDistributionMatchingAllocated,
+      unit: HealthIndicatorUnit.Pvalue,
+      link:
+        'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated',
+      indicationBrackets: [
+        {
+          max: 0.001,
+          indication: {
+            code: HealthIndicationCode.ProbableIssue,
+            severity: HealthIndicationSeverity.Error,
+          },
         },
-      },
-      {
-        max: 0.05,
-        indication: {
-          code: HealthIndicationCode.PossibleIssue,
-          severity: HealthIndicationSeverity.Warning,
+        {
+          max: 0.05,
+          indication: {
+            code: HealthIndicationCode.PossibleIssue,
+            severity: HealthIndicationSeverity.Warning,
+          },
         },
-      },
-      {
-        max: 1,
-        indication: {
-          code: HealthIndicationCode.Nominal,
-          severity: HealthIndicationSeverity.Ok,
+        {
+          max: 1,
+          indication: {
+            code: HealthIndicationCode.Nominal,
+            severity: HealthIndicationSeverity.Ok,
+          },
         },
-      },
-    ],
-  }, {
-    name: 'Assigned without crossovers and spammers distribution',
-    value: minVariationProbabilities.assignedDistributionMatchingAllocated,
-    unit: HealthIndicatorUnit.Pvalue,
-    link:
-      'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated',
-    indicationBrackets: [
-      {
-        max: 0.001,
-        indication: {
-          code: HealthIndicationCode.ProbableIssue,
-          severity: HealthIndicationSeverity.Error,
+      ],
+    },
+    {
+      name: 'Assignment without crossovers and spammers distribution',
+      value: minVariationProbabilities.assignedDistributionMatchingAllocated,
+      unit: HealthIndicatorUnit.Pvalue,
+      link:
+        'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated',
+      indicationBrackets: [
+        {
+          max: 0.001,
+          indication: {
+            code: HealthIndicationCode.ProbableIssue,
+            severity: HealthIndicationSeverity.Error,
+          },
         },
-      },
-      {
-        max: 0.05,
-        indication: {
-          code: HealthIndicationCode.PossibleIssue,
-          severity: HealthIndicationSeverity.Warning,
+        {
+          max: 0.05,
+          indication: {
+            code: HealthIndicationCode.PossibleIssue,
+            severity: HealthIndicationSeverity.Warning,
+          },
         },
-      },
-      {
-        max: 1,
-        indication: {
-          code: HealthIndicationCode.Nominal,
-          severity: HealthIndicationSeverity.Ok,
+        {
+          max: 1,
+          indication: {
+            code: HealthIndicationCode.Nominal,
+            severity: HealthIndicationSeverity.Ok,
+          },
         },
-      },
-    ],
-  })
+      ],
+    },
+  )
 
   if (experimentParticipantStats.ratios.overall.exposedToAssigned) {
     indicatorDefinitions.push({
-      name: 'Exposure event distribution matching allocated',
+      name: 'Exposure distribution',
       value: minVariationProbabilities.exposedDistributionMatchingAllocated,
       unit: HealthIndicatorUnit.Pvalue,
       link:
@@ -454,37 +460,7 @@ export function getExperimentParticipantHealthIndicators(
 
   indicatorDefinitions.push(
     {
-      name: 'Spammer distribution matching allocated',
-      value: minVariationProbabilities.assignedSpammersDistributionMatchingAllocated,
-      unit: HealthIndicatorUnit.Pvalue,
-      link:
-        'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated',
-      indicationBrackets: [
-        {
-          max: 0.001,
-          indication: {
-            code: HealthIndicationCode.ProbableIssue,
-            severity: HealthIndicationSeverity.Error,
-          },
-        },
-        {
-          max: 0.05,
-          indication: {
-            code: HealthIndicationCode.PossibleIssue,
-            severity: HealthIndicationSeverity.Warning,
-          },
-        },
-        {
-          max: 1,
-          indication: {
-            code: HealthIndicationCode.Nominal,
-            severity: HealthIndicationSeverity.Ok,
-          },
-        },
-      ],
-    },
-    {
-      name: 'Total crossovers',
+      name: 'Ratio of crossovers to assigned',
       value: experimentParticipantStats.ratios.overall.assignedCrossoversToAssigned,
       unit: HealthIndicatorUnit.Ratio,
       link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers',
@@ -513,7 +489,7 @@ export function getExperimentParticipantHealthIndicators(
       ],
     },
     {
-      name: 'Total spammers',
+      name: 'Ratio of spammers to assigned',
       value: experimentParticipantStats.ratios.overall.assignedSpammersToAssigned,
       unit: HealthIndicatorUnit.Ratio,
       link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers',
