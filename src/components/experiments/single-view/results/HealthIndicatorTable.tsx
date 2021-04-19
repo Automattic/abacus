@@ -52,8 +52,8 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const severityEmoji: Record<HealthIndicationSeverity, string> = {
-  [HealthIndicationSeverity.Ok]: '',
+const severityEmoji: Record<HealthIndicationSeverity, React.ReactNode> = {
+  [HealthIndicationSeverity.Ok]: <>&nbsp;</>,
   [HealthIndicationSeverity.Warning]: 'ℹ️',
   [HealthIndicationSeverity.Error]: '🆘',
 }
@@ -105,7 +105,7 @@ export default function HealthIndicatorTable({
                 )}
               >
                 <span>
-                  {indicator.indication.code} {severityEmoji[indicator.indication.severity]}
+                  {severityEmoji[indicator.indication.severity]} {indicator.indication.code}
                 </span>
               </TableCell>
               <TableCell scope='row' className={clsx(classes.monospace,classes.deemphasized)}>
