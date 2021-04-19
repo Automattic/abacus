@@ -1192,14 +1192,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           </div>
         </div>
         <a
-          class="MuiPaper-root makeStyles-summaryHealthPaper-53 makeStyles-indicationSeverityOk-54 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryHealthPaper-53 makeStyles-indicationSeverityError-56 MuiPaper-elevation1 MuiPaper-rounded"
           href="#health-report"
         >
           <div>
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-52 makeStyles-indicationSeverityOk-54 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-52 makeStyles-indicationSeverityError-56 MuiTypography-h3 MuiTypography-colorPrimary"
             >
-              No issues detected
+              Serious issues
             </h3>
             <h6
               class="MuiTypography-root MuiTypography-subtitle1"
@@ -2535,14 +2535,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           </div>
         </div>
         <a
-          class="MuiPaper-root makeStyles-summaryHealthPaper-96 makeStyles-indicationSeverityOk-97 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryHealthPaper-96 makeStyles-indicationSeverityError-99 MuiPaper-elevation1 MuiPaper-rounded"
           href="#health-report"
         >
           <div>
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-95 makeStyles-indicationSeverityOk-97 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-95 makeStyles-indicationSeverityError-99 MuiTypography-h3 MuiTypography-colorPrimary"
             >
-              No issues detected
+              Serious issues
             </h3>
             <h6
               class="MuiTypography-root MuiTypography-subtitle1"
