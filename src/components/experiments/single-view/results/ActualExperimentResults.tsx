@@ -201,8 +201,8 @@ export default function ActualExperimentResults({
     .map(({ indication: { severity } }) => severity)
     .sort(
       (severityA, severityB) =>
-        Analyses.healthIndicationSeverityOrder.indexOf(severityA) -
-        Analyses.healthIndicationSeverityOrder.indexOf(severityB),
+        Analyses.healthIndicationSeverityOrder.indexOf(severityB) -
+        Analyses.healthIndicationSeverityOrder.indexOf(severityA),
     )[0]
 
   const maxIndicationSeverityMessage = {
