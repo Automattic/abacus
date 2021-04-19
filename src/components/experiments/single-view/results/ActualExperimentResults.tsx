@@ -12,12 +12,12 @@ import {
   Typography,
   useTheme,
 } from '@material-ui/core'
+import clsx from 'clsx'
 import _ from 'lodash'
 import MaterialTable from 'material-table'
 import { PlotData } from 'plotly.js'
 import React, { useState } from 'react'
 import Plot from 'react-plotly.js'
-import clsx from 'clsx'
 
 import * as Analyses from 'src/lib/analyses'
 import * as Experiments from 'src/lib/experiments'
@@ -87,8 +87,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flex: 1,
       textDecoration: 'none',
     },
-    [indicationSeverityClassSymbol(Analyses.HealthIndicationSeverity.Ok)]: {
-    },
+    [indicationSeverityClassSymbol(Analyses.HealthIndicationSeverity.Ok)]: {},
     [indicationSeverityClassSymbol(Analyses.HealthIndicationSeverity.Warning)]: {
       background: '#fffad6',
     },
@@ -105,7 +104,7 @@ const useStyles = makeStyles((theme: Theme) =>
       height: 300,
     },
     tableTitle: {
-      margin: theme.spacing(4,2,2)
+      margin: theme.spacing(4, 2, 2),
     },
   }),
 )
@@ -192,13 +191,19 @@ export default function ActualExperimentResults({
     strategy,
   )
 
-  const experimentParticipantStats = Analyses.getExperimentParticipantStats(experiment, primaryMetricLatestAnalysesByStrategy)
+  const experimentParticipantStats = Analyses.getExperimentParticipantStats(
+    experiment,
+    primaryMetricLatestAnalysesByStrategy,
+  )
   const experimentHealthIndicators = Analyses.getExperimentParticipantHealthIndicators(experimentParticipantStats)
 
   const maxIndicationSeverity = experimentHealthIndicators
     .map(({ indication: { severity } }) => severity)
-    .sort((severityA, severityB) => Analyses.healthIndicationSeverityOrder.indexOf(severityA) - 
-      Analyses.healthIndicationSeverityOrder.indexOf(severityB))[0]
+    .sort(
+      (severityA, severityB) =>
+        Analyses.healthIndicationSeverityOrder.indexOf(severityA) -
+        Analyses.healthIndicationSeverityOrder.indexOf(severityB),
+    )[0]
 
   const maxIndicationSeverityMessage = {
     [Analyses.HealthIndicationSeverity.Ok]: 'No issues detected',
@@ -263,7 +268,8 @@ export default function ActualExperimentResults({
       metric: MetricBare
       aggregateRecommendation: Analyses.AggregateRecommendation
     }) => {
-      let disabled = aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.ManualAnalysisRequired
+      let disabled =
+        aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.ManualAnalysisRequired
       // istanbul ignore next; debug only
       disabled = disabled && !isDebugMode()
       return {
@@ -339,25 +345,32 @@ export default function ActualExperimentResults({
               </>
             )}
           </Paper>
-            <Paper 
-              className={clsx(classes.summaryHealthPaper, classes[indicationSeverityClassSymbol(maxIndicationSeverity)])}
-              component="a"
-              // @ts-ignore: Component extensions aren't appearing in types.
-              href="#health-report"
+          <Paper
+            className={clsx(classes.summaryHealthPaper, classes[indicationSeverityClassSymbol(maxIndicationSeverity)])}
+            component='a'
+            // @ts-ignore: Component extensions aren't appearing in types.
+            href='#health-report'
+          >
+            <div className={classes.summaryStats}>
+              <Typography
+                variant='h3'
+                className={clsx(
+                  classes.summaryStatsStat,
+                  classes[indicationSeverityClassSymbol(maxIndicationSeverity)],
+                )}
+                color='primary'
               >
-              <div className={classes.summaryStats}>
-                <Typography variant='h3' className={clsx(classes.summaryStatsStat, classes[indicationSeverityClassSymbol(maxIndicationSeverity)])} color='primary'>
-                  {maxIndicationSeverityMessage[maxIndicationSeverity]}
-                </Typography>
-                <Typography variant='subtitle1'>
-                    see <strong>health report</strong>
-                </Typography>
-              </div>
-            </Paper>
+                {maxIndicationSeverityMessage[maxIndicationSeverity]}
+              </Typography>
+              <Typography variant='subtitle1'>
+                see <strong>health report</strong>
+              </Typography>
+            </div>
+          </Paper>
         </div>
       </div>
       <Typography variant='h3' className={classes.tableTitle}>
-        Metric Assignment Results 
+        Metric Assignment Results
       </Typography>
       <MaterialTable
         columns={tableColumns}
@@ -367,7 +380,8 @@ export default function ActualExperimentResults({
           const { aggregateRecommendation } = rowData as {
             aggregateRecommendation: Analyses.AggregateRecommendation
           }
-          let disabled = aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.ManualAnalysisRequired
+          let disabled =
+            aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.ManualAnalysisRequired
           // istanbul ignore next; debug only
           disabled = disabled && !isDebugMode()
 
@@ -381,7 +395,7 @@ export default function ActualExperimentResults({
       <Typography variant='h3' className={classes.tableTitle}>
         Health Report
       </Typography>
-      <Paper id="health-report">
+      <Paper id='health-report'>
         <HealthIndicatorTable indicators={experimentHealthIndicators} />
       </Paper>
     </div>

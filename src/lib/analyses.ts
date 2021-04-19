@@ -252,7 +252,11 @@ export enum HealthIndicationSeverity {
   Error = 'Error',
 }
 
-export const healthIndicationSeverityOrder = [HealthIndicationSeverity.Ok, HealthIndicationSeverity.Warning, HealthIndicationSeverity.Error]
+export const healthIndicationSeverityOrder = [
+  HealthIndicationSeverity.Ok,
+  HealthIndicationSeverity.Warning,
+  HealthIndicationSeverity.Error,
+]
 
 interface HealthIndication {
   code: HealthIndicationCode
