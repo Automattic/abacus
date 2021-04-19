@@ -94,7 +94,7 @@ export default function HealthIndicatorTable({
                 )}
               </TableCell>
               <TableCell scope='row' className={clsx(classes.monospace,classes.deemphasized)}>
-                {indicator.value}
+                {indicator.value.toPrecision(5)}
               </TableCell>
               <TableCell
                 scope='row'
