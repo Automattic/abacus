@@ -76,7 +76,7 @@ export default function HealthIndicatorTable({
             <TableCell>Value</TableCell>
             <TableCell>{/* Indication Emoji */}</TableCell>
             <TableCell>Indication</TableCell>
-            <TableCell>Indication Reason</TableCell>
+            <TableCell>Reason</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
