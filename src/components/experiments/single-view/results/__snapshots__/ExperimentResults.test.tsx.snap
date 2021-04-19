@@ -11,7 +11,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
       class="makeStyles-summary-3"
     >
       <div
-        class="MuiPaper-root makeStyles-participantsPlotPaper-13 MuiPaper-elevation1 MuiPaper-rounded"
+        class="MuiPaper-root makeStyles-participantsPlotPaper-14 MuiPaper-elevation1 MuiPaper-rounded"
       >
         <h3
           class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
@@ -20,16 +20,16 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
         </h3>
       </div>
       <div
-        class="makeStyles-summaryColumn-7"
+        class="makeStyles-summaryColumn-5"
       >
         <div
-          class="MuiPaper-root makeStyles-summaryStatsPaper-8 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryStatsPaper-6 MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="makeStyles-summaryStatsPart-9"
+            class="makeStyles-summaryStatsPart-7"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-11 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-9 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               1,000
             </h3>
@@ -45,10 +45,10 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
             </h6>
           </div>
           <div
-            class="makeStyles-summaryStatsPart-9"
+            class="makeStyles-summaryStatsPart-7"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-11 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-9 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               Deploy 
               test
@@ -63,111 +63,39 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
             </h6>
           </div>
         </div>
-        <div
-          class="MuiPaper-root makeStyles-summaryStatsPaper-8 makeStyles-root-16 MuiPaper-elevation1 MuiPaper-rounded"
+        <a
+          class="MuiPaper-root makeStyles-summaryHealthPaper-10 makeStyles-indicationSeverityOk-11 MuiPaper-elevation1 MuiPaper-rounded"
+          href="#health-report"
         >
-          <div
-            class=""
-            title="There is a 100.00% 
-              probability that this result occurred by random chance."
-          >
-            <span
-              aria-label="Nominal"
-              role="img"
+          <div>
+            <h3
+              class="MuiTypography-root makeStyles-summaryStatsStat-9 makeStyles-indicationSeverityOk-11 MuiTypography-h3 MuiTypography-colorPrimary"
             >
-              🆗
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
+              No issues detected
+            </h3>
+            <h6
+              class="MuiTypography-root MuiTypography-subtitle1"
             >
-              Assignment distribution matching allocated
-            </a>
+              see 
+              <strong>
+                health report
+              </strong>
+            </h6>
           </div>
-          <div
-            class=""
-            title="There is a 100.00% 
-              probability that this result occurred by random chance."
-          >
-            <span
-              aria-label="Nominal"
-              role="img"
-            >
-              🆗
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
-            >
-              Exposure event distribution matching allocated
-            </a>
-          </div>
-          <div
-            class=""
-            title="There is a 100.00% 
-              probability that this result occurred by random chance."
-          >
-            <span
-              aria-label="Nominal"
-              role="img"
-            >
-              🆗
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
-            >
-              Spammer distribution matching allocated
-            </a>
-          </div>
-          <div
-            class=""
-            title="Ratio: 0.000000"
-          >
-            <span
-              aria-label="Nominal"
-              role="img"
-            >
-              🆗
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
-            >
-              Total crossovers
-            </a>
-          </div>
-          <div
-            class=""
-            title="Ratio: 0.000000"
-          >
-            <span
-              aria-label="Nominal"
-              role="img"
-            >
-              🆗
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
-            >
-              Total spammers
-            </a>
-          </div>
-        </div>
+        </a>
       </div>
     </div>
+    <h3
+      class="MuiTypography-root makeStyles-tableTitle-16 MuiTypography-h3"
+    >
+      Metric Assignment Results
+    </h3>
     <div
       class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
       style="position: relative;"
     >
       <div
-        class="Component-horizontalScrollContainer-21"
+        class="Component-horizontalScrollContainer-22"
         style="overflow-x: auto; position: relative;"
       >
         <div>
@@ -186,26 +114,26 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                     class="MuiTableRow-root MuiTableRow-head"
                   >
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-22 MuiTableCell-paddingNone"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-23 MuiTableCell-paddingNone"
                       scope="col"
                       style="font-weight: 700;"
                     />
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-22 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-23 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Metric
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-22 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-23 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Attribution window
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-22 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-23 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
@@ -454,21 +382,345 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
         </div>
       </div>
     </div>
+    <h3
+      class="MuiTypography-root makeStyles-tableTitle-16 MuiTypography-h3"
+    >
+      Health Report
+    </h3>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+      id="health-report"
+    >
+      <div
+        class="MuiTableContainer-root"
+      >
+        <table
+          aria-label="simple table"
+          class="MuiTable-root makeStyles-table-32"
+        >
+          <thead
+            class="MuiTableHead-root"
+          >
+            <tr
+              class="MuiTableRow-root MuiTableRow-head"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Name
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Unit
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Value
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              />
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Indication
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Reason
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class="MuiTableBody-root"
+          >
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
+                  target="_blank"
+                >
+                  Assignment distribution matching allocated
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <span
+                  class="makeStyles-tooltip-31"
+                  title="The smaller the p-value the more likely there is an issue."
+                >
+                  p-value
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                1.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityOk-28 makeStyles-monospace-25"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                0.05 &lt; x ≤ 1
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
+                  target="_blank"
+                >
+                  Exposure event distribution matching allocated
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <span
+                  class="makeStyles-tooltip-31"
+                  title="The smaller the p-value the more likely there is an issue."
+                >
+                  p-value
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                1.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityOk-28 makeStyles-monospace-25"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                0.05 &lt; x ≤ 1
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
+                  target="_blank"
+                >
+                  Spammer distribution matching allocated
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <span
+                  class="makeStyles-tooltip-31"
+                  title="The smaller the p-value the more likely there is an issue."
+                >
+                  p-value
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                1.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityOk-28 makeStyles-monospace-25"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                0.05 &lt; x ≤ 1
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
+                  target="_blank"
+                >
+                  Total crossovers
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <span>
+                  ratio
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                0.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityOk-28 makeStyles-monospace-25"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                −∞ &lt; x ≤ 0.01
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
+                  target="_blank"
+                >
+                  Total spammers
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <span>
+                  ratio
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                0.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityOk-28 makeStyles-monospace-25"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                −∞ &lt; x ≤ 0.075
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`renders correctly for 1 analysis datapoint 2`] = `
 <div
-  class="MuiTableContainer-root makeStyles-root-23 analysis-detail-panel"
+  class="MuiTableContainer-root makeStyles-root-33 analysis-detail-panel"
 >
   <p
-    class="MuiTypography-root makeStyles-noPlotMessage-29 MuiTypography-body1"
+    class="MuiTypography-root makeStyles-noPlotMessage-39 MuiTypography-body1"
   >
     Past values will be plotted once we have more than one day of results.
   </p>
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-30 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-40 MuiTypography-h4"
   >
     Latest Estimates
   </h4>
@@ -482,20 +734,20 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-31 makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-41 makeStyles-headerCell-34"
           role="cell"
           scope="row"
         >
           Difference
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-35"
         >
           [
           
           -1
           <span
-            class="makeStyles-root-32"
+            class="makeStyles-root-42"
             title="Percentage points."
           >
             pp
@@ -504,7 +756,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
           
           1
           <span
-            class="makeStyles-root-32"
+            class="makeStyles-root-42"
             title="Percentage points."
           >
             pp
@@ -521,7 +773,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
           
           -1
           <span
-            class="makeStyles-root-32"
+            class="makeStyles-root-42"
             title="Percentage points."
           >
             pp
@@ -532,7 +784,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
           
           1
           <span
-            class="makeStyles-root-32"
+            class="makeStyles-root-42"
             title="Percentage points."
           >
             pp
@@ -544,19 +796,19 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-31 makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-41 makeStyles-headerCell-34"
           role="cell"
           scope="row"
           valign="top"
         >
           <span
-            class="makeStyles-monospace-25"
+            class="makeStyles-monospace-35"
           >
             test
           </span>
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-35"
         >
           [
           
@@ -591,19 +843,19 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-31 makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-41 makeStyles-headerCell-34"
           role="cell"
           scope="row"
           valign="top"
         >
           <span
-            class="makeStyles-monospace-25"
+            class="makeStyles-monospace-35"
           >
             control
           </span>
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-35"
         >
           [
           
@@ -638,7 +890,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-34"
           role="cell"
           scope="row"
         >
@@ -652,7 +904,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
           Warnings
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-35"
         >
           <div>
             Experiment period is too short. Wait a few days to be safer.
@@ -665,7 +917,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
     </tbody>
   </table>
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-30 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-40 MuiTypography-h4"
   >
     Metric Assignment Details
   </h4>
@@ -679,14 +931,14 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-34"
           role="cell"
           scope="row"
         >
           Metric Description
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-35"
         >
           This is metric 1
         </td>
@@ -695,19 +947,19 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-34"
           role="cell"
           scope="row"
         >
           Minimum Practical Difference
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-35"
         >
           
           10
           <span
-            class="makeStyles-root-32"
+            class="makeStyles-root-42"
             title="Percentage points."
           >
             pp
@@ -718,14 +970,14 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-34"
           role="cell"
           scope="row"
         >
           Change Expected
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-35"
         >
           Yes
         </td>
@@ -733,7 +985,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
     </tbody>
   </table>
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-30 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-40 MuiTypography-h4"
   >
     Analysis Fine Print
   </h4>
@@ -747,7 +999,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-34"
           role="cell"
           scope="row"
         >
@@ -757,7 +1009,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
           class="MuiTableCell-root MuiTableCell-body"
         >
           <span
-            class="makeStyles-root-33"
+            class="makeStyles-root-43"
             title="09/05/2020, 20:00:00"
           >
             2020-05-10
@@ -768,14 +1020,14 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-34"
           role="cell"
           scope="row"
         >
           Analysis strategy
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-35"
         >
           Exposed without crossovers and spammers
         </td>
@@ -784,14 +1036,14 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-24"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-34"
           role="cell"
           scope="row"
         >
           Analyzed participants
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-35"
         >
           1000
            (
@@ -809,7 +1061,7 @@ exports[`renders correctly for 1 analysis datapoint 3`] = `
   "calls": Array [
     Array [
       Object {
-        "className": "makeStyles-participantsPlot-14",
+        "className": "makeStyles-participantsPlot-15",
         "data": Array [
           Object {
             "line": Object {
@@ -877,13 +1129,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   class="analysis-latest-results"
 >
   <div
-    class="makeStyles-root-34"
+    class="makeStyles-root-44"
   >
     <div
-      class="makeStyles-summary-36"
+      class="makeStyles-summary-46"
     >
       <div
-        class="MuiPaper-root makeStyles-participantsPlotPaper-46 MuiPaper-elevation1 MuiPaper-rounded"
+        class="MuiPaper-root makeStyles-participantsPlotPaper-57 MuiPaper-elevation1 MuiPaper-rounded"
       >
         <h3
           class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
@@ -892,16 +1144,16 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         </h3>
       </div>
       <div
-        class="makeStyles-summaryColumn-40"
+        class="makeStyles-summaryColumn-48"
       >
         <div
-          class="MuiPaper-root makeStyles-summaryStatsPaper-41 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryStatsPaper-49 MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="makeStyles-summaryStatsPart-42"
+            class="makeStyles-summaryStatsPart-50"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-44 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-52 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               700
             </h3>
@@ -917,13 +1169,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             </h6>
           </div>
           <div
-            class="makeStyles-summaryStatsPart-42"
+            class="makeStyles-summaryStatsPart-50"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-44 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-52 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               <span
-                class="makeStyles-tooltipped-48"
+                class="makeStyles-tooltipped-60"
                 title="Contact @experimentation-review on #a8c-experiments"
               >
                 Manual analysis required
@@ -939,111 +1191,39 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             </h6>
           </div>
         </div>
-        <div
-          class="MuiPaper-root makeStyles-summaryStatsPaper-41 makeStyles-root-49 MuiPaper-elevation1 MuiPaper-rounded"
+        <a
+          class="MuiPaper-root makeStyles-summaryHealthPaper-53 makeStyles-indicationSeverityOk-54 MuiPaper-elevation1 MuiPaper-rounded"
+          href="#health-report"
         >
-          <div
-            class=""
-            title="There is a 100.00% 
-              probability that this result occurred by random chance."
-          >
-            <span
-              aria-label="Nominal"
-              role="img"
+          <div>
+            <h3
+              class="MuiTypography-root makeStyles-summaryStatsStat-52 makeStyles-indicationSeverityOk-54 MuiTypography-h3 MuiTypography-colorPrimary"
             >
-              🆗
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
+              No issues detected
+            </h3>
+            <h6
+              class="MuiTypography-root MuiTypography-subtitle1"
             >
-              Assignment distribution matching allocated
-            </a>
+              see 
+              <strong>
+                health report
+              </strong>
+            </h6>
           </div>
-          <div
-            class=""
-            title="There is a 100.00% 
-              probability that this result occurred by random chance."
-          >
-            <span
-              aria-label="Nominal"
-              role="img"
-            >
-              🆗
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
-            >
-              Exposure event distribution matching allocated
-            </a>
-          </div>
-          <div
-            class=""
-            title="There is a 100.00% 
-              probability that this result occurred by random chance."
-          >
-            <span
-              aria-label="Nominal"
-              role="img"
-            >
-              🆗
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
-            >
-              Spammer distribution matching allocated
-            </a>
-          </div>
-          <div
-            class=""
-            title="Ratio: 0.100000"
-          >
-            <span
-              aria-label="CertainIssue"
-              role="img"
-            >
-              🆘
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
-            >
-              Total crossovers
-            </a>
-          </div>
-          <div
-            class=""
-            title="Ratio: 0.150000"
-          >
-            <span
-              aria-label="PossibleIssue"
-              role="img"
-            >
-              ✴️
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
-            >
-              Total spammers
-            </a>
-          </div>
-        </div>
+        </a>
       </div>
     </div>
+    <h3
+      class="MuiTypography-root makeStyles-tableTitle-59 MuiTypography-h3"
+    >
+      Metric Assignment Results
+    </h3>
     <div
       class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
       style="position: relative;"
     >
       <div
-        class="Component-horizontalScrollContainer-54"
+        class="Component-horizontalScrollContainer-65"
         style="overflow-x: auto; position: relative;"
       >
         <div>
@@ -1062,26 +1242,26 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     class="MuiTableRow-root MuiTableRow-head"
                   >
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-55 MuiTableCell-paddingNone"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-66 MuiTableCell-paddingNone"
                       scope="col"
                       style="font-weight: 700;"
                     />
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-55 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-66 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Metric
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-55 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-66 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Attribution window
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-55 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-66 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
@@ -1133,7 +1313,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                        
                       <div
                         aria-disabled="true"
-                        class="MuiChip-root makeStyles-primaryChip-35 MuiChip-outlined Mui-disabled"
+                        class="MuiChip-root makeStyles-primaryChip-45 MuiChip-outlined Mui-disabled"
                       >
                         <span
                           class="MuiChip-label"
@@ -1153,7 +1333,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       <span
-                        class="makeStyles-tooltipped-48"
+                        class="makeStyles-tooltipped-60"
                         title="Contact @experimentation-review on #a8c-experiments"
                       >
                         Manual analysis required
@@ -1333,19 +1513,347 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         </div>
       </div>
     </div>
+    <h3
+      class="MuiTypography-root makeStyles-tableTitle-59 MuiTypography-h3"
+    >
+      Health Report
+    </h3>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+      id="health-report"
+    >
+      <div
+        class="MuiTableContainer-root"
+      >
+        <table
+          aria-label="simple table"
+          class="MuiTable-root makeStyles-table-75"
+        >
+          <thead
+            class="MuiTableHead-root"
+          >
+            <tr
+              class="MuiTableRow-root MuiTableRow-head"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Name
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Unit
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Value
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              />
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Indication
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Reason
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class="MuiTableBody-root"
+          >
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
+                  target="_blank"
+                >
+                  Assignment distribution matching allocated
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <span
+                  class="makeStyles-tooltip-74"
+                  title="The smaller the p-value the more likely there is an issue."
+                >
+                  p-value
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                1.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityOk-71 makeStyles-monospace-68"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                0.05 &lt; x ≤ 1
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
+                  target="_blank"
+                >
+                  Exposure event distribution matching allocated
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <span
+                  class="makeStyles-tooltip-74"
+                  title="The smaller the p-value the more likely there is an issue."
+                >
+                  p-value
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                1.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityOk-71 makeStyles-monospace-68"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                0.05 &lt; x ≤ 1
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
+                  target="_blank"
+                >
+                  Spammer distribution matching allocated
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <span
+                  class="makeStyles-tooltip-74"
+                  title="The smaller the p-value the more likely there is an issue."
+                >
+                  p-value
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                1.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityOk-71 makeStyles-monospace-68"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                0.05 &lt; x ≤ 1
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
+                  target="_blank"
+                >
+                  Total crossovers
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <span>
+                  ratio
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                0.1000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span>
+                  🆘
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityError-73 makeStyles-monospace-68"
+                scope="row"
+              >
+                <span>
+                  probable issue
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                0.05 &lt; x ≤ 1
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
+                  target="_blank"
+                >
+                  Total spammers
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <span>
+                  ratio
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                0.1500
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span>
+                  ℹ️
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityWarning-72 makeStyles-monospace-68"
+                scope="row"
+              >
+                <span>
+                  possible issue
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                0.075 &lt; x ≤ 0.3
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`renders the condensed table with some analyses in non-debug mode for a Conversion Metric 2`] = `
 <div
-  class="MuiTableContainer-root makeStyles-root-56 analysis-detail-panel"
+  class="MuiTableContainer-root makeStyles-root-76 analysis-detail-panel"
 >
   <div
-    class="makeStyles-metricEstimatePlots-59"
+    class="makeStyles-metricEstimatePlots-79"
   />
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-63 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-83 MuiTypography-h4"
   >
     Latest Estimates
   </h4>
@@ -1359,20 +1867,20 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-64 makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-84 makeStyles-headerCell-77"
           role="cell"
           scope="row"
         >
           Difference
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-78"
         >
           [
           
           -1
           <span
-            class="makeStyles-root-65"
+            class="makeStyles-root-85"
             title="Percentage points."
           >
             pp
@@ -1381,7 +1889,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           
           1
           <span
-            class="makeStyles-root-65"
+            class="makeStyles-root-85"
             title="Percentage points."
           >
             pp
@@ -1398,7 +1906,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           
           -1
           <span
-            class="makeStyles-root-65"
+            class="makeStyles-root-85"
             title="Percentage points."
           >
             pp
@@ -1409,7 +1917,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           
           1
           <span
-            class="makeStyles-root-65"
+            class="makeStyles-root-85"
             title="Percentage points."
           >
             pp
@@ -1421,19 +1929,19 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-64 makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-84 makeStyles-headerCell-77"
           role="cell"
           scope="row"
           valign="top"
         >
           <span
-            class="makeStyles-monospace-58"
+            class="makeStyles-monospace-78"
           >
             test
           </span>
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-78"
         >
           [
           
@@ -1468,19 +1976,19 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-64 makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-84 makeStyles-headerCell-77"
           role="cell"
           scope="row"
           valign="top"
         >
           <span
-            class="makeStyles-monospace-58"
+            class="makeStyles-monospace-78"
           >
             control
           </span>
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-78"
         >
           [
           
@@ -1515,7 +2023,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-77"
           role="cell"
           scope="row"
         >
@@ -1529,7 +2037,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           Warnings
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-78"
         >
           <div>
             Experiment period is too short. Wait a few days to be safer.
@@ -1542,7 +2050,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     </tbody>
   </table>
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-63 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-83 MuiTypography-h4"
   >
     Metric Assignment Details
   </h4>
@@ -1556,14 +2064,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-77"
           role="cell"
           scope="row"
         >
           Metric Description
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-78"
         >
           This is metric 3
         </td>
@@ -1572,19 +2080,19 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-77"
           role="cell"
           scope="row"
         >
           Minimum Practical Difference
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-78"
         >
           
           1200
           <span
-            class="makeStyles-root-65"
+            class="makeStyles-root-85"
             title="Percentage points."
           >
             pp
@@ -1595,14 +2103,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-77"
           role="cell"
           scope="row"
         >
           Change Expected
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-78"
         >
           Yes
         </td>
@@ -1610,7 +2118,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     </tbody>
   </table>
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-63 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-83 MuiTypography-h4"
   >
     Analysis Fine Print
   </h4>
@@ -1624,7 +2132,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-77"
           role="cell"
           scope="row"
         >
@@ -1634,7 +2142,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableCell-root MuiTableCell-body"
         >
           <span
-            class="makeStyles-root-66"
+            class="makeStyles-root-86"
             title="10/06/2020, 20:00:00"
           >
             2020-06-11
@@ -1645,14 +2153,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-77"
           role="cell"
           scope="row"
         >
           Analysis strategy
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-78"
         >
           Exposed without crossovers and spammers
         </td>
@@ -1661,14 +2169,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-57"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-77"
           role="cell"
           scope="row"
         >
           Analyzed participants
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-58"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-78"
         >
           1200
            (
@@ -1686,7 +2194,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   "calls": Array [
     Array [
       Object {
-        "className": "makeStyles-participantsPlot-47",
+        "className": "makeStyles-participantsPlot-58",
         "data": Array [
           Object {
             "line": Object {
@@ -1745,7 +2253,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-60",
+        "className": "makeStyles-metricEstimatePlot-80",
         "data": Array [
           Object {
             "line": Object {
@@ -1841,7 +2349,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-60",
+        "className": "makeStyles-metricEstimatePlot-80",
         "data": Array [
           Object {
             "line": Object {
@@ -1964,13 +2472,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   class="analysis-latest-results"
 >
   <div
-    class="makeStyles-root-67"
+    class="makeStyles-root-87"
   >
     <div
-      class="makeStyles-summary-69"
+      class="makeStyles-summary-89"
     >
       <div
-        class="MuiPaper-root makeStyles-participantsPlotPaper-79 MuiPaper-elevation1 MuiPaper-rounded"
+        class="MuiPaper-root makeStyles-participantsPlotPaper-100 MuiPaper-elevation1 MuiPaper-rounded"
       >
         <h3
           class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
@@ -1979,16 +2487,16 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         </h3>
       </div>
       <div
-        class="makeStyles-summaryColumn-73"
+        class="makeStyles-summaryColumn-91"
       >
         <div
-          class="MuiPaper-root makeStyles-summaryStatsPaper-74 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryStatsPaper-92 MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="makeStyles-summaryStatsPart-75"
+            class="makeStyles-summaryStatsPart-93"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-77 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-95 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               700
             </h3>
@@ -2004,13 +2512,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             </h6>
           </div>
           <div
-            class="makeStyles-summaryStatsPart-75"
+            class="makeStyles-summaryStatsPart-93"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-77 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-95 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               <span
-                class="makeStyles-tooltipped-81"
+                class="makeStyles-tooltipped-103"
                 title="Contact @experimentation-review on #a8c-experiments"
               >
                 Manual analysis required
@@ -2026,111 +2534,39 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             </h6>
           </div>
         </div>
-        <div
-          class="MuiPaper-root makeStyles-summaryStatsPaper-74 makeStyles-root-82 MuiPaper-elevation1 MuiPaper-rounded"
+        <a
+          class="MuiPaper-root makeStyles-summaryHealthPaper-96 makeStyles-indicationSeverityOk-97 MuiPaper-elevation1 MuiPaper-rounded"
+          href="#health-report"
         >
-          <div
-            class=""
-            title="There is a 100.00% 
-              probability that this result occurred by random chance."
-          >
-            <span
-              aria-label="Nominal"
-              role="img"
+          <div>
+            <h3
+              class="MuiTypography-root makeStyles-summaryStatsStat-95 makeStyles-indicationSeverityOk-97 MuiTypography-h3 MuiTypography-colorPrimary"
             >
-              🆗
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
+              No issues detected
+            </h3>
+            <h6
+              class="MuiTypography-root MuiTypography-subtitle1"
             >
-              Assignment distribution matching allocated
-            </a>
+              see 
+              <strong>
+                health report
+              </strong>
+            </h6>
           </div>
-          <div
-            class=""
-            title="There is a 100.00% 
-              probability that this result occurred by random chance."
-          >
-            <span
-              aria-label="Nominal"
-              role="img"
-            >
-              🆗
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
-            >
-              Exposure event distribution matching allocated
-            </a>
-          </div>
-          <div
-            class=""
-            title="There is a 100.00% 
-              probability that this result occurred by random chance."
-          >
-            <span
-              aria-label="Nominal"
-              role="img"
-            >
-              🆗
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
-            >
-              Spammer distribution matching allocated
-            </a>
-          </div>
-          <div
-            class=""
-            title="Ratio: 0.100000"
-          >
-            <span
-              aria-label="CertainIssue"
-              role="img"
-            >
-              🆘
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
-            >
-              Total crossovers
-            </a>
-          </div>
-          <div
-            class=""
-            title="Ratio: 0.150000"
-          >
-            <span
-              aria-label="PossibleIssue"
-              role="img"
-            >
-              ✴️
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
-            >
-              Total spammers
-            </a>
-          </div>
-        </div>
+        </a>
       </div>
     </div>
+    <h3
+      class="MuiTypography-root makeStyles-tableTitle-102 MuiTypography-h3"
+    >
+      Metric Assignment Results
+    </h3>
     <div
       class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
       style="position: relative;"
     >
       <div
-        class="Component-horizontalScrollContainer-87"
+        class="Component-horizontalScrollContainer-108"
         style="overflow-x: auto; position: relative;"
       >
         <div>
@@ -2149,26 +2585,26 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     class="MuiTableRow-root MuiTableRow-head"
                   >
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-88 MuiTableCell-paddingNone"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-109 MuiTableCell-paddingNone"
                       scope="col"
                       style="font-weight: 700;"
                     />
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-88 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-109 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Metric
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-88 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-109 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Attribution window
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-88 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-109 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
@@ -2220,7 +2656,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                        
                       <div
                         aria-disabled="true"
-                        class="MuiChip-root makeStyles-primaryChip-68 MuiChip-outlined Mui-disabled"
+                        class="MuiChip-root makeStyles-primaryChip-88 MuiChip-outlined Mui-disabled"
                       >
                         <span
                           class="MuiChip-label"
@@ -2240,7 +2676,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       <span
-                        class="makeStyles-tooltipped-81"
+                        class="makeStyles-tooltipped-103"
                         title="Contact @experimentation-review on #a8c-experiments"
                       >
                         Manual analysis required
@@ -2420,19 +2856,347 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         </div>
       </div>
     </div>
+    <h3
+      class="MuiTypography-root makeStyles-tableTitle-102 MuiTypography-h3"
+    >
+      Health Report
+    </h3>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+      id="health-report"
+    >
+      <div
+        class="MuiTableContainer-root"
+      >
+        <table
+          aria-label="simple table"
+          class="MuiTable-root makeStyles-table-118"
+        >
+          <thead
+            class="MuiTableHead-root"
+          >
+            <tr
+              class="MuiTableRow-root MuiTableRow-head"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Name
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Unit
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Value
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              />
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Indication
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Reason
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class="MuiTableBody-root"
+          >
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
+                  target="_blank"
+                >
+                  Assignment distribution matching allocated
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <span
+                  class="makeStyles-tooltip-117"
+                  title="The smaller the p-value the more likely there is an issue."
+                >
+                  p-value
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                1.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityOk-114 makeStyles-monospace-111"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                0.05 &lt; x ≤ 1
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
+                  target="_blank"
+                >
+                  Exposure event distribution matching allocated
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <span
+                  class="makeStyles-tooltip-117"
+                  title="The smaller the p-value the more likely there is an issue."
+                >
+                  p-value
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                1.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityOk-114 makeStyles-monospace-111"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                0.05 &lt; x ≤ 1
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
+                  target="_blank"
+                >
+                  Spammer distribution matching allocated
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <span
+                  class="makeStyles-tooltip-117"
+                  title="The smaller the p-value the more likely there is an issue."
+                >
+                  p-value
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                1.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityOk-114 makeStyles-monospace-111"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                0.05 &lt; x ≤ 1
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
+                  target="_blank"
+                >
+                  Total crossovers
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <span>
+                  ratio
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                0.1000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span>
+                  🆘
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityError-116 makeStyles-monospace-111"
+                scope="row"
+              >
+                <span>
+                  probable issue
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                0.05 &lt; x ≤ 1
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
+                  target="_blank"
+                >
+                  Total spammers
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <span>
+                  ratio
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                0.1500
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span>
+                  ℹ️
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityWarning-115 makeStyles-monospace-111"
+                scope="row"
+              >
+                <span>
+                  possible issue
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                0.075 &lt; x ≤ 0.3
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
 exports[`renders the condensed table with some analyses in non-debug mode for a Revenue Metric 2`] = `
 <div
-  class="MuiTableContainer-root makeStyles-root-89 analysis-detail-panel"
+  class="MuiTableContainer-root makeStyles-root-119 analysis-detail-panel"
 >
   <div
-    class="makeStyles-metricEstimatePlots-92"
+    class="makeStyles-metricEstimatePlots-122"
   />
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-96 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-126 MuiTypography-h4"
   >
     Latest Estimates
   </h4>
@@ -2446,14 +3210,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-97 makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-127 makeStyles-headerCell-120"
           role="cell"
           scope="row"
         >
           Difference
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-121"
         >
           [
           USD 
@@ -2488,19 +3252,19 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-97 makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-127 makeStyles-headerCell-120"
           role="cell"
           scope="row"
           valign="top"
         >
           <span
-            class="makeStyles-monospace-91"
+            class="makeStyles-monospace-121"
           >
             test
           </span>
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-121"
         >
           [
           USD 
@@ -2535,19 +3299,19 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-97 makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-127 makeStyles-headerCell-120"
           role="cell"
           scope="row"
           valign="top"
         >
           <span
-            class="makeStyles-monospace-91"
+            class="makeStyles-monospace-121"
           >
             control
           </span>
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-121"
         >
           [
           USD 
@@ -2582,7 +3346,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-120"
           role="cell"
           scope="row"
         >
@@ -2596,7 +3360,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           Warnings
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-121"
         >
           <div>
             Experiment period is too short. Wait a few days to be safer.
@@ -2609,7 +3373,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     </tbody>
   </table>
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-96 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-126 MuiTypography-h4"
   >
     Metric Assignment Details
   </h4>
@@ -2623,14 +3387,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-120"
           role="cell"
           scope="row"
         >
           Metric Description
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-121"
         >
           This is metric 3
         </td>
@@ -2639,14 +3403,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-120"
           role="cell"
           scope="row"
         >
           Minimum Practical Difference
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-121"
         >
           USD 
           12
@@ -2657,14 +3421,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-120"
           role="cell"
           scope="row"
         >
           Change Expected
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-121"
         >
           Yes
         </td>
@@ -2672,7 +3436,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     </tbody>
   </table>
   <h4
-    class="MuiTypography-root makeStyles-tableHeader-96 MuiTypography-h4"
+    class="MuiTypography-root makeStyles-tableHeader-126 MuiTypography-h4"
   >
     Analysis Fine Print
   </h4>
@@ -2686,7 +3450,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-120"
           role="cell"
           scope="row"
         >
@@ -2696,7 +3460,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableCell-root MuiTableCell-body"
         >
           <span
-            class="makeStyles-root-98"
+            class="makeStyles-root-128"
             title="10/06/2020, 20:00:00"
           >
             2020-06-11
@@ -2707,14 +3471,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-120"
           role="cell"
           scope="row"
         >
           Analysis strategy
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-121"
         >
           Exposed without crossovers and spammers
         </td>
@@ -2723,14 +3487,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         class="MuiTableRow-root"
       >
         <th
-          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-90"
+          class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-120"
           role="cell"
           scope="row"
         >
           Analyzed participants
         </th>
         <td
-          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-91"
+          class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-121"
         >
           1200
            (
@@ -2748,7 +3512,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   "calls": Array [
     Array [
       Object {
-        "className": "makeStyles-participantsPlot-80",
+        "className": "makeStyles-participantsPlot-101",
         "data": Array [
           Object {
             "line": Object {
@@ -2807,7 +3571,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-93",
+        "className": "makeStyles-metricEstimatePlot-123",
         "data": Array [
           Object {
             "line": Object {
@@ -2903,7 +3667,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-93",
+        "className": "makeStyles-metricEstimatePlot-123",
         "data": Array [
           Object {
             "line": Object {
