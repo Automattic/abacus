@@ -31,10 +31,11 @@ export function binomialProbValue({
   // See also: https://en.wikipedia.org/wiki/Central_limit_theorem
   //           https://en.wikipedia.org/wiki/Binomial_distribution#Normal_approximation
   // (We don't care about the accuracy for n <= 30 so we let them be.)
-  // And if Y ~ N(0, 1/2) then Y = (X - mean)/(2 * variance)^(1/2)
-  // See also: https://en.wikipedia.org/wiki/Normal_distribution#Symmetries_and_derivatives
+  // From symmetry of the normal distribution, P(not -x < X < x) = P(X > x or X < -x) = 2 * P(X > x)
+  // From https://en.wikipedia.org/wiki/Normal_distribution#Cumulative_distribution_function:
+  // 2 * P(X > x) = 2 - 2 * CDF(x) 
+  //              = 2 - 2 * 0.5 * ( 1 + erf( (x - mean) / sqrt(2 * variance) ) ) 
+  //              = 1 - erf( (x - mean) / sqrt(2 * variance) )
   const y = (successfulTrials - mean) / Math.sqrt(2 * variance)
-  // Since erf(abs(y)) gives the probabilty of [-y, y] on Y, and pValue is the union of [-inf, -y] and [y, inf]:
-  // See also: https://en.wikipedia.org/wiki/Error_function
   return 1 - erf(abs(y))
 }
