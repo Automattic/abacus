@@ -1,14 +1,8 @@
 import _ from 'lodash'
 
-import { Analysis, AnalysisStrategy, ExperimentFull, RecommendationWarning } from './schemas'
+import { binomialProbValue } from 'src/utils/math'
 
-// I can't get stdlib to work as an import...:
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const binomialTest = require('@stdlib/stats/binomial-test') as (
-  x: number,
-  n: number,
-  args: { p: number },
-) => { pValue: number }
+import { Analysis, AnalysisStrategy, ExperimentFull, RecommendationWarning } from './schemas'
 
 /**
  * Mapping from AnalysisStrategy to human-friendly descriptions.
@@ -213,21 +207,21 @@ export function getExperimentParticipantStats(
         return [
           variationId,
           {
-            exposedDistributionMatchingAllocated: binomialTest(
-              variationCountsSet.exposed,
-              participantCounts.total.exposed,
-              { p: allocatedPercentage / totalAllocatedPercentage },
-            ).pValue,
-            assignedDistributionMatchingAllocated: binomialTest(
-              variationCountsSet.assigned,
-              participantCounts.total.assigned,
-              { p: allocatedPercentage / totalAllocatedPercentage },
-            ).pValue,
-            assignedSpammersDistributionMatchingAllocated: binomialTest(
-              variationCountsSet.assignedSpammers,
-              participantCounts.total.assignedSpammers,
-              { p: allocatedPercentage / totalAllocatedPercentage },
-            ).pValue,
+            exposedDistributionMatchingAllocated: binomialProbValue({
+              successfulTrials: variationCountsSet.exposed,
+              totalTrials: participantCounts.total.exposed,
+              probabilityOfSuccess: allocatedPercentage / totalAllocatedPercentage,
+            }),
+            assignedDistributionMatchingAllocated: binomialProbValue({
+              successfulTrials: variationCountsSet.assigned,
+              totalTrials: participantCounts.total.assigned,
+              probabilityOfSuccess: allocatedPercentage / totalAllocatedPercentage,
+            }),
+            assignedSpammersDistributionMatchingAllocated: binomialProbValue({
+              successfulTrials: variationCountsSet.assignedSpammers,
+              totalTrials: participantCounts.total.assignedSpammers,
+              probabilityOfSuccess: allocatedPercentage / totalAllocatedPercentage,
+            }),
           },
         ]
       }),
