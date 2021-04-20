@@ -3,67 +3,41 @@ import { binomialProbValue } from './math'
 describe('utils/math.ts module', () => {
   describe('binomialProbValue', () => {
     it('is approximately correct', () => {
-      const aSmallValue = 0.000005
-      // Testing against known values from R:
-      // binom.test(1, 30, p=0.5, alternative="two.sided")
-      // binom.test(15, 30, p=0.5, alternative="two.sided")
-      // binom.test(60, 1000, p=0.1, alternative="two.sided")
-      // binom.test(70, 1000, p=0.1, alternative="two.sided")
-      // binom.test(80, 1000, p=0.1, alternative="two.sided")
-      // binom.test(90, 1000, p=0.1, alternative="two.sided")
-      // binom.test(95, 1000, p=0.1, alternative="two.sided")
-      // binom.test(100, 1000, p=0.1, alternative="two.sided")
-      // binom.test(105, 1000, p=0.1, alternative="two.sided")
-      // binom.test(110, 1000, p=0.1, alternative="two.sided")
-      // binom.test(120, 1000, p=0.1, alternative="two.sided")
-      // binom.test(500, 1000, p=0.1, alternative="two.sided")
+      // Testing against known values from scipy using stats.binom_test:
+      const digitsPrecision = 2
       expect(
-        Math.abs(binomialProbValue({ successfulTrials: 1, totalTrials: 30, probabilityOfSuccess: 0.5 }) - 0.000002),
-      ).toBeLessThan(aSmallValue)
+        Math.abs(binomialProbValue({ successfulTrials: 1, totalTrials: 30, probabilityOfSuccess: 0.5 })),
+      ).toBeCloseTo(0.000002, digitsPrecision)
       expect(
-        Math.abs(binomialProbValue({ successfulTrials: 15, totalTrials: 30, probabilityOfSuccess: 0.5 }) - 1),
-      ).toBeLessThan(aSmallValue)
+        Math.abs(binomialProbValue({ successfulTrials: 15, totalTrials: 30, probabilityOfSuccess: 0.5 })),
+      ).toBeCloseTo(1, digitsPrecision)
       expect(
-        Math.abs(
-          binomialProbValue({ successfulTrials: 60, totalTrials: 1000, probabilityOfSuccess: 0.000008 }) - 0.000002,
-        ),
-      ).toBeLessThan(aSmallValue)
+        Math.abs(binomialProbValue({ successfulTrials: 600, totalTrials: 10000, probabilityOfSuccess: 0.1 })),
+      ).toBeCloseTo(0, digitsPrecision)
       expect(
-        Math.abs(
-          binomialProbValue({ successfulTrials: 70, totalTrials: 1000, probabilityOfSuccess: 0.001069 }) - 0.000002,
-        ),
-      ).toBeLessThan(aSmallValue)
+        Math.abs(binomialProbValue({ successfulTrials: 700, totalTrials: 10000, probabilityOfSuccess: 0.1 })),
+      ).toBeCloseTo(0, digitsPrecision)
       expect(
-        Math.abs(
-          binomialProbValue({ successfulTrials: 80, totalTrials: 1000, probabilityOfSuccess: 0.03487 }) - 0.000002,
-        ),
-      ).toBeLessThan(aSmallValue)
+        Math.abs(binomialProbValue({ successfulTrials: 800, totalTrials: 10000, probabilityOfSuccess: 0.1 })),
+      ).toBeCloseTo(0.0, digitsPrecision)
       expect(
-        Math.abs(
-          binomialProbValue({ successfulTrials: 90, totalTrials: 1000, probabilityOfSuccess: 0.3165 }) - 0.000002,
-        ),
-      ).toBeLessThan(aSmallValue)
+        Math.abs(binomialProbValue({ successfulTrials: 900, totalTrials: 10000, probabilityOfSuccess: 0.1 })),
+      ).toBeCloseTo(0.000759, digitsPrecision)
       expect(
-        Math.abs(
-          binomialProbValue({ successfulTrials: 95, totalTrials: 1000, probabilityOfSuccess: 0.6353 }) - 0.000002,
-        ),
-      ).toBeLessThan(aSmallValue)
+        Math.abs(binomialProbValue({ successfulTrials: 950, totalTrials: 10000, probabilityOfSuccess: 0.1 })),
+      ).toBeCloseTo(0.0989, digitsPrecision)
       expect(
-        Math.abs(binomialProbValue({ successfulTrials: 100, totalTrials: 1000, probabilityOfSuccess: 0.1 }) - 1),
-      ).toBeLessThan(aSmallValue)
+        Math.abs(binomialProbValue({ successfulTrials: 10000, totalTrials: 10000, probabilityOfSuccess: 0.1 })),
+      ).toBeCloseTo(0, digitsPrecision)
       expect(
-        Math.abs(
-          binomialProbValue({ successfulTrials: 105, totalTrials: 1000, probabilityOfSuccess: 0.598 }) - 0.000002,
-        ),
-      ).toBeLessThan(aSmallValue)
+        Math.abs(binomialProbValue({ successfulTrials: 105, totalTrials: 1000, probabilityOfSuccess: 0.1 })),
+      ).toBeCloseTo(0.598, digitsPrecision)
       expect(
-        Math.abs(
-          binomialProbValue({ successfulTrials: 110, totalTrials: 1000, probabilityOfSuccess: 0.2917 }) - 0.000002,
-        ),
-      ).toBeLessThan(aSmallValue)
+        Math.abs(binomialProbValue({ successfulTrials: 110, totalTrials: 1000, probabilityOfSuccess: 0.1 })),
+      ).toBeCloseTo(0.2917, digitsPrecision)
       expect(
-        Math.abs(binomialProbValue({ successfulTrials: 500, totalTrials: 1000, probabilityOfSuccess: 0.1 }) - 0.000002),
-      ).toBeLessThan(aSmallValue)
+        Math.abs(binomialProbValue({ successfulTrials: 500, totalTrials: 1000, probabilityOfSuccess: 0.1 })),
+      ).toBeCloseTo(0.000002, digitsPrecision)
     })
     it('is correct for 0 trials', () => {
       expect(binomialProbValue({ successfulTrials: 0, totalTrials: 0, probabilityOfSuccess: 0.1 })).toBe(1)
