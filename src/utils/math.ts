@@ -33,8 +33,8 @@ export function binomialProbValue({
   // (We don't care about the accuracy for n <= 30 so we let them be.)
   // From symmetry of the normal distribution, P(not -x < X < x) = P(X > x or X < -x) = 2 * P(X > x)
   // From https://en.wikipedia.org/wiki/Normal_distribution#Cumulative_distribution_function:
-  // 2 * P(X > x) = 2 - 2 * CDF(x) 
-  //              = 2 - 2 * 0.5 * ( 1 + erf( (x - mean) / sqrt(2 * variance) ) ) 
+  // 2 * P(X > x) = 2 - 2 * CDF(x)
+  //              = 2 - 2 * 0.5 * ( 1 + erf( (x - mean) / sqrt(2 * variance) ) )
   //              = 1 - erf( (x - mean) / sqrt(2 * variance) )
   const y = (successfulTrials - mean) / Math.sqrt(2 * variance)
   return 1 - erf(abs(y))
