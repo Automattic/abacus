@@ -1,7 +1,7 @@
 import { abs, erf } from 'mathjs'
 
 /**
- * Assuming a distribution of X ~ Binomial(n, p), returns the probability of the number of trials being equal to x or more extreme than x.
+ * Assuming a distribution of X ~ Binomial(totalTrials, probabilityOfSuccess), returns the probability of the number of successful trials being equal to successfulTrials or more extreme than successfullTrials.
  *
  * @param successfulTrials number of successful trials
  * @param totalTrials number of total trials
@@ -16,6 +16,15 @@ export function binomialProbValue({
   totalTrials: number
   probabilityOfSuccess: number
 }): number {
+  if (totalTrials === 0 && successfulTrials === 0) {
+    return 1
+  }
+  if (totalTrials < successfulTrials) {
+    throw new Error('Successful Trials must be less than or equal to total trials')
+  }
+  if (probabilityOfSuccess < 0 || 1 < probabilityOfSuccess) {
+    throw new Error('Invalid probabilityOfSuccess, expected [0,1].')
+  }
   const mean = totalTrials * probabilityOfSuccess
   const variance = totalTrials * probabilityOfSuccess * (1 - probabilityOfSuccess)
   // By the CLT, B ~ Binomial(n, p) is approximated well enough by X ~ N(mean, variance) for n > 30

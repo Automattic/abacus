@@ -353,28 +353,30 @@ describe('getParticipantCounts', () => {
           }),
         },
       ),
-    ).toEqual({
-      total: {
-        assigned: 100,
-        assignedCrossovers: 10,
-        assignedSpammers: 15,
-        exposed: 40,
-      },
-      byVariationId: {
-        '1': {
-          assigned: 40,
-          assignedCrossovers: 5,
-          assignedSpammers: 0,
-          exposed: 15,
+    ).toMatchInlineSnapshot(`
+      Object {
+        "byVariationId": Object {
+          "1": Object {
+            "assigned": 40,
+            "assignedCrossovers": 5,
+            "assignedSpammers": 0,
+            "exposed": 15,
+          },
+          "2": Object {
+            "assigned": 70,
+            "assignedCrossovers": 15,
+            "assignedSpammers": 25,
+            "exposed": 25,
+          },
         },
-        '2': {
-          assigned: 70,
-          assignedCrossovers: 15,
-          assignedSpammers: 25,
-          exposed: 25,
+        "total": Object {
+          "assigned": 100,
+          "assignedCrossovers": 10,
+          "assignedSpammers": 15,
+          "exposed": 40,
         },
-      },
-    })
+      }
+    `)
   })
 
   it('should work correctly without any analyses', () => {
@@ -388,28 +390,30 @@ describe('getParticipantCounts', () => {
         }),
         {},
       ),
-    ).toEqual({
-      total: {
-        assigned: 0,
-        assignedCrossovers: 0,
-        assignedSpammers: 0,
-        exposed: 0,
-      },
-      byVariationId: {
-        '1': {
-          assigned: 0,
-          assignedCrossovers: 0,
-          assignedSpammers: 0,
-          exposed: 0,
+    ).toMatchInlineSnapshot(`
+      Object {
+        "byVariationId": Object {
+          "1": Object {
+            "assigned": 0,
+            "assignedCrossovers": 0,
+            "assignedSpammers": 0,
+            "exposed": 0,
+          },
+          "2": Object {
+            "assigned": 0,
+            "assignedCrossovers": 0,
+            "assignedSpammers": 0,
+            "exposed": 0,
+          },
         },
-        '2': {
-          assigned: 0,
-          assignedCrossovers: 0,
-          assignedSpammers: 0,
-          exposed: 0,
+        "total": Object {
+          "assigned": 0,
+          "assignedCrossovers": 0,
+          "assignedSpammers": 0,
+          "exposed": 0,
         },
-      },
-    })
+      }
+    `)
   })
 })
 
@@ -461,49 +465,51 @@ describe('getExperimentParticipantStats', () => {
           }),
         },
       ),
-    ).toEqual({
-      probabilities: {
-        byVariationId: {
-          '1': {
-            assignedDistributionMatchingAllocated: 0.000013715068445169529,
-            assignedSpammersDistributionMatchingAllocated: 5.684341886080802e-14,
-            exposedDistributionMatchingAllocated: 0.1538599441628321,
-          },
-          '2': {
-            assignedDistributionMatchingAllocated: 0.43002088397534255,
-            assignedSpammersDistributionMatchingAllocated: 0.5514843298025198,
-            exposedDistributionMatchingAllocated: 0.03847730828420026,
-          },
-        },
-      },
-      ratios: {
-        overall: {
-          assignedCrossoversToAssigned: 0.3076923076923077,
-          assignedSpammersToAssigned: 0.34615384615384615,
-          exposedToAssigned: 0.3076923076923077,
-        },
-        byVariationId: {
-          '1': {
-            assignedCrossoversToAssigned: 0.125,
-            assignedCrossoversToTotalAssignedCrossovers: 0.125,
-            assignedSpammersToAssigned: 0,
-            assignedSpammersToTotalAssignedSpammers: 0,
-            assignedToTotalAssigned: 0.3076923076923077,
-            exposedToAssigned: 0.375,
-            exposedToTotalExposed: 0.375,
-          },
-          '2': {
-            assignedCrossoversToAssigned: 0.21428571428571427,
-            assignedCrossoversToTotalAssignedCrossovers: 0.375,
-            assignedSpammersToAssigned: 0.35714285714285715,
-            assignedSpammersToTotalAssignedSpammers: 0.5555555555555556,
-            assignedToTotalAssigned: 0.5384615384615384,
-            exposedToAssigned: 0.38571428571428573,
-            exposedToTotalExposed: 0.675,
+    ).toMatchInlineSnapshot(`
+      Object {
+        "probabilities": Object {
+          "byVariationId": Object {
+            "1": Object {
+              "assignedDistributionMatchingAllocated": 0.000011583130623216142,
+              "assignedSpammersDistributionMatchingAllocated": 1.970346108493004e-11,
+              "exposedDistributionMatchingAllocated": 0.11384629800665802,
+            },
+            "2": Object {
+              "assignedDistributionMatchingAllocated": 0.3804551252503884,
+              "assignedSpammersDistributionMatchingAllocated": 0.4560565402502559,
+              "exposedDistributionMatchingAllocated": 0.026856695507524453,
+            },
           },
         },
-      },
-    })
+        "ratios": Object {
+          "byVariationId": Object {
+            "1": Object {
+              "assignedCrossoversToAssigned": 0.125,
+              "assignedCrossoversToTotalAssignedCrossovers": 0.125,
+              "assignedSpammersToAssigned": 0,
+              "assignedSpammersToTotalAssignedSpammers": 0,
+              "assignedToTotalAssigned": 0.3076923076923077,
+              "exposedToAssigned": 0.375,
+              "exposedToTotalExposed": 0.375,
+            },
+            "2": Object {
+              "assignedCrossoversToAssigned": 0.21428571428571427,
+              "assignedCrossoversToTotalAssignedCrossovers": 0.375,
+              "assignedSpammersToAssigned": 0.35714285714285715,
+              "assignedSpammersToTotalAssignedSpammers": 0.5555555555555556,
+              "assignedToTotalAssigned": 0.5384615384615384,
+              "exposedToAssigned": 0.38571428571428573,
+              "exposedToTotalExposed": 0.675,
+            },
+          },
+          "overall": Object {
+            "assignedCrossoversToAssigned": 0.3076923076923077,
+            "assignedSpammersToAssigned": 0.34615384615384615,
+            "exposedToAssigned": 0.3076923076923077,
+          },
+        },
+      }
+    `)
   })
 })
 
@@ -557,65 +563,64 @@ describe('getExperimentHealthIndicators', () => {
           },
         ),
       ),
-    ).toEqual([
-      {
-        indication: {
-          code: 'ProbableIssue',
-          reason: '−∞ < x ≤ 0.001',
-          severity: Analyses.HealthIndicationSeverity.Error,
+    ).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "indication": Object {
+            "code": "ProbableIssue",
+            "reason": "−∞ < x ≤ 0.001",
+            "severity": "Error",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated",
+          "name": "Assignment distribution matching allocated",
+          "unit": "P-Value",
+          "value": 0.000011583130623216142,
         },
-        link:
-          'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated',
-        name: 'Assignment distribution matching allocated',
-        unit: 'P-Value',
-        value: 0.000013715068445169529,
-      },
-      {
-        indication: {
-          code: 'PossibleIssue',
-          reason: '0.001 < x ≤ 0.05',
-          severity: Analyses.HealthIndicationSeverity.Warning,
+        Object {
+          "indication": Object {
+            "code": "PossibleIssue",
+            "reason": "0.001 < x ≤ 0.05",
+            "severity": "Warning",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch",
+          "name": "Exposure event distribution matching allocated",
+          "unit": "P-Value",
+          "value": 0.026856695507524453,
         },
-        link:
-          'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch',
-        name: 'Exposure event distribution matching allocated',
-        unit: 'P-Value',
-        value: 0.03847730828420026,
-      },
-      {
-        indication: {
-          code: 'ProbableIssue',
-          reason: '−∞ < x ≤ 0.001',
-          severity: Analyses.HealthIndicationSeverity.Error,
+        Object {
+          "indication": Object {
+            "code": "ProbableIssue",
+            "reason": "−∞ < x ≤ 0.001",
+            "severity": "Error",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated",
+          "name": "Spammer distribution matching allocated",
+          "unit": "P-Value",
+          "value": 1.970346108493004e-11,
         },
-        link:
-          'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated',
-        name: 'Spammer distribution matching allocated',
-        unit: 'P-Value',
-        value: 5.684341886080802e-14,
-      },
-      {
-        indication: {
-          code: 'ProbableIssue',
-          reason: '0.05 < x ≤ 1',
-          severity: Analyses.HealthIndicationSeverity.Error,
+        Object {
+          "indication": Object {
+            "code": "ProbableIssue",
+            "reason": "0.05 < x ≤ 1",
+            "severity": "Error",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers",
+          "name": "Total crossovers",
+          "unit": "Ratio",
+          "value": 0.3076923076923077,
         },
-        link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers',
-        name: 'Total crossovers',
-        unit: 'Ratio',
-        value: 0.3076923076923077,
-      },
-      {
-        indication: {
-          code: 'ProbableIssue',
-          reason: '0.3 < x ≤ 1',
-          severity: Analyses.HealthIndicationSeverity.Error,
+        Object {
+          "indication": Object {
+            "code": "ProbableIssue",
+            "reason": "0.3 < x ≤ 1",
+            "severity": "Error",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers",
+          "name": "Total spammers",
+          "unit": "Ratio",
+          "value": 0.34615384615384615,
         },
-        link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers',
-        name: 'Total spammers',
-        unit: 'Ratio',
-        value: 0.34615384615384615,
-      },
-    ])
+      ]
+    `)
   })
 })
