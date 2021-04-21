@@ -287,9 +287,9 @@ interface HealthIndication {
 }
 
 export enum HealthIndicatorUnit {
-  Pvalue = 'P-Value',
-  Ratio = 'Ratio',
-  Days = 'Days',
+  Pvalue = 'p-value',
+  Ratio = 'ratio',
+  Days = 'days',
 }
 
 /**
@@ -606,7 +606,7 @@ export function getExperimentHealthIndicators(experiment: ExperimentFull): Healt
   const indicatorDefinitions = [
     {
       name: 'Experiment Run Time',
-      value: Experiments.getExperimentRunHours(experiment),
+      value: Experiments.getExperimentRunHours(experiment) / 24,
       unit: HealthIndicatorUnit.Days,
       link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time',
       indicationBrackets: [

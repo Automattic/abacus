@@ -584,7 +584,7 @@ describe('getExperimentParticipantStatHealthIndicators', () => {
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated",
           "name": "Assignment distribution",
-          "unit": "P-Value",
+          "unit": "p-value",
           "value": 0.000011583130623216142,
         },
         Object {
@@ -595,7 +595,7 @@ describe('getExperimentParticipantStatHealthIndicators', () => {
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated",
           "name": "Assignment distribution without crossovers and spammers",
-          "unit": "P-Value",
+          "unit": "p-value",
           "value": 0.000011583130623216142,
         },
         Object {
@@ -606,7 +606,7 @@ describe('getExperimentParticipantStatHealthIndicators', () => {
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch",
           "name": "Assignment distribution of exposed participants",
-          "unit": "P-Value",
+          "unit": "p-value",
           "value": 0.026856695507524453,
         },
         Object {
@@ -617,7 +617,7 @@ describe('getExperimentParticipantStatHealthIndicators', () => {
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers",
           "name": "Ratio of crossovers to assigned",
-          "unit": "Ratio",
+          "unit": "ratio",
           "value": 0.3076923076923077,
         },
         Object {
@@ -628,7 +628,7 @@ describe('getExperimentParticipantStatHealthIndicators', () => {
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers",
           "name": "Ratio of spammers to assigned",
-          "unit": "Ratio",
+          "unit": "ratio",
           "value": 0.34615384615384615,
         },
       ]
@@ -673,7 +673,7 @@ describe('getExperimentParticipantStatHealthIndicators', () => {
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated",
           "name": "Assignment distribution",
-          "unit": "P-Value",
+          "unit": "p-value",
           "value": 1,
         },
         Object {
@@ -684,7 +684,7 @@ describe('getExperimentParticipantStatHealthIndicators', () => {
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated",
           "name": "Assignment distribution without crossovers and spammers",
-          "unit": "P-Value",
+          "unit": "p-value",
           "value": 1,
         },
         Object {
@@ -695,7 +695,7 @@ describe('getExperimentParticipantStatHealthIndicators', () => {
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers",
           "name": "Ratio of crossovers to assigned",
-          "unit": "Ratio",
+          "unit": "ratio",
           "value": NaN,
         },
         Object {
@@ -706,7 +706,7 @@ describe('getExperimentParticipantStatHealthIndicators', () => {
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers",
           "name": "Ratio of spammers to assigned",
-          "unit": "Ratio",
+          "unit": "ratio",
           "value": NaN,
         },
       ]
@@ -756,7 +756,7 @@ describe('getExperimentAnalysesHealthIndicators', () => {
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision",
           "name": "Kruschke Precision (CI to ROPE ratio)",
-          "unit": "Ratio",
+          "unit": "ratio",
           "value": 25,
         },
       ]
@@ -853,7 +853,7 @@ describe('getExperimentHealthIndicators', () => {
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time",
           "name": "Experiment Run Time",
-          "unit": "Days",
+          "unit": "days",
           "value": 0,
         },
       ]
