@@ -99,6 +99,9 @@ interface CountsSet {
   exposed: number
 }
 
+/**
+ * Get a participant count set for a specific participant stats key.
+ */
 function getParticipantCountsSetForParticipantStatsKey(
   participantStatsKey: string,
   analysesByStrategy: AnalysesByStrategy,
@@ -330,6 +333,10 @@ function getIndicationFromBrackets(sortedBracketsMaxAsc: IndicationBracket[], va
   }
 }
 
+interface IndicatorDefinition extends Omit<HealthIndicator, 'indication'> {
+  indicationBrackets: Array<IndicationBracket>
+}
+
 /**
  * Returns indicators from experimentParticipantStats.
  */
@@ -357,10 +364,6 @@ export function getExperimentParticipantHealthIndicators(
       ),
     }),
   )
-
-  interface IndicatorDefinition extends Omit<HealthIndicator, 'indication'> {
-    indicationBrackets: Array<IndicationBracket>
-  }
 
   const indicatorDefinitions: IndicatorDefinition[] = []
 
@@ -528,15 +531,14 @@ export function getExperimentParticipantHealthIndicators(
   }))
 }
 
+/**
+ * Get experiment health indicators for an set of analyses.
+ */
 export function getExperimentAnalysesHealthIndicators(
   experiment: ExperimentFull,
   analysesByStrategy: Record<AnalysisStrategy, Analysis>,
   strategy: AnalysisStrategy,
 ): HealthIndicator[] {
-  interface IndicatorDefinition extends Omit<HealthIndicator, 'indication'> {
-    indicationBrackets: Array<IndicationBracket>
-  }
-
   const analysis = analysesByStrategy[strategy]
   const metricAssignment = experiment.metricAssignments.find(
     (metricAssignment) => metricAssignment.metricAssignmentId === analysis.metricAssignmentId,
@@ -549,39 +551,39 @@ export function getExperimentAnalysesHealthIndicators(
     return []
   }
 
-  const indicatorDefinitions: IndicatorDefinition[] = []
-
   const diffCiWidth = Math.abs(analysis.metricEstimates.diff.top - analysis.metricEstimates.diff.bottom)
   const ropeWidth = metricAssignment.minDifference * 2
-  indicatorDefinitions.push({
-    name: 'Kruschke Precision (CI to ROPE ratio)',
-    value: diffCiWidth / ropeWidth,
-    unit: HealthIndicatorUnit.Ratio,
-    link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio',
-    indicationBrackets: [
-      {
-        max: 0.8,
-        indication: {
-          code: HealthIndicationCode.Nominal,
-          severity: HealthIndicationSeverity.Clear,
+  const indicatorDefinitions = [
+    {
+      name: 'Kruschke Precision (CI to ROPE ratio)',
+      value: diffCiWidth / ropeWidth,
+      unit: HealthIndicatorUnit.Ratio,
+      link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio',
+      indicationBrackets: [
+        {
+          max: 0.8,
+          indication: {
+            code: HealthIndicationCode.Nominal,
+            severity: HealthIndicationSeverity.Ok,
+          },
         },
-      },
-      {
-        max: 1.5,
-        indication: {
-          code: HealthIndicationCode.PossibleIssue,
-          severity: HealthIndicationSeverity.Warning,
+        {
+          max: 1.5,
+          indication: {
+            code: HealthIndicationCode.High,
+            severity: HealthIndicationSeverity.Warning,
+          },
         },
-      },
-      {
-        max: Infinity,
-        indication: {
-          code: HealthIndicationCode.ProbableIssue,
-          severity: HealthIndicationSeverity.Error,
+        {
+          max: Infinity,
+          indication: {
+            code: HealthIndicationCode.VeryHigh,
+            severity: HealthIndicationSeverity.Error,
+          },
         },
-      },
-    ],
-  })
+      ],
+    },
+  ]
 
   return indicatorDefinitions.map(({ value, indicationBrackets, ...rest }) => ({
     value,
