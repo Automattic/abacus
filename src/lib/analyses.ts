@@ -394,7 +394,7 @@ export function getExperimentParticipantHealthIndicators(
       ],
     },
     {
-      name: 'Assignment without crossovers and spammers distribution',
+      name: 'Assignment distribution without crossovers and spammers',
       value: minVariationProbabilities.assignedDistributionMatchingAllocated,
       unit: HealthIndicatorUnit.Pvalue,
       link:
@@ -427,7 +427,7 @@ export function getExperimentParticipantHealthIndicators(
 
   if (experimentParticipantStats.ratios.overall.exposedToAssigned) {
     indicatorDefinitions.push({
-      name: 'Exposure distribution',
+      name: 'Assignment distribution of exposed participants',
       value: minVariationProbabilities.exposedDistributionMatchingAllocated,
       unit: HealthIndicatorUnit.Pvalue,
       link:
