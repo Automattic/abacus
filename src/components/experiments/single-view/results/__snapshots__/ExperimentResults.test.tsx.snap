@@ -455,7 +455,60 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
                   target="_blank"
                 >
-                  Assignment distribution matching allocated
+                  Assignment distribution
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <span
+                  class="makeStyles-tooltip-31"
+                  title="The smaller the p-value the more likely there is an issue."
+                >
+                  p-value
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                1.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityOk-28 makeStyles-monospace-25"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                0.05 &lt; x ≤ 1
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated"
+                  target="_blank"
+                >
+                  Assignment distribution without crossovers and spammers
                 </a>
               </td>
               <td
@@ -508,60 +561,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
                   target="_blank"
                 >
-                  Exposure event distribution matching allocated
-                </a>
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
-                scope="row"
-              >
-                <span
-                  class="makeStyles-tooltip-31"
-                  title="The smaller the p-value the more likely there is an issue."
-                >
-                  p-value
-                </span>
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
-                scope="row"
-              >
-                1.0000
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body"
-                scope="row"
-              >
-                <span />
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityOk-28 makeStyles-monospace-25"
-                scope="row"
-              >
-                <span>
-                  nominal
-                </span>
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
-                scope="row"
-              >
-                0.05 &lt; x ≤ 1
-              </td>
-            </tr>
-            <tr
-              class="MuiTableRow-root"
-            >
-              <td
-                class="MuiTableCell-root MuiTableCell-body"
-                scope="row"
-              >
-                <a
-                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
-                  target="_blank"
-                >
-                  Spammer distribution matching allocated
+                  Assignment distribution of exposed participants
                 </a>
               </td>
               <td
@@ -614,7 +614,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
                   target="_blank"
                 >
-                  Total crossovers
+                  Ratio of crossovers to assigned
                 </a>
               </td>
               <td
@@ -664,7 +664,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
                   target="_blank"
                 >
-                  Total spammers
+                  Ratio of spammers to assigned
                 </a>
               </td>
               <td
@@ -1586,7 +1586,60 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
                   target="_blank"
                 >
-                  Assignment distribution matching allocated
+                  Assignment distribution
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <span
+                  class="makeStyles-tooltip-74"
+                  title="The smaller the p-value the more likely there is an issue."
+                >
+                  p-value
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                1.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityOk-71 makeStyles-monospace-68"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                0.05 &lt; x ≤ 1
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated"
+                  target="_blank"
+                >
+                  Assignment distribution without crossovers and spammers
                 </a>
               </td>
               <td
@@ -1639,60 +1692,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
                   target="_blank"
                 >
-                  Exposure event distribution matching allocated
-                </a>
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
-                scope="row"
-              >
-                <span
-                  class="makeStyles-tooltip-74"
-                  title="The smaller the p-value the more likely there is an issue."
-                >
-                  p-value
-                </span>
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
-                scope="row"
-              >
-                1.0000
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body"
-                scope="row"
-              >
-                <span />
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityOk-71 makeStyles-monospace-68"
-                scope="row"
-              >
-                <span>
-                  nominal
-                </span>
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
-                scope="row"
-              >
-                0.05 &lt; x ≤ 1
-              </td>
-            </tr>
-            <tr
-              class="MuiTableRow-root"
-            >
-              <td
-                class="MuiTableCell-root MuiTableCell-body"
-                scope="row"
-              >
-                <a
-                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
-                  target="_blank"
-                >
-                  Spammer distribution matching allocated
+                  Assignment distribution of exposed participants
                 </a>
               </td>
               <td
@@ -1745,7 +1745,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
                   target="_blank"
                 >
-                  Total crossovers
+                  Ratio of crossovers to assigned
                 </a>
               </td>
               <td
@@ -1775,7 +1775,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 scope="row"
               >
                 <span>
-                  probable issue
+                  very high
                 </span>
               </td>
               <td
@@ -1797,7 +1797,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
                   target="_blank"
                 >
-                  Total spammers
+                  Ratio of spammers to assigned
                 </a>
               </td>
               <td
@@ -1827,7 +1827,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 scope="row"
               >
                 <span>
-                  possible issue
+                  high
                 </span>
               </td>
               <td
@@ -2929,7 +2929,60 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
                   target="_blank"
                 >
-                  Assignment distribution matching allocated
+                  Assignment distribution
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <span
+                  class="makeStyles-tooltip-117"
+                  title="The smaller the p-value the more likely there is an issue."
+                >
+                  p-value
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                1.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityOk-114 makeStyles-monospace-111"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                0.05 &lt; x ≤ 1
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated"
+                  target="_blank"
+                >
+                  Assignment distribution without crossovers and spammers
                 </a>
               </td>
               <td
@@ -2982,60 +3035,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
                   target="_blank"
                 >
-                  Exposure event distribution matching allocated
-                </a>
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
-                scope="row"
-              >
-                <span
-                  class="makeStyles-tooltip-117"
-                  title="The smaller the p-value the more likely there is an issue."
-                >
-                  p-value
-                </span>
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
-                scope="row"
-              >
-                1.0000
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body"
-                scope="row"
-              >
-                <span />
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityOk-114 makeStyles-monospace-111"
-                scope="row"
-              >
-                <span>
-                  nominal
-                </span>
-              </td>
-              <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
-                scope="row"
-              >
-                0.05 &lt; x ≤ 1
-              </td>
-            </tr>
-            <tr
-              class="MuiTableRow-root"
-            >
-              <td
-                class="MuiTableCell-root MuiTableCell-body"
-                scope="row"
-              >
-                <a
-                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
-                  target="_blank"
-                >
-                  Spammer distribution matching allocated
+                  Assignment distribution of exposed participants
                 </a>
               </td>
               <td
@@ -3088,7 +3088,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
                   target="_blank"
                 >
-                  Total crossovers
+                  Ratio of crossovers to assigned
                 </a>
               </td>
               <td
@@ -3118,7 +3118,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 scope="row"
               >
                 <span>
-                  probable issue
+                  very high
                 </span>
               </td>
               <td
@@ -3140,7 +3140,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
                   target="_blank"
                 >
-                  Total spammers
+                  Ratio of spammers to assigned
                 </a>
               </td>
               <td
@@ -3170,7 +3170,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 scope="row"
               >
                 <span>
-                  possible issue
+                  high
                 </span>
               </td>
               <td

@@ -359,12 +359,14 @@ describe('getParticipantCounts', () => {
           "1": Object {
             "assigned": 40,
             "assignedCrossovers": 5,
+            "assignedNoSpammersNoCrossovers": 25,
             "assignedSpammers": 0,
             "exposed": 15,
           },
           "2": Object {
             "assigned": 70,
             "assignedCrossovers": 15,
+            "assignedNoSpammersNoCrossovers": 35,
             "assignedSpammers": 25,
             "exposed": 25,
           },
@@ -372,6 +374,7 @@ describe('getParticipantCounts', () => {
         "total": Object {
           "assigned": 100,
           "assignedCrossovers": 10,
+          "assignedNoSpammersNoCrossovers": 60,
           "assignedSpammers": 15,
           "exposed": 40,
         },
@@ -396,12 +399,14 @@ describe('getParticipantCounts', () => {
           "1": Object {
             "assigned": 0,
             "assignedCrossovers": 0,
+            "assignedNoSpammersNoCrossovers": 0,
             "assignedSpammers": 0,
             "exposed": 0,
           },
           "2": Object {
             "assigned": 0,
             "assignedCrossovers": 0,
+            "assignedNoSpammersNoCrossovers": 0,
             "assignedSpammers": 0,
             "exposed": 0,
           },
@@ -409,6 +414,7 @@ describe('getParticipantCounts', () => {
         "total": Object {
           "assigned": 0,
           "assignedCrossovers": 0,
+          "assignedNoSpammersNoCrossovers": 0,
           "assignedSpammers": 0,
           "exposed": 0,
         },
@@ -471,11 +477,13 @@ describe('getExperimentParticipantStats', () => {
           "byVariationId": Object {
             "1": Object {
               "assignedDistributionMatchingAllocated": 0.000011583130623216142,
+              "assignedNoSpammersNoCrossoversDistributionMatchingAllocated": 0.19670560245894686,
               "assignedSpammersDistributionMatchingAllocated": 1.970346108493004e-11,
               "exposedDistributionMatchingAllocated": 0.11384629800665802,
             },
             "2": Object {
               "assignedDistributionMatchingAllocated": 0.3804551252503884,
+              "assignedNoSpammersNoCrossoversDistributionMatchingAllocated": 0.19670560245894686,
               "assignedSpammersDistributionMatchingAllocated": 0.4560565402502559,
               "exposedDistributionMatchingAllocated": 0.026856695507524453,
             },
@@ -486,6 +494,7 @@ describe('getExperimentParticipantStats', () => {
             "1": Object {
               "assignedCrossoversToAssigned": 0.125,
               "assignedCrossoversToTotalAssignedCrossovers": 0.125,
+              "assignedNoSpammersNoCrossoversToAssigned": 0.625,
               "assignedSpammersToAssigned": 0,
               "assignedSpammersToTotalAssignedSpammers": 0,
               "assignedToTotalAssigned": 0.3076923076923077,
@@ -495,6 +504,7 @@ describe('getExperimentParticipantStats', () => {
             "2": Object {
               "assignedCrossoversToAssigned": 0.21428571428571427,
               "assignedCrossoversToTotalAssignedCrossovers": 0.375,
+              "assignedNoSpammersNoCrossoversToAssigned": 0.5,
               "assignedSpammersToAssigned": 0.35714285714285715,
               "assignedSpammersToTotalAssignedSpammers": 0.5555555555555556,
               "assignedToTotalAssigned": 0.5384615384615384,
@@ -504,6 +514,7 @@ describe('getExperimentParticipantStats', () => {
           },
           "overall": Object {
             "assignedCrossoversToAssigned": 0.3076923076923077,
+            "assignedNoSpammersNoCrossoversToAssigned": 0.46153846153846156,
             "assignedSpammersToAssigned": 0.34615384615384615,
             "exposedToAssigned": 0.3076923076923077,
           },
@@ -572,7 +583,18 @@ describe('getExperimentHealthIndicators', () => {
             "severity": "Error",
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated",
-          "name": "Assignment distribution matching allocated",
+          "name": "Assignment distribution",
+          "unit": "P-Value",
+          "value": 0.000011583130623216142,
+        },
+        Object {
+          "indication": Object {
+            "code": "probable issue",
+            "reason": "−∞ < x ≤ 0.001",
+            "severity": "Error",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated",
+          "name": "Assignment distribution without crossovers and spammers",
           "unit": "P-Value",
           "value": 0.000011583130623216142,
         },
@@ -583,42 +605,109 @@ describe('getExperimentHealthIndicators', () => {
             "severity": "Warning",
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch",
-          "name": "Exposure event distribution matching allocated",
+          "name": "Assignment distribution of exposed participants",
           "unit": "P-Value",
           "value": 0.026856695507524453,
         },
         Object {
           "indication": Object {
-            "code": "probable issue",
-            "reason": "−∞ < x ≤ 0.001",
-            "severity": "Error",
-          },
-          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated",
-          "name": "Spammer distribution matching allocated",
-          "unit": "P-Value",
-          "value": 1.970346108493004e-11,
-        },
-        Object {
-          "indication": Object {
-            "code": "probable issue",
+            "code": "very high",
             "reason": "0.05 < x ≤ 1",
             "severity": "Error",
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers",
-          "name": "Total crossovers",
+          "name": "Ratio of crossovers to assigned",
           "unit": "Ratio",
           "value": 0.3076923076923077,
         },
         Object {
           "indication": Object {
-            "code": "probable issue",
+            "code": "very high",
             "reason": "0.3 < x ≤ 1",
             "severity": "Error",
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers",
-          "name": "Total spammers",
+          "name": "Ratio of spammers to assigned",
           "unit": "Ratio",
           "value": 0.34615384615384615,
+        },
+      ]
+    `)
+  })
+
+  it('should handle bad values gracefully', () => {
+    expect(
+      Analyses.getExperimentParticipantHealthIndicators(
+        Analyses.getExperimentParticipantStats(
+          Fixtures.createExperimentFull({
+            variations: [
+              { variationId: 1, allocatedPercentage: 50, isDefault: true, name: 'variation_name_1' },
+              { variationId: 2, allocatedPercentage: 50, isDefault: false, name: 'variation_name_2' },
+            ],
+          }),
+          {
+            [AnalysisStrategy.IttPure]: Fixtures.createAnalysis({
+              participantStats: {
+                total: 0,
+                variation_1: 0,
+                variation_2: 0,
+              },
+            }),
+            [AnalysisStrategy.PpNaive]: Fixtures.createAnalysis({
+              participantStats: {
+                total: 0,
+                variation_1: 0,
+                variation_2: 0,
+              },
+            }),
+          },
+        ),
+      ),
+    ).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "indication": Object {
+            "code": "nominal",
+            "reason": "0.05 < x ≤ 1",
+            "severity": "Ok",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated",
+          "name": "Assignment distribution",
+          "unit": "P-Value",
+          "value": 1,
+        },
+        Object {
+          "indication": Object {
+            "code": "nominal",
+            "reason": "0.05 < x ≤ 1",
+            "severity": "Ok",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated",
+          "name": "Assignment distribution without crossovers and spammers",
+          "unit": "P-Value",
+          "value": 1,
+        },
+        Object {
+          "indication": Object {
+            "code": "value error",
+            "reason": "Unexpected value",
+            "severity": "Error",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers",
+          "name": "Ratio of crossovers to assigned",
+          "unit": "Ratio",
+          "value": NaN,
+        },
+        Object {
+          "indication": Object {
+            "code": "value error",
+            "reason": "Unexpected value",
+            "severity": "Error",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers",
+          "name": "Ratio of spammers to assigned",
+          "unit": "Ratio",
+          "value": NaN,
         },
       ]
     `)
