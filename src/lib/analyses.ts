@@ -536,10 +536,13 @@ export function getExperimentParticipantHealthIndicators(
  */
 export function getExperimentAnalysesHealthIndicators(
   experiment: ExperimentFull,
-  analysesByStrategy: Record<AnalysisStrategy, Analysis>,
+  analysesByStrategy: Record<AnalysisStrategy, Analysis | undefined>,
   strategy: AnalysisStrategy,
 ): HealthIndicator[] {
   const analysis = analysesByStrategy[strategy]
+  if (!analysis) {
+    return []
+  }
   const metricAssignment = experiment.metricAssignments.find(
     (metricAssignment) => metricAssignment.metricAssignmentId === analysis.metricAssignmentId,
   )

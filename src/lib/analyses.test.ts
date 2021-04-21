@@ -786,6 +786,27 @@ describe('getExperimentAnalysesHealthIndicators', () => {
     ).toEqual([])
   })
 
+  it('should return no indicators for absent analysis', () => {
+    expect(
+      Analyses.getExperimentAnalysesHealthIndicators(
+        Fixtures.createExperimentFull({
+          variations: [
+            { variationId: 1, allocatedPercentage: 50, isDefault: true, name: 'variation_name_1' },
+            { variationId: 2, allocatedPercentage: 50, isDefault: false, name: 'variation_name_2' },
+          ],
+        }),
+        {
+          [AnalysisStrategy.IttPure]: Fixtures.createAnalysis({}),
+          [AnalysisStrategy.MittNoCrossovers]: Fixtures.createAnalysis({}),
+          [AnalysisStrategy.MittNoSpammers]: Fixtures.createAnalysis({}),
+          [AnalysisStrategy.MittNoSpammersNoCrossovers]: Fixtures.createAnalysis({}),
+          [AnalysisStrategy.PpNaive]: undefined,
+        },
+        AnalysisStrategy.PpNaive,
+      ),
+    ).toEqual([])
+  })
+
   it('should throw for a missing metric assignment', () => {
     expect(() =>
       Analyses.getExperimentAnalysesHealthIndicators(
