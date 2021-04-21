@@ -543,7 +543,6 @@ export function getExperimentAnalysesHealthIndicators(
   const metricAssignment = experiment.metricAssignments.find(
     (metricAssignment) => metricAssignment.metricAssignmentId === analysis.metricAssignmentId,
   )
-  // istanbul ignore next; shouldn't occur
   if (!metricAssignment) {
     throw new Error('Missing metricAssignment')
   }

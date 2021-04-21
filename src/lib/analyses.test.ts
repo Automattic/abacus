@@ -746,19 +746,21 @@ describe('getExperimentAnalysesHealthIndicators', () => {
         },
         AnalysisStrategy.PpNaive,
       ),
-    ).toEqual([
-      {
-        indication: {
-          code: 'ProbableIssue',
-          reason: '1.5 < x ≤ ∞',
-          severity: 'Error',
+    ).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "indication": Object {
+            "code": "very high",
+            "reason": "1.5 < x ≤ ∞",
+            "severity": "Error",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio",
+          "name": "Kruschke Precision (CI to ROPE ratio)",
+          "unit": "Ratio",
+          "value": 25,
         },
-        link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio',
-        name: 'Kruschke Precision (CI to ROPE ratio)',
-        unit: 'Ratio',
-        value: 25,
-      },
-    ])
+      ]
+    `)
   })
 
   it('should return no indicators for absent metricEstimates', () => {
@@ -782,5 +784,29 @@ describe('getExperimentAnalysesHealthIndicators', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual([])
+  })
+
+  it('should throw for a missing metric assignment', () => {
+    expect(() =>
+      Analyses.getExperimentAnalysesHealthIndicators(
+        Fixtures.createExperimentFull({
+          metricAssignments: [],
+          variations: [
+            { variationId: 1, allocatedPercentage: 50, isDefault: true, name: 'variation_name_1' },
+            { variationId: 2, allocatedPercentage: 50, isDefault: false, name: 'variation_name_2' },
+          ],
+        }),
+        {
+          [AnalysisStrategy.IttPure]: Fixtures.createAnalysis({}),
+          [AnalysisStrategy.MittNoCrossovers]: Fixtures.createAnalysis({}),
+          [AnalysisStrategy.MittNoSpammers]: Fixtures.createAnalysis({}),
+          [AnalysisStrategy.MittNoSpammersNoCrossovers]: Fixtures.createAnalysis({}),
+          [AnalysisStrategy.PpNaive]: Fixtures.createAnalysis({
+            metricEstimates: null,
+          }),
+        },
+        AnalysisStrategy.PpNaive,
+      ),
+    ).toThrowErrorMatchingInlineSnapshot(`"Missing metricAssignment"`)
   })
 })
