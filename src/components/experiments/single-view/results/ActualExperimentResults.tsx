@@ -89,11 +89,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     [indicationSeverityClassSymbol(Analyses.HealthIndicationSeverity.Ok)]: {},
     [indicationSeverityClassSymbol(Analyses.HealthIndicationSeverity.Warning)]: {
-      background: '#fffad6',
+      borderTopWidth: 12,
+      borderTopStyle: 'solid',
+      borderTopColor: '#ffa500',
     },
     [indicationSeverityClassSymbol(Analyses.HealthIndicationSeverity.Error)]: {
-      background: theme.palette.error.main,
-      color: theme.palette.error.contrastText,
+      borderTopWidth: 8,
+      borderTopStyle: 'solid',
+      borderTopColor: theme.palette.error.main,
     },
     participantsPlotPaper: {
       padding: theme.spacing(4, 4, 2),
@@ -352,14 +355,7 @@ export default function ActualExperimentResults({
             href='#health-report'
           >
             <div className={classes.summaryStats}>
-              <Typography
-                variant='h3'
-                className={clsx(
-                  classes.summaryStatsStat,
-                  classes[indicationSeverityClassSymbol(maxIndicationSeverity)],
-                )}
-                color='primary'
-              >
+              <Typography variant='h3' className={clsx(classes.summaryStatsStat)} color='primary'>
                 {maxIndicationSeverityMessage[maxIndicationSeverity]}
               </Typography>
               <Typography variant='subtitle1'>

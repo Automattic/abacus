@@ -69,7 +69,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
         >
           <div>
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-9 makeStyles-indicationSeverityOk-11 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-9 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               No issues detected
             </h3>
@@ -1197,7 +1197,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         >
           <div>
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-52 makeStyles-indicationSeverityError-56 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-52 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               Serious issues
             </h3>
@@ -2540,7 +2540,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         >
           <div>
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-95 makeStyles-indicationSeverityError-99 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-95 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               Serious issues
             </h3>
