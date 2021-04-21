@@ -82,7 +82,26 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
               href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
             >
-              Assignment distribution matching allocated
+              Assignment distribution
+            </a>
+          </div>
+          <div
+            class=""
+            title="There is a 100.00% 
+              probability that this result occurred by random chance."
+          >
+            <span
+              aria-label="Nominal"
+              role="img"
+            >
+              🆗
+            </span>
+             
+            <a
+              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated"
+            >
+              Assignment distribution without crossovers and spammers
             </a>
           </div>
           <div
@@ -101,26 +120,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
               href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
             >
-              Exposure event distribution matching allocated
-            </a>
-          </div>
-          <div
-            class=""
-            title="There is a 100.00% 
-              probability that this result occurred by random chance."
-          >
-            <span
-              aria-label="Nominal"
-              role="img"
-            >
-              🆗
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
-            >
-              Spammer distribution matching allocated
+              Assignment distribution of exposed participants
             </a>
           </div>
           <div
@@ -138,7 +138,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
               href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
             >
-              Total crossovers
+              Ratio of crossovers to assigned
             </a>
           </div>
           <div
@@ -156,7 +156,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
               href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
             >
-              Total spammers
+              Ratio of spammers to assigned
             </a>
           </div>
         </div>
@@ -958,7 +958,26 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
               href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
             >
-              Assignment distribution matching allocated
+              Assignment distribution
+            </a>
+          </div>
+          <div
+            class=""
+            title="There is a 100.00% 
+              probability that this result occurred by random chance."
+          >
+            <span
+              aria-label="Nominal"
+              role="img"
+            >
+              🆗
+            </span>
+             
+            <a
+              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated"
+            >
+              Assignment distribution without crossovers and spammers
             </a>
           </div>
           <div
@@ -977,26 +996,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
               href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
             >
-              Exposure event distribution matching allocated
-            </a>
-          </div>
-          <div
-            class=""
-            title="There is a 100.00% 
-              probability that this result occurred by random chance."
-          >
-            <span
-              aria-label="Nominal"
-              role="img"
-            >
-              🆗
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
-            >
-              Spammer distribution matching allocated
+              Assignment distribution of exposed participants
             </a>
           </div>
           <div
@@ -1014,7 +1014,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
               href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
             >
-              Total crossovers
+              Ratio of crossovers to assigned
             </a>
           </div>
           <div
@@ -1032,7 +1032,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
               href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
             >
-              Total spammers
+              Ratio of spammers to assigned
             </a>
           </div>
         </div>
@@ -2045,7 +2045,26 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
               href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
             >
-              Assignment distribution matching allocated
+              Assignment distribution
+            </a>
+          </div>
+          <div
+            class=""
+            title="There is a 100.00% 
+              probability that this result occurred by random chance."
+          >
+            <span
+              aria-label="Nominal"
+              role="img"
+            >
+              🆗
+            </span>
+             
+            <a
+              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated"
+            >
+              Assignment distribution without crossovers and spammers
             </a>
           </div>
           <div
@@ -2064,26 +2083,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
               href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
             >
-              Exposure event distribution matching allocated
-            </a>
-          </div>
-          <div
-            class=""
-            title="There is a 100.00% 
-              probability that this result occurred by random chance."
-          >
-            <span
-              aria-label="Nominal"
-              role="img"
-            >
-              🆗
-            </span>
-             
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-              href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#spammer-distribution-matching-allocated"
-            >
-              Spammer distribution matching allocated
+              Assignment distribution of exposed participants
             </a>
           </div>
           <div
@@ -2101,7 +2101,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
               href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
             >
-              Total crossovers
+              Ratio of crossovers to assigned
             </a>
           </div>
           <div
@@ -2119,7 +2119,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
               href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
             >
-              Total spammers
+              Ratio of spammers to assigned
             </a>
           </div>
         </div>
