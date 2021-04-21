@@ -90,7 +90,7 @@ export default function HealthIndicatorTable({
                     <span className={classes.tooltip}>p-value</span>
                   </Tooltip>
                 ) : (
-                  <span>ratio</span>
+                  <span>{indicator.unit}</span>
                 )}
               </TableCell>
               <TableCell scope='row' className={clsx(classes.monospace, classes.deemphasized)}>

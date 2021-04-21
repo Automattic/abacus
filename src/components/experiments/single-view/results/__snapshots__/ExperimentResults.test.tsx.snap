@@ -772,7 +772,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 scope="row"
               >
                 <span>
-                  ratio
+                  days
                 </span>
               </td>
               <td
@@ -2009,7 +2009,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 scope="row"
               >
                 <span>
-                  ratio
+                  days
                 </span>
               </td>
               <td
@@ -3454,7 +3454,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 scope="row"
               >
                 <span>
-                  ratio
+                  days
                 </span>
               </td>
               <td
