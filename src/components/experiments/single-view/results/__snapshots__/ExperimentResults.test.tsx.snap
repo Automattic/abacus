@@ -702,6 +702,56 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 −∞ &lt; x ≤ 0.075
               </td>
             </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio"
+                  target="_blank"
+                >
+                  Kruschke Precision (CI to ROPE ratio)
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <span>
+                  ratio
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                0.1000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityOk-28 makeStyles-monospace-25"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                −∞ &lt; x ≤ 0.8
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1835,6 +1885,56 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 scope="row"
               >
                 0.075 &lt; x ≤ 0.3
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio"
+                  target="_blank"
+                >
+                  Kruschke Precision (CI to ROPE ratio)
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <span>
+                  ratio
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                0.1000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityOk-71 makeStyles-monospace-68"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                −∞ &lt; x ≤ 0.8
               </td>
             </tr>
           </tbody>
@@ -3178,6 +3278,56 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 scope="row"
               >
                 0.075 &lt; x ≤ 0.3
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio"
+                  target="_blank"
+                >
+                  Kruschke Precision (CI to ROPE ratio)
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <span>
+                  ratio
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                0.1000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span />
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityOk-114 makeStyles-monospace-111"
+                scope="row"
+              >
+                <span>
+                  nominal
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                −∞ &lt; x ≤ 0.8
               </td>
             </tr>
           </tbody>

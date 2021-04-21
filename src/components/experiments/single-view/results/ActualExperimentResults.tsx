@@ -198,7 +198,10 @@ export default function ActualExperimentResults({
     experiment,
     primaryMetricLatestAnalysesByStrategy,
   )
-  const experimentHealthIndicators = Analyses.getExperimentParticipantHealthIndicators(experimentParticipantStats)
+  const experimentHealthIndicators = [
+    ...Analyses.getExperimentParticipantHealthIndicators(experimentParticipantStats),
+    ...Analyses.getExperimentAnalysesHealthIndicators(experiment, primaryMetricLatestAnalysesByStrategy, strategy),
+  ]
 
   const maxIndicationSeverity = experimentHealthIndicators
     .map(({ indication: { severity } }) => severity)
