@@ -64,14 +64,14 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
           </div>
         </div>
         <a
-          class="MuiPaper-root makeStyles-summaryHealthPaper-10 makeStyles-indicationSeverityOk-11 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryHealthPaper-10 makeStyles-indicationSeverityError-13 MuiPaper-elevation1 MuiPaper-rounded"
           href="#health-report"
         >
           <div>
             <h3
               class="MuiTypography-root makeStyles-summaryStatsStat-9 MuiTypography-h3 MuiTypography-colorPrimary"
             >
-              No issues detected
+              Serious issues
             </h3>
             <h6
               class="MuiTypography-root MuiTypography-subtitle1"
@@ -711,7 +711,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
               >
                 <a
                   class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision"
                   target="_blank"
                 >
                   Kruschke Precision (CI to ROPE ratio)
@@ -750,6 +750,58 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 scope="row"
               >
                 −∞ &lt; x ≤ 0.8
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time"
+                  target="_blank"
+                >
+                  Experiment Run Time
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <span>
+                  ratio
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                0.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span>
+                  🆘
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityError-30 makeStyles-monospace-25"
+                scope="row"
+              >
+                <span>
+                  very low
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                scope="row"
+              >
+                −∞ &lt; x ≤ 3
               </td>
             </tr>
           </tbody>
@@ -1896,7 +1948,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               >
                 <a
                   class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision"
                   target="_blank"
                 >
                   Kruschke Precision (CI to ROPE ratio)
@@ -1935,6 +1987,58 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 scope="row"
               >
                 −∞ &lt; x ≤ 0.8
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time"
+                  target="_blank"
+                >
+                  Experiment Run Time
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <span>
+                  ratio
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                0.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span>
+                  🆘
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityError-73 makeStyles-monospace-68"
+                scope="row"
+              >
+                <span>
+                  very low
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                scope="row"
+              >
+                −∞ &lt; x ≤ 3
               </td>
             </tr>
           </tbody>
@@ -3289,7 +3393,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               >
                 <a
                   class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision"
                   target="_blank"
                 >
                   Kruschke Precision (CI to ROPE ratio)
@@ -3328,6 +3432,58 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 scope="row"
               >
                 −∞ &lt; x ≤ 0.8
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time"
+                  target="_blank"
+                >
+                  Experiment Run Time
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <span>
+                  ratio
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                0.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span>
+                  🆘
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityError-116 makeStyles-monospace-111"
+                scope="row"
+              >
+                <span>
+                  very low
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                scope="row"
+              >
+                −∞ &lt; x ≤ 3
               </td>
             </tr>
           </tbody>

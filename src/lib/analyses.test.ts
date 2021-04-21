@@ -754,7 +754,7 @@ describe('getExperimentAnalysesHealthIndicators', () => {
             "reason": "1.5 < x ≤ ∞",
             "severity": "Error",
           },
-          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio",
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision",
           "name": "Kruschke Precision (CI to ROPE ratio)",
           "unit": "Ratio",
           "value": 25,
@@ -829,5 +829,34 @@ describe('getExperimentAnalysesHealthIndicators', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toThrowErrorMatchingInlineSnapshot(`"Missing metricAssignment"`)
+  })
+})
+
+describe('getExperimentHealthIndicators', () => {
+  it('should work correctly', () => {
+    expect(
+      Analyses.getExperimentHealthIndicators(
+        Fixtures.createExperimentFull({
+          variations: [
+            { variationId: 1, allocatedPercentage: 50, isDefault: true, name: 'variation_name_1' },
+            { variationId: 2, allocatedPercentage: 50, isDefault: false, name: 'variation_name_2' },
+          ],
+        }),
+      ),
+    ).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "indication": Object {
+            "code": "very low",
+            "reason": "−∞ < x ≤ 3",
+            "severity": "Error",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time",
+          "name": "Experiment Run Time",
+          "unit": "Days",
+          "value": 0,
+        },
+      ]
+    `)
   })
 })
