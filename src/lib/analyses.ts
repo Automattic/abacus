@@ -2,6 +2,7 @@ import _ from 'lodash'
 
 import { binomialProbValue } from 'src/utils/math'
 
+import * as Experiments from './experiments'
 import { Analysis, AnalysisStrategy, ExperimentFull, RecommendationWarning } from './schemas'
 
 /**
@@ -288,6 +289,7 @@ interface HealthIndication {
 export enum HealthIndicatorUnit {
   Pvalue = 'P-Value',
   Ratio = 'Ratio',
+  Days = 'Days',
 }
 
 /**
@@ -560,7 +562,7 @@ export function getExperimentAnalysesHealthIndicators(
       name: 'Kruschke Precision (CI to ROPE ratio)',
       value: diffCiWidth / ropeWidth,
       unit: HealthIndicatorUnit.Ratio,
-      link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio',
+      link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision',
       indicationBrackets: [
         {
           max: 0.8,
@@ -571,6 +573,63 @@ export function getExperimentAnalysesHealthIndicators(
         },
         {
           max: 1.5,
+          indication: {
+            code: HealthIndicationCode.High,
+            severity: HealthIndicationSeverity.Warning,
+          },
+        },
+        {
+          max: Infinity,
+          indication: {
+            code: HealthIndicationCode.VeryHigh,
+            severity: HealthIndicationSeverity.Error,
+          },
+        },
+      ],
+    },
+  ]
+
+  return indicatorDefinitions.map(({ value, indicationBrackets, ...rest }) => ({
+    value,
+    indication: getIndicationFromBrackets(indicationBrackets, value),
+    ...rest,
+  }))
+}
+
+/**
+ * Get experiment health indicators for a experiment.
+ */
+export function getExperimentHealthIndicators(experiment: ExperimentFull): HealthIndicator[] {
+  const indicatorDefinitions = [
+    {
+      name: 'Experiment Run Time',
+      value: Experiments.getExperimentRunHours(experiment),
+      unit: HealthIndicatorUnit.Days,
+      link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time',
+      indicationBrackets: [
+        {
+          max: 3,
+          indication: {
+            code: HealthIndicationCode.VeryLow,
+            severity: HealthIndicationSeverity.Error,
+          },
+        },
+        {
+          max: 7,
+          indication: {
+            code: HealthIndicationCode.Low,
+            severity: HealthIndicationSeverity.Warning,
+          },
+        },
+        {
+          max: 28,
+          indication: {
+            code: HealthIndicationCode.Nominal,
+            severity: HealthIndicationSeverity.Ok,
+          },
+        },
+        {
+          max: 31,
           indication: {
             code: HealthIndicationCode.High,
             severity: HealthIndicationSeverity.Warning,
