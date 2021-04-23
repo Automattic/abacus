@@ -533,6 +533,8 @@ export function getExperimentParticipantHealthIndicators(
 
 /**
  * Get experiment health indicators for an set of analyses.
+ *
+ * @param strategy The "default" strategy to use when a single strategy is needed.
  */
 export function getExperimentAnalysesHealthIndicators(
   experiment: ExperimentFull,
