@@ -533,6 +533,7 @@ export function getExperimentParticipantHealthIndicators(
 
 /**
  * Get experiment health indicators for an set of analyses.
+ * Will be expanded to future cross-strategy indicators.
  *
  * @param strategy The "default" strategy to use when a single strategy is needed.
  */
