@@ -146,7 +146,7 @@ function AudiencePanel({
       label: 'User Type',
       value: (
         <span className={classes.monospace}>
-          {experiment.existingUsersAllowed ? 'All users (new + existing)' : 'New users only'}
+          {experiment.existingUsersAllowed ? 'All users (new + existing + anonymous)' : 'New logged-in users only'}
         </span>
       ),
     },

@@ -56,7 +56,7 @@ exports[`Empty array shows no exposure events 1`] = `
             <span
               class="makeStyles-monospace-62"
             >
-              New users only
+              New logged-in users only
             </span>
           </td>
         </tr>
@@ -350,7 +350,7 @@ exports[`Shows exposure events 1`] = `
             <span
               class="makeStyles-monospace-62"
             >
-              New users only
+              New logged-in users only
             </span>
           </td>
         </tr>
@@ -655,7 +655,7 @@ exports[`null shows no exposure events 1`] = `
             <span
               class="makeStyles-monospace-62"
             >
-              New users only
+              New logged-in users only
             </span>
           </td>
         </tr>
@@ -949,7 +949,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
             <span
               class="makeStyles-monospace-47"
             >
-              New users only
+              New logged-in users only
             </span>
           </td>
         </tr>
@@ -1325,7 +1325,7 @@ exports[`renders as expected with existing users allowed 1`] = `
             <span
               class="makeStyles-monospace-32"
             >
-              All users (new + existing)
+              All users (new + existing + anonymous)
             </span>
           </td>
         </tr>
@@ -1653,7 +1653,7 @@ exports[`renders as expected with no exclusion groups 1`] = `
             <span
               class="makeStyles-monospace-17"
             >
-              New users only
+              New logged-in users only
             </span>
           </td>
         </tr>
@@ -1955,7 +1955,7 @@ exports[`renders as expected with no segment assignments 1`] = `
             <span
               class="makeStyles-monospace-2"
             >
-              New users only
+              New logged-in users only
             </span>
           </td>
         </tr>

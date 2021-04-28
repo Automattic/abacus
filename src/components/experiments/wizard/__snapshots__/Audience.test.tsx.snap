@@ -135,7 +135,7 @@ exports[`renders as expected 1`] = `
             <span
               class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
             >
-              New users only
+              New logged-in users only
             </span>
           </label>
           <label
@@ -187,7 +187,7 @@ exports[`renders as expected 1`] = `
             <span
               class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
             >
-              All users (new + existing)
+              All users (new + existing + anonymous)
             </span>
           </label>
         </div>
@@ -832,7 +832,7 @@ exports[`renders as expected 2`] = `
             <span
               class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
             >
-              New users only
+              New logged-in users only
             </span>
           </label>
           <label
@@ -884,7 +884,7 @@ exports[`renders as expected 2`] = `
             <span
               class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
             >
-              All users (new + existing)
+              All users (new + existing + anonymous)
             </span>
           </label>
         </div>

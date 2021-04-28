@@ -488,7 +488,7 @@ exports[`renders as expected at large width 1`] = `
                 <span
                   class="makeStyles-monospace-22"
                 >
-                  New users only
+                  New logged-in users only
                 </span>
               </td>
             </tr>
@@ -1040,7 +1040,7 @@ exports[`renders as expected at small width 1`] = `
                     <span
                       class="makeStyles-monospace-57"
                     >
-                      New users only
+                      New logged-in users only
                     </span>
                   </td>
                 </tr>
@@ -1812,7 +1812,7 @@ exports[`renders as expected with conclusion data 1`] = `
                     <span
                       class="makeStyles-monospace-94"
                     >
-                      New users only
+                      New logged-in users only
                     </span>
                   </td>
                 </tr>
@@ -2688,7 +2688,7 @@ exports[`renders as expected without conclusion data 1`] = `
                     <span
                       class="makeStyles-monospace-129"
                     >
-                      New users only
+                      New logged-in users only
                     </span>
                   </td>
                 </tr>
