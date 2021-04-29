@@ -1,4 +1,4 @@
-import { Chip, Tooltip, Typography } from '@material-ui/core'
+import { Chip, Link, Tooltip, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       color: theme.palette.grey[500],
     },
     defaultLabel: {},
-    variation: {
+    tooltipped: {
       borderBottomWidth: 1,
       borderBottomStyle: 'dashed',
       borderBottomColor: theme.palette.grey[500],
@@ -100,13 +100,6 @@ function assignmentHref(variationName: string, experimentName: string) {
 })()`
 }
 
-function dangerousAssignmentLink(variationName: string, experimentName: string) {
-  return {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    __html: `<a href="${assignmentHref(variationName, experimentName)}">${variationName} - ${experimentName}</a>`,
-  }
-}
-
 /**
  * Renders the variations in tabular formation, in the order that they're given.
  *
@@ -128,6 +121,9 @@ function VariationsTable({
           <TableCell component='th' variant='head'>
             Percent
           </TableCell>
+          <TableCell component='th' variant='head'>
+            Manual&nbsp;Assignment
+          </TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -135,31 +131,42 @@ function VariationsTable({
           return (
             <TableRow key={variation.variationId}>
               <TableCell className={classes.monospace}>
+                <span>{variation.name}</span>
+                {variation.isDefault && <Chip label='Default' variant='outlined' disabled />}
+              </TableCell>
+              <TableCell className={classes.monospace}>{variation.allocatedPercentage}%</TableCell>
+              <TableCell className={classes.monospace}>
                 <Tooltip
                   interactive
                   arrow
                   placement={'left'}
                   classes={{
-                    popper: classes.tooltip,
+                    tooltip: classes.tooltip,
                   }}
                   title={
                     <>
                       <Typography color='inherit' variant='body1' gutterBottom>
-                        Drag this link to your bookmarks to make it easier to switch between active variations:
+                        <strong> Bookmarklet: </strong>
                       </Typography>
-                      <Typography
-                        color='inherit'
-                        variant='body1'
-                        dangerouslySetInnerHTML={dangerousAssignmentLink(variation.name, experimentName)}
-                      />
+                      <Typography color='inherit' variant='body1' gutterBottom>
+                        <Link href={assignmentHref(variation.name, experimentName)}>
+                          {variation.name} - {experimentName}
+                        </Link>
+                      </Typography>
+                      <Typography color='inherit' variant='body1' gutterBottom>
+                        <strong>Instructions:</strong>
+                        <ol>
+                          <li> Drag the above link to your bookmarks or bookmarks bar. </li>
+                          <li> Click the bookmark when you are on the page you want to manually assign. </li>
+                          <li> You will receive an alert on success. </li>
+                        </ol>
+                      </Typography>
                     </>
                   }
                 >
-                  <span className={classes.variation}>{variation.name}</span>
+                  <span className={classes.tooltipped}>Bookmarklet</span>
                 </Tooltip>{' '}
-                {variation.isDefault && <Chip label='Default' variant='outlined' disabled />}
               </TableCell>
-              <TableCell className={classes.monospace}>{variation.allocatedPercentage}%</TableCell>
             </TableRow>
           )
         })}

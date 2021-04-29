@@ -528,6 +528,13 @@ exports[`renders as expected at large width 1`] = `
                       >
                         Percent
                       </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head"
+                        role="columnheader"
+                        scope="col"
+                      >
+                        Manual Assignment
+                      </th>
                     </tr>
                   </thead>
                   <tbody
@@ -539,12 +546,9 @@ exports[`renders as expected at large width 1`] = `
                       <td
                         class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-28"
                       >
-                        <span
-                          class="makeStyles-variation-26"
-                        >
+                        <span>
                           control
                         </span>
-                         
                         <div
                           aria-disabled="true"
                           class="MuiChip-root MuiChip-outlined Mui-disabled"
@@ -562,6 +566,16 @@ exports[`renders as expected at large width 1`] = `
                         60
                         %
                       </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-28"
+                      >
+                        <span
+                          class="makeStyles-tooltipped-26"
+                        >
+                          Bookmarklet
+                        </span>
+                         
+                      </td>
                     </tr>
                     <tr
                       class="MuiTableRow-root"
@@ -569,18 +583,25 @@ exports[`renders as expected at large width 1`] = `
                       <td
                         class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-28"
                       >
-                        <span
-                          class="makeStyles-variation-26"
-                        >
+                        <span>
                           test
                         </span>
-                         
                       </td>
                       <td
                         class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-28"
                       >
                         40
                         %
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-28"
+                      >
+                        <span
+                          class="makeStyles-tooltipped-26"
+                        >
+                          Bookmarklet
+                        </span>
+                         
                       </td>
                     </tr>
                   </tbody>
@@ -1080,6 +1101,13 @@ exports[`renders as expected at small width 1`] = `
                           >
                             Percent
                           </th>
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Manual Assignment
+                          </th>
                         </tr>
                       </thead>
                       <tbody
@@ -1091,12 +1119,9 @@ exports[`renders as expected at small width 1`] = `
                           <td
                             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-63"
                           >
-                            <span
-                              class="makeStyles-variation-61"
-                            >
+                            <span>
                               control
                             </span>
-                             
                             <div
                               aria-disabled="true"
                               class="MuiChip-root MuiChip-outlined Mui-disabled"
@@ -1114,6 +1139,16 @@ exports[`renders as expected at small width 1`] = `
                             60
                             %
                           </td>
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-63"
+                          >
+                            <span
+                              class="makeStyles-tooltipped-61"
+                            >
+                              Bookmarklet
+                            </span>
+                             
+                          </td>
                         </tr>
                         <tr
                           class="MuiTableRow-root"
@@ -1121,18 +1156,25 @@ exports[`renders as expected at small width 1`] = `
                           <td
                             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-63"
                           >
-                            <span
-                              class="makeStyles-variation-61"
-                            >
+                            <span>
                               test
                             </span>
-                             
                           </td>
                           <td
                             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-63"
                           >
                             40
                             %
+                          </td>
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-63"
+                          >
+                            <span
+                              class="makeStyles-tooltipped-61"
+                            >
+                              Bookmarklet
+                            </span>
+                             
                           </td>
                         </tr>
                       </tbody>
@@ -1852,6 +1894,13 @@ exports[`renders as expected with conclusion data 1`] = `
                           >
                             Percent
                           </th>
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Manual Assignment
+                          </th>
                         </tr>
                       </thead>
                       <tbody
@@ -1863,12 +1912,9 @@ exports[`renders as expected with conclusion data 1`] = `
                           <td
                             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-100"
                           >
-                            <span
-                              class="makeStyles-variation-98"
-                            >
+                            <span>
                               control
                             </span>
-                             
                             <div
                               aria-disabled="true"
                               class="MuiChip-root MuiChip-outlined Mui-disabled"
@@ -1886,6 +1932,16 @@ exports[`renders as expected with conclusion data 1`] = `
                             60
                             %
                           </td>
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-100"
+                          >
+                            <span
+                              class="makeStyles-tooltipped-98"
+                            >
+                              Bookmarklet
+                            </span>
+                             
+                          </td>
                         </tr>
                         <tr
                           class="MuiTableRow-root"
@@ -1893,18 +1949,25 @@ exports[`renders as expected with conclusion data 1`] = `
                           <td
                             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-100"
                           >
-                            <span
-                              class="makeStyles-variation-98"
-                            >
+                            <span>
                               test
                             </span>
-                             
                           </td>
                           <td
                             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-100"
                           >
                             40
                             %
+                          </td>
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-100"
+                          >
+                            <span
+                              class="makeStyles-tooltipped-98"
+                            >
+                              Bookmarklet
+                            </span>
+                             
                           </td>
                         </tr>
                       </tbody>
@@ -2728,6 +2791,13 @@ exports[`renders as expected without conclusion data 1`] = `
                           >
                             Percent
                           </th>
+                          <th
+                            class="MuiTableCell-root MuiTableCell-head"
+                            role="columnheader"
+                            scope="col"
+                          >
+                            Manual Assignment
+                          </th>
                         </tr>
                       </thead>
                       <tbody
@@ -2739,12 +2809,9 @@ exports[`renders as expected without conclusion data 1`] = `
                           <td
                             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-135"
                           >
-                            <span
-                              class="makeStyles-variation-133"
-                            >
+                            <span>
                               control
                             </span>
-                             
                             <div
                               aria-disabled="true"
                               class="MuiChip-root MuiChip-outlined Mui-disabled"
@@ -2762,6 +2829,16 @@ exports[`renders as expected without conclusion data 1`] = `
                             60
                             %
                           </td>
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-135"
+                          >
+                            <span
+                              class="makeStyles-tooltipped-133"
+                            >
+                              Bookmarklet
+                            </span>
+                             
+                          </td>
                         </tr>
                         <tr
                           class="MuiTableRow-root"
@@ -2769,18 +2846,25 @@ exports[`renders as expected without conclusion data 1`] = `
                           <td
                             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-135"
                           >
-                            <span
-                              class="makeStyles-variation-133"
-                            >
+                            <span>
                               test
                             </span>
-                             
                           </td>
                           <td
                             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-135"
                           >
                             40
                             %
+                          </td>
+                          <td
+                            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-135"
+                          >
+                            <span
+                              class="makeStyles-tooltipped-133"
+                            >
+                              Bookmarklet
+                            </span>
+                             
                           </td>
                         </tr>
                       </tbody>
