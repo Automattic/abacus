@@ -40,8 +40,11 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 function assignmentHref(variationName: string, experimentName: string) {
-  nameSchema.validateSync(variationName)
+  if (!experimentName) {
+    return ''
+  }
   nameSchema.validateSync(experimentName)
+  nameSchema.validateSync(variationName)
   return `javascript:(async () => {
     const token = JSON.parse(localStorage.getItem('experiments_auth_info'));
     const headers = {'Content-Type': 'application/json'};

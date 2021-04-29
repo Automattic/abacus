@@ -86,7 +86,7 @@ const ExperimentRunButton = ({
         BackdropProps={{ className: dangerClasses.dangerBackdrop }}
       >
         <DialogTitle>
-          <Typography variant='h5'>
+          <Typography variant='h5' component='div'>
             Are you sure you want to <strong>deploy</strong> this experiment?
           </Typography>
         </DialogTitle>

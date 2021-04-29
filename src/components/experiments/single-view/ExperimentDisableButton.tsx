@@ -82,7 +82,7 @@ const ExperimentDisableButton = ({
         BackdropProps={{ className: clsx(isDisablingDangerous && dangerClasses.dangerBackdrop) }}
       >
         <DialogTitle>
-          <Typography variant='h5'>
+          <Typography variant='h5' component='div'>
             ️Are you sure you want to <strong>disable</strong> this experiment?
           </Typography>
         </DialogTitle>
