@@ -68,7 +68,7 @@ exports[`renders as expected 1`] = `
         <label
           class="MuiFormLabel-root Mui-required"
         >
-          User types
+          User type
           <span
             aria-hidden="true"
             class="MuiFormLabel-asterisk"
@@ -765,7 +765,7 @@ exports[`renders as expected 2`] = `
         <label
           class="MuiFormLabel-root Mui-required"
         >
-          User types
+          User type
           <span
             aria-hidden="true"
             class="MuiFormLabel-asterisk"

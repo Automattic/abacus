@@ -175,7 +175,7 @@ const Audience = ({
 
       <div className={classes.row}>
         <FormControl component='fieldset'>
-          <FormLabel required>User types</FormLabel>
+          <FormLabel required>User type</FormLabel>
           <FormHelperText>Types of users to include in experiment</FormHelperText>
 
           <Field component={FormikMuiRadioGroup} name='experiment.existingUsersAllowed' required>
