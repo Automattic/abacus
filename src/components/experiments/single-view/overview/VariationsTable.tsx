@@ -89,9 +89,9 @@ function assignmentHref(variationName: string, experimentName: string) {
             )
           );
 
-          alert('ExPlat: Successful Assignment\\n–––––––––––––––––––––––––––––\\n\\nExperiment: ${experimentName}\\nVariation: ${variationName}\\nTTL: Expires in ' + duration + ' hours\\n\\nClient-side: Applies to the current domain (LocalStorage).\\nServer-side: Applies to current session (Cookie).');
+          alert('ExPlat: Successful Assignment\\n–––––––––––––––––––––––––––––\\n\\nExperiment: ${experimentName}\\nVariation: ${variationName}\\n\\nMethod: Logged-out assignment, expires in ' + duration + ' hours\\nClient-side: Applies to the current domain (LocalStorage).\\nServer-side: Applies to current session (Cookie).');
         } else {
-          alert('ExPlat: Successful Assignment\\n–––––––––––––––––––––––––––––\\n\\nExperiment: ${experimentName}\\nVariation: ${variationName}\\n\\nApplies to the current logged-in user.');
+          alert('ExPlat: Successful Assignment\\n–––––––––––––––––––––––––––––\\n\\nExperiment: ${experimentName}\\nVariation: ${variationName}\\n\\nMethod: Logged-in assignment\\nApplies to the current logged-in user.');
         }
     }
 })()`
