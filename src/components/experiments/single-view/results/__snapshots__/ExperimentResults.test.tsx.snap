@@ -64,14 +64,14 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
           </div>
         </div>
         <a
-          class="MuiPaper-root makeStyles-summaryHealthPaper-10 makeStyles-indicationSeverityOk-11 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryHealthPaper-10 makeStyles-indicationSeverityWarning-12 MuiPaper-elevation1 MuiPaper-rounded"
           href="#health-report"
         >
           <div>
             <h3
               class="MuiTypography-root makeStyles-summaryStatsStat-9 MuiTypography-h3 MuiTypography-colorPrimary"
             >
-              No issues detected
+              Potential issues
             </h3>
             <h6
               class="MuiTypography-root MuiTypography-subtitle1"
@@ -396,7 +396,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
       >
         <table
           aria-label="simple table"
-          class="MuiTable-root makeStyles-table-32"
+          class="MuiTable-root"
         >
           <thead
             class="MuiTableHead-root"
@@ -438,6 +438,12 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
               >
                 Reason
               </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Recommendation
+              </th>
             </tr>
           </thead>
           <tbody
@@ -459,18 +465,18 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-31"
+                  class="makeStyles-tooltip-32"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 1.0000
@@ -482,7 +488,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityOk-28 makeStyles-monospace-25"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-28 makeStyles-indicationSeverityOk-29 makeStyles-monospace-25 makeStyles-nowrap-27"
                 scope="row"
               >
                 <span>
@@ -490,10 +496,18 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                />
               </td>
             </tr>
             <tr
@@ -512,18 +526,18 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-31"
+                  class="makeStyles-tooltip-32"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 1.0000
@@ -535,7 +549,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityOk-28 makeStyles-monospace-25"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-28 makeStyles-indicationSeverityOk-29 makeStyles-monospace-25 makeStyles-nowrap-27"
                 scope="row"
               >
                 <span>
@@ -543,10 +557,18 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                />
               </td>
             </tr>
             <tr
@@ -565,18 +587,18 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-31"
+                  class="makeStyles-tooltip-32"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 1.0000
@@ -588,7 +610,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityOk-28 makeStyles-monospace-25"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-28 makeStyles-indicationSeverityOk-29 makeStyles-monospace-25 makeStyles-nowrap-27"
                 scope="row"
               >
                 <span>
@@ -596,10 +618,18 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                />
               </td>
             </tr>
             <tr
@@ -618,7 +648,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 <span>
@@ -626,7 +656,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 0.0000
@@ -638,7 +668,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityOk-28 makeStyles-monospace-25"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-28 makeStyles-indicationSeverityOk-29 makeStyles-monospace-25 makeStyles-nowrap-27"
                 scope="row"
               >
                 <span>
@@ -646,10 +676,18 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 −∞ &lt; x ≤ 0.01
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                />
               </td>
             </tr>
             <tr
@@ -668,7 +706,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 <span>
@@ -676,7 +714,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 0.0000
@@ -688,7 +726,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityOk-28 makeStyles-monospace-25"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-28 makeStyles-indicationSeverityOk-29 makeStyles-monospace-25 makeStyles-nowrap-27"
                 scope="row"
               >
                 <span>
@@ -696,10 +734,18 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
-                −∞ &lt; x ≤ 0.075
+                −∞ &lt; x ≤ 0.1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                />
               </td>
             </tr>
             <tr
@@ -711,14 +757,14 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
               >
                 <a
                   class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision"
                   target="_blank"
                 >
                   Kruschke Precision (CI to ROPE ratio)
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 <span>
@@ -726,7 +772,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 0.1000
@@ -738,7 +784,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-27 makeStyles-indicationSeverityOk-28 makeStyles-monospace-25"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-28 makeStyles-indicationSeverityOk-29 makeStyles-monospace-25 makeStyles-nowrap-27"
                 scope="row"
               >
                 <span>
@@ -746,10 +792,80 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
                 scope="row"
               >
                 −∞ &lt; x ≤ 0.8
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                />
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time"
+                  target="_blank"
+                >
+                  Experiment Run Time
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
+                scope="row"
+              >
+                <span>
+                  days
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
+                scope="row"
+              >
+                0.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span>
+                  ℹ️
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-28 makeStyles-indicationSeverityWarning-30 makeStyles-monospace-25 makeStyles-nowrap-27"
+                scope="row"
+              >
+                <span>
+                  very low
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-25 makeStyles-deemphasized-26 makeStyles-nowrap-27"
+                scope="row"
+              >
+                −∞ &lt; x ≤ 3
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-26"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                >
+                  Experiments should generally run at least 7 days before drawing conclusions.
+                </p>
               </td>
             </tr>
           </tbody>
@@ -1577,7 +1693,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       >
         <table
           aria-label="simple table"
-          class="MuiTable-root makeStyles-table-75"
+          class="MuiTable-root"
         >
           <thead
             class="MuiTableHead-root"
@@ -1619,6 +1735,12 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               >
                 Reason
               </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Recommendation
+              </th>
             </tr>
           </thead>
           <tbody
@@ -1640,18 +1762,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-74"
+                  class="makeStyles-tooltip-75"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 1.0000
@@ -1663,7 +1785,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityOk-71 makeStyles-monospace-68"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-71 makeStyles-indicationSeverityOk-72 makeStyles-monospace-68 makeStyles-nowrap-70"
                 scope="row"
               >
                 <span>
@@ -1671,10 +1793,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                />
               </td>
             </tr>
             <tr
@@ -1693,18 +1823,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-74"
+                  class="makeStyles-tooltip-75"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 1.0000
@@ -1716,7 +1846,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityOk-71 makeStyles-monospace-68"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-71 makeStyles-indicationSeverityOk-72 makeStyles-monospace-68 makeStyles-nowrap-70"
                 scope="row"
               >
                 <span>
@@ -1724,10 +1854,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                />
               </td>
             </tr>
             <tr
@@ -1746,18 +1884,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-74"
+                  class="makeStyles-tooltip-75"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 1.0000
@@ -1769,7 +1907,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityOk-71 makeStyles-monospace-68"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-71 makeStyles-indicationSeverityOk-72 makeStyles-monospace-68 makeStyles-nowrap-70"
                 scope="row"
               >
                 <span>
@@ -1777,10 +1915,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                />
               </td>
             </tr>
             <tr
@@ -1799,7 +1945,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 <span>
@@ -1807,7 +1953,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 0.1000
@@ -1821,7 +1967,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityError-73 makeStyles-monospace-68"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-71 makeStyles-indicationSeverityError-74 makeStyles-monospace-68 makeStyles-nowrap-70"
                 scope="row"
               >
                 <span>
@@ -1829,10 +1975,20 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                >
+                  Contact @experimentation-review-guild
+                </p>
               </td>
             </tr>
             <tr
@@ -1851,7 +2007,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 <span>
@@ -1859,7 +2015,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 0.1500
@@ -1873,7 +2029,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityWarning-72 makeStyles-monospace-68"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-71 makeStyles-indicationSeverityWarning-73 makeStyles-monospace-68 makeStyles-nowrap-70"
                 scope="row"
               >
                 <span>
@@ -1881,10 +2037,20 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
-                0.075 &lt; x ≤ 0.3
+                0.1 &lt; x ≤ 0.4
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                >
+                  Spammers don't affect experiments, but high numbers could indicate other problems.
+                </p>
               </td>
             </tr>
             <tr
@@ -1896,14 +2062,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               >
                 <a
                   class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision"
                   target="_blank"
                 >
                   Kruschke Precision (CI to ROPE ratio)
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 <span>
@@ -1911,7 +2077,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 0.1000
@@ -1923,7 +2089,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-70 makeStyles-indicationSeverityOk-71 makeStyles-monospace-68"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-71 makeStyles-indicationSeverityOk-72 makeStyles-monospace-68 makeStyles-nowrap-70"
                 scope="row"
               >
                 <span>
@@ -1931,10 +2097,80 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
                 scope="row"
               >
                 −∞ &lt; x ≤ 0.8
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                />
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time"
+                  target="_blank"
+                >
+                  Experiment Run Time
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
+                scope="row"
+              >
+                <span>
+                  days
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
+                scope="row"
+              >
+                0.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span>
+                  ℹ️
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-71 makeStyles-indicationSeverityWarning-73 makeStyles-monospace-68 makeStyles-nowrap-70"
+                scope="row"
+              >
+                <span>
+                  very low
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68 makeStyles-deemphasized-69 makeStyles-nowrap-70"
+                scope="row"
+              >
+                −∞ &lt; x ≤ 3
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-69"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                >
+                  Experiments should generally run at least 7 days before drawing conclusions.
+                </p>
               </td>
             </tr>
           </tbody>
@@ -2970,7 +3206,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       >
         <table
           aria-label="simple table"
-          class="MuiTable-root makeStyles-table-118"
+          class="MuiTable-root"
         >
           <thead
             class="MuiTableHead-root"
@@ -3012,6 +3248,12 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               >
                 Reason
               </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                scope="col"
+              >
+                Recommendation
+              </th>
             </tr>
           </thead>
           <tbody
@@ -3033,18 +3275,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-117"
+                  class="makeStyles-tooltip-118"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 1.0000
@@ -3056,7 +3298,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityOk-114 makeStyles-monospace-111"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-114 makeStyles-indicationSeverityOk-115 makeStyles-monospace-111 makeStyles-nowrap-113"
                 scope="row"
               >
                 <span>
@@ -3064,10 +3306,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                />
               </td>
             </tr>
             <tr
@@ -3086,18 +3336,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-117"
+                  class="makeStyles-tooltip-118"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 1.0000
@@ -3109,7 +3359,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityOk-114 makeStyles-monospace-111"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-114 makeStyles-indicationSeverityOk-115 makeStyles-monospace-111 makeStyles-nowrap-113"
                 scope="row"
               >
                 <span>
@@ -3117,10 +3367,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                />
               </td>
             </tr>
             <tr
@@ -3139,18 +3397,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-117"
+                  class="makeStyles-tooltip-118"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 1.0000
@@ -3162,7 +3420,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityOk-114 makeStyles-monospace-111"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-114 makeStyles-indicationSeverityOk-115 makeStyles-monospace-111 makeStyles-nowrap-113"
                 scope="row"
               >
                 <span>
@@ -3170,10 +3428,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                />
               </td>
             </tr>
             <tr
@@ -3192,7 +3458,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 <span>
@@ -3200,7 +3466,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 0.1000
@@ -3214,7 +3480,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityError-116 makeStyles-monospace-111"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-114 makeStyles-indicationSeverityError-117 makeStyles-monospace-111 makeStyles-nowrap-113"
                 scope="row"
               >
                 <span>
@@ -3222,10 +3488,20 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                >
+                  Contact @experimentation-review-guild
+                </p>
               </td>
             </tr>
             <tr
@@ -3244,7 +3520,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 <span>
@@ -3252,7 +3528,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 0.1500
@@ -3266,7 +3542,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityWarning-115 makeStyles-monospace-111"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-114 makeStyles-indicationSeverityWarning-116 makeStyles-monospace-111 makeStyles-nowrap-113"
                 scope="row"
               >
                 <span>
@@ -3274,10 +3550,20 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
-                0.075 &lt; x ≤ 0.3
+                0.1 &lt; x ≤ 0.4
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                >
+                  Spammers don't affect experiments, but high numbers could indicate other problems.
+                </p>
               </td>
             </tr>
             <tr
@@ -3289,14 +3575,14 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               >
                 <a
                   class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision"
                   target="_blank"
                 >
                   Kruschke Precision (CI to ROPE ratio)
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 <span>
@@ -3304,7 +3590,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 0.1000
@@ -3316,7 +3602,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-113 makeStyles-indicationSeverityOk-114 makeStyles-monospace-111"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-114 makeStyles-indicationSeverityOk-115 makeStyles-monospace-111 makeStyles-nowrap-113"
                 scope="row"
               >
                 <span>
@@ -3324,10 +3610,80 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
                 scope="row"
               >
                 −∞ &lt; x ≤ 0.8
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                />
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <a
+                  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time"
+                  target="_blank"
+                >
+                  Experiment Run Time
+                </a>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
+                scope="row"
+              >
+                <span>
+                  days
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
+                scope="row"
+              >
+                0.0000
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                scope="row"
+              >
+                <span>
+                  ℹ️
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-114 makeStyles-indicationSeverityWarning-116 makeStyles-monospace-111 makeStyles-nowrap-113"
+                scope="row"
+              >
+                <span>
+                  very low
+                </span>
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-111 makeStyles-deemphasized-112 makeStyles-nowrap-113"
+                scope="row"
+              >
+                −∞ &lt; x ≤ 3
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-112"
+                scope="row"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                >
+                  Experiments should generally run at least 7 days before drawing conclusions.
+                </p>
               </td>
             </tr>
           </tbody>
