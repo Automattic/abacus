@@ -687,9 +687,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
               >
                 <p
                   class="MuiTypography-root MuiTypography-body1"
-                >
-                  Contact @experimentation-platform-project
-                </p>
+                />
               </td>
             </tr>
             <tr
@@ -866,7 +864,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <p
                   class="MuiTypography-root MuiTypography-body1"
                 >
-                  Less than 3 days is generally too short to run an experiment.
+                  Experiments should generally run at least 7 days before drawing conclusions.
                 </p>
               </td>
             </tr>
@@ -1988,7 +1986,9 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               >
                 <p
                   class="MuiTypography-root MuiTypography-body1"
-                />
+                >
+                  Contact @experimentation-review-guild
+                </p>
               </td>
             </tr>
             <tr
@@ -2169,7 +2169,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <p
                   class="MuiTypography-root MuiTypography-body1"
                 >
-                  Less than 3 days is generally too short to run an experiment.
+                  Experiments should generally run at least 7 days before drawing conclusions.
                 </p>
               </td>
             </tr>
@@ -3499,7 +3499,9 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               >
                 <p
                   class="MuiTypography-root MuiTypography-body1"
-                />
+                >
+                  Contact @experimentation-review-guild
+                </p>
               </td>
             </tr>
             <tr
@@ -3680,7 +3682,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <p
                   class="MuiTypography-root MuiTypography-body1"
                 >
-                  Less than 3 days is generally too short to run an experiment.
+                  Experiments should generally run at least 7 days before drawing conclusions.
                 </p>
               </td>
             </tr>

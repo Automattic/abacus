@@ -309,7 +309,7 @@ interface IndicationBracket {
   indication: Omit<HealthIndication, 'reason'>
 }
 
-const contactUsRecommendation = 'Contact @experimentation-platform-project'
+const contactUsRecommendation = 'Contact @experimentation-review-guild'
 const highSpammerRecommendation = `Spammers don't affect experiments, but high numbers could indicate other problems.`
 
 /**
@@ -395,7 +395,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.PossibleIssue,
             severity: HealthIndicationSeverity.Warning,
-            recommendation: `Check daily ratio patterns for anomalies, contact @experiment-platform-project`,
+            recommendation: `Check daily ratio patterns for anomalies, contact @experiment-review-guild`,
           },
         },
         {
@@ -427,7 +427,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.PossibleIssue,
             severity: HealthIndicationSeverity.Warning,
-            recommendation: `If not in combination with a "Assignment distribution" issue, contact @experiment-platform-project`,
+            recommendation: `If not in combination with a "Assignment distribution" issue, contact @experiment-review-guild`,
           },
         },
         {
@@ -442,6 +442,7 @@ export function getExperimentParticipantHealthIndicators(
   )
 
   if (experimentParticipantStats.ratios.overall.exposedToAssigned) {
+    const biasedExposuresRecommendation = `If not in combination with other distribution issues, exposure event being fired is linked to variation causing bias. Choose a different exposure event or use assignment analysis (contact @experiment-review-guild to do so).`
     indicatorDefinitions.push({
       name: 'Assignment distribution of exposed participants',
       value: minVariationProbabilities.exposedDistributionMatchingAllocated,
@@ -454,7 +455,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.ProbableIssue,
             severity: HealthIndicationSeverity.Error,
-            recommendation: `If not in combination with other distribution issues, exposure event being fired is linked to variation causing bias. Choose a different exposure event or use assignment analysis.`,
+            recommendation: biasedExposuresRecommendation,
           },
         },
         {
@@ -462,7 +463,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.PossibleIssue,
             severity: HealthIndicationSeverity.Warning,
-            recommendation: `Ensure exposure event fires regardless of which variation a participant receives.`,
+            recommendation: biasedExposuresRecommendation,
           },
         },
         {
@@ -632,7 +633,7 @@ export function getExperimentHealthIndicators(experiment: ExperimentFull): Healt
           indication: {
             code: HealthIndicationCode.VeryLow,
             severity: HealthIndicationSeverity.Warning,
-            recommendation: 'Less than 3 days is generally too short to run an experiment.',
+            recommendation: 'Experiments should generally run at least 7 days before drawing conclusions.',
           },
         },
         {
