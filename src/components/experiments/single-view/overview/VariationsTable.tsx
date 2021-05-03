@@ -75,10 +75,23 @@ function assignmentHref(variationName: string, experimentName: string) {
         }
         const duration = responseBody.duration === 'unlimited' ?
           responseBody.duration : Math.ceil(responseBody.duration / 60 / 60);
+
         if (responseBody.storage_method === 'cookie') {
-          alert('Your current session has been assigned to ' + responseBody.variations.${experimentName} + ' for ' + duration + ' hours via cookie.');
+          window.localStorage.setItem(
+            'explat-experiment--${experimentName}',
+            JSON.stringify(
+              {
+                'experimentName':'${experimentName}',
+                'variationName': '${variationName}',
+                'retrievedTimestamp': Date.now(),
+                'ttl': responseBody.duration === 'unlimited' ? Infinity : responseBody.duration,
+              }
+            )
+          );
+
+          alert('ExPlat: Successful Assignment\\n–––––––––––––––––––––––––––––\\n\\nExperiment: ${experimentName}\\nVariation: ${variationName}\\n\\nMethod: Logged-out assignment, expires in ' + duration + ' hours\\nClient-side: Applies to the current domain (LocalStorage).\\nServer-side: Applies to current session (Cookie).');
         } else {
-          alert('Your logged in user has been assigned to ' + responseBody.variations.${experimentName} + '. If you want to assign a different user, run this bookmarklet outside of Abacus.');
+          alert('ExPlat: Successful Assignment\\n–––––––––––––––––––––––––––––\\n\\nExperiment: ${experimentName}\\nVariation: ${variationName}\\n\\nMethod: Logged-in assignment\\nApplies to the current logged-in user.');
         }
     }
 })()`
