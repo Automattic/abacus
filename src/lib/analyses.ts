@@ -284,6 +284,7 @@ interface HealthIndication {
   code: HealthIndicationCode
   reason: string
   severity: HealthIndicationSeverity
+  recommendation?: string
 }
 
 export enum HealthIndicatorUnit {
@@ -308,6 +309,9 @@ interface IndicationBracket {
   indication: Omit<HealthIndication, 'reason'>
 }
 
+const contactUsRecommendation = 'Contact @experimentation-platform-project'
+const highSpammerRecommendation = `Spammers don't affect experiments, but high numbers could indicate other problems.`
+
 /**
  * Get indication from set of IndicatorBrackets, adding a reason string.
  * Expects brackets to be sorted.
@@ -320,6 +324,7 @@ function getIndicationFromBrackets(sortedBracketsMaxAsc: IndicationBracket[], va
       code: HealthIndicationCode.ValueError,
       severity: HealthIndicationSeverity.Error,
       reason: 'Unexpected value',
+      recommendation: contactUsRecommendation,
     }
   }
 
@@ -382,6 +387,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.ProbableIssue,
             severity: HealthIndicationSeverity.Error,
+            recommendation: contactUsRecommendation,
           },
         },
         {
@@ -389,6 +395,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.PossibleIssue,
             severity: HealthIndicationSeverity.Warning,
+            recommendation: `Check daily ratio patterns for anomalies, contact @experiment-platform-project`,
           },
         },
         {
@@ -412,6 +419,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.ProbableIssue,
             severity: HealthIndicationSeverity.Error,
+            recommendation: contactUsRecommendation,
           },
         },
         {
@@ -419,6 +427,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.PossibleIssue,
             severity: HealthIndicationSeverity.Warning,
+            recommendation: `If not in combination with a "Assignment distribution" issue, contact @experiment-platform-project`,
           },
         },
         {
@@ -445,6 +454,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.ProbableIssue,
             severity: HealthIndicationSeverity.Error,
+            recommendation: `If not in combination with other distribution issues, exposure event being fired is linked to variation causing bias. Choose a different exposure event or use assignment analysis.`,
           },
         },
         {
@@ -452,6 +462,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.PossibleIssue,
             severity: HealthIndicationSeverity.Warning,
+            recommendation: `Ensure exposure event fires regardless of which variation a participant receives.`,
           },
         },
         {
@@ -484,6 +495,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.High,
             severity: HealthIndicationSeverity.Warning,
+            recommendation: 'Continue monitoring experiment',
           },
         },
         {
@@ -491,6 +503,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.VeryHigh,
             severity: HealthIndicationSeverity.Error,
+            recommendation: contactUsRecommendation,
           },
         },
       ],
@@ -502,17 +515,18 @@ export function getExperimentParticipantHealthIndicators(
       link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers',
       indicationBrackets: [
         {
-          max: 0.075,
+          max: 0.1,
           indication: {
             code: HealthIndicationCode.Nominal,
             severity: HealthIndicationSeverity.Ok,
           },
         },
         {
-          max: 0.3,
+          max: 0.4,
           indication: {
             code: HealthIndicationCode.High,
             severity: HealthIndicationSeverity.Warning,
+            recommendation: highSpammerRecommendation,
           },
         },
         {
@@ -520,6 +534,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.VeryHigh,
             severity: HealthIndicationSeverity.Error,
+            recommendation: highSpammerRecommendation,
           },
         },
       ],
@@ -579,13 +594,15 @@ export function getExperimentAnalysesHealthIndicators(
           indication: {
             code: HealthIndicationCode.High,
             severity: HealthIndicationSeverity.Warning,
+            recommendation: `Results are imprecise, be careful about drawing conclusions. Extend for more precision`,
           },
         },
         {
           max: Infinity,
           indication: {
             code: HealthIndicationCode.VeryHigh,
-            severity: HealthIndicationSeverity.Error,
+            severity: HealthIndicationSeverity.Warning,
+            recommendation: `Results are very imprecise, be careful about drawing conclusions. Extend for more precision`,
           },
         },
       ],
@@ -614,7 +631,8 @@ export function getExperimentHealthIndicators(experiment: ExperimentFull): Healt
           max: 3,
           indication: {
             code: HealthIndicationCode.VeryLow,
-            severity: HealthIndicationSeverity.Error,
+            severity: HealthIndicationSeverity.Warning,
+            recommendation: 'Less than 3 days is generally too short to run an experiment.',
           },
         },
         {
@@ -622,6 +640,7 @@ export function getExperimentHealthIndicators(experiment: ExperimentFull): Healt
           indication: {
             code: HealthIndicationCode.Low,
             severity: HealthIndicationSeverity.Warning,
+            recommendation: 'Experiments should generally run at least 7 days before drawing conclusions.',
           },
         },
         {
@@ -636,13 +655,15 @@ export function getExperimentHealthIndicators(experiment: ExperimentFull): Healt
           indication: {
             code: HealthIndicationCode.High,
             severity: HealthIndicationSeverity.Warning,
+            recommendation: 'Experiment is running long, stop experiment now.',
           },
         },
         {
           max: Infinity,
           indication: {
             code: HealthIndicationCode.VeryHigh,
-            severity: HealthIndicationSeverity.Error,
+            severity: HealthIndicationSeverity.Warning,
+            recommendation: 'Experiment is running way too long, stop experiment now.',
           },
         },
       ],

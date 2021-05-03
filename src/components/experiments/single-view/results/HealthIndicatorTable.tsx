@@ -10,6 +10,7 @@ import {
   TableRow,
   Theme,
   Tooltip,
+  Typography,
 } from '@material-ui/core'
 import clsx from 'clsx'
 import _ from 'lodash'
@@ -28,6 +29,9 @@ const useStyles = makeStyles((theme: Theme) =>
     deemphasized: {
       color: theme.palette.grey[600],
     },
+    nowrap: {
+      whiteSpace: 'nowrap',
+    },
     indication: {
       padding: theme.spacing(2),
     },
@@ -45,7 +49,6 @@ const useStyles = makeStyles((theme: Theme) =>
       borderBottomStyle: 'dashed',
       borderBottomColor: theme.palette.grey[500],
     },
-    table: {},
   }),
 )
 
@@ -74,6 +77,7 @@ export default function HealthIndicatorTable({
             <TableCell>{/* Indication Emoji */}</TableCell>
             <TableCell>Indication</TableCell>
             <TableCell>Reason</TableCell>
+            <TableCell>Recommendation</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -84,7 +88,7 @@ export default function HealthIndicatorTable({
                   {indicator.name}
                 </Link>
               </TableCell>
-              <TableCell scope='row' className={clsx(classes.monospace, classes.deemphasized)}>
+              <TableCell scope='row' className={clsx(classes.monospace, classes.deemphasized, classes.nowrap)}>
                 {indicator.unit === HealthIndicatorUnit.Pvalue ? (
                   <Tooltip title='The smaller the p-value the more likely there is an issue.'>
                     <span className={classes.tooltip}>p-value</span>
@@ -93,7 +97,7 @@ export default function HealthIndicatorTable({
                   <span>{indicator.unit}</span>
                 )}
               </TableCell>
-              <TableCell scope='row' className={clsx(classes.monospace, classes.deemphasized)}>
+              <TableCell scope='row' className={clsx(classes.monospace, classes.deemphasized, classes.nowrap)}>
                 {indicator.value.toFixed(4)}
               </TableCell>
               <TableCell scope='row'>
@@ -105,12 +109,16 @@ export default function HealthIndicatorTable({
                   classes.indication,
                   classes[indicationSeverityClassSymbol(indicator.indication.severity)],
                   classes.monospace,
+                  classes.nowrap,
                 )}
               >
                 <span>{indicator.indication.code}</span>
               </TableCell>
-              <TableCell scope='row' className={clsx(classes.monospace, classes.deemphasized)}>
+              <TableCell scope='row' className={clsx(classes.monospace, classes.deemphasized, classes.nowrap)}>
                 {indicator.indication.reason}
+              </TableCell>
+              <TableCell scope='row' className={clsx(classes.deemphasized, classes.recommendation)}>
+                <Typography variant='body1'>{indicator.indication.recommendation}</Typography>
               </TableCell>
             </TableRow>
           ))}
