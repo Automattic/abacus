@@ -578,7 +578,7 @@ export function getExperimentAnalysesHealthIndicators(
   const ropeWidth = metricAssignment.minDifference * 2
   const indicatorDefinitions = [
     {
-      name: 'Kruschke Precision (CI to ROPE ratio)',
+      name: 'Kruschke precision (CI to ROPE ratio)',
       value: diffCiWidth / ropeWidth,
       unit: HealthIndicatorUnit.Ratio,
       link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision',
@@ -623,7 +623,7 @@ export function getExperimentAnalysesHealthIndicators(
 export function getExperimentHealthIndicators(experiment: ExperimentFull): HealthIndicator[] {
   const indicatorDefinitions = [
     {
-      name: 'Experiment Run Time',
+      name: 'Experiment run time',
       value: Experiments.getExperimentRunHours(experiment) / 24,
       unit: HealthIndicatorUnit.Days,
       link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time',

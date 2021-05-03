@@ -760,7 +760,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision"
                   target="_blank"
                 >
-                  Kruschke Precision (CI to ROPE ratio)
+                  Kruschke precision (CI to ROPE ratio)
                 </a>
               </td>
               <td
@@ -818,7 +818,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time"
                   target="_blank"
                 >
-                  Experiment Run Time
+                  Experiment run time
                 </a>
               </td>
               <td
@@ -2065,7 +2065,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision"
                   target="_blank"
                 >
-                  Kruschke Precision (CI to ROPE ratio)
+                  Kruschke precision (CI to ROPE ratio)
                 </a>
               </td>
               <td
@@ -2123,7 +2123,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time"
                   target="_blank"
                 >
-                  Experiment Run Time
+                  Experiment run time
                 </a>
               </td>
               <td
@@ -3578,7 +3578,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision"
                   target="_blank"
                 >
-                  Kruschke Precision (CI to ROPE ratio)
+                  Kruschke precision (CI to ROPE ratio)
                 </a>
               </td>
               <td
@@ -3636,7 +3636,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                   href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time"
                   target="_blank"
                 >
-                  Experiment Run Time
+                  Experiment run time
                 </a>
               </td>
               <td
