@@ -758,7 +758,7 @@ describe('getExperimentAnalysesHealthIndicators', () => {
           "indication": Object {
             "code": "very high",
             "reason": "1.5 < x ≤ ∞",
-            "recommendation": "Results are very imprecise, be careful about drawing conclusions. Extend for more precision",
+            "recommendation": "Results are very imprecise, be careful about drawing conclusions. Continue running the experiment for more precision",
             "severity": "Warning",
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision",
