@@ -655,7 +655,7 @@ export function getExperimentHealthIndicators(experiment: ExperimentFull): Healt
           indication: {
             code: HealthIndicationCode.High,
             severity: HealthIndicationSeverity.Warning,
-            recommendation: 'Experiment is running long, stop experiment now.',
+            recommendation: 'Experiment is running long, stop experiment soon.',
           },
         },
         {
