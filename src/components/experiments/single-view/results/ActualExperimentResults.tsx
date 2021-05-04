@@ -425,19 +425,17 @@ export default function ActualExperimentResults({
         </>
       ) : (
         <Paper className={classes.noAnalysesPaper}>
-          <Typography variant='h4' gutterBottom>
+          <Typography variant='h3' gutterBottom>
             {' '}
-            No results available
+            No Results{' '}
           </Typography>
-          <Typography variant='body1'>No results are available for this experiment, this can be due to:</Typography>
+          <Typography variant='body1'>No results are available at the moment, this can be due to:</Typography>
           <ul>
             <Typography component='li'>
-              {' '}
               <strong> An experiment being new. </strong> Due to Tracks and ExPlat processing it can take 24-48 hours
               for results to come available. Usually released at 06:00 UTC daily.
             </Typography>
             <Typography component='li'>
-              {' '}
               <strong> No assignments occuring. </strong> Check the &quot;Early Monitoring&quot; section below to ensure
               that assignments are occuring.
             </Typography>

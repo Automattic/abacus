@@ -11,21 +11,20 @@ exports[`renders an appropriate message with no analyses 1`] = `
       <div
         class="MuiPaper-root makeStyles-noAnalysesPaper-19 MuiPaper-elevation1 MuiPaper-rounded"
       >
-        <h4
-          class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
+        <h3
+          class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
         >
-           No results available
-        </h4>
+           No Results 
+        </h3>
         <p
           class="MuiTypography-root MuiTypography-body1"
         >
-          No results are available for this experiment, this can be due to:
+          No results are available at the moment, this can be due to:
         </p>
         <ul>
           <li
             class="MuiTypography-root MuiTypography-body1"
           >
-             
             <strong>
                An experiment being new. 
             </strong>
@@ -34,7 +33,6 @@ exports[`renders an appropriate message with no analyses 1`] = `
           <li
             class="MuiTypography-root MuiTypography-body1"
           >
-             
             <strong>
                No assignments occuring. 
             </strong>
