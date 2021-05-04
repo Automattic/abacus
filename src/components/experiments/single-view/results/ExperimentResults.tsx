@@ -42,10 +42,6 @@ export default function ExperimentResults({
     }
   })
 
-  if (analyses.length === 0) {
-    return <p>No analyses yet for {experiment.name}.</p>
-  }
-
   return (
     <div className='analysis-latest-results'>
       <ActualExperimentResults

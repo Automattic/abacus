@@ -20,9 +20,7 @@ const analyses = Fixtures.createAnalyses()
 
 test('renders an appropriate message with no analyses', () => {
   const { container } = render(<ExperimentResults analyses={[]} experiment={experiment} metrics={metrics} />)
-  expect(container).toHaveTextContent('No analyses yet for experiment_1.')
-
-  expect(mockedPlot).toMatchInlineSnapshot(`[MockFunction]`)
+  expect(container).toMatchSnapshot()
 })
 
 test('renders correctly for 1 analysis datapoint', async () => {

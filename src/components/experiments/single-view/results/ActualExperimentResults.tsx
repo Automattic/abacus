@@ -119,6 +119,9 @@ const useStyles = makeStyles((theme: Theme) =>
     accordionDetails: {
       flexDirection: 'column',
     },
+    noAnalysesPaper: {
+      padding: theme.spacing(2),
+    },
     pre: {
       background: '#f5f5f5',
       padding: theme.spacing(3),
@@ -174,7 +177,8 @@ export default function ActualExperimentResults({
   const primaryMetricAssignmentAnalysesData = allMetricAssignmentAnalysesData.find(
     ({ metricAssignment: { isPrimary } }) => isPrimary,
   ) as MetricAssignmentAnalysesData
-  const analyses = primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc[strategy]
+  const analyses = primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc[strategy] || []
+  const hasAnalyses = analyses.length !== 0
   const dates = analyses.map(({ analysisDatetime }) => analysisDatetime.toISOString())
 
   const plotlyDataParticipantGraph: Array<Partial<PlotData>> = [
@@ -322,97 +326,124 @@ export default function ActualExperimentResults({
           </Paper>
         )
       }
-      <div className={classes.summary}>
-        <Paper className={classes.participantsPlotPaper}>
-          <Typography variant='h3' gutterBottom>
-            Participants by Variation
-          </Typography>
-          <Plot
-            layout={{
-              ...Visualizations.plotlyLayoutDefault,
-              margin: {
-                l: theme.spacing(4),
-                r: theme.spacing(2),
-                t: 0,
-                b: theme.spacing(6),
-              },
-            }}
-            data={plotlyDataParticipantGraph}
-            className={classes.participantsPlot}
-          />
-        </Paper>
-        <div className={classes.summaryColumn}>
-          <Paper className={classes.summaryStatsPaper}>
-            {latestPrimaryMetricAnalysis && (
-              <>
-                <div className={classes.summaryStatsPart}>
-                  <Typography variant='h3' className={classes.summaryStatsStat} color='primary'>
-                    {totalParticipants.toLocaleString('en', { useGrouping: true })}
+      {hasAnalyses ? (
+        <>
+          <div className={classes.summary}>
+            <Paper className={classes.participantsPlotPaper}>
+              <Typography variant='h3' gutterBottom>
+                Participants by Variation
+              </Typography>
+              <Plot
+                layout={{
+                  ...Visualizations.plotlyLayoutDefault,
+                  margin: {
+                    l: theme.spacing(4),
+                    r: theme.spacing(2),
+                    t: 0,
+                    b: theme.spacing(6),
+                  },
+                }}
+                data={plotlyDataParticipantGraph}
+                className={classes.participantsPlot}
+              />
+            </Paper>
+            <div className={classes.summaryColumn}>
+              <Paper className={classes.summaryStatsPaper}>
+                {latestPrimaryMetricAnalysis && (
+                  <>
+                    <div className={classes.summaryStatsPart}>
+                      <Typography variant='h3' className={classes.summaryStatsStat} color='primary'>
+                        {totalParticipants.toLocaleString('en', { useGrouping: true })}
+                      </Typography>
+                      <Typography variant='subtitle1'>
+                        <strong>analyzed participants</strong> as at{' '}
+                        {formatIsoDate(latestPrimaryMetricAnalysis.analysisDatetime)}
+                      </Typography>
+                    </div>
+                    <div className={classes.summaryStatsPart}>
+                      <Typography variant='h3' className={classes.summaryStatsStat} color='primary'>
+                        <AggregateRecommendationDisplay
+                          {...{ experiment, aggregateRecommendation: primaryMetricAggregateRecommendation }}
+                        />
+                      </Typography>
+                      <Typography variant='subtitle1'>
+                        <strong>primary metric</strong> recommendation
+                      </Typography>
+                    </div>
+                  </>
+                )}
+              </Paper>
+              <Paper
+                className={clsx(
+                  classes.summaryHealthPaper,
+                  classes[indicationSeverityClassSymbol(maxIndicationSeverity)],
+                )}
+                component='a'
+                // @ts-ignore: Component extensions aren't appearing in types.
+                href='#health-report'
+              >
+                <div className={classes.summaryStats}>
+                  <Typography variant='h3' className={clsx(classes.summaryStatsStat)} color='primary'>
+                    {maxIndicationSeverityMessage[maxIndicationSeverity]}
                   </Typography>
                   <Typography variant='subtitle1'>
-                    <strong>analyzed participants</strong> as at{' '}
-                    {formatIsoDate(latestPrimaryMetricAnalysis.analysisDatetime)}
+                    see <strong>health report</strong>
                   </Typography>
                 </div>
-                <div className={classes.summaryStatsPart}>
-                  <Typography variant='h3' className={classes.summaryStatsStat} color='primary'>
-                    <AggregateRecommendationDisplay
-                      {...{ experiment, aggregateRecommendation: primaryMetricAggregateRecommendation }}
-                    />
-                  </Typography>
-                  <Typography variant='subtitle1'>
-                    <strong>primary metric</strong> recommendation
-                  </Typography>
-                </div>
-              </>
-            )}
-          </Paper>
-          <Paper
-            className={clsx(classes.summaryHealthPaper, classes[indicationSeverityClassSymbol(maxIndicationSeverity)])}
-            component='a'
-            // @ts-ignore: Component extensions aren't appearing in types.
-            href='#health-report'
-          >
-            <div className={classes.summaryStats}>
-              <Typography variant='h3' className={clsx(classes.summaryStatsStat)} color='primary'>
-                {maxIndicationSeverityMessage[maxIndicationSeverity]}
-              </Typography>
-              <Typography variant='subtitle1'>
-                see <strong>health report</strong>
-              </Typography>
+              </Paper>
             </div>
-          </Paper>
-        </div>
-      </div>
-      <Typography variant='h3' className={classes.tableTitle}>
-        Metric Assignment Results
-      </Typography>
-      <MaterialTable
-        columns={tableColumns}
-        data={metricAssignmentSummaryData}
-        options={createStaticTableOptions(metricAssignmentSummaryData.length)}
-        onRowClick={(_event, rowData, togglePanel) => {
-          const { aggregateRecommendation } = rowData as {
-            aggregateRecommendation: Analyses.AggregateRecommendation
-          }
-          let disabled =
-            aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.ManualAnalysisRequired
-          // istanbul ignore next; debug only
-          disabled = disabled && !isDebugMode()
+          </div>
+          <Typography variant='h3' className={classes.tableTitle}>
+            Metric Assignment Results
+          </Typography>
+          <MaterialTable
+            columns={tableColumns}
+            data={metricAssignmentSummaryData}
+            options={createStaticTableOptions(metricAssignmentSummaryData.length)}
+            onRowClick={(_event, rowData, togglePanel) => {
+              const { aggregateRecommendation } = rowData as {
+                aggregateRecommendation: Analyses.AggregateRecommendation
+              }
+              let disabled =
+                aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.ManualAnalysisRequired
+              // istanbul ignore next; debug only
+              disabled = disabled && !isDebugMode()
 
-          // istanbul ignore else; trivial
-          if (togglePanel && !disabled) {
-            togglePanel()
-          }
-        }}
-        detailPanel={DetailPanel}
-      />
-      <Typography variant='h3' className={classes.tableTitle}>
-        Health Report
-      </Typography>
-      <Paper id='health-report'>
-        <HealthIndicatorTable indicators={experimentHealthIndicators} />
-      </Paper>
+              // istanbul ignore else; trivial
+              if (togglePanel && !disabled) {
+                togglePanel()
+              }
+            }}
+            detailPanel={DetailPanel}
+          />
+          <Typography variant='h3' className={classes.tableTitle}>
+            Health Report
+          </Typography>
+          <Paper id='health-report'>
+            <HealthIndicatorTable indicators={experimentHealthIndicators} />
+          </Paper>
+        </>
+      ) : (
+        <Paper className={classes.noAnalysesPaper}>
+          <Typography variant='h4' gutterBottom>
+            {' '}
+            No results available
+          </Typography>
+          <Typography variant='body1'>No results are available for this experiment, this can be due to:</Typography>
+          <ul>
+            <Typography component='li'>
+              {' '}
+              <strong> An experiment being new. </strong> Due to Tracks and ExPlat processing it can take 24-48 hours
+              for results to come available. Usually released at 06:00 UTC daily.
+            </Typography>
+            <Typography component='li'>
+              {' '}
+              <strong> No assignments occuring. </strong> Check the &quot;Early Monitoring&quot; section below to ensure
+              that assignments are occuring.
+            </Typography>
+          </ul>
+        </Paper>
+      )}
 
       <Accordion className={classes.accordion}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
