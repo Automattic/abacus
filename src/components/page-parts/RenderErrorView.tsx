@@ -45,7 +45,7 @@ export default function (props: { renderError: RenderError }): JSX.Element {
         </DialogContent>
         <DialogActions>
           <Button component={'a'} href='/'>
-            Go to home
+            Go home
           </Button>
           <Button onClick={props.renderError.clear} color='primary'>
             Try again
