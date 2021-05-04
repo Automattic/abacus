@@ -5,7 +5,7 @@ exports[`renders error message when stack isn't available 1`] = `
   aria-hidden="true"
 >
   <div
-    class="makeStyles-root-3"
+    class="makeStyles-root-4"
   />
 </div>
 `;

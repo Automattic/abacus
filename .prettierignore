@@ -14,3 +14,6 @@ coverage/
 templates/
 
 /build
+
+# prettier doesn't seem to like jpgs
+/public/img/*.jpg

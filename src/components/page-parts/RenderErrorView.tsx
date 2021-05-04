@@ -21,7 +21,9 @@ const useStyles = makeStyles((theme: Theme) =>
       maxHeight: '10rem',
       background: '#f5f5f5',
       padding: theme.spacing(2),
-      marginTop: 0,
+    },
+    dialogContent: {
+      maxWidth: 562,
     },
   }),
 )
@@ -34,9 +36,12 @@ export default function (props: { renderError: RenderError }): JSX.Element {
         <DialogTitle disableTypography>
           <Typography variant='h5'>Oops! Something went wrong...</Typography>
         </DialogTitle>
-        <DialogContent>
+        <DialogContent className={classes.dialogContent}>
+          <img
+            src='/img/hippo-with-turtle.jpg'
+            alt={`"hippo" by .wilkie is licensed with CC BY-NC-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/2.0/`}
+          />
           <pre className={classes.pre}>{props.renderError.error.stack || props.renderError.error.message}</pre>
-          <Typography>If error persists, please contact the Experiments Platform team.</Typography>
         </DialogContent>
         <DialogActions>
           <Button component={'a'} href='/'>
