@@ -1,5 +1,3 @@
-import _ from 'lodash'
-
 import { binomialProbValue } from 'src/utils/math'
 
 import * as Experiments from './experiments'
@@ -152,7 +150,6 @@ interface VariationRatios {
 interface VariationProbabilities {
   exposedDistributionMatchingAllocated: number
   assignedDistributionMatchingAllocated: number
-  assignedSpammersDistributionMatchingAllocated: number
   assignedNoSpammersNoCrossoversDistributionMatchingAllocated: number
 }
 
@@ -231,11 +228,6 @@ export function getExperimentParticipantStats(
               totalTrials: participantCounts.total.assigned,
               probabilityOfSuccess: allocatedPercentage / totalAllocatedPercentage,
             }),
-            assignedSpammersDistributionMatchingAllocated: binomialProbValue({
-              successfulTrials: variationCountsSet.assignedSpammers,
-              totalTrials: participantCounts.total.assignedSpammers,
-              probabilityOfSuccess: allocatedPercentage / totalAllocatedPercentage,
-            }),
             assignedNoSpammersNoCrossoversDistributionMatchingAllocated: binomialProbValue({
               successfulTrials: variationCountsSet.assignedNoSpammersNoCrossovers,
               totalTrials: participantCounts.total.assignedNoSpammersNoCrossovers,
@@ -309,8 +301,9 @@ interface IndicationBracket {
   indication: Omit<HealthIndication, 'reason'>
 }
 
-const contactUsRecommendation = 'Contact @experimentation-review-guild'
-const highSpammerRecommendation = `Spammers don't affect experiments, but high numbers could indicate other problems.`
+const contactUsRecommendation = 'Contact @experiment-review.'
+const highSpammerRecommendation =
+  'Spammers are filtered out of the displayed metrics, but high numbers may be indicative of problems.'
 
 /**
  * Get indication from set of IndicatorBrackets, adding a reason string.
@@ -357,10 +350,6 @@ export function getExperimentParticipantHealthIndicators(
         acc.assignedDistributionMatchingAllocated,
         cur.assignedDistributionMatchingAllocated,
       ),
-      assignedSpammersDistributionMatchingAllocated: Math.min(
-        acc.assignedSpammersDistributionMatchingAllocated,
-        cur.assignedSpammersDistributionMatchingAllocated,
-      ),
       assignedNoSpammersNoCrossoversDistributionMatchingAllocated: Math.min(
         acc.assignedNoSpammersNoCrossoversDistributionMatchingAllocated,
         cur.assignedNoSpammersNoCrossoversDistributionMatchingAllocated,
@@ -395,7 +384,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.PossibleIssue,
             severity: HealthIndicationSeverity.Warning,
-            recommendation: `Check daily ratio patterns for anomalies, contact @experiment-review-guild`,
+            recommendation: `Check daily ratio patterns for anomalies, contact @experiment-review.`,
           },
         },
         {
@@ -409,7 +398,7 @@ export function getExperimentParticipantHealthIndicators(
     },
     {
       name: 'Assignment distribution without crossovers and spammers',
-      value: minVariationProbabilities.assignedDistributionMatchingAllocated,
+      value: minVariationProbabilities.assignedNoSpammersNoCrossoversDistributionMatchingAllocated,
       unit: HealthIndicatorUnit.Pvalue,
       link:
         'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated',
@@ -427,7 +416,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.PossibleIssue,
             severity: HealthIndicationSeverity.Warning,
-            recommendation: `If not in combination with a "Assignment distribution" issue, contact @experiment-review-guild`,
+            recommendation: `If not in combination with a "Assignment distribution" issue, contact @experiment-review.`,
           },
         },
         {
@@ -442,7 +431,7 @@ export function getExperimentParticipantHealthIndicators(
   )
 
   if (experimentParticipantStats.ratios.overall.exposedToAssigned) {
-    const biasedExposuresRecommendation = `If not in combination with other distribution issues, exposure event being fired is linked to variation causing bias. Choose a different exposure event or use assignment analysis (contact @experiment-review-guild to do so).`
+    const biasedExposuresRecommendation = `If not in combination with other distribution issues, exposure event being fired is linked to variation causing bias. Choose a different exposure event or use assignment analysis (contact @experiment-review to do so).`
     indicatorDefinitions.push({
       name: 'Assignment distribution of exposed participants',
       value: minVariationProbabilities.exposedDistributionMatchingAllocated,
@@ -496,7 +485,7 @@ export function getExperimentParticipantHealthIndicators(
           indication: {
             code: HealthIndicationCode.High,
             severity: HealthIndicationSeverity.Warning,
-            recommendation: 'Continue monitoring experiment',
+            recommendation: 'Continue monitoring experiment.',
           },
         },
         {
@@ -578,10 +567,10 @@ export function getExperimentAnalysesHealthIndicators(
   const ropeWidth = metricAssignment.minDifference * 2
   const indicatorDefinitions = [
     {
-      name: 'Kruschke precision (CI to ROPE ratio)',
+      name: 'Kruschke uncertainty (CI to ROPE ratio)',
       value: diffCiWidth / ropeWidth,
       unit: HealthIndicatorUnit.Ratio,
-      link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision',
+      link: 'https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-uncertainty',
       indicationBrackets: [
         {
           max: 0.8,
@@ -595,7 +584,7 @@ export function getExperimentAnalysesHealthIndicators(
           indication: {
             code: HealthIndicationCode.High,
             severity: HealthIndicationSeverity.Warning,
-            recommendation: `Results are imprecise, be careful about drawing conclusions. Extend for more precision`,
+            recommendation: `High uncertainty. Be careful about drawing conclusions. Collect more data to reduce uncertainty.`,
           },
         },
         {
@@ -603,7 +592,7 @@ export function getExperimentAnalysesHealthIndicators(
           indication: {
             code: HealthIndicationCode.VeryHigh,
             severity: HealthIndicationSeverity.Warning,
-            recommendation: `Results are very imprecise, be careful about drawing conclusions. Extend for more precision`,
+            recommendation: `Very high uncertainty. Be careful about drawing conclusions. Collect more data to reduce uncertainty.`,
           },
         },
       ],
@@ -633,7 +622,7 @@ export function getExperimentHealthIndicators(experiment: ExperimentFull): Healt
           indication: {
             code: HealthIndicationCode.VeryLow,
             severity: HealthIndicationSeverity.Warning,
-            recommendation: 'Experiments should generally run at least 7 days before drawing conclusions.',
+            recommendation: 'Experiments should generally run for at least a week before drawing conclusions.',
           },
         },
         {
@@ -641,7 +630,7 @@ export function getExperimentHealthIndicators(experiment: ExperimentFull): Healt
           indication: {
             code: HealthIndicationCode.Low,
             severity: HealthIndicationSeverity.Warning,
-            recommendation: 'Experiments should generally run at least 7 days before drawing conclusions.',
+            recommendation: 'Experiments should generally run for at least a week before drawing conclusions.',
           },
         },
         {
@@ -652,11 +641,11 @@ export function getExperimentHealthIndicators(experiment: ExperimentFull): Healt
           },
         },
         {
-          max: 31,
+          max: 42,
           indication: {
             code: HealthIndicationCode.High,
             severity: HealthIndicationSeverity.Warning,
-            recommendation: 'Experiment is running long, stop experiment soon.',
+            recommendation: 'Experiment has been running for a long time. Consider stopping it soon.',
           },
         },
         {
@@ -664,7 +653,7 @@ export function getExperimentHealthIndicators(experiment: ExperimentFull): Healt
           indication: {
             code: HealthIndicationCode.VeryHigh,
             severity: HealthIndicationSeverity.Warning,
-            recommendation: 'Experiment is running way too long, stop experiment now.',
+            recommendation: 'Experiment has been running for way too long. Stopping it now is highly recommended.',
           },
         },
       ],
