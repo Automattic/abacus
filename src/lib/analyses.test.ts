@@ -580,55 +580,60 @@ describe('getExperimentParticipantStatHealthIndicators', () => {
           "indication": Object {
             "code": "probable issue",
             "reason": "−∞ < x ≤ 0.001",
+            "recommendation": "Contact @experimentation-review-guild",
             "severity": "Error",
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated",
           "name": "Assignment distribution",
-          "unit": "P-Value",
+          "unit": "p-value",
           "value": 0.000011583130623216142,
         },
         Object {
           "indication": Object {
             "code": "probable issue",
             "reason": "−∞ < x ≤ 0.001",
+            "recommendation": "Contact @experimentation-review-guild",
             "severity": "Error",
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated",
           "name": "Assignment distribution without crossovers and spammers",
-          "unit": "P-Value",
+          "unit": "p-value",
           "value": 0.000011583130623216142,
         },
         Object {
           "indication": Object {
             "code": "possible issue",
             "reason": "0.001 < x ≤ 0.05",
+            "recommendation": "If not in combination with other distribution issues, exposure event being fired is linked to variation causing bias. Choose a different exposure event or use assignment analysis (contact @experiment-review-guild to do so).",
             "severity": "Warning",
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch",
           "name": "Assignment distribution of exposed participants",
-          "unit": "P-Value",
+          "unit": "p-value",
           "value": 0.026856695507524453,
         },
         Object {
           "indication": Object {
             "code": "very high",
             "reason": "0.05 < x ≤ 1",
+            "recommendation": "Contact @experimentation-review-guild",
             "severity": "Error",
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers",
           "name": "Ratio of crossovers to assigned",
-          "unit": "Ratio",
+          "unit": "ratio",
           "value": 0.3076923076923077,
         },
         Object {
           "indication": Object {
-            "code": "very high",
-            "reason": "0.3 < x ≤ 1",
-            "severity": "Error",
+            "code": "high",
+            "reason": "0.1 < x ≤ 0.4",
+            "recommendation": "Spammers don't affect experiments, but high numbers could indicate other problems.",
+            "severity": "Warning",
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers",
           "name": "Ratio of spammers to assigned",
-          "unit": "Ratio",
+          "unit": "ratio",
           "value": 0.34615384615384615,
         },
       ]
@@ -673,7 +678,7 @@ describe('getExperimentParticipantStatHealthIndicators', () => {
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated",
           "name": "Assignment distribution",
-          "unit": "P-Value",
+          "unit": "p-value",
           "value": 1,
         },
         Object {
@@ -684,29 +689,31 @@ describe('getExperimentParticipantStatHealthIndicators', () => {
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated",
           "name": "Assignment distribution without crossovers and spammers",
-          "unit": "P-Value",
+          "unit": "p-value",
           "value": 1,
         },
         Object {
           "indication": Object {
             "code": "value error",
             "reason": "Unexpected value",
+            "recommendation": "Contact @experimentation-review-guild",
             "severity": "Error",
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers",
           "name": "Ratio of crossovers to assigned",
-          "unit": "Ratio",
+          "unit": "ratio",
           "value": NaN,
         },
         Object {
           "indication": Object {
             "code": "value error",
             "reason": "Unexpected value",
+            "recommendation": "Contact @experimentation-review-guild",
             "severity": "Error",
           },
           "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers",
           "name": "Ratio of spammers to assigned",
-          "unit": "Ratio",
+          "unit": "ratio",
           "value": NaN,
         },
       ]
@@ -752,11 +759,12 @@ describe('getExperimentAnalysesHealthIndicators', () => {
           "indication": Object {
             "code": "very high",
             "reason": "1.5 < x ≤ ∞",
-            "severity": "Error",
+            "recommendation": "Results are very imprecise, be careful about drawing conclusions. Extend for more precision",
+            "severity": "Warning",
           },
-          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ci-width-to-rope-ratio",
-          "name": "Kruschke Precision (CI to ROPE ratio)",
-          "unit": "Ratio",
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision",
+          "name": "Kruschke precision (CI to ROPE ratio)",
+          "unit": "ratio",
           "value": 25,
         },
       ]
@@ -829,5 +837,35 @@ describe('getExperimentAnalysesHealthIndicators', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toThrowErrorMatchingInlineSnapshot(`"Missing metricAssignment"`)
+  })
+})
+
+describe('getExperimentHealthIndicators', () => {
+  it('should work correctly', () => {
+    expect(
+      Analyses.getExperimentHealthIndicators(
+        Fixtures.createExperimentFull({
+          variations: [
+            { variationId: 1, allocatedPercentage: 50, isDefault: true, name: 'variation_name_1' },
+            { variationId: 2, allocatedPercentage: 50, isDefault: false, name: 'variation_name_2' },
+          ],
+        }),
+      ),
+    ).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "indication": Object {
+            "code": "very low",
+            "reason": "−∞ < x ≤ 3",
+            "recommendation": "Experiments should generally run at least 7 days before drawing conclusions.",
+            "severity": "Warning",
+          },
+          "link": "https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time",
+          "name": "Experiment run time",
+          "unit": "days",
+          "value": 0,
+        },
+      ]
+    `)
   })
 })

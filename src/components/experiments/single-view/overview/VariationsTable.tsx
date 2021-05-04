@@ -79,22 +79,22 @@ function assignmentHref(variationName: string, experimentName: string) {
         const duration = responseBody.duration === 'unlimited' ?
           responseBody.duration : Math.ceil(responseBody.duration / 60 / 60);
 
-        window.localStorage.setItem(
-          'explat-experiment--${experimentName}',
-          JSON.stringify(
-            {
-              'experimentName':'${experimentName}',
-              'variationName': '${variationName}',
-              'retrievedTimestamp': Date.now(),
-              'ttl': 60*60,
-            }
-          )
-        );
-
         if (responseBody.storage_method === 'cookie') {
-          alert('ExPlat: Successful Assignment\\n–––––––––––––––––––––––––––––\\n\\nExperiment: ${experimentName}\\nVariation: ${variationName}\\nTTL: Expires in 1 hour\\n\\nClient-side: Applies to the current domain (LocalStorage).\\nServer-side: Applies to current session (Cookie).');
+          window.localStorage.setItem(
+            'explat-experiment--${experimentName}',
+            JSON.stringify(
+              {
+                'experimentName':'${experimentName}',
+                'variationName': '${variationName}',
+                'retrievedTimestamp': Date.now(),
+                'ttl': responseBody.duration === 'unlimited' ? Infinity : responseBody.duration,
+              }
+            )
+          );
+
+          alert('ExPlat: Successful Assignment\\n–––––––––––––––––––––––––––––\\n\\nExperiment: ${experimentName}\\nVariation: ${variationName}\\n\\nMethod: Logged-out assignment, expires in ' + duration + ' hours\\nClient-side: Applies to the current domain (LocalStorage).\\nServer-side: Applies to current session (Cookie).');
         } else {
-          alert('ExPlat: Successful Assignment\\n–––––––––––––––––––––––––––––\\n\\nExperiment: ${experimentName}\\nVariation: ${variationName}\\nTTL: Expires in 1 hour\\n\\nClient-side: Applies to the current domain (LocalStorage).\\nServer-side: Applies to current logged-in user (User attribute).');
+          alert('ExPlat: Successful Assignment\\n–––––––––––––––––––––––––––––\\n\\nExperiment: ${experimentName}\\nVariation: ${variationName}\\n\\nMethod: Logged-in assignment\\nApplies to the current logged-in user.');
         }
     }
 })()`
