@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Chip,
   createStyles,
   FormControl,
@@ -12,6 +15,7 @@ import {
   Typography,
   useTheme,
 } from '@material-ui/core'
+import { ExpandMore as ExpandMoreIcon } from '@material-ui/icons'
 import clsx from 'clsx'
 import _ from 'lodash'
 import MaterialTable from 'material-table'
@@ -108,6 +112,17 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     tableTitle: {
       margin: theme.spacing(4, 2, 2),
+    },
+    accordion: {
+      margin: theme.spacing(2, 0),
+    },
+    accordionDetails: {
+      flexDirection: 'column',
+    },
+    pre: {
+      background: '#f5f5f5',
+      padding: theme.spacing(3),
+      overflow: 'scroll',
     },
   }),
 )
@@ -398,6 +413,39 @@ export default function ActualExperimentResults({
       <Paper id='health-report'>
         <HealthIndicatorTable indicators={experimentHealthIndicators} />
       </Paper>
+
+      <Accordion className={classes.accordion}>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant='h5'>Early Monitoring - Live Assignment Count</Typography>
+        </AccordionSummary>
+        <AccordionDetails className={classes.accordionDetails}>
+          <Typography variant='body1'>
+            For early monitoring, you can run this query in Hue to retrieve raw unfiltered assignment counts from
+            Tracks.
+          </Typography>
+          <pre className={classes.pre}>
+            <code>
+              {/* (Using a javasript string automatically replaces special characters with html entities.) */}
+              {`with tracks_counts as (
+  select
+    a8c.get_json_object(eventprops, '$.experiment_variation_id') as experiment_variation_id,
+    count(*) as raw_number_of_assignments
+  from tracks.etl_events
+  where
+    eventname = 'wpcom_experiment_variation_assigned' and
+    eventprops like '%"experiment_id":"${experiment.experimentId}"%'
+  group by experiment_variation_id
+)
+
+select
+  experiment_variations.name as variation_name,
+  raw_number_of_assignments
+from tracks_counts
+inner join experiment_variations on cast(tracks_counts.experiment_variation_id as bigint) = experiment_variations.experiment_variation_id`}
+            </code>
+          </pre>
+        </AccordionDetails>
+      </Accordion>
     </div>
   )
 }
