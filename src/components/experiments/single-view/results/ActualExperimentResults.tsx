@@ -432,8 +432,8 @@ export default function ActualExperimentResults({
           <Typography variant='body1'>No results are available at the moment, this can be due to:</Typography>
           <ul>
             <Typography component='li'>
-              <strong> An experiment being new. </strong> Due to Tracks and ExPlat processing it can take 24-48 hours
-              for results to come available. Usually released at 06:00 UTC daily.
+              <strong> An experiment being new. </strong> ExPlat can take 24-48 hours for results to process and become
+              available. Updates are usually released at 06:00 UTC daily.
             </Typography>
             <Typography component='li'>
               <strong> No assignments occuring. </strong> Check the &quot;Early Monitoring&quot; section below to ensure
@@ -445,12 +445,18 @@ export default function ActualExperimentResults({
 
       <Accordion className={classes.accordion}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant='h5'>Early Monitoring - Live Assignment Count</Typography>
+          <Typography variant='h5'>Early Monitoring - Live Assignment Event Flow</Typography>
         </AccordionSummary>
         <AccordionDetails className={classes.accordionDetails}>
           <Typography variant='body1'>
-            For early monitoring, you can run this query in Hue to retrieve raw unfiltered assignment counts from
-            Tracks.
+            For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the
+            unprocessed tracks queue.
+          </Typography>
+
+          <Typography variant='body1'>
+            This query should only be used to monitor event flow. The best way to use it is to run it multiple times and
+            ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are
+            moved to prod_events every day.
           </Typography>
           <pre className={classes.pre}>
             <code>
@@ -467,10 +473,10 @@ export default function ActualExperimentResults({
 )
 
 select
-  experiment_variations.name as variation_name,
+  wpcom.experiment_variations.name as variation_name,
   raw_number_of_assignments
 from tracks_counts
-inner join experiment_variations on cast(tracks_counts.experiment_variation_id as bigint) = experiment_variations.experiment_variation_id`}
+inner join wpcom.experiment_variations on cast(tracks_counts.experiment_variation_id as bigint) = wpcom.experiment_variations.experiment_variation_id`}
             </code>
           </pre>
         </AccordionDetails>

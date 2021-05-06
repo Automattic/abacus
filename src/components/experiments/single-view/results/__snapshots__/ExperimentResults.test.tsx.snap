@@ -14,7 +14,9 @@ exports[`renders an appropriate message with no analyses 1`] = `
         <h3
           class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
         >
-           No Results 
+           
+          No Results
+           
         </h3>
         <p
           class="MuiTypography-root MuiTypography-body1"
@@ -28,7 +30,7 @@ exports[`renders an appropriate message with no analyses 1`] = `
             <strong>
                An experiment being new. 
             </strong>
-             Due to Tracks and ExPlat processing it can take 24-48 hours for results to come available. Usually released at 06:00 UTC daily.
+             ExPlat can take 24-48 hours for results to process and become available. Updates are usually released at 06:00 UTC daily.
           </li>
           <li
             class="MuiTypography-root MuiTypography-body1"
@@ -56,7 +58,7 @@ exports[`renders an appropriate message with no analyses 1`] = `
             <h5
               class="MuiTypography-root MuiTypography-h5"
             >
-              Early Monitoring - Live Assignment Count
+              Early Monitoring - Live Assignment Event Flow
             </h5>
           </div>
           <div
@@ -102,7 +104,12 @@ exports[`renders an appropriate message with no analyses 1`] = `
                   <p
                     class="MuiTypography-root MuiTypography-body1"
                   >
-                    For early monitoring, you can run this query in Hue to retrieve raw unfiltered assignment counts from Tracks.
+                    For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                  </p>
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
                   </p>
                   <pre
                     class="makeStyles-pre-20"
@@ -120,10 +127,10 @@ exports[`renders an appropriate message with no analyses 1`] = `
 )
 
 select
-  experiment_variations.name as variation_name,
+  wpcom.experiment_variations.name as variation_name,
   raw_number_of_assignments
 from tracks_counts
-inner join experiment_variations on cast(tracks_counts.experiment_variation_id as bigint) = experiment_variations.experiment_variation_id
+inner join wpcom.experiment_variations on cast(tracks_counts.experiment_variation_id as bigint) = wpcom.experiment_variations.experiment_variation_id
                     </code>
                   </pre>
                 </div>
@@ -1025,7 +1032,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
           <h5
             class="MuiTypography-root MuiTypography-h5"
           >
-            Early Monitoring - Live Assignment Count
+            Early Monitoring - Live Assignment Event Flow
           </h5>
         </div>
         <div
@@ -1071,7 +1078,12 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <p
                   class="MuiTypography-root MuiTypography-body1"
                 >
-                  For early monitoring, you can run this query in Hue to retrieve raw unfiltered assignment counts from Tracks.
+                  For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                </p>
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                >
+                  This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
                 </p>
                 <pre
                   class="makeStyles-pre-40"
@@ -1089,10 +1101,10 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
 )
 
 select
-  experiment_variations.name as variation_name,
+  wpcom.experiment_variations.name as variation_name,
   raw_number_of_assignments
 from tracks_counts
-inner join experiment_variations on cast(tracks_counts.experiment_variation_id as bigint) = experiment_variations.experiment_variation_id
+inner join wpcom.experiment_variations on cast(tracks_counts.experiment_variation_id as bigint) = wpcom.experiment_variations.experiment_variation_id
                   </code>
                 </pre>
               </div>
@@ -2422,7 +2434,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           <h5
             class="MuiTypography-root MuiTypography-h5"
           >
-            Early Monitoring - Live Assignment Count
+            Early Monitoring - Live Assignment Event Flow
           </h5>
         </div>
         <div
@@ -2468,7 +2480,12 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <p
                   class="MuiTypography-root MuiTypography-body1"
                 >
-                  For early monitoring, you can run this query in Hue to retrieve raw unfiltered assignment counts from Tracks.
+                  For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                </p>
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                >
+                  This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
                 </p>
                 <pre
                   class="makeStyles-pre-87"
@@ -2486,10 +2503,10 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
 )
 
 select
-  experiment_variations.name as variation_name,
+  wpcom.experiment_variations.name as variation_name,
   raw_number_of_assignments
 from tracks_counts
-inner join experiment_variations on cast(tracks_counts.experiment_variation_id as bigint) = experiment_variations.experiment_variation_id
+inner join wpcom.experiment_variations on cast(tracks_counts.experiment_variation_id as bigint) = wpcom.experiment_variations.experiment_variation_id
                   </code>
                 </pre>
               </div>
@@ -4027,7 +4044,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           <h5
             class="MuiTypography-root MuiTypography-h5"
           >
-            Early Monitoring - Live Assignment Count
+            Early Monitoring - Live Assignment Event Flow
           </h5>
         </div>
         <div
@@ -4073,7 +4090,12 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <p
                   class="MuiTypography-root MuiTypography-body1"
                 >
-                  For early monitoring, you can run this query in Hue to retrieve raw unfiltered assignment counts from Tracks.
+                  For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                </p>
+                <p
+                  class="MuiTypography-root MuiTypography-body1"
+                >
+                  This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
                 </p>
                 <pre
                   class="makeStyles-pre-134"
@@ -4091,10 +4113,10 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
 )
 
 select
-  experiment_variations.name as variation_name,
+  wpcom.experiment_variations.name as variation_name,
   raw_number_of_assignments
 from tracks_counts
-inner join experiment_variations on cast(tracks_counts.experiment_variation_id as bigint) = experiment_variations.experiment_variation_id
+inner join wpcom.experiment_variations on cast(tracks_counts.experiment_variation_id as bigint) = wpcom.experiment_variations.experiment_variation_id
                   </code>
                 </pre>
               </div>
