@@ -259,7 +259,8 @@ describe('getAggregateRecommendation', () => {
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
-      decision: Analyses.AggregateRecommendationDecision.ManualAnalysisRequired,
+      decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
+      chosenVariationId: 123,
     })
 
     expect(

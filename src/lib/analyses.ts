@@ -48,8 +48,8 @@ export function getAggregateRecommendation(
 ): AggregateRecommendation {
   const recommendationChosenVariationIds = analyses
     .map((analysis) => analysis.recommendation)
-    .filter((x) => x)
     .map((recommendation) => recommendation?.chosenVariationId)
+    .filter((x) => x)
   const recommendationConflict = [...new Set(recommendationChosenVariationIds)].length > 1
   if (recommendationConflict) {
     return {
