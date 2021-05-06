@@ -2249,7 +2249,9 @@ exports[`sections should be browsable by the section buttons 4`] = `
                       </span>
                     </div>
                     <input
-                      type="hidden"
+                      aria-hidden="true"
+                      class="MuiSelect-nativeInput"
+                      tabindex="-1"
                       value=""
                     />
                     <svg
