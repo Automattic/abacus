@@ -901,10 +901,10 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
               >
                 <a
                   class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-uncertainty"
                   target="_blank"
                 >
-                  Kruschke precision (CI to ROPE ratio)
+                  Kruschke uncertainty (CI to ROPE ratio)
                 </a>
               </td>
               <td
@@ -1008,7 +1008,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <p
                   class="MuiTypography-root MuiTypography-body1"
                 >
-                  Experiments should generally run at least 7 days before drawing conclusions.
+                  Experiments should generally run for at least a week before drawing conclusions.
                 </p>
               </td>
             </tr>
@@ -2228,7 +2228,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <p
                   class="MuiTypography-root MuiTypography-body1"
                 >
-                  Contact @experimentation-review-guild
+                  Contact @experiment-review.
                 </p>
               </td>
             </tr>
@@ -2290,7 +2290,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <p
                   class="MuiTypography-root MuiTypography-body1"
                 >
-                  Spammers don't affect experiments, but high numbers could indicate other problems.
+                  Spammers are filtered out of the displayed metrics, but high numbers may be indicative of problems.
                 </p>
               </td>
             </tr>
@@ -2303,10 +2303,10 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               >
                 <a
                   class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-uncertainty"
                   target="_blank"
                 >
-                  Kruschke precision (CI to ROPE ratio)
+                  Kruschke uncertainty (CI to ROPE ratio)
                 </a>
               </td>
               <td
@@ -2410,7 +2410,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <p
                   class="MuiTypography-root MuiTypography-body1"
                 >
-                  Experiments should generally run at least 7 days before drawing conclusions.
+                  Experiments should generally run for at least a week before drawing conclusions.
                 </p>
               </td>
             </tr>
@@ -3838,7 +3838,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <p
                   class="MuiTypography-root MuiTypography-body1"
                 >
-                  Contact @experimentation-review-guild
+                  Contact @experiment-review.
                 </p>
               </td>
             </tr>
@@ -3900,7 +3900,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <p
                   class="MuiTypography-root MuiTypography-body1"
                 >
-                  Spammers don't affect experiments, but high numbers could indicate other problems.
+                  Spammers are filtered out of the displayed metrics, but high numbers may be indicative of problems.
                 </p>
               </td>
             </tr>
@@ -3913,10 +3913,10 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               >
                 <a
                   class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-precision"
+                  href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-uncertainty"
                   target="_blank"
                 >
-                  Kruschke precision (CI to ROPE ratio)
+                  Kruschke uncertainty (CI to ROPE ratio)
                 </a>
               </td>
               <td
@@ -4020,7 +4020,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <p
                   class="MuiTypography-root MuiTypography-body1"
                 >
-                  Experiments should generally run at least 7 days before drawing conclusions.
+                  Experiments should generally run for at least a week before drawing conclusions.
                 </p>
               </td>
             </tr>
