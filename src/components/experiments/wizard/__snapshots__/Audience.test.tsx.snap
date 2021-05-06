@@ -42,8 +42,10 @@ exports[`renders as expected 1`] = `
             Select a Platform
           </div>
           <input
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
             name="experiment.platform"
-            type="hidden"
+            tabindex="-1"
             value=""
           />
           <svg
@@ -739,8 +741,10 @@ exports[`renders as expected 2`] = `
             Select a Platform
           </div>
           <input
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
             name="experiment.platform"
-            type="hidden"
+            tabindex="-1"
             value=""
           />
           <svg

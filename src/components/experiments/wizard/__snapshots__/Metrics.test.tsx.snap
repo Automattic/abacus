@@ -106,7 +106,9 @@ exports[`allows adding, editing and removing a Metric Assignment 1`] = `
             </span>
           </div>
           <input
-            type="hidden"
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            tabindex="-1"
             value=""
           />
           <svg
@@ -391,7 +393,9 @@ exports[`allows adding, editing and removing a Metric Assignment 2`] = `
             </span>
           </div>
           <input
-            type="hidden"
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            tabindex="-1"
             value=""
           />
           <svg
@@ -662,8 +666,10 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
                   -
                 </div>
                 <input
+                  aria-hidden="true"
+                  class="MuiSelect-nativeInput"
                   name="experiment.metricAssignments[0].attributionWindowSeconds"
-                  type="hidden"
+                  tabindex="-1"
                   value=""
                 />
                 <svg
@@ -843,7 +849,9 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
             </span>
           </div>
           <input
-            type="hidden"
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            tabindex="-1"
             value=""
           />
           <svg
@@ -1116,8 +1124,10 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
                   -
                 </div>
                 <input
+                  aria-hidden="true"
+                  class="MuiSelect-nativeInput"
                   name="experiment.metricAssignments[0].attributionWindowSeconds"
-                  type="hidden"
+                  tabindex="-1"
                   value=""
                 />
                 <svg
@@ -1297,7 +1307,9 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
             </span>
           </div>
           <input
-            type="hidden"
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            tabindex="-1"
             value=""
           />
           <svg
@@ -1568,8 +1580,10 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
                   -
                 </div>
                 <input
+                  aria-hidden="true"
+                  class="MuiSelect-nativeInput"
                   name="experiment.metricAssignments[0].attributionWindowSeconds"
-                  type="hidden"
+                  tabindex="-1"
                   value=""
                 />
                 <svg
@@ -1749,7 +1763,9 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
             </span>
           </div>
           <input
-            type="hidden"
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            tabindex="-1"
             value=""
           />
           <svg
@@ -2034,7 +2050,9 @@ exports[`allows adding, editing and removing a Metric Assignment 6`] = `
             </span>
           </div>
           <input
-            type="hidden"
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            tabindex="-1"
             value=""
           />
           <svg
@@ -2305,8 +2323,10 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
                   -
                 </div>
                 <input
+                  aria-hidden="true"
+                  class="MuiSelect-nativeInput"
                   name="experiment.metricAssignments[0].attributionWindowSeconds"
-                  type="hidden"
+                  tabindex="-1"
                   value=""
                 />
                 <svg
@@ -2488,7 +2508,9 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
             </span>
           </div>
           <input
-            type="hidden"
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            tabindex="-1"
             value=""
           />
           <svg
@@ -2773,7 +2795,9 @@ exports[`renders as expected 1`] = `
             </span>
           </div>
           <input
-            type="hidden"
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            tabindex="-1"
             value=""
           />
           <svg
