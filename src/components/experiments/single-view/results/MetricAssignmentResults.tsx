@@ -74,6 +74,22 @@ const useStyles = makeStyles((theme: Theme) =>
       borderBottomStyle: 'dashed',
       borderBottomColor: theme.palette.grey[500],
     },
+    dataTable: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gridColumnGap: theme.spacing(2),
+    },
+    latestEstimates: {},
+    metricAssignmentDetails: {},
+    metricDescription: {
+      opacity: 0.7,
+    },
+    analysisFinePrint: {
+      fontSize: '.8rem',
+      marginTop: '1rem',
+      fontStyle: 'italic',
+      opacity: 0.7,
+    },
   }),
 )
 
@@ -204,6 +220,149 @@ export default function MetricAssignmentResults({
 
   return (
     <TableContainer className={clsx(classes.root, 'analysis-detail-panel')}>
+      <Table>
+        <TableRow>
+          <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
+            Metric Description
+          </TableCell>
+          <TableCell className={classes.metricDescription}>{metric.description}</TableCell>
+        </TableRow>
+      </Table>
+      <div className={classes.dataTable}>
+        <div className={classes.latestEstimates}>
+          <Table>
+            <TableBody>
+              {latestAnalysis.recommendation && (
+                <>
+                  <TableRow>
+                    <TableCell
+                      component='th'
+                      scope='row'
+                      variant='head'
+                      className={clsx(classes.rowHeader, classes.headerCell)}
+                    >
+                      Difference
+                    </TableCell>
+                    <TableCell className={classes.monospace}>
+                      <Tooltip
+                        title={
+                          <>
+                            <strong>Interpretation:</strong>
+                            <br />
+                            There is a 95% probability that the difference between variations is between{' '}
+                            <MetricValue
+                              value={latestEstimates.diff.bottom}
+                              metricParameterType={metric.parameterType}
+                              isDifference={true}
+                            />{' '}
+                            and{' '}
+                            <MetricValue
+                              value={latestEstimates.diff.top}
+                              metricParameterType={metric.parameterType}
+                              isDifference={true}
+                            />
+                            .
+                          </>
+                        }
+                      >
+                        <span className={classes.tooltipped}>
+                          [
+                          <MetricValue
+                            value={latestEstimates.diff.bottom}
+                            metricParameterType={metric.parameterType}
+                            isDifference={true}
+                          />
+                          ,&nbsp;
+                          <MetricValue
+                            value={latestEstimates.diff.top}
+                            metricParameterType={metric.parameterType}
+                            isDifference={true}
+                          />
+                          ] 95% CI
+                        </span>
+                      </Tooltip>
+                    </TableCell>
+                  </TableRow>
+                </>
+              )}
+              {experiment.variations.map((variation) => (
+                <React.Fragment key={variation.variationId}>
+                  <TableRow>
+                    <TableCell
+                      component='th'
+                      scope='row'
+                      variant='head'
+                      valign='top'
+                      className={clsx(classes.rowHeader, classes.headerCell)}
+                    >
+                      <span className={classes.monospace}>{variation.name}</span>
+                    </TableCell>
+                    <TableCell className={classes.monospace}>
+                      <Tooltip
+                        title={
+                          <>
+                            <strong>Interpretation:</strong>
+                            <br />
+                            There is a 95% probability that the difference between variations is between{' '}
+                            <MetricValue
+                              value={latestEstimates[`variation_${variation.variationId}`].bottom}
+                              metricParameterType={metric.parameterType}
+                            />{' '}
+                            and{' '}
+                            <MetricValue
+                              value={latestEstimates[`variation_${variation.variationId}`].top}
+                              metricParameterType={metric.parameterType}
+                            />
+                            .
+                          </>
+                        }
+                      >
+                        <span className={classes.tooltipped}>
+                          [
+                          <MetricValue
+                            value={latestEstimates[`variation_${variation.variationId}`].bottom}
+                            metricParameterType={metric.parameterType}
+                          />
+                          ,&nbsp;
+                          <MetricValue
+                            value={latestEstimates[`variation_${variation.variationId}`].top}
+                            metricParameterType={metric.parameterType}
+                          />
+                          ] 95% CI
+                        </span>
+                      </Tooltip>
+                    </TableCell>
+                  </TableRow>
+                </React.Fragment>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+        <div className={classes.metricAssignmentDetails}>
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
+                  Minimum Practical Difference
+                </TableCell>
+                <TableCell className={classes.monospace}>
+                  <MetricValue
+                    value={metricAssignment.minDifference}
+                    metricParameterType={metric.parameterType}
+                    isDifference={true}
+                  />
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
+                  Change Expected
+                </TableCell>
+                <TableCell className={classes.monospace}>{formatBoolean(metricAssignment.changeExpected)}</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+      </div>
       {dates.length > 1 ? (
         <div className={classes.metricEstimatePlots}>
           <Plot
@@ -232,186 +391,18 @@ export default function MetricAssignmentResults({
           Past values will be plotted once we have more than one day of results.
         </Typography>
       )}
-      <Typography variant='h4' className={classes.tableHeader}>
-        Latest Estimates
+      <Typography className={classes.analysisFinePrint}>
+        <strong>Last analyzed:</strong> <DatetimeText datetime={latestAnalysis.analysisDatetime} excludeTime={true} />.{' '}
+        <strong>Analysis Strategy:</strong> {AnalysisStrategyToHuman[latestAnalysis.analysisStrategy]}.{' '}
+        <strong>Participants:</strong> {latestAnalysis.participantStats.total} (
+        {_.join(
+          Variations.sort(experiment.variations).map(
+            ({ variationId, name }) => `${latestAnalysis.participantStats[`variation_${variationId}`]} in ${name}`,
+          ),
+          '; ',
+        )}
+        )
       </Typography>
-      <Table>
-        <TableBody>
-          {latestAnalysis.recommendation && (
-            <>
-              <TableRow>
-                <TableCell
-                  component='th'
-                  scope='row'
-                  variant='head'
-                  className={clsx(classes.rowHeader, classes.headerCell)}
-                >
-                  Difference
-                </TableCell>
-                <TableCell className={classes.monospace}>
-                  <Tooltip
-                    title={
-                      <>
-                        <strong>Interpretation:</strong>
-                        <br />
-                        There is a 95% probability that the difference between variations is between{' '}
-                        <MetricValue
-                          value={latestEstimates.diff.bottom}
-                          metricParameterType={metric.parameterType}
-                          isDifference={true}
-                        />{' '}
-                        and{' '}
-                        <MetricValue
-                          value={latestEstimates.diff.top}
-                          metricParameterType={metric.parameterType}
-                          isDifference={true}
-                        />
-                        .
-                      </>
-                    }
-                  >
-                    <span className={classes.tooltipped}>
-                      [
-                      <MetricValue
-                        value={latestEstimates.diff.bottom}
-                        metricParameterType={metric.parameterType}
-                        isDifference={true}
-                      />
-                      ,&nbsp;
-                      <MetricValue
-                        value={latestEstimates.diff.top}
-                        metricParameterType={metric.parameterType}
-                        isDifference={true}
-                      />
-                      ] 95% CI
-                    </span>
-                  </Tooltip>
-                </TableCell>
-              </TableRow>
-            </>
-          )}
-          {experiment.variations.map((variation) => (
-            <React.Fragment key={variation.variationId}>
-              <TableRow>
-                <TableCell
-                  component='th'
-                  scope='row'
-                  variant='head'
-                  valign='top'
-                  className={clsx(classes.rowHeader, classes.headerCell)}
-                >
-                  <span className={classes.monospace}>{variation.name}</span>
-                </TableCell>
-                <TableCell className={classes.monospace}>
-                  <Tooltip
-                    title={
-                      <>
-                        <strong>Interpretation:</strong>
-                        <br />
-                        There is a 95% probability that the difference between variations is between{' '}
-                        <MetricValue
-                          value={latestEstimates[`variation_${variation.variationId}`].bottom}
-                          metricParameterType={metric.parameterType}
-                        />{' '}
-                        and{' '}
-                        <MetricValue
-                          value={latestEstimates[`variation_${variation.variationId}`].top}
-                          metricParameterType={metric.parameterType}
-                        />
-                        .
-                      </>
-                    }
-                  >
-                    <span className={classes.tooltipped}>
-                      [
-                      <MetricValue
-                        value={latestEstimates[`variation_${variation.variationId}`].bottom}
-                        metricParameterType={metric.parameterType}
-                      />
-                      ,&nbsp;
-                      <MetricValue
-                        value={latestEstimates[`variation_${variation.variationId}`].top}
-                        metricParameterType={metric.parameterType}
-                      />
-                      ] 95% CI
-                    </span>
-                  </Tooltip>
-                </TableCell>
-              </TableRow>
-            </React.Fragment>
-          ))}
-        </TableBody>
-      </Table>
-      <Typography variant='h4' className={classes.tableHeader}>
-        Metric Assignment Details
-      </Typography>
-      <Table>
-        <TableBody>
-          <TableRow>
-            <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
-              Metric Description
-            </TableCell>
-            <TableCell className={classes.monospace}>{metric.description}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
-              Minimum Practical Difference
-            </TableCell>
-            <TableCell className={classes.monospace}>
-              <MetricValue
-                value={metricAssignment.minDifference}
-                metricParameterType={metric.parameterType}
-                isDifference={true}
-              />
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
-              Change Expected
-            </TableCell>
-            <TableCell className={classes.monospace}>{formatBoolean(metricAssignment.changeExpected)}</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-      <Typography variant='h4' className={classes.tableHeader}>
-        Analysis Fine Print
-      </Typography>
-      <Table>
-        <TableBody>
-          <TableRow>
-            <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
-              Last analyzed
-            </TableCell>
-            <TableCell>
-              <DatetimeText datetime={latestAnalysis.analysisDatetime} excludeTime={true} />
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
-              Analysis strategy
-            </TableCell>
-            <TableCell className={classes.monospace}>
-              {AnalysisStrategyToHuman[latestAnalysis.analysisStrategy]}
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
-              Analyzed participants
-            </TableCell>
-            <TableCell className={classes.monospace}>
-              {latestAnalysis.participantStats.total} (
-              {_.join(
-                Variations.sort(experiment.variations).map(
-                  ({ variationId, name }) =>
-                    `${latestAnalysis.participantStats[`variation_${variationId}`]} in ${name}`,
-                ),
-                '; ',
-              )}
-              )
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
     </TableContainer>
   )
 }
