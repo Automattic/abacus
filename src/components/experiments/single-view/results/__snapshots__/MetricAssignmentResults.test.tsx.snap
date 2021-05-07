@@ -8,7 +8,9 @@ exports[`renders an appropriate message with no analyses 1`] = `
     <h5
       class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
     >
-       No Analysis Data Found 
+       
+      No Analysis Data Found
+       
     </h5>
     <p
       class="MuiTypography-root MuiTypography-body1"
