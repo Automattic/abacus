@@ -71,6 +71,19 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
+function MissingAnalysisMessage() {
+  const classes = useStyles()
+  return (
+    <div className={classes.root}>
+      <Typography variant='h5' gutterBottom>
+        {' '}
+        No Analysis Data Found{' '}
+      </Typography>
+      <Typography variant='body1'> It can take 24-48 hours for analysis data to be generated. </Typography>
+    </div>
+  )
+}
+
 /**
  * Display results for a MetricAssignment
  */
@@ -95,8 +108,9 @@ export default function MetricAssignmentResults({
     : identity
   const analyses = analysesByStrategyDateAsc[strategy]
   const latestAnalysis = _.last(analyses)
-  if (!latestAnalysis) {
-    return null
+  const latestEstimates = latestAnalysis?.metricEstimates
+  if (!latestAnalysis || !latestEstimates) {
+    return <MissingAnalysisMessage />
   }
 
   const dates = analyses.map(({ analysisDatetime }) => analysisDatetime.toISOString())
@@ -181,13 +195,6 @@ export default function MetricAssignmentResults({
       type: 'scatter' as const,
     },
   ]
-
-  const latestEstimates = latestAnalysis?.metricEstimates
-
-  // istanbul ignore next; Shouldn't occur
-  if (!latestAnalysis || !latestEstimates) {
-    throw new Error('Missing analysis data.')
-  }
 
   return (
     <TableContainer className={clsx(classes.root, 'analysis-detail-panel')}>
