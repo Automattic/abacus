@@ -1301,6 +1301,22 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
               role="cell"
               scope="row"
             >
+              Attribution Window
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-59"
+            >
+              1 week
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-58"
+              role="cell"
+              scope="row"
+            >
               Minimum Practical Difference
             </th>
             <td
@@ -2601,6 +2617,22 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         <tbody
           class="MuiTableBody-root"
         >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-111"
+              role="cell"
+              scope="row"
+            >
+              Attribution Window
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-112"
+            >
+              1 week
+            </td>
+          </tr>
           <tr
             class="MuiTableRow-root"
           >
@@ -4313,6 +4345,22 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         <tbody
           class="MuiTableBody-root"
         >
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head makeStyles-headerCell-164"
+              role="cell"
+              scope="row"
+            >
+              Attribution Window
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-165"
+            >
+              1 week
+            </td>
+          </tr>
           <tr
             class="MuiTableRow-root"
           >

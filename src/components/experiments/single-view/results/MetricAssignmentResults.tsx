@@ -19,6 +19,7 @@ import Plot from 'react-plotly.js'
 import DatetimeText from 'src/components/general/DatetimeText'
 import MetricValue from 'src/components/general/MetricValue'
 import { AnalysisStrategyToHuman } from 'src/lib/analyses'
+import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
 import {
   Analysis,
   AnalysisStrategy,
@@ -343,6 +344,14 @@ export default function MetricAssignmentResults({
         <div className={classes.metricAssignmentDetails}>
           <Table>
             <TableBody>
+              <TableRow>
+                <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
+                  Attribution Window
+                </TableCell>
+                <TableCell className={classes.monospace}>
+                  {AttributionWindowSecondsToHuman[metricAssignment.attributionWindowSeconds]}
+                </TableCell>
+              </TableRow>
               <TableRow>
                 <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
                   Minimum Practical Difference
