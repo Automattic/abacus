@@ -463,8 +463,8 @@ export default function ActualExperimentResults({
               {/* (Using a javasript string automatically replaces special characters with html entities.) */}
               {`with tracks_counts as (
   select
-    a8c.get_json_object(eventprops, '$.experiment_variation_id') as experiment_variation_id,
-    count(*) as raw_number_of_assignments
+    cast(a8c.get_json_object(eventprops, '$.experiment_variation_id') as bigint) as experiment_variation_id,
+    count(distinct userid) as unique_users
   from tracks.etl_events
   where
     eventname = 'wpcom_experiment_variation_assigned' and
@@ -473,10 +473,10 @@ export default function ActualExperimentResults({
 )
 
 select
-  wpcom.experiment_variations.name as variation_name,
-  raw_number_of_assignments
+  experiment_variations.name as variation_name,
+  unique_users
 from tracks_counts
-inner join wpcom.experiment_variations on cast(tracks_counts.experiment_variation_id as bigint) = wpcom.experiment_variations.experiment_variation_id`}
+inner join wpcom.experiment_variations using (experiment_variation_id)`}
             </code>
           </pre>
         </AccordionDetails>
