@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders error message when stack isn't available 1`] = `
+<div
+  aria-hidden="true"
+>
+  <div
+    class="makeStyles-root-4"
+  />
+</div>
+`;
+
+exports[`renders error stack when available 1`] = `
+<div
+  aria-hidden="true"
+>
+  <div
+    class="makeStyles-root-1"
+  />
+</div>
+`;
