@@ -7,6 +7,7 @@ import {
   TableContainer,
   TableRow,
   Theme,
+  Tooltip,
   Typography,
 } from '@material-ui/core'
 import clsx from 'clsx'
@@ -17,7 +18,7 @@ import Plot from 'react-plotly.js'
 
 import DatetimeText from 'src/components/general/DatetimeText'
 import MetricValue from 'src/components/general/MetricValue'
-import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from 'src/lib/analyses'
+import { AnalysisStrategyToHuman } from 'src/lib/analyses'
 import {
   Analysis,
   AnalysisStrategy,
@@ -67,6 +68,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     rowHeader: {
       verticalAlign: 'top',
+    },
+    tooltipped: {
+      borderBottomWidth: 1,
+      borderBottomStyle: 'dashed',
+      borderBottomColor: theme.palette.grey[500],
     },
   }),
 )
@@ -243,36 +249,43 @@ export default function MetricAssignmentResults({
                   Difference
                 </TableCell>
                 <TableCell className={classes.monospace}>
-                  [
-                  <MetricValue
-                    value={latestEstimates.diff.bottom}
-                    metricParameterType={metric.parameterType}
-                    isDifference={true}
-                  />
-                  ,&nbsp;
-                  <MetricValue
-                    value={latestEstimates.diff.top}
-                    metricParameterType={metric.parameterType}
-                    isDifference={true}
-                  />
-                  ]
-                  <br />
-                  <br />
-                  <strong>Interpretation:</strong>
-                  <br />
-                  There is a 95% probability that the difference between variations is between{' '}
-                  <MetricValue
-                    value={latestEstimates.diff.bottom}
-                    metricParameterType={metric.parameterType}
-                    isDifference={true}
-                  />{' '}
-                  and{' '}
-                  <MetricValue
-                    value={latestEstimates.diff.top}
-                    metricParameterType={metric.parameterType}
-                    isDifference={true}
-                  />
-                  .
+                  <Tooltip
+                    title={
+                      <>
+                        <strong>Interpretation:</strong>
+                        <br />
+                        There is a 95% probability that the difference between variations is between{' '}
+                        <MetricValue
+                          value={latestEstimates.diff.bottom}
+                          metricParameterType={metric.parameterType}
+                          isDifference={true}
+                        />{' '}
+                        and{' '}
+                        <MetricValue
+                          value={latestEstimates.diff.top}
+                          metricParameterType={metric.parameterType}
+                          isDifference={true}
+                        />
+                        .
+                      </>
+                    }
+                  >
+                    <span className={classes.tooltipped}>
+                      [
+                      <MetricValue
+                        value={latestEstimates.diff.bottom}
+                        metricParameterType={metric.parameterType}
+                        isDifference={true}
+                      />
+                      ,&nbsp;
+                      <MetricValue
+                        value={latestEstimates.diff.top}
+                        metricParameterType={metric.parameterType}
+                        isDifference={true}
+                      />
+                      ] 95% CI
+                    </span>
+                  </Tooltip>
                 </TableCell>
               </TableRow>
             </>
@@ -290,51 +303,43 @@ export default function MetricAssignmentResults({
                   <span className={classes.monospace}>{variation.name}</span>
                 </TableCell>
                 <TableCell className={classes.monospace}>
-                  [
-                  <MetricValue
-                    value={latestEstimates[`variation_${variation.variationId}`].bottom}
-                    metricParameterType={metric.parameterType}
-                  />
-                  ,&nbsp;
-                  <MetricValue
-                    value={latestEstimates[`variation_${variation.variationId}`].top}
-                    metricParameterType={metric.parameterType}
-                  />
-                  ]
-                  <br />
-                  <br />
-                  <strong>Interpretation:</strong>
-                  <br />
-                  There is a 95% probability that the metric value for this variation is between{' '}
-                  <MetricValue
-                    value={latestEstimates[`variation_${variation.variationId}`].bottom}
-                    metricParameterType={metric.parameterType}
-                  />{' '}
-                  and{' '}
-                  <MetricValue
-                    value={latestEstimates[`variation_${variation.variationId}`].top}
-                    metricParameterType={metric.parameterType}
-                  />
-                  .
+                  <Tooltip
+                    title={
+                      <>
+                        <strong>Interpretation:</strong>
+                        <br />
+                        There is a 95% probability that the difference between variations is between{' '}
+                        <MetricValue
+                          value={latestEstimates[`variation_${variation.variationId}`].bottom}
+                          metricParameterType={metric.parameterType}
+                        />{' '}
+                        and{' '}
+                        <MetricValue
+                          value={latestEstimates[`variation_${variation.variationId}`].top}
+                          metricParameterType={metric.parameterType}
+                        />
+                        .
+                      </>
+                    }
+                  >
+                    <span className={classes.tooltipped}>
+                      [
+                      <MetricValue
+                        value={latestEstimates[`variation_${variation.variationId}`].bottom}
+                        metricParameterType={metric.parameterType}
+                      />
+                      ,&nbsp;
+                      <MetricValue
+                        value={latestEstimates[`variation_${variation.variationId}`].top}
+                        metricParameterType={metric.parameterType}
+                      />
+                      ] 95% CI
+                    </span>
+                  </Tooltip>
                 </TableCell>
               </TableRow>
             </React.Fragment>
           ))}
-          {latestAnalysis.recommendation && latestAnalysis.recommendation.warnings.length > 0 && (
-            <TableRow>
-              <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
-                <span role='img' aria-label=''>
-                  ⚠️
-                </span>{' '}
-                Warnings
-              </TableCell>
-              <TableCell className={classes.monospace}>
-                {latestAnalysis.recommendation.warnings.map((warning) => (
-                  <div key={warning}>{RecommendationWarningToHuman[warning]}</div>
-                ))}
-              </TableCell>
-            </TableRow>
-          )}
         </TableBody>
       </Table>
       <Typography variant='h4' className={classes.tableHeader}>
