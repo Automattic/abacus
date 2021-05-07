@@ -221,12 +221,14 @@ export default function MetricAssignmentResults({
   return (
     <TableContainer className={clsx(classes.root, 'analysis-detail-panel')}>
       <Table>
-        <TableRow>
-          <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
-            Metric Description
-          </TableCell>
-          <TableCell className={classes.metricDescription}>{metric.description}</TableCell>
-        </TableRow>
+        <TableBody>
+          <TableRow>
+            <TableCell component='th' scope='row' variant='head' className={classes.headerCell}>
+              Metric Description
+            </TableCell>
+            <TableCell className={classes.metricDescription}>{metric.description}</TableCell>
+          </TableRow>
+        </TableBody>
       </Table>
       <div className={classes.dataTable}>
         <div className={classes.latestEstimates}>
