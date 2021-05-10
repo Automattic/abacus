@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an appropriate message with no analyses 1`] = `
+<div>
+  <div
+    class="makeStyles-root-1"
+  >
+    <h5
+      class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+    >
+       
+      No Analysis Data Found
+       
+    </h5>
+    <p
+      class="MuiTypography-root MuiTypography-body1"
+    >
+       It can take 24-48 hours for analysis data to be generated. 
+    </p>
+  </div>
+</div>
+`;
