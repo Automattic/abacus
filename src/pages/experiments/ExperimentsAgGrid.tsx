@@ -17,7 +17,7 @@ const Experiments = function (): JSX.Element {
   useDataLoadingError(error, 'Experiment')
 
   return (
-    <Layout title='Experiments'>
+    <Layout headTitle='Experiments' flexContent>
       {isLoading ? <LinearProgress /> : <ExperimentsTableAgGrid experiments={experiments || []} />}
     </Layout>
   )

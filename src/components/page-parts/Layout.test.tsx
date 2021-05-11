@@ -24,35 +24,35 @@ test('renders layout with declared title and children', () => {
   // new links, are being tested.
   expect(headerElmt).toMatchInlineSnapshot(`
     <header
-      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary makeStyles-appBar-17 MuiPaper-elevation4"
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary makeStyles-appBar-18 MuiPaper-elevation4"
     >
       <div
-        class="makeStyles-appBarTop-19"
+        class="makeStyles-appBarTop-20"
       >
         <a
-          class="MuiContainer-root makeStyles-appLogotype-21 MuiContainer-maxWidthLg"
+          class="MuiContainer-root makeStyles-appLogotype-22 MuiContainer-maxWidthLg"
           href="/"
         >
           <img
             alt="logo"
-            class="makeStyles-appLogo-20"
+            class="makeStyles-appLogo-21"
             src="/img/logo.png"
           />
           <span
-            class="makeStyles-appName-22"
+            class="makeStyles-appName-23"
           >
             Abacus
           </span>
         </a>
       </div>
       <div
-        class="makeStyles-appBarBottom-18"
+        class="makeStyles-appBarBottom-19"
       >
         <div
           class="MuiContainer-root MuiContainer-maxWidthLg"
         >
           <nav
-            class="makeStyles-appNav-23"
+            class="makeStyles-appNav-24"
           >
             <a
               href="/experiments"
@@ -79,7 +79,7 @@ test('renders layout with declared title and children', () => {
   expect(footerElmt).not.toBeNull()
   expect(footerElmt).toMatchInlineSnapshot(`
     <footer
-      class="makeStyles-footer-26"
+      class="makeStyles-footer-28"
     >
       <div
         class="MuiContainer-root MuiContainer-maxWidthLg"
@@ -92,4 +92,13 @@ test('renders layout with declared title and children', () => {
       </div>
     </footer>
   `)
+})
+
+test('renders layout with declared title and children, using a flexblox', () => {
+  const { container } = render(
+    <Layout title='Some Title' flexContent={true}>
+      A child.
+    </Layout>,
+  )
+  expect(container).toMatchSnapshot()
 })

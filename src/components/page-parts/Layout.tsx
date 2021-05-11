@@ -1,5 +1,6 @@
 import { AppBar, Container, Theme, Typography } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
+import clsx from 'clsx'
 import React, { ReactNode, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -71,6 +72,10 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       flex: '1 0',
     },
+    flexContent: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
     contentTitle: {
       margin: theme.spacing(3, 0, 2, 0),
       color: theme.palette.grey.A700,
@@ -88,10 +93,12 @@ const Layout = ({
   title,
   headTitle,
   children,
+  flexContent = false,
 }: {
   title?: string
   headTitle?: string
   children?: ReactNode
+  flexContent?: boolean
 }): JSX.Element => {
   const classes = useStyles()
 
@@ -146,7 +153,7 @@ const Layout = ({
           </Container>
         </div>
       </AppBar>
-      <Container className={classes.content}>
+      <Container className={clsx(classes.content, flexContent && classes.flexContent)}>
         {title && (
           <Typography variant='h2' className={classes.contentTitle}>
             {title}
