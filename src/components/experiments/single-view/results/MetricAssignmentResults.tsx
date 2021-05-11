@@ -91,6 +91,9 @@ const useStyles = makeStyles((theme: Theme) =>
       fontStyle: 'italic',
       opacity: 0.7,
     },
+    credibleIntervalHeader: {
+      width: '8rem',
+    },
   }),
 )
 
@@ -242,7 +245,7 @@ export default function MetricAssignmentResults({
                       component='th'
                       scope='row'
                       variant='head'
-                      className={clsx(classes.rowHeader, classes.headerCell)}
+                      className={clsx(classes.rowHeader, classes.headerCell, classes.credibleIntervalHeader)}
                     >
                       Difference
                     </TableCell>
@@ -296,7 +299,7 @@ export default function MetricAssignmentResults({
                       scope='row'
                       variant='head'
                       valign='top'
-                      className={clsx(classes.rowHeader, classes.headerCell)}
+                      className={clsx(classes.rowHeader, classes.headerCell, classes.credibleIntervalHeader)}
                     >
                       <span className={classes.monospace}>{variation.name}</span>
                     </TableCell>
@@ -306,7 +309,7 @@ export default function MetricAssignmentResults({
                           <>
                             <strong>Interpretation:</strong>
                             <br />
-                            There is a 95% probability that the difference between variations is between{' '}
+                            There is a 95% probability that the metric value between variations is between{' '}
                             <MetricValue
                               value={latestEstimates[`variation_${variation.variationId}`].bottom}
                               metricParameterType={metric.parameterType}
@@ -404,7 +407,7 @@ export default function MetricAssignmentResults({
       )}
       <Typography className={classes.analysisFinePrint}>
         <strong>Last analyzed:</strong> <DatetimeText datetime={latestAnalysis.analysisDatetime} excludeTime={true} />.{' '}
-        <strong>Analysis Strategy:</strong> {AnalysisStrategyToHuman[latestAnalysis.analysisStrategy]}.{' '}
+        <strong>Analysis strategy:</strong> {AnalysisStrategyToHuman[latestAnalysis.analysisStrategy]}.{' '}
         <strong>Participants:</strong> {latestAnalysis.participantStats.total} (
         {_.join(
           Variations.sort(experiment.variations).map(
