@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme: Theme) =>
       borderBottomStyle: 'dashed',
       borderBottomColor: theme.palette.grey[500],
     },
-    dataTable: {
+    dataTableContainer: {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
       gridColumnGap: theme.spacing(2),
@@ -93,6 +93,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     credibleIntervalHeader: {
       width: '8rem',
+    },
+    dataTableHeader: {
+      margin: theme.spacing(2, 2, 1, 0),
     },
   }),
 )
@@ -234,8 +237,11 @@ export default function MetricAssignmentResults({
           </TableRow>
         </TableBody>
       </Table>
-      <div className={classes.dataTable}>
+      <div className={classes.dataTableContainer}>
         <div className={classes.latestEstimates}>
+          <Typography variant='h5' className={classes.dataTableHeader}>
+            Estimated 95% Credible Intervals (CIs){' '}
+          </Typography>
           <Table>
             <TableBody>
               {latestAnalysis.recommendation && (
@@ -272,19 +278,17 @@ export default function MetricAssignmentResults({
                         }
                       >
                         <span className={classes.tooltipped}>
-                          [
                           <MetricValue
                             value={latestEstimates.diff.bottom}
                             metricParameterType={metric.parameterType}
                             isDifference={true}
                           />
-                          ,&nbsp;
+                          &nbsp;to&nbsp;
                           <MetricValue
                             value={latestEstimates.diff.top}
                             metricParameterType={metric.parameterType}
                             isDifference={true}
                           />
-                          ] 95% CI
                         </span>
                       </Tooltip>
                     </TableCell>
@@ -324,17 +328,15 @@ export default function MetricAssignmentResults({
                         }
                       >
                         <span className={classes.tooltipped}>
-                          [
                           <MetricValue
                             value={latestEstimates[`variation_${variation.variationId}`].bottom}
                             metricParameterType={metric.parameterType}
                           />
-                          ,&nbsp;
+                          &nbsp;to&nbsp;
                           <MetricValue
                             value={latestEstimates[`variation_${variation.variationId}`].top}
                             metricParameterType={metric.parameterType}
                           />
-                          ] 95% CI
                         </span>
                       </Tooltip>
                     </TableCell>
@@ -345,6 +347,9 @@ export default function MetricAssignmentResults({
           </Table>
         </div>
         <div className={classes.metricAssignmentDetails}>
+          <Typography variant='h5' className={classes.dataTableHeader}>
+            Metric Assignment Settings
+          </Typography>
           <Table>
             <TableBody>
               <TableRow>
@@ -415,7 +420,7 @@ export default function MetricAssignmentResults({
           ),
           '; ',
         )}
-        )
+        ).
       </Typography>
     </TableContainer>
   )
