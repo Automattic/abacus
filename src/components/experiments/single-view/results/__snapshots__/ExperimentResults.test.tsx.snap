@@ -1174,7 +1174,8 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
       <h5
         class="MuiTypography-root makeStyles-dataTableHeader-73 MuiTypography-h5"
       >
-        Estimated 95% Credible Intervals (CIs) 
+        Estimated 95% Credible Intervals (CIs)
+         
       </h5>
       <table
         class="MuiTable-root"
@@ -2502,7 +2503,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       <h5
         class="MuiTypography-root makeStyles-dataTableHeader-128 MuiTypography-h5"
       >
-        Estimated 95% Credible Intervals (CIs) 
+        Estimated 95% Credible Intervals (CIs)
+         
       </h5>
       <table
         class="MuiTable-root"
@@ -4244,7 +4246,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       <h5
         class="MuiTypography-root makeStyles-dataTableHeader-183 MuiTypography-h5"
       >
-        Estimated 95% Credible Intervals (CIs) 
+        Estimated 95% Credible Intervals (CIs)
+         
       </h5>
       <table
         class="MuiTable-root"
