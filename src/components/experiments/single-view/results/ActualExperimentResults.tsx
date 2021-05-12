@@ -12,6 +12,7 @@ import {
   Paper,
   Select,
   Theme,
+  Tooltip,
   Typography,
   useTheme,
 } from '@material-ui/core'
@@ -244,7 +245,9 @@ export default function ActualExperimentResults({
       title: 'Metric',
       render: ({ metric, metricAssignment }: { metric: MetricBare; metricAssignment: MetricAssignment }) => (
         <>
-          {metric.name}{' '}
+          <Tooltip title={metric.description}>
+            <span>{metric.name}</span>
+          </Tooltip>{' '}
           {metricAssignment.isPrimary && (
             <Chip label='Primary' variant='outlined' disabled className={classes.primaryChip} />
           )}
