@@ -135,6 +135,17 @@ This will open a browser window of the Storybook webapp.
 We currently have a special debug mode which adds in-development features as well as extra debug information.
 To activate it hold shift and double click on the footer.
 
+### Switching between production and local
+
+Save this as a bookmarklet to switch between prod and local:
+
+```javascript
+javascript: window.location.href =
+  window.location.origin === 'https://experiments.a8c.com'
+    ? window.location.href.replace(new RegExp('^https?://[^/]+'), 'http://a8c-abacus-local:3000')
+    : window.location.href.replace(new RegExp('^https?://[^/]+'), 'https://experiments.a8c.com')
+```
+
 ## Advanced Tools
 
 ### Docker (_Not Recommended_)
