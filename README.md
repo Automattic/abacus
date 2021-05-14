@@ -140,7 +140,10 @@ To activate it hold shift and double click on the footer.
 Save this as a bookmarklet to switch between prod and local:
 
 ```javascript
-javascript: window.location.href = ( window.location.origin === 'https://experiments.a8c.com' ? window.location.href.replace(new RegExp('^https?://[^/]+'), 'http://a8c-abacus-local:3000') : window.location.href.replace(new RegExp('^https?://[^/]+'), 'https://experiments.a8c.com') )
+javascript: window.location.href =
+  window.location.origin === 'https://experiments.a8c.com'
+    ? window.location.href.replace(new RegExp('^https?://[^/]+'), 'http://a8c-abacus-local:3000')
+    : window.location.href.replace(new RegExp('^https?://[^/]+'), 'https://experiments.a8c.com')
 ```
 
 ## Advanced Tools
