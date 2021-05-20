@@ -666,3 +666,7 @@ export function getExperimentHealthIndicators(experiment: ExperimentFull): Healt
     ...rest,
   }))
 }
+
+export function ratioToPercentDifference(ratio: number): number {
+  return (ratio - 1) * 100
+}

@@ -28,16 +28,18 @@ const metricValueFormatPrecision = 2
 /**
  * Metric Formatting Data
  */
-const metricValueFormatData: Record<
+export const metricValueFormatData: Record<
   string,
-  { prefix: React.ReactNode; postfix: React.ReactNode; transform: (v: number) => number }
+  { unit: React.ReactNode; prefix: React.ReactNode; postfix: React.ReactNode; transform: (v: number) => number }
 > = {
   conversion: {
+    unit: '%',
     prefix: '',
     postfix: '%',
     transform: (x: number): number => x * 100,
   },
   conversion_difference: {
+    unit: 'pp',
     prefix: '',
     postfix: (
       <DashedTooltip title='Percentage points.'>
@@ -47,11 +49,13 @@ const metricValueFormatData: Record<
     transform: (x: number): number => x * 100,
   },
   revenue: {
+    unit: 'USD',
     prefix: <>USD&nbsp;</>,
     postfix: '',
     transform: identity,
   },
   revenue_difference: {
+    unit: 'USD',
     prefix: <>USD&nbsp;</>,
     postfix: '',
     transform: identity,
@@ -68,17 +72,19 @@ export default function MetricValue({
   value,
   metricParameterType,
   isDifference = false,
+  displayUnit = true,
 }: {
   value: number
   metricParameterType: MetricParameterType
   isDifference?: boolean
+  displayUnit?: boolean
 }): JSX.Element {
   const format = metricValueFormatData[`${metricParameterType}${isDifference ? '_difference' : ''}`]
   return (
     <>
-      {format.prefix}
+      {displayUnit && format.prefix}
       {_.round(format.transform(value), metricValueFormatPrecision)}
-      {format.postfix}
+      {displayUnit && format.postfix}
     </>
   )
 }
