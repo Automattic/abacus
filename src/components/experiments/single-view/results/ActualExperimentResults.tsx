@@ -368,8 +368,6 @@ export default function ActualExperimentResults({
                 <strong>Interpretation:</strong>
                 <br />
                 There is a 95% probability that the relative change is between{' '}
-                {((latestEstimates.ratio.bottom - 1) * 100).toFixed(2)}% and{' '}
-                {((latestEstimates.ratio.top - 1) * 100).toFixed(2)}%.
                 {Analyses.ratioToPercentDifference(latestEstimates.ratio.bottom).toFixed(2)}% and{' '}
                 {Analyses.ratioToPercentDifference(latestEstimates.ratio.top).toFixed(2)}%
               </>
