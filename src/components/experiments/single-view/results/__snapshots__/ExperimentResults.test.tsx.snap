@@ -374,6 +374,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                       >
                         -1
                          to 
+                        +
                         1
                          
                         pp
@@ -388,7 +389,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                       >
                         -50.00
                          to 
-                        50.00
+                        +50.00
                          %
                       </span>
                     </td>
@@ -1759,6 +1760,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       >
                         -1
                          to 
+                        +
                         1
                          
                         pp
@@ -1773,7 +1775,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       >
                         -50.00
                          to 
-                        50.00
+                        +50.00
                          %
                       </span>
                     </td>
@@ -1983,6 +1985,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       >
                         -1
                          to 
+                        +
                         1
                          
                         pp
@@ -1997,7 +2000,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       >
                         -50.00
                          to 
-                        50.00
+                        +50.00
                          %
                       </span>
                     </td>
@@ -3586,6 +3589,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       >
                         -0.01
                          to 
+                        +
                         0.01
                          
                         USD
@@ -3600,7 +3604,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       >
                         -50.00
                          to 
-                        50.00
+                        +50.00
                          %
                       </span>
                     </td>
@@ -3810,6 +3814,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       >
                         -0.01
                          to 
+                        +
                         0.01
                          
                         USD
@@ -3824,7 +3829,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       >
                         -50.00
                          to 
-                        50.00
+                        +50.00
                          %
                       </span>
                     </td>

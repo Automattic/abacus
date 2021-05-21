@@ -67,21 +67,26 @@ export const metricValueFormatData: Record<
  * @param value The metric value
  * @param metricParameterType
  * @param isDifference Is this an arithmetic difference between metric values
+ * @param displayUnit Display the unit
+ * @param displayPositiveSign Display the positive sign (+) when a value is positive.
  */
 export default function MetricValue({
   value,
   metricParameterType,
   isDifference = false,
   displayUnit = true,
+  displayPositiveSign = false,
 }: {
   value: number
   metricParameterType: MetricParameterType
   isDifference?: boolean
   displayUnit?: boolean
+  displayPositiveSign?: boolean
 }): JSX.Element {
   const format = metricValueFormatData[`${metricParameterType}${isDifference ? '_difference' : ''}`]
   return (
     <>
+      {displayPositiveSign && 0 <= value && '+'}
       {displayUnit && format.prefix}
       {_.round(format.transform(value), metricValueFormatPrecision)}
       {displayUnit && format.postfix}

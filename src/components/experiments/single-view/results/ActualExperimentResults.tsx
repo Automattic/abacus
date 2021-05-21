@@ -39,6 +39,10 @@ import { MetricAssignmentAnalysesData } from './ExperimentResults'
 import HealthIndicatorTable from './HealthIndicatorTable'
 import MetricAssignmentResults from './MetricAssignmentResults'
 
+const formatTopLevelRelativeChange = (n: number): string => {
+  return `${0 <= n ? '+' : ''}${n.toFixed(2)}`
+}
+
 const indicationSeverityClassSymbol = (severity: Analyses.HealthIndicationSeverity) => `indicationSeverity${severity}`
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -322,6 +326,7 @@ export default function ActualExperimentResults({
                 metricParameterType={metric.parameterType}
                 isDifference={true}
                 displayUnit={false}
+                displayPositiveSign={true}
               />
               &nbsp;to&nbsp;
               <MetricValue
@@ -329,6 +334,7 @@ export default function ActualExperimentResults({
                 metricParameterType={metric.parameterType}
                 isDifference={true}
                 displayUnit={false}
+                displayPositiveSign={true}
               />
               &nbsp;{metricValueFormatData[`${metric.parameterType}_difference`].unit}
             </span>
@@ -374,9 +380,9 @@ export default function ActualExperimentResults({
             }
           >
             <span className={classes.topLevelDiff}>
-              {Analyses.ratioToPercentDifference(latestEstimates.ratio.bottom).toFixed(2)}
+              {formatTopLevelRelativeChange(Analyses.ratioToPercentDifference(latestEstimates.ratio.bottom))}
               &nbsp;to&nbsp;
-              {Analyses.ratioToPercentDifference(latestEstimates.ratio.top).toFixed(2)}&nbsp;%
+              {formatTopLevelRelativeChange(Analyses.ratioToPercentDifference(latestEstimates.ratio.top))}&nbsp;%
             </span>
           </Tooltip>
         )
