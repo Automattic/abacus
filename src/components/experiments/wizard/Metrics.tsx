@@ -17,6 +17,7 @@ import {
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Add, Clear } from '@material-ui/icons'
 import { Alert, Autocomplete, AutocompleteRenderInputParams } from '@material-ui/lab'
+import clsx from 'clsx'
 import { Field, FieldArray, useField } from 'formik'
 import { Select, Switch, TextField } from 'formik-material-ui'
 import React, { useState } from 'react'
@@ -47,6 +48,11 @@ const useStyles = makeStyles((theme: Theme) =>
     metricName: {
       fontFamily: theme.custom.fonts.monospace,
       fontWeight: theme.custom.fontWeights.monospaceBold,
+    },
+    tooltipped: {
+      borderBottomWidth: 1,
+      borderBottomStyle: 'dashed',
+      borderBottomColor: theme.palette.grey[500],
     },
     primary: {
       fontFamily: theme.custom.fonts.monospace,
@@ -349,7 +355,7 @@ const Metrics = ({
                         <TableRow key={index}>
                           <TableCell>
                             <Tooltip arrow title={indexedMetrics[metricAssignment.metricId].description}>
-                              <span className={classes.metricName}>
+                              <span className={clsx(classes.metricName, classes.tooltipped)}>
                                 {indexedMetrics[metricAssignment.metricId].name}
                               </span>
                             </Tooltip>
