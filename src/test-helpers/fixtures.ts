@@ -38,6 +38,7 @@ function createAnalysis(fieldOverrides: Partial<Analysis>): Analysis {
       variation_2: 400,
     },
     metricEstimates: {
+      ratio: { estimate: 0.0, bottom: 0.5, top: 1.5 },
       diff: { estimate: 0.0, bottom: -0.01, top: 0.01 },
       variation_1: { estimate: 0.12, bottom: 0, top: 10.0 },
       variation_2: { estimate: -0.12, bottom: -1.123, top: 1.0 },

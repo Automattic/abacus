@@ -24,6 +24,7 @@ import { PlotData } from 'plotly.js'
 import React, { useState } from 'react'
 import Plot from 'react-plotly.js'
 
+import MetricValue, { metricValueFormatData } from 'src/components/general/MetricValue'
 import * as Analyses from 'src/lib/analyses'
 import * as Experiments from 'src/lib/experiments'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
@@ -37,6 +38,10 @@ import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
 import HealthIndicatorTable from './HealthIndicatorTable'
 import MetricAssignmentResults from './MetricAssignmentResults'
+
+const formatTopLevelRelativeChange = (n: number): string => {
+  return `${0 <= n ? '+' : ''}${n.toFixed(2)}`
+}
 
 const indicationSeverityClassSymbol = (severity: Analyses.HealthIndicationSeverity) => `indicationSeverity${severity}`
 
@@ -127,6 +132,11 @@ const useStyles = makeStyles((theme: Theme) =>
       background: '#f5f5f5',
       padding: theme.spacing(3),
       overflow: 'scroll',
+    },
+    topLevelDiff: {
+      fontFamily: theme.custom.fonts.monospace,
+      color: theme.palette.grey[600],
+      whiteSpace: 'pre',
     },
   }),
 )
@@ -264,6 +274,118 @@ export default function ActualExperimentResults({
         AttributionWindowSecondsToHuman[metricAssignment.attributionWindowSeconds],
       cellStyle: {
         fontFamily: theme.custom.fonts.monospace,
+      },
+    },
+    {
+      title: 'Absolute change',
+      render: ({
+        metric,
+        strategy,
+        analysesByStrategyDateAsc,
+        aggregateRecommendation,
+      }: {
+        metric: MetricBare
+        strategy: AnalysisStrategy
+        analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
+        aggregateRecommendation: Analyses.AggregateRecommendation
+      }) => {
+        const latestEstimates = _.last(analysesByStrategyDateAsc[strategy])?.metricEstimates
+        if (
+          !latestEstimates ||
+          aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.ManualAnalysisRequired ||
+          aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.MissingAnalysis
+        ) {
+          return null
+        }
+
+        return (
+          <Tooltip
+            title={
+              <>
+                <strong>Interpretation:</strong>
+                <br />
+                There is a 95% probability that the absolute change is between{' '}
+                <MetricValue
+                  value={latestEstimates.diff.bottom}
+                  metricParameterType={metric.parameterType}
+                  isDifference={true}
+                />{' '}
+                and{' '}
+                <MetricValue
+                  value={latestEstimates.diff.top}
+                  metricParameterType={metric.parameterType}
+                  isDifference={true}
+                />
+                .
+              </>
+            }
+          >
+            <span className={classes.topLevelDiff}>
+              <MetricValue
+                value={latestEstimates.diff.bottom}
+                metricParameterType={metric.parameterType}
+                isDifference={true}
+                displayUnit={false}
+                displayPositiveSign={true}
+              />
+              &nbsp;to&nbsp;
+              <MetricValue
+                value={latestEstimates.diff.top}
+                metricParameterType={metric.parameterType}
+                isDifference={true}
+                displayUnit={false}
+                displayPositiveSign={true}
+              />
+              &nbsp;{metricValueFormatData[`${metric.parameterType}_difference`].unit}
+            </span>
+          </Tooltip>
+        )
+      },
+      cellStyle: {
+        fontFamily: theme.custom.fonts.monospace,
+      },
+    },
+    {
+      title: 'Relative change (lift)',
+      render: ({
+        strategy,
+        analysesByStrategyDateAsc,
+        aggregateRecommendation,
+      }: {
+        metric: MetricBare
+        strategy: AnalysisStrategy
+        analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
+        aggregateRecommendation: Analyses.AggregateRecommendation
+      }) => {
+        const latestEstimates = _.last(analysesByStrategyDateAsc[strategy])?.metricEstimates
+        if (
+          !latestEstimates ||
+          !latestEstimates.ratio?.top ||
+          aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.ManualAnalysisRequired ||
+          aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.MissingAnalysis
+        ) {
+          return null
+        }
+
+        return (
+          <Tooltip
+            title={
+              <>
+                <strong>Interpretation:</strong>
+                <br />
+                There is a 95% probability that the relative change is between{' '}
+                {Analyses.ratioToPercentDifference(latestEstimates.ratio.bottom).toFixed(2)}% and{' '}
+                {Analyses.ratioToPercentDifference(latestEstimates.ratio.top).toFixed(2)}%
+              </>
+            }
+          >
+            <span className={classes.topLevelDiff}>
+              {formatTopLevelRelativeChange(Analyses.ratioToPercentDifference(latestEstimates.ratio.bottom))}
+              &nbsp;to&nbsp;
+              {formatTopLevelRelativeChange(Analyses.ratioToPercentDifference(latestEstimates.ratio.top))}&nbsp;%
+            </span>
+          </Tooltip>
+        )
       },
     },
     {
