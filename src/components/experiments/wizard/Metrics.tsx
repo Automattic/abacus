@@ -430,6 +430,7 @@ const Metrics = ({
                 <FormControl className={classes.addMetricSelect}>
                   <Autocomplete
                     id='add-metric-select'
+                    aria-label='Select a metric'
                     value={selectedMetric}
                     onChange={onChangeSelectedMetricOption}
                     fullWidth
