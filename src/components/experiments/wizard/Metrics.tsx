@@ -430,6 +430,16 @@ const Metrics = ({
                     options={Object.values(indexedMetrics)}
                     noOptionsText='No metrics found'
                     getOptionLabel={(metric: MetricBare) => metric.name}
+                    renderOption={(option) => (
+                      <div>
+                        <Typography variant='body1'>
+                          <strong>{option.name}</strong>
+                        </Typography>
+                        <Typography variant='body1'>
+                          <small>{option.description}</small>
+                        </Typography>
+                      </div>
+                    )}
                     renderInput={(params: AutocompleteRenderInputParams) => (
                       <MuiTextField
                         {...params}
