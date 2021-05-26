@@ -34,7 +34,7 @@ export default function AbacusAutocomplete<Multiple extends boolean>(
 
   // ## Translating OuterValues (value | value[]) <-> InnerValues (AutocompleteItem | AutocompleteItem[])
   //
-  // Typescript and esline make this look much more complicated than it is, we are just keeping the form value type
+  // Typescript and eslint make this look much more complicated than it is, we are just keeping the form value type
   // in the form (string | number, and array version for multiple), and inside here we are using Autocomplete.
   //
   // We transform on the way in and on the way out.
