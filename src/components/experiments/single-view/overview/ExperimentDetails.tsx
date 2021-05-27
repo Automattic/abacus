@@ -8,7 +8,7 @@ import AudiencePanel from 'src/components/experiments/single-view/overview/Audie
 import ConclusionsPanel from 'src/components/experiments/single-view/overview/ConclusionsPanel'
 import GeneralPanel from 'src/components/experiments/single-view/overview/GeneralPanel'
 import MetricAssignmentsPanel from 'src/components/experiments/single-view/overview/MetricAssignmentsPanel'
-import { ExperimentFull, MetricBare, Segment, TagBare } from 'src/lib/schemas'
+import { ExperimentFull, MetricBare, Segment, Status, TagBare } from 'src/lib/schemas'
 
 const debug = debugFactory('abacus:components/ExperimentDetails.tsx')
 
@@ -48,7 +48,9 @@ function ExperimentDetails({
           <Grid container direction='column' spacing={2}>
             <Grid item>
               <GeneralPanel className={classes.panel} {...{ experiment, experimentReloadRef }} />
-              <ConclusionsPanel className={classes.panel} {...{ experiment, experimentReloadRef }} />
+              {(experiment.status === Status.Completed || experiment.status === Status.Disabled) && (
+                <ConclusionsPanel className={classes.panel} {...{ experiment, experimentReloadRef }} />
+              )}
             </Grid>
             {isMdDown && (
               <Grid item>
