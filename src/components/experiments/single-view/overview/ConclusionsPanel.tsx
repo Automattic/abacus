@@ -52,9 +52,11 @@ const useStyles = makeStyles((theme: Theme) =>
  * @param experimentReloadRef - A ref for reloading the experiment.
  */
 function ConclusionsPanel({
+  className,
   experiment,
   experimentReloadRef,
 }: {
+  className?: string
   experiment: ExperimentFull
   experimentReloadRef: React.MutableRefObject<() => void>
 }): JSX.Element {
@@ -103,7 +105,7 @@ function ConclusionsPanel({
   }
 
   return (
-    <Paper>
+    <Paper className={className}>
       <Toolbar>
         <Typography className={classes.title} color='textPrimary' variant='h3'>
           Conclusions

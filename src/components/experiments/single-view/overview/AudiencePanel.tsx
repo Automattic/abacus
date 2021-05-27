@@ -114,10 +114,12 @@ function ExposureEventsTable({ experiment: { exposureEvents } }: { experiment: E
  *   of the experiment's segment assignments.
  */
 function AudiencePanel({
+  className,
   experiment,
   segments,
   tags,
 }: {
+  className?: string
   experiment: ExperimentFull
   segments: Segment[]
   tags: TagBare[]
@@ -194,7 +196,7 @@ function AudiencePanel({
   }
 
   return (
-    <Paper>
+    <Paper className={className}>
       <Toolbar>
         <Typography className={classes.title} color='textPrimary' variant='h3'>
           Audience
