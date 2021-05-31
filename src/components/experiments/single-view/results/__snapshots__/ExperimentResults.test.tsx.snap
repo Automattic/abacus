@@ -1,5 +1,195 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`allows you to change analysis strategy 1`] = `
+<div>
+  <div
+    class="analysis-latest-results"
+  >
+    <div
+      class="makeStyles-root-189"
+    >
+      <div
+        class="MuiPaper-root makeStyles-advancedControls-192 MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div
+          class="MuiFormControl-root"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-focused Mui-focused"
+            data-shrink="true"
+            for="strategy-selector"
+            id="strategy-selector-label"
+          >
+            Analysis Strategy:
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline Mui-focused Mui-focused MuiInputBase-formControl MuiInput-formControl"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="strategy-selector-label strategy-selector"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="strategy-selector"
+              role="button"
+              tabindex="0"
+            >
+              All participants
+            </div>
+            <input
+              aria-hidden="true"
+              class="MuiSelect-nativeInput"
+              tabindex="-1"
+              value="itt_pure"
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSelect-icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiPaper-root makeStyles-noAnalysesPaper-207 MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <h3
+          class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
+        >
+           
+          No Results
+           
+        </h3>
+        <p
+          class="MuiTypography-root MuiTypography-body1"
+        >
+          No results are available at the moment, this can be due to:
+        </p>
+        <ul>
+          <li
+            class="MuiTypography-root MuiTypography-body1"
+          >
+            <strong>
+               An experiment being new. 
+            </strong>
+             ExPlat can take 24-48 hours for results to process and become available. Updates are usually released at 06:00 UTC daily.
+          </li>
+          <li
+            class="MuiTypography-root MuiTypography-body1"
+          >
+            <strong>
+               No assignments occuring. 
+            </strong>
+             Check the "Early Monitoring" section below to ensure that assignments are occuring.
+          </li>
+        </ul>
+      </div>
+      <div
+        class="MuiPaper-root MuiAccordion-root makeStyles-accordion-205 MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div
+          aria-disabled="false"
+          aria-expanded="false"
+          class="MuiButtonBase-root MuiAccordionSummary-root"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="MuiAccordionSummary-content"
+          >
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Early Monitoring - Live Assignment Event Flow
+            </h5>
+          </div>
+          <div
+            aria-disabled="false"
+            aria-hidden="true"
+            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiCollapse-container MuiCollapse-hidden"
+          style="min-height: 0px;"
+        >
+          <div
+            class="MuiCollapse-wrapper"
+          >
+            <div
+              class="MuiCollapse-wrapperInner"
+            >
+              <div
+                role="region"
+              >
+                <div
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-206"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                  </p>
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
+                  </p>
+                  <pre
+                    class="makeStyles-pre-208"
+                  >
+                    <code>
+                      with tracks_counts as (
+  select
+    cast(a8c.get_json_object(eventprops, '$.experiment_variation_id') as bigint) as experiment_variation_id,
+    count(distinct userid) as unique_users
+  from tracks.etl_events
+  where
+    eventname = 'wpcom_experiment_variation_assigned' and
+    eventprops like '%"experiment_id":"1"%'
+  group by experiment_variation_id
+)
+
+select
+  experiment_variations.name as variation_name,
+  unique_users
+from tracks_counts
+inner join wpcom.experiment_variations using (experiment_variation_id)
+                    </code>
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`renders an appropriate message with no analyses 1`] = `
 <div>
   <div
@@ -8,6 +198,53 @@ exports[`renders an appropriate message with no analyses 1`] = `
     <div
       class="makeStyles-root-1"
     >
+      <div
+        class="MuiPaper-root makeStyles-advancedControls-4 MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div
+          class="MuiFormControl-root"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+            data-shrink="true"
+            for="strategy-selector"
+            id="strategy-selector-label"
+          >
+            Analysis Strategy:
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="strategy-selector-label strategy-selector"
+              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="strategy-selector"
+              role="button"
+              tabindex="0"
+            >
+              Exposed without crossovers and spammers
+               (recommended)
+            </div>
+            <input
+              aria-hidden="true"
+              class="MuiSelect-nativeInput"
+              tabindex="-1"
+              value="pp_naive"
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSelect-icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
       <div
         class="MuiPaper-root makeStyles-noAnalysesPaper-19 MuiPaper-elevation1 MuiPaper-rounded"
       >
@@ -151,6 +388,53 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
   <div
     class="makeStyles-root-22"
   >
+    <div
+      class="MuiPaper-root makeStyles-advancedControls-25 MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiFormControl-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+          data-shrink="true"
+          for="strategy-selector"
+          id="strategy-selector-label"
+        >
+          Analysis Strategy:
+        </label>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+        >
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="strategy-selector-label strategy-selector"
+            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+            id="strategy-selector"
+            role="button"
+            tabindex="0"
+          >
+            Exposed without crossovers and spammers
+             (recommended)
+          </div>
+          <input
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            tabindex="-1"
+            value="pp_naive"
+          />
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
     <div
       class="makeStyles-summary-24"
     >
@@ -1537,6 +1821,53 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   <div
     class="makeStyles-root-78"
   >
+    <div
+      class="MuiPaper-root makeStyles-advancedControls-81 MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiFormControl-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+          data-shrink="true"
+          for="strategy-selector"
+          id="strategy-selector-label"
+        >
+          Analysis Strategy:
+        </label>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+        >
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="strategy-selector-label strategy-selector"
+            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+            id="strategy-selector"
+            role="button"
+            tabindex="0"
+          >
+            Exposed without crossovers and spammers
+             (recommended)
+          </div>
+          <input
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            tabindex="-1"
+            value="pp_naive"
+          />
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
     <div
       class="makeStyles-summary-80"
     >
@@ -3366,6 +3697,53 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   <div
     class="makeStyles-root-134"
   >
+    <div
+      class="MuiPaper-root makeStyles-advancedControls-137 MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiFormControl-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+          data-shrink="true"
+          for="strategy-selector"
+          id="strategy-selector-label"
+        >
+          Analysis Strategy:
+        </label>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+        >
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="strategy-selector-label strategy-selector"
+            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+            id="strategy-selector"
+            role="button"
+            tabindex="0"
+          >
+            Exposed without crossovers and spammers
+             (recommended)
+          </div>
+          <input
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            tabindex="-1"
+            value="pp_naive"
+          />
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
     <div
       class="makeStyles-summary-136"
     >

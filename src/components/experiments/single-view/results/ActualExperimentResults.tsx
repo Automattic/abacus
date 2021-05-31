@@ -157,13 +157,15 @@ export default function ActualExperimentResults({
   const classes = useStyles()
   const theme = useTheme()
 
+  const availableAnalysisStrategies = [
+    AnalysisStrategy.IttPure,
+    AnalysisStrategy.MittNoCrossovers,
+    AnalysisStrategy.MittNoSpammers,
+    AnalysisStrategy.MittNoSpammersNoCrossovers,
+  ]
+  experiment.exposureEvents && availableAnalysisStrategies.push(AnalysisStrategy.PpNaive)
   const [strategy, setStrategy] = useState<AnalysisStrategy>(() => Experiments.getDefaultAnalysisStrategy(experiment))
-  // istanbul ignore next; Debug only
   const onStrategyChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    if (!Object.values(AnalysisStrategy).includes(event.target.value as AnalysisStrategy)) {
-      throw new Error('Invalid strategy')
-    }
-
     setStrategy(event.target.value as AnalysisStrategy)
   }
 
@@ -434,23 +436,21 @@ export default function ActualExperimentResults({
 
   return (
     <div className={classes.root}>
-      {
-        // istanbul ignore next; Debug only
-        isDebugMode() && (
-          <Paper className={classes.advancedControls}>
-            <FormControl>
-              <InputLabel htmlFor='strategy-selector'>Strategy:</InputLabel>
-              <Select id='strategy-selector' value={strategy} onChange={onStrategyChange}>
-                {Object.values(AnalysisStrategy).map((strat) => (
-                  <MenuItem key={strat} value={strat}>
-                    {Analyses.AnalysisStrategyToHuman[strat]}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Paper>
-        )
-      }
+      <Paper className={classes.advancedControls}>
+        <FormControl>
+          <InputLabel htmlFor='strategy-selector' id='strategy-selector-label'>
+            Analysis Strategy:
+          </InputLabel>
+          <Select id='strategy-selector' labelId='strategy-selector-label' value={strategy} onChange={onStrategyChange}>
+            {availableAnalysisStrategies.map((strat) => (
+              <MenuItem key={strat} value={strat}>
+                {Analyses.AnalysisStrategyToHuman[strat]}
+                {strat === Experiments.getDefaultAnalysisStrategy(experiment) && ' (recommended)'}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Paper>
       {hasAnalyses ? (
         <>
           <div className={classes.summary}>

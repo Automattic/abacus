@@ -1,4 +1,4 @@
-import { fireEvent, getAllByText, getByText, waitFor } from '@testing-library/react'
+import { fireEvent, getAllByText, getByText, screen, waitFor } from '@testing-library/react'
 import React from 'react'
 import Plot from 'react-plotly.js'
 
@@ -92,4 +92,16 @@ test('renders the condensed table with some analyses in non-debug mode for a Rev
   expect(container.querySelector('.analysis-latest-results .analysis-detail-panel')).toMatchSnapshot()
 
   expect(mockedPlot).toMatchSnapshot()
+})
+
+test('allows you to change analysis strategy', async () => {
+  const { container } = render(<ExperimentResults analyses={[]} experiment={experiment} metrics={metrics} />)
+
+  const analysisStrategy = screen.getByRole('button', { name: /Analysis Strategy/ })
+  fireEvent.focus(analysisStrategy)
+  fireEvent.keyDown(analysisStrategy, { key: 'Enter' })
+  const analysisStrategyOption = await screen.findByRole('option', { name: /All participants/ })
+  fireEvent.click(analysisStrategyOption)
+
+  expect(container).toMatchSnapshot()
 })
