@@ -9,52 +9,6 @@ exports[`allows you to change analysis strategy 1`] = `
       class="makeStyles-root-189"
     >
       <div
-        class="MuiPaper-root makeStyles-advancedControls-192 MuiPaper-elevation1 MuiPaper-rounded"
-      >
-        <div
-          class="MuiFormControl-root"
-        >
-          <label
-            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-focused Mui-focused"
-            data-shrink="true"
-            for="strategy-selector"
-            id="strategy-selector-label"
-          >
-            Analysis Strategy:
-          </label>
-          <div
-            class="MuiInputBase-root MuiInput-root MuiInput-underline Mui-focused Mui-focused MuiInputBase-formControl MuiInput-formControl"
-          >
-            <div
-              aria-haspopup="listbox"
-              aria-labelledby="strategy-selector-label strategy-selector"
-              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-              id="strategy-selector"
-              role="button"
-              tabindex="0"
-            >
-              All participants
-            </div>
-            <input
-              aria-hidden="true"
-              class="MuiSelect-nativeInput"
-              tabindex="-1"
-              value="itt_pure"
-            />
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSelect-icon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M7 10l5 5 5-5z"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div
         class="MuiPaper-root makeStyles-noAnalysesPaper-207 MuiPaper-elevation1 MuiPaper-rounded"
       >
         <h3
@@ -89,79 +43,236 @@ exports[`allows you to change analysis strategy 1`] = `
         </ul>
       </div>
       <div
-        class="MuiPaper-root MuiAccordion-root makeStyles-accordion-205 MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        class="makeStyles-accordions-205"
       >
         <div
-          aria-disabled="false"
-          aria-expanded="false"
-          class="MuiButtonBase-root MuiAccordionSummary-root"
-          role="button"
-          tabindex="0"
+          class="MuiPaper-root MuiAccordion-root Mui-expanded MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="MuiAccordionSummary-content"
+            aria-disabled="false"
+            aria-expanded="true"
+            class="MuiButtonBase-root MuiAccordionSummary-root Mui-expanded"
+            role="button"
+            tabindex="0"
           >
-            <h5
-              class="MuiTypography-root MuiTypography-h5"
+            <div
+              class="MuiAccordionSummary-content Mui-expanded"
             >
-              Early Monitoring - Live Assignment Event Flow
-            </h5>
+              <h5
+                class="MuiTypography-root MuiTypography-h5"
+              >
+                Advanced - Choose an Analysis Strategy
+              </h5>
+            </div>
+            <div
+              aria-disabled="false"
+              aria-hidden="true"
+              class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon Mui-expanded MuiIconButton-edgeEnd"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
           </div>
           <div
-            aria-disabled="false"
-            aria-hidden="true"
-            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+            class="MuiCollapse-container MuiCollapse-entered"
+            style="min-height: 0px; height: auto; transition-duration: 0ms;"
           >
-            <span
-              class="MuiIconButton-label"
+            <div
+              class="MuiCollapse-wrapper"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <div
+                class="MuiCollapse-wrapperInner"
               >
-                <path
-                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                />
-              </svg>
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
+                <div
+                  role="region"
+                >
+                  <div
+                    class="MuiAccordionDetails-root makeStyles-accordionDetails-206"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      Choosing a different analysis strategy is useful for checking the effect of different modelling decisions on the results:
+                    </p>
+                    <ul>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          All participants:
+                        </strong>
+                         All the participants are analysed based on their initial variation assignment. Pure intention-to-treat.
+                      </li>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          Without crossovers:
+                        </strong>
+                         Same as all participants, but excluding participants that were assigned to multiple experiment variations before or on the analysis date (aka crossovers). Modified intention-to-treat.
+                      </li>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          Without spammers:
+                        </strong>
+                         Same as all participants, but excluding participants that were flagged as spammers on the analysis date. Modified intention-to-treat.
+                      </li>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          Without crossovers and spammers:
+                        </strong>
+                         Same as all participants, but excluding both spammers and crossovers. Modified intention-to-treat.
+                      </li>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          Exposed without crossovers and spammers:
+                        </strong>
+                         Only participants that triggered one of the experiment's exposure events, excluding both spammers and crossovers. This analysis strategy is only available if the experiment has exposure events, while the other four strategies are used for every experiment. Naive per-protocol.
+                      </li>
+                    </ul>
+                    <div
+                      class="MuiFormControl-root"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-focused Mui-focused"
+                        data-shrink="true"
+                        for="strategy-selector"
+                        id="strategy-selector-label"
+                      >
+                        Analysis Strategy:
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiInput-root MuiInput-underline Mui-focused Mui-focused MuiInputBase-formControl MuiInput-formControl"
+                      >
+                        <div
+                          aria-haspopup="listbox"
+                          aria-labelledby="strategy-selector-label strategy-selector"
+                          class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                          id="strategy-selector"
+                          role="button"
+                          tabindex="0"
+                        >
+                          All participants
+                        </div>
+                        <input
+                          aria-hidden="true"
+                          class="MuiSelect-nativeInput"
+                          tabindex="-1"
+                          value="itt_pure"
+                        />
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSelect-icon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M7 10l5 5 5-5z"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div
-          class="MuiCollapse-container MuiCollapse-hidden"
-          style="min-height: 0px;"
+          class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="MuiCollapse-wrapper"
+            aria-disabled="false"
+            aria-expanded="false"
+            class="MuiButtonBase-root MuiAccordionSummary-root"
+            role="button"
+            tabindex="0"
           >
             <div
-              class="MuiCollapse-wrapperInner"
+              class="MuiAccordionSummary-content"
+            >
+              <h5
+                class="MuiTypography-root MuiTypography-h5"
+              >
+                Early Monitoring - Live Assignment Event Flow
+              </h5>
+            </div>
+            <div
+              aria-disabled="false"
+              aria-hidden="true"
+              class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
+          </div>
+          <div
+            class="MuiCollapse-container MuiCollapse-hidden"
+            style="min-height: 0px;"
+          >
+            <div
+              class="MuiCollapse-wrapper"
             >
               <div
-                role="region"
+                class="MuiCollapse-wrapperInner"
               >
                 <div
-                  class="MuiAccordionDetails-root makeStyles-accordionDetails-206"
+                  role="region"
                 >
-                  <p
-                    class="MuiTypography-root MuiTypography-body1"
+                  <div
+                    class="MuiAccordionDetails-root makeStyles-accordionDetails-206"
                   >
-                    For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
-                  </p>
-                  <p
-                    class="MuiTypography-root MuiTypography-body1"
-                  >
-                    This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
-                  </p>
-                  <pre
-                    class="makeStyles-pre-208"
-                  >
-                    <code>
-                      with tracks_counts as (
+                    <p
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
+                    </p>
+                    <pre
+                      class="makeStyles-pre-208"
+                    >
+                      <code>
+                        with tracks_counts as (
   select
     cast(a8c.get_json_object(eventprops, '$.experiment_variation_id') as bigint) as experiment_variation_id,
     count(distinct userid) as unique_users
@@ -177,8 +288,9 @@ select
   unique_users
 from tracks_counts
 inner join wpcom.experiment_variations using (experiment_variation_id)
-                    </code>
-                  </pre>
+                      </code>
+                    </pre>
+                  </div>
                 </div>
               </div>
             </div>
@@ -198,53 +310,6 @@ exports[`renders an appropriate message with no analyses 1`] = `
     <div
       class="makeStyles-root-1"
     >
-      <div
-        class="MuiPaper-root makeStyles-advancedControls-4 MuiPaper-elevation1 MuiPaper-rounded"
-      >
-        <div
-          class="MuiFormControl-root"
-        >
-          <label
-            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-            data-shrink="true"
-            for="strategy-selector"
-            id="strategy-selector-label"
-          >
-            Analysis Strategy:
-          </label>
-          <div
-            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-          >
-            <div
-              aria-haspopup="listbox"
-              aria-labelledby="strategy-selector-label strategy-selector"
-              class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-              id="strategy-selector"
-              role="button"
-              tabindex="0"
-            >
-              Exposed without crossovers and spammers
-               (recommended)
-            </div>
-            <input
-              aria-hidden="true"
-              class="MuiSelect-nativeInput"
-              tabindex="-1"
-              value="pp_naive"
-            />
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSelect-icon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M7 10l5 5 5-5z"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
       <div
         class="MuiPaper-root makeStyles-noAnalysesPaper-19 MuiPaper-elevation1 MuiPaper-rounded"
       >
@@ -280,79 +345,237 @@ exports[`renders an appropriate message with no analyses 1`] = `
         </ul>
       </div>
       <div
-        class="MuiPaper-root MuiAccordion-root makeStyles-accordion-17 MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        class="makeStyles-accordions-17"
       >
         <div
-          aria-disabled="false"
-          aria-expanded="false"
-          class="MuiButtonBase-root MuiAccordionSummary-root"
-          role="button"
-          tabindex="0"
+          class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="MuiAccordionSummary-content"
+            aria-disabled="false"
+            aria-expanded="false"
+            class="MuiButtonBase-root MuiAccordionSummary-root"
+            role="button"
+            tabindex="0"
           >
-            <h5
-              class="MuiTypography-root MuiTypography-h5"
+            <div
+              class="MuiAccordionSummary-content"
             >
-              Early Monitoring - Live Assignment Event Flow
-            </h5>
+              <h5
+                class="MuiTypography-root MuiTypography-h5"
+              >
+                Advanced - Choose an Analysis Strategy
+              </h5>
+            </div>
+            <div
+              aria-disabled="false"
+              aria-hidden="true"
+              class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
           </div>
           <div
-            aria-disabled="false"
-            aria-hidden="true"
-            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+            class="MuiCollapse-container MuiCollapse-hidden"
+            style="min-height: 0px;"
           >
-            <span
-              class="MuiIconButton-label"
+            <div
+              class="MuiCollapse-wrapper"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <div
+                class="MuiCollapse-wrapperInner"
               >
-                <path
-                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                />
-              </svg>
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
+                <div
+                  role="region"
+                >
+                  <div
+                    class="MuiAccordionDetails-root makeStyles-accordionDetails-18"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      Choosing a different analysis strategy is useful for checking the effect of different modelling decisions on the results:
+                    </p>
+                    <ul>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          All participants:
+                        </strong>
+                         All the participants are analysed based on their initial variation assignment. Pure intention-to-treat.
+                      </li>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          Without crossovers:
+                        </strong>
+                         Same as all participants, but excluding participants that were assigned to multiple experiment variations before or on the analysis date (aka crossovers). Modified intention-to-treat.
+                      </li>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          Without spammers:
+                        </strong>
+                         Same as all participants, but excluding participants that were flagged as spammers on the analysis date. Modified intention-to-treat.
+                      </li>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          Without crossovers and spammers:
+                        </strong>
+                         Same as all participants, but excluding both spammers and crossovers. Modified intention-to-treat.
+                      </li>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          Exposed without crossovers and spammers:
+                        </strong>
+                         Only participants that triggered one of the experiment's exposure events, excluding both spammers and crossovers. This analysis strategy is only available if the experiment has exposure events, while the other four strategies are used for every experiment. Naive per-protocol.
+                      </li>
+                    </ul>
+                    <div
+                      class="MuiFormControl-root"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                        data-shrink="true"
+                        for="strategy-selector"
+                        id="strategy-selector-label"
+                      >
+                        Analysis Strategy:
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                      >
+                        <div
+                          aria-haspopup="listbox"
+                          aria-labelledby="strategy-selector-label strategy-selector"
+                          class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                          id="strategy-selector"
+                          role="button"
+                          tabindex="0"
+                        >
+                          Exposed without crossovers and spammers
+                           (recommended)
+                        </div>
+                        <input
+                          aria-hidden="true"
+                          class="MuiSelect-nativeInput"
+                          tabindex="-1"
+                          value="pp_naive"
+                        />
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSelect-icon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M7 10l5 5 5-5z"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div
-          class="MuiCollapse-container MuiCollapse-hidden"
-          style="min-height: 0px;"
+          class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="MuiCollapse-wrapper"
+            aria-disabled="false"
+            aria-expanded="false"
+            class="MuiButtonBase-root MuiAccordionSummary-root"
+            role="button"
+            tabindex="0"
           >
             <div
-              class="MuiCollapse-wrapperInner"
+              class="MuiAccordionSummary-content"
+            >
+              <h5
+                class="MuiTypography-root MuiTypography-h5"
+              >
+                Early Monitoring - Live Assignment Event Flow
+              </h5>
+            </div>
+            <div
+              aria-disabled="false"
+              aria-hidden="true"
+              class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
+          </div>
+          <div
+            class="MuiCollapse-container MuiCollapse-hidden"
+            style="min-height: 0px;"
+          >
+            <div
+              class="MuiCollapse-wrapper"
             >
               <div
-                role="region"
+                class="MuiCollapse-wrapperInner"
               >
                 <div
-                  class="MuiAccordionDetails-root makeStyles-accordionDetails-18"
+                  role="region"
                 >
-                  <p
-                    class="MuiTypography-root MuiTypography-body1"
+                  <div
+                    class="MuiAccordionDetails-root makeStyles-accordionDetails-18"
                   >
-                    For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
-                  </p>
-                  <p
-                    class="MuiTypography-root MuiTypography-body1"
-                  >
-                    This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
-                  </p>
-                  <pre
-                    class="makeStyles-pre-20"
-                  >
-                    <code>
-                      with tracks_counts as (
+                    <p
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
+                    </p>
+                    <pre
+                      class="makeStyles-pre-20"
+                    >
+                      <code>
+                        with tracks_counts as (
   select
     cast(a8c.get_json_object(eventprops, '$.experiment_variation_id') as bigint) as experiment_variation_id,
     count(distinct userid) as unique_users
@@ -368,8 +591,9 @@ select
   unique_users
 from tracks_counts
 inner join wpcom.experiment_variations using (experiment_variation_id)
-                    </code>
-                  </pre>
+                      </code>
+                    </pre>
+                  </div>
                 </div>
               </div>
             </div>
@@ -388,53 +612,6 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
   <div
     class="makeStyles-root-22"
   >
-    <div
-      class="MuiPaper-root makeStyles-advancedControls-25 MuiPaper-elevation1 MuiPaper-rounded"
-    >
-      <div
-        class="MuiFormControl-root"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-          data-shrink="true"
-          for="strategy-selector"
-          id="strategy-selector-label"
-        >
-          Analysis Strategy:
-        </label>
-        <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-        >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="strategy-selector-label strategy-selector"
-            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-            id="strategy-selector"
-            role="button"
-            tabindex="0"
-          >
-            Exposed without crossovers and spammers
-             (recommended)
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
-            tabindex="-1"
-            value="pp_naive"
-          />
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSelect-icon"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7 10l5 5 5-5z"
-            />
-          </svg>
-        </div>
-      </div>
-    </div>
     <div
       class="makeStyles-summary-24"
     >
@@ -1387,79 +1564,237 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
       </div>
     </div>
     <div
-      class="MuiPaper-root MuiAccordion-root makeStyles-accordion-38 MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+      class="makeStyles-accordions-38"
     >
       <div
-        aria-disabled="false"
-        aria-expanded="false"
-        class="MuiButtonBase-root MuiAccordionSummary-root"
-        role="button"
-        tabindex="0"
+        class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
-          class="MuiAccordionSummary-content"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="MuiButtonBase-root MuiAccordionSummary-root"
+          role="button"
+          tabindex="0"
         >
-          <h5
-            class="MuiTypography-root MuiTypography-h5"
+          <div
+            class="MuiAccordionSummary-content"
           >
-            Early Monitoring - Live Assignment Event Flow
-          </h5>
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Advanced - Choose an Analysis Strategy
+            </h5>
+          </div>
+          <div
+            aria-disabled="false"
+            aria-hidden="true"
+            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
         </div>
         <div
-          aria-disabled="false"
-          aria-hidden="true"
-          class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          class="MuiCollapse-container MuiCollapse-hidden"
+          style="min-height: 0px;"
         >
-          <span
-            class="MuiIconButton-label"
+          <div
+            class="MuiCollapse-wrapper"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root"
-              focusable="false"
-              viewBox="0 0 24 24"
+            <div
+              class="MuiCollapse-wrapperInner"
             >
-              <path
-                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-              />
-            </svg>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
+              <div
+                role="region"
+              >
+                <div
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-39"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    Choosing a different analysis strategy is useful for checking the effect of different modelling decisions on the results:
+                  </p>
+                  <ul>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        All participants:
+                      </strong>
+                       All the participants are analysed based on their initial variation assignment. Pure intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without crossovers:
+                      </strong>
+                       Same as all participants, but excluding participants that were assigned to multiple experiment variations before or on the analysis date (aka crossovers). Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without spammers:
+                      </strong>
+                       Same as all participants, but excluding participants that were flagged as spammers on the analysis date. Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without crossovers and spammers:
+                      </strong>
+                       Same as all participants, but excluding both spammers and crossovers. Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Exposed without crossovers and spammers:
+                      </strong>
+                       Only participants that triggered one of the experiment's exposure events, excluding both spammers and crossovers. This analysis strategy is only available if the experiment has exposure events, while the other four strategies are used for every experiment. Naive per-protocol.
+                    </li>
+                  </ul>
+                  <div
+                    class="MuiFormControl-root"
+                  >
+                    <label
+                      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                      data-shrink="true"
+                      for="strategy-selector"
+                      id="strategy-selector-label"
+                    >
+                      Analysis Strategy:
+                    </label>
+                    <div
+                      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                    >
+                      <div
+                        aria-haspopup="listbox"
+                        aria-labelledby="strategy-selector-label strategy-selector"
+                        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                        id="strategy-selector"
+                        role="button"
+                        tabindex="0"
+                      >
+                        Exposed without crossovers and spammers
+                         (recommended)
+                      </div>
+                      <input
+                        aria-hidden="true"
+                        class="MuiSelect-nativeInput"
+                        tabindex="-1"
+                        value="pp_naive"
+                      />
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSelect-icon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M7 10l5 5 5-5z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
-        class="MuiCollapse-container MuiCollapse-hidden"
-        style="min-height: 0px;"
+        class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
-          class="MuiCollapse-wrapper"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="MuiButtonBase-root MuiAccordionSummary-root"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="MuiCollapse-wrapperInner"
+            class="MuiAccordionSummary-content"
+          >
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Early Monitoring - Live Assignment Event Flow
+            </h5>
+          </div>
+          <div
+            aria-disabled="false"
+            aria-hidden="true"
+            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiCollapse-container MuiCollapse-hidden"
+          style="min-height: 0px;"
+        >
+          <div
+            class="MuiCollapse-wrapper"
           >
             <div
-              role="region"
+              class="MuiCollapse-wrapperInner"
             >
               <div
-                class="MuiAccordionDetails-root makeStyles-accordionDetails-39"
+                role="region"
               >
-                <p
-                  class="MuiTypography-root MuiTypography-body1"
+                <div
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-39"
                 >
-                  For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
-                </p>
-                <p
-                  class="MuiTypography-root MuiTypography-body1"
-                >
-                  This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
-                </p>
-                <pre
-                  class="makeStyles-pre-41"
-                >
-                  <code>
-                    with tracks_counts as (
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                  </p>
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
+                  </p>
+                  <pre
+                    class="makeStyles-pre-41"
+                  >
+                    <code>
+                      with tracks_counts as (
   select
     cast(a8c.get_json_object(eventprops, '$.experiment_variation_id') as bigint) as experiment_variation_id,
     count(distinct userid) as unique_users
@@ -1475,8 +1810,9 @@ select
   unique_users
 from tracks_counts
 inner join wpcom.experiment_variations using (experiment_variation_id)
-                  </code>
-                </pre>
+                    </code>
+                  </pre>
+                </div>
               </div>
             </div>
           </div>
@@ -1821,53 +2157,6 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   <div
     class="makeStyles-root-78"
   >
-    <div
-      class="MuiPaper-root makeStyles-advancedControls-81 MuiPaper-elevation1 MuiPaper-rounded"
-    >
-      <div
-        class="MuiFormControl-root"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-          data-shrink="true"
-          for="strategy-selector"
-          id="strategy-selector-label"
-        >
-          Analysis Strategy:
-        </label>
-        <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-        >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="strategy-selector-label strategy-selector"
-            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-            id="strategy-selector"
-            role="button"
-            tabindex="0"
-          >
-            Exposed without crossovers and spammers
-             (recommended)
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
-            tabindex="-1"
-            value="pp_naive"
-          />
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSelect-icon"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7 10l5 5 5-5z"
-            />
-          </svg>
-        </div>
-      </div>
-    </div>
     <div
       class="makeStyles-summary-80"
     >
@@ -2849,79 +3138,237 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       </div>
     </div>
     <div
-      class="MuiPaper-root MuiAccordion-root makeStyles-accordion-94 MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+      class="makeStyles-accordions-94"
     >
       <div
-        aria-disabled="false"
-        aria-expanded="false"
-        class="MuiButtonBase-root MuiAccordionSummary-root"
-        role="button"
-        tabindex="0"
+        class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
-          class="MuiAccordionSummary-content"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="MuiButtonBase-root MuiAccordionSummary-root"
+          role="button"
+          tabindex="0"
         >
-          <h5
-            class="MuiTypography-root MuiTypography-h5"
+          <div
+            class="MuiAccordionSummary-content"
           >
-            Early Monitoring - Live Assignment Event Flow
-          </h5>
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Advanced - Choose an Analysis Strategy
+            </h5>
+          </div>
+          <div
+            aria-disabled="false"
+            aria-hidden="true"
+            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
         </div>
         <div
-          aria-disabled="false"
-          aria-hidden="true"
-          class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          class="MuiCollapse-container MuiCollapse-hidden"
+          style="min-height: 0px;"
         >
-          <span
-            class="MuiIconButton-label"
+          <div
+            class="MuiCollapse-wrapper"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root"
-              focusable="false"
-              viewBox="0 0 24 24"
+            <div
+              class="MuiCollapse-wrapperInner"
             >
-              <path
-                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-              />
-            </svg>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
+              <div
+                role="region"
+              >
+                <div
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-95"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    Choosing a different analysis strategy is useful for checking the effect of different modelling decisions on the results:
+                  </p>
+                  <ul>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        All participants:
+                      </strong>
+                       All the participants are analysed based on their initial variation assignment. Pure intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without crossovers:
+                      </strong>
+                       Same as all participants, but excluding participants that were assigned to multiple experiment variations before or on the analysis date (aka crossovers). Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without spammers:
+                      </strong>
+                       Same as all participants, but excluding participants that were flagged as spammers on the analysis date. Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without crossovers and spammers:
+                      </strong>
+                       Same as all participants, but excluding both spammers and crossovers. Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Exposed without crossovers and spammers:
+                      </strong>
+                       Only participants that triggered one of the experiment's exposure events, excluding both spammers and crossovers. This analysis strategy is only available if the experiment has exposure events, while the other four strategies are used for every experiment. Naive per-protocol.
+                    </li>
+                  </ul>
+                  <div
+                    class="MuiFormControl-root"
+                  >
+                    <label
+                      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                      data-shrink="true"
+                      for="strategy-selector"
+                      id="strategy-selector-label"
+                    >
+                      Analysis Strategy:
+                    </label>
+                    <div
+                      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                    >
+                      <div
+                        aria-haspopup="listbox"
+                        aria-labelledby="strategy-selector-label strategy-selector"
+                        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                        id="strategy-selector"
+                        role="button"
+                        tabindex="0"
+                      >
+                        Exposed without crossovers and spammers
+                         (recommended)
+                      </div>
+                      <input
+                        aria-hidden="true"
+                        class="MuiSelect-nativeInput"
+                        tabindex="-1"
+                        value="pp_naive"
+                      />
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSelect-icon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M7 10l5 5 5-5z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
-        class="MuiCollapse-container MuiCollapse-hidden"
-        style="min-height: 0px;"
+        class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
-          class="MuiCollapse-wrapper"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="MuiButtonBase-root MuiAccordionSummary-root"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="MuiCollapse-wrapperInner"
+            class="MuiAccordionSummary-content"
+          >
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Early Monitoring - Live Assignment Event Flow
+            </h5>
+          </div>
+          <div
+            aria-disabled="false"
+            aria-hidden="true"
+            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiCollapse-container MuiCollapse-hidden"
+          style="min-height: 0px;"
+        >
+          <div
+            class="MuiCollapse-wrapper"
           >
             <div
-              role="region"
+              class="MuiCollapse-wrapperInner"
             >
               <div
-                class="MuiAccordionDetails-root makeStyles-accordionDetails-95"
+                role="region"
               >
-                <p
-                  class="MuiTypography-root MuiTypography-body1"
+                <div
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-95"
                 >
-                  For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
-                </p>
-                <p
-                  class="MuiTypography-root MuiTypography-body1"
-                >
-                  This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
-                </p>
-                <pre
-                  class="makeStyles-pre-97"
-                >
-                  <code>
-                    with tracks_counts as (
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                  </p>
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
+                  </p>
+                  <pre
+                    class="makeStyles-pre-97"
+                  >
+                    <code>
+                      with tracks_counts as (
   select
     cast(a8c.get_json_object(eventprops, '$.experiment_variation_id') as bigint) as experiment_variation_id,
     count(distinct userid) as unique_users
@@ -2937,8 +3384,9 @@ select
   unique_users
 from tracks_counts
 inner join wpcom.experiment_variations using (experiment_variation_id)
-                  </code>
-                </pre>
+                    </code>
+                  </pre>
+                </div>
               </div>
             </div>
           </div>
@@ -3697,53 +4145,6 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   <div
     class="makeStyles-root-134"
   >
-    <div
-      class="MuiPaper-root makeStyles-advancedControls-137 MuiPaper-elevation1 MuiPaper-rounded"
-    >
-      <div
-        class="MuiFormControl-root"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-          data-shrink="true"
-          for="strategy-selector"
-          id="strategy-selector-label"
-        >
-          Analysis Strategy:
-        </label>
-        <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-        >
-          <div
-            aria-haspopup="listbox"
-            aria-labelledby="strategy-selector-label strategy-selector"
-            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-            id="strategy-selector"
-            role="button"
-            tabindex="0"
-          >
-            Exposed without crossovers and spammers
-             (recommended)
-          </div>
-          <input
-            aria-hidden="true"
-            class="MuiSelect-nativeInput"
-            tabindex="-1"
-            value="pp_naive"
-          />
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSelect-icon"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7 10l5 5 5-5z"
-            />
-          </svg>
-        </div>
-      </div>
-    </div>
     <div
       class="makeStyles-summary-136"
     >
@@ -4725,79 +5126,237 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       </div>
     </div>
     <div
-      class="MuiPaper-root MuiAccordion-root makeStyles-accordion-150 MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+      class="makeStyles-accordions-150"
     >
       <div
-        aria-disabled="false"
-        aria-expanded="false"
-        class="MuiButtonBase-root MuiAccordionSummary-root"
-        role="button"
-        tabindex="0"
+        class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
-          class="MuiAccordionSummary-content"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="MuiButtonBase-root MuiAccordionSummary-root"
+          role="button"
+          tabindex="0"
         >
-          <h5
-            class="MuiTypography-root MuiTypography-h5"
+          <div
+            class="MuiAccordionSummary-content"
           >
-            Early Monitoring - Live Assignment Event Flow
-          </h5>
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Advanced - Choose an Analysis Strategy
+            </h5>
+          </div>
+          <div
+            aria-disabled="false"
+            aria-hidden="true"
+            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
         </div>
         <div
-          aria-disabled="false"
-          aria-hidden="true"
-          class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          class="MuiCollapse-container MuiCollapse-hidden"
+          style="min-height: 0px;"
         >
-          <span
-            class="MuiIconButton-label"
+          <div
+            class="MuiCollapse-wrapper"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root"
-              focusable="false"
-              viewBox="0 0 24 24"
+            <div
+              class="MuiCollapse-wrapperInner"
             >
-              <path
-                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-              />
-            </svg>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
+              <div
+                role="region"
+              >
+                <div
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-151"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    Choosing a different analysis strategy is useful for checking the effect of different modelling decisions on the results:
+                  </p>
+                  <ul>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        All participants:
+                      </strong>
+                       All the participants are analysed based on their initial variation assignment. Pure intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without crossovers:
+                      </strong>
+                       Same as all participants, but excluding participants that were assigned to multiple experiment variations before or on the analysis date (aka crossovers). Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without spammers:
+                      </strong>
+                       Same as all participants, but excluding participants that were flagged as spammers on the analysis date. Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without crossovers and spammers:
+                      </strong>
+                       Same as all participants, but excluding both spammers and crossovers. Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Exposed without crossovers and spammers:
+                      </strong>
+                       Only participants that triggered one of the experiment's exposure events, excluding both spammers and crossovers. This analysis strategy is only available if the experiment has exposure events, while the other four strategies are used for every experiment. Naive per-protocol.
+                    </li>
+                  </ul>
+                  <div
+                    class="MuiFormControl-root"
+                  >
+                    <label
+                      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                      data-shrink="true"
+                      for="strategy-selector"
+                      id="strategy-selector-label"
+                    >
+                      Analysis Strategy:
+                    </label>
+                    <div
+                      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                    >
+                      <div
+                        aria-haspopup="listbox"
+                        aria-labelledby="strategy-selector-label strategy-selector"
+                        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                        id="strategy-selector"
+                        role="button"
+                        tabindex="0"
+                      >
+                        Exposed without crossovers and spammers
+                         (recommended)
+                      </div>
+                      <input
+                        aria-hidden="true"
+                        class="MuiSelect-nativeInput"
+                        tabindex="-1"
+                        value="pp_naive"
+                      />
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSelect-icon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M7 10l5 5 5-5z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
-        class="MuiCollapse-container MuiCollapse-hidden"
-        style="min-height: 0px;"
+        class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
-          class="MuiCollapse-wrapper"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="MuiButtonBase-root MuiAccordionSummary-root"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="MuiCollapse-wrapperInner"
+            class="MuiAccordionSummary-content"
+          >
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Early Monitoring - Live Assignment Event Flow
+            </h5>
+          </div>
+          <div
+            aria-disabled="false"
+            aria-hidden="true"
+            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiCollapse-container MuiCollapse-hidden"
+          style="min-height: 0px;"
+        >
+          <div
+            class="MuiCollapse-wrapper"
           >
             <div
-              role="region"
+              class="MuiCollapse-wrapperInner"
             >
               <div
-                class="MuiAccordionDetails-root makeStyles-accordionDetails-151"
+                role="region"
               >
-                <p
-                  class="MuiTypography-root MuiTypography-body1"
+                <div
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-151"
                 >
-                  For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
-                </p>
-                <p
-                  class="MuiTypography-root MuiTypography-body1"
-                >
-                  This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
-                </p>
-                <pre
-                  class="makeStyles-pre-153"
-                >
-                  <code>
-                    with tracks_counts as (
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                  </p>
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
+                  </p>
+                  <pre
+                    class="makeStyles-pre-153"
+                  >
+                    <code>
+                      with tracks_counts as (
   select
     cast(a8c.get_json_object(eventprops, '$.experiment_variation_id') as bigint) as experiment_variation_id,
     count(distinct userid) as unique_users
@@ -4813,8 +5372,9 @@ select
   unique_users
 from tracks_counts
 inner join wpcom.experiment_variations using (experiment_variation_id)
-                  </code>
-                </pre>
+                    </code>
+                  </pre>
+                </div>
               </div>
             </div>
           </div>
