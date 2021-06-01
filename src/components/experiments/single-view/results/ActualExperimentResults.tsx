@@ -163,7 +163,9 @@ export default function ActualExperimentResults({
     AnalysisStrategy.MittNoSpammers,
     AnalysisStrategy.MittNoSpammersNoCrossovers,
   ]
-  experiment.exposureEvents && availableAnalysisStrategies.push(AnalysisStrategy.PpNaive)
+  if (experiment.exposureEvents) {
+    availableAnalysisStrategies.push(AnalysisStrategy.PpNaive)
+  }
   const [strategy, setStrategy] = useState<AnalysisStrategy>(() => Experiments.getDefaultAnalysisStrategy(experiment))
   const onStrategyChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setStrategy(event.target.value as AnalysisStrategy)
