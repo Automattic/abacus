@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/require-await,@typescript-eslint/ban-ts-comment */
 
-import { act, fireEvent, screen, waitFor } from '@testing-library/react'
+import { act, fireEvent, getByRole, screen, waitFor } from '@testing-library/react'
 import { StatusCodes } from 'http-status-codes'
 import _ from 'lodash'
 import noop from 'lodash/noop'
@@ -431,14 +431,11 @@ test('form submits with valid fields', async () => {
 
   // ### Metrics
   screen.getByText(/Assign Metrics/)
-  const metricSearchField = screen.getByRole('button', { name: /Select a Metric/ })
+  const metricSearchField = screen.getByRole('combobox', { name: /Select a metric/ })
+  const metricSearchFieldMoreButton = getByRole(metricSearchField, 'button', { name: 'Open' })
   const metricAddButton = screen.getByRole('button', { name: 'Add metric' })
-  await act(async () => {
-    fireEvent.focus(metricSearchField)
-  })
-  await act(async () => {
-    fireEvent.keyDown(metricSearchField, { key: 'Enter' })
-  })
+
+  fireEvent.click(metricSearchFieldMoreButton)
   const metricOption = await screen.findByRole('option', { name: /metric_10/ })
   await act(async () => {
     fireEvent.click(metricOption)

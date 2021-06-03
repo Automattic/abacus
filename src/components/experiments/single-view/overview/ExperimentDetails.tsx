@@ -1,5 +1,5 @@
 import Grid from '@material-ui/core/Grid'
-import { useTheme } from '@material-ui/core/styles'
+import { createStyles, makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import debugFactory from 'debug'
 import React from 'react'
@@ -11,6 +11,14 @@ import MetricAssignmentsPanel from 'src/components/experiments/single-view/overv
 import { ExperimentFull, MetricBare, Segment, Status, TagBare } from 'src/lib/schemas'
 
 const debug = debugFactory('abacus:components/ExperimentDetails.tsx')
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    panel: {
+      marginBottom: theme.spacing(2),
+    },
+  }),
+)
 
 /**
  * Renders the main details of an experiment.
@@ -29,37 +37,36 @@ function ExperimentDetails({
   experimentReloadRef: React.MutableRefObject<() => void>
 }): JSX.Element {
   debug('ExperimentDetails#render')
+  const classes = useStyles()
   const theme = useTheme()
   const isMdDown = useMediaQuery(theme.breakpoints.down('md'))
 
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12} lg={7}>
-        <Grid container direction='column' spacing={2}>
-          <Grid item>
-            <GeneralPanel {...{ experiment, experimentReloadRef }} />
-          </Grid>
-          {isMdDown && (
+    <>
+      <Grid container spacing={2}>
+        <Grid item xs={12} lg={7}>
+          <Grid container direction='column' spacing={2}>
             <Grid item>
-              <AudiencePanel {...{ experiment, segments, tags }} />
+              <GeneralPanel className={classes.panel} {...{ experiment, experimentReloadRef }} />
+              {(experiment.status === Status.Completed || experiment.status === Status.Disabled) && (
+                <ConclusionsPanel className={classes.panel} {...{ experiment, experimentReloadRef }} />
+              )}
             </Grid>
-          )}
-          <Grid item>
-            <MetricAssignmentsPanel {...{ experiment, metrics, experimentReloadRef }} />
+            {isMdDown && (
+              <Grid item>
+                <AudiencePanel className={classes.panel} {...{ experiment, segments, tags }} />
+              </Grid>
+            )}
           </Grid>
-          {(experiment.status === Status.Completed || experiment.status === Status.Disabled) && (
-            <Grid item>
-              <ConclusionsPanel {...{ experiment, experimentReloadRef }} />
-            </Grid>
-          )}
         </Grid>
+        {!isMdDown && (
+          <Grid item lg={5}>
+            <AudiencePanel className={classes.panel} {...{ experiment, segments, tags }} />
+          </Grid>
+        )}
       </Grid>
-      {!isMdDown && (
-        <Grid item lg={5}>
-          <AudiencePanel {...{ experiment, segments, tags }} />
-        </Grid>
-      )}
-    </Grid>
+      <MetricAssignmentsPanel {...{ experiment, metrics, experimentReloadRef }} />
+    </>
   )
 }
 

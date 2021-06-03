@@ -148,6 +148,7 @@ const BasicInfo = ({
           fullWidth
           options={userCompletionDataSource.data ?? []}
           loading={userCompletionDataSource.isLoading}
+          noOptionsText='No users found'
           renderInput={(params: AutocompleteRenderInputParams) => (
             <MuiTextField
               {...params}

@@ -1,4 +1,4 @@
-import { act, fireEvent, screen } from '@testing-library/react'
+import { act, fireEvent, getByRole, screen } from '@testing-library/react'
 import { Formik } from 'formik'
 import React from 'react'
 
@@ -78,15 +78,15 @@ test('allows adding, editing and removing a Metric Assignment', async () => {
   )
   expect(container).toMatchSnapshot()
 
-  const metricSearchField = screen.getByRole('button', { name: /Select a Metric/ })
+  const metricSearchField = screen.getByRole('combobox', { name: /Select a metric/ })
+  const metricSearchFieldMoreButton = getByRole(metricSearchField, 'button', { name: 'Open' })
   const metricAddButton = screen.getByRole('button', { name: 'Add metric' })
 
   fireEvent.click(metricAddButton)
 
   expect(container).toMatchSnapshot()
 
-  fireEvent.click(metricSearchField)
-  fireEvent.keyDown(metricSearchField, { key: 'Enter' })
+  fireEvent.click(metricSearchFieldMoreButton)
   fireEvent.click(await screen.findByRole('option', { name: /asdf_7d_refund/ }))
   fireEvent.click(metricAddButton)
 
@@ -123,8 +123,7 @@ test('allows adding, editing and removing a Metric Assignment', async () => {
 
   expect(container).toMatchSnapshot()
 
-  fireEvent.click(metricSearchField)
-  fireEvent.keyDown(metricSearchField, { key: 'Enter' })
+  fireEvent.click(metricSearchFieldMoreButton)
   fireEvent.click(await screen.findByRole('option', { name: /registration_start/ }))
   // eslint-disable-next-line @typescript-eslint/require-await
   await act(async () => {

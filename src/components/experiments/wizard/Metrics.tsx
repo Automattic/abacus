@@ -4,7 +4,6 @@ import {
   IconButton,
   Link,
   MenuItem,
-  Select as MuiSelect,
   Table,
   TableBody,
   TableCell,
@@ -17,7 +16,8 @@ import {
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Add, Clear } from '@material-ui/icons'
-import { Alert, AutocompleteRenderInputParams } from '@material-ui/lab'
+import { Alert, Autocomplete, AutocompleteRenderInputParams } from '@material-ui/lab'
+import clsx from 'clsx'
 import { Field, FieldArray, useField } from 'formik'
 import { Select, Switch, TextField } from 'formik-material-ui'
 import React, { useState } from 'react'
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
       fontFamily: theme.typography.fontFamily,
     },
     addMetricSelect: {
-      minWidth: '10rem',
+      flex: 1,
       marginRight: theme.spacing(1),
     },
     attributionWindowSelect: {
@@ -48,6 +48,11 @@ const useStyles = makeStyles((theme: Theme) =>
     metricName: {
       fontFamily: theme.custom.fonts.monospace,
       fontWeight: theme.custom.fontWeights.monospaceBold,
+    },
+    tooltipped: {
+      borderBottomWidth: 1,
+      borderBottomStyle: 'dashed',
+      borderBottomColor: theme.palette.grey[500],
     },
     primary: {
       fontFamily: theme.custom.fonts.monospace,
@@ -286,10 +291,8 @@ const Metrics = ({
   const [metricAssignmentsField, _metricAssignmentsFieldMetaProps, metricAssignmentsFieldHelperProps] = useField<
     MetricAssignment[]
   >('experiment.metricAssignments')
-  const [selectedMetricId, setSelectedMetricId] = useState<string>('')
-  const onSelectedMetricChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setSelectedMetricId(event.target.value as string)
-  }
+  const [selectedMetric, setSelectedMetric] = useState<MetricBare | null>(null)
+  const onChangeSelectedMetricOption = (_event: unknown, value: MetricBare | null) => setSelectedMetric(value)
 
   const makeMetricAssignmentPrimary = (indexToSet: number) => {
     metricAssignmentsFieldHelperProps.setValue(
@@ -315,16 +318,14 @@ const Metrics = ({
         name='experiment.metricAssignments'
         render={(arrayHelpers) => {
           const onAddMetric = () => {
-            const metricId = parseInt(selectedMetricId, 10)
-            const metric = indexedMetrics[metricId]
-            if (metricId) {
-              const metricAssignment = createMetricAssignment(metric)
+            if (selectedMetric) {
+              const metricAssignment = createMetricAssignment(selectedMetric)
               arrayHelpers.push({
                 ...metricAssignment,
                 isPrimary: metricAssignmentsField.value.length === 0,
               })
             }
-            setSelectedMetricId('')
+            setSelectedMetric(null)
           }
 
           return (
@@ -354,7 +355,7 @@ const Metrics = ({
                         <TableRow key={index}>
                           <TableCell>
                             <Tooltip arrow title={indexedMetrics[metricAssignment.metricId].description}>
-                              <span className={classes.metricName}>
+                              <span className={clsx(classes.metricName, classes.tooltipped)}>
                                 {indexedMetrics[metricAssignment.metricId].name}
                               </span>
                             </Tooltip>
@@ -427,22 +428,40 @@ const Metrics = ({
               <div className={metricEditorClasses.addMetric}>
                 <Add className={metricEditorClasses.addMetricAddSymbol} />
                 <FormControl className={classes.addMetricSelect}>
-                  <MuiSelect
-                    labelId='add-metric-label'
+                  <Autocomplete
                     id='add-metric-select'
-                    value={selectedMetricId}
-                    onChange={onSelectedMetricChange}
-                    displayEmpty
-                  >
-                    <MenuItem value=''>
-                      <span className={classes.addMetricPlaceholder}>Select a Metric</span>
-                    </MenuItem>
-                    {Object.values(indexedMetrics).map((metric) => (
-                      <MenuItem value={metric.metricId} key={metric.metricId}>
-                        {metric.name}
-                      </MenuItem>
-                    ))}
-                  </MuiSelect>
+                    aria-label='Select a metric'
+                    value={selectedMetric}
+                    onChange={onChangeSelectedMetricOption}
+                    fullWidth
+                    options={Object.values(indexedMetrics)}
+                    noOptionsText='No metrics found'
+                    getOptionLabel={(metric: MetricBare) => metric.name}
+                    renderOption={(option) => (
+                      <div>
+                        <Typography variant='body1'>
+                          <strong>{option.name}</strong>
+                        </Typography>
+                        <Typography variant='body1'>
+                          <small>{option.description}</small>
+                        </Typography>
+                      </div>
+                    )}
+                    renderInput={(params: AutocompleteRenderInputParams) => (
+                      <MuiTextField
+                        {...params}
+                        placeholder='Select a metric'
+                        // variant='outlined'
+                        required
+                        InputProps={{
+                          ...autocompleteInputProps(params, false),
+                        }}
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                      />
+                    )}
+                  />
                 </FormControl>
                 <Button variant='contained' disableElevation size='small' onClick={onAddMetric} aria-label='Add metric'>
                   Assign
