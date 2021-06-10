@@ -426,7 +426,9 @@ export default function ActualExperimentResults({
       disabled = disabled && !isDebugMode()
       return {
         render: () => (
-          <MetricAssignmentResults {...{ strategy, analysesByStrategyDateAsc, metricAssignment, metric, experiment }} />
+          <MetricAssignmentResults
+            {...{ strategy, analysesByStrategyDateAsc, metricAssignment, metric, experiment, aggregateRecommendation }}
+          />
         ),
         disabled,
       }
