@@ -84,7 +84,7 @@ function assignmentHref(variationName: string, experimentName: string) {
         const baseMessage = 'ExPlat: Successful Assignment\\n–––––––––––––––––––––––––––––\\n\\n' +
           'Experiment: ${experimentName}\\nVariation: ${variationName}\\n\\n';
         if (responseBody.storage_method === 'anon_sqooped_out_table') {
-          alert(baseMessage + 'Method: Logged-out assignment\\nApplies to the current anon user.');
+          alert(baseMessage + 'Method: Logged-out assignment\\nApplies to the current anon user (tk_ai cookie).');
         } else {
           alert(baseMessage + 'Method: Logged-in assignment\\nApplies to the current logged-in user.');
         }
