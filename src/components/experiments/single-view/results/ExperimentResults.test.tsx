@@ -96,7 +96,16 @@ test('renders the condensed table with some analyses in non-debug mode for a Rev
 
 test('allows you to change analysis strategy', async () => {
   const { container } = render(
-    <ExperimentResults analyses={[]} experiment={{ ...experiment, exposureEvents: undefined }} metrics={metrics} />,
+    <ExperimentResults
+      analyses={[
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.IttPure }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoCrossovers }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammers }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers }),
+      ]}
+      experiment={{ ...experiment, exposureEvents: undefined }}
+      metrics={metrics}
+    />,
   )
 
   fireEvent.click(screen.getByRole('button', { name: /Choose an Analysis Strategy/ }))

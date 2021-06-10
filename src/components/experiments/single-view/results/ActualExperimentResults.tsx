@@ -6,6 +6,7 @@ import {
   Chip,
   createStyles,
   FormControl,
+  FormHelperText,
   InputLabel,
   makeStyles,
   MenuItem,
@@ -556,62 +557,65 @@ export default function ActualExperimentResults({
       )}
 
       <div className={classes.accordions}>
-        <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant='h5'>Advanced - Choose an Analysis Strategy</Typography>
-          </AccordionSummary>
-          <AccordionDetails className={classes.accordionDetails}>
-            <Typography variant='body1'>
-              Choosing a different analysis strategy is useful for checking the effect of different modelling decisions
-              on the results:
-            </Typography>
+        {hasAnalyses && (
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography variant='h5'>Advanced - Choose an Analysis Strategy</Typography>
+            </AccordionSummary>
+            <AccordionDetails className={classes.accordionDetails}>
+              <Typography variant='body1'>
+                Choosing a different analysis strategy is useful for checking the effect of different modelling
+                decisions on the results:
+              </Typography>
 
-            <ul>
-              <Typography variant='body1' component='li'>
-                <strong>All participants:</strong> All the participants are analysed based on their initial variation
-                assignment. Pure intention-to-treat.
-              </Typography>
-              <Typography variant='body1' component='li'>
-                <strong>Without crossovers:</strong> Same as all participants, but excluding participants that were
-                assigned to multiple experiment variations before or on the analysis date (aka crossovers). Modified
-                intention-to-treat.
-              </Typography>
-              <Typography variant='body1' component='li'>
-                <strong>Without spammers:</strong> Same as all participants, but excluding participants that were
-                flagged as spammers on the analysis date. Modified intention-to-treat.
-              </Typography>
-              <Typography variant='body1' component='li'>
-                <strong>Without crossovers and spammers:</strong> Same as all participants, but excluding both spammers
-                and crossovers. Modified intention-to-treat.
-              </Typography>
-              <Typography variant='body1' component='li'>
-                <strong>Exposed without crossovers and spammers:</strong> Only participants that triggered one of the
-                experiment&apos;s exposure events, excluding both spammers and crossovers. This analysis strategy is
-                only available if the experiment has exposure events, while the other four strategies are used for every
-                experiment. Naive per-protocol.
-              </Typography>
-            </ul>
+              <ul>
+                <Typography variant='body1' component='li'>
+                  <strong>All participants:</strong> All the participants are analysed based on their initial variation
+                  assignment. Pure intention-to-treat.
+                </Typography>
+                <Typography variant='body1' component='li'>
+                  <strong>Without crossovers:</strong> Same as all participants, but excluding participants that were
+                  assigned to multiple experiment variations before or on the analysis date (aka crossovers). Modified
+                  intention-to-treat.
+                </Typography>
+                <Typography variant='body1' component='li'>
+                  <strong>Without spammers:</strong> Same as all participants, but excluding participants that were
+                  flagged as spammers on the analysis date. Modified intention-to-treat.
+                </Typography>
+                <Typography variant='body1' component='li'>
+                  <strong>Without crossovers and spammers:</strong> Same as all participants, but excluding both
+                  spammers and crossovers. Modified intention-to-treat.
+                </Typography>
+                <Typography variant='body1' component='li'>
+                  <strong>Exposed without crossovers and spammers:</strong> Only participants that triggered one of the
+                  experiment&apos;s exposure events, excluding both spammers and crossovers. This analysis strategy is
+                  only available if the experiment has exposure events, while the other four strategies are used for
+                  every experiment. Naive per-protocol.
+                </Typography>
+              </ul>
 
-            <FormControl>
-              <InputLabel htmlFor='strategy-selector' id='strategy-selector-label'>
-                Analysis Strategy:
-              </InputLabel>
-              <Select
-                id='strategy-selector'
-                labelId='strategy-selector-label'
-                value={strategy}
-                onChange={onStrategyChange}
-              >
-                {availableAnalysisStrategies.map((strat) => (
-                  <MenuItem key={strat} value={strat}>
-                    {Analyses.AnalysisStrategyToHuman[strat]}
-                    {strat === Experiments.getDefaultAnalysisStrategy(experiment) && ' (recommended)'}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </AccordionDetails>
-        </Accordion>
+              <FormControl>
+                <InputLabel htmlFor='strategy-selector' id='strategy-selector-label'>
+                  Analysis Strategy:
+                </InputLabel>
+                <Select
+                  id='strategy-selector'
+                  labelId='strategy-selector-label'
+                  value={strategy}
+                  onChange={onStrategyChange}
+                >
+                  {availableAnalysisStrategies.map((strat) => (
+                    <MenuItem key={strat} value={strat}>
+                      {Analyses.AnalysisStrategyToHuman[strat]}
+                      {strat === Experiments.getDefaultAnalysisStrategy(experiment) && ' (recommended)'}
+                    </MenuItem>
+                  ))}
+                </Select>
+                <FormHelperText>Updates the page data.</FormHelperText>
+              </FormControl>
+            </AccordionDetails>
+          </Accordion>
+        )}
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography variant='h5'>Early Monitoring - Live Assignment Event Flow</Typography>

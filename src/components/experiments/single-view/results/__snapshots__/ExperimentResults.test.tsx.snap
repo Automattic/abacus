@@ -9,38 +9,894 @@ exports[`allows you to change analysis strategy 1`] = `
       class="makeStyles-root-189"
     >
       <div
-        class="MuiPaper-root makeStyles-noAnalysesPaper-207 MuiPaper-elevation1 MuiPaper-rounded"
+        class="makeStyles-summary-191"
       >
-        <h3
-          class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
+        <div
+          class="MuiPaper-root makeStyles-participantsPlotPaper-202 MuiPaper-elevation1 MuiPaper-rounded"
         >
-           
-          No Results
-           
-        </h3>
-        <p
-          class="MuiTypography-root MuiTypography-body1"
+          <h3
+            class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
+          >
+            Participants by Variation
+          </h3>
+        </div>
+        <div
+          class="makeStyles-summaryColumn-193"
         >
-          No results are available at the moment, this can be due to:
-        </p>
-        <ul>
-          <li
-            class="MuiTypography-root MuiTypography-body1"
+          <div
+            class="MuiPaper-root makeStyles-summaryStatsPaper-194 MuiPaper-elevation1 MuiPaper-rounded"
           >
-            <strong>
-               An experiment being new. 
-            </strong>
-             ExPlat can take 24-48 hours for results to process and become available. Updates are usually released at 06:00 UTC daily.
-          </li>
-          <li
-            class="MuiTypography-root MuiTypography-body1"
+            <div
+              class="makeStyles-summaryStatsPart-195"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-summaryStatsStat-197 MuiTypography-h3 MuiTypography-colorPrimary"
+              >
+                1,000
+              </h3>
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle1"
+              >
+                <strong>
+                  analyzed participants
+                </strong>
+                 as at
+                 
+                2020-05-10
+              </h6>
+            </div>
+            <div
+              class="makeStyles-summaryStatsPart-195"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-summaryStatsStat-197 MuiTypography-h3 MuiTypography-colorPrimary"
+              >
+                Deploy 
+                test
+              </h3>
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle1"
+              >
+                <strong>
+                  primary metric
+                </strong>
+                 recommendation
+              </h6>
+            </div>
+          </div>
+          <a
+            class="MuiPaper-root makeStyles-summaryHealthPaper-198 makeStyles-indicationSeverityWarning-200 MuiPaper-elevation1 MuiPaper-rounded"
+            href="#health-report"
           >
-            <strong>
-               No assignments occuring. 
-            </strong>
-             Check the "Early Monitoring" section below to ensure that assignments are occuring.
-          </li>
-        </ul>
+            <div>
+              <h3
+                class="MuiTypography-root makeStyles-summaryStatsStat-197 MuiTypography-h3 MuiTypography-colorPrimary"
+              >
+                Potential issues
+              </h3>
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle1"
+              >
+                see 
+                <strong>
+                  health report
+                </strong>
+              </h6>
+            </div>
+          </a>
+        </div>
+      </div>
+      <h3
+        class="MuiTypography-root makeStyles-tableTitle-204 MuiTypography-h3"
+      >
+        Metric Assignment Results
+      </h3>
+      <div
+        class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+        style="position: relative;"
+      >
+        <div
+          class="Component-horizontalScrollContainer-215"
+          style="overflow-x: auto; position: relative;"
+        >
+          <div>
+            <div
+              style="overflow-y: auto;"
+            >
+              <div>
+                <table
+                  class="MuiTable-root"
+                  style="table-layout: auto;"
+                >
+                  <thead
+                    class="MuiTableHead-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-head"
+                    >
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-216 MuiTableCell-paddingNone"
+                        scope="col"
+                        style="font-weight: 700;"
+                      />
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-216 MuiTableCell-alignLeft"
+                        scope="col"
+                        style="font-weight: 700; box-sizing: border-box;"
+                      >
+                        Metric
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-216 MuiTableCell-alignLeft"
+                        scope="col"
+                        style="font-weight: 700; box-sizing: border-box;"
+                      >
+                        Attribution window
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-216 MuiTableCell-alignLeft"
+                        scope="col"
+                        style="font-weight: 700; box-sizing: border-box;"
+                      >
+                        Absolute change
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-216 MuiTableCell-alignLeft"
+                        scope="col"
+                        style="font-weight: 700; box-sizing: border-box;"
+                      >
+                        Relative change (lift)
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-216 MuiTableCell-alignLeft"
+                        scope="col"
+                        style="font-weight: 700; box-sizing: border-box;"
+                      >
+                        Recommendation
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    class="MuiTableBody-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-hover"
+                      index="0"
+                      level="0"
+                      path="0"
+                      style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                      >
+                        <div
+                          style="width: 42px; text-align: center; display: flex;"
+                        >
+                          <button
+                            class="MuiButtonBase-root MuiIconButton-root"
+                            style="transition: all ease 200ms; transform: none;"
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <span
+                                aria-hidden="true"
+                                class="material-icons MuiIcon-root"
+                              >
+                                chevron_right
+                              </span>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </button>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                      >
+                        <span
+                          class=""
+                          title="This is metric 1"
+                        >
+                          metric_1
+                        </span>
+                         
+                        <div
+                          aria-disabled="true"
+                          class="MuiChip-root makeStyles-primaryChip-190 MuiChip-outlined Mui-disabled"
+                        >
+                          <span
+                            class="MuiChip-label"
+                          >
+                            Primary
+                          </span>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        1 week
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        <span
+                          class="makeStyles-topLevelDiff-209"
+                        >
+                          -1
+                           to 
+                          +
+                          1
+                           
+                          pp
+                        </span>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box;"
+                      >
+                        <span
+                          class="makeStyles-topLevelDiff-209"
+                        >
+                          -50.00
+                           to 
+                          +50.00
+                           %
+                        </span>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        Deploy 
+                        test
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-hover"
+                      index="1"
+                      level="0"
+                      path="1"
+                      style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                      >
+                        <div
+                          style="width: 42px; text-align: center; display: flex;"
+                        >
+                          <button
+                            class="MuiButtonBase-root MuiIconButton-root"
+                            style="transition: all ease 200ms; transform: none;"
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <span
+                                aria-hidden="true"
+                                class="material-icons MuiIcon-root"
+                              >
+                                chevron_right
+                              </span>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </button>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                      >
+                        <span
+                          class=""
+                          title="This is metric 2"
+                        >
+                          metric_2
+                        </span>
+                         
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        1 hour
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      />
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box;"
+                      />
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        Not analyzed yet
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-hover"
+                      index="2"
+                      level="0"
+                      path="2"
+                      style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                      >
+                        <div
+                          style="width: 42px; text-align: center; display: flex;"
+                        >
+                          <button
+                            class="MuiButtonBase-root MuiIconButton-root"
+                            style="transition: all ease 200ms; transform: none;"
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <span
+                                aria-hidden="true"
+                                class="material-icons MuiIcon-root"
+                              >
+                                chevron_right
+                              </span>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </button>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                      >
+                        <span
+                          class=""
+                          title="This is metric 2"
+                        >
+                          metric_2
+                        </span>
+                         
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        4 weeks
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      />
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box;"
+                      />
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        Not analyzed yet
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-hover"
+                      index="3"
+                      level="0"
+                      path="3"
+                      style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                      >
+                        <div
+                          style="width: 42px; text-align: center; display: flex;"
+                        >
+                          <button
+                            class="MuiButtonBase-root MuiIconButton-root"
+                            style="transition: all ease 200ms; transform: none;"
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <span
+                                aria-hidden="true"
+                                class="material-icons MuiIcon-root"
+                              >
+                                chevron_right
+                              </span>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </button>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                      >
+                        <span
+                          class=""
+                          title="This is metric 3"
+                        >
+                          metric_3
+                        </span>
+                         
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        6 hours
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      />
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box;"
+                      />
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        Not analyzed yet
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3
+        class="MuiTypography-root makeStyles-tableTitle-204 MuiTypography-h3"
+      >
+        Health Report
+      </h3>
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+        id="health-report"
+      >
+        <div
+          class="MuiTableContainer-root"
+        >
+          <table
+            aria-label="simple table"
+            class="MuiTable-root"
+          >
+            <thead
+              class="MuiTableHead-root"
+            >
+              <tr
+                class="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Name
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Unit
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Value
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                />
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Indication
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Reason
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Recommendation
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="MuiTableBody-root"
+            >
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
+                    target="_blank"
+                  >
+                    Assignment distribution
+                  </a>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  <span
+                    class="makeStyles-tooltip-225"
+                    title="The smaller the p-value the more likely there is an issue."
+                  >
+                    p-value
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  1.0000
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <span />
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-221 makeStyles-indicationSeverityOk-222 makeStyles-monospace-218 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  <span>
+                    nominal
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  0.05 &lt; x ≤ 1
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-219"
+                  scope="row"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  />
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated"
+                    target="_blank"
+                  >
+                    Assignment distribution without crossovers and spammers
+                  </a>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  <span
+                    class="makeStyles-tooltip-225"
+                    title="The smaller the p-value the more likely there is an issue."
+                  >
+                    p-value
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  1.0000
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <span />
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-221 makeStyles-indicationSeverityOk-222 makeStyles-monospace-218 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  <span>
+                    nominal
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  0.05 &lt; x ≤ 1
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-219"
+                  scope="row"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  />
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
+                    target="_blank"
+                  >
+                    Ratio of crossovers to assigned
+                  </a>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  <span>
+                    ratio
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  0.0000
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <span />
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-221 makeStyles-indicationSeverityOk-222 makeStyles-monospace-218 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  <span>
+                    nominal
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  −∞ &lt; x ≤ 0.01
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-219"
+                  scope="row"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  />
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
+                    target="_blank"
+                  >
+                    Ratio of spammers to assigned
+                  </a>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  <span>
+                    ratio
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  0.0000
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <span />
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-221 makeStyles-indicationSeverityOk-222 makeStyles-monospace-218 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  <span>
+                    nominal
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  −∞ &lt; x ≤ 0.1
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-219"
+                  scope="row"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  />
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-uncertainty"
+                    target="_blank"
+                  >
+                    Kruschke uncertainty (CI to ROPE ratio)
+                  </a>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  <span>
+                    ratio
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  0.1000
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <span />
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-221 makeStyles-indicationSeverityOk-222 makeStyles-monospace-218 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  <span>
+                    nominal
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  −∞ &lt; x ≤ 0.8
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-219"
+                  scope="row"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  />
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time"
+                    target="_blank"
+                  >
+                    Experiment run time
+                  </a>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  <span>
+                    days
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  0.0000
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <span>
+                    ℹ️
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-221 makeStyles-indicationSeverityWarning-223 makeStyles-monospace-218 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  <span>
+                    very low
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-218 makeStyles-deemphasized-219 makeStyles-nowrap-220"
+                  scope="row"
+                >
+                  −∞ &lt; x ≤ 3
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-219"
+                  scope="row"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    Experiments should generally run for at least a week before drawing conclusions.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div
         class="makeStyles-accordions-205"
@@ -192,6 +1048,11 @@ exports[`allows you to change analysis strategy 1`] = `
                           />
                         </svg>
                       </div>
+                      <p
+                        class="MuiFormHelperText-root MuiFormHelperText-filled Mui-focused"
+                      >
+                        Updates the page data.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -347,161 +1208,6 @@ exports[`renders an appropriate message with no analyses 1`] = `
       <div
         class="makeStyles-accordions-17"
       >
-        <div
-          class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
-        >
-          <div
-            aria-disabled="false"
-            aria-expanded="false"
-            class="MuiButtonBase-root MuiAccordionSummary-root"
-            role="button"
-            tabindex="0"
-          >
-            <div
-              class="MuiAccordionSummary-content"
-            >
-              <h5
-                class="MuiTypography-root MuiTypography-h5"
-              >
-                Advanced - Choose an Analysis Strategy
-              </h5>
-            </div>
-            <div
-              aria-disabled="false"
-              aria-hidden="true"
-              class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
-            >
-              <span
-                class="MuiIconButton-label"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                  />
-                </svg>
-              </span>
-              <span
-                class="MuiTouchRipple-root"
-              />
-            </div>
-          </div>
-          <div
-            class="MuiCollapse-container MuiCollapse-hidden"
-            style="min-height: 0px;"
-          >
-            <div
-              class="MuiCollapse-wrapper"
-            >
-              <div
-                class="MuiCollapse-wrapperInner"
-              >
-                <div
-                  role="region"
-                >
-                  <div
-                    class="MuiAccordionDetails-root makeStyles-accordionDetails-18"
-                  >
-                    <p
-                      class="MuiTypography-root MuiTypography-body1"
-                    >
-                      Choosing a different analysis strategy is useful for checking the effect of different modelling decisions on the results:
-                    </p>
-                    <ul>
-                      <li
-                        class="MuiTypography-root MuiTypography-body1"
-                      >
-                        <strong>
-                          All participants:
-                        </strong>
-                         All the participants are analysed based on their initial variation assignment. Pure intention-to-treat.
-                      </li>
-                      <li
-                        class="MuiTypography-root MuiTypography-body1"
-                      >
-                        <strong>
-                          Without crossovers:
-                        </strong>
-                         Same as all participants, but excluding participants that were assigned to multiple experiment variations before or on the analysis date (aka crossovers). Modified intention-to-treat.
-                      </li>
-                      <li
-                        class="MuiTypography-root MuiTypography-body1"
-                      >
-                        <strong>
-                          Without spammers:
-                        </strong>
-                         Same as all participants, but excluding participants that were flagged as spammers on the analysis date. Modified intention-to-treat.
-                      </li>
-                      <li
-                        class="MuiTypography-root MuiTypography-body1"
-                      >
-                        <strong>
-                          Without crossovers and spammers:
-                        </strong>
-                         Same as all participants, but excluding both spammers and crossovers. Modified intention-to-treat.
-                      </li>
-                      <li
-                        class="MuiTypography-root MuiTypography-body1"
-                      >
-                        <strong>
-                          Exposed without crossovers and spammers:
-                        </strong>
-                         Only participants that triggered one of the experiment's exposure events, excluding both spammers and crossovers. This analysis strategy is only available if the experiment has exposure events, while the other four strategies are used for every experiment. Naive per-protocol.
-                      </li>
-                    </ul>
-                    <div
-                      class="MuiFormControl-root"
-                    >
-                      <label
-                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
-                        data-shrink="true"
-                        for="strategy-selector"
-                        id="strategy-selector-label"
-                      >
-                        Analysis Strategy:
-                      </label>
-                      <div
-                        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                      >
-                        <div
-                          aria-haspopup="listbox"
-                          aria-labelledby="strategy-selector-label strategy-selector"
-                          class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-                          id="strategy-selector"
-                          role="button"
-                          tabindex="0"
-                        >
-                          Exposed without crossovers and spammers
-                           (recommended)
-                        </div>
-                        <input
-                          aria-hidden="true"
-                          class="MuiSelect-nativeInput"
-                          tabindex="-1"
-                          value="pp_naive"
-                        />
-                        <svg
-                          aria-hidden="true"
-                          class="MuiSvgIcon-root MuiSelect-icon"
-                          focusable="false"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M7 10l5 5 5-5z"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         <div
           class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
         >
@@ -1714,6 +2420,11 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                         />
                       </svg>
                     </div>
+                    <p
+                      class="MuiFormHelperText-root MuiFormHelperText-filled"
+                    >
+                      Updates the page data.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -3288,6 +3999,11 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                         />
                       </svg>
                     </div>
+                    <p
+                      class="MuiFormHelperText-root MuiFormHelperText-filled"
+                    >
+                      Updates the page data.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -5276,6 +5992,11 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                         />
                       </svg>
                     </div>
+                    <p
+                      class="MuiFormHelperText-root MuiFormHelperText-filled"
+                    >
+                      Updates the page data.
+                    </p>
                   </div>
                 </div>
               </div>
