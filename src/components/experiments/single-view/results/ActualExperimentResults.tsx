@@ -189,7 +189,6 @@ export default function ActualExperimentResults({
     ({ metricAssignment: { isPrimary } }) => isPrimary,
   ) as MetricAssignmentAnalysesData
   const analyses = primaryMetricAssignmentAnalysesData.analysesByStrategyDateAsc[strategy] || []
-  const hasAnalyses = analyses.length !== 0
   const dates = analyses.map(({ analysisDatetime }) => analysisDatetime.toISOString())
 
   const plotlyDataParticipantGraph: Array<Partial<PlotData>> = [
@@ -223,6 +222,8 @@ export default function ActualExperimentResults({
     Object.values(primaryMetricLatestAnalysesByStrategy).filter((x) => x) as Analysis[],
     strategy,
   )
+  const hasAnalyses =
+    primaryMetricAggregateRecommendation.decision !== Analyses.AggregateRecommendationDecision.MissingAnalysis
 
   const experimentParticipantStats = Analyses.getExperimentParticipantStats(
     experiment,
