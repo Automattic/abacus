@@ -18,9 +18,28 @@ const experiment = Fixtures.createExperimentFull()
 const metrics = Fixtures.createMetricBares()
 const analyses = Fixtures.createAnalyses()
 
-test('renders an appropriate message with no analyses', () => {
+test('renders an appropriate message with no analyses', async () => {
   const { container } = render(<ExperimentResults analyses={[]} experiment={experiment} metrics={metrics} />)
   expect(container).toMatchSnapshot()
+  await expect(container.textContent).toMatch('No results are available at the moment')
+})
+
+test('renders an appropriate message for "Missing Analyses" analyses state', async () => {
+  const { container } = render(
+    <ExperimentResults
+      analyses={[
+        Fixtures.createAnalysis({
+          analysisStrategy: AnalysisStrategy.PpNaive,
+          metricEstimates: null,
+          recommendation: null,
+        }),
+      ]}
+      experiment={experiment}
+      metrics={metrics}
+    />,
+  )
+  expect(container).toMatchSnapshot()
+  await expect(container.textContent).toMatch('No results are available at the moment')
 })
 
 test('renders correctly for 1 analysis datapoint', async () => {
