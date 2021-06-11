@@ -198,12 +198,16 @@ function MetricAssignmentsPanel({
         <TableBody>
           {resolvedMetricAssignments.map((resolvedMetricAssignment) => (
             <TableRow key={resolvedMetricAssignment.metricAssignmentId}>
-              <TableCell className={classes.monospace}>
-                {resolvedMetricAssignment.metric.name}
+              <TableCell>
+                <strong className={classes.monospace}>
+                  {resolvedMetricAssignment.metric.name}
+                  <br />
+                  {resolvedMetricAssignment.isPrimary && (
+                    <Chip label='Primary' variant='outlined' disabled className={classes.primaryChip} />
+                  )}
+                </strong>
                 <br />
-                {resolvedMetricAssignment.isPrimary && (
-                  <Chip label='Primary' variant='outlined' disabled className={classes.primaryChip} />
-                )}
+                <small className={classes.monospace}>{resolvedMetricAssignment.metric.description}</small>
               </TableCell>
               <TableCell className={classes.monospace}>
                 {AttributionWindowSecondsToHuman[resolvedMetricAssignment.attributionWindowSeconds]}
