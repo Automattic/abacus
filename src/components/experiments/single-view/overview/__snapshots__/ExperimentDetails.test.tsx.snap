@@ -657,20 +657,30 @@ exports[`renders as expected at large width 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-30"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_1
-            <br />
-            <div
-              aria-disabled="true"
-              class="MuiChip-root makeStyles-primaryChip-35 MuiChip-outlined Mui-disabled"
+            <strong
+              class="makeStyles-monospace-30"
             >
-              <span
-                class="MuiChip-label"
+              metric_1
+              <br />
+              <div
+                aria-disabled="true"
+                class="MuiChip-root makeStyles-primaryChip-35 MuiChip-outlined Mui-disabled"
               >
-                Primary
-              </span>
-            </div>
+                <span
+                  class="MuiChip-label"
+                >
+                  Primary
+                </span>
+              </div>
+            </strong>
+            <br />
+            <small
+              class="makeStyles-monospace-30"
+            >
+              This is metric 1
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-30"
@@ -699,10 +709,20 @@ exports[`renders as expected at large width 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-30"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_2
+            <strong
+              class="makeStyles-monospace-30"
+            >
+              metric_2
+              <br />
+            </strong>
             <br />
+            <small
+              class="makeStyles-monospace-30"
+            >
+              This is metric 2
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-30"
@@ -726,10 +746,20 @@ exports[`renders as expected at large width 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-30"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_2
+            <strong
+              class="makeStyles-monospace-30"
+            >
+              metric_2
+              <br />
+            </strong>
             <br />
+            <small
+              class="makeStyles-monospace-30"
+            >
+              This is metric 2
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-30"
@@ -753,10 +783,20 @@ exports[`renders as expected at large width 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-30"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_3
+            <strong
+              class="makeStyles-monospace-30"
+            >
+              metric_3
+              <br />
+            </strong>
             <br />
+            <small
+              class="makeStyles-monospace-30"
+            >
+              This is metric 3
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-30"
@@ -1444,20 +1484,30 @@ exports[`renders as expected at small width 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-66"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_1
-            <br />
-            <div
-              aria-disabled="true"
-              class="MuiChip-root makeStyles-primaryChip-71 MuiChip-outlined Mui-disabled"
+            <strong
+              class="makeStyles-monospace-66"
             >
-              <span
-                class="MuiChip-label"
+              metric_1
+              <br />
+              <div
+                aria-disabled="true"
+                class="MuiChip-root makeStyles-primaryChip-71 MuiChip-outlined Mui-disabled"
               >
-                Primary
-              </span>
-            </div>
+                <span
+                  class="MuiChip-label"
+                >
+                  Primary
+                </span>
+              </div>
+            </strong>
+            <br />
+            <small
+              class="makeStyles-monospace-66"
+            >
+              This is metric 1
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-66"
@@ -1486,10 +1536,20 @@ exports[`renders as expected at small width 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-66"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_2
+            <strong
+              class="makeStyles-monospace-66"
+            >
+              metric_2
+              <br />
+            </strong>
             <br />
+            <small
+              class="makeStyles-monospace-66"
+            >
+              This is metric 2
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-66"
@@ -1513,10 +1573,20 @@ exports[`renders as expected at small width 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-66"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_2
+            <strong
+              class="makeStyles-monospace-66"
+            >
+              metric_2
+              <br />
+            </strong>
             <br />
+            <small
+              class="makeStyles-monospace-66"
+            >
+              This is metric 2
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-66"
@@ -1540,10 +1610,20 @@ exports[`renders as expected at small width 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-66"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_3
+            <strong
+              class="makeStyles-monospace-66"
+            >
+              metric_3
+              <br />
+            </strong>
             <br />
+            <small
+              class="makeStyles-monospace-66"
+            >
+              This is metric 3
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-66"
@@ -2335,20 +2415,30 @@ exports[`renders as expected with conclusion data 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-104"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_1
-            <br />
-            <div
-              aria-disabled="true"
-              class="MuiChip-root makeStyles-primaryChip-109 MuiChip-outlined Mui-disabled"
+            <strong
+              class="makeStyles-monospace-104"
             >
-              <span
-                class="MuiChip-label"
+              metric_1
+              <br />
+              <div
+                aria-disabled="true"
+                class="MuiChip-root makeStyles-primaryChip-109 MuiChip-outlined Mui-disabled"
               >
-                Primary
-              </span>
-            </div>
+                <span
+                  class="MuiChip-label"
+                >
+                  Primary
+                </span>
+              </div>
+            </strong>
+            <br />
+            <small
+              class="makeStyles-monospace-104"
+            >
+              This is metric 1
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-104"
@@ -2377,10 +2467,20 @@ exports[`renders as expected with conclusion data 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-104"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_2
+            <strong
+              class="makeStyles-monospace-104"
+            >
+              metric_2
+              <br />
+            </strong>
             <br />
+            <small
+              class="makeStyles-monospace-104"
+            >
+              This is metric 2
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-104"
@@ -2404,10 +2504,20 @@ exports[`renders as expected with conclusion data 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-104"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_2
+            <strong
+              class="makeStyles-monospace-104"
+            >
+              metric_2
+              <br />
+            </strong>
             <br />
+            <small
+              class="makeStyles-monospace-104"
+            >
+              This is metric 2
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-104"
@@ -2431,10 +2541,20 @@ exports[`renders as expected with conclusion data 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-104"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_3
+            <strong
+              class="makeStyles-monospace-104"
+            >
+              metric_3
+              <br />
+            </strong>
             <br />
+            <small
+              class="makeStyles-monospace-104"
+            >
+              This is metric 3
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-104"
@@ -3122,20 +3242,30 @@ exports[`renders as expected without conclusion data 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-140"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_1
-            <br />
-            <div
-              aria-disabled="true"
-              class="MuiChip-root makeStyles-primaryChip-145 MuiChip-outlined Mui-disabled"
+            <strong
+              class="makeStyles-monospace-140"
             >
-              <span
-                class="MuiChip-label"
+              metric_1
+              <br />
+              <div
+                aria-disabled="true"
+                class="MuiChip-root makeStyles-primaryChip-145 MuiChip-outlined Mui-disabled"
               >
-                Primary
-              </span>
-            </div>
+                <span
+                  class="MuiChip-label"
+                >
+                  Primary
+                </span>
+              </div>
+            </strong>
+            <br />
+            <small
+              class="makeStyles-monospace-140"
+            >
+              This is metric 1
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-140"
@@ -3164,10 +3294,20 @@ exports[`renders as expected without conclusion data 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-140"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_2
+            <strong
+              class="makeStyles-monospace-140"
+            >
+              metric_2
+              <br />
+            </strong>
             <br />
+            <small
+              class="makeStyles-monospace-140"
+            >
+              This is metric 2
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-140"
@@ -3191,10 +3331,20 @@ exports[`renders as expected without conclusion data 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-140"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_2
+            <strong
+              class="makeStyles-monospace-140"
+            >
+              metric_2
+              <br />
+            </strong>
             <br />
+            <small
+              class="makeStyles-monospace-140"
+            >
+              This is metric 2
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-140"
@@ -3218,10 +3368,20 @@ exports[`renders as expected without conclusion data 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-140"
+            class="MuiTableCell-root MuiTableCell-body"
           >
-            metric_3
+            <strong
+              class="makeStyles-monospace-140"
+            >
+              metric_3
+              <br />
+            </strong>
             <br />
+            <small
+              class="makeStyles-monospace-140"
+            >
+              This is metric 3
+            </small>
           </td>
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-140"
