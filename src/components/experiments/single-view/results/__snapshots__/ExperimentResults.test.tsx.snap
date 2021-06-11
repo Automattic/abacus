@@ -2768,7 +2768,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
             scope="col"
           >
-            Conv. rate interval
+            Conversion rate interval
           </th>
           <th
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
@@ -4342,7 +4342,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
             scope="col"
           >
-            Conv. rate interval
+            Conversion rate interval
           </th>
           <th
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
@@ -6330,7 +6330,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
             scope="col"
           >
-            Conv. rate interval
+            Conversion rate interval
           </th>
           <th
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
