@@ -101,4 +101,5 @@ workflows:
     jobs:
       - static-checks
       - unit-tests
-      - integration-e2e
+      # Disabled until the SwaggerHub issue is fixed. See https://github.com/Automattic/abacus/issues/506.
+      # - integration-e2e
