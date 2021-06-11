@@ -6,6 +6,7 @@ import {
   Chip,
   createStyles,
   FormControl,
+  FormHelperText,
   InputLabel,
   makeStyles,
   MenuItem,
@@ -119,7 +120,7 @@ const useStyles = makeStyles((theme: Theme) =>
     tableTitle: {
       margin: theme.spacing(4, 2, 2),
     },
-    accordion: {
+    accordions: {
       margin: theme.spacing(2, 0),
     },
     accordionDetails: {
@@ -157,13 +158,17 @@ export default function ActualExperimentResults({
   const classes = useStyles()
   const theme = useTheme()
 
+  const availableAnalysisStrategies = [
+    AnalysisStrategy.IttPure,
+    AnalysisStrategy.MittNoCrossovers,
+    AnalysisStrategy.MittNoSpammers,
+    AnalysisStrategy.MittNoSpammersNoCrossovers,
+  ]
+  if (experiment.exposureEvents) {
+    availableAnalysisStrategies.push(AnalysisStrategy.PpNaive)
+  }
   const [strategy, setStrategy] = useState<AnalysisStrategy>(() => Experiments.getDefaultAnalysisStrategy(experiment))
-  // istanbul ignore next; Debug only
   const onStrategyChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    if (!Object.values(AnalysisStrategy).includes(event.target.value as AnalysisStrategy)) {
-      throw new Error('Invalid strategy')
-    }
-
     setStrategy(event.target.value as AnalysisStrategy)
   }
 
@@ -437,23 +442,6 @@ export default function ActualExperimentResults({
 
   return (
     <div className={classes.root}>
-      {
-        // istanbul ignore next; Debug only
-        isDebugMode() && (
-          <Paper className={classes.advancedControls}>
-            <FormControl>
-              <InputLabel htmlFor='strategy-selector'>Strategy:</InputLabel>
-              <Select id='strategy-selector' value={strategy} onChange={onStrategyChange}>
-                {Object.values(AnalysisStrategy).map((strat) => (
-                  <MenuItem key={strat} value={strat}>
-                    {Analyses.AnalysisStrategyToHuman[strat]}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Paper>
-        )
-      }
       {hasAnalyses ? (
         <>
           <div className={classes.summary}>
@@ -571,25 +559,85 @@ export default function ActualExperimentResults({
         </Paper>
       )}
 
-      <Accordion className={classes.accordion}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant='h5'>Early Monitoring - Live Assignment Event Flow</Typography>
-        </AccordionSummary>
-        <AccordionDetails className={classes.accordionDetails}>
-          <Typography variant='body1'>
-            For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the
-            unprocessed tracks queue.
-          </Typography>
+      <div className={classes.accordions}>
+        {hasAnalyses && (
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography variant='h5'>Advanced - Choose an Analysis Strategy</Typography>
+            </AccordionSummary>
+            <AccordionDetails className={classes.accordionDetails}>
+              <Typography variant='body1'>
+                Choosing a different analysis strategy is useful for checking the effect of different modelling
+                decisions on the results:
+              </Typography>
 
-          <Typography variant='body1'>
-            This query should only be used to monitor event flow. The best way to use it is to run it multiple times and
-            ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are
-            moved to prod_events every day.
-          </Typography>
-          <pre className={classes.pre}>
-            <code>
-              {/* (Using a javasript string automatically replaces special characters with html entities.) */}
-              {`with tracks_counts as (
+              <ul>
+                <Typography variant='body1' component='li'>
+                  <strong>All participants:</strong> All the participants are analysed based on their initial variation
+                  assignment. Pure intention-to-treat.
+                </Typography>
+                <Typography variant='body1' component='li'>
+                  <strong>Without crossovers:</strong> Same as all participants, but excluding participants that were
+                  assigned to multiple experiment variations before or on the analysis date (aka crossovers). Modified
+                  intention-to-treat.
+                </Typography>
+                <Typography variant='body1' component='li'>
+                  <strong>Without spammers:</strong> Same as all participants, but excluding participants that were
+                  flagged as spammers on the analysis date. Modified intention-to-treat.
+                </Typography>
+                <Typography variant='body1' component='li'>
+                  <strong>Without crossovers and spammers:</strong> Same as all participants, but excluding both
+                  spammers and crossovers. Modified intention-to-treat.
+                </Typography>
+                <Typography variant='body1' component='li'>
+                  <strong>Exposed without crossovers and spammers:</strong> Only participants that triggered one of the
+                  experiment&apos;s exposure events, excluding both spammers and crossovers. This analysis strategy is
+                  only available if the experiment has exposure events, while the other four strategies are used for
+                  every experiment. Naive per-protocol.
+                </Typography>
+              </ul>
+
+              <FormControl>
+                <InputLabel htmlFor='strategy-selector' id='strategy-selector-label'>
+                  Analysis Strategy:
+                </InputLabel>
+                <Select
+                  id='strategy-selector'
+                  labelId='strategy-selector-label'
+                  value={strategy}
+                  onChange={onStrategyChange}
+                >
+                  {availableAnalysisStrategies.map((strat) => (
+                    <MenuItem key={strat} value={strat}>
+                      {Analyses.AnalysisStrategyToHuman[strat]}
+                      {strat === Experiments.getDefaultAnalysisStrategy(experiment) && ' (recommended)'}
+                    </MenuItem>
+                  ))}
+                </Select>
+                <FormHelperText>Updates the page data.</FormHelperText>
+              </FormControl>
+            </AccordionDetails>
+          </Accordion>
+        )}
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant='h5'>Early Monitoring - Live Assignment Event Flow</Typography>
+          </AccordionSummary>
+          <AccordionDetails className={classes.accordionDetails}>
+            <Typography variant='body1'>
+              For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the
+              unprocessed tracks queue.
+            </Typography>
+
+            <Typography variant='body1'>
+              This query should only be used to monitor event flow. The best way to use it is to run it multiple times
+              and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events
+              are moved to prod_events every day.
+            </Typography>
+            <pre className={classes.pre}>
+              <code>
+                {/* (Using a javasript string automatically replaces special characters with html entities.) */}
+                {`with tracks_counts as (
   select
     cast(a8c.get_json_object(eventprops, '$.experiment_variation_id') as bigint) as experiment_variation_id,
     count(distinct userid) as unique_users
@@ -605,10 +653,11 @@ select
   unique_users
 from tracks_counts
 inner join wpcom.experiment_variations using (experiment_variation_id)`}
-            </code>
-          </pre>
-        </AccordionDetails>
-      </Accordion>
+              </code>
+            </pre>
+          </AccordionDetails>
+        </Accordion>
+      </div>
     </div>
   )
 }

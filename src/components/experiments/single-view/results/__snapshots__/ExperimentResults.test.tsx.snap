@@ -1,5 +1,1168 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`allows you to change analysis strategy 1`] = `
+<div>
+  <div
+    class="analysis-latest-results"
+  >
+    <div
+      class="makeStyles-root-207"
+    >
+      <div
+        class="makeStyles-summary-209"
+      >
+        <div
+          class="MuiPaper-root makeStyles-participantsPlotPaper-220 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <h3
+            class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
+          >
+            Participants by Variation
+          </h3>
+        </div>
+        <div
+          class="makeStyles-summaryColumn-211"
+        >
+          <div
+            class="MuiPaper-root makeStyles-summaryStatsPaper-212 MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="makeStyles-summaryStatsPart-213"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-summaryStatsStat-215 MuiTypography-h3 MuiTypography-colorPrimary"
+              >
+                1,000
+              </h3>
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle1"
+              >
+                <strong>
+                  analyzed participants
+                </strong>
+                 as at
+                 
+                2020-05-10
+              </h6>
+            </div>
+            <div
+              class="makeStyles-summaryStatsPart-213"
+            >
+              <h3
+                class="MuiTypography-root makeStyles-summaryStatsStat-215 MuiTypography-h3 MuiTypography-colorPrimary"
+              >
+                Deploy 
+                test
+              </h3>
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle1"
+              >
+                <strong>
+                  primary metric
+                </strong>
+                 recommendation
+              </h6>
+            </div>
+          </div>
+          <a
+            class="MuiPaper-root makeStyles-summaryHealthPaper-216 makeStyles-indicationSeverityWarning-218 MuiPaper-elevation1 MuiPaper-rounded"
+            href="#health-report"
+          >
+            <div>
+              <h3
+                class="MuiTypography-root makeStyles-summaryStatsStat-215 MuiTypography-h3 MuiTypography-colorPrimary"
+              >
+                Potential issues
+              </h3>
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle1"
+              >
+                see 
+                <strong>
+                  health report
+                </strong>
+              </h6>
+            </div>
+          </a>
+        </div>
+      </div>
+      <h3
+        class="MuiTypography-root makeStyles-tableTitle-222 MuiTypography-h3"
+      >
+        Metric Assignment Results
+      </h3>
+      <div
+        class="MuiPaper-root MuiPaper-elevation2 MuiPaper-rounded"
+        style="position: relative;"
+      >
+        <div
+          class="Component-horizontalScrollContainer-233"
+          style="overflow-x: auto; position: relative;"
+        >
+          <div>
+            <div
+              style="overflow-y: auto;"
+            >
+              <div>
+                <table
+                  class="MuiTable-root"
+                  style="table-layout: auto;"
+                >
+                  <thead
+                    class="MuiTableHead-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-head"
+                    >
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-234 MuiTableCell-paddingNone"
+                        scope="col"
+                        style="font-weight: 700;"
+                      />
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-234 MuiTableCell-alignLeft"
+                        scope="col"
+                        style="font-weight: 700; box-sizing: border-box;"
+                      >
+                        Metric
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-234 MuiTableCell-alignLeft"
+                        scope="col"
+                        style="font-weight: 700; box-sizing: border-box;"
+                      >
+                        Attribution window
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-234 MuiTableCell-alignLeft"
+                        scope="col"
+                        style="font-weight: 700; box-sizing: border-box;"
+                      >
+                        Absolute change
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-234 MuiTableCell-alignLeft"
+                        scope="col"
+                        style="font-weight: 700; box-sizing: border-box;"
+                      >
+                        Relative change (lift)
+                      </th>
+                      <th
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-234 MuiTableCell-alignLeft"
+                        scope="col"
+                        style="font-weight: 700; box-sizing: border-box;"
+                      >
+                        Recommendation
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    class="MuiTableBody-root"
+                  >
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-hover"
+                      index="0"
+                      level="0"
+                      path="0"
+                      style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                      >
+                        <div
+                          style="width: 42px; text-align: center; display: flex;"
+                        >
+                          <button
+                            class="MuiButtonBase-root MuiIconButton-root"
+                            style="transition: all ease 200ms; transform: none;"
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <span
+                                aria-hidden="true"
+                                class="material-icons MuiIcon-root"
+                              >
+                                chevron_right
+                              </span>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </button>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                      >
+                        <span
+                          class=""
+                          title="This is metric 1"
+                        >
+                          metric_1
+                        </span>
+                         
+                        <div
+                          aria-disabled="true"
+                          class="MuiChip-root makeStyles-primaryChip-208 MuiChip-outlined Mui-disabled"
+                        >
+                          <span
+                            class="MuiChip-label"
+                          >
+                            Primary
+                          </span>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        1 week
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        <span
+                          class="makeStyles-topLevelDiff-227"
+                        >
+                          -1
+                           to 
+                          +
+                          1
+                           
+                          pp
+                        </span>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box;"
+                      >
+                        <span
+                          class="makeStyles-topLevelDiff-227"
+                        >
+                          -50.00
+                           to 
+                          +50.00
+                           %
+                        </span>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        Deploy 
+                        test
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-hover"
+                      index="1"
+                      level="0"
+                      path="1"
+                      style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                      >
+                        <div
+                          style="width: 42px; text-align: center; display: flex;"
+                        >
+                          <button
+                            class="MuiButtonBase-root MuiIconButton-root"
+                            style="transition: all ease 200ms; transform: none;"
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <span
+                                aria-hidden="true"
+                                class="material-icons MuiIcon-root"
+                              >
+                                chevron_right
+                              </span>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </button>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                      >
+                        <span
+                          class=""
+                          title="This is metric 2"
+                        >
+                          metric_2
+                        </span>
+                         
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        1 hour
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      />
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box;"
+                      />
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        Not analyzed yet
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-hover"
+                      index="2"
+                      level="0"
+                      path="2"
+                      style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                      >
+                        <div
+                          style="width: 42px; text-align: center; display: flex;"
+                        >
+                          <button
+                            class="MuiButtonBase-root MuiIconButton-root"
+                            style="transition: all ease 200ms; transform: none;"
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <span
+                                aria-hidden="true"
+                                class="material-icons MuiIcon-root"
+                              >
+                                chevron_right
+                              </span>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </button>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                      >
+                        <span
+                          class=""
+                          title="This is metric 2"
+                        >
+                          metric_2
+                        </span>
+                         
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        4 weeks
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      />
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box;"
+                      />
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        Not analyzed yet
+                      </td>
+                    </tr>
+                    <tr
+                      class="MuiTableRow-root MuiTableRow-hover"
+                      index="3"
+                      level="0"
+                      path="3"
+                      style="transition: all ease 300ms; opacity: 0.8; cursor: pointer;"
+                    >
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-paddingNone"
+                      >
+                        <div
+                          style="width: 42px; text-align: center; display: flex;"
+                        >
+                          <button
+                            class="MuiButtonBase-root MuiIconButton-root"
+                            style="transition: all ease 200ms; transform: none;"
+                            tabindex="0"
+                            type="button"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <span
+                                aria-hidden="true"
+                                class="material-icons MuiIcon-root"
+                              >
+                                chevron_right
+                              </span>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </button>
+                        </div>
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
+                      >
+                        <span
+                          class=""
+                          title="This is metric 3"
+                        >
+                          metric_3
+                        </span>
+                         
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        6 hours
+                      </td>
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      />
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box;"
+                      />
+                      <td
+                        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
+                      >
+                        Not analyzed yet
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3
+        class="MuiTypography-root makeStyles-tableTitle-222 MuiTypography-h3"
+      >
+        Health Report
+      </h3>
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+        id="health-report"
+      >
+        <div
+          class="MuiTableContainer-root"
+        >
+          <table
+            aria-label="simple table"
+            class="MuiTable-root"
+          >
+            <thead
+              class="MuiTableHead-root"
+            >
+              <tr
+                class="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Name
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Unit
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Value
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                />
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Indication
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Reason
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  scope="col"
+                >
+                  Recommendation
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="MuiTableBody-root"
+            >
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
+                    target="_blank"
+                  >
+                    Assignment distribution
+                  </a>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  <span
+                    class="makeStyles-tooltip-243"
+                    title="The smaller the p-value the more likely there is an issue."
+                  >
+                    p-value
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  1.0000
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <span />
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-239 makeStyles-indicationSeverityOk-240 makeStyles-monospace-236 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  <span>
+                    nominal
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  0.05 &lt; x ≤ 1
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-237"
+                  scope="row"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  />
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated"
+                    target="_blank"
+                  >
+                    Assignment distribution without crossovers and spammers
+                  </a>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  <span
+                    class="makeStyles-tooltip-243"
+                    title="The smaller the p-value the more likely there is an issue."
+                  >
+                    p-value
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  1.0000
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <span />
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-239 makeStyles-indicationSeverityOk-240 makeStyles-monospace-236 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  <span>
+                    nominal
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  0.05 &lt; x ≤ 1
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-237"
+                  scope="row"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  />
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
+                    target="_blank"
+                  >
+                    Ratio of crossovers to assigned
+                  </a>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  <span>
+                    ratio
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  0.0000
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <span />
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-239 makeStyles-indicationSeverityOk-240 makeStyles-monospace-236 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  <span>
+                    nominal
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  −∞ &lt; x ≤ 0.01
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-237"
+                  scope="row"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  />
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
+                    target="_blank"
+                  >
+                    Ratio of spammers to assigned
+                  </a>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  <span>
+                    ratio
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  0.0000
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <span />
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-239 makeStyles-indicationSeverityOk-240 makeStyles-monospace-236 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  <span>
+                    nominal
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  −∞ &lt; x ≤ 0.1
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-237"
+                  scope="row"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  />
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#kruschke-uncertainty"
+                    target="_blank"
+                  >
+                    Kruschke uncertainty (CI to ROPE ratio)
+                  </a>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  <span>
+                    ratio
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  0.1000
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <span />
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-239 makeStyles-indicationSeverityOk-240 makeStyles-monospace-236 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  <span>
+                    nominal
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  −∞ &lt; x ≤ 0.8
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-237"
+                  scope="row"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  />
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <a
+                    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#experiment-run-time"
+                    target="_blank"
+                  >
+                    Experiment run time
+                  </a>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  <span>
+                    days
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  0.0000
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  scope="row"
+                >
+                  <span>
+                    ℹ️
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-239 makeStyles-indicationSeverityWarning-241 makeStyles-monospace-236 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  <span>
+                    very low
+                  </span>
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-236 makeStyles-deemphasized-237 makeStyles-nowrap-238"
+                  scope="row"
+                >
+                  −∞ &lt; x ≤ 3
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-237"
+                  scope="row"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    Experiments should generally run for at least a week before drawing conclusions.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div
+        class="makeStyles-accordions-223"
+      >
+        <div
+          class="MuiPaper-root MuiAccordion-root Mui-expanded MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="true"
+            class="MuiButtonBase-root MuiAccordionSummary-root Mui-expanded"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="MuiAccordionSummary-content Mui-expanded"
+            >
+              <h5
+                class="MuiTypography-root MuiTypography-h5"
+              >
+                Advanced - Choose an Analysis Strategy
+              </h5>
+            </div>
+            <div
+              aria-disabled="false"
+              aria-hidden="true"
+              class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon Mui-expanded MuiIconButton-edgeEnd"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
+          </div>
+          <div
+            class="MuiCollapse-container MuiCollapse-entered"
+            style="min-height: 0px; height: auto; transition-duration: 0ms;"
+          >
+            <div
+              class="MuiCollapse-wrapper"
+            >
+              <div
+                class="MuiCollapse-wrapperInner"
+              >
+                <div
+                  role="region"
+                >
+                  <div
+                    class="MuiAccordionDetails-root makeStyles-accordionDetails-224"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      Choosing a different analysis strategy is useful for checking the effect of different modelling decisions on the results:
+                    </p>
+                    <ul>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          All participants:
+                        </strong>
+                         All the participants are analysed based on their initial variation assignment. Pure intention-to-treat.
+                      </li>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          Without crossovers:
+                        </strong>
+                         Same as all participants, but excluding participants that were assigned to multiple experiment variations before or on the analysis date (aka crossovers). Modified intention-to-treat.
+                      </li>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          Without spammers:
+                        </strong>
+                         Same as all participants, but excluding participants that were flagged as spammers on the analysis date. Modified intention-to-treat.
+                      </li>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          Without crossovers and spammers:
+                        </strong>
+                         Same as all participants, but excluding both spammers and crossovers. Modified intention-to-treat.
+                      </li>
+                      <li
+                        class="MuiTypography-root MuiTypography-body1"
+                      >
+                        <strong>
+                          Exposed without crossovers and spammers:
+                        </strong>
+                         Only participants that triggered one of the experiment's exposure events, excluding both spammers and crossovers. This analysis strategy is only available if the experiment has exposure events, while the other four strategies are used for every experiment. Naive per-protocol.
+                      </li>
+                    </ul>
+                    <div
+                      class="MuiFormControl-root"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-focused Mui-focused"
+                        data-shrink="true"
+                        for="strategy-selector"
+                        id="strategy-selector-label"
+                      >
+                        Analysis Strategy:
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiInput-root MuiInput-underline Mui-focused Mui-focused MuiInputBase-formControl MuiInput-formControl"
+                      >
+                        <div
+                          aria-haspopup="listbox"
+                          aria-labelledby="strategy-selector-label strategy-selector"
+                          class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                          id="strategy-selector"
+                          role="button"
+                          tabindex="0"
+                        >
+                          All participants
+                        </div>
+                        <input
+                          aria-hidden="true"
+                          class="MuiSelect-nativeInput"
+                          tabindex="-1"
+                          value="itt_pure"
+                        />
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSelect-icon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M7 10l5 5 5-5z"
+                          />
+                        </svg>
+                      </div>
+                      <p
+                        class="MuiFormHelperText-root MuiFormHelperText-filled Mui-focused"
+                      >
+                        Updates the page data.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="MuiButtonBase-root MuiAccordionSummary-root"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="MuiAccordionSummary-content"
+            >
+              <h5
+                class="MuiTypography-root MuiTypography-h5"
+              >
+                Early Monitoring - Live Assignment Event Flow
+              </h5>
+            </div>
+            <div
+              aria-disabled="false"
+              aria-hidden="true"
+              class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
+          </div>
+          <div
+            class="MuiCollapse-container MuiCollapse-hidden"
+            style="min-height: 0px;"
+          >
+            <div
+              class="MuiCollapse-wrapper"
+            >
+              <div
+                class="MuiCollapse-wrapperInner"
+              >
+                <div
+                  role="region"
+                >
+                  <div
+                    class="MuiAccordionDetails-root makeStyles-accordionDetails-224"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
+                    </p>
+                    <pre
+                      class="makeStyles-pre-226"
+                    >
+                      <code>
+                        with tracks_counts as (
+  select
+    cast(a8c.get_json_object(eventprops, '$.experiment_variation_id') as bigint) as experiment_variation_id,
+    count(distinct userid) as unique_users
+  from tracks.etl_events
+  where
+    eventname = 'wpcom_experiment_variation_assigned' and
+    eventprops like '%"experiment_id":"1"%'
+  group by experiment_variation_id
+)
+
+select
+  experiment_variations.name as variation_name,
+  unique_users
+from tracks_counts
+inner join wpcom.experiment_variations using (experiment_variation_id)
+                      </code>
+                    </pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`renders an appropriate message for "Missing Analyses" analyses state 1`] = `
 <div>
   <div
@@ -43,79 +1206,82 @@ exports[`renders an appropriate message for "Missing Analyses" analyses state 1`
         </ul>
       </div>
       <div
-        class="MuiPaper-root MuiAccordion-root makeStyles-accordion-38 MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        class="makeStyles-accordions-38"
       >
         <div
-          aria-disabled="false"
-          aria-expanded="false"
-          class="MuiButtonBase-root MuiAccordionSummary-root"
-          role="button"
-          tabindex="0"
+          class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
         >
-          <div
-            class="MuiAccordionSummary-content"
-          >
-            <h5
-              class="MuiTypography-root MuiTypography-h5"
-            >
-              Early Monitoring - Live Assignment Event Flow
-            </h5>
-          </div>
           <div
             aria-disabled="false"
-            aria-hidden="true"
-            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
-          >
-            <span
-              class="MuiIconButton-label"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                />
-              </svg>
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </div>
-        </div>
-        <div
-          class="MuiCollapse-container MuiCollapse-hidden"
-          style="min-height: 0px;"
-        >
-          <div
-            class="MuiCollapse-wrapper"
+            aria-expanded="false"
+            class="MuiButtonBase-root MuiAccordionSummary-root"
+            role="button"
+            tabindex="0"
           >
             <div
-              class="MuiCollapse-wrapperInner"
+              class="MuiAccordionSummary-content"
+            >
+              <h5
+                class="MuiTypography-root MuiTypography-h5"
+              >
+                Early Monitoring - Live Assignment Event Flow
+              </h5>
+            </div>
+            <div
+              aria-disabled="false"
+              aria-hidden="true"
+              class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
+          </div>
+          <div
+            class="MuiCollapse-container MuiCollapse-hidden"
+            style="min-height: 0px;"
+          >
+            <div
+              class="MuiCollapse-wrapper"
             >
               <div
-                role="region"
+                class="MuiCollapse-wrapperInner"
               >
                 <div
-                  class="MuiAccordionDetails-root makeStyles-accordionDetails-39"
+                  role="region"
                 >
-                  <p
-                    class="MuiTypography-root MuiTypography-body1"
+                  <div
+                    class="MuiAccordionDetails-root makeStyles-accordionDetails-39"
                   >
-                    For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
-                  </p>
-                  <p
-                    class="MuiTypography-root MuiTypography-body1"
-                  >
-                    This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
-                  </p>
-                  <pre
-                    class="makeStyles-pre-41"
-                  >
-                    <code>
-                      with tracks_counts as (
+                    <p
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
+                    </p>
+                    <pre
+                      class="makeStyles-pre-41"
+                    >
+                      <code>
+                        with tracks_counts as (
   select
     cast(a8c.get_json_object(eventprops, '$.experiment_variation_id') as bigint) as experiment_variation_id,
     count(distinct userid) as unique_users
@@ -131,8 +1297,9 @@ select
   unique_users
 from tracks_counts
 inner join wpcom.experiment_variations using (experiment_variation_id)
-                    </code>
-                  </pre>
+                      </code>
+                    </pre>
+                  </div>
                 </div>
               </div>
             </div>
@@ -187,79 +1354,82 @@ exports[`renders an appropriate message with no analyses 1`] = `
         </ul>
       </div>
       <div
-        class="MuiPaper-root MuiAccordion-root makeStyles-accordion-17 MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        class="makeStyles-accordions-17"
       >
         <div
-          aria-disabled="false"
-          aria-expanded="false"
-          class="MuiButtonBase-root MuiAccordionSummary-root"
-          role="button"
-          tabindex="0"
+          class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
         >
-          <div
-            class="MuiAccordionSummary-content"
-          >
-            <h5
-              class="MuiTypography-root MuiTypography-h5"
-            >
-              Early Monitoring - Live Assignment Event Flow
-            </h5>
-          </div>
           <div
             aria-disabled="false"
-            aria-hidden="true"
-            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
-          >
-            <span
-              class="MuiIconButton-label"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                />
-              </svg>
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </div>
-        </div>
-        <div
-          class="MuiCollapse-container MuiCollapse-hidden"
-          style="min-height: 0px;"
-        >
-          <div
-            class="MuiCollapse-wrapper"
+            aria-expanded="false"
+            class="MuiButtonBase-root MuiAccordionSummary-root"
+            role="button"
+            tabindex="0"
           >
             <div
-              class="MuiCollapse-wrapperInner"
+              class="MuiAccordionSummary-content"
+            >
+              <h5
+                class="MuiTypography-root MuiTypography-h5"
+              >
+                Early Monitoring - Live Assignment Event Flow
+              </h5>
+            </div>
+            <div
+              aria-disabled="false"
+              aria-hidden="true"
+              class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
+          </div>
+          <div
+            class="MuiCollapse-container MuiCollapse-hidden"
+            style="min-height: 0px;"
+          >
+            <div
+              class="MuiCollapse-wrapper"
             >
               <div
-                role="region"
+                class="MuiCollapse-wrapperInner"
               >
                 <div
-                  class="MuiAccordionDetails-root makeStyles-accordionDetails-18"
+                  role="region"
                 >
-                  <p
-                    class="MuiTypography-root MuiTypography-body1"
+                  <div
+                    class="MuiAccordionDetails-root makeStyles-accordionDetails-18"
                   >
-                    For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
-                  </p>
-                  <p
-                    class="MuiTypography-root MuiTypography-body1"
-                  >
-                    This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
-                  </p>
-                  <pre
-                    class="makeStyles-pre-20"
-                  >
-                    <code>
-                      with tracks_counts as (
+                    <p
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
+                    </p>
+                    <pre
+                      class="makeStyles-pre-20"
+                    >
+                      <code>
+                        with tracks_counts as (
   select
     cast(a8c.get_json_object(eventprops, '$.experiment_variation_id') as bigint) as experiment_variation_id,
     count(distinct userid) as unique_users
@@ -275,8 +1445,9 @@ select
   unique_users
 from tracks_counts
 inner join wpcom.experiment_variations using (experiment_variation_id)
-                    </code>
-                  </pre>
+                      </code>
+                    </pre>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1247,79 +2418,242 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
       </div>
     </div>
     <div
-      class="MuiPaper-root MuiAccordion-root makeStyles-accordion-59 MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+      class="makeStyles-accordions-59"
     >
       <div
-        aria-disabled="false"
-        aria-expanded="false"
-        class="MuiButtonBase-root MuiAccordionSummary-root"
-        role="button"
-        tabindex="0"
+        class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
-          class="MuiAccordionSummary-content"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="MuiButtonBase-root MuiAccordionSummary-root"
+          role="button"
+          tabindex="0"
         >
-          <h5
-            class="MuiTypography-root MuiTypography-h5"
+          <div
+            class="MuiAccordionSummary-content"
           >
-            Early Monitoring - Live Assignment Event Flow
-          </h5>
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Advanced - Choose an Analysis Strategy
+            </h5>
+          </div>
+          <div
+            aria-disabled="false"
+            aria-hidden="true"
+            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
         </div>
         <div
-          aria-disabled="false"
-          aria-hidden="true"
-          class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          class="MuiCollapse-container MuiCollapse-hidden"
+          style="min-height: 0px;"
         >
-          <span
-            class="MuiIconButton-label"
+          <div
+            class="MuiCollapse-wrapper"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root"
-              focusable="false"
-              viewBox="0 0 24 24"
+            <div
+              class="MuiCollapse-wrapperInner"
             >
-              <path
-                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-              />
-            </svg>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
+              <div
+                role="region"
+              >
+                <div
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-60"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    Choosing a different analysis strategy is useful for checking the effect of different modelling decisions on the results:
+                  </p>
+                  <ul>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        All participants:
+                      </strong>
+                       All the participants are analysed based on their initial variation assignment. Pure intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without crossovers:
+                      </strong>
+                       Same as all participants, but excluding participants that were assigned to multiple experiment variations before or on the analysis date (aka crossovers). Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without spammers:
+                      </strong>
+                       Same as all participants, but excluding participants that were flagged as spammers on the analysis date. Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without crossovers and spammers:
+                      </strong>
+                       Same as all participants, but excluding both spammers and crossovers. Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Exposed without crossovers and spammers:
+                      </strong>
+                       Only participants that triggered one of the experiment's exposure events, excluding both spammers and crossovers. This analysis strategy is only available if the experiment has exposure events, while the other four strategies are used for every experiment. Naive per-protocol.
+                    </li>
+                  </ul>
+                  <div
+                    class="MuiFormControl-root"
+                  >
+                    <label
+                      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                      data-shrink="true"
+                      for="strategy-selector"
+                      id="strategy-selector-label"
+                    >
+                      Analysis Strategy:
+                    </label>
+                    <div
+                      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                    >
+                      <div
+                        aria-haspopup="listbox"
+                        aria-labelledby="strategy-selector-label strategy-selector"
+                        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                        id="strategy-selector"
+                        role="button"
+                        tabindex="0"
+                      >
+                        Exposed without crossovers and spammers
+                         (recommended)
+                      </div>
+                      <input
+                        aria-hidden="true"
+                        class="MuiSelect-nativeInput"
+                        tabindex="-1"
+                        value="pp_naive"
+                      />
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSelect-icon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M7 10l5 5 5-5z"
+                        />
+                      </svg>
+                    </div>
+                    <p
+                      class="MuiFormHelperText-root MuiFormHelperText-filled"
+                    >
+                      Updates the page data.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
-        class="MuiCollapse-container MuiCollapse-hidden"
-        style="min-height: 0px;"
+        class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
-          class="MuiCollapse-wrapper"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="MuiButtonBase-root MuiAccordionSummary-root"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="MuiCollapse-wrapperInner"
+            class="MuiAccordionSummary-content"
+          >
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Early Monitoring - Live Assignment Event Flow
+            </h5>
+          </div>
+          <div
+            aria-disabled="false"
+            aria-hidden="true"
+            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiCollapse-container MuiCollapse-hidden"
+          style="min-height: 0px;"
+        >
+          <div
+            class="MuiCollapse-wrapper"
           >
             <div
-              role="region"
+              class="MuiCollapse-wrapperInner"
             >
               <div
-                class="MuiAccordionDetails-root makeStyles-accordionDetails-60"
+                role="region"
               >
-                <p
-                  class="MuiTypography-root MuiTypography-body1"
+                <div
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-60"
                 >
-                  For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
-                </p>
-                <p
-                  class="MuiTypography-root MuiTypography-body1"
-                >
-                  This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
-                </p>
-                <pre
-                  class="makeStyles-pre-62"
-                >
-                  <code>
-                    with tracks_counts as (
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                  </p>
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
+                  </p>
+                  <pre
+                    class="makeStyles-pre-62"
+                  >
+                    <code>
+                      with tracks_counts as (
   select
     cast(a8c.get_json_object(eventprops, '$.experiment_variation_id') as bigint) as experiment_variation_id,
     count(distinct userid) as unique_users
@@ -1335,8 +2669,9 @@ select
   unique_users
 from tracks_counts
 inner join wpcom.experiment_variations using (experiment_variation_id)
-                  </code>
-                </pre>
+                    </code>
+                  </pre>
+                </div>
               </div>
             </div>
           </div>
@@ -1570,10 +2905,11 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
   <p
     class="MuiTypography-root makeStyles-analysisFinePrint-91 MuiTypography-body1"
   >
-    95% Credible Intervals (CIs).
+    95% Credible Intervals (CIs). 
     <strong>
        Experimenter-set minimum practical difference: 
     </strong>
+     
     
     10
     <span
@@ -1582,8 +2918,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
     >
       pp
     </span>
-    .
-     
+    . 
     <strong>
       Participants:
     </strong>
@@ -2657,79 +3992,242 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       </div>
     </div>
     <div
-      class="MuiPaper-root MuiAccordion-root makeStyles-accordion-114 MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+      class="makeStyles-accordions-114"
     >
       <div
-        aria-disabled="false"
-        aria-expanded="false"
-        class="MuiButtonBase-root MuiAccordionSummary-root"
-        role="button"
-        tabindex="0"
+        class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
-          class="MuiAccordionSummary-content"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="MuiButtonBase-root MuiAccordionSummary-root"
+          role="button"
+          tabindex="0"
         >
-          <h5
-            class="MuiTypography-root MuiTypography-h5"
+          <div
+            class="MuiAccordionSummary-content"
           >
-            Early Monitoring - Live Assignment Event Flow
-          </h5>
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Advanced - Choose an Analysis Strategy
+            </h5>
+          </div>
+          <div
+            aria-disabled="false"
+            aria-hidden="true"
+            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
         </div>
         <div
-          aria-disabled="false"
-          aria-hidden="true"
-          class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          class="MuiCollapse-container MuiCollapse-hidden"
+          style="min-height: 0px;"
         >
-          <span
-            class="MuiIconButton-label"
+          <div
+            class="MuiCollapse-wrapper"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root"
-              focusable="false"
-              viewBox="0 0 24 24"
+            <div
+              class="MuiCollapse-wrapperInner"
             >
-              <path
-                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-              />
-            </svg>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
+              <div
+                role="region"
+              >
+                <div
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-115"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    Choosing a different analysis strategy is useful for checking the effect of different modelling decisions on the results:
+                  </p>
+                  <ul>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        All participants:
+                      </strong>
+                       All the participants are analysed based on their initial variation assignment. Pure intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without crossovers:
+                      </strong>
+                       Same as all participants, but excluding participants that were assigned to multiple experiment variations before or on the analysis date (aka crossovers). Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without spammers:
+                      </strong>
+                       Same as all participants, but excluding participants that were flagged as spammers on the analysis date. Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without crossovers and spammers:
+                      </strong>
+                       Same as all participants, but excluding both spammers and crossovers. Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Exposed without crossovers and spammers:
+                      </strong>
+                       Only participants that triggered one of the experiment's exposure events, excluding both spammers and crossovers. This analysis strategy is only available if the experiment has exposure events, while the other four strategies are used for every experiment. Naive per-protocol.
+                    </li>
+                  </ul>
+                  <div
+                    class="MuiFormControl-root"
+                  >
+                    <label
+                      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                      data-shrink="true"
+                      for="strategy-selector"
+                      id="strategy-selector-label"
+                    >
+                      Analysis Strategy:
+                    </label>
+                    <div
+                      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                    >
+                      <div
+                        aria-haspopup="listbox"
+                        aria-labelledby="strategy-selector-label strategy-selector"
+                        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                        id="strategy-selector"
+                        role="button"
+                        tabindex="0"
+                      >
+                        Exposed without crossovers and spammers
+                         (recommended)
+                      </div>
+                      <input
+                        aria-hidden="true"
+                        class="MuiSelect-nativeInput"
+                        tabindex="-1"
+                        value="pp_naive"
+                      />
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSelect-icon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M7 10l5 5 5-5z"
+                        />
+                      </svg>
+                    </div>
+                    <p
+                      class="MuiFormHelperText-root MuiFormHelperText-filled"
+                    >
+                      Updates the page data.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
-        class="MuiCollapse-container MuiCollapse-hidden"
-        style="min-height: 0px;"
+        class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
-          class="MuiCollapse-wrapper"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="MuiButtonBase-root MuiAccordionSummary-root"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="MuiCollapse-wrapperInner"
+            class="MuiAccordionSummary-content"
+          >
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Early Monitoring - Live Assignment Event Flow
+            </h5>
+          </div>
+          <div
+            aria-disabled="false"
+            aria-hidden="true"
+            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiCollapse-container MuiCollapse-hidden"
+          style="min-height: 0px;"
+        >
+          <div
+            class="MuiCollapse-wrapper"
           >
             <div
-              role="region"
+              class="MuiCollapse-wrapperInner"
             >
               <div
-                class="MuiAccordionDetails-root makeStyles-accordionDetails-115"
+                role="region"
               >
-                <p
-                  class="MuiTypography-root MuiTypography-body1"
+                <div
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-115"
                 >
-                  For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
-                </p>
-                <p
-                  class="MuiTypography-root MuiTypography-body1"
-                >
-                  This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
-                </p>
-                <pre
-                  class="makeStyles-pre-117"
-                >
-                  <code>
-                    with tracks_counts as (
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                  </p>
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
+                  </p>
+                  <pre
+                    class="makeStyles-pre-117"
+                  >
+                    <code>
+                      with tracks_counts as (
   select
     cast(a8c.get_json_object(eventprops, '$.experiment_variation_id') as bigint) as experiment_variation_id,
     count(distinct userid) as unique_users
@@ -2745,8 +4243,9 @@ select
   unique_users
 from tracks_counts
 inner join wpcom.experiment_variations using (experiment_variation_id)
-                  </code>
-                </pre>
+                    </code>
+                  </pre>
+                </div>
               </div>
             </div>
           </div>
@@ -2980,10 +4479,11 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   <p
     class="MuiTypography-root makeStyles-analysisFinePrint-146 MuiTypography-body1"
   >
-    95% Credible Intervals (CIs).
+    95% Credible Intervals (CIs). 
     <strong>
        Experimenter-set minimum practical difference: 
     </strong>
+     
     
     10
     <span
@@ -2992,8 +4492,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     >
       pp
     </span>
-    .
-     
+    . 
     <strong>
       Participants:
     </strong>
@@ -4481,79 +5980,242 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       </div>
     </div>
     <div
-      class="MuiPaper-root MuiAccordion-root makeStyles-accordion-169 MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+      class="makeStyles-accordions-169"
     >
       <div
-        aria-disabled="false"
-        aria-expanded="false"
-        class="MuiButtonBase-root MuiAccordionSummary-root"
-        role="button"
-        tabindex="0"
+        class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
-          class="MuiAccordionSummary-content"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="MuiButtonBase-root MuiAccordionSummary-root"
+          role="button"
+          tabindex="0"
         >
-          <h5
-            class="MuiTypography-root MuiTypography-h5"
+          <div
+            class="MuiAccordionSummary-content"
           >
-            Early Monitoring - Live Assignment Event Flow
-          </h5>
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Advanced - Choose an Analysis Strategy
+            </h5>
+          </div>
+          <div
+            aria-disabled="false"
+            aria-hidden="true"
+            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
         </div>
         <div
-          aria-disabled="false"
-          aria-hidden="true"
-          class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          class="MuiCollapse-container MuiCollapse-hidden"
+          style="min-height: 0px;"
         >
-          <span
-            class="MuiIconButton-label"
+          <div
+            class="MuiCollapse-wrapper"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root"
-              focusable="false"
-              viewBox="0 0 24 24"
+            <div
+              class="MuiCollapse-wrapperInner"
             >
-              <path
-                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-              />
-            </svg>
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
+              <div
+                role="region"
+              >
+                <div
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-170"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    Choosing a different analysis strategy is useful for checking the effect of different modelling decisions on the results:
+                  </p>
+                  <ul>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        All participants:
+                      </strong>
+                       All the participants are analysed based on their initial variation assignment. Pure intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without crossovers:
+                      </strong>
+                       Same as all participants, but excluding participants that were assigned to multiple experiment variations before or on the analysis date (aka crossovers). Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without spammers:
+                      </strong>
+                       Same as all participants, but excluding participants that were flagged as spammers on the analysis date. Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Without crossovers and spammers:
+                      </strong>
+                       Same as all participants, but excluding both spammers and crossovers. Modified intention-to-treat.
+                    </li>
+                    <li
+                      class="MuiTypography-root MuiTypography-body1"
+                    >
+                      <strong>
+                        Exposed without crossovers and spammers:
+                      </strong>
+                       Only participants that triggered one of the experiment's exposure events, excluding both spammers and crossovers. This analysis strategy is only available if the experiment has exposure events, while the other four strategies are used for every experiment. Naive per-protocol.
+                    </li>
+                  </ul>
+                  <div
+                    class="MuiFormControl-root"
+                  >
+                    <label
+                      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                      data-shrink="true"
+                      for="strategy-selector"
+                      id="strategy-selector-label"
+                    >
+                      Analysis Strategy:
+                    </label>
+                    <div
+                      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                    >
+                      <div
+                        aria-haspopup="listbox"
+                        aria-labelledby="strategy-selector-label strategy-selector"
+                        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                        id="strategy-selector"
+                        role="button"
+                        tabindex="0"
+                      >
+                        Exposed without crossovers and spammers
+                         (recommended)
+                      </div>
+                      <input
+                        aria-hidden="true"
+                        class="MuiSelect-nativeInput"
+                        tabindex="-1"
+                        value="pp_naive"
+                      />
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSelect-icon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M7 10l5 5 5-5z"
+                        />
+                      </svg>
+                    </div>
+                    <p
+                      class="MuiFormHelperText-root MuiFormHelperText-filled"
+                    >
+                      Updates the page data.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
-        class="MuiCollapse-container MuiCollapse-hidden"
-        style="min-height: 0px;"
+        class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
-          class="MuiCollapse-wrapper"
+          aria-disabled="false"
+          aria-expanded="false"
+          class="MuiButtonBase-root MuiAccordionSummary-root"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="MuiCollapse-wrapperInner"
+            class="MuiAccordionSummary-content"
+          >
+            <h5
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              Early Monitoring - Live Assignment Event Flow
+            </h5>
+          </div>
+          <div
+            aria-disabled="false"
+            aria-hidden="true"
+            class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiCollapse-container MuiCollapse-hidden"
+          style="min-height: 0px;"
+        >
+          <div
+            class="MuiCollapse-wrapper"
           >
             <div
-              role="region"
+              class="MuiCollapse-wrapperInner"
             >
               <div
-                class="MuiAccordionDetails-root makeStyles-accordionDetails-170"
+                role="region"
               >
-                <p
-                  class="MuiTypography-root MuiTypography-body1"
+                <div
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-170"
                 >
-                  For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
-                </p>
-                <p
-                  class="MuiTypography-root MuiTypography-body1"
-                >
-                  This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
-                </p>
-                <pre
-                  class="makeStyles-pre-172"
-                >
-                  <code>
-                    with tracks_counts as (
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    For early monitoring, you can run this query in Hue to retrieve unfiltered assignment counts from the unprocessed tracks queue.
+                  </p>
+                  <p
+                    class="MuiTypography-root MuiTypography-body1"
+                  >
+                    This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
+                  </p>
+                  <pre
+                    class="makeStyles-pre-172"
+                  >
+                    <code>
+                      with tracks_counts as (
   select
     cast(a8c.get_json_object(eventprops, '$.experiment_variation_id') as bigint) as experiment_variation_id,
     count(distinct userid) as unique_users
@@ -4569,8 +6231,9 @@ select
   unique_users
 from tracks_counts
 inner join wpcom.experiment_variations using (experiment_variation_id)
-                  </code>
-                </pre>
+                    </code>
+                  </pre>
+                </div>
               </div>
             </div>
           </div>
@@ -4794,15 +6457,15 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   <p
     class="MuiTypography-root makeStyles-analysisFinePrint-201 MuiTypography-body1"
   >
-    95% Credible Intervals (CIs).
+    95% Credible Intervals (CIs). 
     <strong>
        Experimenter-set minimum practical difference: 
     </strong>
+     
     USD 
     0.1
     
-    .
-     
+    . 
     <strong>
       Participants:
     </strong>
