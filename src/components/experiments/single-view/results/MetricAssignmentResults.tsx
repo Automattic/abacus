@@ -272,7 +272,11 @@ export default function MetricAssignmentResults({
           <TableHead>
             <TableRow>
               <TableCell>Variant</TableCell>
-              <TableCell align='right'>Conv. rate interval</TableCell>
+              <TableCell align='right'>
+                {metric.parameterType === MetricParameterType.Revenue
+                  ? 'Average revenue per user (ARPU) interval'
+                  : 'Conversion rate interval'}
+              </TableCell>
               <TableCell align='right'>Absolute change</TableCell>
               <TableCell align='right'>Relative change (lift)</TableCell>
             </TableRow>

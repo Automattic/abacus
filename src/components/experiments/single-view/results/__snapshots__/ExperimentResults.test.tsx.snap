@@ -1433,7 +1433,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
             scope="col"
           >
-            Conv. rate interval
+            Conversion rate interval
           </th>
           <th
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
@@ -1570,10 +1570,11 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
   <p
     class="MuiTypography-root makeStyles-analysisFinePrint-91 MuiTypography-body1"
   >
-    95% Credible Intervals (CIs).
+    95% Credible Intervals (CIs). 
     <strong>
        Experimenter-set minimum practical difference: 
     </strong>
+     
     
     10
     <span
@@ -1582,8 +1583,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
     >
       pp
     </span>
-    .
-     
+    . 
     <strong>
       Participants:
     </strong>
@@ -2843,7 +2843,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
             scope="col"
           >
-            Conv. rate interval
+            Conversion rate interval
           </th>
           <th
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
@@ -2980,10 +2980,11 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   <p
     class="MuiTypography-root makeStyles-analysisFinePrint-146 MuiTypography-body1"
   >
-    95% Credible Intervals (CIs).
+    95% Credible Intervals (CIs). 
     <strong>
        Experimenter-set minimum practical difference: 
     </strong>
+     
     
     10
     <span
@@ -2992,8 +2993,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     >
       pp
     </span>
-    .
-     
+    . 
     <strong>
       Participants:
     </strong>
@@ -4667,7 +4667,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
             scope="col"
           >
-            Conv. rate interval
+            Average revenue per user (ARPU) interval
           </th>
           <th
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
@@ -4794,15 +4794,15 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   <p
     class="MuiTypography-root makeStyles-analysisFinePrint-201 MuiTypography-body1"
   >
-    95% Credible Intervals (CIs).
+    95% Credible Intervals (CIs). 
     <strong>
        Experimenter-set minimum practical difference: 
     </strong>
+     
     USD 
     0.1
     
-    .
-     
+    . 
     <strong>
       Participants:
     </strong>
