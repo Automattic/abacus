@@ -9,7 +9,7 @@ exports[`Empty array shows no exposure events 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <h3
-        class="MuiTypography-root makeStyles-title-61 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        class="MuiTypography-root makeStyles-title-65 MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Audience
       </h3>
@@ -34,7 +34,7 @@ exports[`Empty array shows no exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <span
-              class="makeStyles-monospace-62"
+              class="makeStyles-monospace-66"
             >
               calypso
             </span>
@@ -54,7 +54,7 @@ exports[`Empty array shows no exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <span
-              class="makeStyles-monospace-62"
+              class="makeStyles-monospace-66"
             >
               New logged-in users only
             </span>
@@ -74,7 +74,7 @@ exports[`Empty array shows no exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <table
-              class="MuiTable-root makeStyles-root-76"
+              class="MuiTable-root makeStyles-root-81"
             >
               <thead
                 class="MuiTableHead-root"
@@ -112,33 +112,29 @@ exports[`Empty array shows no exposure events 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-81"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-86"
                   >
                     <span>
                       control
                     </span>
-                    <div
-                      aria-disabled="true"
-                      class="MuiChip-root MuiChip-outlined Mui-disabled"
+                    <br />
+                    <span
+                      class="makeStyles-root-87"
                     >
-                      <span
-                        class="MuiChip-label"
-                      >
-                        Default
-                      </span>
-                    </div>
+                      default
+                    </span>
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-81"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-86"
                   >
                     60
                     %
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-81"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-86"
                   >
                     <span
-                      class="makeStyles-tooltipped-79"
+                      class="makeStyles-tooltipped-84"
                     >
                       Bookmarklet
                     </span>
@@ -149,23 +145,23 @@ exports[`Empty array shows no exposure events 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-81"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-86"
                   >
                     <span>
                       test
                     </span>
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-81"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-86"
                   >
                     40
                     %
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-81"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-86"
                   >
                     <span
-                      class="makeStyles-tooltipped-79"
+                      class="makeStyles-tooltipped-84"
                     >
                       Bookmarklet
                     </span>
@@ -190,7 +186,7 @@ exports[`Empty array shows no exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <table
-              class="MuiTable-root makeStyles-root-82"
+              class="MuiTable-root makeStyles-root-88"
             >
               <thead
                 class="MuiTableHead-root"
@@ -214,7 +210,7 @@ exports[`Empty array shows no exposure events 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-84"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-90"
                   >
                     All 
                     locales
@@ -224,7 +220,7 @@ exports[`Empty array shows no exposure events 1`] = `
               </tbody>
             </table>
             <table
-              class="MuiTable-root makeStyles-root-82"
+              class="MuiTable-root makeStyles-root-88"
             >
               <thead
                 class="MuiTableHead-root"
@@ -248,7 +244,7 @@ exports[`Empty array shows no exposure events 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-84"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-90"
                   >
                     All 
                     countries
@@ -273,10 +269,10 @@ exports[`Empty array shows no exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <div
-              class="makeStyles-eventList-87"
+              class="makeStyles-eventList-93"
             >
               <span
-                class="makeStyles-monospace-88"
+                class="makeStyles-monospace-94"
               >
                 No exposure events defined
               </span>
@@ -324,7 +320,7 @@ exports[`Shows exposure events 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <h3
-        class="MuiTypography-root makeStyles-title-61 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        class="MuiTypography-root makeStyles-title-65 MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Audience
       </h3>
@@ -349,7 +345,7 @@ exports[`Shows exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <span
-              class="makeStyles-monospace-62"
+              class="makeStyles-monospace-66"
             >
               calypso
             </span>
@@ -369,7 +365,7 @@ exports[`Shows exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <span
-              class="makeStyles-monospace-62"
+              class="makeStyles-monospace-66"
             >
               New logged-in users only
             </span>
@@ -389,7 +385,7 @@ exports[`Shows exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <table
-              class="MuiTable-root makeStyles-root-63"
+              class="MuiTable-root makeStyles-root-67"
             >
               <thead
                 class="MuiTableHead-root"
@@ -427,33 +423,29 @@ exports[`Shows exposure events 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-72"
                   >
                     <span>
                       control
                     </span>
-                    <div
-                      aria-disabled="true"
-                      class="MuiChip-root MuiChip-outlined Mui-disabled"
+                    <br />
+                    <span
+                      class="makeStyles-root-73"
                     >
-                      <span
-                        class="MuiChip-label"
-                      >
-                        Default
-                      </span>
-                    </div>
+                      default
+                    </span>
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-72"
                   >
                     60
                     %
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-72"
                   >
                     <span
-                      class="makeStyles-tooltipped-66"
+                      class="makeStyles-tooltipped-70"
                     >
                       Bookmarklet
                     </span>
@@ -464,23 +456,23 @@ exports[`Shows exposure events 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-72"
                   >
                     <span>
                       test
                     </span>
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-72"
                   >
                     40
                     %
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-68"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-72"
                   >
                     <span
-                      class="makeStyles-tooltipped-66"
+                      class="makeStyles-tooltipped-70"
                     >
                       Bookmarklet
                     </span>
@@ -505,7 +497,7 @@ exports[`Shows exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <table
-              class="MuiTable-root makeStyles-root-69"
+              class="MuiTable-root makeStyles-root-74"
             >
               <thead
                 class="MuiTableHead-root"
@@ -529,7 +521,7 @@ exports[`Shows exposure events 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-71"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-76"
                   >
                     All 
                     locales
@@ -539,7 +531,7 @@ exports[`Shows exposure events 1`] = `
               </tbody>
             </table>
             <table
-              class="MuiTable-root makeStyles-root-69"
+              class="MuiTable-root makeStyles-root-74"
             >
               <thead
                 class="MuiTableHead-root"
@@ -563,7 +555,7 @@ exports[`Shows exposure events 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-71"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-76"
                   >
                     All 
                     countries
@@ -588,18 +580,18 @@ exports[`Shows exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <div
-              class="makeStyles-eventList-74"
+              class="makeStyles-eventList-79"
             >
               <p
-                class="MuiTypography-root makeStyles-monospace-75 MuiTypography-body1"
+                class="MuiTypography-root makeStyles-monospace-80 MuiTypography-body1"
               >
                 <span
-                  class="makeStyles-eventName-73"
+                  class="makeStyles-eventName-78"
                 >
                   test
                 </span>
                 <span
-                  class="makeStyles-entry-72"
+                  class="makeStyles-entry-77"
                 >
                   prop1
                   : 
@@ -650,7 +642,7 @@ exports[`null shows no exposure events 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <h3
-        class="MuiTypography-root makeStyles-title-61 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        class="MuiTypography-root makeStyles-title-65 MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Audience
       </h3>
@@ -675,7 +667,7 @@ exports[`null shows no exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <span
-              class="makeStyles-monospace-62"
+              class="makeStyles-monospace-66"
             >
               calypso
             </span>
@@ -695,7 +687,7 @@ exports[`null shows no exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <span
-              class="makeStyles-monospace-62"
+              class="makeStyles-monospace-66"
             >
               New logged-in users only
             </span>
@@ -715,7 +707,7 @@ exports[`null shows no exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <table
-              class="MuiTable-root makeStyles-root-89"
+              class="MuiTable-root makeStyles-root-95"
             >
               <thead
                 class="MuiTableHead-root"
@@ -753,33 +745,29 @@ exports[`null shows no exposure events 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-94"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-100"
                   >
                     <span>
                       control
                     </span>
-                    <div
-                      aria-disabled="true"
-                      class="MuiChip-root MuiChip-outlined Mui-disabled"
+                    <br />
+                    <span
+                      class="makeStyles-root-101"
                     >
-                      <span
-                        class="MuiChip-label"
-                      >
-                        Default
-                      </span>
-                    </div>
+                      default
+                    </span>
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-94"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-100"
                   >
                     60
                     %
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-94"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-100"
                   >
                     <span
-                      class="makeStyles-tooltipped-92"
+                      class="makeStyles-tooltipped-98"
                     >
                       Bookmarklet
                     </span>
@@ -790,23 +778,23 @@ exports[`null shows no exposure events 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-94"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-100"
                   >
                     <span>
                       test
                     </span>
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-94"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-100"
                   >
                     40
                     %
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-94"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-100"
                   >
                     <span
-                      class="makeStyles-tooltipped-92"
+                      class="makeStyles-tooltipped-98"
                     >
                       Bookmarklet
                     </span>
@@ -831,7 +819,7 @@ exports[`null shows no exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <table
-              class="MuiTable-root makeStyles-root-95"
+              class="MuiTable-root makeStyles-root-102"
             >
               <thead
                 class="MuiTableHead-root"
@@ -855,7 +843,7 @@ exports[`null shows no exposure events 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-97"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-104"
                   >
                     All 
                     locales
@@ -865,7 +853,7 @@ exports[`null shows no exposure events 1`] = `
               </tbody>
             </table>
             <table
-              class="MuiTable-root makeStyles-root-95"
+              class="MuiTable-root makeStyles-root-102"
             >
               <thead
                 class="MuiTableHead-root"
@@ -889,7 +877,7 @@ exports[`null shows no exposure events 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-97"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-104"
                   >
                     All 
                     countries
@@ -914,10 +902,10 @@ exports[`null shows no exposure events 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <div
-              class="makeStyles-eventList-100"
+              class="makeStyles-eventList-107"
             >
               <span
-                class="makeStyles-monospace-101"
+                class="makeStyles-monospace-108"
               >
                 No exposure events defined
               </span>
@@ -965,7 +953,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <h3
-        class="MuiTypography-root makeStyles-title-46 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        class="MuiTypography-root makeStyles-title-49 MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Audience
       </h3>
@@ -990,7 +978,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <span
-              class="makeStyles-monospace-47"
+              class="makeStyles-monospace-50"
             >
               calypso
             </span>
@@ -1010,7 +998,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <span
-              class="makeStyles-monospace-47"
+              class="makeStyles-monospace-50"
             >
               New logged-in users only
             </span>
@@ -1030,7 +1018,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <table
-              class="MuiTable-root makeStyles-root-48"
+              class="MuiTable-root makeStyles-root-51"
             >
               <thead
                 class="MuiTableHead-root"
@@ -1068,33 +1056,29 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-53"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-56"
                   >
                     <span>
                       control
                     </span>
-                    <div
-                      aria-disabled="true"
-                      class="MuiChip-root MuiChip-outlined Mui-disabled"
+                    <br />
+                    <span
+                      class="makeStyles-root-57"
                     >
-                      <span
-                        class="MuiChip-label"
-                      >
-                        Default
-                      </span>
-                    </div>
+                      default
+                    </span>
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-53"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-56"
                   >
                     60
                     %
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-53"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-56"
                   >
                     <span
-                      class="makeStyles-tooltipped-51"
+                      class="makeStyles-tooltipped-54"
                     >
                       Bookmarklet
                     </span>
@@ -1105,23 +1089,23 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-53"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-56"
                   >
                     <span>
                       test
                     </span>
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-53"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-56"
                   >
                     40
                     %
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-53"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-56"
                   >
                     <span
-                      class="makeStyles-tooltipped-51"
+                      class="makeStyles-tooltipped-54"
                     >
                       Bookmarklet
                     </span>
@@ -1146,7 +1130,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <table
-              class="MuiTable-root makeStyles-root-54"
+              class="MuiTable-root makeStyles-root-58"
             >
               <thead
                 class="MuiTableHead-root"
@@ -1170,7 +1154,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-56"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-60"
                   >
                     segment_1
                      
@@ -1180,27 +1164,22 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-56"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-60"
                   >
                     segment_3
                      
-                    <div
-                      aria-disabled="true"
-                      class="MuiChip-root MuiChip-outlined Mui-disabled"
+                    <span
+                      class="makeStyles-root-57"
                     >
-                      <span
-                        class="MuiChip-label"
-                      >
-                        Excluded
-                      </span>
-                    </div>
+                      excluded
+                    </span>
                   </td>
                 </tr>
                 <tr
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-56"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-60"
                   >
                     segment_5
                      
@@ -1209,7 +1188,7 @@ exports[`renders as expected with all segments resolvable 1`] = `
               </tbody>
             </table>
             <table
-              class="MuiTable-root makeStyles-root-54"
+              class="MuiTable-root makeStyles-root-58"
             >
               <thead
                 class="MuiTableHead-root"
@@ -1233,27 +1212,22 @@ exports[`renders as expected with all segments resolvable 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-56"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-60"
                   >
                     segment_2
                      
-                    <div
-                      aria-disabled="true"
-                      class="MuiChip-root MuiChip-outlined Mui-disabled"
+                    <span
+                      class="makeStyles-root-57"
                     >
-                      <span
-                        class="MuiChip-label"
-                      >
-                        Excluded
-                      </span>
-                    </div>
+                      excluded
+                    </span>
                   </td>
                 </tr>
                 <tr
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-56"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-60"
                   >
                     segment_4
                      
@@ -1277,32 +1251,32 @@ exports[`renders as expected with all segments resolvable 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <div
-              class="makeStyles-eventList-59"
+              class="makeStyles-eventList-63"
             >
               <p
-                class="MuiTypography-root makeStyles-monospace-60 MuiTypography-body1"
+                class="MuiTypography-root makeStyles-monospace-64 MuiTypography-body1"
               >
                 <span
-                  class="makeStyles-eventName-58"
+                  class="makeStyles-eventName-62"
                 >
                   event_name
                 </span>
                 <span
-                  class="makeStyles-entry-57"
+                  class="makeStyles-entry-61"
                 >
                   additionalProp1
                   : 
                   prop1Value
                 </span>
                 <span
-                  class="makeStyles-entry-57"
+                  class="makeStyles-entry-61"
                 >
                   additionalProp2
                   : 
                   prop2Value
                 </span>
                 <span
-                  class="makeStyles-entry-57"
+                  class="makeStyles-entry-61"
                 >
                   additionalProp3
                   : 
@@ -1310,10 +1284,10 @@ exports[`renders as expected with all segments resolvable 1`] = `
                 </span>
               </p>
               <p
-                class="MuiTypography-root makeStyles-monospace-60 MuiTypography-body1"
+                class="MuiTypography-root makeStyles-monospace-64 MuiTypography-body1"
               >
                 <span
-                  class="makeStyles-eventName-58"
+                  class="makeStyles-eventName-62"
                 >
                   event_without_props
                 </span>
@@ -1362,7 +1336,7 @@ exports[`renders as expected with existing users allowed 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <h3
-        class="MuiTypography-root makeStyles-title-31 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        class="MuiTypography-root makeStyles-title-33 MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Audience
       </h3>
@@ -1387,7 +1361,7 @@ exports[`renders as expected with existing users allowed 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <span
-              class="makeStyles-monospace-32"
+              class="makeStyles-monospace-34"
             >
               calypso
             </span>
@@ -1407,7 +1381,7 @@ exports[`renders as expected with existing users allowed 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <span
-              class="makeStyles-monospace-32"
+              class="makeStyles-monospace-34"
             >
               All users (new + existing + anonymous)
             </span>
@@ -1427,7 +1401,7 @@ exports[`renders as expected with existing users allowed 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <table
-              class="MuiTable-root makeStyles-root-33"
+              class="MuiTable-root makeStyles-root-35"
             >
               <thead
                 class="MuiTableHead-root"
@@ -1465,33 +1439,29 @@ exports[`renders as expected with existing users allowed 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-38"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-40"
                   >
                     <span>
                       control
                     </span>
-                    <div
-                      aria-disabled="true"
-                      class="MuiChip-root MuiChip-outlined Mui-disabled"
+                    <br />
+                    <span
+                      class="makeStyles-root-41"
                     >
-                      <span
-                        class="MuiChip-label"
-                      >
-                        Default
-                      </span>
-                    </div>
+                      default
+                    </span>
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-38"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-40"
                   >
                     60
                     %
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-38"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-40"
                   >
                     <span
-                      class="makeStyles-tooltipped-36"
+                      class="makeStyles-tooltipped-38"
                     >
                       Bookmarklet
                     </span>
@@ -1502,23 +1472,23 @@ exports[`renders as expected with existing users allowed 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-38"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-40"
                   >
                     <span>
                       test
                     </span>
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-38"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-40"
                   >
                     40
                     %
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-38"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-40"
                   >
                     <span
-                      class="makeStyles-tooltipped-36"
+                      class="makeStyles-tooltipped-38"
                     >
                       Bookmarklet
                     </span>
@@ -1543,7 +1513,7 @@ exports[`renders as expected with existing users allowed 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <table
-              class="MuiTable-root makeStyles-root-39"
+              class="MuiTable-root makeStyles-root-42"
             >
               <thead
                 class="MuiTableHead-root"
@@ -1567,7 +1537,7 @@ exports[`renders as expected with existing users allowed 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-41"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-44"
                   >
                     All 
                     locales
@@ -1577,7 +1547,7 @@ exports[`renders as expected with existing users allowed 1`] = `
               </tbody>
             </table>
             <table
-              class="MuiTable-root makeStyles-root-39"
+              class="MuiTable-root makeStyles-root-42"
             >
               <thead
                 class="MuiTableHead-root"
@@ -1601,7 +1571,7 @@ exports[`renders as expected with existing users allowed 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-41"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-44"
                   >
                     All 
                     countries
@@ -1626,32 +1596,32 @@ exports[`renders as expected with existing users allowed 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <div
-              class="makeStyles-eventList-44"
+              class="makeStyles-eventList-47"
             >
               <p
-                class="MuiTypography-root makeStyles-monospace-45 MuiTypography-body1"
+                class="MuiTypography-root makeStyles-monospace-48 MuiTypography-body1"
               >
                 <span
-                  class="makeStyles-eventName-43"
+                  class="makeStyles-eventName-46"
                 >
                   event_name
                 </span>
                 <span
-                  class="makeStyles-entry-42"
+                  class="makeStyles-entry-45"
                 >
                   additionalProp1
                   : 
                   prop1Value
                 </span>
                 <span
-                  class="makeStyles-entry-42"
+                  class="makeStyles-entry-45"
                 >
                   additionalProp2
                   : 
                   prop2Value
                 </span>
                 <span
-                  class="makeStyles-entry-42"
+                  class="makeStyles-entry-45"
                 >
                   additionalProp3
                   : 
@@ -1659,10 +1629,10 @@ exports[`renders as expected with existing users allowed 1`] = `
                 </span>
               </p>
               <p
-                class="MuiTypography-root makeStyles-monospace-45 MuiTypography-body1"
+                class="MuiTypography-root makeStyles-monospace-48 MuiTypography-body1"
               >
                 <span
-                  class="makeStyles-eventName-43"
+                  class="makeStyles-eventName-46"
                 >
                   event_without_props
                 </span>
@@ -1711,7 +1681,7 @@ exports[`renders as expected with no exclusion groups 1`] = `
       class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
     >
       <h3
-        class="MuiTypography-root makeStyles-title-16 MuiTypography-h3 MuiTypography-colorTextPrimary"
+        class="MuiTypography-root makeStyles-title-17 MuiTypography-h3 MuiTypography-colorTextPrimary"
       >
         Audience
       </h3>
@@ -1736,7 +1706,7 @@ exports[`renders as expected with no exclusion groups 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <span
-              class="makeStyles-monospace-17"
+              class="makeStyles-monospace-18"
             >
               calypso
             </span>
@@ -1756,7 +1726,7 @@ exports[`renders as expected with no exclusion groups 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <span
-              class="makeStyles-monospace-17"
+              class="makeStyles-monospace-18"
             >
               New logged-in users only
             </span>
@@ -1776,7 +1746,7 @@ exports[`renders as expected with no exclusion groups 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <table
-              class="MuiTable-root makeStyles-root-18"
+              class="MuiTable-root makeStyles-root-19"
             >
               <thead
                 class="MuiTableHead-root"
@@ -1814,33 +1784,29 @@ exports[`renders as expected with no exclusion groups 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-23"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-24"
                   >
                     <span>
                       control
                     </span>
-                    <div
-                      aria-disabled="true"
-                      class="MuiChip-root MuiChip-outlined Mui-disabled"
+                    <br />
+                    <span
+                      class="makeStyles-root-25"
                     >
-                      <span
-                        class="MuiChip-label"
-                      >
-                        Default
-                      </span>
-                    </div>
+                      default
+                    </span>
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-23"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-24"
                   >
                     60
                     %
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-23"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-24"
                   >
                     <span
-                      class="makeStyles-tooltipped-21"
+                      class="makeStyles-tooltipped-22"
                     >
                       Bookmarklet
                     </span>
@@ -1851,23 +1817,23 @@ exports[`renders as expected with no exclusion groups 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-23"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-24"
                   >
                     <span>
                       test
                     </span>
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-23"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-24"
                   >
                     40
                     %
                   </td>
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-23"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-24"
                   >
                     <span
-                      class="makeStyles-tooltipped-21"
+                      class="makeStyles-tooltipped-22"
                     >
                       Bookmarklet
                     </span>
@@ -1892,7 +1858,7 @@ exports[`renders as expected with no exclusion groups 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <table
-              class="MuiTable-root makeStyles-root-24"
+              class="MuiTable-root makeStyles-root-26"
             >
               <thead
                 class="MuiTableHead-root"
@@ -1916,7 +1882,7 @@ exports[`renders as expected with no exclusion groups 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-28"
                   >
                     All 
                     locales
@@ -1926,7 +1892,7 @@ exports[`renders as expected with no exclusion groups 1`] = `
               </tbody>
             </table>
             <table
-              class="MuiTable-root makeStyles-root-24"
+              class="MuiTable-root makeStyles-root-26"
             >
               <thead
                 class="MuiTableHead-root"
@@ -1950,7 +1916,7 @@ exports[`renders as expected with no exclusion groups 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-26"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-28"
                   >
                     All 
                     countries
@@ -1975,32 +1941,32 @@ exports[`renders as expected with no exclusion groups 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <div
-              class="makeStyles-eventList-29"
+              class="makeStyles-eventList-31"
             >
               <p
-                class="MuiTypography-root makeStyles-monospace-30 MuiTypography-body1"
+                class="MuiTypography-root makeStyles-monospace-32 MuiTypography-body1"
               >
                 <span
-                  class="makeStyles-eventName-28"
+                  class="makeStyles-eventName-30"
                 >
                   event_name
                 </span>
                 <span
-                  class="makeStyles-entry-27"
+                  class="makeStyles-entry-29"
                 >
                   additionalProp1
                   : 
                   prop1Value
                 </span>
                 <span
-                  class="makeStyles-entry-27"
+                  class="makeStyles-entry-29"
                 >
                   additionalProp2
                   : 
                   prop2Value
                 </span>
                 <span
-                  class="makeStyles-entry-27"
+                  class="makeStyles-entry-29"
                 >
                   additionalProp3
                   : 
@@ -2008,10 +1974,10 @@ exports[`renders as expected with no exclusion groups 1`] = `
                 </span>
               </p>
               <p
-                class="MuiTypography-root makeStyles-monospace-30 MuiTypography-body1"
+                class="MuiTypography-root makeStyles-monospace-32 MuiTypography-body1"
               >
                 <span
-                  class="makeStyles-eventName-28"
+                  class="makeStyles-eventName-30"
                 >
                   event_without_props
                 </span>
@@ -2142,16 +2108,12 @@ exports[`renders as expected with no segment assignments 1`] = `
                     <span>
                       control
                     </span>
-                    <div
-                      aria-disabled="true"
-                      class="MuiChip-root MuiChip-outlined Mui-disabled"
+                    <br />
+                    <span
+                      class="makeStyles-root-9"
                     >
-                      <span
-                        class="MuiChip-label"
-                      >
-                        Default
-                      </span>
-                    </div>
+                      default
+                    </span>
                   </td>
                   <td
                     class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-8"
@@ -2215,7 +2177,7 @@ exports[`renders as expected with no segment assignments 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <table
-              class="MuiTable-root makeStyles-root-9"
+              class="MuiTable-root makeStyles-root-10"
             >
               <thead
                 class="MuiTableHead-root"
@@ -2239,7 +2201,7 @@ exports[`renders as expected with no segment assignments 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-11"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-12"
                   >
                     All 
                     locales
@@ -2249,7 +2211,7 @@ exports[`renders as expected with no segment assignments 1`] = `
               </tbody>
             </table>
             <table
-              class="MuiTable-root makeStyles-root-9"
+              class="MuiTable-root makeStyles-root-10"
             >
               <thead
                 class="MuiTableHead-root"
@@ -2273,7 +2235,7 @@ exports[`renders as expected with no segment assignments 1`] = `
                   class="MuiTableRow-root"
                 >
                   <td
-                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-11"
+                    class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-12"
                   >
                     All 
                     countries
@@ -2298,32 +2260,32 @@ exports[`renders as expected with no segment assignments 1`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <div
-              class="makeStyles-eventList-14"
+              class="makeStyles-eventList-15"
             >
               <p
-                class="MuiTypography-root makeStyles-monospace-15 MuiTypography-body1"
+                class="MuiTypography-root makeStyles-monospace-16 MuiTypography-body1"
               >
                 <span
-                  class="makeStyles-eventName-13"
+                  class="makeStyles-eventName-14"
                 >
                   event_name
                 </span>
                 <span
-                  class="makeStyles-entry-12"
+                  class="makeStyles-entry-13"
                 >
                   additionalProp1
                   : 
                   prop1Value
                 </span>
                 <span
-                  class="makeStyles-entry-12"
+                  class="makeStyles-entry-13"
                 >
                   additionalProp2
                   : 
                   prop2Value
                 </span>
                 <span
-                  class="makeStyles-entry-12"
+                  class="makeStyles-entry-13"
                 >
                   additionalProp3
                   : 
@@ -2331,10 +2293,10 @@ exports[`renders as expected with no segment assignments 1`] = `
                 </span>
               </p>
               <p
-                class="MuiTypography-root makeStyles-monospace-15 MuiTypography-body1"
+                class="MuiTypography-root makeStyles-monospace-16 MuiTypography-body1"
               >
                 <span
-                  class="makeStyles-eventName-13"
+                  class="makeStyles-eventName-14"
                 >
                   event_without_props
                 </span>

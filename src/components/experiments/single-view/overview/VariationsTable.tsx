@@ -1,4 +1,4 @@
-import { Chip, Link, Tooltip, Typography } from '@material-ui/core'
+import { Link, Tooltip, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -7,6 +7,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import React from 'react'
 
+import Attribute from 'src/components/general/Attribute'
 import { ExperimentFull, nameSchema } from 'src/lib/schemas'
 import * as Variations from 'src/lib/variations'
 
@@ -132,7 +133,12 @@ function VariationsTable({
             <TableRow key={variation.variationId}>
               <TableCell className={classes.monospace}>
                 <span>{variation.name}</span>
-                {variation.isDefault && <Chip label='Default' variant='outlined' disabled />}
+                {variation.isDefault && (
+                  <>
+                    <br />
+                    <Attribute name='default' />
+                  </>
+                )}
               </TableCell>
               <TableCell className={classes.monospace}>{variation.allocatedPercentage}%</TableCell>
               <TableCell className={classes.monospace}>
