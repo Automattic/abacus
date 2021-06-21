@@ -6,13 +6,13 @@ exports[`allows you to change analysis strategy 1`] = `
     class="analysis-latest-results"
   >
     <div
-      class="makeStyles-root-210"
+      class="makeStyles-root-216"
     >
       <div
-        class="makeStyles-summary-211"
+        class="makeStyles-summary-217"
       >
         <div
-          class="MuiPaper-root makeStyles-participantsPlotPaper-222 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-participantsPlotPaper-228 MuiPaper-elevation1 MuiPaper-rounded"
         >
           <h3
             class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
@@ -21,16 +21,16 @@ exports[`allows you to change analysis strategy 1`] = `
           </h3>
         </div>
         <div
-          class="makeStyles-summaryColumn-213"
+          class="makeStyles-summaryColumn-219"
         >
           <div
-            class="MuiPaper-root makeStyles-summaryStatsPaper-214 MuiPaper-elevation1 MuiPaper-rounded"
+            class="MuiPaper-root makeStyles-summaryStatsPaper-220 MuiPaper-elevation1 MuiPaper-rounded"
           >
             <div
-              class="makeStyles-summaryStatsPart-215"
+              class="makeStyles-summaryStatsPart-221"
             >
               <h3
-                class="MuiTypography-root makeStyles-summaryStatsStat-217 MuiTypography-h3 MuiTypography-colorPrimary"
+                class="MuiTypography-root makeStyles-summaryStatsStat-223 MuiTypography-h3 MuiTypography-colorPrimary"
               >
                 1,000
               </h3>
@@ -46,10 +46,10 @@ exports[`allows you to change analysis strategy 1`] = `
               </h6>
             </div>
             <div
-              class="makeStyles-summaryStatsPart-215"
+              class="makeStyles-summaryStatsPart-221"
             >
               <h3
-                class="MuiTypography-root makeStyles-summaryStatsStat-217 MuiTypography-h3 MuiTypography-colorPrimary"
+                class="MuiTypography-root makeStyles-summaryStatsStat-223 MuiTypography-h3 MuiTypography-colorPrimary"
               >
                 Deploy 
                 test
@@ -65,12 +65,12 @@ exports[`allows you to change analysis strategy 1`] = `
             </div>
           </div>
           <a
-            class="MuiPaper-root makeStyles-summaryHealthPaper-218 makeStyles-indicationSeverityWarning-220 MuiPaper-elevation1 MuiPaper-rounded"
+            class="MuiPaper-root makeStyles-summaryHealthPaper-224 makeStyles-indicationSeverityWarning-226 MuiPaper-elevation1 MuiPaper-rounded"
             href="#health-report"
           >
             <div>
               <h3
-                class="MuiTypography-root makeStyles-summaryStatsStat-217 MuiTypography-h3 MuiTypography-colorPrimary"
+                class="MuiTypography-root makeStyles-summaryStatsStat-223 MuiTypography-h3 MuiTypography-colorPrimary"
               >
                 Potential issues
               </h3>
@@ -87,7 +87,7 @@ exports[`allows you to change analysis strategy 1`] = `
         </div>
       </div>
       <h3
-        class="MuiTypography-root makeStyles-tableTitle-224 MuiTypography-h3"
+        class="MuiTypography-root makeStyles-tableTitle-230 MuiTypography-h3"
       >
         Metric Assignment Results
       </h3>
@@ -96,7 +96,7 @@ exports[`allows you to change analysis strategy 1`] = `
         style="position: relative;"
       >
         <div
-          class="Component-horizontalScrollContainer-236"
+          class="Component-horizontalScrollContainer-242"
           style="overflow-x: auto; position: relative;"
         >
           <div>
@@ -115,33 +115,33 @@ exports[`allows you to change analysis strategy 1`] = `
                       class="MuiTableRow-root MuiTableRow-head"
                     >
                       <th
-                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-237 MuiTableCell-paddingNone"
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-243 MuiTableCell-paddingNone"
                         scope="col"
                         style="font-weight: 700;"
                       />
                       <th
-                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-237 MuiTableCell-alignLeft"
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-243 MuiTableCell-alignLeft"
                         scope="col"
                         style="font-weight: 700; box-sizing: border-box;"
                       >
                         Metric (attribution window)
                       </th>
                       <th
-                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-237 MuiTableCell-alignLeft"
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-243 MuiTableCell-alignLeft"
                         scope="col"
                         style="font-weight: 700; box-sizing: border-box;"
                       >
                         Absolute change
                       </th>
                       <th
-                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-237 MuiTableCell-alignLeft"
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-243 MuiTableCell-alignLeft"
                         scope="col"
                         style="font-weight: 700; box-sizing: border-box;"
                       >
                         Relative change (lift)
                       </th>
                       <th
-                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-237 MuiTableCell-alignLeft"
+                        class="MuiTableCell-root MuiTableCell-head MTableHeader-header-243 MuiTableCell-alignLeft"
                         scope="col"
                         style="font-weight: 700; box-sizing: border-box;"
                       >
@@ -192,7 +192,7 @@ exports[`allows you to change analysis strategy 1`] = `
                         style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
                       >
                         <span
-                          class="makeStyles-metricAssignmentNameLine-230"
+                          class="makeStyles-metricAssignmentNameLine-236"
                         >
                           <span
                             class=""
@@ -206,7 +206,7 @@ exports[`allows you to change analysis strategy 1`] = `
                         </span>
                         <br />
                         <span
-                          class="makeStyles-root-238"
+                          class="makeStyles-root-244"
                         >
                           primary
                         </span>
@@ -216,27 +216,29 @@ exports[`allows you to change analysis strategy 1`] = `
                         style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                       >
                         <span
-                          class="makeStyles-topLevelDiff-229"
+                          class=""
                         >
                           -1
                            to 
                           +
                           1
                            
-                          pp
+                          %
                         </span>
                       </td>
                       <td
                         class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                        style="box-sizing: border-box;"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                       >
                         <span
-                          class="makeStyles-topLevelDiff-229"
+                          class=""
                         >
-                          -50.00
+                          -50
                            to 
-                          +50.00
-                           %
+                          +
+                          50
+                           
+                          %
                         </span>
                       </td>
                       <td
@@ -287,7 +289,7 @@ exports[`allows you to change analysis strategy 1`] = `
                         style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
                       >
                         <span
-                          class="makeStyles-metricAssignmentNameLine-230"
+                          class="makeStyles-metricAssignmentNameLine-236"
                         >
                           <span
                             class=""
@@ -306,7 +308,7 @@ exports[`allows you to change analysis strategy 1`] = `
                       />
                       <td
                         class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                        style="box-sizing: border-box;"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                       />
                       <td
                         class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -355,7 +357,7 @@ exports[`allows you to change analysis strategy 1`] = `
                         style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
                       >
                         <span
-                          class="makeStyles-metricAssignmentNameLine-230"
+                          class="makeStyles-metricAssignmentNameLine-236"
                         >
                           <span
                             class=""
@@ -374,7 +376,7 @@ exports[`allows you to change analysis strategy 1`] = `
                       />
                       <td
                         class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                        style="box-sizing: border-box;"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                       />
                       <td
                         class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -423,7 +425,7 @@ exports[`allows you to change analysis strategy 1`] = `
                         style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
                       >
                         <span
-                          class="makeStyles-metricAssignmentNameLine-230"
+                          class="makeStyles-metricAssignmentNameLine-236"
                         >
                           <span
                             class=""
@@ -442,7 +444,7 @@ exports[`allows you to change analysis strategy 1`] = `
                       />
                       <td
                         class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                        style="box-sizing: border-box;"
+                        style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                       />
                       <td
                         class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -459,7 +461,7 @@ exports[`allows you to change analysis strategy 1`] = `
         </div>
       </div>
       <h3
-        class="MuiTypography-root makeStyles-tableTitle-224 MuiTypography-h3"
+        class="MuiTypography-root makeStyles-tableTitle-230 MuiTypography-h3"
       >
         Health Report
       </h3>
@@ -541,18 +543,18 @@ exports[`allows you to change analysis strategy 1`] = `
                   </a>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   <span
-                    class="makeStyles-tooltip-247"
+                    class="makeStyles-tooltip-255"
                     title="The smaller the p-value the more likely there is an issue."
                   >
                     p-value
                   </span>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   1.0000
@@ -564,7 +566,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   <span />
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-243 makeStyles-indicationSeverityOk-244 makeStyles-monospace-240 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-251 makeStyles-indicationSeverityOk-252 makeStyles-monospace-248 makeStyles-nowrap-250"
                   scope="row"
                 >
                   <span>
@@ -572,13 +574,13 @@ exports[`allows you to change analysis strategy 1`] = `
                   </span>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   0.05 &lt; x ≤ 1
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-241"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-249"
                   scope="row"
                 >
                   <p
@@ -602,18 +604,18 @@ exports[`allows you to change analysis strategy 1`] = `
                   </a>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   <span
-                    class="makeStyles-tooltip-247"
+                    class="makeStyles-tooltip-255"
                     title="The smaller the p-value the more likely there is an issue."
                   >
                     p-value
                   </span>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   1.0000
@@ -625,7 +627,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   <span />
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-243 makeStyles-indicationSeverityOk-244 makeStyles-monospace-240 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-251 makeStyles-indicationSeverityOk-252 makeStyles-monospace-248 makeStyles-nowrap-250"
                   scope="row"
                 >
                   <span>
@@ -633,13 +635,13 @@ exports[`allows you to change analysis strategy 1`] = `
                   </span>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   0.05 &lt; x ≤ 1
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-241"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-249"
                   scope="row"
                 >
                   <p
@@ -663,7 +665,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   </a>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   <span>
@@ -671,7 +673,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   </span>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   0.0000
@@ -683,7 +685,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   <span />
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-243 makeStyles-indicationSeverityOk-244 makeStyles-monospace-240 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-251 makeStyles-indicationSeverityOk-252 makeStyles-monospace-248 makeStyles-nowrap-250"
                   scope="row"
                 >
                   <span>
@@ -691,13 +693,13 @@ exports[`allows you to change analysis strategy 1`] = `
                   </span>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   −∞ &lt; x ≤ 0.01
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-241"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-249"
                   scope="row"
                 >
                   <p
@@ -721,7 +723,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   </a>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   <span>
@@ -729,7 +731,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   </span>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   0.0000
@@ -741,7 +743,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   <span />
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-243 makeStyles-indicationSeverityOk-244 makeStyles-monospace-240 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-251 makeStyles-indicationSeverityOk-252 makeStyles-monospace-248 makeStyles-nowrap-250"
                   scope="row"
                 >
                   <span>
@@ -749,13 +751,13 @@ exports[`allows you to change analysis strategy 1`] = `
                   </span>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   −∞ &lt; x ≤ 0.1
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-241"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-249"
                   scope="row"
                 >
                   <p
@@ -779,7 +781,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   </a>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   <span>
@@ -787,7 +789,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   </span>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   0.1000
@@ -799,7 +801,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   <span />
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-243 makeStyles-indicationSeverityOk-244 makeStyles-monospace-240 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-251 makeStyles-indicationSeverityOk-252 makeStyles-monospace-248 makeStyles-nowrap-250"
                   scope="row"
                 >
                   <span>
@@ -807,13 +809,13 @@ exports[`allows you to change analysis strategy 1`] = `
                   </span>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   −∞ &lt; x ≤ 0.8
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-241"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-249"
                   scope="row"
                 >
                   <p
@@ -837,7 +839,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   </a>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   <span>
@@ -845,7 +847,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   </span>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   0.0000
@@ -859,7 +861,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   </span>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-243 makeStyles-indicationSeverityWarning-245 makeStyles-monospace-240 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-indication-251 makeStyles-indicationSeverityWarning-253 makeStyles-monospace-248 makeStyles-nowrap-250"
                   scope="row"
                 >
                   <span>
@@ -867,13 +869,13 @@ exports[`allows you to change analysis strategy 1`] = `
                   </span>
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-240 makeStyles-deemphasized-241 makeStyles-nowrap-242"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-248 makeStyles-deemphasized-249 makeStyles-nowrap-250"
                   scope="row"
                 >
                   −∞ &lt; x ≤ 3
                 </td>
                 <td
-                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-241"
+                  class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-249"
                   scope="row"
                 >
                   <p
@@ -888,7 +890,7 @@ exports[`allows you to change analysis strategy 1`] = `
         </div>
       </div>
       <div
-        class="makeStyles-accordions-225"
+        class="makeStyles-accordions-231"
       >
         <div
           class="MuiPaper-root MuiAccordion-root Mui-expanded MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
@@ -947,7 +949,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   role="region"
                 >
                   <div
-                    class="MuiAccordionDetails-root makeStyles-accordionDetails-226"
+                    class="MuiAccordionDetails-root makeStyles-accordionDetails-232"
                   >
                     <p
                       class="MuiTypography-root MuiTypography-body1"
@@ -1106,7 +1108,7 @@ exports[`allows you to change analysis strategy 1`] = `
                   role="region"
                 >
                   <div
-                    class="MuiAccordionDetails-root makeStyles-accordionDetails-226"
+                    class="MuiAccordionDetails-root makeStyles-accordionDetails-232"
                   >
                     <p
                       class="MuiTypography-root MuiTypography-body1"
@@ -1119,7 +1121,7 @@ exports[`allows you to change analysis strategy 1`] = `
                       This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
                     </p>
                     <pre
-                      class="makeStyles-pre-228"
+                      class="makeStyles-pre-234"
                     >
                       <code>
                         with tracks_counts as (
@@ -1663,27 +1665,29 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       <span
-                        class="makeStyles-topLevelDiff-62"
+                        class=""
                       >
                         -1
                          to 
                         +
                         1
                          
-                        pp
+                        %
                       </span>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                      style="box-sizing: border-box;"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       <span
-                        class="makeStyles-topLevelDiff-62"
+                        class=""
                       >
-                        -50.00
+                        -50
                          to 
-                        +50.00
-                         %
+                        +
+                        50
+                         
+                        %
                       </span>
                     </td>
                     <td
@@ -1753,7 +1757,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                     />
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                      style="box-sizing: border-box;"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     />
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1821,7 +1825,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                     />
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                      style="box-sizing: border-box;"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     />
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1889,7 +1893,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                     />
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                      style="box-sizing: border-box;"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     />
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1988,18 +1992,18 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-80"
+                  class="makeStyles-tooltip-82"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 1.0000
@@ -2011,7 +2015,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-76 makeStyles-indicationSeverityOk-77 makeStyles-monospace-73 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-78 makeStyles-indicationSeverityOk-79 makeStyles-monospace-75 makeStyles-nowrap-77"
                 scope="row"
               >
                 <span>
@@ -2019,13 +2023,13 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-74"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-76"
                 scope="row"
               >
                 <p
@@ -2049,18 +2053,18 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-80"
+                  class="makeStyles-tooltip-82"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 1.0000
@@ -2072,7 +2076,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-76 makeStyles-indicationSeverityOk-77 makeStyles-monospace-73 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-78 makeStyles-indicationSeverityOk-79 makeStyles-monospace-75 makeStyles-nowrap-77"
                 scope="row"
               >
                 <span>
@@ -2080,13 +2084,13 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-74"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-76"
                 scope="row"
               >
                 <p
@@ -2110,18 +2114,18 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-80"
+                  class="makeStyles-tooltip-82"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 1.0000
@@ -2133,7 +2137,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-76 makeStyles-indicationSeverityOk-77 makeStyles-monospace-73 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-78 makeStyles-indicationSeverityOk-79 makeStyles-monospace-75 makeStyles-nowrap-77"
                 scope="row"
               >
                 <span>
@@ -2141,13 +2145,13 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-74"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-76"
                 scope="row"
               >
                 <p
@@ -2171,7 +2175,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 <span>
@@ -2179,7 +2183,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 0.0000
@@ -2191,7 +2195,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-76 makeStyles-indicationSeverityOk-77 makeStyles-monospace-73 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-78 makeStyles-indicationSeverityOk-79 makeStyles-monospace-75 makeStyles-nowrap-77"
                 scope="row"
               >
                 <span>
@@ -2199,13 +2203,13 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 −∞ &lt; x ≤ 0.01
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-74"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-76"
                 scope="row"
               >
                 <p
@@ -2229,7 +2233,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 <span>
@@ -2237,7 +2241,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 0.0000
@@ -2249,7 +2253,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-76 makeStyles-indicationSeverityOk-77 makeStyles-monospace-73 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-78 makeStyles-indicationSeverityOk-79 makeStyles-monospace-75 makeStyles-nowrap-77"
                 scope="row"
               >
                 <span>
@@ -2257,13 +2261,13 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 −∞ &lt; x ≤ 0.1
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-74"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-76"
                 scope="row"
               >
                 <p
@@ -2287,7 +2291,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 <span>
@@ -2295,7 +2299,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 0.1000
@@ -2307,7 +2311,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-76 makeStyles-indicationSeverityOk-77 makeStyles-monospace-73 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-78 makeStyles-indicationSeverityOk-79 makeStyles-monospace-75 makeStyles-nowrap-77"
                 scope="row"
               >
                 <span>
@@ -2315,13 +2319,13 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 −∞ &lt; x ≤ 0.8
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-74"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-76"
                 scope="row"
               >
                 <p
@@ -2345,7 +2349,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 <span>
@@ -2353,7 +2357,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 0.0000
@@ -2367,7 +2371,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-76 makeStyles-indicationSeverityWarning-78 makeStyles-monospace-73 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-78 makeStyles-indicationSeverityWarning-80 makeStyles-monospace-75 makeStyles-nowrap-77"
                 scope="row"
               >
                 <span>
@@ -2375,13 +2379,13 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-73 makeStyles-deemphasized-74 makeStyles-nowrap-75"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-75 makeStyles-deemphasized-76 makeStyles-nowrap-77"
                 scope="row"
               >
                 −∞ &lt; x ≤ 3
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-74"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-76"
                 scope="row"
               >
                 <p
@@ -2662,10 +2666,10 @@ inner join wpcom.experiment_variations using (experiment_variation_id)
 
 exports[`renders correctly for 1 analysis datapoint 2`] = `
 <div
-  class="MuiTableContainer-root makeStyles-root-81 analysis-detail-panel"
+  class="MuiTableContainer-root makeStyles-root-83 analysis-detail-panel"
 >
   <p
-    class="MuiTypography-root makeStyles-dataTableHeader-95 MuiTypography-body1"
+    class="MuiTypography-root makeStyles-dataTableHeader-97 MuiTypography-body1"
   >
     Summary
   </p>
@@ -2685,7 +2689,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <h5
-              class="MuiTypography-root makeStyles-aggregateRecommendation-94 MuiTypography-h5 MuiTypography-gutterBottom"
+              class="MuiTypography-root makeStyles-aggregateRecommendation-96 MuiTypography-h5 MuiTypography-gutterBottom"
             >
               Deploy 
               test
@@ -2695,7 +2699,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
             </strong>
              
             <span
-              class="makeStyles-root-97"
+              class="makeStyles-root-99"
               title="09/05/2020, 20:00:00"
             >
               2020-05-10
@@ -2720,7 +2724,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
     </table>
   </div>
   <p
-    class="MuiTypography-root makeStyles-dataTableHeader-95 MuiTypography-body1"
+    class="MuiTypography-root makeStyles-dataTableHeader-97 MuiTypography-body1"
   >
     Analysis
   </p>
@@ -2728,7 +2732,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
     class="MuiPaper-root MuiTableContainer-root MuiPaper-elevation1 MuiPaper-rounded"
   >
     <table
-      class="MuiTable-root makeStyles-coolTable-96"
+      class="MuiTable-root makeStyles-coolTable-98"
     >
       <thead
         class="MuiTableHead-root"
@@ -2769,69 +2773,56 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
           class="MuiTableRow-root"
         >
           <th
-            class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-89 makeStyles-headerCell-82 makeStyles-credibleIntervalHeader-93"
+            class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-91 makeStyles-headerCell-84 makeStyles-credibleIntervalHeader-95"
             role="cell"
             scope="row"
             valign="top"
           >
             <span
-              class="makeStyles-monospace-83"
+              class="makeStyles-monospace-85"
             >
               test
             </span>
           </th>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-85 MuiTableCell-alignRight"
           >
             <span
-              class="makeStyles-tooltipped-90"
+              class="makeStyles-tooltipped-73"
             >
-              
               -112.3
-              %
                to 
-              
+              +
               100
+               
               %
             </span>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-85 MuiTableCell-alignRight"
           >
             <span
-              class="makeStyles-tooltipped-90"
+              class="makeStyles-tooltipped-73"
             >
-              
               -1
-              <span
-                class="makeStyles-root-98"
-                title="Percentage points."
-              >
-                pp
-              </span>
                to 
-              
+              +
               1
-              <span
-                class="makeStyles-root-98"
-                title="Percentage points."
-              >
-                pp
-              </span>
+               
+              %
             </span>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-85 MuiTableCell-alignRight"
           >
             <span
-              class="makeStyles-tooltipped-90"
+              class="makeStyles-tooltipped-73"
             >
-              
-              -5000
-              %
+              -50
                to 
-              
-              5000
+              +
+              50
+               
               %
             </span>
           </td>
@@ -2840,39 +2831,39 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
           class="MuiTableRow-root"
         >
           <th
-            class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-89 makeStyles-headerCell-82 makeStyles-credibleIntervalHeader-93"
+            class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-91 makeStyles-headerCell-84 makeStyles-credibleIntervalHeader-95"
             role="cell"
             scope="row"
             valign="top"
           >
             <span
-              class="makeStyles-monospace-83"
+              class="makeStyles-monospace-85"
             >
               control
             </span>
           </th>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-85 MuiTableCell-alignRight"
           >
             <span
-              class="makeStyles-tooltipped-90"
+              class="makeStyles-tooltipped-73"
             >
-              
+              +
               0
-              %
                to 
-              
+              +
               1000
+               
               %
             </span>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-85 MuiTableCell-alignRight"
           >
             Baseline
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-83 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-85 MuiTableCell-alignRight"
           >
             Baseline
           </td>
@@ -2881,7 +2872,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
     </table>
   </div>
   <p
-    class="MuiTypography-root makeStyles-analysisFinePrint-92 MuiTypography-body1"
+    class="MuiTypography-root makeStyles-analysisFinePrint-94 MuiTypography-body1"
   >
     95% Credible Intervals (CIs). 
     <strong>
@@ -2891,7 +2882,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
     
     10
     <span
-      class="makeStyles-root-98"
+      class="makeStyles-root-100"
       title="Percentage points."
     >
       pp
@@ -2907,7 +2898,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
     ).
   </p>
   <p
-    class="MuiTypography-root makeStyles-noPlotMessage-87 MuiTypography-body1"
+    class="MuiTypography-root makeStyles-noPlotMessage-89 MuiTypography-body1"
   >
     Past values will be plotted once we have more than one day of results.
   </p>
@@ -2987,13 +2978,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   class="analysis-latest-results"
 >
   <div
-    class="makeStyles-root-99"
+    class="makeStyles-root-101"
   >
     <div
-      class="makeStyles-summary-100"
+      class="makeStyles-summary-102"
     >
       <div
-        class="MuiPaper-root makeStyles-participantsPlotPaper-111 MuiPaper-elevation1 MuiPaper-rounded"
+        class="MuiPaper-root makeStyles-participantsPlotPaper-113 MuiPaper-elevation1 MuiPaper-rounded"
       >
         <h3
           class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
@@ -3002,16 +2993,16 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         </h3>
       </div>
       <div
-        class="makeStyles-summaryColumn-102"
+        class="makeStyles-summaryColumn-104"
       >
         <div
-          class="MuiPaper-root makeStyles-summaryStatsPaper-103 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryStatsPaper-105 MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="makeStyles-summaryStatsPart-104"
+            class="makeStyles-summaryStatsPart-106"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-106 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-108 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               700
             </h3>
@@ -3027,10 +3018,10 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             </h6>
           </div>
           <div
-            class="makeStyles-summaryStatsPart-104"
+            class="makeStyles-summaryStatsPart-106"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-106 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-108 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               Deploy 
               test
@@ -3046,12 +3037,12 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           </div>
         </div>
         <a
-          class="MuiPaper-root makeStyles-summaryHealthPaper-107 makeStyles-indicationSeverityError-110 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryHealthPaper-109 makeStyles-indicationSeverityError-112 MuiPaper-elevation1 MuiPaper-rounded"
           href="#health-report"
         >
           <div>
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-106 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-108 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               Serious issues
             </h3>
@@ -3068,7 +3059,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       </div>
     </div>
     <h3
-      class="MuiTypography-root makeStyles-tableTitle-113 MuiTypography-h3"
+      class="MuiTypography-root makeStyles-tableTitle-115 MuiTypography-h3"
     >
       Metric Assignment Results
     </h3>
@@ -3077,7 +3068,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       style="position: relative;"
     >
       <div
-        class="Component-horizontalScrollContainer-125"
+        class="Component-horizontalScrollContainer-127"
         style="overflow-x: auto; position: relative;"
       >
         <div>
@@ -3096,33 +3087,33 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     class="MuiTableRow-root MuiTableRow-head"
                   >
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-126 MuiTableCell-paddingNone"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-128 MuiTableCell-paddingNone"
                       scope="col"
                       style="font-weight: 700;"
                     />
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-126 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-128 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Metric (attribution window)
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-126 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-128 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Absolute change
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-126 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-128 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Relative change (lift)
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-126 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-128 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
@@ -3173,7 +3164,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
                     >
                       <span
-                        class="makeStyles-metricAssignmentNameLine-119"
+                        class="makeStyles-metricAssignmentNameLine-121"
                       >
                         <span
                           class=""
@@ -3187,7 +3178,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       </span>
                       <br />
                       <span
-                        class="makeStyles-root-127"
+                        class="makeStyles-root-129"
                       >
                         primary
                       </span>
@@ -3197,27 +3188,29 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       <span
-                        class="makeStyles-topLevelDiff-118"
+                        class=""
                       >
                         -1
                          to 
                         +
                         1
                          
-                        pp
+                        %
                       </span>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                      style="box-sizing: border-box;"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       <span
-                        class="makeStyles-topLevelDiff-118"
+                        class=""
                       >
-                        -50.00
+                        -50
                          to 
-                        +50.00
-                         %
+                        +
+                        50
+                         
+                        %
                       </span>
                     </td>
                     <td
@@ -3268,7 +3261,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
                     >
                       <span
-                        class="makeStyles-metricAssignmentNameLine-119"
+                        class="makeStyles-metricAssignmentNameLine-121"
                       >
                         <span
                           class=""
@@ -3287,7 +3280,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     />
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                      style="box-sizing: border-box;"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     />
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -3336,7 +3329,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
                     >
                       <span
-                        class="makeStyles-metricAssignmentNameLine-119"
+                        class="makeStyles-metricAssignmentNameLine-121"
                       >
                         <span
                           class=""
@@ -3355,7 +3348,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     />
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                      style="box-sizing: border-box;"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     />
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -3404,7 +3397,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
                     >
                       <span
-                        class="makeStyles-metricAssignmentNameLine-119"
+                        class="makeStyles-metricAssignmentNameLine-121"
                       >
                         <span
                           class=""
@@ -3422,27 +3415,29 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       <span
-                        class="makeStyles-topLevelDiff-118"
+                        class=""
                       >
                         -1
                          to 
                         +
                         1
                          
-                        pp
+                        %
                       </span>
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                      style="box-sizing: border-box;"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       <span
-                        class="makeStyles-topLevelDiff-118"
+                        class=""
                       >
-                        -50.00
+                        -50
                          to 
-                        +50.00
-                         %
+                        +
+                        50
+                         
+                        %
                       </span>
                     </td>
                     <td
@@ -3461,7 +3456,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       </div>
     </div>
     <h3
-      class="MuiTypography-root makeStyles-tableTitle-113 MuiTypography-h3"
+      class="MuiTypography-root makeStyles-tableTitle-115 MuiTypography-h3"
     >
       Health Report
     </h3>
@@ -3543,18 +3538,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-136"
+                  class="makeStyles-tooltip-140"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 1.0000
@@ -3566,7 +3561,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-132 makeStyles-indicationSeverityOk-133 makeStyles-monospace-129 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-136 makeStyles-indicationSeverityOk-137 makeStyles-monospace-133 makeStyles-nowrap-135"
                 scope="row"
               >
                 <span>
@@ -3574,13 +3569,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-130"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-134"
                 scope="row"
               >
                 <p
@@ -3604,18 +3599,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-136"
+                  class="makeStyles-tooltip-140"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 1.0000
@@ -3627,7 +3622,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-132 makeStyles-indicationSeverityOk-133 makeStyles-monospace-129 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-136 makeStyles-indicationSeverityOk-137 makeStyles-monospace-133 makeStyles-nowrap-135"
                 scope="row"
               >
                 <span>
@@ -3635,13 +3630,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-130"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-134"
                 scope="row"
               >
                 <p
@@ -3665,18 +3660,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-136"
+                  class="makeStyles-tooltip-140"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 1.0000
@@ -3688,7 +3683,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-132 makeStyles-indicationSeverityOk-133 makeStyles-monospace-129 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-136 makeStyles-indicationSeverityOk-137 makeStyles-monospace-133 makeStyles-nowrap-135"
                 scope="row"
               >
                 <span>
@@ -3696,13 +3691,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-130"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-134"
                 scope="row"
               >
                 <p
@@ -3726,7 +3721,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 <span>
@@ -3734,7 +3729,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 0.1000
@@ -3748,7 +3743,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-132 makeStyles-indicationSeverityError-135 makeStyles-monospace-129 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-136 makeStyles-indicationSeverityError-139 makeStyles-monospace-133 makeStyles-nowrap-135"
                 scope="row"
               >
                 <span>
@@ -3756,13 +3751,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-130"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-134"
                 scope="row"
               >
                 <p
@@ -3788,7 +3783,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 <span>
@@ -3796,7 +3791,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 0.1500
@@ -3810,7 +3805,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-132 makeStyles-indicationSeverityWarning-134 makeStyles-monospace-129 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-136 makeStyles-indicationSeverityWarning-138 makeStyles-monospace-133 makeStyles-nowrap-135"
                 scope="row"
               >
                 <span>
@@ -3818,13 +3813,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 0.1 &lt; x ≤ 0.4
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-130"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-134"
                 scope="row"
               >
                 <p
@@ -3850,7 +3845,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 <span>
@@ -3858,7 +3853,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 0.1000
@@ -3870,7 +3865,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-132 makeStyles-indicationSeverityOk-133 makeStyles-monospace-129 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-136 makeStyles-indicationSeverityOk-137 makeStyles-monospace-133 makeStyles-nowrap-135"
                 scope="row"
               >
                 <span>
@@ -3878,13 +3873,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 −∞ &lt; x ≤ 0.8
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-130"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-134"
                 scope="row"
               >
                 <p
@@ -3908,7 +3903,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 <span>
@@ -3916,7 +3911,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 0.0000
@@ -3930,7 +3925,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-132 makeStyles-indicationSeverityWarning-134 makeStyles-monospace-129 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-136 makeStyles-indicationSeverityWarning-138 makeStyles-monospace-133 makeStyles-nowrap-135"
                 scope="row"
               >
                 <span>
@@ -3938,13 +3933,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-129 makeStyles-deemphasized-130 makeStyles-nowrap-131"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-133 makeStyles-deemphasized-134 makeStyles-nowrap-135"
                 scope="row"
               >
                 −∞ &lt; x ≤ 3
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-130"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-134"
                 scope="row"
               >
                 <p
@@ -3959,7 +3954,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       </div>
     </div>
     <div
-      class="makeStyles-accordions-114"
+      class="makeStyles-accordions-116"
     >
       <div
         class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
@@ -4018,7 +4013,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 role="region"
               >
                 <div
-                  class="MuiAccordionDetails-root makeStyles-accordionDetails-115"
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-117"
                 >
                   <p
                     class="MuiTypography-root MuiTypography-body1"
@@ -4178,7 +4173,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 role="region"
               >
                 <div
-                  class="MuiAccordionDetails-root makeStyles-accordionDetails-115"
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-117"
                 >
                   <p
                     class="MuiTypography-root MuiTypography-body1"
@@ -4191,7 +4186,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
                   </p>
                   <pre
-                    class="makeStyles-pre-117"
+                    class="makeStyles-pre-119"
                   >
                     <code>
                       with tracks_counts as (
@@ -4225,10 +4220,10 @@ inner join wpcom.experiment_variations using (experiment_variation_id)
 
 exports[`renders the condensed table with some analyses in non-debug mode for a Conversion Metric 2`] = `
 <div
-  class="MuiTableContainer-root makeStyles-root-137 analysis-detail-panel"
+  class="MuiTableContainer-root makeStyles-root-141 analysis-detail-panel"
 >
   <p
-    class="MuiTypography-root makeStyles-dataTableHeader-151 MuiTypography-body1"
+    class="MuiTypography-root makeStyles-dataTableHeader-155 MuiTypography-body1"
   >
     Summary
   </p>
@@ -4248,7 +4243,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             class="MuiTableCell-root MuiTableCell-body"
           >
             <h5
-              class="MuiTypography-root makeStyles-aggregateRecommendation-150 MuiTypography-h5 MuiTypography-gutterBottom"
+              class="MuiTypography-root makeStyles-aggregateRecommendation-154 MuiTypography-h5 MuiTypography-gutterBottom"
             >
               Deploy 
               test
@@ -4258,7 +4253,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             </strong>
              
             <span
-              class="makeStyles-root-153"
+              class="makeStyles-root-157"
               title="09/05/2020, 20:00:00"
             >
               2020-05-10
@@ -4283,7 +4278,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     </table>
   </div>
   <p
-    class="MuiTypography-root makeStyles-dataTableHeader-151 MuiTypography-body1"
+    class="MuiTypography-root makeStyles-dataTableHeader-155 MuiTypography-body1"
   >
     Analysis
   </p>
@@ -4291,7 +4286,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     class="MuiPaper-root MuiTableContainer-root MuiPaper-elevation1 MuiPaper-rounded"
   >
     <table
-      class="MuiTable-root makeStyles-coolTable-152"
+      class="MuiTable-root makeStyles-coolTable-156"
     >
       <thead
         class="MuiTableHead-root"
@@ -4332,69 +4327,56 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableRow-root"
         >
           <th
-            class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-145 makeStyles-headerCell-138 makeStyles-credibleIntervalHeader-149"
+            class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-149 makeStyles-headerCell-142 makeStyles-credibleIntervalHeader-153"
             role="cell"
             scope="row"
             valign="top"
           >
             <span
-              class="makeStyles-monospace-139"
+              class="makeStyles-monospace-143"
             >
               test
             </span>
           </th>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-139 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-143 MuiTableCell-alignRight"
           >
             <span
-              class="makeStyles-tooltipped-146"
+              class="makeStyles-tooltipped-131"
             >
-              
               -112.3
-              %
                to 
-              
+              +
               100
+               
               %
             </span>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-139 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-143 MuiTableCell-alignRight"
           >
             <span
-              class="makeStyles-tooltipped-146"
+              class="makeStyles-tooltipped-131"
             >
-              
               -1
-              <span
-                class="makeStyles-root-154"
-                title="Percentage points."
-              >
-                pp
-              </span>
                to 
-              
+              +
               1
-              <span
-                class="makeStyles-root-154"
-                title="Percentage points."
-              >
-                pp
-              </span>
+               
+              %
             </span>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-139 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-143 MuiTableCell-alignRight"
           >
             <span
-              class="makeStyles-tooltipped-146"
+              class="makeStyles-tooltipped-131"
             >
-              
-              -5000
-              %
+              -50
                to 
-              
-              5000
+              +
+              50
+               
               %
             </span>
           </td>
@@ -4403,39 +4385,39 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableRow-root"
         >
           <th
-            class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-145 makeStyles-headerCell-138 makeStyles-credibleIntervalHeader-149"
+            class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-149 makeStyles-headerCell-142 makeStyles-credibleIntervalHeader-153"
             role="cell"
             scope="row"
             valign="top"
           >
             <span
-              class="makeStyles-monospace-139"
+              class="makeStyles-monospace-143"
             >
               control
             </span>
           </th>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-139 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-143 MuiTableCell-alignRight"
           >
             <span
-              class="makeStyles-tooltipped-146"
+              class="makeStyles-tooltipped-131"
             >
-              
+              +
               0
-              %
                to 
-              
+              +
               1000
+               
               %
             </span>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-139 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-143 MuiTableCell-alignRight"
           >
             Baseline
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-139 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-143 MuiTableCell-alignRight"
           >
             Baseline
           </td>
@@ -4444,7 +4426,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     </table>
   </div>
   <p
-    class="MuiTypography-root makeStyles-analysisFinePrint-148 MuiTypography-body1"
+    class="MuiTypography-root makeStyles-analysisFinePrint-152 MuiTypography-body1"
   >
     95% Credible Intervals (CIs). 
     <strong>
@@ -4454,7 +4436,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     
     10
     <span
-      class="makeStyles-root-154"
+      class="makeStyles-root-158"
       title="Percentage points."
     >
       pp
@@ -4470,7 +4452,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ).
   </p>
   <div
-    class="makeStyles-metricEstimatePlots-140"
+    class="makeStyles-metricEstimatePlots-144"
   />
 </div>
 `;
@@ -4480,7 +4462,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   "calls": Array [
     Array [
       Object {
-        "className": "makeStyles-participantsPlot-112",
+        "className": "makeStyles-participantsPlot-114",
         "data": Array [
           Object {
             "line": Object {
@@ -4539,7 +4521,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-141",
+        "className": "makeStyles-metricEstimatePlot-145",
         "data": Array [
           Object {
             "line": Object {
@@ -4635,7 +4617,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-141",
+        "className": "makeStyles-metricEstimatePlot-145",
         "data": Array [
           Object {
             "line": Object {
@@ -4737,7 +4719,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-141",
+        "className": "makeStyles-metricEstimatePlot-145",
         "data": Array [
           Object {
             "line": Object {
@@ -4833,7 +4815,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-141",
+        "className": "makeStyles-metricEstimatePlot-145",
         "data": Array [
           Object {
             "line": Object {
@@ -4964,13 +4946,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   class="analysis-latest-results"
 >
   <div
-    class="makeStyles-root-155"
+    class="makeStyles-root-159"
   >
     <div
-      class="makeStyles-summary-156"
+      class="makeStyles-summary-160"
     >
       <div
-        class="MuiPaper-root makeStyles-participantsPlotPaper-167 MuiPaper-elevation1 MuiPaper-rounded"
+        class="MuiPaper-root makeStyles-participantsPlotPaper-171 MuiPaper-elevation1 MuiPaper-rounded"
       >
         <h3
           class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom"
@@ -4979,16 +4961,16 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
         </h3>
       </div>
       <div
-        class="makeStyles-summaryColumn-158"
+        class="makeStyles-summaryColumn-162"
       >
         <div
-          class="MuiPaper-root makeStyles-summaryStatsPaper-159 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryStatsPaper-163 MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="makeStyles-summaryStatsPart-160"
+            class="makeStyles-summaryStatsPart-164"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-162 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-166 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               700
             </h3>
@@ -5004,10 +4986,10 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             </h6>
           </div>
           <div
-            class="makeStyles-summaryStatsPart-160"
+            class="makeStyles-summaryStatsPart-164"
           >
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-162 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-166 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               Deploy 
               test
@@ -5023,12 +5005,12 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           </div>
         </div>
         <a
-          class="MuiPaper-root makeStyles-summaryHealthPaper-163 makeStyles-indicationSeverityError-166 MuiPaper-elevation1 MuiPaper-rounded"
+          class="MuiPaper-root makeStyles-summaryHealthPaper-167 makeStyles-indicationSeverityError-170 MuiPaper-elevation1 MuiPaper-rounded"
           href="#health-report"
         >
           <div>
             <h3
-              class="MuiTypography-root makeStyles-summaryStatsStat-162 MuiTypography-h3 MuiTypography-colorPrimary"
+              class="MuiTypography-root makeStyles-summaryStatsStat-166 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               Serious issues
             </h3>
@@ -5045,7 +5027,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       </div>
     </div>
     <h3
-      class="MuiTypography-root makeStyles-tableTitle-169 MuiTypography-h3"
+      class="MuiTypography-root makeStyles-tableTitle-173 MuiTypography-h3"
     >
       Metric Assignment Results
     </h3>
@@ -5054,7 +5036,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       style="position: relative;"
     >
       <div
-        class="Component-horizontalScrollContainer-181"
+        class="Component-horizontalScrollContainer-185"
         style="overflow-x: auto; position: relative;"
       >
         <div>
@@ -5073,33 +5055,33 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     class="MuiTableRow-root MuiTableRow-head"
                   >
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-182 MuiTableCell-paddingNone"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-186 MuiTableCell-paddingNone"
                       scope="col"
                       style="font-weight: 700;"
                     />
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-182 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-186 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Metric (attribution window)
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-182 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-186 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Absolute change
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-182 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-186 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
                       Relative change (lift)
                     </th>
                     <th
-                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-182 MuiTableCell-alignLeft"
+                      class="MuiTableCell-root MuiTableCell-head MTableHeader-header-186 MuiTableCell-alignLeft"
                       scope="col"
                       style="font-weight: 700; box-sizing: border-box;"
                     >
@@ -5150,7 +5132,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
                     >
                       <span
-                        class="makeStyles-metricAssignmentNameLine-175"
+                        class="makeStyles-metricAssignmentNameLine-179"
                       >
                         <span
                           class=""
@@ -5164,7 +5146,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       </span>
                       <br />
                       <span
-                        class="makeStyles-root-183"
+                        class="makeStyles-root-187"
                       >
                         primary
                       </span>
@@ -5174,7 +5156,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       <span
-                        class="makeStyles-topLevelDiff-174"
+                        class=""
                       >
                         -0.01
                          to 
@@ -5186,15 +5168,17 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                      style="box-sizing: border-box;"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       <span
-                        class="makeStyles-topLevelDiff-174"
+                        class=""
                       >
-                        -50.00
+                        -50
                          to 
-                        +50.00
-                         %
+                        +
+                        50
+                         
+                        %
                       </span>
                     </td>
                     <td
@@ -5245,7 +5229,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
                     >
                       <span
-                        class="makeStyles-metricAssignmentNameLine-175"
+                        class="makeStyles-metricAssignmentNameLine-179"
                       >
                         <span
                           class=""
@@ -5264,7 +5248,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     />
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                      style="box-sizing: border-box;"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     />
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -5313,7 +5297,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
                     >
                       <span
-                        class="makeStyles-metricAssignmentNameLine-175"
+                        class="makeStyles-metricAssignmentNameLine-179"
                       >
                         <span
                           class=""
@@ -5332,7 +5316,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     />
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                      style="box-sizing: border-box;"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     />
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -5381,7 +5365,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace; font-weight: 600;"
                     >
                       <span
-                        class="makeStyles-metricAssignmentNameLine-175"
+                        class="makeStyles-metricAssignmentNameLine-179"
                       >
                         <span
                           class=""
@@ -5399,7 +5383,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       <span
-                        class="makeStyles-topLevelDiff-174"
+                        class=""
                       >
                         -0.01
                          to 
@@ -5411,15 +5395,17 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
-                      style="box-sizing: border-box;"
+                      style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       <span
-                        class="makeStyles-topLevelDiff-174"
+                        class=""
                       >
-                        -50.00
+                        -50
                          to 
-                        +50.00
-                         %
+                        +
+                        50
+                         
+                        %
                       </span>
                     </td>
                     <td
@@ -5438,7 +5424,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       </div>
     </div>
     <h3
-      class="MuiTypography-root makeStyles-tableTitle-169 MuiTypography-h3"
+      class="MuiTypography-root makeStyles-tableTitle-173 MuiTypography-h3"
     >
       Health Report
     </h3>
@@ -5520,18 +5506,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-192"
+                  class="makeStyles-tooltip-198"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 1.0000
@@ -5543,7 +5529,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-188 makeStyles-indicationSeverityOk-189 makeStyles-monospace-185 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-194 makeStyles-indicationSeverityOk-195 makeStyles-monospace-191 makeStyles-nowrap-193"
                 scope="row"
               >
                 <span>
@@ -5551,13 +5537,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-186"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-192"
                 scope="row"
               >
                 <p
@@ -5581,18 +5567,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-192"
+                  class="makeStyles-tooltip-198"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 1.0000
@@ -5604,7 +5590,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-188 makeStyles-indicationSeverityOk-189 makeStyles-monospace-185 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-194 makeStyles-indicationSeverityOk-195 makeStyles-monospace-191 makeStyles-nowrap-193"
                 scope="row"
               >
                 <span>
@@ -5612,13 +5598,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-186"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-192"
                 scope="row"
               >
                 <p
@@ -5642,18 +5628,18 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 <span
-                  class="makeStyles-tooltip-192"
+                  class="makeStyles-tooltip-198"
                   title="The smaller the p-value the more likely there is an issue."
                 >
                   p-value
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 1.0000
@@ -5665,7 +5651,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-188 makeStyles-indicationSeverityOk-189 makeStyles-monospace-185 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-194 makeStyles-indicationSeverityOk-195 makeStyles-monospace-191 makeStyles-nowrap-193"
                 scope="row"
               >
                 <span>
@@ -5673,13 +5659,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-186"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-192"
                 scope="row"
               >
                 <p
@@ -5703,7 +5689,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 <span>
@@ -5711,7 +5697,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 0.1000
@@ -5725,7 +5711,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-188 makeStyles-indicationSeverityError-191 makeStyles-monospace-185 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-194 makeStyles-indicationSeverityError-197 makeStyles-monospace-191 makeStyles-nowrap-193"
                 scope="row"
               >
                 <span>
@@ -5733,13 +5719,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 0.05 &lt; x ≤ 1
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-186"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-192"
                 scope="row"
               >
                 <p
@@ -5765,7 +5751,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 <span>
@@ -5773,7 +5759,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 0.1500
@@ -5787,7 +5773,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-188 makeStyles-indicationSeverityWarning-190 makeStyles-monospace-185 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-194 makeStyles-indicationSeverityWarning-196 makeStyles-monospace-191 makeStyles-nowrap-193"
                 scope="row"
               >
                 <span>
@@ -5795,13 +5781,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 0.1 &lt; x ≤ 0.4
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-186"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-192"
                 scope="row"
               >
                 <p
@@ -5827,7 +5813,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 <span>
@@ -5835,7 +5821,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 0.1000
@@ -5847,7 +5833,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 <span />
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-188 makeStyles-indicationSeverityOk-189 makeStyles-monospace-185 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-194 makeStyles-indicationSeverityOk-195 makeStyles-monospace-191 makeStyles-nowrap-193"
                 scope="row"
               >
                 <span>
@@ -5855,13 +5841,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 −∞ &lt; x ≤ 0.8
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-186"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-192"
                 scope="row"
               >
                 <p
@@ -5885,7 +5871,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </a>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 <span>
@@ -5893,7 +5879,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 0.0000
@@ -5907,7 +5893,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-188 makeStyles-indicationSeverityWarning-190 makeStyles-monospace-185 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-indication-194 makeStyles-indicationSeverityWarning-196 makeStyles-monospace-191 makeStyles-nowrap-193"
                 scope="row"
               >
                 <span>
@@ -5915,13 +5901,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 </span>
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-185 makeStyles-deemphasized-186 makeStyles-nowrap-187"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-191 makeStyles-deemphasized-192 makeStyles-nowrap-193"
                 scope="row"
               >
                 −∞ &lt; x ≤ 3
               </td>
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-186"
+                class="MuiTableCell-root MuiTableCell-body makeStyles-deemphasized-192"
                 scope="row"
               >
                 <p
@@ -5936,7 +5922,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
       </div>
     </div>
     <div
-      class="makeStyles-accordions-170"
+      class="makeStyles-accordions-174"
     >
       <div
         class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
@@ -5995,7 +5981,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 role="region"
               >
                 <div
-                  class="MuiAccordionDetails-root makeStyles-accordionDetails-171"
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-175"
                 >
                   <p
                     class="MuiTypography-root MuiTypography-body1"
@@ -6155,7 +6141,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                 role="region"
               >
                 <div
-                  class="MuiAccordionDetails-root makeStyles-accordionDetails-171"
+                  class="MuiAccordionDetails-root makeStyles-accordionDetails-175"
                 >
                   <p
                     class="MuiTypography-root MuiTypography-body1"
@@ -6168,7 +6154,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                     This query should only be used to monitor event flow. The best way to use it is to run it multiple times and ensure that counts go up and are roughly distributed as expected. Counts may also go down as events are moved to prod_events every day.
                   </p>
                   <pre
-                    class="makeStyles-pre-173"
+                    class="makeStyles-pre-177"
                   >
                     <code>
                       with tracks_counts as (
@@ -6202,10 +6188,10 @@ inner join wpcom.experiment_variations using (experiment_variation_id)
 
 exports[`renders the condensed table with some analyses in non-debug mode for a Revenue Metric 2`] = `
 <div
-  class="MuiTableContainer-root makeStyles-root-193 analysis-detail-panel"
+  class="MuiTableContainer-root makeStyles-root-199 analysis-detail-panel"
 >
   <p
-    class="MuiTypography-root makeStyles-dataTableHeader-207 MuiTypography-body1"
+    class="MuiTypography-root makeStyles-dataTableHeader-213 MuiTypography-body1"
   >
     Summary
   </p>
@@ -6225,7 +6211,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             class="MuiTableCell-root MuiTableCell-body"
           >
             <h5
-              class="MuiTypography-root makeStyles-aggregateRecommendation-206 MuiTypography-h5 MuiTypography-gutterBottom"
+              class="MuiTypography-root makeStyles-aggregateRecommendation-212 MuiTypography-h5 MuiTypography-gutterBottom"
             >
               Deploy 
               test
@@ -6235,7 +6221,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             </strong>
              
             <span
-              class="makeStyles-root-209"
+              class="makeStyles-root-215"
               title="09/05/2020, 20:00:00"
             >
               2020-05-10
@@ -6260,7 +6246,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     </table>
   </div>
   <p
-    class="MuiTypography-root makeStyles-dataTableHeader-207 MuiTypography-body1"
+    class="MuiTypography-root makeStyles-dataTableHeader-213 MuiTypography-body1"
   >
     Analysis
   </p>
@@ -6268,7 +6254,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     class="MuiPaper-root MuiTableContainer-root MuiPaper-elevation1 MuiPaper-rounded"
   >
     <table
-      class="MuiTable-root makeStyles-coolTable-208"
+      class="MuiTable-root makeStyles-coolTable-214"
     >
       <thead
         class="MuiTableHead-root"
@@ -6309,59 +6295,56 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableRow-root"
         >
           <th
-            class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-201 makeStyles-headerCell-194 makeStyles-credibleIntervalHeader-205"
+            class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-207 makeStyles-headerCell-200 makeStyles-credibleIntervalHeader-211"
             role="cell"
             scope="row"
             valign="top"
           >
             <span
-              class="makeStyles-monospace-195"
+              class="makeStyles-monospace-201"
             >
               test
             </span>
           </th>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-195 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-201 MuiTableCell-alignRight"
           >
             <span
-              class="makeStyles-tooltipped-202"
+              class="makeStyles-tooltipped-189"
             >
-              USD 
               -1.12
-              
                to 
-              USD 
+              +
               1
-              
+               
+              USD
             </span>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-195 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-201 MuiTableCell-alignRight"
           >
             <span
-              class="makeStyles-tooltipped-202"
+              class="makeStyles-tooltipped-189"
             >
-              USD 
               -0.01
-              
                to 
-              USD 
+              +
               0.01
-              
+               
+              USD
             </span>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-195 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-201 MuiTableCell-alignRight"
           >
             <span
-              class="makeStyles-tooltipped-202"
+              class="makeStyles-tooltipped-189"
             >
-              
-              -5000
-              %
+              -50
                to 
-              
-              5000
+              +
+              50
+               
               %
             </span>
           </td>
@@ -6370,39 +6353,39 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
           class="MuiTableRow-root"
         >
           <th
-            class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-201 makeStyles-headerCell-194 makeStyles-credibleIntervalHeader-205"
+            class="MuiTableCell-root MuiTableCell-head makeStyles-rowHeader-207 makeStyles-headerCell-200 makeStyles-credibleIntervalHeader-211"
             role="cell"
             scope="row"
             valign="top"
           >
             <span
-              class="makeStyles-monospace-195"
+              class="makeStyles-monospace-201"
             >
               control
             </span>
           </th>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-195 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-201 MuiTableCell-alignRight"
           >
             <span
-              class="makeStyles-tooltipped-202"
+              class="makeStyles-tooltipped-189"
             >
-              USD 
+              +
               0
-              
                to 
-              USD 
+              +
               10
-              
+               
+              USD
             </span>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-195 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-201 MuiTableCell-alignRight"
           >
             Baseline
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-195 MuiTableCell-alignRight"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-201 MuiTableCell-alignRight"
           >
             Baseline
           </td>
@@ -6411,7 +6394,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     </table>
   </div>
   <p
-    class="MuiTypography-root makeStyles-analysisFinePrint-204 MuiTypography-body1"
+    class="MuiTypography-root makeStyles-analysisFinePrint-210 MuiTypography-body1"
   >
     95% Credible Intervals (CIs). 
     <strong>
@@ -6432,7 +6415,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ).
   </p>
   <div
-    class="makeStyles-metricEstimatePlots-196"
+    class="makeStyles-metricEstimatePlots-202"
   />
 </div>
 `;
@@ -6442,7 +6425,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
   "calls": Array [
     Array [
       Object {
-        "className": "makeStyles-participantsPlot-168",
+        "className": "makeStyles-participantsPlot-172",
         "data": Array [
           Object {
             "line": Object {
@@ -6501,7 +6484,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-197",
+        "className": "makeStyles-metricEstimatePlot-203",
         "data": Array [
           Object {
             "line": Object {
@@ -6597,7 +6580,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-197",
+        "className": "makeStyles-metricEstimatePlot-203",
         "data": Array [
           Object {
             "line": Object {
@@ -6699,7 +6682,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-197",
+        "className": "makeStyles-metricEstimatePlot-203",
         "data": Array [
           Object {
             "line": Object {
@@ -6795,7 +6778,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
     ],
     Array [
       Object {
-        "className": "makeStyles-metricEstimatePlot-197",
+        "className": "makeStyles-metricEstimatePlot-203",
         "data": Array [
           Object {
             "line": Object {
