@@ -25,24 +25,27 @@ import React, { useState } from 'react'
 import Plot from 'react-plotly.js'
 
 import Attribute from 'src/components/general/Attribute'
-import MetricValue, { metricValueFormatData } from 'src/components/general/MetricValue'
 import * as Analyses from 'src/lib/analyses'
 import * as Experiments from 'src/lib/experiments'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
-import { Analysis, AnalysisStrategy, ExperimentFull, MetricAssignment, MetricBare } from 'src/lib/schemas'
+import {
+  Analysis,
+  AnalysisStrategy,
+  ExperimentFull,
+  MetricAssignment,
+  MetricBare,
+  MetricParameterType,
+} from 'src/lib/schemas'
 import * as Visualizations from 'src/lib/visualizations'
 import { isDebugMode } from 'src/utils/general'
 import { createStaticTableOptions } from 'src/utils/material-table'
 import { formatIsoDate } from 'src/utils/time'
 
+import MetricValueInterval from '../../../general/MetricValueInterval'
 import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
 import HealthIndicatorTable from './HealthIndicatorTable'
 import MetricAssignmentResults from './MetricAssignmentResults'
-
-const formatTopLevelRelativeChange = (n: number): string => {
-  return `${0 <= n ? '+' : ''}${n.toFixed(2)}`
-}
 
 const indicationSeverityClassSymbol = (severity: Analyses.HealthIndicationSeverity) => `indicationSeverity${severity}`
 
@@ -303,46 +306,13 @@ export default function ActualExperimentResults({
         }
 
         return (
-          <Tooltip
-            title={
-              <>
-                <strong>Interpretation:</strong>
-                <br />
-                There is a 95% probability that the absolute change is between{' '}
-                <MetricValue
-                  value={latestEstimates.diff.bottom}
-                  metricParameterType={metric.parameterType}
-                  isDifference={true}
-                />{' '}
-                and{' '}
-                <MetricValue
-                  value={latestEstimates.diff.top}
-                  metricParameterType={metric.parameterType}
-                  isDifference={true}
-                />
-                .
-              </>
-            }
-          >
-            <span className={classes.topLevelDiff}>
-              <MetricValue
-                value={latestEstimates.diff.bottom}
-                metricParameterType={metric.parameterType}
-                isDifference={true}
-                displayUnit={false}
-                displayPositiveSign={true}
-              />
-              &nbsp;to&nbsp;
-              <MetricValue
-                value={latestEstimates.diff.top}
-                metricParameterType={metric.parameterType}
-                isDifference={true}
-                displayUnit={false}
-                displayPositiveSign={true}
-              />
-              &nbsp;{metricValueFormatData[`${metric.parameterType}_difference`].unit}
-            </span>
-          </Tooltip>
+          <MetricValueInterval
+            intervalName={'the absolute change between variations'}
+            metricParameterType={metric.parameterType}
+            bottomValue={latestEstimates.diff.bottom}
+            topValue={latestEstimates.diff.top}
+            displayTooltipHint={false}
+          />
         )
       },
       cellStyle: {
@@ -372,24 +342,17 @@ export default function ActualExperimentResults({
         }
 
         return (
-          <Tooltip
-            title={
-              <>
-                <strong>Interpretation:</strong>
-                <br />
-                There is a 95% probability that the relative change is between{' '}
-                {Analyses.ratioToPercentDifference(latestEstimates.ratio.bottom).toFixed(2)}% and{' '}
-                {Analyses.ratioToPercentDifference(latestEstimates.ratio.top).toFixed(2)}%
-              </>
-            }
-          >
-            <span className={classes.topLevelDiff}>
-              {formatTopLevelRelativeChange(Analyses.ratioToPercentDifference(latestEstimates.ratio.bottom))}
-              &nbsp;to&nbsp;
-              {formatTopLevelRelativeChange(Analyses.ratioToPercentDifference(latestEstimates.ratio.top))}&nbsp;%
-            </span>
-          </Tooltip>
+          <MetricValueInterval
+            intervalName={'the relative change between variations'}
+            metricParameterType={MetricParameterType.Conversion}
+            bottomValue={Analyses.ratioToDifferenceRatio(latestEstimates.ratio.bottom)}
+            topValue={Analyses.ratioToDifferenceRatio(latestEstimates.ratio.top)}
+            displayTooltipHint={false}
+          />
         )
+      },
+      cellStyle: {
+        fontFamily: theme.custom.fonts.monospace,
       },
     },
     {

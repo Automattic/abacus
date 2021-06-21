@@ -9,7 +9,6 @@ import {
   TableHead,
   TableRow,
   Theme,
-  Tooltip,
   Typography,
 } from '@material-ui/core'
 import clsx from 'clsx'
@@ -33,6 +32,7 @@ import {
 import * as Variations from 'src/lib/variations'
 import * as Visualizations from 'src/lib/visualizations'
 
+import MetricValueInterval from '../../../general/MetricValueInterval'
 import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -295,114 +295,35 @@ export default function MetricAssignmentResults({
                     <span className={classes.monospace}>{variation.name}</span>
                   </TableCell>
                   <TableCell className={classes.monospace} align='right'>
-                    <Tooltip
-                      title={
-                        <>
-                          <strong>Interpretation:</strong>
-                          <br />
-                          There is a 95% probability that the metric value between variations is between{' '}
-                          <MetricValue
-                            value={latestEstimates[`variation_${variation.variationId}`].bottom}
-                            metricParameterType={metric.parameterType}
-                          />{' '}
-                          and{' '}
-                          <MetricValue
-                            value={latestEstimates[`variation_${variation.variationId}`].top}
-                            metricParameterType={metric.parameterType}
-                          />
-                          .
-                        </>
-                      }
-                    >
-                      <span className={classes.tooltipped}>
-                        <MetricValue
-                          value={latestEstimates[`variation_${variation.variationId}`].bottom}
-                          metricParameterType={metric.parameterType}
-                        />
-                        &nbsp;to&nbsp;
-                        <MetricValue
-                          value={latestEstimates[`variation_${variation.variationId}`].top}
-                          metricParameterType={metric.parameterType}
-                        />
-                      </span>
-                    </Tooltip>
+                    <MetricValueInterval
+                      intervalName={'the metric value'}
+                      metricParameterType={metric.parameterType}
+                      bottomValue={latestEstimates[`variation_${variation.variationId}`].bottom}
+                      topValue={latestEstimates[`variation_${variation.variationId}`].top}
+                    />
                   </TableCell>
                   <TableCell className={classes.monospace} align='right'>
                     {variation.isDefault ? (
                       'Baseline'
                     ) : (
-                      <Tooltip
-                        title={
-                          <>
-                            <strong>Interpretation:</strong>
-                            <br />
-                            There is a 95% probability that the absolute difference between variations is between{' '}
-                            <MetricValue
-                              value={latestEstimates.diff.bottom}
-                              metricParameterType={metric.parameterType}
-                              isDifference={true}
-                            />{' '}
-                            and{' '}
-                            <MetricValue
-                              value={latestEstimates.diff.top}
-                              metricParameterType={metric.parameterType}
-                              isDifference={true}
-                            />
-                            .
-                          </>
-                        }
-                      >
-                        <span className={classes.tooltipped}>
-                          <MetricValue
-                            value={latestEstimates.diff.bottom}
-                            metricParameterType={metric.parameterType}
-                            isDifference={true}
-                          />
-                          &nbsp;to&nbsp;
-                          <MetricValue
-                            value={latestEstimates.diff.top}
-                            metricParameterType={metric.parameterType}
-                            isDifference={true}
-                          />
-                        </span>
-                      </Tooltip>
+                      <MetricValueInterval
+                        intervalName={'the absolute change between variations'}
+                        metricParameterType={metric.parameterType}
+                        bottomValue={latestEstimates.diff.bottom}
+                        topValue={latestEstimates.diff.top}
+                      />
                     )}
                   </TableCell>
                   <TableCell className={classes.monospace} align='right'>
                     {variation.isDefault ? (
                       'Baseline'
                     ) : (
-                      <Tooltip
-                        title={
-                          <>
-                            <strong>Interpretation:</strong>
-                            <br />
-                            There is a 95% probability that the relative difference between variations is between{' '}
-                            <MetricValue
-                              value={Analyses.ratioToPercentDifference(latestEstimates.ratio.bottom)}
-                              metricParameterType={MetricParameterType.Conversion}
-                            />{' '}
-                            and{' '}
-                            <MetricValue
-                              value={Analyses.ratioToPercentDifference(latestEstimates.ratio.top)}
-                              metricParameterType={MetricParameterType.Conversion}
-                            />
-                            .
-                          </>
-                        }
-                      >
-                        <span className={classes.tooltipped}>
-                          <MetricValue
-                            value={Analyses.ratioToPercentDifference(latestEstimates.ratio.bottom)}
-                            metricParameterType={MetricParameterType.Conversion}
-                          />
-                          &nbsp;to&nbsp;
-                          <MetricValue
-                            value={Analyses.ratioToPercentDifference(latestEstimates.ratio.top)}
-                            metricParameterType={MetricParameterType.Conversion}
-                          />
-                        </span>
-                      </Tooltip>
+                      <MetricValueInterval
+                        intervalName={'the relative change between variations'}
+                        metricParameterType={MetricParameterType.Conversion}
+                        bottomValue={Analyses.ratioToDifferenceRatio(latestEstimates.ratio.bottom)}
+                        topValue={Analyses.ratioToDifferenceRatio(latestEstimates.ratio.top)}
+                      />
                     )}
                   </TableCell>
                 </TableRow>
