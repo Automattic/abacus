@@ -99,7 +99,7 @@ export function getAggregateRecommendation(
     practicallySignificant = PracticalSignificanceStatus.Maybe
   }
 
-  if (!analysis.recommendation.endExperiment) {
+  if (practicallySignificant === PracticalSignificanceStatus.Maybe) {
     return {
       decision: AggregateRecommendationDecision.Inconclusive,
       statisticallySignificant,
@@ -107,7 +107,7 @@ export function getAggregateRecommendation(
     }
   }
 
-  if (!analysis.recommendation.chosenVariationId) {
+  if (practicallySignificant === PracticalSignificanceStatus.No) {
     return {
       decision: AggregateRecommendationDecision.DeployAnyVariation,
       statisticallySignificant,
