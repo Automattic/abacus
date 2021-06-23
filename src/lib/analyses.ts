@@ -23,6 +23,15 @@ export const RecommendationWarningToHuman = {
   [RecommendationWarning.WideCi]: 'The CI is too wide in comparison to the ROPE. Collect more data to be safer.',
 }
 
+export enum PracticalSignificanceStatus {
+  Yes = 'Yes',
+  No = 'No',
+  /**
+   * If the CI partially contains ROPE then there is a chance that the real value is either within ROPE (not practical) or outside (practical).
+   */
+  Maybe = 'Maybe',
+}
+
 export enum AggregateRecommendationDecision {
   ManualAnalysisRequired = 'ManualAnalysisRequired',
   MissingAnalysis = 'MissingAnalysis',
@@ -34,6 +43,8 @@ export enum AggregateRecommendationDecision {
 export interface AggregateRecommendation {
   decision: AggregateRecommendationDecision
   chosenVariationId?: number
+  statisticallySignificant?: boolean
+  practicallySignificant?: PracticalSignificanceStatus
 }
 
 /**
@@ -59,27 +70,54 @@ export function getAggregateRecommendation(
   }
 
   const analysis = analyses.find((analysis) => analysis.analysisStrategy === defaultStrategy)
-  if (!analysis || !analysis.recommendation) {
+  const metricAssignment =
+    analysis &&
+    experiment.metricAssignments.find(
+      (metricAssignment) => metricAssignment.metricAssignmentId === analysis.metricAssignmentId,
+    )
+  if (!analysis || !analysis.recommendation || !analysis.metricEstimates || !metricAssignment) {
     return {
       decision: AggregateRecommendationDecision.MissingAnalysis,
     }
   }
 
+  const statisticallySignificant = 0 < analysis.metricEstimates.diff.bottom || analysis.metricEstimates.diff.top < 0
+  let practicallySignificant = PracticalSignificanceStatus.No
+  if (
+    // CI doesn't contain ROPE
+    metricAssignment.minDifference < analysis.metricEstimates.diff.bottom ||
+    analysis.metricEstimates.diff.top < -metricAssignment.minDifference
+  ) {
+    practicallySignificant = PracticalSignificanceStatus.Yes
+  } else if (
+    // CI only partially overlaps with ROPE
+    metricAssignment.minDifference < analysis.metricEstimates.diff.top ||
+    analysis.metricEstimates.diff.bottom < -metricAssignment.minDifference
+  ) {
+    practicallySignificant = PracticalSignificanceStatus.Maybe
+  }
+
   if (!analysis.recommendation.endExperiment) {
     return {
       decision: AggregateRecommendationDecision.Inconclusive,
+      statisticallySignificant,
+      practicallySignificant,
     }
   }
 
   if (!analysis.recommendation.chosenVariationId) {
     return {
       decision: AggregateRecommendationDecision.DeployAnyVariation,
+      statisticallySignificant,
+      practicallySignificant,
     }
   }
 
   return {
     decision: AggregateRecommendationDecision.DeployChosenVariation,
     chosenVariationId: analysis.recommendation.chosenVariationId,
+    statisticallySignificant,
+    practicallySignificant,
   }
 }
 
