@@ -5,11 +5,12 @@ import { AnalysisStrategy, RecommendationReason } from './schemas'
 
 describe('getAggregateRecommendation', () => {
   it('should work correctly for single analyses', () => {
-    expect(Analyses.getAggregateRecommendation([], AnalysisStrategy.PpNaive)).toEqual({
+    expect(Analyses.getAggregateRecommendation(Fixtures.createExperimentFull(), [], AnalysisStrategy.PpNaive)).toEqual({
       decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
     })
     expect(
       Analyses.getAggregateRecommendation(
+        Fixtures.createExperimentFull(),
         [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
@@ -23,6 +24,7 @@ describe('getAggregateRecommendation', () => {
     })
     expect(
       Analyses.getAggregateRecommendation(
+        Fixtures.createExperimentFull(),
         [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
@@ -41,6 +43,7 @@ describe('getAggregateRecommendation', () => {
     })
     expect(
       Analyses.getAggregateRecommendation(
+        Fixtures.createExperimentFull(),
         [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
@@ -59,6 +62,7 @@ describe('getAggregateRecommendation', () => {
     })
     expect(
       Analyses.getAggregateRecommendation(
+        Fixtures.createExperimentFull(),
         [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
@@ -81,6 +85,7 @@ describe('getAggregateRecommendation', () => {
   it('should work correctly for multiple analyses without conflict', () => {
     expect(
       Analyses.getAggregateRecommendation(
+        Fixtures.createExperimentFull(),
         [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
@@ -110,6 +115,7 @@ describe('getAggregateRecommendation', () => {
 
     expect(
       Analyses.getAggregateRecommendation(
+        Fixtures.createExperimentFull(),
         [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
@@ -134,6 +140,7 @@ describe('getAggregateRecommendation', () => {
 
     expect(
       Analyses.getAggregateRecommendation(
+        Fixtures.createExperimentFull(),
         [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
@@ -157,6 +164,7 @@ describe('getAggregateRecommendation', () => {
 
     expect(
       Analyses.getAggregateRecommendation(
+        Fixtures.createExperimentFull(),
         [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
@@ -184,6 +192,7 @@ describe('getAggregateRecommendation', () => {
     })
     expect(
       Analyses.getAggregateRecommendation(
+        Fixtures.createExperimentFull(),
         [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
@@ -208,6 +217,7 @@ describe('getAggregateRecommendation', () => {
   it('should work correctly for multiple analyses with conflict', () => {
     expect(
       Analyses.getAggregateRecommendation(
+        Fixtures.createExperimentFull(),
         [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
@@ -236,6 +246,7 @@ describe('getAggregateRecommendation', () => {
 
     expect(
       Analyses.getAggregateRecommendation(
+        Fixtures.createExperimentFull(),
         [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,
@@ -265,6 +276,7 @@ describe('getAggregateRecommendation', () => {
 
     expect(
       Analyses.getAggregateRecommendation(
+        Fixtures.createExperimentFull(),
         [
           Fixtures.createAnalysis({
             analysisStrategy: AnalysisStrategy.PpNaive,

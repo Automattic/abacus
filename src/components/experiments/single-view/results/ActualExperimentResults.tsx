@@ -183,6 +183,7 @@ export default function ActualExperimentResults({
       metric,
       analysesByStrategyDateAsc,
       aggregateRecommendation: Analyses.getAggregateRecommendation(
+        experiment,
         Object.values(analysesByStrategyDateAsc)
           .map(_.last.bind(null))
           .filter((x) => x !== undefined) as Analysis[],
@@ -227,6 +228,7 @@ export default function ActualExperimentResults({
   // istanbul ignore next; trivial
   const totalParticipants = latestPrimaryMetricAnalysis?.participantStats['total'] ?? 0
   const primaryMetricAggregateRecommendation = Analyses.getAggregateRecommendation(
+    experiment,
     Object.values(primaryMetricLatestAnalysesByStrategy).filter((x) => x) as Analysis[],
     strategy,
   )

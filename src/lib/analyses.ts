@@ -43,6 +43,7 @@ export interface AggregateRecommendation {
  * @param defaultStrategy Default strategy in the context of an aggregateRecommendation..
  */
 export function getAggregateRecommendation(
+  experiment: ExperimentFull,
   analyses: Analysis[],
   defaultStrategy: AnalysisStrategy,
 ): AggregateRecommendation {
@@ -57,20 +58,20 @@ export function getAggregateRecommendation(
     }
   }
 
-  const recommendation = analyses.find((analysis) => analysis.analysisStrategy === defaultStrategy)?.recommendation
-  if (!recommendation) {
+  const analysis = analyses.find((analysis) => analysis.analysisStrategy === defaultStrategy)
+  if (!analysis || !analysis.recommendation) {
     return {
       decision: AggregateRecommendationDecision.MissingAnalysis,
     }
   }
 
-  if (!recommendation.endExperiment) {
+  if (!analysis.recommendation.endExperiment) {
     return {
       decision: AggregateRecommendationDecision.Inconclusive,
     }
   }
 
-  if (!recommendation.chosenVariationId) {
+  if (!analysis.recommendation.chosenVariationId) {
     return {
       decision: AggregateRecommendationDecision.DeployAnyVariation,
     }
@@ -78,7 +79,7 @@ export function getAggregateRecommendation(
 
   return {
     decision: AggregateRecommendationDecision.DeployChosenVariation,
-    chosenVariationId: recommendation.chosenVariationId,
+    chosenVariationId: analysis.recommendation.chosenVariationId,
   }
 }
 
