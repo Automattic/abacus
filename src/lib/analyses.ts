@@ -1,7 +1,7 @@
 import { binomialProbValue } from 'src/utils/math'
 
 import * as Experiments from './experiments'
-import { Analysis, AnalysisStrategy, ExperimentFull, RecommendationWarning } from './schemas'
+import { Analysis, AnalysisStrategy, ExperimentFull, MetricBare, RecommendationWarning } from './schemas'
 
 /**
  * Mapping from AnalysisStrategy to human-friendly descriptions.
@@ -55,6 +55,8 @@ export interface AggregateRecommendation {
  */
 export function getAggregateRecommendation(
   experiment: ExperimentFull,
+  // See below
+  _metric: MetricBare,
   analyses: Analysis[],
   defaultStrategy: AnalysisStrategy,
 ): AggregateRecommendation {
@@ -113,8 +115,20 @@ export function getAggregateRecommendation(
     }
   }
 
+  // Got so close before I realised higherIsBetter is missing:
+  // const defaultVariation = experiment.variations.find(variation => variation.isDefault) as Variation
+  // const nonDefaultVariation = experiment.variations.find(variation => !variation.isDefault) as Variation
+  // (Doesn't matter which end of the interval we choose as practical signficance implies statistical significance.)
+  // const chosenVariation = analysis.metricEstimates.diff.bottom > 0 === metric.higherIsBetter ? nonDefaultVariation : defaultVariation
+
+  // Necessary typeguard
+  if (!analysis.recommendation?.chosenVariationId) {
+    throw new Error('Bad analysis data')
+  }
+
   return {
     decision: AggregateRecommendationDecision.DeployChosenVariation,
+    // chosenVariationId: chosenVariations.variationId,
     chosenVariationId: analysis.recommendation.chosenVariationId,
     statisticallySignificant,
     practicallySignificant,
