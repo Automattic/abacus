@@ -406,11 +406,11 @@ export default function MetricAssignmentResults({
                 <TableCell>Variant</TableCell>
                 <TableCell align='right'>Users</TableCell>
                 <TableCell align='right'>
-                  {metric.parameterType === MetricParameterType.Revenue ? 'Revenue (USD)' : 'Conversions'}
+                  {metric.parameterType === MetricParameterType.Revenue ? 'Revenue' : 'Conversions'}
                 </TableCell>
                 <TableCell align='right'>
                   {metric.parameterType === MetricParameterType.Revenue
-                    ? 'Average revenue per user (USD)'
+                    ? 'Average revenue per user (ARPU)'
                     : 'Conversion rate'}
                 </TableCell>
               </TableRow>
@@ -432,13 +432,19 @@ export default function MetricAssignmentResults({
                       {latestAnalysis.participantStats[`variation_${variation.variationId}`].toLocaleString()}
                     </TableCell>
                     <TableCell className={classes.monospace} align='right'>
-                      {(
-                        latestAnalysis.participantStats[`variation_${variation.variationId}`] *
-                        latestEstimates[`variation_${variation.variationId}`].estimate
-                      ).toLocaleString()}
+                      <MetricValue
+                        value={
+                          latestAnalysis.participantStats[`variation_${variation.variationId}`] *
+                          latestEstimates[`variation_${variation.variationId}`].estimate
+                        }
+                        metricParameterType={metric.parameterType}
+                      />
                     </TableCell>
                     <TableCell className={classes.monospace} align='right'>
-                      {latestEstimates[`variation_${variation.variationId}`].estimate.toLocaleString()}
+                      <MetricValue
+                        value={latestEstimates[`variation_${variation.variationId}`].estimate}
+                        metricParameterType={metric.parameterType}
+                      />
                     </TableCell>
                   </TableRow>
                 </React.Fragment>
