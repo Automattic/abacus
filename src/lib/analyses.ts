@@ -1,7 +1,15 @@
 import { binomialProbValue } from 'src/utils/math'
 
 import * as Experiments from './experiments'
-import { Analysis, AnalysisStrategy, ExperimentFull, MetricBare, RecommendationWarning } from './schemas'
+import {
+  Analysis,
+  AnalysisStrategy,
+  ExperimentFull,
+  MetricAssignment,
+  MetricBare,
+  RecommendationWarning,
+  Variation,
+} from './schemas'
 
 /**
  * Mapping from AnalysisStrategy to human-friendly descriptions.
@@ -32,6 +40,44 @@ export enum PracticalSignificanceStatus {
   Maybe = 'Maybe',
 }
 
+interface DiffCredibleIntervalStats {
+  statisticallySignificant: boolean
+  practicallySignificant: PracticalSignificanceStatus
+  positiveDifference: boolean
+}
+
+function getDiffCredibleIntevalStats(
+  analysis: Analysis,
+  metricAssignment: MetricAssignment,
+): DiffCredibleIntervalStats | null {
+  if (!analysis || !analysis.metricEstimates) {
+    return null
+  }
+
+  let practicallySignificant = PracticalSignificanceStatus.No
+  if (
+    // CI doesn't contain ROPE
+    metricAssignment.minDifference < analysis.metricEstimates.diff.bottom ||
+    analysis.metricEstimates.diff.top < -metricAssignment.minDifference
+  ) {
+    practicallySignificant = PracticalSignificanceStatus.Yes
+  } else if (
+    // CI only partially overlaps with ROPE
+    metricAssignment.minDifference < analysis.metricEstimates.diff.top ||
+    analysis.metricEstimates.diff.bottom < -metricAssignment.minDifference
+  ) {
+    practicallySignificant = PracticalSignificanceStatus.Maybe
+  }
+  const statisticallySignificant = 0 < analysis.metricEstimates.diff.bottom || analysis.metricEstimates.diff.top < 0
+  const positiveDifference = 0 < analysis.metricEstimates.diff.bottom
+
+  return {
+    statisticallySignificant,
+    practicallySignificant,
+    positiveDifference,
+  }
+}
+
 export enum AggregateRecommendationDecision {
   ManualAnalysisRequired = 'ManualAnalysisRequired',
   MissingAnalysis = 'MissingAnalysis',
@@ -55,48 +101,53 @@ export interface AggregateRecommendation {
  */
 export function getAggregateRecommendation(
   experiment: ExperimentFull,
-  // See below
-  _metric: MetricBare,
+  metric: MetricBare,
   analyses: Analysis[],
   defaultStrategy: AnalysisStrategy,
 ): AggregateRecommendation {
-  const recommendationChosenVariationIds = analyses
-    .map((analysis) => analysis.recommendation)
-    .map((recommendation) => recommendation?.chosenVariationId)
-    .filter((x) => x)
-  const recommendationConflict = [...new Set(recommendationChosenVariationIds)].length > 1
-  if (recommendationConflict) {
-    return {
-      decision: AggregateRecommendationDecision.ManualAnalysisRequired,
-    }
-  }
-
   const analysis = analyses.find((analysis) => analysis.analysisStrategy === defaultStrategy)
   const metricAssignment =
     analysis &&
     experiment.metricAssignments.find(
       (metricAssignment) => metricAssignment.metricAssignmentId === analysis.metricAssignmentId,
     )
-  if (!analysis || !analysis.recommendation || !analysis.metricEstimates || !metricAssignment) {
+  const diffCredibleIntervalStats =
+    analysis && metricAssignment && getDiffCredibleIntevalStats(analysis, metricAssignment)
+  if (
+    !analysis ||
+    !analysis.recommendation ||
+    !analysis.metricEstimates ||
+    !metricAssignment ||
+    !diffCredibleIntervalStats
+  ) {
     return {
       decision: AggregateRecommendationDecision.MissingAnalysis,
     }
   }
 
-  const statisticallySignificant = 0 < analysis.metricEstimates.diff.bottom || analysis.metricEstimates.diff.top < 0
-  let practicallySignificant = PracticalSignificanceStatus.No
-  if (
-    // CI doesn't contain ROPE
-    metricAssignment.minDifference < analysis.metricEstimates.diff.bottom ||
-    analysis.metricEstimates.diff.top < -metricAssignment.minDifference
-  ) {
-    practicallySignificant = PracticalSignificanceStatus.Yes
-  } else if (
-    // CI only partially overlaps with ROPE
-    metricAssignment.minDifference < analysis.metricEstimates.diff.top ||
-    analysis.metricEstimates.diff.bottom < -metricAssignment.minDifference
-  ) {
-    practicallySignificant = PracticalSignificanceStatus.Maybe
+  const { practicallySignificant, statisticallySignificant, positiveDifference } = diffCredibleIntervalStats
+
+  /**
+   * A recommendation conflict is currently set to when there are multiple practical analyses with diff CIs in different directions.
+   */
+  const recommendationConflict =
+    [
+      ...new Set(
+        analyses
+          .map((analysis) => getDiffCredibleIntevalStats(analysis, metricAssignment))
+          .filter(
+            (stats): stats is DiffCredibleIntervalStats =>
+              !!stats && stats.practicallySignificant === PracticalSignificanceStatus.Yes,
+          )
+          .map((stats) => stats.positiveDifference),
+      ),
+    ].length > 1
+  if (recommendationConflict) {
+    return {
+      decision: AggregateRecommendationDecision.ManualAnalysisRequired,
+      statisticallySignificant,
+      practicallySignificant,
+    }
   }
 
   if (practicallySignificant === PracticalSignificanceStatus.Maybe) {
@@ -115,21 +166,12 @@ export function getAggregateRecommendation(
     }
   }
 
-  // Got so close before I realised higherIsBetter is missing:
-  // const defaultVariation = experiment.variations.find(variation => variation.isDefault) as Variation
-  // const nonDefaultVariation = experiment.variations.find(variation => !variation.isDefault) as Variation
-  // (Doesn't matter which end of the interval we choose as practical signficance implies statistical significance.)
-  // const chosenVariation = analysis.metricEstimates.diff.bottom > 0 === metric.higherIsBetter ? nonDefaultVariation : defaultVariation
-
-  // Necessary typeguard
-  if (!analysis.recommendation?.chosenVariationId) {
-    throw new Error('Bad analysis data')
-  }
-
+  const defaultVariation = experiment.variations.find((variation) => variation.isDefault) as Variation
+  const nonDefaultVariation = experiment.variations.find((variation) => !variation.isDefault) as Variation
   return {
     decision: AggregateRecommendationDecision.DeployChosenVariation,
-    // chosenVariationId: chosenVariations.variationId,
-    chosenVariationId: analysis.recommendation.chosenVariationId,
+    chosenVariationId:
+      positiveDifference === metric.higherIsBetter ? nonDefaultVariation.variationId : defaultVariation.variationId,
     statisticallySignificant,
     practicallySignificant,
   }
