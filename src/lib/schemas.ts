@@ -108,6 +108,7 @@ export const metricBareSchema = yup
     name: nameSchema.defined(),
     description: yup.string().defined(),
     parameterType: yup.string().oneOf(Object.values(MetricParameterType)).defined(),
+    higherIsBetter: yup.boolean().defined(),
   })
   .defined()
   .camelCase()
@@ -115,7 +116,6 @@ export interface MetricBare extends yup.InferType<typeof metricBareSchema> {}
 
 export const metricFullSchema = metricBareSchema
   .shape({
-    higherIsBetter: yup.boolean().defined(),
     eventParams: yup.mixed().when('parameterType', {
       is: MetricParameterType.Conversion,
       then: yup.array(eventSchema).defined(),
