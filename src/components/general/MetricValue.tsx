@@ -76,16 +76,19 @@ export const metricValueFormatData: Record<string, MetricValueFormat> = {
   revenue_difference: {
     unit: 'USD',
     prefix: '',
-    postfix: <>&nbsp;USD;</>,
+    postfix: <>&nbsp;USD</>,
     transform: identity,
     formatter: usdFormatter,
   },
 }
 
-export function getMetricValueFormatData(
-  metricParameterType: MetricParameterType,
-  isDifference = false,
-): MetricValueFormat {
+export function getMetricValueFormatData({
+  metricParameterType,
+  isDifference,
+}: {
+  metricParameterType: MetricParameterType
+  isDifference: boolean
+}): MetricValueFormat {
   return metricValueFormatData[`${metricParameterType}${isDifference ? '_difference' : ''}`]
 }
 
@@ -110,7 +113,7 @@ export default function MetricValue({
   displayUnit?: boolean
   displayPositiveSign?: boolean
 }): JSX.Element {
-  const format = getMetricValueFormatData(metricParameterType, isDifference)
+  const format = getMetricValueFormatData({ metricParameterType, isDifference })
   return (
     <>
       {displayPositiveSign && 0 <= value && '+'}

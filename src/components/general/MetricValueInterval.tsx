@@ -37,7 +37,7 @@ export default function MetricValueInterval({
   displayPositiveSign?: boolean
 }): JSX.Element {
   const classes = useStyles()
-  const metricValueFormat = getMetricValueFormatData(metricParameterType, isDifference)
+  const metricValueFormat = getMetricValueFormatData({ metricParameterType, isDifference })
   return (
     <Tooltip
       title={
