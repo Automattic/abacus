@@ -37,7 +37,7 @@ export enum PracticalSignificanceStatus {
   /**
    * If the CI partially contains ROPE then there is a chance that the real value is either within ROPE (not practical) or outside (practical).
    */
-  Maybe = 'Maybe',
+  Uncertain = 'Uncertain',
 }
 
 interface DiffCredibleIntervalStats {
@@ -66,7 +66,7 @@ function getDiffCredibleIntevalStats(
     metricAssignment.minDifference < analysis.metricEstimates.diff.top ||
     analysis.metricEstimates.diff.bottom < -metricAssignment.minDifference
   ) {
-    practicallySignificant = PracticalSignificanceStatus.Maybe
+    practicallySignificant = PracticalSignificanceStatus.Uncertain
   }
   const statisticallySignificant = 0 < analysis.metricEstimates.diff.bottom || analysis.metricEstimates.diff.top < 0
   const positiveDifference = 0 < analysis.metricEstimates.diff.bottom
@@ -150,7 +150,7 @@ export function getAggregateRecommendation(
     }
   }
 
-  if (practicallySignificant === PracticalSignificanceStatus.Maybe) {
+  if (practicallySignificant === PracticalSignificanceStatus.Uncertain) {
     return {
       decision: AggregateRecommendationDecision.Inconclusive,
       statisticallySignificant,
