@@ -438,7 +438,11 @@ export default function MetricAssignmentResults({
                           latestAnalysis.participantStats[`variation_${variation.variationId}`] *
                           latestEstimates[`variation_${variation.variationId}`].estimate
                         }
-                        metricParameterType={metric.parameterType}
+                        metricParameterType={
+                          metric.parameterType === MetricParameterType.Conversion
+                            ? MetricParameterType.Count
+                            : metric.parameterType
+                        }
                       />
                     </TableCell>
                     <TableCell className={classes.monospace} align='right'>

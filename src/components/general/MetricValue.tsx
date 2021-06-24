@@ -29,18 +29,31 @@ interface MetricValueFormat {
   unit: React.ReactNode
   prefix: React.ReactNode
   postfix: React.ReactNode
-  transform: (v: number) => number
+  transform: (n: number) => number
+  formatter: (n: number) => string
 }
+
+const standardNumberFormatter = (n: number): string => `${_.round(n, metricValueFormatPrecision)}`
+const usdFormatter = (n: number): string =>
+  n.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })
 
 /**
  * Metric Formatting Data
  */
 export const metricValueFormatData: Record<string, MetricValueFormat> = {
+  count: {
+    unit: '',
+    prefix: '',
+    postfix: '',
+    transform: identity,
+    formatter: (n) => n.toLocaleString(undefined),
+  },
   conversion: {
     unit: '%',
     prefix: '',
     postfix: '%',
     transform: (x: number): number => x * 100,
+    formatter: standardNumberFormatter,
   },
   conversion_difference: {
     unit: 'pp',
@@ -51,18 +64,21 @@ export const metricValueFormatData: Record<string, MetricValueFormat> = {
       </DashedTooltip>
     ),
     transform: (x: number): number => x * 100,
+    formatter: standardNumberFormatter,
   },
   revenue: {
     unit: 'USD',
-    prefix: <>USD&nbsp;</>,
-    postfix: '',
+    prefix: '',
+    postfix: <>&nbsp;USD</>,
     transform: identity,
+    formatter: usdFormatter,
   },
   revenue_difference: {
     unit: 'USD',
-    prefix: <>USD&nbsp;</>,
-    postfix: '',
+    prefix: '',
+    postfix: <>&nbsp;USD;</>,
     transform: identity,
+    formatter: usdFormatter,
   },
 }
 
@@ -99,7 +115,7 @@ export default function MetricValue({
     <>
       {displayPositiveSign && 0 <= value && '+'}
       {displayUnit && format.prefix}
-      {_.round(format.transform(value), metricValueFormatPrecision)}
+      {format.formatter(format.transform(value))}
       {displayUnit && format.postfix}
     </>
   )

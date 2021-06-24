@@ -100,6 +100,8 @@ export interface MetricRevenueParams extends yup.InferType<typeof metricRevenueP
 export enum MetricParameterType {
   Conversion = 'conversion',
   Revenue = 'revenue',
+  // Used in UI only:
+  Count = 'count',
 }
 
 export const metricBareSchema = yup
