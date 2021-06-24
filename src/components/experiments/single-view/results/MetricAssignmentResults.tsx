@@ -316,6 +316,7 @@ export default function MetricAssignmentResults({
                       metricParameterType={metric.parameterType}
                       bottomValue={latestEstimates[`variation_${variation.variationId}`].bottom}
                       topValue={latestEstimates[`variation_${variation.variationId}`].top}
+                      displayPositiveSign={false}
                     />
                   </TableCell>
                   <TableCell className={classes.monospace} align='right'>

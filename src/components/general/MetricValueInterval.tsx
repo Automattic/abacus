@@ -26,6 +26,7 @@ export default function MetricValueInterval({
   bottomValue,
   topValue,
   displayTooltipHint = true,
+  displayPositiveSign = true,
 }: {
   intervalName: string
   metricParameterType: MetricParameterType
@@ -33,6 +34,7 @@ export default function MetricValueInterval({
   bottomValue: number
   topValue: number
   displayTooltipHint?: boolean
+  displayPositiveSign?: boolean
 }): JSX.Element {
   const classes = useStyles()
   const metricValueFormat = getMetricValueFormatData(metricParameterType, isDifference)
@@ -43,8 +45,20 @@ export default function MetricValueInterval({
           <strong>Interpretation:</strong>
           <br />
           There is a 95% probability that {intervalName} is between{' '}
-          <MetricValue value={bottomValue} metricParameterType={metricParameterType} isDifference={isDifference} /> and{' '}
-          <MetricValue value={topValue} metricParameterType={metricParameterType} isDifference={isDifference} />.
+          <MetricValue
+            value={bottomValue}
+            metricParameterType={metricParameterType}
+            isDifference={isDifference}
+            displayPositiveSign={displayPositiveSign}
+          />{' '}
+          and{' '}
+          <MetricValue
+            value={topValue}
+            metricParameterType={metricParameterType}
+            isDifference={isDifference}
+            displayPositiveSign={displayPositiveSign}
+          />
+          .
         </>
       }
     >
@@ -54,7 +68,7 @@ export default function MetricValueInterval({
           metricParameterType={metricParameterType}
           isDifference={isDifference}
           displayUnit={false}
-          displayPositiveSign
+          displayPositiveSign={displayPositiveSign}
         />
         &nbsp;to&nbsp;
         <MetricValue
@@ -62,7 +76,7 @@ export default function MetricValueInterval({
           metricParameterType={metricParameterType}
           isDifference={isDifference}
           displayUnit={false}
-          displayPositiveSign
+          displayPositiveSign={displayPositiveSign}
         />
         &nbsp;{metricValueFormat.unit}
       </span>
