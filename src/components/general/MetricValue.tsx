@@ -46,7 +46,7 @@ export const metricValueFormatData: Record<string, MetricValueFormat> = {
     prefix: '',
     postfix: '',
     transform: identity,
-    formatter: (n) => n.toLocaleString(undefined),
+    formatter: (n: number): string => n.toLocaleString(undefined),
   },
   conversion: {
     unit: '%',
