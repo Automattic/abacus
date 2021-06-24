@@ -41,8 +41,34 @@ export enum PracticalSignificanceStatus {
 }
 
 interface DiffCredibleIntervalStats {
-  statisticallySignificant: boolean
+  /**
+   * A difference is a difference only if it makes a difference:
+   * - A diff CI is practically significant if it exists above (or below) an experimenter set "Minimum difference".
+   * - A diff CI has "uncertian" practical significance if it might still be practically significant - part of it exists above or below the set "Minimum difference".
+   *
+   * Practical significance is part of the approach described in
+   * https://yanirseroussi.com/2016/06/19/making-bayesian-ab-testing-more-accessible/, which is based on
+   * http://doingbayesiandataanalysis.blogspot.com/2013/11/optional-stopping-in-data-collection-p.html.
+   *
+   * Unlike frequentist hypothesis testing, using this approach allows us to _reject_ the null hypothesis - if the diff CI is completely contained
+   * within the "Minimum difference" (AKA the ROPE - region of practical equivalence), we can say that even if there is a difference, there is a 95%
+   * chance that the difference is practically negligible.
+   *
+   * See also some of Kruschke's resources on the topic:
+   * * Precision as a goal for data collection: https://www.youtube.com/playlist?list=PL_mlm7M63Y7j641Y7QJG3TfSxeZMGOsQ4
+   * * Bayesian estimation supersedes the t test: http://psy-ed.wdfiles.com/local--files/start/Kruschke2012.pdf
+   * * Rejecting or accepting parameter values in Bayesian estimation: https://osf.io/s5vdy/download/?format=pdf
+   */
   practicallySignificant: PracticalSignificanceStatus
+  /**
+   * Old fashioned statistical significance: if a CI doesn't contain zero.
+   *
+   * Mostly used for adding more subtlety to recommendations and debugging.
+   */
+  statisticallySignificant: boolean
+  /**
+   * Whether or not a CI is entirely positive. This doesn't necessarily mean good or bad at this point.
+   */
   positiveDifference: boolean
 }
 
@@ -56,13 +82,13 @@ function getDiffCredibleIntevalStats(
 
   let practicallySignificant = PracticalSignificanceStatus.No
   if (
-    // CI doesn't contain ROPE
+    // CI is entirely above or below the experimenter set minDifference:
     metricAssignment.minDifference < analysis.metricEstimates.diff.bottom ||
     analysis.metricEstimates.diff.top < -metricAssignment.minDifference
   ) {
     practicallySignificant = PracticalSignificanceStatus.Yes
   } else if (
-    // CI only partially overlaps with ROPE
+    // CI is partially above or below the experimenter set minDifference:
     metricAssignment.minDifference < analysis.metricEstimates.diff.top ||
     analysis.metricEstimates.diff.bottom < -metricAssignment.minDifference
   ) {
@@ -128,7 +154,7 @@ export function getAggregateRecommendation(
   const { practicallySignificant, statisticallySignificant, positiveDifference } = diffCredibleIntervalStats
 
   /**
-   * A recommendation conflict is currently set to when there are multiple practical analyses with diff CIs in different directions.
+   * A recommendation conflict is currently set to when there are multiple practically significant analyses with diff CIs in different directions.
    */
   const recommendationConflict =
     [
@@ -149,6 +175,8 @@ export function getAggregateRecommendation(
       practicallySignificant,
     }
   }
+
+  // See the DiffCredibleIntervalStats documentation above for whats going on here and why we use practical significance.
 
   if (practicallySignificant === PracticalSignificanceStatus.Uncertain) {
     return {
@@ -661,6 +689,7 @@ export function getExperimentAnalysesHealthIndicators(
   const diffCiWidth = Math.abs(analysis.metricEstimates.diff.top - analysis.metricEstimates.diff.bottom)
   const ropeWidth = metricAssignment.minDifference * 2
   const indicatorDefinitions = [
+    // See Kruschke's Precision as a goal for data collection: https://www.youtube.com/playlist?list=PL_mlm7M63Y7j641Y7QJG3TfSxeZMGOsQ4
     {
       name: 'Kruschke uncertainty (CI to ROPE ratio)',
       value: diffCiWidth / ropeWidth,
