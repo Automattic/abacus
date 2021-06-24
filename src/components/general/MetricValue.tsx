@@ -25,13 +25,17 @@ function DashedTooltip(props: Parameters<typeof Tooltip>[0]) {
  */
 const metricValueFormatPrecision = 2
 
+interface MetricValueFormat {
+  unit: React.ReactNode
+  prefix: React.ReactNode
+  postfix: React.ReactNode
+  transform: (v: number) => number
+}
+
 /**
  * Metric Formatting Data
  */
-export const metricValueFormatData: Record<
-  string,
-  { unit: React.ReactNode; prefix: React.ReactNode; postfix: React.ReactNode; transform: (v: number) => number }
-> = {
+export const metricValueFormatData: Record<string, MetricValueFormat> = {
   conversion: {
     unit: '%',
     prefix: '',
@@ -62,6 +66,13 @@ export const metricValueFormatData: Record<
   },
 }
 
+export function getMetricValueFormatData(
+  metricParameterType: MetricParameterType,
+  isDifference = false,
+): MetricValueFormat {
+  return metricValueFormatData[`${metricParameterType}${isDifference ? '_difference' : ''}`]
+}
+
 /**
  * Format a metric value to be used outside of a graph context.
  * @param value The metric value
@@ -83,7 +94,7 @@ export default function MetricValue({
   displayUnit?: boolean
   displayPositiveSign?: boolean
 }): JSX.Element {
-  const format = metricValueFormatData[`${metricParameterType}${isDifference ? '_difference' : ''}`]
+  const format = getMetricValueFormatData(metricParameterType, isDifference)
   return (
     <>
       {displayPositiveSign && 0 <= value && '+'}

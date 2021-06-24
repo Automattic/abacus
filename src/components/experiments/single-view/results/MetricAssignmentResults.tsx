@@ -325,6 +325,7 @@ export default function MetricAssignmentResults({
                       <MetricValueInterval
                         intervalName={'the absolute change between variations'}
                         metricParameterType={metric.parameterType}
+                        isDifference={true}
                         bottomValue={latestEstimates.diff.bottom}
                         topValue={latestEstimates.diff.top}
                       />

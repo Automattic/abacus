@@ -308,6 +308,7 @@ export default function ActualExperimentResults({
         return (
           <MetricValueInterval
             intervalName={'the absolute change between variations'}
+            isDifference={true}
             metricParameterType={metric.parameterType}
             bottomValue={latestEstimates.diff.bottom}
             topValue={latestEstimates.diff.top}
