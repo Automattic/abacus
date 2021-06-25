@@ -119,11 +119,10 @@ export function getDiffCredibleIntevalStats(
 }
 
 /**
- * Takes DiffCredibleIntervalStats from each strategy and returns whether there is a conflict between them:
- * When there are multiple practically significant CIs pointing in different directions
+ * Takes DiffCredibleIntervalStats from each strategy and returns whether there is a conflict between them -
+ * when there are multiple practically significant CIs pointing in different directions
  */
-export function isRecommendationConflict(allDiffCredibleIntervalStats: (DiffCredibleIntervalStats | null)[]) {
-  // A recommendation conflict is currently set to when there are multiple practically significant analyses with diff CIs in different directions.
+export function isDiffCredibleIntervalConflict(allDiffCredibleIntervalStats: (DiffCredibleIntervalStats | null)[]) {
   return (
     [
       ...new Set(
@@ -187,15 +186,17 @@ export function getAggregateRecommendation(
 
   const { practicallySignificant, statisticallySignificant, positiveDifference } = diffCredibleIntervalStats
 
-  if (isRecommendationConflict(analyses.map((analysis) => getDiffCredibleIntevalStats(analysis, metricAssignment)))) {
+  // See the DiffCredibleIntervalStats documentation to better understand practical significance.
+
+  if (
+    isDiffCredibleIntervalConflict(analyses.map((analysis) => getDiffCredibleIntevalStats(analysis, metricAssignment)))
+  ) {
     return {
       decision: AggregateRecommendationDecision.ManualAnalysisRequired,
       statisticallySignificant,
       practicallySignificant,
     }
   }
-
-  // See the DiffCredibleIntervalStats documentation above for whats going on here and why we use practical significance.
 
   if (practicallySignificant === PracticalSignificanceStatus.Uncertain) {
     return {
@@ -213,6 +214,7 @@ export function getAggregateRecommendation(
     }
   }
 
+  // practicallySignificant === PracticalSignificanceStatus.Yes
   const defaultVariation = experiment.variations.find((variation) => variation.isDefault) as Variation
   const nonDefaultVariation = experiment.variations.find((variation) => !variation.isDefault) as Variation
   return {
