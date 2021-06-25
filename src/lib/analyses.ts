@@ -43,7 +43,7 @@ export enum PracticalSignificanceStatus {
 interface DiffCredibleIntervalStats {
   /**
    * A difference is a difference only if it makes a difference:
-   * - A diff CI is practically significant if it exists above (or below) an experimenter set "Minimum difference".
+   * - A diff CI is practically significant if it exists entirely above (or below) an experimenter set "Minimum difference".
    * - A diff CI has "uncertian" practical significance if it might still be practically significant - part of it exists above or below the set "Minimum difference".
    *
    * Practical significance is part of the approach described in
@@ -153,9 +153,7 @@ export function getAggregateRecommendation(
 
   const { practicallySignificant, statisticallySignificant, positiveDifference } = diffCredibleIntervalStats
 
-  /**
-   * A recommendation conflict is currently set to when there are multiple practically significant analyses with diff CIs in different directions.
-   */
+  // A recommendation conflict is currently set to when there are multiple practically significant analyses with diff CIs in different directions.
   const recommendationConflict =
     [
       ...new Set(
