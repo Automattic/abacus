@@ -32,9 +32,20 @@ export const RecommendationWarningToHuman = {
 }
 
 export enum PracticalSignificanceStatus {
+  /**
+   * The CI is entirely outside of ROPE (the region of practical equivalence, set by experimenters with minDifference):
+   * If the CI is entirely outside of ROPE then it is above the threshold minumum practical difference set by the experimenter (minDifference)
+   * which means that there is a practical difference we can accept that a practical difference has occurred.
+   */
   Yes = 'Yes',
+  /**
+   * The CI is entirely contained within ROPE (the region of practical equivalence, set by experimenters with minDifference):
+   * If the CI is entirely contained within ROPE then it is within the range of minumum practical difference set by the experimenter (minDifference),
+   * which means even if there is a difference, the difference wouldn't be practical. This allows us to
+   */
   No = 'No',
   /**
+   * The CI only partially overlaps with ROPE (the region of practical equivalence, set by experimenters with minDifference):
    * If the CI partially contains ROPE then there is a chance that the real value is either within ROPE (not practical) or outside (practical).
    */
   Uncertain = 'Uncertain',
@@ -50,7 +61,7 @@ interface DiffCredibleIntervalStats {
    * https://yanirseroussi.com/2016/06/19/making-bayesian-ab-testing-more-accessible/, which is based on
    * http://doingbayesiandataanalysis.blogspot.com/2013/11/optional-stopping-in-data-collection-p.html.
    *
-   * Unlike frequentist hypothesis testing, using this approach allows us to _reject_ the null hypothesis - if the diff CI is completely contained
+   * Unlike frequentist hypothesis testing, using this approach allows us to _accept_ the null hypothesis - if the diff CI is completely contained
    * within the "Minimum difference" (AKA the ROPE - region of practical equivalence), we can say that even if there is a difference, there is a 95%
    * chance that the difference is practically negligible.
    *
@@ -67,12 +78,15 @@ interface DiffCredibleIntervalStats {
    */
   statisticallySignificant: boolean
   /**
-   * Whether or not a CI is entirely positive. This doesn't necessarily mean good or bad at this point.
+   * Whether or not a CI is entirely positive. This doesn't necessarily mean better or worse at this point.
    */
   positiveDifference: boolean
 }
 
-function getDiffCredibleIntevalStats(
+/**
+ * See DiffCredibleIntervalStats interface docs.
+ */
+export function getDiffCredibleIntevalStats(
   analysis: Analysis,
   metricAssignment: MetricAssignment,
 ): DiffCredibleIntervalStats | null {
@@ -102,6 +116,26 @@ function getDiffCredibleIntevalStats(
     practicallySignificant,
     positiveDifference,
   }
+}
+
+/**
+ * Takes DiffCredibleIntervalStats from each strategy and returns whether there is a conflict between them:
+ * When there are multiple practically significant CIs pointing in different directions
+ */
+export function isRecommendationConflict(allDiffCredibleIntervalStats: (DiffCredibleIntervalStats | null)[]) {
+  // A recommendation conflict is currently set to when there are multiple practically significant analyses with diff CIs in different directions.
+  return (
+    [
+      ...new Set(
+        allDiffCredibleIntervalStats
+          .filter(
+            (stats): stats is DiffCredibleIntervalStats =>
+              !!stats && stats.practicallySignificant === PracticalSignificanceStatus.Yes,
+          )
+          .map((stats) => stats.positiveDifference),
+      ),
+    ].length > 1
+  )
 }
 
 export enum AggregateRecommendationDecision {
@@ -153,20 +187,7 @@ export function getAggregateRecommendation(
 
   const { practicallySignificant, statisticallySignificant, positiveDifference } = diffCredibleIntervalStats
 
-  // A recommendation conflict is currently set to when there are multiple practically significant analyses with diff CIs in different directions.
-  const recommendationConflict =
-    [
-      ...new Set(
-        analyses
-          .map((analysis) => getDiffCredibleIntevalStats(analysis, metricAssignment))
-          .filter(
-            (stats): stats is DiffCredibleIntervalStats =>
-              !!stats && stats.practicallySignificant === PracticalSignificanceStatus.Yes,
-          )
-          .map((stats) => stats.positiveDifference),
-      ),
-    ].length > 1
-  if (recommendationConflict) {
+  if (isRecommendationConflict(analyses.map((analysis) => getDiffCredibleIntevalStats(analysis, metricAssignment)))) {
     return {
       decision: AggregateRecommendationDecision.ManualAnalysisRequired,
       statisticallySignificant,
