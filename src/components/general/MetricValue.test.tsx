@@ -80,34 +80,34 @@ test('renders metric values', () => {
   expect(render(<MetricValue value={1} metricParameterType={MetricParameterType.Revenue} />).container)
     .toMatchInlineSnapshot(`
     <div>
-      USD 
-      1
       
+      1.00
+       USD
     </div>
   `)
   expect(render(<MetricValue value={0.01} metricParameterType={MetricParameterType.Revenue} />).container)
     .toMatchInlineSnapshot(`
     <div>
-      USD 
-      0.01
       
+      0.01
+       USD
     </div>
   `)
   expect(render(<MetricValue value={0.123456789} metricParameterType={MetricParameterType.Revenue} />).container)
     .toMatchInlineSnapshot(`
     <div>
-      USD 
-      0.12
       
+      0.12
+       USD
     </div>
   `)
   expect(
     render(<MetricValue value={1} metricParameterType={MetricParameterType.Revenue} isDifference={true} />).container,
   ).toMatchInlineSnapshot(`
     <div>
-      USD 
-      1
       
+      1.00
+       USD
     </div>
   `)
   expect(
@@ -115,9 +115,9 @@ test('renders metric values', () => {
       .container,
   ).toMatchInlineSnapshot(`
     <div>
-      USD 
-      0.01
       
+      0.01
+       USD
     </div>
   `)
   expect(
@@ -125,9 +125,9 @@ test('renders metric values', () => {
       .container,
   ).toMatchInlineSnapshot(`
     <div>
-      USD 
-      0.12
       
+      0.12
+       USD
     </div>
   `)
 })

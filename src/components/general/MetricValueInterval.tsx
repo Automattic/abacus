@@ -2,7 +2,7 @@ import { createStyles, makeStyles, Theme, Tooltip } from '@material-ui/core'
 import clsx from 'clsx'
 import React from 'react'
 
-import MetricValue, { metricValueFormatData } from 'src/components/general/MetricValue'
+import MetricValue, { getMetricValueFormatData } from 'src/components/general/MetricValue'
 import { MetricParameterType } from 'src/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -22,17 +22,22 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function MetricValueInterval({
   intervalName,
   metricParameterType,
+  isDifference = false,
   bottomValue,
   topValue,
   displayTooltipHint = true,
+  displayPositiveSign = true,
 }: {
   intervalName: string
   metricParameterType: MetricParameterType
+  isDifference?: boolean
   bottomValue: number
   topValue: number
   displayTooltipHint?: boolean
+  displayPositiveSign?: boolean
 }): JSX.Element {
   const classes = useStyles()
+  const metricValueFormat = getMetricValueFormatData({ metricParameterType, isDifference })
   return (
     <Tooltip
       title={
@@ -40,8 +45,20 @@ export default function MetricValueInterval({
           <strong>Interpretation:</strong>
           <br />
           There is a 95% probability that {intervalName} is between{' '}
-          <MetricValue value={bottomValue} metricParameterType={metricParameterType} isDifference={true} /> and{' '}
-          <MetricValue value={topValue} metricParameterType={metricParameterType} isDifference={true} />.
+          <MetricValue
+            value={bottomValue}
+            metricParameterType={metricParameterType}
+            isDifference={isDifference}
+            displayPositiveSign={displayPositiveSign}
+          />{' '}
+          and{' '}
+          <MetricValue
+            value={topValue}
+            metricParameterType={metricParameterType}
+            isDifference={isDifference}
+            displayPositiveSign={displayPositiveSign}
+          />
+          .
         </>
       }
     >
@@ -49,19 +66,19 @@ export default function MetricValueInterval({
         <MetricValue
           value={bottomValue}
           metricParameterType={metricParameterType}
-          isDifference={true}
+          isDifference={isDifference}
           displayUnit={false}
-          displayPositiveSign
+          displayPositiveSign={displayPositiveSign}
         />
         &nbsp;to&nbsp;
         <MetricValue
           value={topValue}
           metricParameterType={metricParameterType}
-          isDifference={true}
+          isDifference={isDifference}
           displayUnit={false}
-          displayPositiveSign
+          displayPositiveSign={displayPositiveSign}
         />
-        &nbsp;{metricValueFormatData[metricParameterType].unit}
+        &nbsp;{metricValueFormat.unit}
       </span>
     </Tooltip>
   )
