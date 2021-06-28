@@ -723,9 +723,9 @@ exports[`renders as expected at large width 1`] = `
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-31"
           >
-            USD 
-            0.5
             
+            0.50
+             USD
           </td>
         </tr>
         <tr
@@ -760,9 +760,9 @@ exports[`renders as expected at large width 1`] = `
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-31"
           >
-            USD 
-            10.5
             
+            10.50
+             USD
           </td>
         </tr>
         <tr
@@ -1536,9 +1536,9 @@ exports[`renders as expected at small width 1`] = `
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-67"
           >
-            USD 
-            0.5
             
+            0.50
+             USD
           </td>
         </tr>
         <tr
@@ -1573,9 +1573,9 @@ exports[`renders as expected at small width 1`] = `
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-67"
           >
-            USD 
-            10.5
             
+            10.50
+             USD
           </td>
         </tr>
         <tr
@@ -2453,9 +2453,9 @@ exports[`renders as expected with conclusion data 1`] = `
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-105"
           >
-            USD 
-            0.5
             
+            0.50
+             USD
           </td>
         </tr>
         <tr
@@ -2490,9 +2490,9 @@ exports[`renders as expected with conclusion data 1`] = `
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-105"
           >
-            USD 
-            10.5
             
+            10.50
+             USD
           </td>
         </tr>
         <tr
@@ -3266,9 +3266,9 @@ exports[`renders as expected without conclusion data 1`] = `
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-141"
           >
-            USD 
-            0.5
             
+            0.50
+             USD
           </td>
         </tr>
         <tr
@@ -3303,9 +3303,9 @@ exports[`renders as expected without conclusion data 1`] = `
           <td
             class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-141"
           >
-            USD 
-            10.5
             
+            10.50
+             USD
           </td>
         </tr>
         <tr

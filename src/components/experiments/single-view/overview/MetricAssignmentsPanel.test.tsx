@@ -181,9 +181,9 @@ test('renders as expected with all metrics resolvable', () => {
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
-                USD 
-                0.5
                 
+                0.50
+                 USD
               </td>
             </tr>
             <tr
@@ -218,9 +218,9 @@ test('renders as expected with all metrics resolvable', () => {
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
-                USD 
-                10.5
                 
+                10.50
+                 USD
               </td>
             </tr>
             <tr
