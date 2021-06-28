@@ -31,7 +31,7 @@ export const RecommendationWarningToHuman = {
   [RecommendationWarning.WideCi]: 'The CI is too wide in comparison to the ROPE. Collect more data to be safer.',
 }
 
-export enum PracticalSignificanceStatus {
+export enum PracticalStatisticalDifferenceStatus {
   /**
    * The CI is entirely outside of ROPE (the region of practical equivalence, set by experimenters with minDifference):
    * If the CI is entirely outside of ROPE then it is above the threshold minumum practical difference set by the experimenter (minDifference)
@@ -54,8 +54,8 @@ export enum PracticalSignificanceStatus {
 interface DiffCredibleIntervalStats {
   /**
    * A difference is a difference only if it makes a difference:
-   * - A diff CI is practically significant if it exists entirely above (or below) an experimenter set "Minimum difference".
-   * - A diff CI has "uncertian" practical significance if it might still be practically significant - part of it exists above or below the set "Minimum difference".
+   * - A diff CI is practically statistically different if it exists entirely above (or below) an experimenter set "Minimum difference".
+   * - A diff CI has "uncertian" practical statistical difference if it might still be practically statistically different - part of it exists above or below the set "Minimum difference".
    *
    * Practical significance is part of the approach described in
    * https://yanirseroussi.com/2016/06/19/making-bayesian-ab-testing-more-accessible/, which is based on
@@ -70,13 +70,13 @@ interface DiffCredibleIntervalStats {
    * * Bayesian estimation supersedes the t test: http://psy-ed.wdfiles.com/local--files/start/Kruschke2012.pdf
    * * Rejecting or accepting parameter values in Bayesian estimation: https://osf.io/s5vdy/download/?format=pdf
    */
-  practicallySignificant: PracticalSignificanceStatus
+  practicalStatisticalDifference: PracticalStatisticalDifferenceStatus
   /**
    * Old fashioned statistical significance: if a CI doesn't contain zero.
    *
    * Mostly used for adding more subtlety to recommendations and debugging.
    */
-  statisticallySignificant: boolean
+  statisticalDifference: boolean
   /**
    * Whether or not a CI is entirely positive. This doesn't necessarily mean better or worse at this point.
    */
@@ -99,26 +99,26 @@ export function getDiffCredibleIntevalStats(
     throw new Error('Invalid metricEstimates: bottom greater than top.')
   }
 
-  let practicallySignificant = PracticalSignificanceStatus.No
+  let practicalStatisticalDifference = PracticalStatisticalDifferenceStatus.No
   if (
     // CI is entirely above or below the experimenter set minDifference:
     metricAssignment.minDifference <= analysis.metricEstimates.diff.bottom ||
     analysis.metricEstimates.diff.top <= -metricAssignment.minDifference
   ) {
-    practicallySignificant = PracticalSignificanceStatus.Yes
+    practicalStatisticalDifference = PracticalStatisticalDifferenceStatus.Yes
   } else if (
     // CI is partially above or below the experimenter set minDifference:
     metricAssignment.minDifference < analysis.metricEstimates.diff.top ||
     analysis.metricEstimates.diff.bottom < -metricAssignment.minDifference
   ) {
-    practicallySignificant = PracticalSignificanceStatus.Uncertain
+    practicalStatisticalDifference = PracticalStatisticalDifferenceStatus.Uncertain
   }
-  const statisticallySignificant = 0 < analysis.metricEstimates.diff.bottom || analysis.metricEstimates.diff.top < 0
+  const statisticalDifference = 0 < analysis.metricEstimates.diff.bottom || analysis.metricEstimates.diff.top < 0
   const positiveDifference = 0 < analysis.metricEstimates.diff.bottom
 
   return {
-    statisticallySignificant,
-    practicallySignificant,
+    statisticalDifference,
+    practicalStatisticalDifference,
     positiveDifference,
   }
 }
@@ -134,7 +134,7 @@ export function isDiffCredibleIntervalConflict(allDiffCredibleIntervalStats: (Di
         allDiffCredibleIntervalStats
           .filter(
             (stats): stats is DiffCredibleIntervalStats =>
-              !!stats && stats.practicallySignificant === PracticalSignificanceStatus.Yes,
+              !!stats && stats.practicalStatisticalDifference === PracticalStatisticalDifferenceStatus.Yes,
           )
           .map((stats) => stats.positiveDifference),
       ),
@@ -153,8 +153,8 @@ export enum AggregateRecommendationDecision {
 export interface AggregateRecommendation {
   decision: AggregateRecommendationDecision
   chosenVariationId?: number
-  statisticallySignificant?: boolean
-  practicallySignificant?: PracticalSignificanceStatus
+  statisticalDifference?: boolean
+  practicalStatisticalDifference?: PracticalStatisticalDifferenceStatus
 }
 
 /**
@@ -189,45 +189,45 @@ export function getAggregateRecommendation(
     }
   }
 
-  const { practicallySignificant, statisticallySignificant, positiveDifference } = diffCredibleIntervalStats
+  const { practicalStatisticalDifference, statisticalDifference, positiveDifference } = diffCredibleIntervalStats
 
-  // See the DiffCredibleIntervalStats documentation to better understand practical significance.
+  // See the DiffCredibleIntervalStats documentation to better understand practical statistical difference.
 
   if (
     isDiffCredibleIntervalConflict(analyses.map((analysis) => getDiffCredibleIntevalStats(analysis, metricAssignment)))
   ) {
     return {
       decision: AggregateRecommendationDecision.ManualAnalysisRequired,
-      statisticallySignificant,
-      practicallySignificant,
+      statisticalDifference,
+      practicalStatisticalDifference,
     }
   }
 
-  if (practicallySignificant === PracticalSignificanceStatus.Uncertain) {
+  if (practicalStatisticalDifference === PracticalStatisticalDifferenceStatus.Uncertain) {
     return {
       decision: AggregateRecommendationDecision.Inconclusive,
-      statisticallySignificant,
-      practicallySignificant,
+      statisticalDifference,
+      practicalStatisticalDifference,
     }
   }
 
-  if (practicallySignificant === PracticalSignificanceStatus.No) {
+  if (practicalStatisticalDifference === PracticalStatisticalDifferenceStatus.No) {
     return {
       decision: AggregateRecommendationDecision.DeployAnyVariation,
-      statisticallySignificant,
-      practicallySignificant,
+      statisticalDifference,
+      practicalStatisticalDifference,
     }
   }
 
-  // practicallySignificant === PracticalSignificanceStatus.Yes
+  // practicalStatisticalDifference === PracticalStatisticalDifferenceStatus.Yes
   const defaultVariation = experiment.variations.find((variation) => variation.isDefault) as Variation
   const nonDefaultVariation = experiment.variations.find((variation) => !variation.isDefault) as Variation
   return {
     decision: AggregateRecommendationDecision.DeployChosenVariation,
     chosenVariationId:
       positiveDifference === metric.higherIsBetter ? nonDefaultVariation.variationId : defaultVariation.variationId,
-    statisticallySignificant,
-    practicallySignificant,
+    statisticalDifference,
+    practicalStatisticalDifference,
   }
 }
 
