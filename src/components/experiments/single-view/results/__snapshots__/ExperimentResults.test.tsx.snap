@@ -51,8 +51,7 @@ exports[`allows you to change analysis strategy 1`] = `
               <h3
                 class="MuiTypography-root makeStyles-summaryStatsStat-229 MuiTypography-h3 MuiTypography-colorPrimary"
               >
-                Deploy 
-                test
+                Deploy either variation
               </h3>
               <h6
                 class="MuiTypography-root MuiTypography-subtitle1"
@@ -245,8 +244,7 @@ exports[`allows you to change analysis strategy 1`] = `
                         class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                         style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                       >
-                        Deploy 
-                        test
+                        Deploy either variation
                       </td>
                     </tr>
                     <tr
@@ -1500,8 +1498,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
             <h3
               class="MuiTypography-root makeStyles-summaryStatsStat-50 MuiTypography-h3 MuiTypography-colorPrimary"
             >
-              Deploy 
-              test
+              Deploy either variation
             </h3>
             <h6
               class="MuiTypography-root MuiTypography-subtitle1"
@@ -1694,8 +1691,7 @@ exports[`renders correctly for 1 analysis datapoint 1`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Deploy 
-                      test
+                      Deploy either variation
                     </td>
                   </tr>
                   <tr
@@ -2691,8 +2687,7 @@ exports[`renders correctly for 1 analysis datapoint 2`] = `
             <h5
               class="MuiTypography-root makeStyles-aggregateRecommendation-96 MuiTypography-h5 MuiTypography-gutterBottom"
             >
-              Deploy 
-              test
+              Deploy either variation
             </h5>
             <strong>
               Last analyzed:
@@ -3031,8 +3026,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             <h3
               class="MuiTypography-root makeStyles-summaryStatsStat-110 MuiTypography-h3 MuiTypography-colorPrimary"
             >
-              Deploy 
-              test
+              Deploy either variation
             </h3>
             <h6
               class="MuiTypography-root MuiTypography-subtitle1"
@@ -3225,8 +3219,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Deploy 
-                      test
+                      Deploy either variation
                     </td>
                   </tr>
                   <tr
@@ -3452,8 +3445,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Deploy 
-                      test
+                      Deploy either variation
                     </td>
                   </tr>
                 </tbody>
@@ -4253,8 +4245,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             <h5
               class="MuiTypography-root makeStyles-aggregateRecommendation-156 MuiTypography-h5 MuiTypography-gutterBottom"
             >
-              Deploy 
-              test
+              Deploy either variation
             </h5>
             <strong>
               Last analyzed:
@@ -5007,8 +4998,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             <h3
               class="MuiTypography-root makeStyles-summaryStatsStat-170 MuiTypography-h3 MuiTypography-colorPrimary"
             >
-              Deploy 
-              test
+              Deploy either variation
             </h3>
             <h6
               class="MuiTypography-root MuiTypography-subtitle1"
@@ -5201,8 +5191,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Deploy 
-                      test
+                      Deploy either variation
                     </td>
                   </tr>
                   <tr
@@ -5428,8 +5417,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
-                      Deploy 
-                      test
+                      Deploy either variation
                     </td>
                   </tr>
                 </tbody>
@@ -6229,8 +6217,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             <h5
               class="MuiTypography-root makeStyles-aggregateRecommendation-216 MuiTypography-h5 MuiTypography-gutterBottom"
             >
-              Deploy 
-              test
+              Deploy either variation
             </h5>
             <strong>
               Last analyzed:

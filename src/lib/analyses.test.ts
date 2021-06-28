@@ -197,6 +197,131 @@ describe('getDiffCredibleIntervalStats', () => {
   })
 })
 
+describe('isDiffCredibleIntervalConflict', () => {
+  it('should not conflict for one analysis', () => {
+    expect(
+      Analyses.isDiffCredibleIntervalConflict([
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
+          positiveDifference: true,
+        },
+      ]),
+    ).toBe(false)
+    expect(
+      Analyses.isDiffCredibleIntervalConflict([
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
+          positiveDifference: false,
+        },
+      ]),
+    ).toBe(false)
+    expect(
+      Analyses.isDiffCredibleIntervalConflict([
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
+          statisticallySignificant: true,
+          positiveDifference: false,
+        },
+      ]),
+    ).toBe(false)
+    expect(
+      Analyses.isDiffCredibleIntervalConflict([
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
+          statisticallySignificant: true,
+          positiveDifference: true,
+        },
+      ]),
+    ).toBe(false)
+    expect(
+      Analyses.isDiffCredibleIntervalConflict([
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+          statisticallySignificant: false,
+          positiveDifference: false,
+        },
+      ]),
+    ).toBe(false)
+  })
+  it('should not conflict for practical analyses with matching positive diff', () => {
+    expect(
+      Analyses.isDiffCredibleIntervalConflict([
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
+          positiveDifference: false,
+        },
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
+          positiveDifference: false,
+        },
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+          statisticallySignificant: false,
+          positiveDifference: false,
+        },
+      ]),
+    ).toBe(false)
+    expect(
+      Analyses.isDiffCredibleIntervalConflict([
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
+          positiveDifference: true,
+        },
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
+          positiveDifference: true,
+        },
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+          statisticallySignificant: false,
+          positiveDifference: false,
+        },
+      ]),
+    ).toBe(false)
+  })
+  it('should conflict for practical analyses with different positive diff', () => {
+    expect(
+      Analyses.isDiffCredibleIntervalConflict([
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
+          positiveDifference: false,
+        },
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
+          positiveDifference: true,
+        },
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+          statisticallySignificant: false,
+          positiveDifference: false,
+        },
+      ]),
+    ).toBe(true)
+    expect(
+      Analyses.isDiffCredibleIntervalConflict([
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
+          positiveDifference: true,
+        },
+        {
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
+          positiveDifference: false,
+        },
+      ]),
+    ).toBe(true)
+  })
+})
+
 describe('getAggregateRecommendation', () => {
   it('should work correctly for missing analyses', () => {
     expect(
@@ -569,14 +694,14 @@ describe('getAggregateRecommendation', () => {
             analysisStrategy: AnalysisStrategy.PpNaive,
             recommendation: {
               endExperiment: true,
-              chosenVariationId: 123,
+              chosenVariationId: 1,
               reason: RecommendationReason.CiGreaterThanRope,
               warnings: [],
             },
             metricEstimates: {
               diff: {
-                top: 2,
-                bottom: 1,
+                top: -1,
+                bottom: -2,
                 estimate: 0,
               },
             },
@@ -591,8 +716,8 @@ describe('getAggregateRecommendation', () => {
             },
             metricEstimates: {
               diff: {
-                top: 2,
-                bottom: 1,
+                top: 0.05,
+                bottom: -0.05,
                 estimate: 0,
               },
             },
@@ -602,7 +727,7 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
-      chosenVariationId: 2,
+      chosenVariationId: 1,
       practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
       statisticallySignificant: true,
     })

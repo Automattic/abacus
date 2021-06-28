@@ -459,8 +459,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      Deploy either variation
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -503,7 +502,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Inconclusive
+                      Deploy either variation
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -575,8 +574,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      Deploy either variation
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -619,8 +617,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      Deploy either variation
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -978,8 +975,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      Deploy either variation
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1022,8 +1018,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      Deploy either variation
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1066,8 +1061,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      Deploy either variation
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1110,8 +1104,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      Deploy either variation
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
@@ -1154,8 +1147,7 @@ exports[`renders the full tables with some analyses in debug mode 2`] = `
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
                       style="box-sizing: border-box;"
                     >
-                      Deploy 
-                      test
+                      Deploy either variation
                     </td>
                     <td
                       class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
