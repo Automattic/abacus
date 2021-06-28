@@ -42,15 +42,87 @@ test('renders an appropriate message for "Missing Analyses" analyses state', asy
   await expect(container.textContent).toMatch('No results are available at the moment')
 })
 
-test('renders correctly for 1 analysis datapoint', async () => {
+test('renders correctly for 1 analysis datapoint, statistically insignificant', async () => {
+  const metricEstimates = {
+    variation_1: {
+      top: 1,
+      bottom: 0.5,
+      estimate: 1,
+    },
+    variation_2: {
+      top: 1,
+      bottom: 0.5,
+      estimate: 1,
+    },
+    diff: {
+      top: 1,
+      bottom: -1,
+      estimate: 0,
+    },
+    ratio: {
+      top: 1,
+      bottom: 0.5,
+      estimate: 0,
+    },
+  }
   const { container } = render(
     <ExperimentResults
       analyses={[
-        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.PpNaive }),
-        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.IttPure }),
-        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoCrossovers }),
-        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammers }),
-        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.PpNaive, metricEstimates }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.IttPure, metricEstimates }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoCrossovers, metricEstimates }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammers, metricEstimates }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers, metricEstimates }),
+      ]}
+      experiment={experiment}
+      metrics={metrics}
+    />,
+  )
+
+  // Check the table snapshot before expanding any metric.
+  expect(container.querySelector('.analysis-latest-results')).toMatchSnapshot()
+
+  // Clicking on metric_1 or metric_2 should have no effect on anything, but metric_3 should render the details.
+  fireEvent.click(getByText(container, /metric_1/))
+  fireEvent.click(getAllByText(container, /metric_2/)[0])
+  fireEvent.click(getByText(container, /metric_3/))
+  await waitFor(() => getByText(container, /Last analyzed/), { container })
+  expect(container.querySelector('.analysis-latest-results .analysis-detail-panel')).toMatchSnapshot()
+
+  expect(mockedPlot).toMatchSnapshot()
+})
+
+test('renders correctly for 1 analysis datapoint, statistically significant', async () => {
+  const metricEstimates = {
+    variation_1: {
+      top: 2,
+      bottom: 1,
+      estimate: 1,
+    },
+    variation_2: {
+      top: 1,
+      bottom: 0.5,
+      estimate: 1,
+    },
+    diff: {
+      top: 1,
+      bottom: 0.5,
+      estimate: 0,
+    },
+    ratio: {
+      top: 1,
+      bottom: 0.5,
+      estimate: 0,
+    },
+  }
+  const { container } = render(
+    <ExperimentResults
+      analyses={[
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.PpNaive, metricEstimates }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.IttPure, metricEstimates }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoCrossovers, metricEstimates }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammers, metricEstimates }),
+        Fixtures.createAnalysis({ analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers, metricEstimates }),
       ]}
       experiment={experiment}
       metrics={metrics}
