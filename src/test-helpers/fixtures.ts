@@ -421,17 +421,19 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
   }
 }
 
-function createMetricBare(id: number): MetricBare {
+function createMetricBare(id: number, fieldOverrides?: Partial<MetricBare>): MetricBare {
   return {
     metricId: id,
     name: `metric_${id}`,
     description: `This is metric ${id}`,
     parameterType: id % 2 === 0 ? MetricParameterType.Revenue : MetricParameterType.Conversion,
+    higherIsBetter: true,
+    ...fieldOverrides,
   }
 }
 
 function createMetricBares(numMetrics = 3): MetricBare[] {
-  return _.range(1, numMetrics + 1).map(createMetricBare)
+  return _.range(1, numMetrics + 1).map((id) => createMetricBare(id))
 }
 
 function createMetricFull(id: number): MetricFull {
@@ -500,6 +502,7 @@ const Fixtures = {
   createExperimentFull,
   createExperimentFullNew,
   createMetricAssignment,
+  createMetricBare,
   createMetricBares,
   createMetricFull,
   createTagBares,
