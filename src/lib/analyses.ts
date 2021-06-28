@@ -87,18 +87,23 @@ interface DiffCredibleIntervalStats {
  * See DiffCredibleIntervalStats interface docs.
  */
 export function getDiffCredibleIntevalStats(
-  analysis: Analysis,
+  analysis: Analysis | null,
   metricAssignment: MetricAssignment,
 ): DiffCredibleIntervalStats | null {
   if (!analysis || !analysis.metricEstimates) {
     return null
   }
 
+  // istanbul ignore next; sanity check
+  if (analysis.metricEstimates.diff.top < analysis.metricEstimates.diff.bottom) {
+    throw new Error('Invalid metricEstimates: bottom greater than top.')
+  }
+
   let practicallySignificant = PracticalSignificanceStatus.No
   if (
     // CI is entirely above or below the experimenter set minDifference:
-    metricAssignment.minDifference < analysis.metricEstimates.diff.bottom ||
-    analysis.metricEstimates.diff.top < -metricAssignment.minDifference
+    metricAssignment.minDifference <= analysis.metricEstimates.diff.bottom ||
+    analysis.metricEstimates.diff.top <= -metricAssignment.minDifference
   ) {
     practicallySignificant = PracticalSignificanceStatus.Yes
   } else if (
