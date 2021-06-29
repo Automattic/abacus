@@ -2729,9 +2729,8 @@ exports[`renders correctly for 1 analysis datapoint, statistically insignificant
               is 
                not 
               statistically different from zero because the interval
-               excludes 
-              zero.
-               
+               includes 
+              zero. 
               Uncertainty is too high because the absolute change overlaps with the specified minimum practical difference between 
               -10
                
@@ -4318,9 +4317,8 @@ exports[`renders correctly for 1 analysis datapoint, statistically significant 2
               is 
               
               statistically different from zero because the interval
-               includes 
-              zero.
-               
+               excludes 
+              zero. 
               With high certainty, there is a practical difference between the variations because the absolute change is outside the minimum difference of 
               -10
                
@@ -5929,9 +5927,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               is 
                not 
               statistically different from zero because the interval
-               excludes 
-              zero.
-               
+               includes 
+              zero. 
               With high certainty, there is no practical difference between the variations because the absolute change is inside the specified minimum difference between 
               -10
                
@@ -7948,9 +7945,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
               is 
                not 
               statistically different from zero because the interval
-               excludes 
-              zero.
-               
+               includes 
+              zero. 
               With high certainty, there is no practical difference between the variations because the absolute change is inside the specified minimum difference between 
               -0.10
                

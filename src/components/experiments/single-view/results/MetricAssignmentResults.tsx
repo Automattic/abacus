@@ -329,7 +329,7 @@ export default function MetricAssignmentResults({
                   />{' '}
                   is {aggregateRecommendation.statisticalDifference ? '' : ' not '}
                   statistically different from zero because the interval
-                  {aggregateRecommendation.statisticalDifference ? ' includes ' : ' excludes '}
+                  {aggregateRecommendation.statisticalDifference ? ' excludes ' : ' includes '}
                   zero. {explanationLine2[aggregateRecommendation.practicalStatisticalDifference]}
                   <MetricValue
                     metricParameterType={metric.parameterType}
