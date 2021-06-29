@@ -30,8 +30,8 @@ describe('getDiffCredibleIntervalStats', () => {
         }),
       ),
     ).toEqual({
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.No,
-      statisticalDifference: false,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+      statisticallySignificant: false,
       positiveDifference: false,
     })
     expect(
@@ -50,8 +50,8 @@ describe('getDiffCredibleIntervalStats', () => {
         }),
       ),
     ).toEqual({
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.No,
-      statisticalDifference: false,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+      statisticallySignificant: false,
       positiveDifference: false,
     })
     expect(
@@ -70,8 +70,8 @@ describe('getDiffCredibleIntervalStats', () => {
         }),
       ),
     ).toEqual({
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.No,
-      statisticalDifference: false,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+      statisticallySignificant: false,
       positiveDifference: false,
     })
     expect(
@@ -90,8 +90,8 @@ describe('getDiffCredibleIntervalStats', () => {
         }),
       ),
     ).toEqual({
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.No,
-      statisticalDifference: true,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+      statisticallySignificant: true,
       positiveDifference: false,
     })
     expect(
@@ -110,8 +110,8 @@ describe('getDiffCredibleIntervalStats', () => {
         }),
       ),
     ).toEqual({
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.No,
-      statisticalDifference: true,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+      statisticallySignificant: true,
       positiveDifference: true,
     })
     expect(
@@ -130,8 +130,8 @@ describe('getDiffCredibleIntervalStats', () => {
         }),
       ),
     ).toEqual({
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Uncertain,
-      statisticalDifference: true,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
+      statisticallySignificant: true,
       positiveDifference: false,
     })
     expect(
@@ -150,8 +150,8 @@ describe('getDiffCredibleIntervalStats', () => {
         }),
       ),
     ).toEqual({
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Uncertain,
-      statisticalDifference: true,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
+      statisticallySignificant: true,
       positiveDifference: true,
     })
     expect(
@@ -170,8 +170,8 @@ describe('getDiffCredibleIntervalStats', () => {
         }),
       ),
     ).toEqual({
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-      statisticalDifference: true,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+      statisticallySignificant: true,
       positiveDifference: false,
     })
     expect(
@@ -190,8 +190,8 @@ describe('getDiffCredibleIntervalStats', () => {
         }),
       ),
     ).toEqual({
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-      statisticalDifference: true,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+      statisticallySignificant: true,
       positiveDifference: true,
     })
   })
@@ -202,8 +202,8 @@ describe('isDiffCredibleIntervalConflict', () => {
     expect(
       Analyses.isDiffCredibleIntervalConflict([
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-          statisticalDifference: true,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
           positiveDifference: true,
         },
       ]),
@@ -211,8 +211,8 @@ describe('isDiffCredibleIntervalConflict', () => {
     expect(
       Analyses.isDiffCredibleIntervalConflict([
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-          statisticalDifference: true,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
           positiveDifference: false,
         },
       ]),
@@ -220,8 +220,8 @@ describe('isDiffCredibleIntervalConflict', () => {
     expect(
       Analyses.isDiffCredibleIntervalConflict([
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Uncertain,
-          statisticalDifference: true,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
+          statisticallySignificant: true,
           positiveDifference: false,
         },
       ]),
@@ -229,8 +229,8 @@ describe('isDiffCredibleIntervalConflict', () => {
     expect(
       Analyses.isDiffCredibleIntervalConflict([
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Uncertain,
-          statisticalDifference: true,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
+          statisticallySignificant: true,
           positiveDifference: true,
         },
       ]),
@@ -238,8 +238,8 @@ describe('isDiffCredibleIntervalConflict', () => {
     expect(
       Analyses.isDiffCredibleIntervalConflict([
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.No,
-          statisticalDifference: false,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+          statisticallySignificant: false,
           positiveDifference: false,
         },
       ]),
@@ -249,18 +249,18 @@ describe('isDiffCredibleIntervalConflict', () => {
     expect(
       Analyses.isDiffCredibleIntervalConflict([
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-          statisticalDifference: true,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
           positiveDifference: false,
         },
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-          statisticalDifference: true,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
           positiveDifference: false,
         },
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.No,
-          statisticalDifference: false,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+          statisticallySignificant: false,
           positiveDifference: false,
         },
       ]),
@@ -268,18 +268,18 @@ describe('isDiffCredibleIntervalConflict', () => {
     expect(
       Analyses.isDiffCredibleIntervalConflict([
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-          statisticalDifference: true,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
           positiveDifference: true,
         },
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-          statisticalDifference: true,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
           positiveDifference: true,
         },
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.No,
-          statisticalDifference: false,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+          statisticallySignificant: false,
           positiveDifference: false,
         },
       ]),
@@ -289,18 +289,18 @@ describe('isDiffCredibleIntervalConflict', () => {
     expect(
       Analyses.isDiffCredibleIntervalConflict([
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-          statisticalDifference: true,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
           positiveDifference: false,
         },
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-          statisticalDifference: true,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
           positiveDifference: true,
         },
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.No,
-          statisticalDifference: false,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+          statisticallySignificant: false,
           positiveDifference: false,
         },
       ]),
@@ -308,13 +308,13 @@ describe('isDiffCredibleIntervalConflict', () => {
     expect(
       Analyses.isDiffCredibleIntervalConflict([
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-          statisticalDifference: true,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
           positiveDifference: true,
         },
         {
-          practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-          statisticalDifference: true,
+          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+          statisticallySignificant: true,
           positiveDifference: false,
         },
       ]),
@@ -378,8 +378,8 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.Inconclusive,
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Uncertain,
-      statisticalDifference: false,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
+      statisticallySignificant: false,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -407,8 +407,8 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.No,
-      statisticalDifference: false,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+      statisticallySignificant: false,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -437,8 +437,8 @@ describe('getAggregateRecommendation', () => {
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
       chosenVariationId: 2,
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-      statisticalDifference: true,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+      statisticallySignificant: true,
     })
   })
 
@@ -486,8 +486,8 @@ describe('getAggregateRecommendation', () => {
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
       chosenVariationId: 2,
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-      statisticalDifference: true,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+      statisticallySignificant: true,
     })
 
     expect(
@@ -522,8 +522,8 @@ describe('getAggregateRecommendation', () => {
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
       chosenVariationId: 2,
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-      statisticalDifference: true,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+      statisticallySignificant: true,
     })
 
     expect(
@@ -556,8 +556,8 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.No,
-      statisticalDifference: false,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+      statisticallySignificant: false,
     })
 
     expect(
@@ -602,8 +602,8 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.Inconclusive,
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Uncertain,
-      statisticalDifference: false,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
+      statisticallySignificant: false,
     })
     expect(
       Analyses.getAggregateRecommendation(
@@ -681,8 +681,8 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.ManualAnalysisRequired,
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-      statisticalDifference: true,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+      statisticallySignificant: true,
     })
 
     expect(
@@ -728,8 +728,8 @@ describe('getAggregateRecommendation', () => {
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
       chosenVariationId: 1,
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-      statisticalDifference: true,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+      statisticallySignificant: true,
     })
 
     expect(
@@ -795,8 +795,8 @@ describe('getAggregateRecommendation', () => {
       ),
     ).toEqual({
       decision: Analyses.AggregateRecommendationDecision.ManualAnalysisRequired,
-      practicalStatisticalDifference: Analyses.PracticalStatisticalDifferenceStatus.Yes,
-      statisticalDifference: true,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+      statisticallySignificant: true,
     })
   })
 })
