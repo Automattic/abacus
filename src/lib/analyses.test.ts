@@ -5,9 +5,9 @@ import { AnalysisStrategy, RecommendationReason } from './schemas'
 
 describe('getDiffCredibleIntervalStats', () => {
   it('should return null for missing analysis', () => {
-    expect(Analyses.getDiffCredibleIntevalStats(null, Fixtures.createMetricAssignment({}))).toBe(null)
+    expect(Analyses.getDiffCredibleIntervalStats(null, Fixtures.createMetricAssignment({}))).toBe(null)
     expect(
-      Analyses.getDiffCredibleIntevalStats(
+      Analyses.getDiffCredibleIntervalStats(
         Fixtures.createAnalysis({ metricEstimates: null }),
         Fixtures.createMetricAssignment({}),
       ),
@@ -15,7 +15,7 @@ describe('getDiffCredibleIntervalStats', () => {
   })
   it('should return correct stats', () => {
     expect(
-      Analyses.getDiffCredibleIntevalStats(
+      Analyses.getDiffCredibleIntervalStats(
         Fixtures.createAnalysis({
           metricEstimates: {
             diff: {
@@ -35,7 +35,7 @@ describe('getDiffCredibleIntervalStats', () => {
       positiveDifference: false,
     })
     expect(
-      Analyses.getDiffCredibleIntevalStats(
+      Analyses.getDiffCredibleIntervalStats(
         Fixtures.createAnalysis({
           metricEstimates: {
             diff: {
@@ -55,7 +55,7 @@ describe('getDiffCredibleIntervalStats', () => {
       positiveDifference: false,
     })
     expect(
-      Analyses.getDiffCredibleIntevalStats(
+      Analyses.getDiffCredibleIntervalStats(
         Fixtures.createAnalysis({
           metricEstimates: {
             diff: {
@@ -75,7 +75,7 @@ describe('getDiffCredibleIntervalStats', () => {
       positiveDifference: false,
     })
     expect(
-      Analyses.getDiffCredibleIntevalStats(
+      Analyses.getDiffCredibleIntervalStats(
         Fixtures.createAnalysis({
           metricEstimates: {
             diff: {
@@ -95,7 +95,7 @@ describe('getDiffCredibleIntervalStats', () => {
       positiveDifference: false,
     })
     expect(
-      Analyses.getDiffCredibleIntevalStats(
+      Analyses.getDiffCredibleIntervalStats(
         Fixtures.createAnalysis({
           metricEstimates: {
             diff: {
@@ -115,7 +115,7 @@ describe('getDiffCredibleIntervalStats', () => {
       positiveDifference: true,
     })
     expect(
-      Analyses.getDiffCredibleIntevalStats(
+      Analyses.getDiffCredibleIntervalStats(
         Fixtures.createAnalysis({
           metricEstimates: {
             diff: {
@@ -135,7 +135,7 @@ describe('getDiffCredibleIntervalStats', () => {
       positiveDifference: false,
     })
     expect(
-      Analyses.getDiffCredibleIntevalStats(
+      Analyses.getDiffCredibleIntervalStats(
         Fixtures.createAnalysis({
           metricEstimates: {
             diff: {
@@ -155,7 +155,7 @@ describe('getDiffCredibleIntervalStats', () => {
       positiveDifference: true,
     })
     expect(
-      Analyses.getDiffCredibleIntevalStats(
+      Analyses.getDiffCredibleIntervalStats(
         Fixtures.createAnalysis({
           metricEstimates: {
             diff: {
@@ -175,7 +175,7 @@ describe('getDiffCredibleIntervalStats', () => {
       positiveDifference: false,
     })
     expect(
-      Analyses.getDiffCredibleIntevalStats(
+      Analyses.getDiffCredibleIntervalStats(
         Fixtures.createAnalysis({
           metricEstimates: {
             diff: {

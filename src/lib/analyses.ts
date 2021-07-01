@@ -86,7 +86,7 @@ interface DiffCredibleIntervalStats {
 /**
  * See DiffCredibleIntervalStats interface docs.
  */
-export function getDiffCredibleIntevalStats(
+export function getDiffCredibleIntervalStats(
   analysis: Analysis | null,
   metricAssignment: MetricAssignment,
 ): DiffCredibleIntervalStats | null {
@@ -160,7 +160,7 @@ export function getMetricAssignmentRecommendation(
     (metricAssignment) => metricAssignment.metricAssignmentId === analysis.metricAssignmentId,
   )
   const diffCredibleIntervalStats =
-    analysis && metricAssignment && getDiffCredibleIntevalStats(analysis, metricAssignment)
+    analysis && metricAssignment && getDiffCredibleIntervalStats(analysis, metricAssignment)
   const analysisStrategy = analysis.analysisStrategy
   if (!analysis.recommendation || !analysis.metricEstimates || !metricAssignment || !diffCredibleIntervalStats) {
     return {
