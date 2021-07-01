@@ -80,7 +80,7 @@ interface DiffCredibleIntervalStats {
   /**
    * Whether or not a CI is entirely positive. This doesn't necessarily mean better or worse at this point.
    */
-  positiveDifference: boolean
+  isPositive: boolean
 }
 
 /**
@@ -114,12 +114,12 @@ export function getDiffCredibleIntervalStats(
     practicallySignificant = PracticalSignificanceStatus.Uncertain
   }
   const statisticallySignificant = 0 < analysis.metricEstimates.diff.bottom || analysis.metricEstimates.diff.top < 0
-  const positiveDifference = 0 < analysis.metricEstimates.diff.bottom
+  const isPositive = 0 < analysis.metricEstimates.diff.bottom
 
   return {
     statisticallySignificant,
     practicallySignificant,
-    positiveDifference,
+    isPositive,
   }
 }
 
@@ -169,14 +169,14 @@ export function getMetricAssignmentRecommendation(
     }
   }
 
-  const { practicallySignificant, statisticallySignificant, positiveDifference } = diffCredibleIntervalStats
+  const { practicallySignificant, statisticallySignificant, isPositive } = diffCredibleIntervalStats
   const decision = PracticalSignificanceStatusToDecision[practicallySignificant]
   const defaultVariation = experiment.variations.find((variation) => variation.isDefault) as Variation
   const nonDefaultVariation = experiment.variations.find((variation) => !variation.isDefault) as Variation
   let chosenVariationId = undefined
   if (decision === AggregateRecommendationDecision.DeployChosenVariation) {
     chosenVariationId =
-      positiveDifference === metric.higherIsBetter ? nonDefaultVariation.variationId : defaultVariation.variationId
+      isPositive === metric.higherIsBetter ? nonDefaultVariation.variationId : defaultVariation.variationId
   }
 
   return {
