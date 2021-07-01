@@ -31,60 +31,79 @@ export const RecommendationWarningToHuman = {
   [RecommendationWarning.WideCi]: 'The CI is too wide in comparison to the ROPE. Collect more data to be safer.',
 }
 
+/**
+ * # Recommendations
+ *
+ * > "A difference is a difference only if it makes a difference."
+ * > Darrell Huff in “How to Lie with Statistics”
+ *
+ * ## Definitions
+ *
+ * - CI: Credible Interval, the bayesian version of a Confidence Interval.
+ *   Without otherwise specifying we mean the 95% CI, this means it is an area
+ *   which is 95% likely to contain the real value of what we are measuring.
+ *
+ * - minDifference: Experimenters set this for each MetricAssignment, this
+ *   defines what sort of difference is practical.
+ *
+ * - ROPE: "Region of Practical Equivalance".
+ *   The interval of [-minDifference, minDifference].
+ *
+ * ## Statistical Significance
+ *
+ * A difference CI is statistically significant if it doesn't contain 0.
+ * This is the classical method used in statistics and isn't something we use
+ * for recommendations but is included for debugging and better understanding
+ * results.
+ *
+ * ## Practical Significance
+ *
+ * A difference CI is practically significant if it doesn't contain any part of
+ * the ROPE. Practical significance is what we use for recommendations.
+ *
+ * Benefits of practical significance:
+ * - More accurate burden of proof - tailored to the Experimenters specific decision they are making.
+ *   For example a diff CI can be better than zero, but cost more to fully implement than any benefit from it.
+ *   By using practical significance we can set the point of decision to exactly when the benefit outweighs the cost.
+ * - Gives us a way to determine how long an experiment should run for - if the
+ *   CI and ROPE only partially overlap the real value could be either within the
+ *   ROPE or outside of it, we don't know. It turns out this is an unbiased way of
+ *   letting us know that we should collect more data and run the experiment
+ *   longer.
+ * - Able to make decisions against implementing something.
+ *   If the CI is contained in the ROPE we can actually reject the change completely.
+ *
+ * Practical significance is part of the approach described in
+ * https://yanirseroussi.com/2016/06/19/making-bayesian-ab-testing-more-accessible/, which is based on
+ * http://doingbayesiandataanalysis.blogspot.com/2013/11/optional-stopping-in-data-collection-p.html.
+ *
+ * See also some of Kruschke's resources on the topic:
+ * * Precision as a goal for data collection: https://www.youtube.com/playlist?list=PL_mlm7M63Y7j641Y7QJG3TfSxeZMGOsQ4
+ * * Bayesian estimation supersedes the t test: http://psy-ed.wdfiles.com/local--files/start/Kruschke2012.pdf
+ * * Rejecting or accepting parameter values in Bayesian estimation: https://osf.io/s5vdy/download/?format=pdf
+ */
+
+/**
+ * Whether the CI is outside the ROPE.
+ *
+ * See file level documentation.
+ */
 export enum PracticalSignificanceStatus {
-  /**
-   * The CI is entirely outside of ROPE (the region of practical equivalence, set by experimenters with minDifference):
-   * If the CI is entirely outside of ROPE then it is above the threshold minumum practical difference set by the experimenter (minDifference)
-   * which means that there is a practical difference we can accept that a practical difference has occurred.
-   */
   Yes = 'Yes',
-  /**
-   * The CI is entirely contained within ROPE (the region of practical equivalence, set by experimenters with minDifference):
-   * If the CI is entirely contained within ROPE then it is within the range of minumum practical difference set by the experimenter (minDifference),
-   * which means even if there is a difference, the difference wouldn't be practical. This allows us to
-   */
   No = 'No',
-  /**
-   * The CI only partially overlaps with ROPE (the region of practical equivalence, set by experimenters with minDifference):
-   * If the CI partially contains ROPE then there is a chance that the real value is either within ROPE (not practical) or outside (practical).
-   */
   Uncertain = 'Uncertain',
 }
 
 interface DiffCredibleIntervalStats {
-  /**
-   * A difference is a difference only if it makes a difference:
-   * - A diff CI is practically significant if it exists entirely above (or below) an experimenter set "Minimum difference".
-   * - A diff CI has "uncertian" practical significance if it might still be practically significant - part of it exists above or below the set "Minimum difference".
-   *
-   * Practical significance is part of the approach described in
-   * https://yanirseroussi.com/2016/06/19/making-bayesian-ab-testing-more-accessible/, which is based on
-   * http://doingbayesiandataanalysis.blogspot.com/2013/11/optional-stopping-in-data-collection-p.html.
-   *
-   * Unlike frequentist hypothesis testing, using this approach allows us to _accept_ the null hypothesis - if the diff CI is completely contained
-   * within the "Minimum difference" (AKA the ROPE - region of practical equivalence), we can say that even if there is a difference, there is a 95%
-   * chance that the difference is practically negligible.
-   *
-   * See also some of Kruschke's resources on the topic:
-   * * Precision as a goal for data collection: https://www.youtube.com/playlist?list=PL_mlm7M63Y7j641Y7QJG3TfSxeZMGOsQ4
-   * * Bayesian estimation supersedes the t test: http://psy-ed.wdfiles.com/local--files/start/Kruschke2012.pdf
-   * * Rejecting or accepting parameter values in Bayesian estimation: https://osf.io/s5vdy/download/?format=pdf
-   */
   practicallySignificant: PracticalSignificanceStatus
-  /**
-   * Old fashioned statistical significance: if a CI doesn't contain zero.
-   *
-   * Mostly used for adding more subtlety to recommendations and debugging.
-   */
   statisticallySignificant: boolean
-  /**
-   * Whether or not a CI is entirely positive. This doesn't necessarily mean better or worse at this point.
-   */
   isPositive: boolean
 }
 
 /**
- * See DiffCredibleIntervalStats interface docs.
+ * Gets statistics of the diff CI.
+ *
+ * See the file level documentation.
  */
 export function getDiffCredibleIntervalStats(
   analysis: Analysis | null,
@@ -145,10 +164,7 @@ const PracticalSignificanceStatusToDecision: Record<PracticalSignificanceStatus,
 }
 
 /**
- * Returns the aggregate recommendation over analyses of different analysis strategies.
- *
- * @param analyses Analyses of different strategies for the same day.
- * @param defaultStrategy Default strategy in the context of an aggregateRecommendation..
+ * Returns the recommendation for a single analysis.
  */
 export function getMetricAssignmentRecommendation(
   experiment: ExperimentFull,
@@ -161,7 +177,7 @@ export function getMetricAssignmentRecommendation(
   const diffCredibleIntervalStats =
     analysis && metricAssignment && getDiffCredibleIntervalStats(analysis, metricAssignment)
   const analysisStrategy = analysis.analysisStrategy
-  if (!analysis.recommendation || !analysis.metricEstimates || !metricAssignment || !diffCredibleIntervalStats) {
+  if (!analysis.metricEstimates || !metricAssignment || !diffCredibleIntervalStats) {
     return {
       analysisStrategy,
       decision: AggregateRecommendationDecision.MissingAnalysis,
@@ -188,7 +204,7 @@ export function getMetricAssignmentRecommendation(
 }
 
 /**
- * Takes an array of aggregateRecommendations over different strategies, and returns an aggregateRecommendation over them.
+ * Takes an array of aggregateRecommendations using different strategies, and returns an aggregateRecommendation over them.
  * Checks for recommendation conflicts - currently different chosenVariationIds - and returns manual analysis required decision.
  */
 export function getAggregateMetricAssignmentRecommendation(
