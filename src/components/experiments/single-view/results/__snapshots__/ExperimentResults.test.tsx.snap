@@ -3085,7 +3085,7 @@ exports[`renders correctly for 1 analysis datapoint, statistically significant 1
               class="MuiTypography-root makeStyles-summaryStatsStat-110 MuiTypography-h3 MuiTypography-colorPrimary"
             >
               Deploy 
-              test
+              control
             </h3>
             <h6
               class="MuiTypography-root MuiTypography-subtitle1"
@@ -3280,7 +3280,7 @@ exports[`renders correctly for 1 analysis datapoint, statistically significant 1
                       style="box-sizing: border-box; font-family: 'Roboto Mono', monospace;"
                     >
                       Deploy 
-                      test
+                      control
                     </td>
                   </tr>
                   <tr
@@ -4281,7 +4281,7 @@ exports[`renders correctly for 1 analysis datapoint, statistically significant 2
               class="MuiTypography-root makeStyles-recommendation-156 MuiTypography-h5 MuiTypography-gutterBottom"
             >
               Deploy 
-              test
+              control
             </h5>
             <p
               class="MuiTypography-root MuiTypography-body1"

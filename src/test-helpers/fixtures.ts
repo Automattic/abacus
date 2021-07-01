@@ -422,7 +422,7 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
   }
 }
 
-function createMetric(id: number): Metric {
+function createMetric(id: number, override?: Partial<Metric>): Metric {
   // Note: It is hard to reuse createMetric here as it is boxed
   //       Currently we only unbox it into an ApiData format which is different from this
   const parameterType = id % 2 === 0 ? MetricParameterType.Revenue : MetricParameterType.Conversion
@@ -440,6 +440,7 @@ function createMetric(id: number): Metric {
     higherIsBetter: id % 3 === 0,
     eventParams: parameterType === MetricParameterType.Conversion ? eventParams : undefined,
     revenueParams: parameterType === MetricParameterType.Revenue ? revenueParams : undefined,
+    ...override,
   }
 }
 
