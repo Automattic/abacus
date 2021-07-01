@@ -141,7 +141,7 @@ export function getDiffCredibleIntervalStats(
   }
 }
 
-export enum AggregateRecommendationDecision {
+export enum RecommendationDecision {
   ManualAnalysisRequired = 'ManualAnalysisRequired',
   MissingAnalysis = 'MissingAnalysis',
   Inconclusive = 'Inconclusive',
@@ -149,18 +149,18 @@ export enum AggregateRecommendationDecision {
   DeployChosenVariation = 'DeployChosenVariation',
 }
 
-export interface AggregateRecommendation {
+export interface Recommendation {
   analysisStrategy: AnalysisStrategy
-  decision: AggregateRecommendationDecision
+  decision: RecommendationDecision
   chosenVariationId?: number
   statisticallySignificant?: boolean
   practicallySignificant?: PracticalSignificanceStatus
 }
 
-const PracticalSignificanceStatusToDecision: Record<PracticalSignificanceStatus, AggregateRecommendationDecision> = {
-  [PracticalSignificanceStatus.No]: AggregateRecommendationDecision.DeployAnyVariation,
-  [PracticalSignificanceStatus.Uncertain]: AggregateRecommendationDecision.Inconclusive,
-  [PracticalSignificanceStatus.Yes]: AggregateRecommendationDecision.DeployChosenVariation,
+const PracticalSignificanceStatusToDecision: Record<PracticalSignificanceStatus, RecommendationDecision> = {
+  [PracticalSignificanceStatus.No]: RecommendationDecision.DeployAnyVariation,
+  [PracticalSignificanceStatus.Uncertain]: RecommendationDecision.Inconclusive,
+  [PracticalSignificanceStatus.Yes]: RecommendationDecision.DeployChosenVariation,
 }
 
 /**
@@ -172,7 +172,7 @@ export function getMetricAssignmentRecommendation(
   experiment: ExperimentFull,
   metric: MetricBare,
   analysis: Analysis,
-): AggregateRecommendation {
+): Recommendation {
   const metricAssignment = experiment.metricAssignments.find(
     (metricAssignment) => metricAssignment.metricAssignmentId === analysis.metricAssignmentId,
   )
@@ -182,7 +182,7 @@ export function getMetricAssignmentRecommendation(
   if (!analysis.metricEstimates || !metricAssignment || !diffCredibleIntervalStats) {
     return {
       analysisStrategy,
-      decision: AggregateRecommendationDecision.MissingAnalysis,
+      decision: RecommendationDecision.MissingAnalysis,
     }
   }
 
@@ -191,7 +191,7 @@ export function getMetricAssignmentRecommendation(
   const defaultVariation = experiment.variations.find((variation) => variation.isDefault) as Variation
   const nonDefaultVariation = experiment.variations.find((variation) => !variation.isDefault) as Variation
   let chosenVariationId = undefined
-  if (decision === AggregateRecommendationDecision.DeployChosenVariation) {
+  if (decision === RecommendationDecision.DeployChosenVariation) {
     chosenVariationId =
       isPositive === metric.higherIsBetter ? nonDefaultVariation.variationId : defaultVariation.variationId
   }
@@ -210,16 +210,16 @@ export function getMetricAssignmentRecommendation(
  * Checks for recommendation conflicts - currently different chosenVariationIds - and returns manual analysis required decision.
  */
 export function getAggregateMetricAssignmentRecommendation(
-  aggregateRecommendations: AggregateRecommendation[],
+  aggregateRecommendations: Recommendation[],
   targetAnalysisStrategy: AnalysisStrategy,
-): AggregateRecommendation {
+): Recommendation {
   const targetAnalysisRecommendation = aggregateRecommendations.find(
     (aggregateRecommendation) => aggregateRecommendation.analysisStrategy === targetAnalysisStrategy,
   )
   if (!targetAnalysisRecommendation) {
     return {
       analysisStrategy: targetAnalysisStrategy,
-      decision: AggregateRecommendationDecision.MissingAnalysis,
+      decision: RecommendationDecision.MissingAnalysis,
     }
   }
 
@@ -227,7 +227,7 @@ export function getAggregateMetricAssignmentRecommendation(
   if (1 < new Set(aggregateRecommendations.map((x) => x.chosenVariationId).filter((x) => x)).size) {
     return {
       ...targetAnalysisRecommendation,
-      decision: AggregateRecommendationDecision.ManualAnalysisRequired,
+      decision: RecommendationDecision.ManualAnalysisRequired,
       chosenVariationId: undefined,
     }
   }

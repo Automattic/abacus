@@ -1,7 +1,7 @@
 import { createStyles, makeStyles, Theme, Tooltip } from '@material-ui/core'
 import React from 'react'
 
-import { AggregateRecommendation, AggregateRecommendationDecision } from 'src/lib/analyses'
+import { Recommendation, RecommendationDecision } from 'src/lib/analyses'
 import { ExperimentFull } from 'src/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -21,24 +21,24 @@ export default function AggregateRecommendationDisplay({
   aggregateRecommendation,
   experiment,
 }: {
-  aggregateRecommendation: AggregateRecommendation
+  aggregateRecommendation: Recommendation
   experiment: ExperimentFull
 }): JSX.Element {
   const classes = useStyles()
   switch (aggregateRecommendation.decision) {
-    case AggregateRecommendationDecision.ManualAnalysisRequired:
+    case RecommendationDecision.ManualAnalysisRequired:
       return (
         <Tooltip title='Contact @experimentation-review on #a8c-experiments'>
           <span className={classes.tooltipped}>Manual analysis required</span>
         </Tooltip>
       )
-    case AggregateRecommendationDecision.MissingAnalysis:
+    case RecommendationDecision.MissingAnalysis:
       return <>Not analyzed yet</>
-    case AggregateRecommendationDecision.Inconclusive:
+    case RecommendationDecision.Inconclusive:
       return <>Inconclusive</>
-    case AggregateRecommendationDecision.DeployAnyVariation:
+    case RecommendationDecision.DeployAnyVariation:
       return <>Deploy either variation</>
-    case AggregateRecommendationDecision.DeployChosenVariation: {
+    case RecommendationDecision.DeployChosenVariation: {
       const chosenVariation = experiment.variations.find(
         (variation) => variation.variationId === aggregateRecommendation.chosenVariationId,
       )

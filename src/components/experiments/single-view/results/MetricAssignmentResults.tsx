@@ -20,7 +20,7 @@ import Plot from 'react-plotly.js'
 
 import DatetimeText from 'src/components/general/DatetimeText'
 import MetricValue from 'src/components/general/MetricValue'
-import { AggregateRecommendation } from 'src/lib/analyses'
+import { Recommendation } from 'src/lib/analyses'
 import * as Analyses from 'src/lib/analyses'
 import {
   Analysis,
@@ -186,7 +186,7 @@ export default function MetricAssignmentResults({
   metric: MetricBare
   analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
   experiment: ExperimentFull
-  aggregateRecommendation: AggregateRecommendation
+  aggregateRecommendation: Recommendation
 }): JSX.Element | null {
   const classes = useStyles()
 
@@ -300,8 +300,7 @@ export default function MetricAssignmentResults({
                 <Typography variant='h5' gutterBottom className={classes.aggregateRecommendation}>
                   <AggregateRecommendationDisplay {...{ experiment, aggregateRecommendation }} />
                 </Typography>
-                {aggregateRecommendation.decision ===
-                  Analyses.AggregateRecommendationDecision.ManualAnalysisRequired && (
+                {aggregateRecommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired && (
                   <Typography variant='body1' gutterBottom>
                     <strong> Different strategies are recommending conflicting variations! </strong>
                   </Typography>

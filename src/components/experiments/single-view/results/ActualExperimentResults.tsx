@@ -239,8 +239,7 @@ export default function ActualExperimentResults({
       ),
     strategy,
   )
-  const hasAnalyses =
-    primaryMetricAggregateRecommendation.decision !== Analyses.AggregateRecommendationDecision.MissingAnalysis
+  const hasAnalyses = primaryMetricAggregateRecommendation.decision !== Analyses.RecommendationDecision.MissingAnalysis
 
   const experimentParticipantStats = Analyses.getExperimentParticipantStats(
     experiment,
@@ -303,13 +302,13 @@ export default function ActualExperimentResults({
         metric: MetricBare
         strategy: AnalysisStrategy
         analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
-        aggregateRecommendation: Analyses.AggregateRecommendation
+        aggregateRecommendation: Analyses.Recommendation
       }) => {
         const latestEstimates = _.last(analysesByStrategyDateAsc[strategy])?.metricEstimates
         if (
           !latestEstimates ||
-          aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.ManualAnalysisRequired ||
-          aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.MissingAnalysis
+          aggregateRecommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired ||
+          aggregateRecommendation.decision === Analyses.RecommendationDecision.MissingAnalysis
         ) {
           return null
         }
@@ -339,14 +338,14 @@ export default function ActualExperimentResults({
         metric: MetricBare
         strategy: AnalysisStrategy
         analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
-        aggregateRecommendation: Analyses.AggregateRecommendation
+        aggregateRecommendation: Analyses.Recommendation
       }) => {
         const latestEstimates = _.last(analysesByStrategyDateAsc[strategy])?.metricEstimates
         if (
           !latestEstimates ||
           !latestEstimates.ratio?.top ||
-          aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.ManualAnalysisRequired ||
-          aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.MissingAnalysis
+          aggregateRecommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired ||
+          aggregateRecommendation.decision === Analyses.RecommendationDecision.MissingAnalysis
         ) {
           return null
         }
@@ -372,7 +371,7 @@ export default function ActualExperimentResults({
         aggregateRecommendation,
       }: {
         experiment: ExperimentFull
-        aggregateRecommendation: Analyses.AggregateRecommendation
+        aggregateRecommendation: Analyses.Recommendation
       }) => {
         return <AggregateRecommendationDisplay {...{ experiment, aggregateRecommendation }} />
       },
@@ -394,10 +393,9 @@ export default function ActualExperimentResults({
       analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
       metricAssignment: MetricAssignment
       metric: MetricBare
-      aggregateRecommendation: Analyses.AggregateRecommendation
+      aggregateRecommendation: Analyses.Recommendation
     }) => {
-      let disabled =
-        aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.ManualAnalysisRequired
+      let disabled = aggregateRecommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired
       // istanbul ignore next; debug only
       disabled = disabled && !isDebugMode()
       return {
@@ -489,10 +487,9 @@ export default function ActualExperimentResults({
             options={createStaticTableOptions(metricAssignmentSummaryData.length)}
             onRowClick={(_event, rowData, togglePanel) => {
               const { aggregateRecommendation } = rowData as {
-                aggregateRecommendation: Analyses.AggregateRecommendation
+                aggregateRecommendation: Analyses.Recommendation
               }
-              let disabled =
-                aggregateRecommendation.decision === Analyses.AggregateRecommendationDecision.ManualAnalysisRequired
+              let disabled = aggregateRecommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired
               // istanbul ignore next; debug only
               disabled = disabled && !isDebugMode()
 
