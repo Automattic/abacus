@@ -5,12 +5,9 @@ import React from 'react'
 
 import RecommendationDisplay from 'src/components/experiments/single-view/results/RecommendationDisplay'
 import DatetimeText from 'src/components/general/DatetimeText'
-import {
-  AnalysisStrategyToHuman,
-  getMetricAssignmentRecommendation,
-  RecommendationWarningToHuman,
-} from 'src/lib/analyses'
+import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from 'src/lib/analyses'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
+import { getMetricAssignmentRecommendation } from 'src/lib/recommendations'
 import { Analysis, ExperimentFull, MetricBare } from 'src/lib/schemas'
 import { createStaticTableOptions } from 'src/utils/material-table'
 

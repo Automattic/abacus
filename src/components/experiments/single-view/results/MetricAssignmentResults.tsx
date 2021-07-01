@@ -20,8 +20,8 @@ import Plot from 'react-plotly.js'
 
 import DatetimeText from 'src/components/general/DatetimeText'
 import MetricValue from 'src/components/general/MetricValue'
-import { Recommendation } from 'src/lib/analyses'
 import * as Analyses from 'src/lib/analyses'
+import * as Recommendations from 'src/lib/recommendations'
 import {
   Analysis,
   AnalysisStrategy,
@@ -131,29 +131,29 @@ type StringifiedStatisticalDifference = 'true' | 'false'
 
 // Practical Difference Status -> (string) Statistical Difference -> string
 const differenceOverviewMessages: Record<
-  Analyses.PracticalSignificanceStatus,
+  Recommendations.PracticalSignificanceStatus,
   Record<StringifiedStatisticalDifference, string>
 > = {
-  [Analyses.PracticalSignificanceStatus.Yes]: {
+  [Recommendations.PracticalSignificanceStatus.Yes]: {
     true: `There is high certainty that the change is practically significant.`,
     false: `There is high certainty that the change is practically significant.`,
   },
-  [Analyses.PracticalSignificanceStatus.Uncertain]: {
+  [Recommendations.PracticalSignificanceStatus.Uncertain]: {
     true: `There is not enough certainty to draw a conclusion at this time, but the change is statistically different from zero.`,
     false: `There is not enough certainty to draw a conclusion at this time.`,
   },
-  [Analyses.PracticalSignificanceStatus.No]: {
+  [Recommendations.PracticalSignificanceStatus.No]: {
     true: `There is high certainty that the change isn't practically significant, but the change is statistically different from zero.`,
     false: `There is high certainty that the change isn't practically significant.`,
   },
 }
 
-const explanationLine2: Record<Analyses.PracticalSignificanceStatus, string> = {
-  [Analyses.PracticalSignificanceStatus
+const explanationLine2: Record<Recommendations.PracticalSignificanceStatus, string> = {
+  [Recommendations.PracticalSignificanceStatus
     .Yes]: `With high certainty, there is a practical difference between the variations because the absolute change is outside the minimum difference of `,
-  [Analyses.PracticalSignificanceStatus
+  [Recommendations.PracticalSignificanceStatus
     .Uncertain]: `Uncertainty is too high because the absolute change overlaps with the specified minimum practical difference between `,
-  [Analyses.PracticalSignificanceStatus
+  [Recommendations.PracticalSignificanceStatus
     .No]: `With high certainty, there is no practical difference between the variations because the absolute change is inside the specified minimum difference between `,
 }
 
@@ -186,7 +186,7 @@ export default function MetricAssignmentResults({
   metric: MetricBare
   analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
   experiment: ExperimentFull
-  recommendation: Recommendation
+  recommendation: Recommendations.Recommendation
 }): JSX.Element | null {
   const classes = useStyles()
 
@@ -300,7 +300,7 @@ export default function MetricAssignmentResults({
                 <Typography variant='h5' gutterBottom className={classes.recommendation}>
                   <RecommendationDisplay {...{ experiment, recommendation }} />
                 </Typography>
-                {recommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired && (
+                {recommendation.decision === Recommendations.RecommendationDecision.ManualAnalysisRequired && (
                   <Typography variant='body1' gutterBottom>
                     <strong> Different strategies are recommending conflicting variations! </strong>
                   </Typography>
@@ -308,7 +308,7 @@ export default function MetricAssignmentResults({
                 <Typography variant='body1'>
                   {
                     differenceOverviewMessages[
-                      recommendation.practicallySignificant as Analyses.PracticalSignificanceStatus
+                      recommendation.practicallySignificant as Recommendations.PracticalSignificanceStatus
                     ][String(recommendation.statisticallySignificant) as StringifiedStatisticalDifference]
                   }{' '}
                 </Typography>
@@ -336,7 +336,11 @@ export default function MetricAssignmentResults({
                   statistically different from zero because the interval
                   {recommendation.statisticallySignificant ? ' excludes ' : ' includes '}
                   zero.{' '}
-                  {explanationLine2[recommendation.practicallySignificant as Analyses.PracticalSignificanceStatus]}
+                  {
+                    explanationLine2[
+                      recommendation.practicallySignificant as Recommendations.PracticalSignificanceStatus
+                    ]
+                  }
                   <MetricValue
                     metricParameterType={metric.parameterType}
                     isDifference={true}

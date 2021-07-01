@@ -1,7 +1,7 @@
 import { createStyles, makeStyles, Theme, Tooltip } from '@material-ui/core'
 import React from 'react'
 
-import { Recommendation, RecommendationDecision } from 'src/lib/analyses'
+import { Recommendation, RecommendationDecision } from 'src/lib/recommendations'
 import { ExperimentFull } from 'src/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { RecommendationDecision } from 'src/lib/analyses'
+import { RecommendationDecision } from 'src/lib/recommendations'
 import { AnalysisStrategy } from 'src/lib/schemas'
 import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'
