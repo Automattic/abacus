@@ -42,10 +42,10 @@ import { createStaticTableOptions } from 'src/utils/material-table'
 import { formatIsoDate } from 'src/utils/time'
 
 import MetricValueInterval from '../../../general/MetricValueInterval'
-import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
 import HealthIndicatorTable from './HealthIndicatorTable'
 import MetricAssignmentResults from './MetricAssignmentResults'
+import RecommendationDisplay from './RecommendationDisplay'
 
 const indicationSeverityClassSymbol = (severity: Analyses.HealthIndicationSeverity) => `indicationSeverity${severity}`
 
@@ -182,7 +182,7 @@ export default function ActualExperimentResults({
       metricAssignment,
       metric,
       analysesByStrategyDateAsc,
-      aggregateRecommendation: Analyses.getAggregateMetricAssignmentRecommendation(
+      recommendation: Analyses.getAggregateMetricAssignmentRecommendation(
         Object.values(analysesByStrategyDateAsc)
           .map(_.last.bind(null))
           .filter((x) => x)
@@ -227,7 +227,7 @@ export default function ActualExperimentResults({
   const latestPrimaryMetricAnalysis = primaryMetricLatestAnalysesByStrategy[strategy]
   // istanbul ignore next; trivial
   const totalParticipants = latestPrimaryMetricAnalysis?.participantStats['total'] ?? 0
-  const primaryMetricAggregateRecommendation = Analyses.getAggregateMetricAssignmentRecommendation(
+  const primaryMetricRecommendation = Analyses.getAggregateMetricAssignmentRecommendation(
     Object.values(primaryMetricLatestAnalysesByStrategy)
       .filter((x) => x)
       .map((x) =>
@@ -239,7 +239,7 @@ export default function ActualExperimentResults({
       ),
     strategy,
   )
-  const hasAnalyses = primaryMetricAggregateRecommendation.decision !== Analyses.RecommendationDecision.MissingAnalysis
+  const hasAnalyses = primaryMetricRecommendation.decision !== Analyses.RecommendationDecision.MissingAnalysis
 
   const experimentParticipantStats = Analyses.getExperimentParticipantStats(
     experiment,
@@ -297,18 +297,18 @@ export default function ActualExperimentResults({
         metric,
         strategy,
         analysesByStrategyDateAsc,
-        aggregateRecommendation,
+        recommendation,
       }: {
         metric: MetricBare
         strategy: AnalysisStrategy
         analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
-        aggregateRecommendation: Analyses.Recommendation
+        recommendation: Analyses.Recommendation
       }) => {
         const latestEstimates = _.last(analysesByStrategyDateAsc[strategy])?.metricEstimates
         if (
           !latestEstimates ||
-          aggregateRecommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired ||
-          aggregateRecommendation.decision === Analyses.RecommendationDecision.MissingAnalysis
+          recommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired ||
+          recommendation.decision === Analyses.RecommendationDecision.MissingAnalysis
         ) {
           return null
         }
@@ -333,19 +333,19 @@ export default function ActualExperimentResults({
       render: ({
         strategy,
         analysesByStrategyDateAsc,
-        aggregateRecommendation,
+        recommendation,
       }: {
         metric: MetricBare
         strategy: AnalysisStrategy
         analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
-        aggregateRecommendation: Analyses.Recommendation
+        recommendation: Analyses.Recommendation
       }) => {
         const latestEstimates = _.last(analysesByStrategyDateAsc[strategy])?.metricEstimates
         if (
           !latestEstimates ||
           !latestEstimates.ratio?.top ||
-          aggregateRecommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired ||
-          aggregateRecommendation.decision === Analyses.RecommendationDecision.MissingAnalysis
+          recommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired ||
+          recommendation.decision === Analyses.RecommendationDecision.MissingAnalysis
         ) {
           return null
         }
@@ -368,12 +368,12 @@ export default function ActualExperimentResults({
       title: 'Recommendation',
       render: ({
         experiment,
-        aggregateRecommendation,
+        recommendation,
       }: {
         experiment: ExperimentFull
-        aggregateRecommendation: Analyses.Recommendation
+        recommendation: Analyses.Recommendation
       }) => {
-        return <AggregateRecommendationDisplay {...{ experiment, aggregateRecommendation }} />
+        return <RecommendationDisplay {...{ experiment, recommendation }} />
       },
       cellStyle: {
         fontFamily: theme.custom.fonts.monospace,
@@ -387,21 +387,21 @@ export default function ActualExperimentResults({
       analysesByStrategyDateAsc,
       metricAssignment,
       metric,
-      aggregateRecommendation,
+      recommendation,
     }: {
       strategy: AnalysisStrategy
       analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
       metricAssignment: MetricAssignment
       metric: MetricBare
-      aggregateRecommendation: Analyses.Recommendation
+      recommendation: Analyses.Recommendation
     }) => {
-      let disabled = aggregateRecommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired
+      let disabled = recommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired
       // istanbul ignore next; debug only
       disabled = disabled && !isDebugMode()
       return {
         render: () => (
           <MetricAssignmentResults
-            {...{ strategy, analysesByStrategyDateAsc, metricAssignment, metric, experiment, aggregateRecommendation }}
+            {...{ strategy, analysesByStrategyDateAsc, metricAssignment, metric, experiment, recommendation }}
           />
         ),
         disabled,
@@ -447,9 +447,7 @@ export default function ActualExperimentResults({
                     </div>
                     <div className={classes.summaryStatsPart}>
                       <Typography variant='h3' className={classes.summaryStatsStat} color='primary'>
-                        <AggregateRecommendationDisplay
-                          {...{ experiment, aggregateRecommendation: primaryMetricAggregateRecommendation }}
-                        />
+                        <RecommendationDisplay {...{ experiment, recommendation: primaryMetricRecommendation }} />
                       </Typography>
                       <Typography variant='subtitle1'>
                         <strong>primary metric</strong> recommendation
@@ -486,10 +484,10 @@ export default function ActualExperimentResults({
             data={metricAssignmentSummaryData}
             options={createStaticTableOptions(metricAssignmentSummaryData.length)}
             onRowClick={(_event, rowData, togglePanel) => {
-              const { aggregateRecommendation } = rowData as {
-                aggregateRecommendation: Analyses.Recommendation
+              const { recommendation } = rowData as {
+                recommendation: Analyses.Recommendation
               }
-              let disabled = aggregateRecommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired
+              let disabled = recommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired
               // istanbul ignore next; debug only
               disabled = disabled && !isDebugMode()
 

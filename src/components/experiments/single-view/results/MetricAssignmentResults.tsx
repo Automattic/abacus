@@ -33,7 +33,7 @@ import {
 import * as Visualizations from 'src/lib/visualizations'
 
 import MetricValueInterval from '../../../general/MetricValueInterval'
-import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
+import RecommendationDisplay from './RecommendationDisplay'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme: Theme) =>
     credibleIntervalHeader: {
       width: '8rem',
     },
-    aggregateRecommendation: {
+    recommendation: {
       fontFamily: theme.custom.fonts.monospace,
       marginBottom: theme.spacing(2),
     },
@@ -179,14 +179,14 @@ export default function MetricAssignmentResults({
   metric,
   analysesByStrategyDateAsc,
   experiment,
-  aggregateRecommendation,
+  recommendation,
 }: {
   strategy: AnalysisStrategy
   metricAssignment: MetricAssignment
   metric: MetricBare
   analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
   experiment: ExperimentFull
-  aggregateRecommendation: Recommendation
+  recommendation: Recommendation
 }): JSX.Element | null {
   const classes = useStyles()
 
@@ -297,10 +297,10 @@ export default function MetricAssignmentResults({
           <TableBody>
             <TableRow>
               <TableCell>
-                <Typography variant='h5' gutterBottom className={classes.aggregateRecommendation}>
-                  <AggregateRecommendationDisplay {...{ experiment, aggregateRecommendation }} />
+                <Typography variant='h5' gutterBottom className={classes.recommendation}>
+                  <RecommendationDisplay {...{ experiment, recommendation }} />
                 </Typography>
-                {aggregateRecommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired && (
+                {recommendation.decision === Analyses.RecommendationDecision.ManualAnalysisRequired && (
                   <Typography variant='body1' gutterBottom>
                     <strong> Different strategies are recommending conflicting variations! </strong>
                   </Typography>
@@ -308,8 +308,8 @@ export default function MetricAssignmentResults({
                 <Typography variant='body1'>
                   {
                     differenceOverviewMessages[
-                      aggregateRecommendation.practicallySignificant as Analyses.PracticalSignificanceStatus
-                    ][String(aggregateRecommendation.statisticallySignificant) as StringifiedStatisticalDifference]
+                      recommendation.practicallySignificant as Analyses.PracticalSignificanceStatus
+                    ][String(recommendation.statisticallySignificant) as StringifiedStatisticalDifference]
                   }{' '}
                 </Typography>
               </TableCell>
@@ -332,15 +332,11 @@ export default function MetricAssignmentResults({
                     value={latestEstimates.diff.top}
                     displayPositiveSign
                   />{' '}
-                  is {aggregateRecommendation.statisticallySignificant ? '' : ' not '}
+                  is {recommendation.statisticallySignificant ? '' : ' not '}
                   statistically different from zero because the interval
-                  {aggregateRecommendation.statisticallySignificant ? ' excludes ' : ' includes '}
+                  {recommendation.statisticallySignificant ? ' excludes ' : ' includes '}
                   zero.{' '}
-                  {
-                    explanationLine2[
-                      aggregateRecommendation.practicallySignificant as Analyses.PracticalSignificanceStatus
-                    ]
-                  }
+                  {explanationLine2[recommendation.practicallySignificant as Analyses.PracticalSignificanceStatus]}
                   <MetricValue
                     metricParameterType={metric.parameterType}
                     isDifference={true}

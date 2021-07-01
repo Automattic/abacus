@@ -3,7 +3,7 @@ import _, { last } from 'lodash'
 import MaterialTable from 'material-table'
 import React from 'react'
 
-import AggregateRecommendationDisplay from 'src/components/experiments/single-view/results/AggregateRecommendationDisplay'
+import RecommendationDisplay from 'src/components/experiments/single-view/results/RecommendationDisplay'
 import DatetimeText from 'src/components/general/DatetimeText'
 import {
   AnalysisStrategyToHuman,
@@ -56,8 +56,8 @@ export default function FullLatestAnalyses({
     {
       title: 'Recommendation',
       render: ({ analysis, metric }: { analysis: Analysis; metric: MetricBare }) => (
-        <AggregateRecommendationDisplay
-          aggregateRecommendation={getMetricAssignmentRecommendation(experiment, metric, analysis)}
+        <RecommendationDisplay
+          recommendation={getMetricAssignmentRecommendation(experiment, metric, analysis)}
           experiment={experiment}
         />
       ),

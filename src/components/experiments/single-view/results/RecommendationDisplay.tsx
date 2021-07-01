@@ -15,17 +15,17 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 /**
- * Displays an AggregateRecommendation.
+ * Displays an Recommendation.
  */
-export default function AggregateRecommendationDisplay({
-  aggregateRecommendation,
+export default function RecommendationDisplay({
+  recommendation,
   experiment,
 }: {
-  aggregateRecommendation: Recommendation
+  recommendation: Recommendation
   experiment: ExperimentFull
 }): JSX.Element {
   const classes = useStyles()
-  switch (aggregateRecommendation.decision) {
+  switch (recommendation.decision) {
     case RecommendationDecision.ManualAnalysisRequired:
       return (
         <Tooltip title='Contact @experimentation-review on #a8c-experiments'>
@@ -40,7 +40,7 @@ export default function AggregateRecommendationDisplay({
       return <>Deploy either variation</>
     case RecommendationDecision.DeployChosenVariation: {
       const chosenVariation = experiment.variations.find(
-        (variation) => variation.variationId === aggregateRecommendation.chosenVariationId,
+        (variation) => variation.variationId === recommendation.chosenVariationId,
       )
       if (!chosenVariation) {
         throw new Error('No match for chosenVariationId among variations in experiment.')
@@ -49,6 +49,6 @@ export default function AggregateRecommendationDisplay({
       return <>Deploy {chosenVariation.name}</>
     }
     default:
-      throw new Error('Missing AggregateRecommendationDecision.')
+      throw new Error('Missing RecommendationDecision.')
   }
 }

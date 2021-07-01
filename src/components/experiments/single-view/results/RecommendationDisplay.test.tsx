@@ -4,12 +4,12 @@ import { RecommendationDecision } from 'src/lib/analyses'
 import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'
 
-import AggregateRecommendationDisplay from './AggregateRecommendationDisplay'
+import RecommendationDisplay from './RecommendationDisplay'
 
 test('renders MissingAnalysis correctly', () => {
   const { container } = render(
-    <AggregateRecommendationDisplay
-      aggregateRecommendation={{
+    <RecommendationDisplay
+      recommendation={{
         decision: RecommendationDecision.MissingAnalysis,
       }}
       experiment={Fixtures.createExperimentFull()}
@@ -24,8 +24,8 @@ test('renders MissingAnalysis correctly', () => {
 
 test('renders ManualAnalysisRequired correctly', () => {
   const { container } = render(
-    <AggregateRecommendationDisplay
-      aggregateRecommendation={{
+    <RecommendationDisplay
+      recommendation={{
         decision: RecommendationDecision.ManualAnalysisRequired,
       }}
       experiment={Fixtures.createExperimentFull()}
@@ -45,8 +45,8 @@ test('renders ManualAnalysisRequired correctly', () => {
 
 test('renders Inconclusive correctly', () => {
   const { container } = render(
-    <AggregateRecommendationDisplay
-      aggregateRecommendation={{
+    <RecommendationDisplay
+      recommendation={{
         decision: RecommendationDecision.Inconclusive,
       }}
       experiment={Fixtures.createExperimentFull()}
@@ -61,8 +61,8 @@ test('renders Inconclusive correctly', () => {
 
 test('renders DeployAnyVariation correctly', () => {
   const { container } = render(
-    <AggregateRecommendationDisplay
-      aggregateRecommendation={{
+    <RecommendationDisplay
+      recommendation={{
         decision: RecommendationDecision.DeployAnyVariation,
       }}
       experiment={Fixtures.createExperimentFull()}
@@ -77,8 +77,8 @@ test('renders DeployAnyVariation correctly', () => {
 
 test('renders DeployChosenVariation correctly', () => {
   const { container } = render(
-    <AggregateRecommendationDisplay
-      aggregateRecommendation={{
+    <RecommendationDisplay
+      recommendation={{
         decision: RecommendationDecision.DeployChosenVariation,
         chosenVariationId: 123,
       }}
@@ -108,8 +108,8 @@ test('throws error for missing chosenVariationId', () => {
   console.error = jest.fn()
   expect(() =>
     render(
-      <AggregateRecommendationDisplay
-        aggregateRecommendation={{
+      <RecommendationDisplay
+        recommendation={{
           decision: RecommendationDecision.DeployChosenVariation,
           chosenVariationId: 123,
         }}
@@ -122,17 +122,17 @@ test('throws error for missing chosenVariationId', () => {
   console.error = originalConsoleError
 })
 
-test('throws error for uncovered AggregateRecommendation', () => {
+test('throws error for uncovered Recommendation', () => {
   // Prevent an uncaught error warning due to React + TestingLibrary
   const originalConsoleError = console.error
   console.error = jest.fn()
   expect(() =>
     render(
-      <AggregateRecommendationDisplay
-        aggregateRecommendation={{
+      <RecommendationDisplay
+        recommendation={{
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          decision: 'Unknown AggregateRecommendationDecision',
+          decision: 'Unknown RecommendationDecision',
           chosenVariationId: 123,
         }}
         experiment={Fixtures.createExperimentFull({
@@ -140,6 +140,6 @@ test('throws error for uncovered AggregateRecommendation', () => {
         })}
       />,
     ),
-  ).toThrowErrorMatchingInlineSnapshot(`"Missing AggregateRecommendationDecision."`)
+  ).toThrowErrorMatchingInlineSnapshot(`"Missing RecommendationDecision."`)
   console.error = originalConsoleError
 })

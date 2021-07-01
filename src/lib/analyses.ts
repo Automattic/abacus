@@ -206,15 +206,15 @@ export function getMetricAssignmentRecommendation(
 }
 
 /**
- * Takes an array of aggregateRecommendations using different strategies, and returns an aggregateRecommendation over them.
+ * Takes an array of recommendations using different strategies, and returns an recommendation over them.
  * Checks for recommendation conflicts - currently different chosenVariationIds - and returns manual analysis required decision.
  */
 export function getAggregateMetricAssignmentRecommendation(
-  aggregateRecommendations: Recommendation[],
+  recommendations: Recommendation[],
   targetAnalysisStrategy: AnalysisStrategy,
 ): Recommendation {
-  const targetAnalysisRecommendation = aggregateRecommendations.find(
-    (aggregateRecommendation) => aggregateRecommendation.analysisStrategy === targetAnalysisStrategy,
+  const targetAnalysisRecommendation = recommendations.find(
+    (recommendation) => recommendation.analysisStrategy === targetAnalysisStrategy,
   )
   if (!targetAnalysisRecommendation) {
     return {
@@ -224,7 +224,7 @@ export function getAggregateMetricAssignmentRecommendation(
   }
 
   // There is a conflict if there are different chosenVariationIds:
-  if (1 < new Set(aggregateRecommendations.map((x) => x.chosenVariationId).filter((x) => x)).size) {
+  if (1 < new Set(recommendations.map((x) => x.chosenVariationId).filter((x) => x)).size) {
     return {
       ...targetAnalysisRecommendation,
       decision: RecommendationDecision.ManualAnalysisRequired,
