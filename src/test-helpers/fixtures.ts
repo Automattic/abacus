@@ -28,6 +28,7 @@ import {
   TransactionTypes,
 } from 'src/lib/schemas'
 
+// Note: analysis.recommendation is deprecated and doesn't match metricEstimates
 function createAnalysis(fieldOverrides: Partial<Analysis>): Analysis {
   return {
     metricAssignmentId: 123,
@@ -54,6 +55,7 @@ function createAnalysis(fieldOverrides: Partial<Analysis>): Analysis {
   }
 }
 
+// Note: analysis.recommendation is deprecated and doesn't match metricEstimates
 function createAnalyses(): Analysis[] {
   return [
     // Full set of "latest" analyses for the default metric assignment.
