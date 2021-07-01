@@ -13,6 +13,7 @@ describe('getDiffCredibleIntervalStats', () => {
       ),
     ).toBe(null)
   })
+
   it('should return correct stats', () => {
     expect(
       Analyses.getDiffCredibleIntervalStats(
@@ -203,7 +204,6 @@ describe('getMetricAssignmentRecommendation', () => {
       Analyses.getMetricAssignmentRecommendation(
         Fixtures.createExperimentFull(),
         Fixtures.createMetricBare(123),
-
         Fixtures.createAnalysis({
           analysisStrategy: AnalysisStrategy.PpNaive,
           recommendation: {
@@ -227,11 +227,11 @@ describe('getMetricAssignmentRecommendation', () => {
       practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
       statisticallySignificant: false,
     })
+
     expect(
       Analyses.getMetricAssignmentRecommendation(
         Fixtures.createExperimentFull(),
         Fixtures.createMetricBare(123),
-
         Fixtures.createAnalysis({
           analysisStrategy: AnalysisStrategy.PpNaive,
           recommendation: {
@@ -255,6 +255,7 @@ describe('getMetricAssignmentRecommendation', () => {
       practicallySignificant: Analyses.PracticalSignificanceStatus.No,
       statisticallySignificant: false,
     })
+
     expect(
       Analyses.getMetricAssignmentRecommendation(
         Fixtures.createExperimentFull(),
