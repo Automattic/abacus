@@ -13,9 +13,8 @@ import {
   AttributionWindowSeconds,
   ExperimentFull,
   ExperimentFullNew,
+  Metric,
   MetricAssignment,
-  MetricBare,
-  MetricFull,
   MetricParameterType,
   Platform,
   RecommendationReason,
@@ -423,23 +422,8 @@ function createExperimentFull(fieldOverrides: Partial<ExperimentFull> = {}): Exp
   }
 }
 
-function createMetricBare(id: number, fieldOverrides?: Partial<MetricBare>): MetricBare {
-  return {
-    metricId: id,
-    name: `metric_${id}`,
-    description: `This is metric ${id}`,
-    parameterType: id % 2 === 0 ? MetricParameterType.Revenue : MetricParameterType.Conversion,
-    higherIsBetter: true,
-    ...fieldOverrides,
-  }
-}
-
-function createMetricBares(numMetrics = 3): MetricBare[] {
-  return _.range(1, numMetrics + 1).map((id) => createMetricBare(id))
-}
-
-function createMetricFull(id: number): MetricFull {
-  // Note: It is hard to reuse createMetricBare here as it is boxed
+function createMetric(id: number): Metric {
+  // Note: It is hard to reuse createMetric here as it is boxed
   //       Currently we only unbox it into an ApiData format which is different from this
   const parameterType = id % 2 === 0 ? MetricParameterType.Revenue : MetricParameterType.Conversion
   const eventParams = [{ event: 'event_name', props: { has_blocks: 'true' } }]
@@ -457,6 +441,10 @@ function createMetricFull(id: number): MetricFull {
     eventParams: parameterType === MetricParameterType.Conversion ? eventParams : undefined,
     revenueParams: parameterType === MetricParameterType.Revenue ? revenueParams : undefined,
   }
+}
+
+function createMetrics(numMetrics = 3): Metric[] {
+  return _.range(1, numMetrics + 1).map((id) => createMetric(id))
 }
 
 function createTagBare(id: number): TagBare {
@@ -504,9 +492,8 @@ const Fixtures = {
   createExperimentFull,
   createExperimentFullNew,
   createMetricAssignment,
-  createMetricBare,
-  createMetricBares,
-  createMetricFull,
+  createMetric,
+  createMetrics,
   createTagBares,
   createTagFull,
   createSegmentAssignment,

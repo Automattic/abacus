@@ -22,7 +22,7 @@ import MetricFormFields from 'src/components/metrics/MetricFormFields'
 import MetricsTable from 'src/components/metrics/MetricsTable'
 import Layout from 'src/components/page-parts/Layout'
 import { MetricFormData, metricToFormData } from 'src/lib/form-data'
-import { MetricFullNew, metricFullNewSchema } from 'src/lib/schemas'
+import { metricFullNewSchema, MetricNew } from 'src/lib/schemas'
 import { useDataLoadingError, useDataSource } from 'src/utils/data-loading'
 import { isDebugMode } from 'src/utils/general'
 
@@ -71,7 +71,7 @@ const MetricsIndexPage = (): JSX.Element => {
       if (!editMetricMetricId) {
         throw new Error(`Missing metricId, this shouldn't happen.`)
       }
-      await MetricsApi.put(editMetricMetricId, (metric as unknown) as MetricFullNew)
+      await MetricsApi.put(editMetricMetricId, (metric as unknown) as MetricNew)
       enqueueSnackbar('Metric Edited!', { variant: 'success' })
       reloadRef.current()
       setEditMetricMetricId(null)
@@ -91,7 +91,7 @@ const MetricsIndexPage = (): JSX.Element => {
   }
   const onSubmitAddMetric = async ({ metric }: { metric: MetricFormData }) => {
     try {
-      await MetricsApi.create((metric as unknown) as MetricFullNew)
+      await MetricsApi.create((metric as unknown) as MetricNew)
       enqueueSnackbar('Metric Added!', { variant: 'success' })
       reloadRef.current()
       setIsAddingMetric(false)

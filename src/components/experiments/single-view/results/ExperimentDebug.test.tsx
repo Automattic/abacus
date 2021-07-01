@@ -5,7 +5,7 @@ import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'
 
 const experiment = Fixtures.createExperimentFull()
-const metrics = Fixtures.createMetricBares()
+const metrics = Fixtures.createMetrics()
 const analyses = Fixtures.createAnalyses()
 
 test('renders an appropriate message with no analyses', () => {

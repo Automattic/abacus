@@ -24,7 +24,7 @@ export const Form = (): JSX.Element => {
   }
   return (
     <ExperimentForm
-      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetrics(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={async (formData: unknown) => alert(JSON.stringify(formData, null, 2))}
@@ -44,7 +44,7 @@ export const FormWithExistingExperiment = (): JSX.Element => {
   }
   return (
     <ExperimentForm
-      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetrics(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({
         conclusionUrl: 'https://conclusion.example.com',

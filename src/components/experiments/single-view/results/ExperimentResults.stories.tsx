@@ -7,7 +7,7 @@ export default { title: 'Experiment results' }
 
 const analyses = Fixtures.createAnalyses()
 const experiment = Fixtures.createExperimentFull()
-const metrics = Fixtures.createMetricBares()
+const metrics = Fixtures.createMetrics()
 
 export const noAnalyses = (): JSX.Element => (
   <ExperimentResults analyses={[]} experiment={experiment} metrics={metrics} />

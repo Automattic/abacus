@@ -9,7 +9,7 @@ describe('lib/normalizers.ts module', () => {
     })
 
     it('indexes an non-empty array', () => {
-      const metrics = Fixtures.createMetricBares()
+      const metrics = Fixtures.createMetrics()
       expect(Normalizers.indexMetrics(metrics)).toEqual({ 1: metrics[0], 2: metrics[1], 3: metrics[2] })
     })
   })

@@ -15,7 +15,7 @@ import MaterialTable from 'material-table'
 import React from 'react'
 
 import MetricsApi from 'src/api/MetricsApi'
-import { MetricBare } from 'src/lib/schemas'
+import { Metric } from 'src/lib/schemas'
 import { useDataLoadingError, useDataSource } from 'src/utils/data-loading'
 import { formatBoolean } from 'src/utils/formatters'
 import { defaultTableOptions } from 'src/utils/material-table'
@@ -49,7 +49,7 @@ const useMetricDetailStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const MetricDetail = ({ metricBare }: { metricBare: MetricBare }) => {
+const MetricDetail = ({ metricBare }: { metricBare: Metric }) => {
   const classes = useMetricDetailStyles()
 
   const { isLoading, data: metricFull, error } = useDataSource(() => MetricsApi.findById(metricBare.metricId), [
@@ -100,7 +100,7 @@ const MetricsTable = ({
   metrics,
   onEditMetric,
 }: {
-  metrics: MetricBare[]
+  metrics: Metric[]
   onEditMetric?: (metricId: number) => void
 }): JSX.Element => {
   debug('MetricsTable#render')
@@ -140,7 +140,7 @@ const MetricsTable = ({
                 icon: 'edit',
                 tooltip: 'Edit Metric',
                 onClick: (_event, rowData) => {
-                  onEditMetric((rowData as MetricBare).metricId)
+                  onEditMetric((rowData as Metric).metricId)
                 },
               },
             ]

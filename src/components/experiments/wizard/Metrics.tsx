@@ -28,7 +28,7 @@ import AbacusAutocomplete, { autocompleteInputProps } from 'src/components/gener
 import MetricDifferenceField from 'src/components/general/MetricDifferenceField'
 import MoreMenu from 'src/components/general/MoreMenu'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
-import { EventNew, MetricAssignment, MetricBare } from 'src/lib/schemas'
+import { EventNew, Metric, MetricAssignment } from 'src/lib/schemas'
 import { useDataSource } from 'src/utils/data-loading'
 
 import { ExperimentFormCompletionBag } from './ExperimentForm'
@@ -122,7 +122,7 @@ const useEventEditorStyles = makeStyles((theme) =>
   }),
 )
 
-const createMetricAssignment = (metric: MetricBare) => {
+const createMetricAssignment = (metric: Metric) => {
   return {
     metricId: metric.metricId,
     attributionWindowSeconds: '',
@@ -281,7 +281,7 @@ const Metrics = ({
   indexedMetrics,
   completionBag,
 }: {
-  indexedMetrics: Record<number, MetricBare>
+  indexedMetrics: Record<number, Metric>
   completionBag: ExperimentFormCompletionBag
 }): JSX.Element => {
   const classes = useStyles()
@@ -291,8 +291,8 @@ const Metrics = ({
   const [metricAssignmentsField, _metricAssignmentsFieldMetaProps, metricAssignmentsFieldHelperProps] = useField<
     MetricAssignment[]
   >('experiment.metricAssignments')
-  const [selectedMetric, setSelectedMetric] = useState<MetricBare | null>(null)
-  const onChangeSelectedMetricOption = (_event: unknown, value: MetricBare | null) => setSelectedMetric(value)
+  const [selectedMetric, setSelectedMetric] = useState<Metric | null>(null)
+  const onChangeSelectedMetricOption = (_event: unknown, value: Metric | null) => setSelectedMetric(value)
 
   const makeMetricAssignmentPrimary = (indexToSet: number) => {
     metricAssignmentsFieldHelperProps.setValue(
@@ -436,7 +436,7 @@ const Metrics = ({
                     fullWidth
                     options={Object.values(indexedMetrics)}
                     noOptionsText='No metrics found'
-                    getOptionLabel={(metric: MetricBare) => metric.name}
+                    getOptionLabel={(metric: Metric) => metric.name}
                     renderOption={(option) => (
                       <div>
                         <Typography variant='body1'>

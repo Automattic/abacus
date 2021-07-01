@@ -33,8 +33,8 @@ import {
   Analysis,
   AnalysisStrategy,
   ExperimentFull,
+  Metric,
   MetricAssignment,
-  MetricBare,
   MetricParameterType,
 } from 'src/lib/schemas'
 import * as Visualizations from 'src/lib/visualizations'
@@ -273,7 +273,7 @@ export default function ActualExperimentResults({
   const tableColumns = [
     {
       title: 'Metric (attribution window)',
-      render: ({ metric, metricAssignment }: { metric: MetricBare; metricAssignment: MetricAssignment }) => (
+      render: ({ metric, metricAssignment }: { metric: Metric; metricAssignment: MetricAssignment }) => (
         <>
           <span className={classes.metricAssignmentNameLine}>
             <Tooltip title={metric.description}>
@@ -302,7 +302,7 @@ export default function ActualExperimentResults({
         analysesByStrategyDateAsc,
         recommendation,
       }: {
-        metric: MetricBare
+        metric: Metric
         strategy: AnalysisStrategy
         analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
         recommendation: Recommendations.Recommendation
@@ -338,7 +338,7 @@ export default function ActualExperimentResults({
         analysesByStrategyDateAsc,
         recommendation,
       }: {
-        metric: MetricBare
+        metric: Metric
         strategy: AnalysisStrategy
         analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
         recommendation: Recommendations.Recommendation
@@ -395,7 +395,7 @@ export default function ActualExperimentResults({
       strategy: AnalysisStrategy
       analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
       metricAssignment: MetricAssignment
-      metric: MetricBare
+      metric: Metric
       recommendation: Recommendations.Recommendation
     }) => {
       let disabled = recommendation.decision === Recommendations.Decision.ManualAnalysisRequired

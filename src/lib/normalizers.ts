@@ -1,13 +1,13 @@
 import { normalize, schema } from 'normalizr'
 
-import { MetricBare, MetricFull, Segment, TagBare } from './schemas'
+import { Metric, Segment, TagBare } from './schemas'
 
-const metricNormalizrSchema = new schema.Entity<MetricBare | MetricFull>('metrics', {}, { idAttribute: 'metricId' })
+const metricNormalizrSchema = new schema.Entity<Metric | Metric>('metrics', {}, { idAttribute: 'metricId' })
 
 /**
  * Return a mapping from metric ID to the metric object.
  */
-export function indexMetrics<Metric extends MetricBare | MetricFull>(metrics: Metric[]): Record<number, Metric> {
+export function indexMetrics(metrics: Metric[]): Record<number, Metric> {
   return normalize<Metric>(metrics, [metricNormalizrSchema]).entities.metrics || {}
 }
 

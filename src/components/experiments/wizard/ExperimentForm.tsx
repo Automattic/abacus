@@ -8,7 +8,7 @@ import * as yup from 'yup'
 
 import GeneralErrorAlert from 'src/components/general/GeneralErrorAlert'
 import { ExperimentFormData } from 'src/lib/form-data'
-import { AutocompleteItem, experimentFullNewSchema, MetricBare, Segment } from 'src/lib/schemas'
+import { AutocompleteItem, experimentFullNewSchema, Metric, Segment } from 'src/lib/schemas'
 import { DataSourceResult } from 'src/utils/data-loading'
 
 import LoadingButtonContainer from '../../general/LoadingButtonContainer'
@@ -118,7 +118,7 @@ const ExperimentForm = ({
   completionBag,
   formSubmissionError,
 }: {
-  indexedMetrics: Record<number, MetricBare>
+  indexedMetrics: Record<number, Metric>
   indexedSegments: Record<number, Segment>
   initialExperiment: ExperimentFormData
   completionBag: ExperimentFormCompletionBag

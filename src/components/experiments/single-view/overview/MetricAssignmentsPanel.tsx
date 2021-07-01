@@ -36,10 +36,10 @@ import * as MetricAssignments from 'src/lib/metric-assignments'
 import { indexMetrics } from 'src/lib/normalizers'
 import {
   ExperimentFull,
+  Metric,
   MetricAssignment,
   MetricAssignmentNew,
   metricAssignmentNewSchema,
-  MetricBare,
   MetricParameterType,
   Status,
 } from 'src/lib/schemas'
@@ -56,8 +56,8 @@ import LoadingButtonContainer from '../../../general/LoadingButtonContainer'
  * @throws {Error} When unable to resolve a metric ID with one of the supplied
  *   metrics.
  */
-function resolveMetricAssignments(metricAssignments: MetricAssignment[], metrics: MetricBare[]) {
-  const metricsById: { [metricId: string]: MetricBare } = {}
+function resolveMetricAssignments(metricAssignments: MetricAssignment[], metrics: Metric[]) {
+  const metricsById: { [metricId: string]: Metric } = {}
   metrics.forEach((metric) => (metricsById[metric.metricId] = metric))
 
   return metricAssignments.map((metricAssignment) => {
@@ -117,7 +117,7 @@ function MetricAssignmentsPanel({
 }: {
   experiment: ExperimentFull
   experimentReloadRef: React.MutableRefObject<() => void>
-  metrics: MetricBare[]
+  metrics: Metric[]
 }): JSX.Element {
   const classes = useStyles()
   const resolvedMetricAssignments = useMemo(

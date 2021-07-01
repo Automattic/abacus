@@ -13,7 +13,7 @@ import MetricFormFields from './MetricFormFields'
 MockDate.set('2020-07-21')
 
 test('renders as expected for conversion metric', async () => {
-  const metric = Fixtures.createMetricFull(1)
+  const metric = Fixtures.createMetric(1)
   const { container } = render(
     <Formik
       initialValues={{
@@ -36,7 +36,7 @@ test('renders as expected for conversion metric', async () => {
 })
 
 test('renders as expected for revenue metric', async () => {
-  const metric = Fixtures.createMetricFull(2)
+  const metric = Fixtures.createMetric(2)
   const { container } = render(
     <Formik
       initialValues={{

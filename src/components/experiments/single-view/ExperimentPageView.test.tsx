@@ -35,7 +35,7 @@ const renderExperimentPageView = async ({ experiment: experimentOverrides = {} }
   const experiment = Fixtures.createExperimentFull(experimentOverrides)
   mockedExperimentsApi.findById.mockImplementationOnce(async () => experiment)
 
-  const metrics = Fixtures.createMetricBares(10)
+  const metrics = Fixtures.createMetrics(10)
   mockedMetricsApi.findAll.mockImplementationOnce(async () => metrics)
 
   const segments = Fixtures.createSegments(10)
@@ -103,7 +103,7 @@ test('renders with an unknown experiment name', async () => {
 })
 
 test('experiment page view renders with null experimentId without crashing', async () => {
-  const metrics = Fixtures.createMetricBares(10)
+  const metrics = Fixtures.createMetrics(10)
   mockedMetricsApi.findAll.mockImplementationOnce(async () => metrics)
 
   const segments = Fixtures.createSegments(10)

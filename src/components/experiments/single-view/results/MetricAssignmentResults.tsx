@@ -26,8 +26,8 @@ import {
   Analysis,
   AnalysisStrategy,
   ExperimentFull,
+  Metric,
   MetricAssignment,
-  MetricBare,
   MetricParameterType,
 } from 'src/lib/schemas'
 import * as Visualizations from 'src/lib/visualizations'
@@ -183,7 +183,7 @@ export default function MetricAssignmentResults({
 }: {
   strategy: AnalysisStrategy
   metricAssignment: MetricAssignment
-  metric: MetricBare
+  metric: Metric
   analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
   experiment: ExperimentFull
   recommendation: Recommendations.Recommendation

@@ -8,7 +8,7 @@ import AudiencePanel from 'src/components/experiments/single-view/overview/Audie
 import ConclusionsPanel from 'src/components/experiments/single-view/overview/ConclusionsPanel'
 import GeneralPanel from 'src/components/experiments/single-view/overview/GeneralPanel'
 import MetricAssignmentsPanel from 'src/components/experiments/single-view/overview/MetricAssignmentsPanel'
-import { ExperimentFull, MetricBare, Segment, Status, TagBare } from 'src/lib/schemas'
+import { ExperimentFull, Metric, Segment, Status, TagBare } from 'src/lib/schemas'
 
 const debug = debugFactory('abacus:components/ExperimentDetails.tsx')
 
@@ -31,7 +31,7 @@ function ExperimentDetails({
   experimentReloadRef,
 }: {
   experiment: ExperimentFull
-  metrics: MetricBare[]
+  metrics: Metric[]
   segments: Segment[]
   tags: TagBare[]
   experimentReloadRef: React.MutableRefObject<() => void>

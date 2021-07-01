@@ -9,7 +9,7 @@ import { validationErrorDisplayer } from 'src/test-helpers/test-utils'
 describe('MetricsApi.ts module', () => {
   describe('outbound form', () => {
     it(`should transform a metric into an outbound form`, () => {
-      expect(metricFullNewOutboundSchema.cast(Fixtures.createMetricFull(1))).toEqual({
+      expect(metricFullNewOutboundSchema.cast(Fixtures.createMetric(1))).toEqual({
         description: 'This is metric 1',
         event_params: [
           {
@@ -26,7 +26,7 @@ describe('MetricsApi.ts module', () => {
         revenue_params: undefined,
       })
 
-      expect(metricFullNewOutboundSchema.cast(Fixtures.createMetricFull(2))).toEqual({
+      expect(metricFullNewOutboundSchema.cast(Fixtures.createMetric(2))).toEqual({
         description: 'This is metric 2',
         event_params: undefined,
         higher_is_better: false,
@@ -44,14 +44,14 @@ describe('MetricsApi.ts module', () => {
 
   describe('create', () => {
     it(`should create a new metric`, async () => {
-      const returnedMetric = await validationErrorDisplayer(MetricsApi.create(Fixtures.createMetricFull(1)))
+      const returnedMetric = await validationErrorDisplayer(MetricsApi.create(Fixtures.createMetric(1)))
       expect(returnedMetric.metricId).toBeGreaterThan(0)
     })
   })
 
   describe('put', () => {
     it(`should put a metric`, async () => {
-      const returnedMetric = await validationErrorDisplayer(MetricsApi.put(1, Fixtures.createMetricFull(1)))
+      const returnedMetric = await validationErrorDisplayer(MetricsApi.put(1, Fixtures.createMetric(1)))
       expect(returnedMetric.metricId).toBeGreaterThan(0)
     })
   })

@@ -20,7 +20,7 @@ const experimentReloadRef: React.MutableRefObject<() => void> = { current: noop 
 test('renders as expected at large width', () => {
   window.matchMedia = createMatchMedia(1600)
 
-  const metrics = Fixtures.createMetricBares()
+  const metrics = Fixtures.createMetrics()
   const segments = Fixtures.createSegments(5)
   const tags = Fixtures.createTagBares(5)
   const experiment = Fixtures.createExperimentFull({
@@ -44,7 +44,7 @@ test('renders as expected at large width', () => {
 
 test('renders as expected at small width', () => {
   window.matchMedia = createMatchMedia(600)
-  const metrics = Fixtures.createMetricBares()
+  const metrics = Fixtures.createMetrics()
   const segments = Fixtures.createSegments(5)
   const tags = Fixtures.createTagBares(5)
   const experiment = Fixtures.createExperimentFull({
@@ -67,7 +67,7 @@ test('renders as expected at small width', () => {
 })
 
 test('renders as expected with conclusion data', () => {
-  const metrics = Fixtures.createMetricBares()
+  const metrics = Fixtures.createMetrics()
   const segments = Fixtures.createSegments(5)
   const tags = Fixtures.createTagBares(5)
   const experiment = Fixtures.createExperimentFull({
@@ -94,7 +94,7 @@ test('renders as expected with conclusion data', () => {
 })
 
 test('renders as expected without conclusion data', () => {
-  const metrics = Fixtures.createMetricBares()
+  const metrics = Fixtures.createMetrics()
   const segments = Fixtures.createSegments(5)
   const tags = Fixtures.createTagBares(5)
   const experiment = Fixtures.createExperimentFull({

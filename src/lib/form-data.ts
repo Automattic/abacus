@@ -3,8 +3,8 @@ import { formatIsoDate } from 'src/utils/time'
 import {
   Event,
   ExperimentFull,
+  Metric,
   MetricAssignment,
-  MetricFull,
   MetricParameterType,
   SegmentAssignment,
   TagBare,
@@ -119,7 +119,7 @@ export type ExperimentFormData = ReturnType<typeof experimentToFormData>
  * Convert a metric for use as form data in Formik.
  */
 export const metricToFormData: (
-  metric: Partial<MetricFull>,
+  metric: Partial<Metric>,
 ) => {
   parameterType: MetricParameterType
   name: string
@@ -127,7 +127,7 @@ export const metricToFormData: (
   description: string
   revenueParams: string | undefined
   higherIsBetter: boolean
-} = (metric: Partial<MetricFull>) => ({
+} = (metric: Partial<Metric>) => ({
   name: metric.name ?? '',
   description: metric.description ?? '',
   parameterType: metric.parameterType ?? MetricParameterType.Conversion,

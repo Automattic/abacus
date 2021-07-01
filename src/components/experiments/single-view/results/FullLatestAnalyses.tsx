@@ -8,7 +8,7 @@ import DatetimeText from 'src/components/general/DatetimeText'
 import { AnalysisStrategyToHuman, RecommendationWarningToHuman } from 'src/lib/analyses'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
 import { getMetricAssignmentRecommendation } from 'src/lib/recommendations'
-import { Analysis, ExperimentFull, MetricBare } from 'src/lib/schemas'
+import { Analysis, ExperimentFull, Metric } from 'src/lib/schemas'
 import { createStaticTableOptions } from 'src/utils/material-table'
 
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
@@ -52,7 +52,7 @@ export default function FullLatestAnalyses({
     },
     {
       title: 'Recommendation',
-      render: ({ analysis, metric }: { analysis: Analysis; metric: MetricBare }) => (
+      render: ({ analysis, metric }: { analysis: Analysis; metric: Metric }) => (
         <RecommendationDisplay
           recommendation={getMetricAssignmentRecommendation(experiment, metric, analysis)}
           experiment={experiment}

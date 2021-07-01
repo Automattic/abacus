@@ -3,13 +3,13 @@ import React from 'react'
 
 import * as MetricAssignments from 'src/lib/metric-assignments'
 import { indexMetrics } from 'src/lib/normalizers'
-import { Analysis, AnalysisStrategy, ExperimentFull, MetricAssignment, MetricBare } from 'src/lib/schemas'
+import { Analysis, AnalysisStrategy, ExperimentFull, Metric, MetricAssignment } from 'src/lib/schemas'
 
 import ActualExperimentResults from './ActualExperimentResults'
 
 export type MetricAssignmentAnalysesData = {
   metricAssignment: MetricAssignment
-  metric: MetricBare
+  metric: Metric
   analysesByStrategyDateAsc: Record<AnalysisStrategy, Analysis[]>
 }
 
@@ -23,7 +23,7 @@ export default function ExperimentResults({
 }: {
   analyses: Analysis[]
   experiment: ExperimentFull
-  metrics: MetricBare[]
+  metrics: Metric[]
   debugMode?: boolean
 }): JSX.Element {
   const indexedMetrics = indexMetrics(metrics)

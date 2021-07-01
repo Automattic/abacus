@@ -145,7 +145,7 @@ describe('lib/form-data.test.ts module', () => {
     })
 
     it('should return form data for an existing metric', () => {
-      expect(metricToFormData(Fixtures.createMetricFull(1))).toMatchInlineSnapshot(`
+      expect(metricToFormData(Fixtures.createMetric(1))).toMatchInlineSnapshot(`
         Object {
           "description": "This is metric 1",
           "eventParams": "[
@@ -163,7 +163,7 @@ describe('lib/form-data.test.ts module', () => {
         }
       `)
 
-      expect(metricToFormData(Fixtures.createMetricFull(2))).toMatchInlineSnapshot(`
+      expect(metricToFormData(Fixtures.createMetric(2))).toMatchInlineSnapshot(`
         Object {
           "description": "This is metric 2",
           "eventParams": undefined,

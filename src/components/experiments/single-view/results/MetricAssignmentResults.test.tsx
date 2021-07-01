@@ -21,7 +21,7 @@ test('renders an appropriate message with no analyses', () => {
     <MetricAssignmentResults
       strategy={AnalysisStrategy.PpNaive}
       metricAssignment={Fixtures.createMetricAssignment({})}
-      metric={Fixtures.createMetricBares(1)[0]}
+      metric={Fixtures.createMetrics(1)[0]}
       analysesByStrategyDateAsc={{
         [AnalysisStrategy.PpNaive]: [],
         [AnalysisStrategy.MittNoSpammersNoCrossovers]: [],

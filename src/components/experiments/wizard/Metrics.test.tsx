@@ -3,13 +3,13 @@ import { Formik } from 'formik'
 import React from 'react'
 
 import { experimentToFormData } from 'src/lib/form-data'
-import { MetricBare, MetricParameterType } from 'src/lib/schemas'
+import { Metric, MetricParameterType } from 'src/lib/schemas'
 import { changeFieldByRole, render } from 'src/test-helpers/test-utils'
 
 import { ExperimentFormCompletionBag } from './ExperimentForm'
 import Metrics from './Metrics'
 
-const indexedMetrics: Record<number, MetricBare> = {
+const indexedMetrics: Record<number, Metric> = {
   1: {
     metricId: 1,
     name: 'asdf_7d_refund',

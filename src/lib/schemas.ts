@@ -104,20 +104,13 @@ export enum MetricParameterType {
   Count = 'count',
 }
 
-export const metricBareSchema = yup
+export const metricFullSchema = yup
   .object({
     metricId: idSchema.defined(),
     name: nameSchema.defined(),
     description: yup.string().defined(),
     parameterType: yup.string().oneOf(Object.values(MetricParameterType)).defined(),
     higherIsBetter: yup.boolean().defined(),
-  })
-  .defined()
-  .camelCase()
-export interface MetricBare extends yup.InferType<typeof metricBareSchema> {}
-
-export const metricFullSchema = metricBareSchema
-  .shape({
     eventParams: yup.mixed().when('parameterType', {
       is: MetricParameterType.Conversion,
       then: yup.array(eventSchema).defined(),
@@ -144,11 +137,11 @@ export const metricFullSchema = metricBareSchema
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return !!metricFull.eventParams !== !!metricFull.revenueParams
   })
-export interface MetricFull extends yup.InferType<typeof metricFullSchema> {}
+export interface Metric extends yup.InferType<typeof metricFullSchema> {}
 export const metricFullNewSchema = metricFullSchema.shape({
   metricId: idSchema.nullable(),
 })
-export interface MetricFullNew extends yup.InferType<typeof metricFullNewSchema> {}
+export interface MetricNew extends yup.InferType<typeof metricFullNewSchema> {}
 export const metricFullNewOutboundSchema = metricFullNewSchema.snakeCase().transform(
   // istanbul ignore next; Tested by integration
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return

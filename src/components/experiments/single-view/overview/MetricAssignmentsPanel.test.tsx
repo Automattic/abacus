@@ -14,7 +14,7 @@ jest.mock('src/api/ExperimentsApi')
 const mockedExperimentsApi = ExperimentsApi as jest.Mocked<typeof ExperimentsApi>
 
 test('renders as expected with all metrics resolvable', () => {
-  const metrics = Fixtures.createMetricBares()
+  const metrics = Fixtures.createMetrics()
   const experiment = Fixtures.createExperimentFull()
   const experimentReloadRef: React.MutableRefObject<() => void> = { current: noop }
   const { container } = render(<MetricAssignmentsPanel {...{ experiment, metrics, experimentReloadRef }} />)
@@ -273,7 +273,7 @@ test('renders as expected with all metrics resolvable', () => {
 })
 
 test('throws an error when some metrics not resolvable', () => {
-  const metrics = Fixtures.createMetricBares(1)
+  const metrics = Fixtures.createMetrics(1)
   const experiment = Fixtures.createExperimentFull()
   const experimentReloadRef: React.MutableRefObject<() => void> = { current: noop }
 
@@ -292,7 +292,7 @@ test('throws an error when some metrics not resolvable', () => {
 })
 
 test('opens, submits and cancels assign metric dialog', async () => {
-  const metrics = Fixtures.createMetricBares(5)
+  const metrics = Fixtures.createMetrics(5)
   const experiment = Fixtures.createExperimentFull({ status: Status.Running })
   const experimentReloadRef: React.MutableRefObject<() => void> = { current: noop }
   render(<MetricAssignmentsPanel {...{ experiment, metrics, experimentReloadRef }} />)

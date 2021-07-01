@@ -1,4 +1,4 @@
-import { Analysis, AnalysisStrategy, ExperimentFull, MetricAssignment, MetricBare, Variation } from './schemas'
+import { Analysis, AnalysisStrategy, ExperimentFull, Metric, MetricAssignment, Variation } from './schemas'
 
 /**
  * # Recommendations
@@ -139,7 +139,7 @@ const PracticalSignificanceStatusToDecision: Record<PracticalSignificanceStatus,
  */
 export function getMetricAssignmentRecommendation(
   experiment: ExperimentFull,
-  metric: MetricBare,
+  metric: Metric,
   analysis: Analysis,
 ): Recommendation {
   const metricAssignment = experiment.metricAssignments.find(

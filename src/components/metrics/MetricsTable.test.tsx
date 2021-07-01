@@ -23,7 +23,7 @@ test('with no metrics, renders an empty table', () => {
 })
 
 test('with some metrics, renders a table', () => {
-  const { container } = render(<MetricsTable metrics={Fixtures.createMetricBares(2)} />)
+  const { container } = render(<MetricsTable metrics={Fixtures.createMetrics(2)} />)
 
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
@@ -34,12 +34,12 @@ test('with some metrics, renders a table', () => {
 })
 
 test('with some metrics, loads and opens metric details', async () => {
-  const { container } = render(<MetricsTable metrics={Fixtures.createMetricBares(2)} />)
+  const { container } = render(<MetricsTable metrics={Fixtures.createMetrics(2)} />)
   const tBodyElmt = container.querySelector('tbody') as HTMLTableSectionElement
   expect(tBodyElmt).not.toBeNull()
 
   for (let i = 1; i < 7; i++) {
-    const metricFull = Fixtures.createMetricFull(i)
+    const metricFull = Fixtures.createMetric(i)
     mockedMetricsApi.findById.mockResolvedValueOnce(metricFull)
 
     // Open metric details
@@ -65,7 +65,7 @@ test('with some metrics, loads and opens metric details', async () => {
 
 test('with some metrics and canEditMetrics can click on the edit button', () => {
   const onEditMetric = jest.fn()
-  render(<MetricsTable metrics={Fixtures.createMetricBares(2)} onEditMetric={onEditMetric} />)
+  render(<MetricsTable metrics={Fixtures.createMetrics(2)} onEditMetric={onEditMetric} />)
 
   const edits = screen.getAllByRole('button', { name: 'Edit Metric' })
 

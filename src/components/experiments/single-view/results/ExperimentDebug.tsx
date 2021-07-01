@@ -4,7 +4,7 @@ import React from 'react'
 import * as Experiments from 'src/lib/experiments'
 import * as MetricAssignments from 'src/lib/metric-assignments'
 import { indexMetrics } from 'src/lib/normalizers'
-import { Analysis, AnalysisStrategy, ExperimentFull, MetricBare } from 'src/lib/schemas'
+import { Analysis, AnalysisStrategy, ExperimentFull, Metric } from 'src/lib/schemas'
 
 import { MetricAssignmentAnalysesData } from './ExperimentResults'
 import FullLatestAnalyses from './FullLatestAnalyses'
@@ -20,7 +20,7 @@ export default function ExperimentDebug({
 }: {
   analyses: Analysis[]
   experiment: ExperimentFull
-  metrics: MetricBare[]
+  metrics: Metric[]
   debugMode?: boolean
 }): JSX.Element {
   const indexedMetrics = indexMetrics(metrics)

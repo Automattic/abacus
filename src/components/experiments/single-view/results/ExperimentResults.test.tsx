@@ -16,7 +16,7 @@ beforeEach(() => {
 })
 
 const experiment = Fixtures.createExperimentFull()
-const metrics = Fixtures.createMetricBares()
+const metrics = Fixtures.createMetrics()
 const analyses = Fixtures.createAnalyses()
 
 test('renders an appropriate message with no analyses', async () => {
@@ -250,7 +250,7 @@ test('renders the condensed table with some analyses in non-debug mode for a Con
 })
 
 test('renders the condensed table with some analyses in non-debug mode for a Revenue Metric', async () => {
-  const metrics = Fixtures.createMetricBares().map((metric) => ({
+  const metrics = Fixtures.createMetrics().map((metric) => ({
     ...metric,
     parameterType: MetricParameterType.Revenue,
   }))

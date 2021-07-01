@@ -222,7 +222,7 @@ describe('getMetricAssignmentRecommendation', () => {
     expect(
       Recommendations.getMetricAssignmentRecommendation(
         Fixtures.createExperimentFull(),
-        Fixtures.createMetricBare(123),
+        Fixtures.createMetric(123),
         Fixtures.createAnalysis({
           analysisStrategy: AnalysisStrategy.PpNaive,
           recommendation: {
@@ -250,7 +250,7 @@ describe('getMetricAssignmentRecommendation', () => {
     expect(
       Recommendations.getMetricAssignmentRecommendation(
         Fixtures.createExperimentFull(),
-        Fixtures.createMetricBare(123),
+        Fixtures.createMetric(123),
         Fixtures.createAnalysis({
           analysisStrategy: AnalysisStrategy.PpNaive,
           recommendation: {
@@ -278,7 +278,7 @@ describe('getMetricAssignmentRecommendation', () => {
     expect(
       Recommendations.getMetricAssignmentRecommendation(
         Fixtures.createExperimentFull(),
-        Fixtures.createMetricBare(123),
+        Fixtures.createMetric(123),
         Fixtures.createAnalysis({
           analysisStrategy: AnalysisStrategy.PpNaive,
           recommendation: {
@@ -306,7 +306,7 @@ describe('getMetricAssignmentRecommendation', () => {
     expect(
       Recommendations.getMetricAssignmentRecommendation(
         Fixtures.createExperimentFull(),
-        Fixtures.createMetricBare(123),
+        Fixtures.createMetric(123),
         Fixtures.createAnalysis({
           analysisStrategy: AnalysisStrategy.PpNaive,
           recommendation: {
@@ -336,7 +336,7 @@ describe('getMetricAssignmentRecommendation', () => {
   expect(
     Recommendations.getMetricAssignmentRecommendation(
       Fixtures.createExperimentFull(),
-      Fixtures.createMetricBare(123, { higherIsBetter: false }),
+      Fixtures.createMetric(123, { higherIsBetter: false }),
       Fixtures.createAnalysis({
         analysisStrategy: AnalysisStrategy.PpNaive,
         recommendation: {

@@ -89,7 +89,7 @@ test('renders as expected', () => {
 
   const { container } = render(
     <ExperimentForm
-      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetrics(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
@@ -106,7 +106,7 @@ test('sections should be browsable by the next and prev buttons', async () => {
 
   render(
     <ExperimentForm
-      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetrics(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
@@ -150,7 +150,7 @@ test('sections should be browsable by enter presses', async () => {
 
   render(
     <ExperimentForm
-      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetrics(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
@@ -194,7 +194,7 @@ test('sections should be browsable by the section buttons', async () => {
 
   const { container } = render(
     <ExperimentForm
-      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetrics(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
@@ -238,7 +238,7 @@ test('section should be validated after change', async () => {
 
   render(
     <ExperimentForm
-      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetrics(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
@@ -316,7 +316,7 @@ test('skipping to submit should check all sections', async () => {
 
   const { container } = render(
     <ExperimentForm
-      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetrics(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
@@ -362,7 +362,7 @@ test('form submits with valid fields', async () => {
 
   render(
     <ExperimentForm
-      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetrics(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData({})}
       onSubmit={onSubmit}
@@ -583,7 +583,7 @@ test('form submits an edited experiment without any changes', async () => {
 
   render(
     <ExperimentForm
-      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetricBares(20))}
+      indexedMetrics={Normalizers.indexMetrics(Fixtures.createMetrics(20))}
       indexedSegments={Normalizers.indexSegments(Fixtures.createSegments(20))}
       initialExperiment={experimentToFormData(experiment)}
       onSubmit={onSubmit}
