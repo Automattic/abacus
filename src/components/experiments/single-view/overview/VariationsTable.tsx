@@ -48,19 +48,18 @@ function assignmentHref(variationName: string, experimentName: string) {
   nameSchema.validateSync(variationName)
   return `javascript:(async () => {
     const token = JSON.parse(localStorage.getItem('experiments_auth_info'));
-    const anonId = document.cookie.match('(^|;)\\\\s*tk_ai\\\\s*=\\\\s*([^;]+)')?.pop() || '';
+    const anonId = decodeURIComponent(document.cookie.match('(^|;)\\\\s*tk_ai\\\\s*=\\\\s*([^;]+)')?.pop() || '');
     const headers = {'Content-Type': 'application/json'};
     if (token && token.accessToken) {
        headers.Authorization = 'Bearer ' + token['accessToken'];
     }
     const response = await fetch(
-      /* The anonId is URI encoded by the server or Tracks client, so appending it to the API call should just work. */
-      'https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments?anon_id=' + anonId, 
+      'https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments', 
       {
         credentials: 'include', 
         method: 'PATCH', 
         headers, 
-        body: JSON.stringify({variations: {${experimentName}: '${variationName}'}})
+        body: JSON.stringify({variations: {${experimentName}: '${variationName}'}, anon_id: anonId})
       }
     );
     const responseBody = await response.json();
