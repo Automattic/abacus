@@ -39,22 +39,18 @@ test('with some metrics, loads and opens metric details', async () => {
   expect(tBodyElmt).not.toBeNull()
 
   for (let i = 1; i < 7; i++) {
-    const metricFull = Fixtures.createMetric(i)
-    mockedMetricsApi.findById.mockResolvedValueOnce(metricFull)
+    const metric = Fixtures.createMetric(i)
+    mockedMetricsApi.findById.mockResolvedValueOnce(metric)
 
     // Open metric details
     fireEvent.click(getByText(container, /metric_1/))
 
     await waitFor(() => getByText(container, /Higher is Better/), { container })
-    metricFull.higherIsBetter ? getByText(container, /Yes/) : getByText(container, /No/)
+    metric.higherIsBetter ? getByText(container, /Yes/) : getByText(container, /No/)
     getByText(container, /Parameters/)
     getByText(
       container,
-      JSON.stringify(
-        metricFull.parameterType === 'conversion' ? metricFull.eventParams : metricFull.revenueParams,
-        null,
-        4,
-      ),
+      JSON.stringify(metric.parameterType === 'conversion' ? metric.eventParams : metric.revenueParams, null, 4),
       { normalizer: getDefaultNormalizer({ trim: true, collapseWhitespace: false }) },
     )
 

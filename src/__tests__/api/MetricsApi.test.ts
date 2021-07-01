@@ -2,14 +2,14 @@ import { StatusCodes } from 'http-status-codes'
 
 import HttpResponseError from 'src/api/HttpResponseError'
 import MetricsApi from 'src/api/MetricsApi'
-import { metricFullNewOutboundSchema, TransactionTypes } from 'src/lib/schemas'
+import { metricNewOutboundSchema, TransactionTypes } from 'src/lib/schemas'
 import Fixtures from 'src/test-helpers/fixtures'
 import { validationErrorDisplayer } from 'src/test-helpers/test-utils'
 
 describe('MetricsApi.ts module', () => {
   describe('outbound form', () => {
     it(`should transform a metric into an outbound form`, () => {
-      expect(metricFullNewOutboundSchema.cast(Fixtures.createMetric(1))).toEqual({
+      expect(metricNewOutboundSchema.cast(Fixtures.createMetric(1))).toEqual({
         description: 'This is metric 1',
         event_params: [
           {
@@ -26,7 +26,7 @@ describe('MetricsApi.ts module', () => {
         revenue_params: undefined,
       })
 
-      expect(metricFullNewOutboundSchema.cast(Fixtures.createMetric(2))).toEqual({
+      expect(metricNewOutboundSchema.cast(Fixtures.createMetric(2))).toEqual({
         description: 'This is metric 2',
         event_params: undefined,
         higher_is_better: false,

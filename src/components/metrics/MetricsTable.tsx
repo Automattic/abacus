@@ -49,11 +49,11 @@ const useMetricDetailStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const MetricDetail = ({ metricBare }: { metricBare: Metric }) => {
+const MetricDetail = ({ metric: metricInitial }: { metric: Metric }) => {
   const classes = useMetricDetailStyles()
 
-  const { isLoading, data: metricFull, error } = useDataSource(() => MetricsApi.findById(metricBare.metricId), [
-    metricBare.metricId,
+  const { isLoading, data: metric, error } = useDataSource(() => MetricsApi.findById(metricInitial.metricId), [
+    metricInitial.metricId,
   ])
   useDataLoadingError(error)
 
@@ -62,20 +62,20 @@ const MetricDetail = ({ metricBare }: { metricBare: Metric }) => {
   return (
     <>
       {!isReady && <LinearProgress />}
-      {isReady && metricFull && (
+      {isReady && metric && (
         <TableContainer className={classes.root}>
           <Table>
             <TableBody>
               <TableRow>
                 <TableCell className={classes.headerCell}>Higher is Better:</TableCell>
-                <TableCell className={classes.dataCell}>{formatBoolean(metricFull.higherIsBetter)}</TableCell>
+                <TableCell className={classes.dataCell}>{formatBoolean(metric.higherIsBetter)}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell className={classes.headerCell}>Parameters:</TableCell>
                 <TableCell className={classes.dataCell}>
                   <div className={classes.pre}>
                     {JSON.stringify(
-                      metricFull.parameterType === 'conversion' ? metricFull.eventParams : metricFull.revenueParams,
+                      metric.parameterType === 'conversion' ? metric.eventParams : metric.revenueParams,
                       null,
                       4,
                     )}
@@ -153,7 +153,7 @@ const MetricsTable = ({
         ...defaultTableOptions,
         actionsColumnIndex: 3,
       }}
-      detailPanel={(rowData) => <MetricDetail metricBare={rowData} />}
+      detailPanel={(rowData) => <MetricDetail metric={rowData} />}
     />
   )
 }

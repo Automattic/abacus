@@ -51,12 +51,12 @@ describe('lib/schemas.ts module', () => {
     })
   })
 
-  describe('metricFullSchema params constraint', () => {
+  describe('metricSchema params constraint', () => {
     it('should require params matching parameter type', async () => {
       expect.assertions(6)
 
       try {
-        await Schemas.metricFullSchema.validate(
+        await Schemas.metricSchema.validate(
           {
             parameterType: Schemas.MetricParameterType.Conversion,
             eventParams: null,
@@ -78,7 +78,7 @@ describe('lib/schemas.ts module', () => {
       }
 
       try {
-        await Schemas.metricFullSchema.validate(
+        await Schemas.metricSchema.validate(
           {
             parameterType: Schemas.MetricParameterType.Revenue,
             eventParams: null,
@@ -100,7 +100,7 @@ describe('lib/schemas.ts module', () => {
       }
 
       try {
-        await Schemas.metricFullSchema.validate(
+        await Schemas.metricSchema.validate(
           {
             parameterType: Schemas.MetricParameterType.Conversion,
             eventParams: [],
@@ -120,7 +120,7 @@ describe('lib/schemas.ts module', () => {
       }
 
       try {
-        await Schemas.metricFullSchema.validate(
+        await Schemas.metricSchema.validate(
           {
             parameterType: Schemas.MetricParameterType.Revenue,
             eventParams: [],
@@ -142,7 +142,7 @@ describe('lib/schemas.ts module', () => {
       }
 
       try {
-        await Schemas.metricFullSchema.validate(
+        await Schemas.metricSchema.validate(
           {
             parameterType: Schemas.MetricParameterType.Conversion,
             eventParams: null,
@@ -164,7 +164,7 @@ describe('lib/schemas.ts module', () => {
       }
 
       try {
-        await Schemas.metricFullSchema.validate(
+        await Schemas.metricSchema.validate(
           {
             parameterType: Schemas.MetricParameterType.Revenue,
             eventParams: null,
@@ -191,7 +191,7 @@ describe('lib/schemas.ts module', () => {
       expect.assertions(4)
 
       try {
-        await Schemas.metricFullSchema.validate(
+        await Schemas.metricSchema.validate(
           {
             eventParams: [],
             revenueParams: {},
@@ -214,7 +214,7 @@ describe('lib/schemas.ts module', () => {
       }
 
       try {
-        await Schemas.metricFullSchema.validate(
+        await Schemas.metricSchema.validate(
           {
             eventParams: null,
             revenueParams: null,
@@ -235,7 +235,7 @@ describe('lib/schemas.ts module', () => {
       }
 
       try {
-        await Schemas.metricFullSchema.validate(
+        await Schemas.metricSchema.validate(
           {
             parameterType: Schemas.MetricParameterType.Conversion,
             eventParams: [],
@@ -255,7 +255,7 @@ describe('lib/schemas.ts module', () => {
       }
 
       try {
-        await Schemas.metricFullSchema.validate(
+        await Schemas.metricSchema.validate(
           {
             parameterType: Schemas.MetricParameterType.Revenue,
             revenueParams: {},

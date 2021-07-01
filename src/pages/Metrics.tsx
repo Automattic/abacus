@@ -22,7 +22,7 @@ import MetricFormFields from 'src/components/metrics/MetricFormFields'
 import MetricsTable from 'src/components/metrics/MetricsTable'
 import Layout from 'src/components/page-parts/Layout'
 import { MetricFormData, metricToFormData } from 'src/lib/form-data'
-import { metricFullNewSchema, MetricNew } from 'src/lib/schemas'
+import { MetricNew, metricNewSchema } from 'src/lib/schemas'
 import { useDataLoadingError, useDataSource } from 'src/utils/data-loading'
 import { isDebugMode } from 'src/utils/general'
 
@@ -125,7 +125,7 @@ const MetricsIndexPage = (): JSX.Element => {
           <Formik
             initialValues={{ metric: metricToFormData(editMetricInitialMetric) }}
             onSubmit={onSubmitEditMetric}
-            validationSchema={yup.object({ metric: metricFullNewSchema })}
+            validationSchema={yup.object({ metric: metricNewSchema })}
           >
             {(formikProps) => (
               <form onSubmit={formikProps.handleSubmit} noValidate>
@@ -157,7 +157,7 @@ const MetricsIndexPage = (): JSX.Element => {
         <Formik
           initialValues={{ metric: metricToFormData({}) }}
           onSubmit={onSubmitAddMetric}
-          validationSchema={yup.object({ metric: metricFullNewSchema })}
+          validationSchema={yup.object({ metric: metricNewSchema })}
         >
           {(formikProps) => (
             <form onSubmit={formikProps.handleSubmit} noValidate>
