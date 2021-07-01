@@ -2730,7 +2730,8 @@ exports[`renders correctly for 1 analysis datapoint, statistically insignificant
                not 
               statistically different from zero because the interval
                includes 
-              zero. 
+              zero.
+               
               Uncertainty is too high because the absolute change overlaps with the specified minimum practical difference between 
               -10
                
@@ -4318,7 +4319,8 @@ exports[`renders correctly for 1 analysis datapoint, statistically significant 2
               
               statistically different from zero because the interval
                excludes 
-              zero. 
+              zero.
+               
               With high certainty, there is a practical difference between the variations because the absolute change is outside the minimum difference of 
               -10
                
@@ -5903,7 +5905,8 @@ exports[`renders correctly for conflicting analysis data 2`] = `
               
               statistically different from zero because the interval
                excludes 
-              zero. 
+              zero.
+               
               With high certainty, there is a practical difference between the variations because the absolute change is outside the minimum difference of 
               -10
                
@@ -7513,7 +7516,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                not 
               statistically different from zero because the interval
                includes 
-              zero. 
+              zero.
+               
               With high certainty, there is no practical difference between the variations because the absolute change is inside the specified minimum difference between 
               -10
                
@@ -9531,7 +9535,8 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
                not 
               statistically different from zero because the interval
                includes 
-              zero. 
+              zero.
+               
               With high certainty, there is no practical difference between the variations because the absolute change is inside the specified minimum difference between 
               -0.10
                

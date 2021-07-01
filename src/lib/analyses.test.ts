@@ -254,6 +254,34 @@ describe('getMetricAssignmentRecommendation', () => {
         Fixtures.createAnalysis({
           analysisStrategy: AnalysisStrategy.PpNaive,
           recommendation: {
+            endExperiment: false,
+            chosenVariationId: null,
+            reason: RecommendationReason.CiGreaterThanRope,
+            warnings: [],
+          },
+          metricEstimates: {
+            diff: {
+              top: 1,
+              bottom: 0.001,
+              estimate: 0,
+            },
+          },
+        }),
+      ),
+    ).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
+      decision: Analyses.AggregateRecommendationDecision.Inconclusive,
+      practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
+      statisticallySignificant: true,
+    })
+
+    expect(
+      Analyses.getMetricAssignmentRecommendation(
+        Fixtures.createExperimentFull(),
+        Fixtures.createMetricBare(123),
+        Fixtures.createAnalysis({
+          analysisStrategy: AnalysisStrategy.PpNaive,
+          recommendation: {
             endExperiment: true,
             chosenVariationId: null,
             reason: RecommendationReason.CiGreaterThanRope,
