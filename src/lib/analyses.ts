@@ -140,8 +140,8 @@ export interface AggregateRecommendation {
 }
 
 const PracticalSignificanceStatusToDecision: Record<PracticalSignificanceStatus, AggregateRecommendationDecision> = {
-  [PracticalSignificanceStatus.No]: AggregateRecommendationDecision.Inconclusive,
-  [PracticalSignificanceStatus.Uncertain]: AggregateRecommendationDecision.DeployAnyVariation,
+  [PracticalSignificanceStatus.No]: AggregateRecommendationDecision.DeployAnyVariation,
+  [PracticalSignificanceStatus.Uncertain]: AggregateRecommendationDecision.Inconclusive,
   [PracticalSignificanceStatus.Yes]: AggregateRecommendationDecision.DeployChosenVariation,
 }
 
@@ -211,6 +211,7 @@ export function getAggregateMetricAssignmentRecommendation(
     return {
       ...targetAnalysisRecommendation,
       decision: AggregateRecommendationDecision.ManualAnalysisRequired,
+      chosenVariationId: undefined,
     }
   }
 

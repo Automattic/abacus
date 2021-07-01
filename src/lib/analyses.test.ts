@@ -197,293 +197,183 @@ describe('getDiffCredibleIntervalStats', () => {
   })
 })
 
-describe('isDiffCredibleIntervalConflict', () => {
-  it('should not conflict for one analysis', () => {
-    expect(
-      Analyses.isDiffCredibleIntervalConflict([
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
-          statisticallySignificant: true,
-          positiveDifference: true,
-        },
-      ]),
-    ).toBe(false)
-    expect(
-      Analyses.isDiffCredibleIntervalConflict([
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
-          statisticallySignificant: true,
-          positiveDifference: false,
-        },
-      ]),
-    ).toBe(false)
-    expect(
-      Analyses.isDiffCredibleIntervalConflict([
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
-          statisticallySignificant: true,
-          positiveDifference: false,
-        },
-      ]),
-    ).toBe(false)
-    expect(
-      Analyses.isDiffCredibleIntervalConflict([
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
-          statisticallySignificant: true,
-          positiveDifference: true,
-        },
-      ]),
-    ).toBe(false)
-    expect(
-      Analyses.isDiffCredibleIntervalConflict([
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.No,
-          statisticallySignificant: false,
-          positiveDifference: false,
-        },
-      ]),
-    ).toBe(false)
-  })
-  it('should not conflict for practical analyses with matching positive diff', () => {
-    expect(
-      Analyses.isDiffCredibleIntervalConflict([
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
-          statisticallySignificant: true,
-          positiveDifference: false,
-        },
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
-          statisticallySignificant: true,
-          positiveDifference: false,
-        },
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.No,
-          statisticallySignificant: false,
-          positiveDifference: false,
-        },
-      ]),
-    ).toBe(false)
-    expect(
-      Analyses.isDiffCredibleIntervalConflict([
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
-          statisticallySignificant: true,
-          positiveDifference: true,
-        },
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
-          statisticallySignificant: true,
-          positiveDifference: true,
-        },
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.No,
-          statisticallySignificant: false,
-          positiveDifference: false,
-        },
-      ]),
-    ).toBe(false)
-  })
-  it('should conflict for practical analyses with different positive diff', () => {
-    expect(
-      Analyses.isDiffCredibleIntervalConflict([
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
-          statisticallySignificant: true,
-          positiveDifference: false,
-        },
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
-          statisticallySignificant: true,
-          positiveDifference: true,
-        },
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.No,
-          statisticallySignificant: false,
-          positiveDifference: false,
-        },
-      ]),
-    ).toBe(true)
-    expect(
-      Analyses.isDiffCredibleIntervalConflict([
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
-          statisticallySignificant: true,
-          positiveDifference: true,
-        },
-        {
-          practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
-          statisticallySignificant: true,
-          positiveDifference: false,
-        },
-      ]),
-    ).toBe(true)
-  })
-})
-
-describe('getAggregateRecommendation', () => {
-  it('should work correctly for missing analyses', () => {
-    expect(
-      Analyses.getAggregateRecommendation(
-        Fixtures.createExperimentFull(),
-        Fixtures.createMetricBare(123),
-        [],
-        AnalysisStrategy.PpNaive,
-      ),
-    ).toEqual({
-      decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
-    })
-    expect(
-      Analyses.getAggregateRecommendation(
-        Fixtures.createExperimentFull(),
-        Fixtures.createMetricBare(123),
-        [
-          Fixtures.createAnalysis({
-            analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: undefined,
-            metricEstimates: null,
-          }),
-        ],
-        AnalysisStrategy.PpNaive,
-      ),
-    ).toEqual({
-      decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
-    })
-  })
+describe('getMetricAssignmentRecommendation', () => {
   it('should work correctly for single analyses', () => {
     expect(
-      Analyses.getAggregateRecommendation(
+      Analyses.getMetricAssignmentRecommendation(
         Fixtures.createExperimentFull(),
         Fixtures.createMetricBare(123),
-        [
-          Fixtures.createAnalysis({
-            analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
-              endExperiment: false,
-              chosenVariationId: null,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
+
+        Fixtures.createAnalysis({
+          analysisStrategy: AnalysisStrategy.PpNaive,
+          recommendation: {
+            endExperiment: false,
+            chosenVariationId: null,
+            reason: RecommendationReason.CiGreaterThanRope,
+            warnings: [],
+          },
+          metricEstimates: {
+            diff: {
+              top: 1,
+              bottom: 0,
+              estimate: 0,
             },
-            metricEstimates: {
-              diff: {
-                top: 1,
-                bottom: 0,
-                estimate: 0,
-              },
-            },
-          }),
-        ],
-        AnalysisStrategy.PpNaive,
+          },
+        }),
       ),
     ).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
       decision: Analyses.AggregateRecommendationDecision.Inconclusive,
       practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
       statisticallySignificant: false,
     })
     expect(
-      Analyses.getAggregateRecommendation(
+      Analyses.getMetricAssignmentRecommendation(
         Fixtures.createExperimentFull(),
         Fixtures.createMetricBare(123),
-        [
-          Fixtures.createAnalysis({
-            analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
-              endExperiment: true,
-              chosenVariationId: null,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
+
+        Fixtures.createAnalysis({
+          analysisStrategy: AnalysisStrategy.PpNaive,
+          recommendation: {
+            endExperiment: true,
+            chosenVariationId: null,
+            reason: RecommendationReason.CiGreaterThanRope,
+            warnings: [],
+          },
+          metricEstimates: {
+            diff: {
+              top: 0,
+              bottom: 0,
+              estimate: 0,
             },
-            metricEstimates: {
-              diff: {
-                top: 0,
-                bottom: 0,
-                estimate: 0,
-              },
-            },
-          }),
-        ],
-        AnalysisStrategy.PpNaive,
+          },
+        }),
       ),
     ).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
       decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
       practicallySignificant: Analyses.PracticalSignificanceStatus.No,
       statisticallySignificant: false,
     })
     expect(
-      Analyses.getAggregateRecommendation(
+      Analyses.getMetricAssignmentRecommendation(
         Fixtures.createExperimentFull(),
         Fixtures.createMetricBare(123),
-        [
-          Fixtures.createAnalysis({
-            analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
-              endExperiment: true,
-              chosenVariationId: 2,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
+        Fixtures.createAnalysis({
+          analysisStrategy: AnalysisStrategy.PpNaive,
+          recommendation: {
+            endExperiment: true,
+            chosenVariationId: 2,
+            reason: RecommendationReason.CiGreaterThanRope,
+            warnings: [],
+          },
+          metricEstimates: {
+            diff: {
+              top: 2,
+              bottom: 1,
+              estimate: 0,
             },
-            metricEstimates: {
-              diff: {
-                top: 2,
-                bottom: 1,
-                estimate: 0,
-              },
-            },
-          }),
-        ],
-        AnalysisStrategy.PpNaive,
+          },
+        }),
       ),
     ).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
       chosenVariationId: 2,
       practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
       statisticallySignificant: true,
+    })
+  })
+
+  expect(
+    Analyses.getMetricAssignmentRecommendation(
+      Fixtures.createExperimentFull(),
+      Fixtures.createMetricBare(123, { higherIsBetter: false }),
+      Fixtures.createAnalysis({
+        analysisStrategy: AnalysisStrategy.PpNaive,
+        recommendation: {
+          endExperiment: true,
+          chosenVariationId: 1,
+          reason: RecommendationReason.CiGreaterThanRope,
+          warnings: [],
+        },
+        metricEstimates: {
+          diff: {
+            top: 2,
+            bottom: 1,
+            estimate: 0,
+          },
+        },
+      }),
+    ),
+  ).toEqual({
+    analysisStrategy: AnalysisStrategy.PpNaive,
+    decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
+    chosenVariationId: 1,
+    practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+    statisticallySignificant: true,
+  })
+})
+
+describe('getAggregateMetricAssignmentRecommendation', () => {
+  it('should work correctly for missing analyses', () => {
+    expect(Analyses.getAggregateMetricAssignmentRecommendation([], AnalysisStrategy.PpNaive)).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
+      decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
+    })
+    expect(
+      Analyses.getAggregateMetricAssignmentRecommendation(
+        [
+          {
+            analysisStrategy: AnalysisStrategy.PpNaive,
+            decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
+          },
+        ],
+        AnalysisStrategy.PpNaive,
+      ),
+    ).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
+      decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
+    })
+    expect(
+      Analyses.getAggregateMetricAssignmentRecommendation(
+        [
+          {
+            analysisStrategy: AnalysisStrategy.IttPure,
+            decision: Analyses.AggregateRecommendationDecision.Inconclusive,
+          },
+        ],
+        AnalysisStrategy.PpNaive,
+      ),
+    ).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
+      decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
     })
   })
 
   it('should work correctly for multiple analyses without conflict', () => {
     expect(
-      Analyses.getAggregateRecommendation(
-        Fixtures.createExperimentFull(),
-        Fixtures.createMetricBare(123),
+      Analyses.getAggregateMetricAssignmentRecommendation(
         [
-          Fixtures.createAnalysis({
+          {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
-              endExperiment: true,
-              chosenVariationId: 123,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
-            },
-            metricEstimates: {
-              diff: {
-                top: 2,
-                bottom: 1,
-                estimate: 0,
-              },
-            },
-          }),
-          Fixtures.createAnalysis({
+            decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
+            chosenVariationId: 2,
+            practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+            statisticallySignificant: true,
+          },
+          {
             analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
-            recommendation: {
-              endExperiment: true,
-              chosenVariationId: 123,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
-            },
-            metricEstimates: {
-              diff: {
-                top: 2,
-                bottom: 1,
-                estimate: 0,
-              },
-            },
-          }),
+            decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
+            chosenVariationId: 2,
+            practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+            statisticallySignificant: true,
+          },
         ],
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
       chosenVariationId: 2,
       practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
@@ -491,35 +381,24 @@ describe('getAggregateRecommendation', () => {
     })
 
     expect(
-      Analyses.getAggregateRecommendation(
-        Fixtures.createExperimentFull(),
-        Fixtures.createMetricBare(123),
+      Analyses.getAggregateMetricAssignmentRecommendation(
         [
-          Fixtures.createAnalysis({
+          {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
-              endExperiment: true,
-              chosenVariationId: 123,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
-            },
-            metricEstimates: {
-              diff: {
-                top: 2,
-                bottom: 1,
-                estimate: 0,
-              },
-            },
-          }),
-          Fixtures.createAnalysis({
+            decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
+            chosenVariationId: 2,
+            practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+            statisticallySignificant: true,
+          },
+          {
             analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
-            recommendation: null,
-            metricEstimates: null,
-          }),
+            decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
+          },
         ],
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
       chosenVariationId: 2,
       practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
@@ -527,273 +406,160 @@ describe('getAggregateRecommendation', () => {
     })
 
     expect(
-      Analyses.getAggregateRecommendation(
-        Fixtures.createExperimentFull(),
-        Fixtures.createMetricBare(123),
+      Analyses.getAggregateMetricAssignmentRecommendation(
         [
-          Fixtures.createAnalysis({
+          {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
-              endExperiment: true,
-              chosenVariationId: null,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
-            },
-            metricEstimates: {
-              diff: {
-                top: 0.01,
-                bottom: 0,
-                estimate: 0,
-              },
-            },
-          }),
-          Fixtures.createAnalysis({
+            decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
+            practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+            statisticallySignificant: false,
+          },
+          {
             analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
-            recommendation: null,
-          }),
+            decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
+          },
         ],
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
       decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
       practicallySignificant: Analyses.PracticalSignificanceStatus.No,
       statisticallySignificant: false,
     })
 
     expect(
-      Analyses.getAggregateRecommendation(
-        Fixtures.createExperimentFull(),
-        Fixtures.createMetricBare(123),
+      Analyses.getAggregateMetricAssignmentRecommendation(
         [
-          Fixtures.createAnalysis({
+          {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
-              endExperiment: false,
-              chosenVariationId: null,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
-            },
-            metricEstimates: {
-              diff: {
-                top: 1,
-                bottom: -1,
-                estimate: 0,
-              },
-            },
-          }),
-          Fixtures.createAnalysis({
+            decision: Analyses.AggregateRecommendationDecision.Inconclusive,
+            practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
+            statisticallySignificant: false,
+          },
+          {
             analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
-            recommendation: {
-              endExperiment: true,
-              chosenVariationId: null,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
-            },
-            metricEstimates: {
-              diff: {
-                top: 1,
-                bottom: -1,
-                estimate: 0,
-              },
-            },
-          }),
+            decision: Analyses.AggregateRecommendationDecision.Inconclusive,
+            practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
+            statisticallySignificant: false,
+          },
         ],
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
       decision: Analyses.AggregateRecommendationDecision.Inconclusive,
       practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
       statisticallySignificant: false,
     })
     expect(
-      Analyses.getAggregateRecommendation(
-        Fixtures.createExperimentFull(),
-        Fixtures.createMetricBare(123),
+      Analyses.getAggregateMetricAssignmentRecommendation(
         [
-          Fixtures.createAnalysis({
+          {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: null,
-            metricEstimates: null,
-          }),
-          Fixtures.createAnalysis({
+            decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
+          },
+          {
             analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
-            recommendation: {
-              endExperiment: true,
-              chosenVariationId: null,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
-            },
-            metricEstimates: {
-              diff: {
-                top: 1,
-                bottom: 0,
-                estimate: 0,
-              },
-            },
-          }),
+            decision: Analyses.AggregateRecommendationDecision.Inconclusive,
+            practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
+            statisticallySignificant: false,
+          },
         ],
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
       decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
     })
   })
   it('should work correctly for multiple analyses with conflict', () => {
     expect(
-      Analyses.getAggregateRecommendation(
-        Fixtures.createExperimentFull(),
-        Fixtures.createMetricBare(123),
+      Analyses.getAggregateMetricAssignmentRecommendation(
         [
-          Fixtures.createAnalysis({
+          {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
-              endExperiment: true,
-              chosenVariationId: 123,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
-            },
-            metricEstimates: {
-              diff: {
-                top: 1,
-                bottom: 0.5,
-                estimate: 0,
-              },
-            },
-          }),
-          Fixtures.createAnalysis({
-            analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
-              endExperiment: true,
-              chosenVariationId: 456,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
-            },
-            metricEstimates: {
-              diff: {
-                top: -0.5,
-                bottom: -1,
-                estimate: 0,
-              },
-            },
-          }),
+            decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
+            chosenVariationId: 2,
+            practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+            statisticallySignificant: true,
+          },
+          {
+            analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
+            decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
+            chosenVariationId: 1,
+            practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+            statisticallySignificant: true,
+          },
         ],
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
       decision: Analyses.AggregateRecommendationDecision.ManualAnalysisRequired,
       practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
       statisticallySignificant: true,
     })
 
     expect(
-      Analyses.getAggregateRecommendation(
-        Fixtures.createExperimentFull(),
-        Fixtures.createMetricBare(123),
+      Analyses.getAggregateMetricAssignmentRecommendation(
         [
-          Fixtures.createAnalysis({
+          {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
-              endExperiment: true,
-              chosenVariationId: 1,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
-            },
-            metricEstimates: {
-              diff: {
-                top: -1,
-                bottom: -2,
-                estimate: 0,
-              },
-            },
-          }),
-          Fixtures.createAnalysis({
-            analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
-              endExperiment: true,
-              chosenVariationId: null,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
-            },
-            metricEstimates: {
-              diff: {
-                top: 0.05,
-                bottom: -0.05,
-                estimate: 0,
-              },
-            },
-          }),
+            decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
+            chosenVariationId: 2,
+            practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+            statisticallySignificant: true,
+          },
+          {
+            analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
+            decision: Analyses.AggregateRecommendationDecision.DeployAnyVariation,
+            practicallySignificant: Analyses.PracticalSignificanceStatus.No,
+            statisticallySignificant: false,
+          },
         ],
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
       decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
-      chosenVariationId: 1,
+      chosenVariationId: 2,
       practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
       statisticallySignificant: true,
     })
 
     expect(
-      Analyses.getAggregateRecommendation(
-        Fixtures.createExperimentFull(),
-        Fixtures.createMetricBare(123),
+      Analyses.getAggregateMetricAssignmentRecommendation(
         [
-          Fixtures.createAnalysis({
+          {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
-              endExperiment: true,
-              chosenVariationId: 2,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
-            },
-            metricEstimates: {
-              diff: {
-                top: 2,
-                bottom: 1,
-                estimate: 0,
-              },
-            },
-          }),
-          Fixtures.createAnalysis({
-            analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
-              endExperiment: true,
-              chosenVariationId: 1,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
-            },
-            metricEstimates: {
-              diff: {
-                top: -1,
-                bottom: -2,
-                estimate: 0,
-              },
-            },
-          }),
-          Fixtures.createAnalysis({
-            analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: {
-              endExperiment: false,
-              chosenVariationId: null,
-              reason: RecommendationReason.CiGreaterThanRope,
-              warnings: [],
-            },
-            metricEstimates: {
-              diff: {
-                top: 1,
-                bottom: -1,
-                estimate: 0,
-              },
-            },
-          }),
-          Fixtures.createAnalysis({
-            analysisStrategy: AnalysisStrategy.PpNaive,
-            recommendation: null,
-            metricEstimates: null,
-          }),
+            decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
+            chosenVariationId: 2,
+            practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+            statisticallySignificant: true,
+          },
+          {
+            analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
+            decision: Analyses.AggregateRecommendationDecision.DeployChosenVariation,
+            chosenVariationId: 1,
+            practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
+            statisticallySignificant: true,
+          },
+          {
+            analysisStrategy: AnalysisStrategy.IttPure,
+            decision: Analyses.AggregateRecommendationDecision.Inconclusive,
+            practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
+            statisticallySignificant: false,
+          },
+          {
+            analysisStrategy: AnalysisStrategy.MittNoCrossovers,
+            decision: Analyses.AggregateRecommendationDecision.MissingAnalysis,
+          },
         ],
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
+      analysisStrategy: AnalysisStrategy.PpNaive,
       decision: Analyses.AggregateRecommendationDecision.ManualAnalysisRequired,
       practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
       statisticallySignificant: true,
