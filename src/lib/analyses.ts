@@ -94,7 +94,6 @@ export function getDiffCredibleIntervalStats(
     return null
   }
 
-  // istanbul ignore next; sanity check
   if (analysis.metricEstimates.diff.top < analysis.metricEstimates.diff.bottom) {
     throw new Error('Invalid metricEstimates: bottom greater than top.')
   }
