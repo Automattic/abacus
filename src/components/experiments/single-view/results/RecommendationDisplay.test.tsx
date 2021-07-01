@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { RecommendationDecision } from 'src/lib/analyses'
+import { AnalysisStrategy } from 'src/lib/schemas'
 import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'
 
@@ -10,6 +11,7 @@ test('renders MissingAnalysis correctly', () => {
   const { container } = render(
     <RecommendationDisplay
       recommendation={{
+        analysisStrategy: AnalysisStrategy.PpNaive,
         decision: RecommendationDecision.MissingAnalysis,
       }}
       experiment={Fixtures.createExperimentFull()}
@@ -26,6 +28,7 @@ test('renders ManualAnalysisRequired correctly', () => {
   const { container } = render(
     <RecommendationDisplay
       recommendation={{
+        analysisStrategy: AnalysisStrategy.PpNaive,
         decision: RecommendationDecision.ManualAnalysisRequired,
       }}
       experiment={Fixtures.createExperimentFull()}
@@ -47,6 +50,7 @@ test('renders Inconclusive correctly', () => {
   const { container } = render(
     <RecommendationDisplay
       recommendation={{
+        analysisStrategy: AnalysisStrategy.PpNaive,
         decision: RecommendationDecision.Inconclusive,
       }}
       experiment={Fixtures.createExperimentFull()}
@@ -63,6 +67,7 @@ test('renders DeployAnyVariation correctly', () => {
   const { container } = render(
     <RecommendationDisplay
       recommendation={{
+        analysisStrategy: AnalysisStrategy.PpNaive,
         decision: RecommendationDecision.DeployAnyVariation,
       }}
       experiment={Fixtures.createExperimentFull()}
@@ -79,6 +84,7 @@ test('renders DeployChosenVariation correctly', () => {
   const { container } = render(
     <RecommendationDisplay
       recommendation={{
+        analysisStrategy: AnalysisStrategy.PpNaive,
         decision: RecommendationDecision.DeployChosenVariation,
         chosenVariationId: 123,
       }}
@@ -110,6 +116,7 @@ test('throws error for missing chosenVariationId', () => {
     render(
       <RecommendationDisplay
         recommendation={{
+          analysisStrategy: AnalysisStrategy.PpNaive,
           decision: RecommendationDecision.DeployChosenVariation,
           chosenVariationId: 123,
         }}
