@@ -54,12 +54,13 @@ function assignmentHref(variationName: string, experimentName: string) {
        headers.Authorization = 'Bearer ' + token['accessToken'];
     }
     const response = await fetch(
-      'https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments', 
+      /* The anonId is URI encoded by the server or Tracks client, so appending it to the API call should just work. */
+      'https://public-api.wordpress.com/wpcom/v2/experiments/0.1.0/assignments?anon_id=' + anonId, 
       {
         credentials: 'include', 
         method: 'PATCH', 
         headers, 
-        body: JSON.stringify({variations: {${experimentName}: '${variationName}'}, anon_id: anonId})
+        body: JSON.stringify({variations: {${experimentName}: '${variationName}'}})
       }
     );
     const responseBody = await response.json();
