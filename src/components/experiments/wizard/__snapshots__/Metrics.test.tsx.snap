@@ -732,16 +732,16 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <span
-                class="makeStyles-metricName-20 makeStyles-tooltipped-21"
+                class="makeStyles-metricName-21 makeStyles-tooltipped-22"
                 title="string"
               >
                 asdf_7d_refund
               </span>
               <br />
               <span
-                class="makeStyles-primary-22"
+                class="makeStyles-root-31 makeStyles-monospaced-20"
               >
-                Primary
+                primary
               </span>
             </td>
             <td
@@ -780,11 +780,11 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
                 </svg>
                 <fieldset
                   aria-hidden="true"
-                  class="PrivateNotchedOutline-root-31 MuiOutlinedInput-notchedOutline"
+                  class="PrivateNotchedOutline-root-32 MuiOutlinedInput-notchedOutline"
                   style="padding-left: 8px;"
                 >
                   <legend
-                    class="PrivateNotchedOutline-legend-32"
+                    class="PrivateNotchedOutline-legend-33"
                     style="width: 0.01px;"
                   >
                     <span>
@@ -803,14 +803,14 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
                 <span
                   aria-disabled="false"
                   aria-label="Change Expected"
-                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-35 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-36 MuiSwitch-switchBase MuiSwitch-colorSecondary"
                   variant="outlined"
                 >
                   <span
                     class="MuiIconButton-label"
                   >
                     <input
-                      class="PrivateSwitchBase-input-38 MuiSwitch-input"
+                      class="PrivateSwitchBase-input-39 MuiSwitch-input"
                       id="experiment.metricAssignments[0].changeExpected"
                       name="experiment.metricAssignments[0].changeExpected"
                       type="checkbox"
@@ -860,11 +860,11 @@ exports[`allows adding, editing and removing a Metric Assignment 3`] = `
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="PrivateNotchedOutline-root-31 MuiOutlinedInput-notchedOutline"
+                    class="PrivateNotchedOutline-root-32 MuiOutlinedInput-notchedOutline"
                     style="padding-left: 8px;"
                   >
                     <legend
-                      class="PrivateNotchedOutline-legend-32"
+                      class="PrivateNotchedOutline-legend-33"
                       style="width: 0.01px;"
                     >
                       <span>
@@ -1238,16 +1238,16 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <span
-                class="makeStyles-metricName-20 makeStyles-tooltipped-21"
+                class="makeStyles-metricName-21 makeStyles-tooltipped-22"
                 title="string"
               >
                 asdf_7d_refund
               </span>
               <br />
               <span
-                class="makeStyles-primary-22"
+                class="makeStyles-root-31 makeStyles-monospaced-20"
               >
-                Primary
+                primary
               </span>
             </td>
             <td
@@ -1286,11 +1286,11 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
                 </svg>
                 <fieldset
                   aria-hidden="true"
-                  class="PrivateNotchedOutline-root-31 MuiOutlinedInput-notchedOutline"
+                  class="PrivateNotchedOutline-root-32 MuiOutlinedInput-notchedOutline"
                   style="padding-left: 8px;"
                 >
                   <legend
-                    class="PrivateNotchedOutline-legend-32"
+                    class="PrivateNotchedOutline-legend-33"
                     style="width: 0.01px;"
                   >
                     <span>
@@ -1309,14 +1309,14 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
                 <span
                   aria-disabled="false"
                   aria-label="Change Expected"
-                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-35 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-36 MuiSwitch-switchBase MuiSwitch-colorSecondary"
                   variant="outlined"
                 >
                   <span
                     class="MuiIconButton-label"
                   >
                     <input
-                      class="PrivateSwitchBase-input-38 MuiSwitch-input"
+                      class="PrivateSwitchBase-input-39 MuiSwitch-input"
                       id="experiment.metricAssignments[0].changeExpected"
                       name="experiment.metricAssignments[0].changeExpected"
                       type="checkbox"
@@ -1366,11 +1366,11 @@ exports[`allows adding, editing and removing a Metric Assignment 4`] = `
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="PrivateNotchedOutline-root-31 MuiOutlinedInput-notchedOutline"
+                    class="PrivateNotchedOutline-root-32 MuiOutlinedInput-notchedOutline"
                     style="padding-left: 8px;"
                   >
                     <legend
-                      class="PrivateNotchedOutline-legend-32"
+                      class="PrivateNotchedOutline-legend-33"
                       style="width: 0.01px;"
                     >
                       <span>
@@ -1742,16 +1742,16 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <span
-                class="makeStyles-metricName-20 makeStyles-tooltipped-21"
+                class="makeStyles-metricName-21 makeStyles-tooltipped-22"
                 title="string"
               >
                 asdf_7d_refund
               </span>
               <br />
               <span
-                class="makeStyles-primary-22"
+                class="makeStyles-root-31 makeStyles-monospaced-20"
               >
-                Primary
+                primary
               </span>
             </td>
             <td
@@ -1790,11 +1790,11 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
                 </svg>
                 <fieldset
                   aria-hidden="true"
-                  class="PrivateNotchedOutline-root-31 MuiOutlinedInput-notchedOutline"
+                  class="PrivateNotchedOutline-root-32 MuiOutlinedInput-notchedOutline"
                   style="padding-left: 8px;"
                 >
                   <legend
-                    class="PrivateNotchedOutline-legend-32"
+                    class="PrivateNotchedOutline-legend-33"
                     style="width: 0.01px;"
                   >
                     <span>
@@ -1813,14 +1813,14 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
                 <span
                   aria-disabled="false"
                   aria-label="Change Expected"
-                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-35 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-36 MuiSwitch-switchBase MuiSwitch-colorSecondary"
                   variant="outlined"
                 >
                   <span
                     class="MuiIconButton-label"
                   >
                     <input
-                      class="PrivateSwitchBase-input-38 MuiSwitch-input"
+                      class="PrivateSwitchBase-input-39 MuiSwitch-input"
                       id="experiment.metricAssignments[0].changeExpected"
                       name="experiment.metricAssignments[0].changeExpected"
                       type="checkbox"
@@ -1870,11 +1870,11 @@ exports[`allows adding, editing and removing a Metric Assignment 5`] = `
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="PrivateNotchedOutline-root-31 MuiOutlinedInput-notchedOutline"
+                    class="PrivateNotchedOutline-root-32 MuiOutlinedInput-notchedOutline"
                     style="padding-left: 8px;"
                   >
                     <legend
-                      class="PrivateNotchedOutline-legend-32"
+                      class="PrivateNotchedOutline-legend-33"
                       style="width: 0.01px;"
                     >
                       <span>
@@ -2581,16 +2581,16 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
               class="MuiTableCell-root MuiTableCell-body"
             >
               <span
-                class="makeStyles-metricName-20 makeStyles-tooltipped-21"
+                class="makeStyles-metricName-21 makeStyles-tooltipped-22"
                 title="string"
               >
                 registration_start
               </span>
               <br />
               <span
-                class="makeStyles-primary-22"
+                class="makeStyles-root-41 makeStyles-monospaced-20"
               >
-                Primary
+                primary
               </span>
             </td>
             <td
@@ -2629,11 +2629,11 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
                 </svg>
                 <fieldset
                   aria-hidden="true"
-                  class="PrivateNotchedOutline-root-40 MuiOutlinedInput-notchedOutline"
+                  class="PrivateNotchedOutline-root-42 MuiOutlinedInput-notchedOutline"
                   style="padding-left: 8px;"
                 >
                   <legend
-                    class="PrivateNotchedOutline-legend-41"
+                    class="PrivateNotchedOutline-legend-43"
                     style="width: 0.01px;"
                   >
                     <span>
@@ -2652,14 +2652,14 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
                 <span
                   aria-disabled="false"
                   aria-label="Change Expected"
-                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-44 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-46 MuiSwitch-switchBase MuiSwitch-colorSecondary"
                   variant="outlined"
                 >
                   <span
                     class="MuiIconButton-label"
                   >
                     <input
-                      class="PrivateSwitchBase-input-47 MuiSwitch-input"
+                      class="PrivateSwitchBase-input-49 MuiSwitch-input"
                       id="experiment.metricAssignments[0].changeExpected"
                       name="experiment.metricAssignments[0].changeExpected"
                       type="checkbox"
@@ -2703,7 +2703,7 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
                     class="MuiInputAdornment-root MuiInputAdornment-positionEnd"
                   >
                     <p
-                      class="MuiTypography-root makeStyles-tooltipped-48 MuiTypography-body1 MuiTypography-colorTextSecondary"
+                      class="MuiTypography-root makeStyles-tooltipped-50 MuiTypography-body1 MuiTypography-colorTextSecondary"
                       title="Percentage Points"
                     >
                       pp
@@ -2711,11 +2711,11 @@ exports[`allows adding, editing and removing a Metric Assignment 7`] = `
                   </div>
                   <fieldset
                     aria-hidden="true"
-                    class="PrivateNotchedOutline-root-40 MuiOutlinedInput-notchedOutline"
+                    class="PrivateNotchedOutline-root-42 MuiOutlinedInput-notchedOutline"
                     style="padding-left: 8px;"
                   >
                     <legend
-                      class="PrivateNotchedOutline-legend-41"
+                      class="PrivateNotchedOutline-legend-43"
                       style="width: 0.01px;"
                     >
                       <span>

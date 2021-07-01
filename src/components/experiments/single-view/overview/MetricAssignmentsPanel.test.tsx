@@ -106,20 +106,25 @@ test('renders as expected with all metrics resolvable', () => {
               class="MuiTableRow-root"
             >
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
+                class="MuiTableCell-root MuiTableCell-body"
               >
-                metric_1
-                <br />
-                <div
-                  aria-disabled="true"
-                  class="MuiChip-root makeStyles-primaryChip-7 MuiChip-outlined Mui-disabled"
+                <strong
+                  class="makeStyles-monospace-2"
                 >
+                  metric_1
+                   
                   <span
-                    class="MuiChip-label"
+                    class="makeStyles-root-7"
                   >
-                    Primary
+                    primary
                   </span>
-                </div>
+                </strong>
+                <br />
+                <small
+                  class="makeStyles-monospace-2"
+                >
+                  This is metric 1
+                </small>
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
@@ -148,10 +153,20 @@ test('renders as expected with all metrics resolvable', () => {
               class="MuiTableRow-root"
             >
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
+                class="MuiTableCell-root MuiTableCell-body"
               >
-                metric_2
+                <strong
+                  class="makeStyles-monospace-2"
+                >
+                  metric_2
+                   
+                </strong>
                 <br />
+                <small
+                  class="makeStyles-monospace-2"
+                >
+                  This is metric 2
+                </small>
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
@@ -166,19 +181,29 @@ test('renders as expected with all metrics resolvable', () => {
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
-                USD 
-                0.5
                 
+                0.50
+                 USD
               </td>
             </tr>
             <tr
               class="MuiTableRow-root"
             >
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
+                class="MuiTableCell-root MuiTableCell-body"
               >
-                metric_2
+                <strong
+                  class="makeStyles-monospace-2"
+                >
+                  metric_2
+                   
+                </strong>
                 <br />
+                <small
+                  class="makeStyles-monospace-2"
+                >
+                  This is metric 2
+                </small>
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
@@ -193,19 +218,29 @@ test('renders as expected with all metrics resolvable', () => {
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
               >
-                USD 
-                10.5
                 
+                10.50
+                 USD
               </td>
             </tr>
             <tr
               class="MuiTableRow-root"
             >
               <td
-                class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"
+                class="MuiTableCell-root MuiTableCell-body"
               >
-                metric_3
+                <strong
+                  class="makeStyles-monospace-2"
+                >
+                  metric_3
+                   
+                </strong>
                 <br />
+                <small
+                  class="makeStyles-monospace-2"
+                >
+                  This is metric 3
+                </small>
               </td>
               <td
                 class="MuiTableCell-root MuiTableCell-body makeStyles-monospace-2"

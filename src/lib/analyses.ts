@@ -667,6 +667,9 @@ export function getExperimentHealthIndicators(experiment: ExperimentFull): Healt
   }))
 }
 
-export function ratioToPercentDifference(ratio: number): number {
-  return (ratio - 1) * 100
+/**
+ * Takes an B/A ratio and returns the difference ratio: (B-A)/A
+ */
+export function ratioToDifferenceRatio(ratio: number): number {
+  return ratio - 1
 }

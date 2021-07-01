@@ -45,16 +45,11 @@ test('renders as expected with segment names not in order', () => {
             >
               bar
                
-              <div
-                aria-disabled="true"
-                class="MuiChip-root MuiChip-outlined Mui-disabled"
+              <span
+                class="makeStyles-root-4"
               >
-                <span
-                  class="MuiChip-label"
-                >
-                  Excluded
-                </span>
-              </div>
+                excluded
+              </span>
             </td>
           </tr>
           <tr

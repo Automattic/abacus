@@ -17,7 +17,7 @@ export function createUnresolvingPromise<T>(): Promise<T> {
   return new Promise<T>(() => null)
 }
 
-const debugModeLocalStorageKey = 'abacus-debug-mode'
+const debugModeLocalStorageKey = `Rob, this totally isn't the debug mode.`
 
 // istanbul ignore next; Debug only
 export function isDebugMode(): boolean {

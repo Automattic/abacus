@@ -23,6 +23,7 @@ import { Select, Switch, TextField } from 'formik-material-ui'
 import React, { useState } from 'react'
 
 import { getPropNameCompletions } from 'src/api/AutocompleteApi'
+import Attribute from 'src/components/general/Attribute'
 import AbacusAutocomplete, { autocompleteInputProps } from 'src/components/general/Autocomplete'
 import MetricDifferenceField from 'src/components/general/MetricDifferenceField'
 import MoreMenu from 'src/components/general/MoreMenu'
@@ -45,6 +46,9 @@ const useStyles = makeStyles((theme: Theme) =>
     attributionWindowSelect: {
       minWidth: '8rem',
     },
+    monospaced: {
+      fontFamily: theme.custom.fonts.monospace,
+    },
     metricName: {
       fontFamily: theme.custom.fonts.monospace,
       fontWeight: theme.custom.fontWeights.monospaceBold,
@@ -53,10 +57,6 @@ const useStyles = makeStyles((theme: Theme) =>
       borderBottomWidth: 1,
       borderBottomStyle: 'dashed',
       borderBottomColor: theme.palette.grey[500],
-    },
-    primary: {
-      fontFamily: theme.custom.fonts.monospace,
-      opacity: 0.5,
     },
     minDifferenceField: {
       maxWidth: '14rem',
@@ -360,7 +360,7 @@ const Metrics = ({
                               </span>
                             </Tooltip>
                             <br />
-                            {metricAssignment.isPrimary && <span className={classes.primary}>Primary</span>}
+                            {metricAssignment.isPrimary && <Attribute name='primary' className={classes.monospaced} />}
                           </TableCell>
                           <TableCell>
                             <Field
