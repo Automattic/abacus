@@ -182,12 +182,11 @@ export default function ActualExperimentResults({
       metricAssignment,
       metric,
       analysesByStrategyDateAsc,
-      aggregateRecommendation: Analyses.getAggregateRecommendation(
-        experiment,
-        metric,
+      aggregateRecommendation: Analyses.getAggregateMetricAssignmentRecommendation(
         Object.values(analysesByStrategyDateAsc)
           .map(_.last.bind(null))
-          .filter((x) => x !== undefined) as Analysis[],
+          .filter((x) => x)
+          .map((analysis) => Analyses.getMetricAssignmentRecommendation(experiment, metric, analysis as Analysis)),
         strategy,
       ),
     }),
@@ -228,10 +227,16 @@ export default function ActualExperimentResults({
   const latestPrimaryMetricAnalysis = primaryMetricLatestAnalysesByStrategy[strategy]
   // istanbul ignore next; trivial
   const totalParticipants = latestPrimaryMetricAnalysis?.participantStats['total'] ?? 0
-  const primaryMetricAggregateRecommendation = Analyses.getAggregateRecommendation(
-    experiment,
-    primaryMetricAssignmentAnalysesData.metric,
-    Object.values(primaryMetricLatestAnalysesByStrategy).filter((x) => x) as Analysis[],
+  const primaryMetricAggregateRecommendation = Analyses.getAggregateMetricAssignmentRecommendation(
+    Object.values(primaryMetricLatestAnalysesByStrategy)
+      .filter((x) => x)
+      .map((x) =>
+        Analyses.getMetricAssignmentRecommendation(
+          experiment,
+          primaryMetricAssignmentAnalysesData.metric,
+          x as Analysis,
+        ),
+      ),
     strategy,
   )
   const hasAnalyses =

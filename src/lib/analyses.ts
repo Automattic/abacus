@@ -123,25 +123,6 @@ export function getDiffCredibleIntevalStats(
   }
 }
 
-/**
- * Takes DiffCredibleIntervalStats from each strategy and returns whether there is a conflict between them -
- * when there are multiple practically significant CIs pointing in different directions
- */
-export function isDiffCredibleIntervalConflict(allDiffCredibleIntervalStats: (DiffCredibleIntervalStats | null)[]) {
-  return (
-    [
-      ...new Set(
-        allDiffCredibleIntervalStats
-          .filter(
-            (stats): stats is DiffCredibleIntervalStats =>
-              !!stats && stats.practicallySignificant === PracticalSignificanceStatus.Yes,
-          )
-          .map((stats) => stats.positiveDifference),
-      ),
-    ].length > 1
-  )
-}
-
 export enum AggregateRecommendationDecision {
   ManualAnalysisRequired = 'ManualAnalysisRequired',
   MissingAnalysis = 'MissingAnalysis',
@@ -151,10 +132,17 @@ export enum AggregateRecommendationDecision {
 }
 
 export interface AggregateRecommendation {
+  analysisStrategy: AnalysisStrategy
   decision: AggregateRecommendationDecision
   chosenVariationId?: number
   statisticallySignificant?: boolean
   practicallySignificant?: PracticalSignificanceStatus
+}
+
+const PracticalSignificanceStatusToDecision: Record<PracticalSignificanceStatus, AggregateRecommendationDecision> = {
+  [PracticalSignificanceStatus.No]: AggregateRecommendationDecision.Inconclusive,
+  [PracticalSignificanceStatus.Uncertain]: AggregateRecommendationDecision.DeployAnyVariation,
+  [PracticalSignificanceStatus.Yes]: AggregateRecommendationDecision.DeployChosenVariation,
 }
 
 /**
@@ -163,72 +151,70 @@ export interface AggregateRecommendation {
  * @param analyses Analyses of different strategies for the same day.
  * @param defaultStrategy Default strategy in the context of an aggregateRecommendation..
  */
-export function getAggregateRecommendation(
+export function getMetricAssignmentRecommendation(
   experiment: ExperimentFull,
   metric: MetricBare,
-  analyses: Analysis[],
-  defaultStrategy: AnalysisStrategy,
+  analysis: Analysis,
 ): AggregateRecommendation {
-  const analysis = analyses.find((analysis) => analysis.analysisStrategy === defaultStrategy)
-  const metricAssignment =
-    analysis &&
-    experiment.metricAssignments.find(
-      (metricAssignment) => metricAssignment.metricAssignmentId === analysis.metricAssignmentId,
-    )
+  const metricAssignment = experiment.metricAssignments.find(
+    (metricAssignment) => metricAssignment.metricAssignmentId === analysis.metricAssignmentId,
+  )
   const diffCredibleIntervalStats =
     analysis && metricAssignment && getDiffCredibleIntevalStats(analysis, metricAssignment)
-  if (
-    !analysis ||
-    !analysis.recommendation ||
-    !analysis.metricEstimates ||
-    !metricAssignment ||
-    !diffCredibleIntervalStats
-  ) {
+  const analysisStrategy = analysis.analysisStrategy
+  if (!analysis.recommendation || !analysis.metricEstimates || !metricAssignment || !diffCredibleIntervalStats) {
     return {
+      analysisStrategy,
       decision: AggregateRecommendationDecision.MissingAnalysis,
     }
   }
 
   const { practicallySignificant, statisticallySignificant, positiveDifference } = diffCredibleIntervalStats
-
-  // See the DiffCredibleIntervalStats documentation to better understand practical significance.
-
-  if (
-    isDiffCredibleIntervalConflict(analyses.map((analysis) => getDiffCredibleIntevalStats(analysis, metricAssignment)))
-  ) {
-    return {
-      decision: AggregateRecommendationDecision.ManualAnalysisRequired,
-      statisticallySignificant,
-      practicallySignificant,
-    }
-  }
-
-  if (practicallySignificant === PracticalSignificanceStatus.Uncertain) {
-    return {
-      decision: AggregateRecommendationDecision.Inconclusive,
-      statisticallySignificant,
-      practicallySignificant,
-    }
-  }
-
-  if (practicallySignificant === PracticalSignificanceStatus.No) {
-    return {
-      decision: AggregateRecommendationDecision.DeployAnyVariation,
-      statisticallySignificant,
-      practicallySignificant,
-    }
-  }
-
-  // practicallySignificant === PracticalSignificanceStatus.Yes
+  const decision = PracticalSignificanceStatusToDecision[practicallySignificant]
   const defaultVariation = experiment.variations.find((variation) => variation.isDefault) as Variation
   const nonDefaultVariation = experiment.variations.find((variation) => !variation.isDefault) as Variation
+  let chosenVariationId = undefined
+  if (decision === AggregateRecommendationDecision.DeployChosenVariation) {
+    chosenVariationId =
+      positiveDifference === metric.higherIsBetter ? nonDefaultVariation.variationId : defaultVariation.variationId
+  }
+
   return {
-    decision: AggregateRecommendationDecision.DeployChosenVariation,
-    chosenVariationId:
-      positiveDifference === metric.higherIsBetter ? nonDefaultVariation.variationId : defaultVariation.variationId,
+    analysisStrategy,
+    decision,
+    chosenVariationId,
     statisticallySignificant,
     practicallySignificant,
   }
+}
+
+/**
+ * Takes an array of aggregateRecommendations over different strategies, and returns an aggregateRecommendation over them.
+ * Checks for recommendation conflicts - currently different chosenVariationIds - and returns manual analysis required decision.
+ */
+export function getAggregateMetricAssignmentRecommendation(
+  aggregateRecommendations: AggregateRecommendation[],
+  targetAnalysisStrategy: AnalysisStrategy,
+): AggregateRecommendation {
+  const targetAnalysisRecommendation = aggregateRecommendations.find(
+    (aggregateRecommendation) => aggregateRecommendation.analysisStrategy === targetAnalysisStrategy,
+  )
+  if (!targetAnalysisRecommendation) {
+    return {
+      analysisStrategy: targetAnalysisStrategy,
+      decision: AggregateRecommendationDecision.MissingAnalysis,
+    }
+  }
+
+  // There is a conflict if there are different chosenVariationIds:
+  if (1 < new Set(aggregateRecommendations.map((x) => x.chosenVariationId).filter((x) => x)).size) {
+    return {
+      ...targetAnalysisRecommendation,
+      decision: AggregateRecommendationDecision.ManualAnalysisRequired,
+    }
+  }
+
+  return targetAnalysisRecommendation
 }
 
 interface AnalysesByStrategy {
