@@ -2689,7 +2689,7 @@ exports[`renders correctly for 1 analysis datapoint, not statistically significa
             class="MuiTableCell-root MuiTableCell-body"
           >
             <h5
-              class="MuiTypography-root makeStyles-aggregateRecommendation-96 MuiTypography-h5 MuiTypography-gutterBottom"
+              class="MuiTypography-root makeStyles-recommendation-96 MuiTypography-h5 MuiTypography-gutterBottom"
             >
               Inconclusive
             </h5>
@@ -4278,7 +4278,7 @@ exports[`renders correctly for 1 analysis datapoint, statistically significant 2
             class="MuiTableCell-root MuiTableCell-body"
           >
             <h5
-              class="MuiTypography-root makeStyles-aggregateRecommendation-156 MuiTypography-h5 MuiTypography-gutterBottom"
+              class="MuiTypography-root makeStyles-recommendation-156 MuiTypography-h5 MuiTypography-gutterBottom"
             >
               Deploy 
               test
@@ -5855,7 +5855,7 @@ exports[`renders correctly for conflicting analysis data 2`] = `
             class="MuiTableCell-root MuiTableCell-body"
           >
             <h5
-              class="MuiTypography-root makeStyles-aggregateRecommendation-214 MuiTypography-h5 MuiTypography-gutterBottom"
+              class="MuiTypography-root makeStyles-recommendation-214 MuiTypography-h5 MuiTypography-gutterBottom"
             >
               <span
                 class="makeStyles-tooltipped-184"
@@ -7481,7 +7481,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             class="MuiTableCell-root MuiTableCell-body"
           >
             <h5
-              class="MuiTypography-root makeStyles-aggregateRecommendation-276 MuiTypography-h5 MuiTypography-gutterBottom"
+              class="MuiTypography-root makeStyles-recommendation-276 MuiTypography-h5 MuiTypography-gutterBottom"
             >
               Deploy either variation
             </h5>
@@ -9507,7 +9507,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             class="MuiTableCell-root MuiTableCell-body"
           >
             <h5
-              class="MuiTypography-root makeStyles-aggregateRecommendation-336 MuiTypography-h5 MuiTypography-gutterBottom"
+              class="MuiTypography-root makeStyles-recommendation-336 MuiTypography-h5 MuiTypography-gutterBottom"
             >
               Deploy either variation
             </h5>
