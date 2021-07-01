@@ -14,6 +14,25 @@ describe('getDiffCredibleIntervalStats', () => {
     ).toBe(null)
   })
 
+  it('should throw for bottom greater than top', () => {
+    expect(() =>
+      Analyses.getDiffCredibleIntervalStats(
+        Fixtures.createAnalysis({
+          metricEstimates: {
+            diff: {
+              estimate: 0,
+              top: 0,
+              bottom: 10,
+            },
+          },
+        }),
+        Fixtures.createMetricAssignment({
+          minDifference: 10,
+        }),
+      ),
+    ).toThrowErrorMatchingInlineSnapshot(`"Invalid metricEstimates: bottom greater than top."`)
+  })
+
   it('should return correct stats', () => {
     expect(
       Analyses.getDiffCredibleIntervalStats(
@@ -33,7 +52,7 @@ describe('getDiffCredibleIntervalStats', () => {
     ).toEqual({
       practicallySignificant: Analyses.PracticalSignificanceStatus.No,
       statisticallySignificant: false,
-      positiveDifference: false,
+      isPositive: false,
     })
     expect(
       Analyses.getDiffCredibleIntervalStats(
@@ -53,7 +72,7 @@ describe('getDiffCredibleIntervalStats', () => {
     ).toEqual({
       practicallySignificant: Analyses.PracticalSignificanceStatus.No,
       statisticallySignificant: false,
-      positiveDifference: false,
+      isPositive: false,
     })
     expect(
       Analyses.getDiffCredibleIntervalStats(
@@ -73,7 +92,7 @@ describe('getDiffCredibleIntervalStats', () => {
     ).toEqual({
       practicallySignificant: Analyses.PracticalSignificanceStatus.No,
       statisticallySignificant: false,
-      positiveDifference: false,
+      isPositive: false,
     })
     expect(
       Analyses.getDiffCredibleIntervalStats(
@@ -93,7 +112,7 @@ describe('getDiffCredibleIntervalStats', () => {
     ).toEqual({
       practicallySignificant: Analyses.PracticalSignificanceStatus.No,
       statisticallySignificant: true,
-      positiveDifference: false,
+      isPositive: false,
     })
     expect(
       Analyses.getDiffCredibleIntervalStats(
@@ -113,7 +132,7 @@ describe('getDiffCredibleIntervalStats', () => {
     ).toEqual({
       practicallySignificant: Analyses.PracticalSignificanceStatus.No,
       statisticallySignificant: true,
-      positiveDifference: true,
+      isPositive: true,
     })
     expect(
       Analyses.getDiffCredibleIntervalStats(
@@ -133,7 +152,7 @@ describe('getDiffCredibleIntervalStats', () => {
     ).toEqual({
       practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
       statisticallySignificant: true,
-      positiveDifference: false,
+      isPositive: false,
     })
     expect(
       Analyses.getDiffCredibleIntervalStats(
@@ -153,7 +172,7 @@ describe('getDiffCredibleIntervalStats', () => {
     ).toEqual({
       practicallySignificant: Analyses.PracticalSignificanceStatus.Uncertain,
       statisticallySignificant: true,
-      positiveDifference: true,
+      isPositive: true,
     })
     expect(
       Analyses.getDiffCredibleIntervalStats(
@@ -173,7 +192,7 @@ describe('getDiffCredibleIntervalStats', () => {
     ).toEqual({
       practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
       statisticallySignificant: true,
-      positiveDifference: false,
+      isPositive: false,
     })
     expect(
       Analyses.getDiffCredibleIntervalStats(
@@ -193,7 +212,7 @@ describe('getDiffCredibleIntervalStats', () => {
     ).toEqual({
       practicallySignificant: Analyses.PracticalSignificanceStatus.Yes,
       statisticallySignificant: true,
-      positiveDifference: true,
+      isPositive: true,
     })
   })
 })
