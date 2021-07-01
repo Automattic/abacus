@@ -488,7 +488,12 @@ export const analysisSchema = yup
   })
   .defined()
   .camelCase()
-export interface Analysis extends yup.InferType<typeof analysisSchema> {}
+export interface Analysis extends yup.InferType<typeof analysisSchema> {
+  /**
+   * @deprecated Recommendations are now performed on the client-side using metricEstimates.
+   */
+  recommendation: yup.InferType<typeof recommendationSchema> | null
+}
 
 export const analysisResponseSchema = yup
   .object({
