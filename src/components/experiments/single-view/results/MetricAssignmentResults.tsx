@@ -143,8 +143,8 @@ const differenceOverviewMessages: Record<
     false: `There is not enough certainty to draw a conclusion at this time.`,
   },
   [Analyses.PracticalSignificanceStatus.No]: {
-    true: `There is high certainty that the change isn't pratically significant, but the change is statistically different from zero.`,
-    false: `There is high certainty that the change isn't pratically significant.`,
+    true: `There is high certainty that the change isn't practically significant, but the change is statistically different from zero.`,
+    false: `There is high certainty that the change isn't practically significant.`,
   },
 }
 
