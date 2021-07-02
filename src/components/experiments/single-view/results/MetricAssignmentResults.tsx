@@ -318,7 +318,7 @@ export default function MetricAssignmentResults({
             <TableRow>
               <TableCell>
                 <Typography variant='body1' gutterBottom>
-                  The absolute change in the conversion rate of{' '}
+                  The absolute change in the {isConversion ? 'conversion rate' : 'ARPU'} of{' '}
                   <MetricValue
                     metricParameterType={metric.parameterType}
                     isDifference={true}
