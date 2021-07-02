@@ -1448,7 +1448,7 @@ inner join wpcom.experiment_variations using (experiment_variation_id)
 </div>
 `;
 
-exports[`renders correctly for 1 analysis datapoint, statistically insignificant 1`] = `
+exports[`renders correctly for 1 analysis datapoint, not statistically significant 1`] = `
 <div
   class="analysis-latest-results"
 >
@@ -2664,7 +2664,7 @@ inner join wpcom.experiment_variations using (experiment_variation_id)
 </div>
 `;
 
-exports[`renders correctly for 1 analysis datapoint, statistically insignificant 2`] = `
+exports[`renders correctly for 1 analysis datapoint, not statistically significant 2`] = `
 <div
   class="makeStyles-root-83 analysis-detail-panel"
 >
@@ -2710,7 +2710,9 @@ exports[`renders correctly for 1 analysis datapoint, statistically insignificant
             <p
               class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
             >
-              The absolute change in the conversion rate of
+              The absolute change in the 
+              conversion rate
+               of
                
               -100
                
@@ -2964,7 +2966,7 @@ exports[`renders correctly for 1 analysis datapoint, statistically insignificant
 </div>
 `;
 
-exports[`renders correctly for 1 analysis datapoint, statistically insignificant 3`] = `
+exports[`renders correctly for 1 analysis datapoint, not statistically significant 3`] = `
 [MockFunction] {
   "calls": Array [
     Array [
@@ -4284,7 +4286,7 @@ exports[`renders correctly for 1 analysis datapoint, statistically significant 2
             <p
               class="MuiTypography-root MuiTypography-body1"
             >
-              There is high certainty that the change is pratically significant
+              There is high certainty that the change is practically significant.
                
             </p>
           </td>
@@ -4298,7 +4300,9 @@ exports[`renders correctly for 1 analysis datapoint, statistically significant 2
             <p
               class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
             >
-              The absolute change in the conversion rate of
+              The absolute change in the 
+              conversion rate
+               of
                
               +
               50
@@ -5870,7 +5874,7 @@ exports[`renders correctly for conflicting analysis data 2`] = `
             <p
               class="MuiTypography-root MuiTypography-body1"
             >
-              There is high certainty that the change is pratically significant
+              There is high certainty that the change is practically significant.
                
             </p>
           </td>
@@ -5884,7 +5888,9 @@ exports[`renders correctly for conflicting analysis data 2`] = `
             <p
               class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
             >
-              The absolute change in the conversion rate of
+              The absolute change in the 
+              conversion rate
+               of
                
               +
               50
@@ -7482,7 +7488,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             <p
               class="MuiTypography-root MuiTypography-body1"
             >
-              There is high certainty that the change isn't pratically significant.
+              There is high certainty that the change isn't practically significant.
                
             </p>
           </td>
@@ -7496,7 +7502,9 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             <p
               class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
             >
-              The absolute change in the conversion rate of
+              The absolute change in the 
+              conversion rate
+               of
                
               -1
                
@@ -9506,7 +9514,7 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             <p
               class="MuiTypography-root MuiTypography-body1"
             >
-              There is high certainty that the change isn't pratically significant.
+              There is high certainty that the change isn't practically significant.
                
             </p>
           </td>
@@ -9520,7 +9528,9 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             <p
               class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom"
             >
-              The absolute change in the conversion rate of
+              The absolute change in the 
+              ARPU
+               of
                
               -0.01
                
