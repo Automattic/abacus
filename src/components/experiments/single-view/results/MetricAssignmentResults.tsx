@@ -135,8 +135,8 @@ const differenceOverviewMessages: Record<
   Record<StringifiedStatisticalDifference, string>
 > = {
   [Analyses.PracticalSignificanceStatus.Yes]: {
-    true: `There is high certainty that the change is pratically significant`,
-    false: `There is high certainty that the change is pratically significant`,
+    true: `There is high certainty that the change is practically significant.`,
+    false: `There is high certainty that the change is practically significant.`,
   },
   [Analyses.PracticalSignificanceStatus.Uncertain]: {
     true: `There is not enough certainty to draw a conclusion at this time, but the change is statistically different from zero.`,
