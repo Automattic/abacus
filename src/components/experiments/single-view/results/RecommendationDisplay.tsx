@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 /**
- * Displays an Recommendation.
+ * Displays a Recommendation.
  */
 export default function RecommendationDisplay({
   recommendation,

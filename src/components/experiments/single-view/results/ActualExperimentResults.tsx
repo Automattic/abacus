@@ -233,11 +233,11 @@ export default function ActualExperimentResults({
   const primaryMetricRecommendation = Recommendations.getAggregateMetricAssignmentRecommendation(
     Object.values(primaryMetricLatestAnalysesByStrategy)
       .filter((x) => x)
-      .map((x) =>
+      .map((analysis) =>
         Recommendations.getMetricAssignmentRecommendation(
           experiment,
           primaryMetricAssignmentAnalysesData.metric,
-          x as Analysis,
+          analysis as Analysis,
         ),
       ),
     strategy,
