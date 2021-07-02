@@ -310,7 +310,7 @@ export default function MetricAssignmentResults({
                   {
                     differenceOverviewMessages[
                       aggregateRecommendation.practicallySignificant as Analyses.PracticalSignificanceStatus
-                    ][String(aggregateRecommendation.statisticallySignificant) as 'true' | 'false']
+][String(aggregateRecommendation.statisticallySignificant) as StringifiedStatisticalDifference]
                   }{' '}
                 </Typography>
               </TableCell>
