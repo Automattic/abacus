@@ -2,7 +2,7 @@ import { normalize, schema } from 'normalizr'
 
 import { Metric, Segment, TagBare } from './schemas'
 
-const metricNormalizrSchema = new schema.Entity<Metric | Metric>('metrics', {}, { idAttribute: 'metricId' })
+const metricNormalizrSchema = new schema.Entity<Metric>('metrics', {}, { idAttribute: 'metricId' })
 
 /**
  * Return a mapping from metric ID to the metric object.
