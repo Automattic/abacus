@@ -31,7 +31,7 @@ import { Analysis, AnalysisStrategy, ExperimentFull, Metric, MetricAssignment, V
  * the ROPE. Practical significance is what we use for recommendations.
  *
  * Benefits of practical significance:
- * - More accurate burden of proof - tailored to the Experimenters specific decision they are making.
+ * - More accurate burden of proof - tailored to the experimenters' decisions around specific metrics.
  *   For example a diff CI can be better than zero, but cost more to fully implement than any benefit from it.
  *   By using practical significance we can set the point of decision to exactly when the benefit outweighs the cost.
  * - Gives us a way to determine how long an experiment should run for - if the
@@ -145,8 +145,7 @@ export function getMetricAssignmentRecommendation(
   const metricAssignment = experiment.metricAssignments.find(
     (metricAssignment) => metricAssignment.metricAssignmentId === analysis.metricAssignmentId,
   )
-  const diffCredibleIntervalStats =
-    analysis && metricAssignment && getDiffCredibleIntervalStats(analysis, metricAssignment)
+  const diffCredibleIntervalStats = metricAssignment && getDiffCredibleIntervalStats(analysis, metricAssignment)
   const analysisStrategy = analysis.analysisStrategy
   if (!analysis.metricEstimates || !metricAssignment || !diffCredibleIntervalStats) {
     return {
