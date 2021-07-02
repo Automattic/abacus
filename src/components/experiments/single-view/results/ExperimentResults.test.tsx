@@ -43,7 +43,7 @@ test('renders an appropriate message for "Missing Analyses" analyses state', asy
   await expect(container.textContent).toMatch('No results are available at the moment')
 })
 
-test('renders correctly for 1 analysis datapoint, statistically insignificant', async () => {
+test('renders correctly for 1 analysis datapoint, not statistically significant', async () => {
   const metricEstimates = {
     variation_1: {
       top: 1,
