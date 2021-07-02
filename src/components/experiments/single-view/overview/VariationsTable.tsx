@@ -48,6 +48,7 @@ function assignmentHref(variationName: string, experimentName: string) {
   nameSchema.validateSync(variationName)
   return `javascript:(async () => {
     const token = JSON.parse(localStorage.getItem('experiments_auth_info'));
+    const anonId = decodeURIComponent(document.cookie.match('(^|;)\\\\s*tk_ai\\\\s*=\\\\s*([^;]+)')?.pop() || '');
     const headers = {'Content-Type': 'application/json'};
     if (token && token.accessToken) {
        headers.Authorization = 'Bearer ' + token['accessToken'];
@@ -58,7 +59,7 @@ function assignmentHref(variationName: string, experimentName: string) {
         credentials: 'include', 
         method: 'PATCH', 
         headers, 
-        body: JSON.stringify({variations: {${experimentName}: '${variationName}'}})
+        body: JSON.stringify({variations: {${experimentName}: '${variationName}'}, anon_id: anonId})
       }
     );
     const responseBody = await response.json();
@@ -72,30 +73,21 @@ function assignmentHref(variationName: string, experimentName: string) {
       case 'user_not_assignable':
         alert('You must be proxied or sandboxed to use this bookmark');
         break;
+      case 'invalid_ids':
+        alert('To assign yourself, you must run this from Abacus.\\n\\nTo assign the current anonymous user, verify ' +
+              'that Tracks is not blocked and run in an environment where the tk_ai cookie is set.');
+        break;
       default:
         if (!responseBody.variations) {
           alert('An unknown error occurred: ' + responseBody.message);
           break;
         }
-        const duration = responseBody.duration === 'unlimited' ?
-          responseBody.duration : Math.ceil(responseBody.duration / 60 / 60);
-
-        if (responseBody.storage_method === 'cookie') {
-          window.localStorage.setItem(
-            'explat-experiment--${experimentName}',
-            JSON.stringify(
-              {
-                'experimentName':'${experimentName}',
-                'variationName': '${variationName}',
-                'retrievedTimestamp': Date.now(),
-                'ttl': responseBody.duration === 'unlimited' ? Infinity : responseBody.duration,
-              }
-            )
-          );
-
-          alert('ExPlat: Successful Assignment\\n–––––––––––––––––––––––––––––\\n\\nExperiment: ${experimentName}\\nVariation: ${variationName}\\n\\nMethod: Logged-out assignment, expires in ' + duration + ' hours\\nClient-side: Applies to the current domain (LocalStorage).\\nServer-side: Applies to current session (Cookie).');
+        const baseMessage = 'ExPlat: Successful Assignment\\n–––––––––––––––––––––––––––––\\n\\n' +
+          'Experiment: ${experimentName}\\nVariation: ${variationName}\\n\\n';
+        if (responseBody.storage_method === 'anon_sqooped_out_table') {
+          alert(baseMessage + 'Method: Logged-out assignment\\nApplies to the current anon user (tk_ai cookie).');
         } else {
-          alert('ExPlat: Successful Assignment\\n–––––––––––––––––––––––––––––\\n\\nExperiment: ${experimentName}\\nVariation: ${variationName}\\n\\nMethod: Logged-in assignment\\nApplies to the current logged-in user.');
+          alert(baseMessage + 'Method: Logged-in assignment\\nApplies to the current logged-in user.');
         }
     }
 })()`
