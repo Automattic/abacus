@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { RecommendationDecision } from 'src/lib/recommendations'
+import { Decision } from 'src/lib/recommendations'
 import { AnalysisStrategy } from 'src/lib/schemas'
 import Fixtures from 'src/test-helpers/fixtures'
 import { render } from 'src/test-helpers/test-utils'
@@ -12,7 +12,7 @@ test('renders MissingAnalysis correctly', () => {
     <RecommendationDisplay
       recommendation={{
         analysisStrategy: AnalysisStrategy.PpNaive,
-        decision: RecommendationDecision.MissingAnalysis,
+        decision: Decision.MissingAnalysis,
       }}
       experiment={Fixtures.createExperimentFull()}
     />,
@@ -29,7 +29,7 @@ test('renders ManualAnalysisRequired correctly', () => {
     <RecommendationDisplay
       recommendation={{
         analysisStrategy: AnalysisStrategy.PpNaive,
-        decision: RecommendationDecision.ManualAnalysisRequired,
+        decision: Decision.ManualAnalysisRequired,
       }}
       experiment={Fixtures.createExperimentFull()}
     />,
@@ -51,7 +51,7 @@ test('renders Inconclusive correctly', () => {
     <RecommendationDisplay
       recommendation={{
         analysisStrategy: AnalysisStrategy.PpNaive,
-        decision: RecommendationDecision.Inconclusive,
+        decision: Decision.Inconclusive,
       }}
       experiment={Fixtures.createExperimentFull()}
     />,
@@ -68,7 +68,7 @@ test('renders DeployAnyVariation correctly', () => {
     <RecommendationDisplay
       recommendation={{
         analysisStrategy: AnalysisStrategy.PpNaive,
-        decision: RecommendationDecision.DeployAnyVariation,
+        decision: Decision.DeployAnyVariation,
       }}
       experiment={Fixtures.createExperimentFull()}
     />,
@@ -85,7 +85,7 @@ test('renders DeployChosenVariation correctly', () => {
     <RecommendationDisplay
       recommendation={{
         analysisStrategy: AnalysisStrategy.PpNaive,
-        decision: RecommendationDecision.DeployChosenVariation,
+        decision: Decision.DeployChosenVariation,
         chosenVariationId: 123,
       }}
       experiment={Fixtures.createExperimentFull({
@@ -117,7 +117,7 @@ test('throws error for missing chosenVariationId', () => {
       <RecommendationDisplay
         recommendation={{
           analysisStrategy: AnalysisStrategy.PpNaive,
-          decision: RecommendationDecision.DeployChosenVariation,
+          decision: Decision.DeployChosenVariation,
           chosenVariationId: 123,
         }}
         experiment={Fixtures.createExperimentFull({
@@ -139,7 +139,7 @@ test('throws error for uncovered Recommendation', () => {
         recommendation={{
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          decision: 'Unknown RecommendationDecision',
+          decision: 'Unknown Decision',
           chosenVariationId: 123,
         }}
         experiment={Fixtures.createExperimentFull({
@@ -147,6 +147,6 @@ test('throws error for uncovered Recommendation', () => {
         })}
       />,
     ),
-  ).toThrowErrorMatchingInlineSnapshot(`"Missing RecommendationDecision."`)
+  ).toThrowErrorMatchingInlineSnapshot(`"Missing Decision."`)
   console.error = originalConsoleError
 })

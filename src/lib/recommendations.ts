@@ -110,7 +110,7 @@ export function getDiffCredibleIntervalStats(
   }
 }
 
-export enum RecommendationDecision {
+export enum Decision {
   ManualAnalysisRequired = 'ManualAnalysisRequired',
   MissingAnalysis = 'MissingAnalysis',
   Inconclusive = 'Inconclusive',
@@ -120,16 +120,16 @@ export enum RecommendationDecision {
 
 export interface Recommendation {
   analysisStrategy: AnalysisStrategy
-  decision: RecommendationDecision
+  decision: Decision
   chosenVariationId?: number
   statisticallySignificant?: boolean
   practicallySignificant?: PracticalSignificanceStatus
 }
 
-const PracticalSignificanceStatusToDecision: Record<PracticalSignificanceStatus, RecommendationDecision> = {
-  [PracticalSignificanceStatus.No]: RecommendationDecision.DeployAnyVariation,
-  [PracticalSignificanceStatus.Uncertain]: RecommendationDecision.Inconclusive,
-  [PracticalSignificanceStatus.Yes]: RecommendationDecision.DeployChosenVariation,
+const PracticalSignificanceStatusToDecision: Record<PracticalSignificanceStatus, Decision> = {
+  [PracticalSignificanceStatus.No]: Decision.DeployAnyVariation,
+  [PracticalSignificanceStatus.Uncertain]: Decision.Inconclusive,
+  [PracticalSignificanceStatus.Yes]: Decision.DeployChosenVariation,
 }
 
 /**
@@ -151,7 +151,7 @@ export function getMetricAssignmentRecommendation(
   if (!analysis.metricEstimates || !metricAssignment || !diffCredibleIntervalStats) {
     return {
       analysisStrategy,
-      decision: RecommendationDecision.MissingAnalysis,
+      decision: Decision.MissingAnalysis,
     }
   }
 
@@ -160,7 +160,7 @@ export function getMetricAssignmentRecommendation(
   const defaultVariation = experiment.variations.find((variation) => variation.isDefault) as Variation
   const nonDefaultVariation = experiment.variations.find((variation) => !variation.isDefault) as Variation
   let chosenVariationId = undefined
-  if (decision === RecommendationDecision.DeployChosenVariation) {
+  if (decision === Decision.DeployChosenVariation) {
     chosenVariationId =
       isPositive === metric.higherIsBetter ? nonDefaultVariation.variationId : defaultVariation.variationId
   }
@@ -188,7 +188,7 @@ export function getAggregateMetricAssignmentRecommendation(
   if (!targetAnalysisRecommendation) {
     return {
       analysisStrategy: targetAnalysisStrategy,
-      decision: RecommendationDecision.MissingAnalysis,
+      decision: Decision.MissingAnalysis,
     }
   }
 
@@ -196,7 +196,7 @@ export function getAggregateMetricAssignmentRecommendation(
   if (1 < new Set(recommendations.map((x) => x.chosenVariationId).filter((x) => x)).size) {
     return {
       ...targetAnalysisRecommendation,
-      decision: RecommendationDecision.ManualAnalysisRequired,
+      decision: Decision.ManualAnalysisRequired,
       chosenVariationId: undefined,
     }
   }

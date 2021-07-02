@@ -242,7 +242,7 @@ export default function ActualExperimentResults({
       ),
     strategy,
   )
-  const hasAnalyses = primaryMetricRecommendation.decision !== Recommendations.RecommendationDecision.MissingAnalysis
+  const hasAnalyses = primaryMetricRecommendation.decision !== Recommendations.Decision.MissingAnalysis
 
   const experimentParticipantStats = Analyses.getExperimentParticipantStats(
     experiment,
@@ -310,8 +310,8 @@ export default function ActualExperimentResults({
         const latestEstimates = _.last(analysesByStrategyDateAsc[strategy])?.metricEstimates
         if (
           !latestEstimates ||
-          recommendation.decision === Recommendations.RecommendationDecision.ManualAnalysisRequired ||
-          recommendation.decision === Recommendations.RecommendationDecision.MissingAnalysis
+          recommendation.decision === Recommendations.Decision.ManualAnalysisRequired ||
+          recommendation.decision === Recommendations.Decision.MissingAnalysis
         ) {
           return null
         }
@@ -347,8 +347,8 @@ export default function ActualExperimentResults({
         if (
           !latestEstimates ||
           !latestEstimates.ratio?.top ||
-          recommendation.decision === Recommendations.RecommendationDecision.ManualAnalysisRequired ||
-          recommendation.decision === Recommendations.RecommendationDecision.MissingAnalysis
+          recommendation.decision === Recommendations.Decision.ManualAnalysisRequired ||
+          recommendation.decision === Recommendations.Decision.MissingAnalysis
         ) {
           return null
         }
@@ -398,7 +398,7 @@ export default function ActualExperimentResults({
       metric: MetricBare
       recommendation: Recommendations.Recommendation
     }) => {
-      let disabled = recommendation.decision === Recommendations.RecommendationDecision.ManualAnalysisRequired
+      let disabled = recommendation.decision === Recommendations.Decision.ManualAnalysisRequired
       // istanbul ignore next; debug only
       disabled = disabled && !isDebugMode()
       return {
@@ -490,7 +490,7 @@ export default function ActualExperimentResults({
               const { recommendation } = rowData as {
                 recommendation: Recommendations.Recommendation
               }
-              let disabled = recommendation.decision === Recommendations.RecommendationDecision.ManualAnalysisRequired
+              let disabled = recommendation.decision === Recommendations.Decision.ManualAnalysisRequired
               // istanbul ignore next; debug only
               disabled = disabled && !isDebugMode()
 

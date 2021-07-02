@@ -300,7 +300,7 @@ export default function MetricAssignmentResults({
                 <Typography variant='h5' gutterBottom className={classes.recommendation}>
                   <RecommendationDisplay {...{ experiment, recommendation }} />
                 </Typography>
-                {recommendation.decision === Recommendations.RecommendationDecision.ManualAnalysisRequired && (
+                {recommendation.decision === Recommendations.Decision.ManualAnalysisRequired && (
                   <Typography variant='body1' gutterBottom>
                     <strong> Different strategies are recommending conflicting variations! </strong>
                   </Typography>

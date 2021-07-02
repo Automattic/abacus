@@ -242,7 +242,7 @@ describe('getMetricAssignmentRecommendation', () => {
       ),
     ).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.Inconclusive,
+      decision: Recommendations.Decision.Inconclusive,
       practicallySignificant: Recommendations.PracticalSignificanceStatus.Uncertain,
       statisticallySignificant: false,
     })
@@ -270,7 +270,7 @@ describe('getMetricAssignmentRecommendation', () => {
       ),
     ).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.Inconclusive,
+      decision: Recommendations.Decision.Inconclusive,
       practicallySignificant: Recommendations.PracticalSignificanceStatus.Uncertain,
       statisticallySignificant: true,
     })
@@ -298,7 +298,7 @@ describe('getMetricAssignmentRecommendation', () => {
       ),
     ).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.DeployAnyVariation,
+      decision: Recommendations.Decision.DeployAnyVariation,
       practicallySignificant: Recommendations.PracticalSignificanceStatus.No,
       statisticallySignificant: false,
     })
@@ -326,7 +326,7 @@ describe('getMetricAssignmentRecommendation', () => {
       ),
     ).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.DeployChosenVariation,
+      decision: Recommendations.Decision.DeployChosenVariation,
       chosenVariationId: 2,
       practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
       statisticallySignificant: true,
@@ -356,7 +356,7 @@ describe('getMetricAssignmentRecommendation', () => {
     ),
   ).toEqual({
     analysisStrategy: AnalysisStrategy.PpNaive,
-    decision: Recommendations.RecommendationDecision.DeployChosenVariation,
+    decision: Recommendations.Decision.DeployChosenVariation,
     chosenVariationId: 1,
     practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
     statisticallySignificant: true,
@@ -367,35 +367,35 @@ describe('getAggregateMetricAssignmentRecommendation', () => {
   it('should work correctly for missing analyses', () => {
     expect(Recommendations.getAggregateMetricAssignmentRecommendation([], AnalysisStrategy.PpNaive)).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.MissingAnalysis,
+      decision: Recommendations.Decision.MissingAnalysis,
     })
     expect(
       Recommendations.getAggregateMetricAssignmentRecommendation(
         [
           {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            decision: Recommendations.RecommendationDecision.MissingAnalysis,
+            decision: Recommendations.Decision.MissingAnalysis,
           },
         ],
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.MissingAnalysis,
+      decision: Recommendations.Decision.MissingAnalysis,
     })
     expect(
       Recommendations.getAggregateMetricAssignmentRecommendation(
         [
           {
             analysisStrategy: AnalysisStrategy.IttPure,
-            decision: Recommendations.RecommendationDecision.Inconclusive,
+            decision: Recommendations.Decision.Inconclusive,
           },
         ],
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.MissingAnalysis,
+      decision: Recommendations.Decision.MissingAnalysis,
     })
   })
 
@@ -405,14 +405,14 @@ describe('getAggregateMetricAssignmentRecommendation', () => {
         [
           {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            decision: Recommendations.RecommendationDecision.DeployChosenVariation,
+            decision: Recommendations.Decision.DeployChosenVariation,
             chosenVariationId: 2,
             practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
             statisticallySignificant: true,
           },
           {
             analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
-            decision: Recommendations.RecommendationDecision.DeployChosenVariation,
+            decision: Recommendations.Decision.DeployChosenVariation,
             chosenVariationId: 2,
             practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
             statisticallySignificant: true,
@@ -422,7 +422,7 @@ describe('getAggregateMetricAssignmentRecommendation', () => {
       ),
     ).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.DeployChosenVariation,
+      decision: Recommendations.Decision.DeployChosenVariation,
       chosenVariationId: 2,
       practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
       statisticallySignificant: true,
@@ -433,21 +433,21 @@ describe('getAggregateMetricAssignmentRecommendation', () => {
         [
           {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            decision: Recommendations.RecommendationDecision.DeployChosenVariation,
+            decision: Recommendations.Decision.DeployChosenVariation,
             chosenVariationId: 2,
             practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
             statisticallySignificant: true,
           },
           {
             analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
-            decision: Recommendations.RecommendationDecision.MissingAnalysis,
+            decision: Recommendations.Decision.MissingAnalysis,
           },
         ],
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.DeployChosenVariation,
+      decision: Recommendations.Decision.DeployChosenVariation,
       chosenVariationId: 2,
       practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
       statisticallySignificant: true,
@@ -458,20 +458,20 @@ describe('getAggregateMetricAssignmentRecommendation', () => {
         [
           {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            decision: Recommendations.RecommendationDecision.DeployAnyVariation,
+            decision: Recommendations.Decision.DeployAnyVariation,
             practicallySignificant: Recommendations.PracticalSignificanceStatus.No,
             statisticallySignificant: false,
           },
           {
             analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
-            decision: Recommendations.RecommendationDecision.MissingAnalysis,
+            decision: Recommendations.Decision.MissingAnalysis,
           },
         ],
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.DeployAnyVariation,
+      decision: Recommendations.Decision.DeployAnyVariation,
       practicallySignificant: Recommendations.PracticalSignificanceStatus.No,
       statisticallySignificant: false,
     })
@@ -481,13 +481,13 @@ describe('getAggregateMetricAssignmentRecommendation', () => {
         [
           {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            decision: Recommendations.RecommendationDecision.Inconclusive,
+            decision: Recommendations.Decision.Inconclusive,
             practicallySignificant: Recommendations.PracticalSignificanceStatus.Uncertain,
             statisticallySignificant: false,
           },
           {
             analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
-            decision: Recommendations.RecommendationDecision.Inconclusive,
+            decision: Recommendations.Decision.Inconclusive,
             practicallySignificant: Recommendations.PracticalSignificanceStatus.Uncertain,
             statisticallySignificant: false,
           },
@@ -496,7 +496,7 @@ describe('getAggregateMetricAssignmentRecommendation', () => {
       ),
     ).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.Inconclusive,
+      decision: Recommendations.Decision.Inconclusive,
       practicallySignificant: Recommendations.PracticalSignificanceStatus.Uncertain,
       statisticallySignificant: false,
     })
@@ -505,11 +505,11 @@ describe('getAggregateMetricAssignmentRecommendation', () => {
         [
           {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            decision: Recommendations.RecommendationDecision.MissingAnalysis,
+            decision: Recommendations.Decision.MissingAnalysis,
           },
           {
             analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
-            decision: Recommendations.RecommendationDecision.Inconclusive,
+            decision: Recommendations.Decision.Inconclusive,
             practicallySignificant: Recommendations.PracticalSignificanceStatus.Uncertain,
             statisticallySignificant: false,
           },
@@ -518,7 +518,7 @@ describe('getAggregateMetricAssignmentRecommendation', () => {
       ),
     ).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.MissingAnalysis,
+      decision: Recommendations.Decision.MissingAnalysis,
     })
   })
   it('should work correctly for multiple analyses with conflict', () => {
@@ -527,14 +527,14 @@ describe('getAggregateMetricAssignmentRecommendation', () => {
         [
           {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            decision: Recommendations.RecommendationDecision.DeployChosenVariation,
+            decision: Recommendations.Decision.DeployChosenVariation,
             chosenVariationId: 2,
             practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
             statisticallySignificant: true,
           },
           {
             analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
-            decision: Recommendations.RecommendationDecision.DeployChosenVariation,
+            decision: Recommendations.Decision.DeployChosenVariation,
             chosenVariationId: 1,
             practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
             statisticallySignificant: true,
@@ -544,7 +544,7 @@ describe('getAggregateMetricAssignmentRecommendation', () => {
       ),
     ).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.ManualAnalysisRequired,
+      decision: Recommendations.Decision.ManualAnalysisRequired,
       practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
       statisticallySignificant: true,
     })
@@ -554,14 +554,14 @@ describe('getAggregateMetricAssignmentRecommendation', () => {
         [
           {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            decision: Recommendations.RecommendationDecision.DeployChosenVariation,
+            decision: Recommendations.Decision.DeployChosenVariation,
             chosenVariationId: 2,
             practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
             statisticallySignificant: true,
           },
           {
             analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
-            decision: Recommendations.RecommendationDecision.DeployAnyVariation,
+            decision: Recommendations.Decision.DeployAnyVariation,
             practicallySignificant: Recommendations.PracticalSignificanceStatus.No,
             statisticallySignificant: false,
           },
@@ -570,7 +570,7 @@ describe('getAggregateMetricAssignmentRecommendation', () => {
       ),
     ).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.DeployChosenVariation,
+      decision: Recommendations.Decision.DeployChosenVariation,
       chosenVariationId: 2,
       practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
       statisticallySignificant: true,
@@ -581,34 +581,34 @@ describe('getAggregateMetricAssignmentRecommendation', () => {
         [
           {
             analysisStrategy: AnalysisStrategy.PpNaive,
-            decision: Recommendations.RecommendationDecision.DeployChosenVariation,
+            decision: Recommendations.Decision.DeployChosenVariation,
             chosenVariationId: 2,
             practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
             statisticallySignificant: true,
           },
           {
             analysisStrategy: AnalysisStrategy.MittNoSpammersNoCrossovers,
-            decision: Recommendations.RecommendationDecision.DeployChosenVariation,
+            decision: Recommendations.Decision.DeployChosenVariation,
             chosenVariationId: 1,
             practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
             statisticallySignificant: true,
           },
           {
             analysisStrategy: AnalysisStrategy.IttPure,
-            decision: Recommendations.RecommendationDecision.Inconclusive,
+            decision: Recommendations.Decision.Inconclusive,
             practicallySignificant: Recommendations.PracticalSignificanceStatus.Uncertain,
             statisticallySignificant: false,
           },
           {
             analysisStrategy: AnalysisStrategy.MittNoCrossovers,
-            decision: Recommendations.RecommendationDecision.MissingAnalysis,
+            decision: Recommendations.Decision.MissingAnalysis,
           },
         ],
         AnalysisStrategy.PpNaive,
       ),
     ).toEqual({
       analysisStrategy: AnalysisStrategy.PpNaive,
-      decision: Recommendations.RecommendationDecision.ManualAnalysisRequired,
+      decision: Recommendations.Decision.ManualAnalysisRequired,
       practicallySignificant: Recommendations.PracticalSignificanceStatus.Yes,
       statisticallySignificant: true,
     })

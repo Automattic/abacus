@@ -1,7 +1,7 @@
 import { createStyles, makeStyles, Theme, Tooltip } from '@material-ui/core'
 import React from 'react'
 
-import { Recommendation, RecommendationDecision } from 'src/lib/recommendations'
+import { Decision, Recommendation } from 'src/lib/recommendations'
 import { ExperimentFull } from 'src/lib/schemas'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -26,19 +26,19 @@ export default function RecommendationDisplay({
 }): JSX.Element {
   const classes = useStyles()
   switch (recommendation.decision) {
-    case RecommendationDecision.ManualAnalysisRequired:
+    case Decision.ManualAnalysisRequired:
       return (
         <Tooltip title='Contact @experimentation-review on #a8c-experiments'>
           <span className={classes.tooltipped}>Manual analysis required</span>
         </Tooltip>
       )
-    case RecommendationDecision.MissingAnalysis:
+    case Decision.MissingAnalysis:
       return <>Not analyzed yet</>
-    case RecommendationDecision.Inconclusive:
+    case Decision.Inconclusive:
       return <>Inconclusive</>
-    case RecommendationDecision.DeployAnyVariation:
+    case Decision.DeployAnyVariation:
       return <>Deploy either variation</>
-    case RecommendationDecision.DeployChosenVariation: {
+    case Decision.DeployChosenVariation: {
       const chosenVariation = experiment.variations.find(
         (variation) => variation.variationId === recommendation.chosenVariationId,
       )
@@ -49,6 +49,6 @@ export default function RecommendationDisplay({
       return <>Deploy {chosenVariation.name}</>
     }
     default:
-      throw new Error('Missing RecommendationDecision.')
+      throw new Error('Missing Decision.')
   }
 }
