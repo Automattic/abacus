@@ -67,10 +67,10 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
             "Event Params is required and must be valid JSON.",
             "Exactly one of eventParams or revenueParams must be defined.",
           ]
@@ -89,10 +89,10 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
             "Revenue Params is required and must be valid JSON.",
             "Exactly one of eventParams or revenueParams must be defined.",
           ]
@@ -111,10 +111,10 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
           ]
         `)
       }
@@ -131,10 +131,10 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
             "This field must be one of the following values: ",
             "Revenue Params is required and must be valid JSON.",
           ]
@@ -153,10 +153,10 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
             "This field must be one of the following values: ",
             "Event Params is required and must be valid JSON.",
           ]
@@ -175,13 +175,13 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
           ]
         `)
       }
@@ -201,11 +201,11 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
             "This field must be one of the following values: ",
             "This field must be one of the following values: ",
             "Exactly one of eventParams or revenueParams must be defined.",
@@ -224,11 +224,11 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
             "Exactly one of eventParams or revenueParams must be defined.",
           ]
         `)
@@ -246,10 +246,10 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
           ]
         `)
       }
@@ -266,13 +266,13 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
-            "This field must be defined",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
+            "This field is required",
           ]
         `)
       }
@@ -293,17 +293,17 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.inner).toMatchInlineSnapshot(`
           Array [
-            [ValidationError: This field must be defined],
+            [ValidationError: This field is required],
             [ValidationError: Start date (UTC) must be in the future.],
             [ValidationError: End date must be after start date.],
-            [ValidationError: This field must be defined],
-            [ValidationError: This field must be defined],
-            [ValidationError: This field must be defined],
-            [ValidationError: This field must be defined],
-            [ValidationError: This field must be defined],
-            [ValidationError: This field must be defined],
-            [ValidationError: This field must be defined],
-            [ValidationError: This field must be defined],
+            [ValidationError: This field is required],
+            [ValidationError: This field is required],
+            [ValidationError: This field is required],
+            [ValidationError: This field is required],
+            [ValidationError: This field is required],
+            [ValidationError: This field is required],
+            [ValidationError: This field is required],
+            [ValidationError: This field is required],
           ]
         `)
       }
@@ -322,17 +322,17 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.inner).toMatchInlineSnapshot(`
           Array [
-            [ValidationError: This field must be defined],
+            [ValidationError: This field is required],
             [ValidationError: Start date (UTC) must be in the future.],
             [ValidationError: End date must be within 12 months of start date.],
-            [ValidationError: This field must be defined],
-            [ValidationError: This field must be defined],
-            [ValidationError: This field must be defined],
-            [ValidationError: This field must be defined],
-            [ValidationError: This field must be defined],
-            [ValidationError: This field must be defined],
-            [ValidationError: This field must be defined],
-            [ValidationError: This field must be defined],
+            [ValidationError: This field is required],
+            [ValidationError: This field is required],
+            [ValidationError: This field is required],
+            [ValidationError: This field is required],
+            [ValidationError: This field is required],
+            [ValidationError: This field is required],
+            [ValidationError: This field is required],
+            [ValidationError: This field is required],
           ]
         `)
       }
@@ -379,7 +379,7 @@ describe('lib/schemas.ts module', () => {
     it('should respect undefined', () => {
       expect(Schemas.extendedNumberSchema.validateSync(undefined)).toBe(undefined)
       expect(() => Schemas.extendedNumberSchema.defined().validateSync(undefined)).toThrowErrorMatchingInlineSnapshot(
-        `"This field must be defined"`,
+        `"This field is required"`,
       )
     })
   })
