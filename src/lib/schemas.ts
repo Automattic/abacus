@@ -28,7 +28,7 @@ const yupLocale = {
     required: 'This field is a required field',
     oneOf: 'This field must be one of the following values: ${values}',
     notOneOf: 'This field must not be one of the following values: ${values}',
-    defined: 'This field must be defined',
+    defined: 'This field is required',
   },
   string: {
     length: 'This field must be exactly ${length} characters',
@@ -428,7 +428,10 @@ export const experimentFullNewSchema = experimentFullSchema.shape({
       (date) => dateFns.isBefore(date, dateFns.addMonths(now, MAX_DISTANCE_BETWEEN_NOW_AND_START_DATE_IN_MONTHS)),
     ),
   exposureEvents: yup.array(eventNewSchema).notRequired(),
-  metricAssignments: yup.array(metricAssignmentNewSchema).defined().min(1),
+  metricAssignments: yup
+    .array(metricAssignmentNewSchema)
+    .defined()
+    .min(1, 'At least one metric assignment is required'),
   segmentAssignments: yup.array(segmentAssignmentNewSchema).defined(),
   variations: yup.array<VariationNew>(variationNewSchema).defined().min(2),
 })
