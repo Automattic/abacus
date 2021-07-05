@@ -126,7 +126,7 @@ const createMetricAssignment = (metric: Metric) => {
   return {
     metricId: metric.metricId,
     attributionWindowSeconds: '',
-    isPrimary: false,
+    isPrimary: true,
     changeExpected: false,
     minDifference: '',
   }
