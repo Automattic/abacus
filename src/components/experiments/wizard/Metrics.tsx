@@ -18,8 +18,9 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Add, Clear } from '@material-ui/icons'
 import { Alert, Autocomplete, AutocompleteRenderInputParams } from '@material-ui/lab'
 import clsx from 'clsx'
-import { Field, FieldArray, useField } from 'formik'
+import { Field, FieldArray, FormikProps, useField } from 'formik'
 import { Select, Switch, TextField } from 'formik-material-ui'
+import _ from 'lodash'
 import React, { useState } from 'react'
 
 import { getPropNameCompletions } from 'src/api/AutocompleteApi'
@@ -27,6 +28,7 @@ import Attribute from 'src/components/general/Attribute'
 import AbacusAutocomplete, { autocompleteInputProps } from 'src/components/general/Autocomplete'
 import MetricDifferenceField from 'src/components/general/MetricDifferenceField'
 import MoreMenu from 'src/components/general/MoreMenu'
+import { ExperimentFormData } from 'src/lib/form-data'
 import { AttributionWindowSecondsToHuman } from 'src/lib/metric-assignments'
 import { EventNew, Metric, MetricAssignment } from 'src/lib/schemas'
 import { useDataSource } from 'src/utils/data-loading'
@@ -280,9 +282,11 @@ const EventEditor = ({
 const Metrics = ({
   indexedMetrics,
   completionBag,
+  formikProps,
 }: {
   indexedMetrics: Record<number, Metric>
   completionBag: ExperimentFormCompletionBag
+  formikProps: FormikProps<{ experiment: ExperimentFormData }>
 }): JSX.Element => {
   const classes = useStyles()
   const metricEditorClasses = useMetricEditorStyles()
@@ -302,6 +306,12 @@ const Metrics = ({
       })),
     )
   }
+
+  // This picks up the no metric assignments validation error
+  const metricAssignmentsError =
+    formikProps.touched.experiment?.metricAssignments &&
+    _.isString(formikProps.errors.experiment?.metricAssignments) &&
+    formikProps.errors.experiment?.metricAssignments
 
   // ### Exposure Events
   const [exposureEventsField, _exposureEventsFieldMetaProps, _exposureEventsFieldHelperProps] = useField<EventNew[]>(
@@ -351,6 +361,16 @@ const Metrics = ({
                         makeMetricAssignmentPrimary(index)
                       }
 
+                      const attributionWindowError =
+                        (_.get(
+                          formikProps.touched,
+                          `experiment.metricAssignments[${index}].attributionWindowSeconds`,
+                        ) as boolean | undefined) &&
+                        (_.get(
+                          formikProps.errors,
+                          `experiment.metricAssignments[${index}].attributionWindowSeconds`,
+                        ) as string | undefined)
+
                       return (
                         <TableRow key={index}>
                           <TableCell>
@@ -372,6 +392,7 @@ const Metrics = ({
                               variant='outlined'
                               autoWidth
                               displayEmpty
+                              error={!!attributionWindowError}
                               SelectDisplayProps={{
                                 'aria-label': 'Attribution Window',
                               }}
@@ -417,7 +438,7 @@ const Metrics = ({
                       <TableRow>
                         <TableCell colSpan={5}>
                           <Typography variant='body1' align='center'>
-                            You don&apos;t have any metrics yet.
+                            You don&apos;t have any metric assignments yet.
                           </Typography>
                         </TableCell>
                       </TableRow>
@@ -451,7 +472,8 @@ const Metrics = ({
                       <MuiTextField
                         {...params}
                         placeholder='Select a metric'
-                        // variant='outlined'
+                        error={!!metricAssignmentsError}
+                        helperText={_.isString(metricAssignmentsError) ? metricAssignmentsError : undefined}
                         required
                         InputProps={{
                           ...autocompleteInputProps(params, false),

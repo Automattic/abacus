@@ -293,7 +293,7 @@ const ExperimentForm = ({
                 {currentStageId === StageId.Metrics && (
                   <div className={classes.formPart}>
                     <Paper className={classes.paper}>
-                      <Metrics indexedMetrics={indexedMetrics} completionBag={completionBag} />
+                      <Metrics {...{ indexedMetrics, completionBag, formikProps }} />
                     </Paper>
                     <div className={classes.formPartActions}>
                       <Button onClick={prevStage}>Previous</Button>
