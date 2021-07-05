@@ -67,10 +67,10 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "metricId must be defined",
-            "name must be defined",
-            "description must be defined",
-            "higherIsBetter must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
             "Event Params is required and must be valid JSON.",
             "Exactly one of eventParams or revenueParams must be defined.",
           ]
@@ -89,10 +89,10 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "metricId must be defined",
-            "name must be defined",
-            "description must be defined",
-            "higherIsBetter must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
             "Revenue Params is required and must be valid JSON.",
             "Exactly one of eventParams or revenueParams must be defined.",
           ]
@@ -111,10 +111,10 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "metricId must be defined",
-            "name must be defined",
-            "description must be defined",
-            "higherIsBetter must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
           ]
         `)
       }
@@ -131,11 +131,11 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "metricId must be defined",
-            "name must be defined",
-            "description must be defined",
-            "higherIsBetter must be defined",
-            "eventParams must be one of the following values: ",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be one of the following values: ",
             "Revenue Params is required and must be valid JSON.",
           ]
         `)
@@ -153,11 +153,11 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "metricId must be defined",
-            "name must be defined",
-            "description must be defined",
-            "higherIsBetter must be defined",
-            "revenueParams must be one of the following values: ",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be one of the following values: ",
             "Event Params is required and must be valid JSON.",
           ]
         `)
@@ -175,13 +175,13 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "metricId must be defined",
-            "name must be defined",
-            "description must be defined",
-            "higherIsBetter must be defined",
-            "revenueParams.refundDays must be defined",
-            "revenueParams.productSlugs must be defined",
-            "revenueParams.transactionTypes must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
           ]
         `)
       }
@@ -201,13 +201,13 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "metricId must be defined",
-            "name must be defined",
-            "description must be defined",
-            "parameterType must be defined",
-            "higherIsBetter must be defined",
-            "eventParams must be one of the following values: ",
-            "revenueParams must be one of the following values: ",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be one of the following values: ",
+            "This field must be one of the following values: ",
             "Exactly one of eventParams or revenueParams must be defined.",
           ]
         `)
@@ -224,11 +224,11 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "metricId must be defined",
-            "name must be defined",
-            "description must be defined",
-            "parameterType must be defined",
-            "higherIsBetter must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
             "Exactly one of eventParams or revenueParams must be defined.",
           ]
         `)
@@ -246,10 +246,10 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "metricId must be defined",
-            "name must be defined",
-            "description must be defined",
-            "higherIsBetter must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
           ]
         `)
       }
@@ -266,13 +266,13 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.errors).toMatchInlineSnapshot(`
           Array [
-            "metricId must be defined",
-            "name must be defined",
-            "description must be defined",
-            "higherIsBetter must be defined",
-            "revenueParams.refundDays must be defined",
-            "revenueParams.productSlugs must be defined",
-            "revenueParams.transactionTypes must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
+            "This field must be defined",
           ]
         `)
       }
@@ -293,17 +293,17 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.inner).toMatchInlineSnapshot(`
           Array [
-            [ValidationError: name must be defined],
+            [ValidationError: This field must be defined],
             [ValidationError: Start date (UTC) must be in the future.],
             [ValidationError: End date must be after start date.],
-            [ValidationError: platform must be defined],
-            [ValidationError: ownerLogin must be defined],
-            [ValidationError: description must be defined],
-            [ValidationError: existingUsersAllowed must be defined],
-            [ValidationError: p2Url must be defined],
-            [ValidationError: metricAssignments must be defined],
-            [ValidationError: segmentAssignments must be defined],
-            [ValidationError: variations must be defined],
+            [ValidationError: This field must be defined],
+            [ValidationError: This field must be defined],
+            [ValidationError: This field must be defined],
+            [ValidationError: This field must be defined],
+            [ValidationError: This field must be defined],
+            [ValidationError: This field must be defined],
+            [ValidationError: This field must be defined],
+            [ValidationError: This field must be defined],
           ]
         `)
       }
@@ -322,17 +322,17 @@ describe('lib/schemas.ts module', () => {
       } catch (e) {
         expect(e.inner).toMatchInlineSnapshot(`
           Array [
-            [ValidationError: name must be defined],
+            [ValidationError: This field must be defined],
             [ValidationError: Start date (UTC) must be in the future.],
             [ValidationError: End date must be within 12 months of start date.],
-            [ValidationError: platform must be defined],
-            [ValidationError: ownerLogin must be defined],
-            [ValidationError: description must be defined],
-            [ValidationError: existingUsersAllowed must be defined],
-            [ValidationError: p2Url must be defined],
-            [ValidationError: metricAssignments must be defined],
-            [ValidationError: segmentAssignments must be defined],
-            [ValidationError: variations must be defined],
+            [ValidationError: This field must be defined],
+            [ValidationError: This field must be defined],
+            [ValidationError: This field must be defined],
+            [ValidationError: This field must be defined],
+            [ValidationError: This field must be defined],
+            [ValidationError: This field must be defined],
+            [ValidationError: This field must be defined],
+            [ValidationError: This field must be defined],
           ]
         `)
       }
@@ -379,7 +379,7 @@ describe('lib/schemas.ts module', () => {
     it('should respect undefined', () => {
       expect(Schemas.extendedNumberSchema.validateSync(undefined)).toBe(undefined)
       expect(() => Schemas.extendedNumberSchema.defined().validateSync(undefined)).toThrowErrorMatchingInlineSnapshot(
-        `"this must be defined"`,
+        `"This field must be defined"`,
       )
     })
   })
