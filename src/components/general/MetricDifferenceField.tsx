@@ -1,4 +1,5 @@
 import { createStyles, InputAdornment, makeStyles, Theme, Tooltip, Typography } from '@material-ui/core'
+import clsx from 'clsx'
 import { Field } from 'formik'
 import { TextField } from 'formik-material-ui'
 import React from 'react'
@@ -14,10 +15,17 @@ const ConversionMetricTextField = formikFieldTransformer(
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    root: {
+      minWidth: '8rem',
+    },
     tooltipped: {
       borderBottomWidth: 1,
       borderBottomStyle: 'dashed',
       borderBottomColor: theme.palette.grey[500],
+    },
+    // We hide the helper text shown in errors as the error is obvious and there is limited space as is.
+    helperText: {
+      display: 'none',
     },
   }),
 )
@@ -34,7 +42,7 @@ export default function MetricDifferenceField(props: {
   if (props.metricParameterType === MetricParameterType.Conversion) {
     return (
       <Field
-        className={props.className}
+        className={clsx(classes.root, props.className)}
         component={ConversionMetricTextField}
         name={props.name}
         id={props.id}
@@ -57,12 +65,13 @@ export default function MetricDifferenceField(props: {
             </InputAdornment>
           ),
         }}
+        FormHelperTextProps={{ className: classes.helperText }}
       />
     )
   } else if (props.metricParameterType === MetricParameterType.Revenue) {
     return (
       <Field
-        className={props.className}
+        className={clsx(classes.root, props.className)}
         component={TextField}
         name={props.name}
         id={props.id}
@@ -76,6 +85,7 @@ export default function MetricDifferenceField(props: {
         InputProps={{
           startAdornment: <InputAdornment position='start'>USD</InputAdornment>,
         }}
+        FormHelperTextProps={{ className: classes.helperText }}
       />
     )
   } else {
