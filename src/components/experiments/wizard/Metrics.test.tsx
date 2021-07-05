@@ -58,7 +58,7 @@ test('renders as expected', () => {
         () => undefined
       }
     >
-      {() => <Metrics indexedMetrics={indexedMetrics} completionBag={completionBag} />}
+      {(formikProps) => <Metrics {...{ indexedMetrics, completionBag, formikProps }} />}
     </Formik>,
   )
   expect(container).toMatchSnapshot()
@@ -73,7 +73,7 @@ test('allows adding, editing and removing a Metric Assignment', async () => {
         () => undefined
       }
     >
-      {() => <Metrics indexedMetrics={indexedMetrics} completionBag={completionBag} />}
+      {(formikProps) => <Metrics {...{ indexedMetrics, completionBag, formikProps }} />}
     </Formik>,
   )
   expect(container).toMatchSnapshot()

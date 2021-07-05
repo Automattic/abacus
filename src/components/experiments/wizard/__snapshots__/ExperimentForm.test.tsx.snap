@@ -2208,7 +2208,7 @@ exports[`sections should be browsable by the section buttons 4`] = `
                         <p
                           class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
                         >
-                          You don't have any metrics yet.
+                          You don't have any metric assignments yet.
                         </p>
                       </td>
                     </tr>

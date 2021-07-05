@@ -173,8 +173,7 @@ const Audience = ({
             ))}
           </Field>
           <FormHelperText error={!!platformError}>
-            {' '}
-            {_.isString(platformError) ? platformError : undefined}{' '}
+            {_.isString(platformError) ? platformError : undefined}
           </FormHelperText>
         </FormControl>
       </div>
