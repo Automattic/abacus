@@ -98,21 +98,20 @@ export default function AbacusAutocomplete<Multiple extends boolean>(
       })}
       getOptionLabel={(option) => option.name}
       getOptionSelected={(optionA, optionB) => optionA.value === optionB.value}
-      renderInput={
-        (params) =>
-          props.renderInput ? (
-            props.renderInput({
-              ...params,
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore - It does exist
-              error: !!error,
-              helperText: _.isString(error) ? error : undefined,
-            })
-          ) : (
-            <TextField {...params} error={!!error} helperText={_.isString(error) ? error : undefined} />
-          )
-        // This line is dedicated to eslint.
-      }
+      renderInput={(params) => {
+        // istanbul ignore else; Doesn't occur at all, it's just here for completeness
+        if (props.renderInput) {
+          return props.renderInput({
+            ...params,
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore - It does exist
+            error: !!error,
+            helperText: _.isString(error) ? error : undefined,
+          })
+        } else {
+          return <TextField {...params} error={!!error} helperText={_.isString(error) ? error : undefined} />
+        }
+      }}
       value={(innerValue as unknown) as Value<AutocompleteItem, Multiple, false, false>}
       onChange={onChange}
     />

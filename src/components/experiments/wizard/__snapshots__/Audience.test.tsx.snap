@@ -61,10 +61,7 @@ exports[`renders as expected 1`] = `
         </div>
         <p
           class="MuiFormHelperText-root"
-        >
-           
-           
-        </p>
+        />
       </fieldset>
     </div>
     <div
@@ -766,10 +763,7 @@ exports[`renders as expected 2`] = `
         </div>
         <p
           class="MuiFormHelperText-root"
-        >
-           
-           
-        </p>
+        />
       </fieldset>
     </div>
     <div
