@@ -1,6 +1,6 @@
 import { Button, Link, Paper, Step, StepButton, StepLabel, Stepper, Typography } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import { Formik } from 'formik'
+import { Formik, setNestedObjectValues } from 'formik'
 import _ from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
 import { Prompt } from 'react-router-dom'
@@ -165,6 +165,10 @@ const ExperimentForm = ({
       validationSchema={yup.object({ experiment: experimentFullNewSchema })}
     >
       {(formikProps) => {
+        const getStageErrors = async (stage: Stage) => {
+          return _.pick(await formikProps.validateForm(), stage.validatableFields)
+        }
+
         const isStageValid = async (stage: Stage): Promise<boolean> => {
           const errors = await formikProps.validateForm()
           return !stage.validatableFields.some((field) => _.get(errors, field))
@@ -188,6 +192,11 @@ const ExperimentForm = ({
           setActiveStageId(stageId)
           void updateStageState(stages[currentStageIndex])
 
+          if (errorStages.includes(stageId)) {
+            void getStageErrors(stages[stageId]).then((stageErrors) =>
+              formikProps.setTouched(setNestedObjectValues(stageErrors, true)),
+            )
+          }
           if (stageId === StageId.Submit) {
             stages.map(updateStageState)
           }
