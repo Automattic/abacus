@@ -553,7 +553,7 @@ test('form submits with valid fields', async () => {
       metricAssignments: [
         {
           attributionWindowSeconds: '86400',
-          changeExpected: false,
+          changeExpected: true,
           isPrimary: true,
           metricId: 10,
           minDifference: 0.01,
