@@ -16,16 +16,12 @@ const ConversionMetricTextField = formikFieldTransformer(
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      minWidth: '8rem',
+      minWidth: '7rem',
     },
     tooltipped: {
       borderBottomWidth: 1,
       borderBottomStyle: 'dashed',
       borderBottomColor: theme.palette.grey[500],
-    },
-    // We hide the helper text shown in errors as the error is obvious and there is limited space as is.
-    helperText: {
-      display: 'none',
     },
   }),
 )
@@ -65,7 +61,6 @@ export default function MetricDifferenceField(props: {
             </InputAdornment>
           ),
         }}
-        FormHelperTextProps={{ className: classes.helperText }}
       />
     )
   } else if (props.metricParameterType === MetricParameterType.Revenue) {
@@ -83,9 +78,8 @@ export default function MetricDifferenceField(props: {
           min: '0',
         }}
         InputProps={{
-          startAdornment: <InputAdornment position='start'>USD</InputAdornment>,
+          endAdornment: <InputAdornment position='end'>USD</InputAdornment>,
         }}
-        FormHelperTextProps={{ className: classes.helperText }}
       />
     )
   } else {
