@@ -39,6 +39,16 @@ const theme = createMuiTheme({
     MuiInputBase: {
       root: {
         fontFamily: monospaceFontStack,
+
+        // Removes spinners from number inputs
+        // From: https://stackoverflow.com/a/4298216
+        '& input::-webkit-outer-spin-button, input::-webkit-inner-spin-button': {
+          '-webkit-appearance': 'none',
+          margin: 0,
+        },
+        '& input[type=number]': {
+          '-moz-appearance': 'textfield',
+        },
       },
     },
     MuiCssBaseline: {
