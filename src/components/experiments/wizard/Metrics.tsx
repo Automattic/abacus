@@ -1,6 +1,7 @@
 import {
   Button,
   FormControl,
+  FormHelperText,
   IconButton,
   Link,
   MenuItem,
@@ -406,6 +407,9 @@ const Metrics = ({
                                 ),
                               )}
                             </Field>
+                            {_.isString(attributionWindowError) && (
+                              <FormHelperText error>{attributionWindowError}</FormHelperText>
+                            )}
                           </TableCell>
                           <TableCell className={classes.changeExpected}>
                             <Field
