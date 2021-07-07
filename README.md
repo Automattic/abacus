@@ -1,5 +1,4 @@
-
-#   Abacus: Automattic's Experimentation Platform UI
+# Abacus: Automattic's Experimentation Platform UI
 
 [![CircleCI](https://circleci.com/gh/Automattic/abacus.svg?style=svg)](https://circleci.com/gh/Automattic/abacus)
 
