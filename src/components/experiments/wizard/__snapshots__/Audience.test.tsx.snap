@@ -59,6 +59,9 @@ exports[`renders as expected 1`] = `
             />
           </svg>
         </div>
+        <p
+          class="MuiFormHelperText-root"
+        />
       </fieldset>
     </div>
     <div
@@ -758,6 +761,9 @@ exports[`renders as expected 2`] = `
             />
           </svg>
         </div>
+        <p
+          class="MuiFormHelperText-root"
+        />
       </fieldset>
     </div>
     <div

@@ -187,7 +187,7 @@ test('sections should be browsable by enter presses', async () => {
   screen.getByText(/Confirm and Submit Your Experiment/)
 })
 
-test('sections should be browsable by the section buttons', async () => {
+test('sections should be browsable by the section buttons and show validation errors without crashing', async () => {
   MockDate.set('2020-08-13')
 
   const onSubmit = async () => undefined
@@ -203,17 +203,13 @@ test('sections should be browsable by the section buttons', async () => {
   )
 
   const basicInfoSectionButton = screen.getByRole('button', { name: /Basic Info/ })
+  const audienceSectionButton = screen.getByRole('button', { name: /Audience/ })
   const metricsSectionButton = screen.getByRole('button', { name: /Metrics/ })
   const submitSectionButton = screen.getByRole('button', { name: /Submit/ })
 
+  // The order of these is such that it triggers all validation error paths
+
   screen.getByText(/Design and Document Your Experiment/)
-  expect(container).toMatchSnapshot()
-
-  await act(async () => {
-    fireEvent.click(basicInfoSectionButton)
-  })
-
-  screen.getAllByText(/Basic Info/)
   expect(container).toMatchSnapshot()
 
   await act(async () => {
@@ -227,7 +223,41 @@ test('sections should be browsable by the section buttons', async () => {
     fireEvent.click(metricsSectionButton)
   })
 
+  // We add a metricAssignment first so it can show validation errors
   screen.getByText(/Assign Metrics/)
+  expect(container).toMatchSnapshot()
+  const metricSearchField = screen.getByRole('combobox', { name: /Select a metric/ })
+  const metricSearchFieldMoreButton = getByRole(metricSearchField, 'button', { name: 'Open' })
+  const metricAddButton = screen.getByRole('button', { name: 'Add metric' })
+
+  fireEvent.click(metricSearchFieldMoreButton)
+  const metricOption = await screen.findByRole('option', { name: /metric_10/ })
+  await act(async () => {
+    fireEvent.click(metricOption)
+  })
+  await act(async () => {
+    fireEvent.click(metricAddButton)
+  })
+
+  await act(async () => {
+    fireEvent.click(basicInfoSectionButton)
+  })
+
+  screen.getAllByText(/Basic Info/)
+  expect(container).toMatchSnapshot()
+
+  await act(async () => {
+    fireEvent.click(metricsSectionButton)
+  })
+
+  screen.getByText(/Assign Metrics/)
+  expect(container).toMatchSnapshot()
+
+  await act(async () => {
+    fireEvent.click(audienceSectionButton)
+  })
+
+  screen.getByText(/Define Your Audience/)
   expect(container).toMatchSnapshot()
 })
 

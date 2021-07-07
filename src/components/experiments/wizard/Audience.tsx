@@ -151,6 +151,8 @@ const Audience = ({
     )
   }
 
+  const platformError = formikProps.touched.experiment?.platform && formikProps.errors.experiment?.platform
+
   return (
     <div className={classes.root}>
       <Typography variant='h4' gutterBottom>
@@ -160,7 +162,7 @@ const Audience = ({
       <div className={classes.row}>
         <FormControl component='fieldset'>
           <FormLabel required>Platform</FormLabel>
-          <Field component={Select} name='experiment.platform' displayEmpty>
+          <Field component={Select} name='experiment.platform' displayEmpty error={!!platformError}>
             <MenuItem value='' disabled>
               Select a Platform
             </MenuItem>
@@ -170,6 +172,9 @@ const Audience = ({
               </MenuItem>
             ))}
           </Field>
+          <FormHelperText error={!!platformError}>
+            {_.isString(platformError) ? platformError : undefined}
+          </FormHelperText>
         </FormControl>
       </div>
 

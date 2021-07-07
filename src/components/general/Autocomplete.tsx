@@ -1,4 +1,4 @@
-import { CircularProgress, InputProps } from '@material-ui/core'
+import { CircularProgress, InputProps, TextField } from '@material-ui/core'
 import { Autocomplete, Value } from '@material-ui/lab'
 import { AutocompleteProps, AutocompleteRenderInputParams, fieldToAutocomplete } from 'formik-material-ui-lab'
 import _ from 'lodash'
@@ -83,6 +83,8 @@ export default function AbacusAutocomplete<Multiple extends boolean>(
     // @ts-ignore; Typescript can't quite work this:
     !multiple && innerValue.value === emptyInnerValue.value ? [emptyInnerValue, ...props.options] : props.options
 
+  const error = _.get(props.form.touched, props.field.name) && _.get(props.form.errors, props.field.name)
+
   return (
     <Autocomplete
       {...fieldToAutocomplete({
@@ -96,6 +98,20 @@ export default function AbacusAutocomplete<Multiple extends boolean>(
       })}
       getOptionLabel={(option) => option.name}
       getOptionSelected={(optionA, optionB) => optionA.value === optionB.value}
+      renderInput={(params) => {
+        // istanbul ignore else; Doesn't occur at all, it's just here for completeness
+        if (props.renderInput) {
+          return props.renderInput({
+            ...params,
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore - It does exist
+            error: !!error,
+            helperText: _.isString(error) ? error : undefined,
+          })
+        } else {
+          return <TextField {...params} error={!!error} helperText={_.isString(error) ? error : undefined} />
+        }
+      }}
       value={(innerValue as unknown) as Value<AutocompleteItem, Multiple, false, false>}
       onChange={onChange}
     />
