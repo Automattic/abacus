@@ -16,12 +16,15 @@ exports[`renders an appropriate message with no analyses 1`] = `
       <li
         class="MuiTypography-root MuiTypography-body1"
       >
-         It can take 24-48 hours for analysis data to be generated. 
+         
+        It can take 24-48 hours for analysis data to be generated.
+         
       </li>
       <li
         class="MuiTypography-root MuiTypography-body1"
       >
-         Analysis data can also be missing if the event or billing-product isn't being hit.
+         
+        Analysis data can also be missing if the event or billing-product isn't being hit.
       </li>
     </ul>
   </div>
