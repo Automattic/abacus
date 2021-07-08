@@ -2698,6 +2698,13 @@ exports[`renders correctly for 1 analysis datapoint, not statistically significa
             >
               There is not enough certainty to draw a conclusion at this time.
                
+              <a
+                class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#reading-the-data"
+                target="_blank"
+              >
+                Learn more
+              </a>
             </p>
           </td>
         </tr>
@@ -4288,6 +4295,13 @@ exports[`renders correctly for 1 analysis datapoint, statistically significant 2
             >
               There is high certainty that the change is practically significant.
                
+              <a
+                class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#reading-the-data"
+                target="_blank"
+              >
+                Learn more
+              </a>
             </p>
           </td>
         </tr>
@@ -5876,6 +5890,13 @@ exports[`renders correctly for conflicting analysis data 2`] = `
             >
               There is high certainty that the change is practically significant.
                
+              <a
+                class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#reading-the-data"
+                target="_blank"
+              >
+                Learn more
+              </a>
             </p>
           </td>
         </tr>
@@ -7490,6 +7511,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             >
               There is high certainty that the change isn't practically significant.
                
+              <a
+                class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#reading-the-data"
+                target="_blank"
+              >
+                Learn more
+              </a>
             </p>
           </td>
         </tr>
@@ -9516,6 +9544,13 @@ exports[`renders the condensed table with some analyses in non-debug mode for a 
             >
               There is high certainty that the change isn't practically significant.
                
+              <a
+                class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+                href="https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#reading-the-data"
+                target="_blank"
+              >
+                Learn more
+              </a>
             </p>
           </td>
         </tr>

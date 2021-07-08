@@ -1,5 +1,6 @@
 import {
   createStyles,
+  Link,
   makeStyles,
   Paper,
   Table,
@@ -311,6 +312,12 @@ export default function MetricAssignmentResults({
                       recommendation.practicallySignificant as Recommendations.PracticalSignificanceStatus
                     ][String(recommendation.statisticallySignificant) as StringifiedStatisticalDifference]
                   }{' '}
+                  <Link
+                    href={`https://github.com/Automattic/experimentation-platform/wiki/Experimenter's-Guide#reading-the-data`}
+                    target='_blank'
+                  >
+                    Learn more
+                  </Link>
                 </Typography>
               </TableCell>
             </TableRow>
