@@ -242,7 +242,9 @@ export default function ActualExperimentResults({
       ),
     strategy,
   )
-  const hasAnalyses = primaryMetricRecommendation.decision !== Recommendations.Decision.MissingAnalysis
+  const hasAnalyses = allMetricAssignmentAnalysesData.some(
+    (x) => Object.values(x.analysesByStrategyDateAsc).filter((y) => y).length > 0,
+  )
 
   const experimentParticipantStats = Analyses.getExperimentParticipantStats(
     experiment,
