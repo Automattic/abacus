@@ -17,7 +17,7 @@ import {
 } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { Add, Clear } from '@material-ui/icons'
-import { Alert, Autocomplete, AutocompleteRenderInputParams } from '@material-ui/lab'
+import { Alert, AutocompleteRenderInputParams } from '@material-ui/lab'
 import clsx from 'clsx'
 import { Field, FieldArray, FormikProps, useField } from 'formik'
 import { Select, Switch, TextField } from 'formik-material-ui'
@@ -27,6 +27,7 @@ import React, { useState } from 'react'
 import { getPropNameCompletions } from 'src/api/AutocompleteApi'
 import Attribute from 'src/components/general/Attribute'
 import AbacusAutocomplete, { autocompleteInputProps } from 'src/components/general/Autocomplete'
+import MetricAutocomplete from 'src/components/general/MetricAutocomplete'
 import MetricDifferenceField from 'src/components/general/MetricDifferenceField'
 import MoreMenu from 'src/components/general/MoreMenu'
 import { ExperimentFormData } from 'src/lib/form-data'
@@ -458,40 +459,13 @@ const Metrics = ({
               <div className={metricEditorClasses.addMetric}>
                 <Add className={metricEditorClasses.addMetricAddSymbol} />
                 <FormControl className={classes.addMetricSelect}>
-                  <Autocomplete
+                  <MetricAutocomplete
                     id='add-metric-select'
-                    aria-label='Select a metric'
                     value={selectedMetric}
                     onChange={onChangeSelectedMetricOption}
-                    fullWidth
                     options={Object.values(indexedMetrics)}
-                    noOptionsText='No metrics found'
-                    getOptionLabel={(metric: Metric) => metric.name}
-                    renderOption={(option) => (
-                      <div>
-                        <Typography variant='body1'>
-                          <strong>{option.name}</strong>
-                        </Typography>
-                        <Typography variant='body1'>
-                          <small>{option.description}</small>
-                        </Typography>
-                      </div>
-                    )}
-                    renderInput={(params: AutocompleteRenderInputParams) => (
-                      <MuiTextField
-                        {...params}
-                        placeholder='Select a metric'
-                        error={!!metricAssignmentsError}
-                        helperText={_.isString(metricAssignmentsError) ? metricAssignmentsError : undefined}
-                        required
-                        InputProps={{
-                          ...autocompleteInputProps(params, false),
-                        }}
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                      />
-                    )}
+                    error={metricAssignmentsError}
+                    fullWidth
                   />
                 </FormControl>
                 <Button variant='contained' disableElevation size='small' onClick={onAddMetric} aria-label='Add metric'>

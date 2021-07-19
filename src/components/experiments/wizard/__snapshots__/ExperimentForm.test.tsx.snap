@@ -1522,6 +1522,7 @@ exports[`sections should be browsable by the section buttons and show validation
                     aria-expanded="false"
                     aria-label="Select a metric"
                     class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
+                    error="At least one metric assignment is required"
                     role="combobox"
                   >
                     <div

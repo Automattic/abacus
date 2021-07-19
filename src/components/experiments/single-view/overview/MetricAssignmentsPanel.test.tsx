@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/require-await, no-irregular-whitespace */
-import { act, fireEvent, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
+import { act, fireEvent, getByRole, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import { noop } from 'lodash'
 import React from 'react'
 
@@ -311,17 +311,10 @@ test('opens, submits and cancels assign metric dialog', async () => {
   // We click it now to test the validation state
   fireEvent.click(assignButton)
 
-  const metricSearchField = screen.getByRole('button', { name: /Select a Metric/ })
-  await act(async () => {
-    fireEvent.focus(metricSearchField)
-  })
-  await act(async () => {
-    fireEvent.keyDown(metricSearchField, { key: 'Enter' })
-  })
-  const metricOption = await screen.findByRole('option', { name: /metric_3/ })
-  await act(async () => {
-    fireEvent.click(metricOption)
-  })
+  const metricSearchField = screen.getByRole('combobox', { name: /Select a metric/ })
+  const metricSearchFieldMoreButton = getByRole(metricSearchField, 'button', { name: 'Open' })
+  fireEvent.click(metricSearchFieldMoreButton)
+  fireEvent.click(await screen.findByRole('option', { name: /metric_3/ }))
 
   const attributionWindowField = await screen.findByLabelText(/Attribution Window/)
   await act(async () => {
