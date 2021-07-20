@@ -164,9 +164,18 @@ function MissingAnalysisMessage() {
     <div className={classes.root}>
       <Typography variant='h5' gutterBottom>
         {' '}
-        No Analysis Data Found{' '}
+        No Analysis Data Found:{' '}
       </Typography>
-      <Typography variant='body1'> It can take 24-48 hours for analysis data to be generated. </Typography>
+      <ul>
+        <Typography variant='body1' component='li'>
+          {' '}
+          It can take 24-48 hours for analysis data to be generated.{' '}
+        </Typography>
+        <Typography variant='body1' component='li'>
+          {' '}
+          Analysis data can also be missing if the event or billing-product isn&apos;t being hit.
+        </Typography>
+      </ul>
     </div>
   )
 }
