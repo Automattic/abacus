@@ -25,7 +25,7 @@ test('renders an appropriate message with no analyses', async () => {
   await expect(container.textContent).toMatch('No results are available at the moment')
 })
 
-test('renders an appropriate message for "Missing Analyses" analyses state', async () => {
+test('renders an appropriate message for analyses missing analysis data due to an ETL bug', async () => {
   const { container } = render(
     <ExperimentResults
       analyses={[
@@ -40,7 +40,7 @@ test('renders an appropriate message for "Missing Analyses" analyses state', asy
     />,
   )
   expect(container).toMatchSnapshot()
-  await expect(container.textContent).toMatch('No results are available at the moment')
+  await expect(container.textContent).toMatch('Not analyzed yet')
 })
 
 test('renders correctly for 1 analysis datapoint, not statistically significant', async () => {

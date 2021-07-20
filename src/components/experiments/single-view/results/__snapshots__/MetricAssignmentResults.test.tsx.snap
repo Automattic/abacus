@@ -9,14 +9,24 @@ exports[`renders an appropriate message with no analyses 1`] = `
       class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
     >
        
-      No Analysis Data Found
+      No Analysis Data Found:
        
     </h5>
-    <p
-      class="MuiTypography-root MuiTypography-body1"
-    >
-       It can take 24-48 hours for analysis data to be generated. 
-    </p>
+    <ul>
+      <li
+        class="MuiTypography-root MuiTypography-body1"
+      >
+         
+        It can take 24-48 hours for analysis data to be generated.
+         
+      </li>
+      <li
+        class="MuiTypography-root MuiTypography-body1"
+      >
+         
+        Analysis data can also be missing if the event or billing-product isn't being hit.
+      </li>
+    </ul>
   </div>
 </div>
 `;
