@@ -1664,7 +1664,7 @@ exports[`renders an appropriate message for analyses missing analysis data due t
                 >
                   <a
                     class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-matching-allocated"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#Assignment-distribution"
                     target="_blank"
                   >
                     Assignment distribution
@@ -1725,7 +1725,7 @@ exports[`renders an appropriate message for analyses missing analysis data due t
                 >
                   <a
                     class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assigned-no-spammers-no-crossovers-distribution-matching-allocated"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#Assignment-distribution-without-crossovers-and-spammers"
                     target="_blank"
                   >
                     Assignment distribution without crossovers and spammers
@@ -1786,7 +1786,7 @@ exports[`renders an appropriate message for analyses missing analysis data due t
                 >
                   <a
                     class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#exposure-event-distribution-matching-allocated-sample-ratio-mismatch"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#assignment-distribution-of-exposed-participants"
                     target="_blank"
                   >
                     Assignment distribution of exposed participants
@@ -1847,7 +1847,7 @@ exports[`renders an appropriate message for analyses missing analysis data due t
                 >
                   <a
                     class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-crossovers"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ratio-of-crossovers-to-assigned"
                     target="_blank"
                   >
                     Ratio of crossovers to assigned
@@ -1909,7 +1909,7 @@ exports[`renders an appropriate message for analyses missing analysis data due t
                 >
                   <a
                     class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
-                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#total-spammers"
+                    href="https://github.com/Automattic/experimentation-platform/wiki/Experiment-Health#ratio-of-spammers-to-assigned"
                     target="_blank"
                   >
                     Ratio of spammers to assigned
