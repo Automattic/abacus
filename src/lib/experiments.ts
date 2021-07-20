@@ -43,6 +43,7 @@ export function getDefaultAnalysisStrategy(experiment: ExperimentFull): Analysis
 export const PlatformToHuman: Record<Platform, string> = {
   [Platform.Akismet]: 'Spam protection for WordPress',
   [Platform.Calypso]: 'Calypso front-end',
+  [Platform.DayOne]: 'Day One',
   [Platform.Email]: 'Guides and other email systems',
   [Platform.Jetpack]: 'Jetpack front-end',
   [Platform.Lohp]: 'WordPress.com logged out homepage',

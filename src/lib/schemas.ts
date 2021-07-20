@@ -331,6 +331,7 @@ export interface Variation extends yup.InferType<typeof variationSchema> {}
 export enum Platform {
   Akismet = 'akismet',
   Calypso = 'calypso',
+  DayOne = 'dayone',
   Email = 'email',
   Jetpack = 'jetpack',
   Lohp = 'lohp',
