@@ -16,13 +16,16 @@ export default function MetricAutocomplete<
 >(
   props: Omit<AutocompleteProps<Metric, Multiple, DisableClearable, FreeSolo>, 'renderInput'> & {
     error?: string | false
-    options: Metric[]
   },
 ): ReturnType<typeof Autocomplete> {
+  const processedOptions = props.options
+    .filter((a) => !a.name.startsWith('archived_'))
+    .sort((a, b) => a.name.localeCompare(b.name, 'en'))
   return (
     <Autocomplete<Metric, Multiple, DisableClearable, FreeSolo>
       aria-label='Select a metric'
       fullWidth
+      options={processedOptions}
       noOptionsText='No metrics found'
       getOptionLabel={(metric: Metric) => metric.name}
       getOptionSelected={(metricA: Metric, metricB: Metric) => metricA.metricId === metricB.metricId}
@@ -51,7 +54,7 @@ export default function MetricAutocomplete<
           }}
         />
       )}
-      {...props}
+      {..._.omit(props, 'options')}
     />
   )
 }
