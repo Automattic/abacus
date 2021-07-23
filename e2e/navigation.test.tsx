@@ -28,12 +28,12 @@ describe('Experiments', () => {
     it('should navigate to experiment details page on row click', async () => {
       // Rendering of the table is dynamic. That is, it is not rendered until the
       // experiment data loads, hence the reason for the wait.
-      await page.waitForSelector('.MuiTableHead-root')
+      await page.waitForSelector('.ag-root-wrapper')
 
       // Click an experiment row.
-      const $tableRows = await page.$$('.MuiTableBody-root .MuiTableRow-root')
-      expect($tableRows.length).toBeGreaterThan(0)
-      await Promise.all([page.waitForNavigation(), $tableRows[0].click()])
+      const $tableRowLinks = await page.$$('.ag-root-wrapper .ag-row a')
+      expect($tableRowLinks.length).toBeGreaterThan(0)
+      await Promise.all([page.waitForNavigation(), $tableRowLinks[0].click()])
 
       // Assert clicking a row navigated to the details page of that experiment.
       expect(page.url()).toMatch(/^http:\/\/a8c-abacus-local:3001\/experiments\/\d+/)
